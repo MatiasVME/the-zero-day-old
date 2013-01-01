@@ -86,35 +86,38 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 90.0
-margin_top = 100.0
+margin_top = 105.0
 margin_right = 340.0
 margin_bottom = 148.0
 custom_styles/panel = SubResource( 2 )
 
 [node name="Yes" type="TextureButton" parent="CommitDelete"]
-margin_left = 220.0
-margin_top = 42.0
-margin_right = 244.0
-margin_bottom = 66.0
+margin_left = 240.0
+margin_top = -5.0
+margin_right = 288.0
+margin_bottom = 43.0
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = ExtResource( 11 )
 expand = true
+stretch_mode = 2
 
 [node name="Nop" type="TextureButton" parent="CommitDelete"]
-margin_left = 10.0
-margin_top = 42.0
-margin_right = 34.0
-margin_bottom = 66.0
+margin_left = -40.0
+margin_top = -5.0
+margin_right = 8.0
+margin_bottom = 43.0
 texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
 texture_hover = ExtResource( 14 )
 expand = true
+stretch_mode = 2
 
 [node name="Label" type="RichTextLabel" parent="CommitDelete"]
 margin_left = 18.0
+margin_top = -2.0
 margin_right = 220.0
-margin_bottom = 42.0
+margin_bottom = 40.0
 custom_fonts/normal_font = ExtResource( 15 )
 bbcode_enabled = true
 bbcode_text = "[center]You really want [color=red]delete[/color] your progress? [color=red]is forever[/color][/center]"
