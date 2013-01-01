@@ -1,6 +1,8 @@
 extends Node
 
 var current_music
+var vol_mus = 1.0 setget set_vol_music
+var vol_sfx = 1.0 setget set_vol_sfx
 
 enum Music {
 	MAIN_THEME,
@@ -13,6 +15,12 @@ enum Music {
 	MUSHROOMS, # ENDLEVEL
 	SOLITUDE # FINAL
 }
+
+func set_vol_music(vol: float) -> void:
+	AudioServer.set_bus_volume_db(1, (vol*80.0)-80.0 )
+
+func set_vol_sfx(vol: float) -> void:
+	AudioServer.set_bus_volume_db(2, (vol*80.0)-80.0 )
 
 func play(music):
 	if not Main.music_enable:
