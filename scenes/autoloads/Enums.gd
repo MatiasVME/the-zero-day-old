@@ -15,6 +15,14 @@ enum ActorOwner {
 	NATURE
 }
 
+enum EnemyType {
+	UNDEFINED,
+	NORMAL,
+	CHAMPION,
+	EPIC,
+	UNIQUE
+}
+
 # En un futuro se implimentará esto
 enum Elements {
 	WATER,

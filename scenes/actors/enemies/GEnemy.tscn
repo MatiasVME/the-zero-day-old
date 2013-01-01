@@ -17,7 +17,6 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="Anims" type="AnimationPlayer" parent="."]
-editor/display_folded = true
 
 [node name="Damage" type="AnimationPlayer" parent="Anims"]
 
@@ -29,16 +28,19 @@ editor/display_folded = true
 editor/display_folded = true
 
 [node name="Attack" type="Area2D" parent="Areas"]
+editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="Areas/Attack"]
 
 [node name="Damage" type="Area2D" parent="Areas"]
+editor/display_folded = true
 collision_layer = 2
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="Areas/Damage"]
 
 [node name="Detect" type="Area2D" parent="Areas"]
+editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="Areas/Detect"]
 [connection signal="animation_finished" from="Anims" to="." method="_on_Anims_animation_finished"]
