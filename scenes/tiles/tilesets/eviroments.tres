@@ -1,12 +1,18 @@
-[gd_resource type="TileSet" load_steps=8 format=2]
+[gd_resource type="TileSet" load_steps=14 format=2]
 
 [ext_resource path="res://scenes/enviroment/plants/bush.png" type="Texture" id=1]
 [ext_resource path="res://scenes/enviroment/plants/big_tree.png" type="Texture" id=2]
-[ext_resource path="res://scenes/enviroment/plants/bush_root.png" type="Texture" id=3]
-[ext_resource path="res://scenes/enviroment/plants/flower_fern.png" type="Texture" id=4]
-[ext_resource path="res://scenes/enviroment/plants/medium_tree.png" type="Texture" id=5]
-[ext_resource path="res://scenes/enviroment/plants/small_tree.png" type="Texture" id=6]
-[ext_resource path="res://scenes/enviroment/plants/small_roots.png" type="Texture" id=7]
+[ext_resource path="res://scenes/enviroment/desert/shell_b.png" type="Texture" id=3]
+[ext_resource path="res://scenes/enviroment/desert/skull.png" type="Texture" id=4]
+[ext_resource path="res://scenes/enviroment/desert/tree_log.png" type="Texture" id=5]
+[ext_resource path="res://scenes/enviroment/plants/bush_root.png" type="Texture" id=6]
+[ext_resource path="res://scenes/enviroment/plants/flower_fern.png" type="Texture" id=7]
+[ext_resource path="res://scenes/enviroment/plants/medium_tree.png" type="Texture" id=8]
+[ext_resource path="res://scenes/enviroment/plants/small_tree.png" type="Texture" id=9]
+[ext_resource path="res://scenes/enviroment/plants/small_roots.png" type="Texture" id=10]
+[ext_resource path="res://scenes/enviroment/desert/bone.png" type="Texture" id=11]
+[ext_resource path="res://scenes/enviroment/desert/cactus.png" type="Texture" id=12]
+[ext_resource path="res://scenes/enviroment/desert/shell_a.png" type="Texture" id=13]
 
 [resource]
 
@@ -29,7 +35,7 @@
 1/navigation_offset = Vector2( 0, 0 )
 1/shapes = [  ]
 2/name = "bush_root"
-2/texture = ExtResource( 3 )
+2/texture = ExtResource( 6 )
 2/tex_offset = Vector2( 0, 0 )
 2/modulate = Color( 1, 1, 1, 1 )
 2/region = Rect2( 0, 0, 16, 16 )
@@ -38,7 +44,7 @@
 2/navigation_offset = Vector2( 0, 0 )
 2/shapes = [  ]
 3/name = "flower_fern"
-3/texture = ExtResource( 4 )
+3/texture = ExtResource( 7 )
 3/tex_offset = Vector2( 0, 0 )
 3/modulate = Color( 1, 1, 1, 1 )
 3/region = Rect2( 0, 0, 16, 32 )
@@ -47,7 +53,7 @@
 3/navigation_offset = Vector2( 0, 0 )
 3/shapes = [  ]
 4/name = "medium_tree"
-4/texture = ExtResource( 5 )
+4/texture = ExtResource( 8 )
 4/tex_offset = Vector2( 0, 0 )
 4/modulate = Color( 1, 1, 1, 1 )
 4/region = Rect2( 0, 0, 32, 48 )
@@ -56,7 +62,7 @@
 4/navigation_offset = Vector2( 0, 0 )
 4/shapes = [  ]
 5/name = "small_tree"
-5/texture = ExtResource( 6 )
+5/texture = ExtResource( 9 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 16, 32 )
@@ -65,7 +71,7 @@
 5/navigation_offset = Vector2( 0, 0 )
 5/shapes = [  ]
 6/name = "small_roots"
-6/texture = ExtResource( 7 )
+6/texture = ExtResource( 10 )
 6/tex_offset = Vector2( 0, 0 )
 6/modulate = Color( 1, 1, 1, 1 )
 6/region = Rect2( 0, 0, 16, 16 )
@@ -73,4 +79,58 @@
 6/occluder_offset = Vector2( 0, 0 )
 6/navigation_offset = Vector2( 0, 0 )
 6/shapes = [  ]
+7/name = "bone"
+7/texture = ExtResource( 11 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 16, 32 )
+7/is_autotile = false
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+8/name = "cactus"
+8/texture = ExtResource( 12 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 16, 32 )
+8/is_autotile = false
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/shapes = [  ]
+9/name = "shell_a"
+9/texture = ExtResource( 13 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 1, 1, 1, 1 )
+9/region = Rect2( 0, 0, 16, 16 )
+9/is_autotile = false
+9/occluder_offset = Vector2( 0, 0 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shapes = [  ]
+10/name = "shell_b"
+10/texture = ExtResource( 3 )
+10/tex_offset = Vector2( 0, 0 )
+10/modulate = Color( 1, 1, 1, 1 )
+10/region = Rect2( 0, 0, 16, 16 )
+10/is_autotile = false
+10/occluder_offset = Vector2( 0, 0 )
+10/navigation_offset = Vector2( 0, 0 )
+10/shapes = [  ]
+11/name = "skull"
+11/texture = ExtResource( 4 )
+11/tex_offset = Vector2( 0, 0 )
+11/modulate = Color( 1, 1, 1, 1 )
+11/region = Rect2( 0, 0, 16, 16 )
+11/is_autotile = false
+11/occluder_offset = Vector2( 0, 0 )
+11/navigation_offset = Vector2( 0, 0 )
+11/shapes = [  ]
+12/name = "tree_log"
+12/texture = ExtResource( 5 )
+12/tex_offset = Vector2( 0, 0 )
+12/modulate = Color( 1, 1, 1, 1 )
+12/region = Rect2( 0, 0, 16, 16 )
+12/is_autotile = false
+12/occluder_offset = Vector2( 0, 0 )
+12/navigation_offset = Vector2( 0, 0 )
+12/shapes = [  ]
 
