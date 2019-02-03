@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.stex"
+path="res://.import/bush.png-c28440221f2b700641edb06df2bd4d31.stex"
 
 [deps]
 
-source_file="res://addons/PersistenceNode/icon.png"
-dest_files=[ "res://.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.stex" ]
+source_file="res://scenes/enviroment/plants/bush.png"
+dest_files=[ "res://.import/bush.png-c28440221f2b700641edb06df2bd4d31.stex" ]
 
 [params]
 
@@ -16,7 +16,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/enviroment/plants/bush.png" type="Texture" id=1]
+[ext_resource path="res://scenes/enviroment/plants/big_tree.png" type="Texture" id=2]
+[ext_resource path="res://scenes/enviroment/plants/bush_root.png" type="Texture" id=3]
+[ext_resource path="res://scenes/enviroment/plants/flower_fern.png" type="Texture" id=4]
+[ext_resource path="res://scenes/enviroment/plants/medium_tree.png" type="Texture" id=5]
+[ext_resource path="res://scenes/enviroment/plants/small_tree.png" type="Texture" id=6]
+[ext_resource path="res://scenes/enviroment/plants/small_roots.png" type="Texture" id=7]
+
+[node name="Enviroments" type="Node"]
+
+[node name="bush" type="Sprite" parent="." index="0"]
+
+position = Vector2( 48, 0 )
+texture = ExtResource( 1 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="big_tree" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 2 )
+centered = false
+
+[node name="bush_root" type="Sprite" parent="." index="2"]
+
+position = Vector2( 48, 16 )
+texture = ExtResource( 3 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="flower_fern" type="Sprite" parent="." index="3"]
+
+position = Vector2( 64, 0 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="medium_tree" type="Sprite" parent="." index="4"]
+
+position = Vector2( 80, 0 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="small_tree" type="Sprite" parent="." index="5"]
+
+position = Vector2( 112, 0 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="small_roots" type="Sprite" parent="." index="6"]
+
+position = Vector2( 48, 32 )
+texture = ExtResource( 7 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+
