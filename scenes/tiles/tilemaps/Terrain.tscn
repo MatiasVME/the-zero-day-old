@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/tiles/tile_images/stone/stone_tiles.png" type="Texture" id=6]
 [ext_resource path="res://scenes/tiles/tile_images/test/all_tiles_16x_v2.png" type="Texture" id=7]
 
-[node name="Terrain" type="Node" index="0"]
+[node name="Terrain" type="Node"]
 
 _sections_unfolded = [ "Cell" ]
 
