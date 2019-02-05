@@ -1,79 +1,182 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=2]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_01.png" type="Texture" id=5]
-[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_02.png" type="Texture" id=6]
-[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_03.png" type="Texture" id=7]
-[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_04.png" type="Texture" id=8]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_01.png" type="Texture" id=9]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_02.png" type="Texture" id=10]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_03.png" type="Texture" id=11]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_04.png" type="Texture" id=12]
-[ext_resource path="res://scenes/actors/players/animations/Idle.tres" type="Animation" id=13]
-[ext_resource path="res://scenes/actors/players/animations/RunLeft.tres" type="Animation" id=14]
-[ext_resource path="res://scenes/actors/players/animations/RunRight.tres" type="Animation" id=15]
+[ext_resource path="res://scenes/actors/players/matbot/Matbot.gd" type="Script" id=2]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_01.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_02.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_03.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_04.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_01.png" type="Texture" id=10]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_02.png" type="Texture" id=11]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_03.png" type="Texture" id=12]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_04.png" type="Texture" id=13]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_down_01.png" type="Texture" id=14]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_down_02.png" type="Texture" id=15]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_down_03.png" type="Texture" id=16]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_down_04.png" type="Texture" id=17]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_up_01.png" type="Texture" id=18]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_up_02.png" type="Texture" id=19]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_up_03.png" type="Texture" id=20]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_up_04.png" type="Texture" id=21]
+[ext_resource path="res://scenes/actors/players/animations/Idle.tres" type="Animation" id=22]
+[ext_resource path="res://scenes/actors/players/animations/RunSide.tres" type="Animation" id=23]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "walk_up",
+"name": "walk_side",
 "speed": 5.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
-"name": "run_right",
+"name": "run_side",
 "speed": 10.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "run_up",
-"speed": 10.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "run_down",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "walk_left",
-"speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
 "name": "walk_down",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "run_down",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ) ],
+"loop": true,
+"name": "run_up",
+"speed": 10.0
+}, {
 "frames": [  ],
 "loop": true,
-"name": "walk_right",
+"name": "walk_up",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "run_left",
-"speed": 10.0
 } ]
 
-[node name="Matbot" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=3]
+
+resource_name = "RunDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "run_down", "run_down" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "RunUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "run_up", "run_up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:speed_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0 ]
+}
+
+[node name="Matbot" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 frames = SubResource( 1 )
-animation = "run_left"
-playing = true
+animation = "run_down"
 
 [node name="Anim" parent="." index="2"]
-anims/Idle = ExtResource( 13 )
-anims/RunLeft = ExtResource( 14 )
-anims/RunRight = ExtResource( 15 )
+anims/Idle = ExtResource( 22 )
+anims/RunDown = SubResource( 3 )
+anims/RunSide = ExtResource( 23 )
+anims/RunUp = SubResource( 2 )
 
