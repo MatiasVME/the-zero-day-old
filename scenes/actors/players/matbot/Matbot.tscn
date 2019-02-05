@@ -14,6 +14,7 @@
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_04.png" type="Texture" id=12]
 [ext_resource path="res://scenes/actors/players/animations/Idle.tres" type="Animation" id=13]
 [ext_resource path="res://scenes/actors/players/animations/RunLeft.tres" type="Animation" id=14]
+[ext_resource path="res://scenes/actors/players/animations/RunRight.tres" type="Animation" id=15]
 
 [sub_resource type="SpriteFrames" id=1]
 
@@ -64,56 +65,15 @@ animations = [ {
 "speed": 10.0
 } ]
 
-[sub_resource type="Animation" id=2]
-
-resource_name = "RunRight"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ "run_left", "run_left" ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, true ]
-}
-
 [node name="Matbot" index="0" instance=ExtResource( 1 )]
 
 [node name="Sprite" parent="." index="0"]
 frames = SubResource( 1 )
 animation = "run_left"
-frame = 2
 playing = true
 
 [node name="Anim" parent="." index="2"]
 anims/Idle = ExtResource( 13 )
 anims/RunLeft = ExtResource( 14 )
-anims/RunRight = SubResource( 2 )
+anims/RunRight = ExtResource( 15 )
 
