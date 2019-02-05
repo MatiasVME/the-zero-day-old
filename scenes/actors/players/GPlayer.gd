@@ -1,77 +1,55 @@
 extends KinematicBody2D
 
-export (int) var speed = 5000
-#export (int) var max_speed = 5000
-#export (int) var acel = 4500
-#export (int) var decel = 6500
+export (int) var speed = 3000
 
 var move_x
 var move_y
 
-var input_dir_x = 0
-var input_dir_y = 0
+var input_dir : Vector2 = Vector2()
 
 var dir_x = 0
 var dir_y = 0
-
-#enum MoveTo {
-#	IDLE = -1
-#	LEFT, 
-#	LEFT_UP, 
-#	UP, 
-#	UP_RIGHT, 
-#	RIGHT, 
-#	RIGHT_DOWN, 
-#	DOWN, 
-#	DOWN_LEFT
-#}
-#var move_to = MoveTo.IDLE
 
 func _ready():
 	pass
 
 func _physics_process(delta):
-	input_dir_x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	input_dir_y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	
-	move_x = input_dir_x * speed * delta
-	move_y = input_dir_y * speed * delta
+	move_x = input_dir.x * speed * delta
+	move_y = input_dir.y * speed * delta
+	
+	if input_dir.x == -1 and input_dir.y == 0:
+		$Anim.play("RunSide")
+		$Sprite.flip_h = true
+	elif input_dir.x == -1 and input_dir.y == -1:
+		$Anim.play("RunUp")
+	elif input_dir.x == 0 and input_dir.y == -1:
+		$Anim.play("RunUp")
+	elif input_dir.x == 1 and input_dir.y == -1:
+		$Anim.play("RunUp")
+	elif input_dir.x == 1 and input_dir.y == 0:
+		$Anim.play("RunSide")
+		$Sprite.flip_h = false
+	elif input_dir.x == 1 and input_dir.y == 1:
+		$Anim.play("RunDown")
+		$Sprite.flip_h = false
+	elif input_dir.x == 0 and input_dir.y == 1:
+		$Anim.play("RunDown")
+		$Sprite.flip_h = false
+	elif input_dir.x == -1 and input_dir.y == 1:
+		$Anim.play("RunDown")
+		$Sprite.flip_h = false
+	else:
+		if $Anim.current_animation != "Idle" or not $Anim.is_playing():
+			$Anim.play("Idle")
+	
+	if move_x != 0 and move_y != 0:
+		move_x /= 1.5
+		move_y /= 1.5
 	
 	move_and_slide(Vector2(move_x, move_y), Vector2())
-	
-	
-#	if input_dir_x:
-#		dir_x = input_dir_x
-#	if input_dir_y:
-#		dir_y = input_dir_y
-#
-#	input_dir_x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-#	input_dir_y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-#
-#	if input_dir_x == - dir_x:
-#		speed_x /= 3
-#	if input_dir_y == - dir_y:
-#		speed_y /= 3
-#
-#	if input_dir_x:
-#		speed_x += acel * delta
-#	else:
-#		speed_x -= decel * delta
-#	if input_dir_y:
-#		speed_y += acel * delta
-#	else:
-#		speed_y -= decel * delta
-#
-#	speed_x = clamp(speed_x, 0, max_speed)
-#	move_x = speed_x * delta * dir_x
-#	speed_y = clamp(speed_y, 0, max_speed)
-#	move_y = speed_y * delta * dir_y
-#
-#	print(move_x, "-", move_y)
-#	move_and_slide(Vector2(move_x, move_y), Vector2())
-	
-	
-	
 	
 	
 	
