@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=1]
+
+[node name="TPlayer" type="Node2D" index="0"]
+
+[node name="Example1" parent="." index="0" instance=ExtResource( 1 )]
+
+
