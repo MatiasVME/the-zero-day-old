@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.stex"
+path="res://.import/icon.svg-c3fc56b0132e9203f1b797a09c2dc0d5.stex"
 
 [deps]
 
-source_file="res://addons/PersistenceNode/icon.png"
-dest_files=[ "res://.import/icon.png-c1606e7bd9af7e3161f7d63f5e647d5d.stex" ]
+source_file="res://addons/PersistenceNode/icon.svg"
+dest_files=[ "res://.import/icon.svg-c3fc56b0132e9203f1b797a09c2dc0d5.stex" ]
 
 [params]
 
