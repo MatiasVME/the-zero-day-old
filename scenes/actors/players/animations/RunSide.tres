@@ -2,7 +2,7 @@
 
 [resource]
 
-resource_name = "RunSide"
+resource_name = "MoveSide"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
@@ -26,17 +26,5 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:speed_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 1.0 ]
 }
 

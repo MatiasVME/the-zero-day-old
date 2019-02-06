@@ -65,7 +65,7 @@ animations = [ {
 
 [sub_resource type="Animation" id=3]
 
-resource_name = "RunDown"
+resource_name = "MoveDown"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
@@ -90,22 +90,10 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, true ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Sprite:speed_scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 1.0 ]
-}
 
 [sub_resource type="Animation" id=2]
 
-resource_name = "RunUp"
+resource_name = "MoveUp"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
@@ -142,29 +130,16 @@ tracks/2/keys = {
 "update": 1,
 "values": [ true, true ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("Sprite:speed_scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 1.0 ]
-}
 
 [node name="Matbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 frames = SubResource( 1 )
-speed_scale = 0.1
 
 [node name="Anim" parent="." index="2"]
 anims/Idle = ExtResource( 22 )
-anims/RunDown = SubResource( 3 )
-anims/RunSide = ExtResource( 23 )
-anims/RunUp = SubResource( 2 )
+anims/MoveDown = SubResource( 3 )
+anims/MoveSide = ExtResource( 23 )
+anims/MoveUp = SubResource( 2 )
 
