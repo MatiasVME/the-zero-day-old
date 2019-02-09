@@ -18,10 +18,52 @@ _global_script_classes=[ {
 "class": "Persistence",
 "language": "GDScript",
 "path": "res://addons/PersistenceNode/persistence_node.gd"
+}, {
+"base": "Node",
+"class": "RPGCharacter",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGCharacter.gd"
+}, {
+"base": "Node",
+"class": "RPGDialog",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGDialog.gd"
+}, {
+"base": "Node",
+"class": "RPGHelper",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGHelper.gd"
+}, {
+"base": "Node",
+"class": "RPGInventory",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGInventory.gd"
+}, {
+"base": "Node",
+"class": "RPGItem",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGItem.gd"
+}, {
+"base": "Node",
+"class": "RPGStats",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGStats.gd"
+}, {
+"base": "Node",
+"class": "RPGWeightInventory",
+"language": "GDScript",
+"path": "res://addons/rpg_elements/nodes/RPGWeightInventory.gd"
 } ]
 _global_script_class_icons={
 "JSONBeautifier": "",
-"Persistence": "res://addons/PersistenceNode/icon.png"
+"Persistence": "res://addons/PersistenceNode/icon.png",
+"RPGCharacter": "res://addons/rpg_elements/icons/RPGCharacter.png",
+"RPGDialog": "res://addons/rpg_elements/icons/RPGDialog.png",
+"RPGHelper": "res://addons/rpg_elements/icons/RPGHelper.png",
+"RPGInventory": "res://addons/rpg_elements/icons/RPGInventory.png",
+"RPGItem": "res://addons/rpg_elements/icons/RPGItem.png",
+"RPGStats": "res://addons/rpg_elements/icons/RPGStats.png",
+"RPGWeightInventory": "res://addons/rpg_elements/icons/RPGWeightInventory.png"
 }
 
 [application]
@@ -45,7 +87,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "wakatime" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 

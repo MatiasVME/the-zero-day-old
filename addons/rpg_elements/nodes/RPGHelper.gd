@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Matías Muñoz Espinoza
+# Copyright (c) 2018 - 2019 Matías Muñoz Espinoza
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -21,6 +21,7 @@
 # SOFTWARE. 
 
 extends "RPGElement.gd"
+class_name RPGHelper, "../icons/RPGHelper.png"
 
 func get_inst_character():
 	return load("res://addons/rpg_elements/nodes/RPGCharacter.gd").new()

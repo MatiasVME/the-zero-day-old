@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Matías Muñoz Espinoza
+# Copyright (c) 2018 - 2019 Matías Muñoz Espinoza
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,8 +20,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-tool
 extends "RPGElement.gd"
+class_name RPGDialog, "../icons/RPGDialog.png"
 
 # Estos son las propiedades que deben ser asignadas a la interfaz:
 # transmitter_name : Es el nombre que emite el mensaje actual.
@@ -33,7 +33,7 @@ var text setget , get_text
 
 # Posición del avatar
 enum AvatarPos {LEFT, RIGHT}
-var avatar_pos = LEFT
+var avatar_pos = AvatarPos.LEFT
 
 var dialogue = []
 
@@ -88,7 +88,7 @@ func _process(delta):
 # Métodos Públicos
 #
 
-func add_section(_transmitter_name, _text, _img = null, _avatar_pos = LEFT):
+func add_section(_transmitter_name, _text, _img = null, _avatar_pos = AvatarPos.LEFT):
 	var section = new_section()
 	
 	section["TransmitterName"] = _transmitter_name

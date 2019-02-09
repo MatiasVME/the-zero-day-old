@@ -1,6 +1,6 @@
 # MIT License
 #
-# Copyright (c) 2018 Matías Muñoz Espinoza
+# Copyright (c) 2018 - 2019 Matías Muñoz Espinoza
 # Copyright (c) 2018 Jovani Pérez
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,6 +22,7 @@
 # SOFTWARE.
 
 extends "RPGElement.gd"
+class_name RPGInventory, "../icons/RPGInventory.png"
 
 var inv = [] setget , get_inv
 export (String) var inv_name = "" setget set_inv_name, get_inv_name
@@ -127,19 +128,19 @@ func take_item_by_name(item_name, amount = 1):
 # retorna null si no lo encuentra. La cantidad es la
 # del item como esta apilado.
 # NEEDTEST
-func take_item_by_id(id):
-	var item
-	
-	for i in range(0, inv.size()):
-		if inv[i].get_instance_ID() == id:
-			item = inv[i]
-			remove(i)
-			break
-	
-	if item != null:
-		emit_signal("item_taken")
-	
-	return item
+#func take_item_by_id(id):
+#	var item
+#
+#	for i in range(0, inv.size()):
+#		if inv[i].get_instance_ID() == id:
+#			item = inv[i]
+#			remove(i)
+#			break
+#
+#	if item != null:
+#		emit_signal("item_taken")
+#
+#	return item
 
 # Retorna el primer item o pila de items que encuentra con 
 # el nombre indicado
