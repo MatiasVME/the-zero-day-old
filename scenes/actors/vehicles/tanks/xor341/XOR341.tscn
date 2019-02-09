@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/actors/vehicles/tanks/Tank.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.gd" type="Script" id=2]
+
+[node name="XOR341" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
