@@ -59,8 +59,9 @@ func _physics_process(delta):
 			move_x /= 1.5
 			move_y /= 1.5
 		
-		rset_unreliable("p_move_x", move_x)
-		rset_unreliable("p_move_y", move_y)
+		if Networking.multiplayer_on:
+			rset_unreliable("p_move_x", move_x)
+			rset_unreliable("p_move_y", move_y)
 	
 	else:
 		move_x = p_move_x
