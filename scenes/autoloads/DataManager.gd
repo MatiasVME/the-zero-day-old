@@ -28,7 +28,7 @@ func configure_persistence_node():
 	$DataStats.folder_name = current_user
 
 func create_or_load_data_if_not_exist():
-	global_config = $GlobalConfig.get_data()
+	global_config = $DataGlobalConfig.get_data()
 	
 	if global_config.empty():
 		# Crea la data
@@ -61,69 +61,55 @@ func save_all_data():
 
 func create_global_config():
 	global_config["DeleteData"] = delete_data
-	$GlobalConfig.save_data()
+	$DataGlobalConfig.save_data()
 	
 func create_players():
-#	var temp_data
-#	temp_data = $Players.get_data("Players")
-#
-##	players.append(PlayerGenerator.generate_first_player())
-#
-#	temp_data[0] = inst2dict(players[0])
-#
-#	$Players.save_data("Players")
-	pass
+	var temp_data
+	temp_data = $DataPlayers.get_data("Players")
+
+	players.append($RPGHelper.get_inst_character())
+
+	# Esto solo funcionaria con un player
+	temp_data[0] = inst2dict(players[0])
+
+	$DataPlayers.save_data("Players")
 	
 func save_players():
-#	var temp_data = $Players.get_data("Players")
-#	temp_data.clear()
-#
-#	for i in players.size():
-#		temp_data[i] = inst2dict(players[i])
-#
-#	$Players.save_data("Players")
-	pass
+	var temp_data = $DataPlayers.get_data("Players")
+	temp_data.clear()
+	
+	for i in players.size():
+		temp_data[i] = inst2dict(players[i])
+	
+	$DataPlayers.save_data("Players")
 	
 func load_players():
-#	var temp_data = $Players.get_data("Players")
-#	players = []
-#
-#	for player in temp_data.values():
-#		players.append(dict2inst(player))
-	pass
+	var temp_data = $DataPlayers.get_data("Players")
+	players = []
+
+	for player in temp_data.values():
+		players.append(dict2inst(player))
 
 func create_user_config():
-#	user_config = $UserConfig.get_data("UserConfig")
-#
+	user_config = $DataUserConfig.get_data("UserConfig")
+
 #	shop_inventory = $HMRPGHelper.get_inst_weight_inventory()
 #	ItemGenerator.create_item_pack_for_shop(shop_inventory)
 	
 #	Main.init_basic_user_config()
 #	AchievementsManager.create_all_achievements()
 	
-#	save_user_config()
-	pass
+	save_user_config()
 
 func load_user_config():
-#	user_config = $UserConfig.get_data("UserConfig")
-#
-#	var temp_inv = $HMRPGHelper.get_inst_weight_inventory()
-#	shop_inventory = temp_inv.dict2inv(user_config["ShopInventory"])
-	pass
+	user_config = $UserConfig.get_data("UserConfig")
 	
 func save_user_config():
-#	user_config["Dificulty"] = Main.dificulty_selected
-#	user_config["VarDificulty"] = Main.var_dificulty
-#	user_config["MapSize"] = Main.map_size
-#	user_config["TotalEnemies"] = Main.total_enemies
 #	user_config["Gold"] = Main.current_gold
 #	user_config["Emeralds"] = Main.current_emeralds
 #	user_config["CurrentLevel"] = Main.current_level
-#	user_config["Deliveries"] = DeliveryManager.get_node("Deliveries").deliveries
-#	user_config["ShopInventory"] = shop_inventory.inv2dict()
-#	user_config["AchievementsCompleted"] = AchievementsManager.get_node("HookAchievements").get_complete_achievements_array()
-#
-	$UserConfig.save_data("UserConfig")
+
+	$DataUserConfig.save_data("UserConfig")
 
 func create_inventories():
 #	var w_inv = HMRPGHelper.get_inst_weight_inventory()

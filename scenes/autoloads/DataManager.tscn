@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/autoloads/DataManager.gd" type="Script" id=1]
 [ext_resource path="res://addons/PersistenceNode/persistence_node.gd" type="Script" id=2]
+[ext_resource path="res://addons/rpg_elements/nodes/RPGHelper.gd" type="Script" id=3]
 
 [node name="DataManager" type="Node"]
 script = ExtResource( 1 )
@@ -20,4 +21,7 @@ script = ExtResource( 2 )
 
 [node name="DataStats" type="Node" parent="."]
 script = ExtResource( 2 )
+
+[node name="RPGHelper" type="Node" parent="."]
+script = ExtResource( 3 )
 
