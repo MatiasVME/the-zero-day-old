@@ -3,7 +3,8 @@ extends "res://scenes/actors/vehicles/Vehicle.gd"
 
 #Properties
 export (float) var MAX_VELOCITY = 800
-export (float) var MIN_VELOCITY = -400
+export (float) var MAX_VELOCITY_REVERSE = -400
+export (float) var MIN_VELOCITY = 50
 export (float) var ACCELERATION = 180
 export (float) var DESACCELERATION = 170
 export (float) var ANGULAR_VELOCITY = 20
@@ -19,22 +20,25 @@ func _ready():
 func _move(delta : float) -> void:
 	dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	if Input.is_action_pressed("ui_up"):
+		if current_speed < MIN_VELOCITY:
+			current_speed = MIN_VELOCITY
 		if current_speed < MAX_VELOCITY:
 			current_speed += ACCELERATION * delta
 		else:
 			current_speed = MAX_VELOCITY
-	elif Input.is_action_pressed("ui_down"):
-			if current_speed > MIN_VELOCITY:
+	elif Input.is_action_pressed("ui_down") && current_speed < min_velocity_to_stop:
+			if current_speed > MAX_VELOCITY_REVERSE:
 				current_speed += - ACCELERATION * delta
 			else:
-				current_speed = MIN_VELOCITY
+				current_speed = MAX_VELOCITY_REVERSE
 	else:
 		if abs(current_speed) > min_velocity_to_stop:
-			current_speed -= DESACCELERATION * sign(current_speed) * delta
+			current_speed *= 0.90
+#			current_speed -= DESACCELERATION * sign(current_speed) * delta
 
 func _physics_process(delta):
 	_move(delta)
-	if abs(current_speed) > 10:
+	if abs(current_speed) > min_velocity_to_stop:
 		rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
 		if $Anim.current_animation != "Foward":
 			$Anim.play("Foward")
