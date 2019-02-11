@@ -1,22 +1,109 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/actors/vehicles/tanks/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.gd" type="Script" id=2]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle01.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_cannon.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle02.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle04.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run01.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run02.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run03.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run04.png" type="Texture" id=10]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_cannon.png" type="Texture" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "foward",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Foward"
+loop = true
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 0, 1, 2 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "foward" ]
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 5.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Base:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 3.5, 4, 4.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Base:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "idle" ]
+}
 
 [node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 MAX_VELOCITY = 2000.0
-ACCELERATION = 210.0
+MIN_VELOCITY = -1000.0
+ACCELERATION = 325.0
+DESACCELERATION = 1000.0
 
 [node name="Base" parent="." index="0"]
-texture = ExtResource( 3 )
+frames = SubResource( 1 )
+animation = "foward"
+frame = 2
 
 [node name="Pivot" parent="." index="2"]
 position = Vector2( 0, 4 )
 
 [node name="Cannon" parent="Pivot" index="0"]
-position = Vector2( 0, -3 )
-texture = ExtResource( 4 )
+position = Vector2( 3, 0 )
+texture = ExtResource( 11 )
+
+[node name="Anim" parent="." index="3"]
+anims/Foward = SubResource( 2 )
+anims/Idle = SubResource( 3 )
 
