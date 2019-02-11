@@ -37,8 +37,8 @@ func create_or_load_data_if_not_exist():
 		create_global_config()
 		create_players()
 		create_user_config()
-		create_inventories()
-		create_stats()
+#		create_inventories()
+#		create_stats()
 	elif global_config["DeleteData"] != delete_data:
 		remove_all_data()
 		get_tree().quit()
@@ -50,14 +50,14 @@ func create_or_load_data_if_not_exist():
 		
 		load_players()
 		load_user_config()
-		load_inventories()
-		load_stats()
+#		load_inventories()
+#		load_stats()
 
 func save_all_data():
 	save_players()
 	save_user_config()
-	save_inventories()
-	save_stats()
+#	save_inventories()
+#	save_stats()
 
 func create_global_config():
 	global_config["DeleteData"] = delete_data
@@ -181,9 +181,9 @@ func save_stats():
 	pass
 	
 func remove_all_data():
-#	$GlobalConfig.remove_all_data()
-#	$Players.remove_all_data()
-#	$UserConfig.remove_all_data()
+	$DataGlobalConfig.remove_all_data()
+	$DataPlayers.remove_all_data()
+	$DataUserConfig.remove_all_data()
 #	$Inventories.remove_all_data()
 #	$Stats.remove_all_data()
 	pass
