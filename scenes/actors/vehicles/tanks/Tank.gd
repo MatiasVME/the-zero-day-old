@@ -38,7 +38,7 @@ func _move(delta : float) -> void:
 
 func _physics_process(delta):
 	_move(delta)
-	if abs(current_speed) > 10:
+	if abs(current_speed) > min_velocity_to_stop:
 		rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
 		if $Anim.current_animation != "Foward":
 			$Anim.play("Foward")

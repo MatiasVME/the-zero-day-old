@@ -86,7 +86,7 @@ tracks/1/keys = {
 
 [node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MAX_VELOCITY = 2000.0
+MAX_VELOCITY = 3000.0
 MAX_VELOCITY_REVERSE = -800.0
 MIN_VELOCITY = 800.0
 ACCELERATION = 325.0
