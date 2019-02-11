@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/hud/hotbar/Images/hotbar_background.png" type="Texture" id=1]
+
+[node name="Hotbar" type="Node2D"]
+
+[node name="HotbarBG" type="Sprite" parent="."]
+position = Vector2( 180, 233 )
+texture = ExtResource( 1 )
+
