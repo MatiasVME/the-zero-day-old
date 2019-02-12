@@ -6,9 +6,6 @@ var current_aim : Vector2
 func _ready():
 	current_aim = Vector2(0, -1).rotated(rotation)
 
-func _physics_process(delta):
-	aim(delta)
-	
 func aim(delta : float) -> void:
 	rotation_degrees = int(rotation_degrees) % 180
 	look_at(get_global_mouse_position())

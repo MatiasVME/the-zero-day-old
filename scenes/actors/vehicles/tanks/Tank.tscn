@@ -21,3 +21,5 @@ script = ExtResource( 3 )
 [node name="Cannon" type="Sprite" parent="Pivot" index="0"]
 rotation = 1.5708
 
+[node name="Shape" type="CollisionShape2D" parent="Entry_Area" index="0"]
+
