@@ -17,27 +17,38 @@ func _ready():
 	current_speed = 0
 	dir_move = Vector2(0, -1).normalized()
 
-func _move(delta : float) -> void:
-	dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	if Input.is_action_pressed("ui_up"):
-		if current_speed < MIN_VELOCITY:
-			current_speed = MIN_VELOCITY
-		if current_speed < MAX_VELOCITY:
-			current_speed += ACCELERATION * delta
-		else:
-			current_speed = MAX_VELOCITY
-	elif Input.is_action_pressed("ui_down") && current_speed < min_velocity_to_stop:
-			if current_speed > MAX_VELOCITY_REVERSE:
-				current_speed += - ACCELERATION * delta
+func _get_input(delta : float) -> void:
+	if _driver:
+		
+		$Pivot.aim(delta)
+		
+		if Input.is_action_just_pressed("ui_accept"):
+			emit_signal("unmount_vehicle", global_position)
+			leave_vehicle()
+		
+		dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+		if Input.is_action_pressed("ui_up"):
+			if current_speed < MIN_VELOCITY:
+				current_speed = MIN_VELOCITY
+			if current_speed < MAX_VELOCITY:
+				current_speed += ACCELERATION * delta
 			else:
-				current_speed = MAX_VELOCITY_REVERSE
+				current_speed = MAX_VELOCITY
+		elif Input.is_action_pressed("ui_down") && current_speed < min_velocity_to_stop:
+				if current_speed > MAX_VELOCITY_REVERSE:
+					current_speed += - ACCELERATION * delta
+				else:
+					current_speed = MAX_VELOCITY_REVERSE
+		else:
+			if abs(current_speed) > min_velocity_to_stop:
+				current_speed *= 0.90
+#				current_speed -= DESACCELERATION * sign(current_speed) * delta
 	else:
 		if abs(current_speed) > min_velocity_to_stop:
-			current_speed *= 0.90
-#			current_speed -= DESACCELERATION * sign(current_speed) * delta
+				current_speed *= 0.90
 
 func _physics_process(delta):
-	_move(delta)
+	_get_input(delta)
 	if abs(current_speed) > min_velocity_to_stop:
 		rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
 		if $Anim.current_animation != "Foward":

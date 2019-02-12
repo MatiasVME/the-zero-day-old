@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/actors/vehicles/tanks/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.gd" type="Script" id=2]
@@ -84,13 +84,12 @@ tracks/1/keys = {
 "values": [ "idle" ]
 }
 
+[sub_resource type="RectangleShape2D" id=4]
+
+extents = Vector2( 20, 20 )
+
 [node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-MAX_VELOCITY = 3000.0
-MAX_VELOCITY_REVERSE = -800.0
-MIN_VELOCITY = 800.0
-ACCELERATION = 325.0
-DESACCELERATION = 1000.0
 
 [node name="Base" parent="." index="0"]
 frames = SubResource( 1 )
@@ -107,4 +106,7 @@ texture = ExtResource( 11 )
 [node name="Anim" parent="." index="3"]
 anims/Foward = SubResource( 2 )
 anims/Idle = SubResource( 3 )
+
+[node name="Shape" parent="Entry_Area" index="0"]
+shape = SubResource( 4 )
 

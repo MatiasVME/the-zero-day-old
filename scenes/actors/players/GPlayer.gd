@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 export (int) var speed = 2500
 
+var vehicle : Vehicle = null
+
 var move_x
 var move_y
 
@@ -10,15 +12,27 @@ puppet var p_move_y = 0
 
 var input_dir : Vector2 = Vector2()
 var input_run : bool = false
+var input_interact : bool = false
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	if vehicle and vehicle._driver:
+		vehicle._get_input(delta)
+	else:
+		get_input(delta)
+	
+func get_input(delta : float) -> void:
 	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	input_run = Input.is_action_pressed("run")
-		
+	input_interact = Input.is_action_just_pressed("ui_accept")
+	
+	if input_interact and vehicle:
+		disable_player()
+		vehicle.mount_vehicle()
+	
 	if not input_run:
 		move_x = input_dir.x * speed * delta
 		move_y = input_dir.y * speed * delta
@@ -60,6 +74,14 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
+func set_vehicle(v : Vehicle) -> void:
+	vehicle = v
 	
+func disable_player():
+	visible = false
+	$Collision.disabled = true
 	
-	
+func enable_player(pos : Vector2):
+	position = pos
+	visible = true
+	$Collision.disabled = false

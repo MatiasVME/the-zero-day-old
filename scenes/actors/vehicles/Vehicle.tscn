@@ -11,3 +11,7 @@ script = ExtResource( 1 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 
+[node name="Entry_Area" type="Area2D" parent="."]
+
+[connection signal="body_entered" from="Entry_Area" to="." method="_on_Entry_Area_body_entered"]
+[connection signal="body_exited" from="Entry_Area" to="." method="_on_Entry_Area_body_exited"]
