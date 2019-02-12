@@ -86,7 +86,7 @@ tracks/1/keys = {
 
 [sub_resource type="RectangleShape2D" id=4]
 
-extents = Vector2( 20, 20 )
+extents = Vector2( 10, 5 )
 
 [node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -107,6 +107,7 @@ texture = ExtResource( 11 )
 anims/Foward = SubResource( 2 )
 anims/Idle = SubResource( 3 )
 
-[node name="Shape" parent="Entry_Area" index="0"]
+[node name="Collision" parent="EnterArea" index="0"]
+position = Vector2( 0, -20 )
 shape = SubResource( 4 )
 
