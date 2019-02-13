@@ -12,5 +12,9 @@ extends RPGItem
 
 class_name PHItem
 
-func _ready():
-	pass
+var unique_id : String
+
+func _init():
+	randomize()
+	unique_id = str(OS.get_unix_time(), "-", randi())
+	print("unique_id: ", unique_id)

@@ -35,14 +35,12 @@ func _get_input(delta : float) -> void:
 	
 	if can_action:
 		if player and input_action and not can_move:
-			print("OK")
 			if not .mount(player):
 				# TODO: Caso en los cuales no pueda montar el vehiculo
 				pass
 			else:
 				can_action = false
 		elif drivers.size() > 0 and input_action and can_move:
-			print("OK3")
 			.leave(player)
 			can_action = false
 	
@@ -91,7 +89,6 @@ func _on_unmounted(who):
 
 func _on_mounted(player):
 	if drivers.size() == 1:
-		print(player)
 		player.disable_player()
 		self.can_move = true
 	# TODO: Casos en los cuales hay mas de un driver en el auto
