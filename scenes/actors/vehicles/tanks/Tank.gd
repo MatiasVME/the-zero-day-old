@@ -7,6 +7,7 @@ export (float) var MIN_VELOCITY = 200
 export (float) var ACCELERATION = 1000
 export (float) var DESACCELERATION = 170
 export (float) var ANGULAR_VELOCITY = 20
+export (float) var ANIM_SPEED_FACTOR = 5
 
 var min_velocity_to_stop : float = 1 + DESACCELERATION * ( 1.0 / 60.0 ) 
 var dir_move : Vector2
@@ -30,6 +31,21 @@ func _ready():
 	connect("unmounted", self, "_on_unmounted")
 
 func _get_input(delta : float) -> void:
+	input_action = Input.is_action_just_pressed("ui_accept")
+	
+	if can_action:
+		if player and input_action and not can_move:
+			print("OK")
+			if not .mount(player):
+				# TODO: Caso en los cuales no pueda montar el vehiculo
+				pass
+			else:
+				can_action = false
+		elif drivers.size() > 0 and input_action and can_move:
+			print("OK3")
+			.leave(player)
+			can_action = false
+	
 	if self.can_move:
 		$Pivot.aim(delta)
 		
@@ -55,31 +71,14 @@ func _get_input(delta : float) -> void:
 				current_speed *= 0.90
 
 func _physics_process(delta):
-	input_action = Input.is_action_pressed("ui_accept")
-	
-	if can_action:
-		if player and input_action and not can_move:
-			print("OK")
-			if not .mount(player):
-				# TODO: Caso en los cuales no pueda montar el vehiculo
-				pass
-			else:
-				can_action = false
-		elif drivers.size() > 0 and input_action and can_move:
-			print("OK3")
-			.leave(player)
-			can_action = false
 		
-	if not can_move:
-		return
-	
 	_get_input(delta)
 	if abs(current_speed) > min_velocity_to_stop:
 		rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
 		if $Anim.current_animation != "Foward":
 			$Anim.play("Foward")
 		else:
-			$Anim.playback_speed = sign(current_speed) * 1 + current_speed / MAX_VELOCITY
+			$Anim.playback_speed = ANIM_SPEED_FACTOR * current_speed / MAX_VELOCITY
 	elif $Anim.current_animation != "Idle" or not $Anim.is_playing():
 		$Anim.playback_speed = 1
 		$Anim.play("Idle")
@@ -87,10 +86,7 @@ func _physics_process(delta):
 
 func _on_unmounted(who):
 	who.enable_player()
-	who.position = position
-	who.position.x += 20
-	who.position.y += 10
-	
+	who.position = $EnterArea/Collision.global_position
 	self.can_move = false
 
 func _on_mounted(player):

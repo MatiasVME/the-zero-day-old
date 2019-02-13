@@ -2,14 +2,11 @@ extends KinematicBody2D
 
 export (int) var speed = 2500
 
-var vehicle = null
-
 var move_x
 var move_y
 
 var input_dir : Vector2 = Vector2()
 var input_run : bool = false
-var input_interact : bool = false
 
 var can_move : bool = false
 
@@ -23,11 +20,7 @@ func _physics_process(delta):
 	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	input_run = Input.is_action_pressed("run")
-	input_interact = Input.is_action_just_pressed("ui_accept")
 	
-	if input_interact and vehicle:
-		disable_player()
-		vehicle.mount_vehicle()
 	
 	if not input_run:
 		move_x = input_dir.x * speed * delta

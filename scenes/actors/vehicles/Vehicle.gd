@@ -12,7 +12,7 @@ signal unmounted(who)
 signal fulled
 signal emptying
 
-func mount(player):
+func mount(player) -> bool:
 	if drivers.size() < capacity:
 		drivers.append(player)
 		emit_signal("mounted", player)
@@ -29,3 +29,4 @@ func leave(player):
 	
 	if drivers.size() < 1:
 		emit_signal("emptying")
+		
