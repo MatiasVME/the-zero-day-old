@@ -75,7 +75,6 @@ signal no_energy
 func _ready():
 	# Señales si esta en modo debug
 	connect_debug_signals()
-#		connect("", self, "_on_")
 
 # Métodos Públicos
 #
