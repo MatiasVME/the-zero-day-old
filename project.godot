@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://addons_extension/ph_elements/PHCharacter.gd"
 }, {
 "base": "Node",
+"class": "PHCloseRangeWeapon",
+"language": "GDScript",
+"path": "res://addons_extension/ph_elements/items_specialization/PHCloseRangeWeapon.gd"
+}, {
+"base": "Node",
 "class": "PHComponent",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHComponent.gd"
@@ -33,6 +38,11 @@ _global_script_classes=[ {
 "class": "PHDefence",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHDefence.gd"
+}, {
+"base": "Node",
+"class": "PHDistanceWeapon",
+"language": "GDScript",
+"path": "res://addons_extension/ph_elements/items_specialization/PHDistanceWeapon.gd"
 }, {
 "base": "Node",
 "class": "PHEquipment",
@@ -107,9 +117,11 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "JSONBeautifier": "",
 "PHCharacter": "",
+"PHCloseRangeWeapon": "",
 "PHComponent": "",
 "PHConsumable": "",
 "PHDefence": "",
+"PHDistanceWeapon": "",
 "PHEquipment": "",
 "PHItem": "",
 "PHMaterial": "",

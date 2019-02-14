@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlasmaGun.png-b32df5203736a276195fc1c414c20fcc.stex"
+path="res://.import/PlasmaGunNN1.png-8ad7b21b6c447cfb932018f73df07cd6.stex"
 
 [deps]
 
-source_file="res://scenes/actors/weapons_in_battle/plasma/PlasmaGun.png"
-dest_files=[ "res://.import/PlasmaGun.png-b32df5203736a276195fc1c414c20fcc.stex" ]
+source_file="res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
+dest_files=[ "res://.import/PlasmaGunNN1.png-8ad7b21b6c447cfb932018f73df07cd6.stex" ]
 
 [params]
 
