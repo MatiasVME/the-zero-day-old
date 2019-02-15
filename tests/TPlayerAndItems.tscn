@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://tests/TPlayerAndItems.gd" type="Script" id=1]
+[ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/actors/players/matbot/Matbot.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/items/ItemInWorld.tscn" type="PackedScene" id=5]
+
+[sub_resource type="PhysicsMaterial" id=1]
+
+
+[node name="TPlayer" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Example1" parent="." instance=ExtResource( 2 )]
+
+[node name="Matbot" parent="." instance=ExtResource( 3 )]
+position = Vector2( 176, 80 )
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="ItemInWorld" parent="." instance=ExtResource( 5 )]
+position = Vector2( 244, 101 )
+
+[node name="ItemInWorld2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 244, 101 )
+
+[node name="ItemInWorld3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 244, 101 )
+
+[node name="ItemInWorld4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 244, 101 )
+
+[node name="ItemInWorld5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 244, 101 )
+physics_material_override = SubResource( 1 )
+

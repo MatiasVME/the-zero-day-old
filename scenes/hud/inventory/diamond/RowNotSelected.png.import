@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RowSelected.png-0154de35cde2bf58899ff0746a6a78ea.stex"
+path="res://.import/RowNotSelected.png-5b541eef4fb8972e64c8628b2e06796d.stex"
 
 [deps]
 
-source_file="res://scenes/hud/inventory/row_diamond/RowSelected.png"
-dest_files=[ "res://.import/RowSelected.png-0154de35cde2bf58899ff0746a6a78ea.stex" ]
+source_file="res://scenes/hud/inventory/diamond/RowNotSelected.png"
+dest_files=[ "res://.import/RowNotSelected.png-5b541eef4fb8972e64c8628b2e06796d.stex" ]
 
 [params]
 

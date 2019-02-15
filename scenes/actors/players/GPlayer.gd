@@ -10,9 +10,6 @@ var input_run : bool = false
 
 var can_move : bool = false
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	if not can_move:
 		return
@@ -72,3 +69,7 @@ func enable_player():
 	visible = true
 	can_move = true
 	$Collision.disabled = false
+
+func _on_GetArea_body_entered(body):
+	if body is ItemInWorld:
+		body.queue_free()

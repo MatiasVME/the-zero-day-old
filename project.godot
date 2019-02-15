@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "ItemInWorld",
+"language": "GDScript",
+"path": "res://scenes/items/ItemInWorld.gd"
+}, {
 "base": "Node",
 "class": "JSONBeautifier",
 "language": "GDScript",
@@ -115,6 +120,7 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
 } ]
 _global_script_class_icons={
+"ItemInWorld": "",
 "JSONBeautifier": "",
 "PHCharacter": "",
 "PHCloseRangeWeapon": "",
@@ -148,6 +154,7 @@ config/icon="res://icon.png"
 
 Main="*res://scenes/autoloads/Main.gd"
 DataManager="*res://scenes/autoloads/DataManager.tscn"
+PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
 
 [display]
 
@@ -231,6 +238,16 @@ fire={
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
+select={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+
+[physics]
+
+2d/default_gravity=0
+2d/default_gravity_vector=Vector2( 0, 0 )
 
 [rendering]
 

@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/RowNotSelected.png-9fc17172a60dbcafe84609812bc17c56.stex"
+path="res://.import/PlasmaGunNX.png-b8e109ba54ca2580cc75e2475c298dc5.stex"
 
 [deps]
 
-source_file="res://scenes/hud/inventory/row_diamond/RowNotSelected.png"
-dest_files=[ "res://.import/RowNotSelected.png-9fc17172a60dbcafe84609812bc17c56.stex" ]
+source_file="res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
+dest_files=[ "res://.import/PlasmaGunNX.png-b8e109ba54ca2580cc75e2475c298dc5.stex" ]
 
 [params]
 
