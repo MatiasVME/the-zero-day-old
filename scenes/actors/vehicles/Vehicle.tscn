@@ -11,3 +11,7 @@ script = ExtResource( 1 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 
+[node name="EnterArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="EnterArea"]
+

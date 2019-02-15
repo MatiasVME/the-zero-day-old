@@ -8,7 +8,7 @@
 
 extents = Vector2( 12, 12 )
 
-[node name="Tank" instance=ExtResource( 1 )]
+[node name="Tank" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
@@ -21,3 +21,9 @@ script = ExtResource( 3 )
 [node name="Cannon" type="Sprite" parent="Pivot" index="0"]
 rotation = 1.5708
 
+[node name="Timer" type="Timer" parent="." index="5"]
+autostart = true
+
+[connection signal="body_entered" from="EnterArea" to="." method="_on_EnterArea_body_entered"]
+[connection signal="body_exited" from="EnterArea" to="." method="_on_EnterArea_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

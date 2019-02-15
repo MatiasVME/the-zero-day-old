@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlasmaGun.png-b32df5203736a276195fc1c414c20fcc.stex"
+path="res://.import/Gluton_run_up_05.png-0a7327d39cfe39457406d58fc2e34e8a.stex"
 
 [deps]
 
-source_file="res://scenes/actors/weapons_in_battle/plasma/PlasmaGun.png"
-dest_files=[ "res://.import/PlasmaGun.png-b32df5203736a276195fc1c414c20fcc.stex" ]
+source_file="res://scenes/actors/enemies/gluton/images/Gluton_run_up_05.png"
+dest_files=[ "res://.import/Gluton_run_up_05.png-0a7327d39cfe39457406d58fc2e34e8a.stex" ]
 
 [params]
 

@@ -5,20 +5,23 @@ export (int) var speed = 2500
 var move_x
 var move_y
 
-puppet var p_move_x = 0
-puppet var p_move_y = 0
-
 var input_dir : Vector2 = Vector2()
 var input_run : bool = false
+
+var can_move : bool = false
 
 func _ready():
 	pass
 
 func _physics_process(delta):
+	if not can_move:
+		return
+		
 	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	input_run = Input.is_action_pressed("run")
-		
+	
+	
 	if not input_run:
 		move_x = input_dir.x * speed * delta
 		move_y = input_dir.y * speed * delta
@@ -60,6 +63,12 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
+func disable_player():
+	visible = false
+	$Collision.disabled = true
+	can_move = false
 	
-	
-	
+func enable_player():
+	visible = true
+	can_move = true
+	$Collision.disabled = false
