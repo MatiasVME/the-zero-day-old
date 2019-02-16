@@ -9,18 +9,23 @@ script = ExtResource( 1 )
 
 [node name="DataGlobalConfig" type="Node" parent="."]
 script = ExtResource( 2 )
+mode = 1
 
 [node name="DataUserConfig" type="Node" parent="."]
 script = ExtResource( 2 )
+mode = 1
 
 [node name="DataPlayers" type="Node" parent="."]
 script = ExtResource( 2 )
+mode = 1
 
 [node name="DataInventories" type="Node" parent="."]
 script = ExtResource( 2 )
+mode = 1
 
 [node name="DataStats" type="Node" parent="."]
 script = ExtResource( 2 )
+mode = 1
 
 [node name="RPGHelper" type="Node" parent="."]
 script = ExtResource( 3 )

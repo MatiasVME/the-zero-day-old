@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/hud/inventory/diamond/RowNotSelected.png" type="Texture" id=1]
+[ext_resource path="res://scenes/hud/inventory/diamond/RowSelected.png" type="Texture" id=2]
+
+
+[node name="Diamond" type="Control"]
+editor/display_folded = true
+margin_top = 9.0
+margin_right = 8.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 8, 8 )
+size_flags_vertical = 4
+
+[node name="DButton" type="TextureButton" parent="."]
+margin_right = 8.0
+margin_bottom = 8.0
+focus_mode = 0
+toggle_mode = true
+enabled_focus_mode = 0
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 2 )
+

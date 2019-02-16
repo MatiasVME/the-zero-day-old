@@ -16,3 +16,9 @@ Para organizarnos usamos Hacknplan.
 ## Compilar
 
 Necesita Godot Engine 3.1-Beta3
+
+## Licencias
+- MPL2 Plugin - JSON Beautifier
+- CC-BY - Assets
+- MIT - Resto del código
+

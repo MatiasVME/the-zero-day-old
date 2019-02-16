@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/hud/inventory/panel/Inventory.png" type="Texture" id=1]
+[ext_resource path="res://scenes/hud/inventory/row/Row.tscn" type="PackedScene" id=2]
+
+[node name="Inventory" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Container" type="ScrollContainer" parent="Background"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 176.0
+margin_bottom = 232.0
+rect_min_size = Vector2( 166, 222 )
+scroll_horizontal_enabled = false
+
+[node name="MainColumn" type="VBoxContainer" parent="Background/Container"]
+editor/display_folded = true
+margin_right = 158.0
+margin_bottom = 206.0
+
+[node name="Row1" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+
+[node name="Row2" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 30.0
+margin_bottom = 56.0
+
+[node name="Row3" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 60.0
+margin_bottom = 86.0
+
+[node name="Row4" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 90.0
+margin_bottom = 116.0
+
+[node name="Row5" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 120.0
+margin_bottom = 146.0
+
+[node name="Row6" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 150.0
+margin_bottom = 176.0
+
+[node name="Row7" parent="Background/Container/MainColumn" instance=ExtResource( 2 )]
+margin_top = 180.0
+margin_bottom = 206.0
+
