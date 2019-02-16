@@ -2,8 +2,22 @@ extends Node2D
 
 func _ready():
 	var player = PlayerManager.init_player(0)
-	player.global_position = Vector2(150, 100)
+	player.global_position = Vector2(100, 100)
 	add_child(player)
-	
 	player.can_move = true
 
+	var item1 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	item1.global_position = Vector2(200, 100)
+	add_child(item1)
+	
+	var item2 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	item2.global_position = Vector2(200, 100)
+	add_child(item2)
+	
+	var item3 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	item3.global_position = Vector2(200, 100)
+	add_child(item3)
+	
+	var item4 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	item4.global_position = Vector2(200, 100)
+	add_child(item4)

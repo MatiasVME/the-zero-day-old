@@ -161,6 +161,7 @@ config/icon="res://icon.png"
 Main="*res://scenes/autoloads/Main.gd"
 DataManager="*res://scenes/autoloads/DataManager.tscn"
 PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
+Factory="*res://scenes/autoloads/Factory.gd"
 
 [display]
 

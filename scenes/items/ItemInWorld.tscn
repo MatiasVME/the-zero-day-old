@@ -4,11 +4,11 @@
 [ext_resource path="res://scenes/items/images_item_in_world/ItemInWorldBackground.png" type="Texture" id=2]
 [ext_resource path="res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png" type="Texture" id=3]
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=1]
 
 radius = 8.0
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 
 radius = 8.0
 
@@ -47,9 +47,8 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
 }
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=5]
 
-resource_name = "show"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Images/Item:scale")
@@ -83,7 +82,7 @@ contact_monitor = true
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource( 5 )
+shape = SubResource( 1 )
 
 [node name="Images" type="Node2D" parent="."]
 
@@ -96,13 +95,13 @@ texture = ExtResource( 3 )
 [node name="InteractArea" type="Area2D" parent="."]
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/idle = SubResource( 3 )
 anims/select = SubResource( 4 )
-anims/show = SubResource( 2 )
+anims/show = SubResource( 5 )
 
 [node name="Tween" type="Tween" parent="."]
 

@@ -4,7 +4,7 @@ static func create_test_distance_weapon():
 	var weapon = PHDistanceWeapon.new()
 	
 	weapon.item_name = "Test Weapon"
-	weapon.item_desc = ""
+	weapon.desc = ""
 	weapon.damage = 3
 	weapon.buy_price = 200
 	weapon.sell_price = weapon.buy_price / 4

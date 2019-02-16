@@ -2,7 +2,7 @@ extends RigidBody2D
 
 class_name ItemInWorld
 
-var data : PHItem
+var data : PHItem setget set_data
 
 enum ItemState {
 	IDLE,
@@ -15,6 +15,10 @@ var mouse_entered = false
 func _physics_process(delta):
 	if PlayerManager.get_current_player() and item_state == ItemState.SEEKER:
 		set_axis_velocity((PlayerManager.current_player.global_position - global_position) * 80 * delta) 
+
+func set_data(_data):
+	data = _data
+	$Images/Item.texture = load(data.texture_path)
 
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "show":
