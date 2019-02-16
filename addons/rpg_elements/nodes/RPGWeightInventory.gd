@@ -39,14 +39,13 @@ func _ready():
 # Métodos Públicos y Setters/Getters
 #
 
-func add_item(item):
+func add_item(item : RPGItem) -> bool:
 	# Esto se deja por si el inventario esta vacio y
 	# el current_weight a cambiado.
 	if inv.size() == 0:
 		current_weight = 0
 	
 	if item == null:
-		print("item es nulo")
 		return false
 	
 	if can_add_item(item):

@@ -77,4 +77,8 @@ func enable_player():
 
 func _on_GetArea_body_entered(body):
 	if body is ItemInWorld:
-		body.queue_free()
+		print(DataManager.inventories)
+		if DataManager.inventories.size() > 0:
+			body.take_item(DataManager.inventories[DataManager.current_player])
+#			DataManager.inventories.add_item(body.data)
+#			body.queue_free()

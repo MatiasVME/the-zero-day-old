@@ -20,6 +20,13 @@ func set_data(_data):
 	data = _data
 	$Images/Item.texture = load(data.texture_path)
 
+func take_item(inv : RPGInventory):
+	if inv.add_item(data):
+		# Con esto guardaria el inventario cada vez que se
+		# obtenga un item.
+		DataManager.save_inventories()
+		queue_free()
+
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "show":
 		$Anim.play("idle")

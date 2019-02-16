@@ -53,7 +53,7 @@ func create_or_load_data_if_not_exist():
 		create_global_config()
 		create_players()
 		create_user_config()
-#		create_inventories()
+		create_inventories()
 #		create_stats()
 	elif global_config["DeleteData"] != delete_data:
 		remove_all_data()
@@ -66,13 +66,13 @@ func create_or_load_data_if_not_exist():
 		
 		load_players()
 		load_user_config()
-#		load_inventories()
+		load_inventories()
 #		load_stats()
 
 func save_all_data():
 	save_players()
 	save_user_config()
-#	save_inventories()
+	save_inventories()
 #	save_stats()
 
 func create_global_config():
@@ -128,37 +128,33 @@ func save_user_config():
 	$DataUserConfig.save_data("UserConfig")
 
 func create_inventories():
-#	var w_inv = HMRPGHelper.get_inst_weight_inventory()
-#	w_inv.max_weight = 10
+	var w_inv = RPGWeightInventory.new()
+	w_inv.max_weight = 10 # Cantidad temporal
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #
-#	inventories.append(w_inv)
-#
-#	save_inventories()
-	pass
+	inventories.append(w_inv)
+	
+	save_inventories()
 	
 func save_inventories():
-#	var temp_data = $Inventories.get_data("Inventories")
-#	temp_data.clear()
-#
-#	for i in inventories.size():
-#		temp_data[i] = inventories[i].inv2dict()
-#
-#	$Inventories.save_data("Inventories")
-	pass
+	var temp_data = $DataInventories.get_data("Inventories")
+	temp_data.clear()
+
+	for i in inventories.size():
+		temp_data[i] = inventories[i].inv2dict()
+
+	$DataInventories.save_data("Inventories")
 	
 func load_inventories():
-#	var temp_data = $Inventories.get_data("Inventories")
-#	var temp_inv = $HMRPGHelper.get_inst_weight_inventory()
-#	inventories = []
-#
-#	for inventory in temp_data.values():
-#		inventories.append(temp_inv.dict2inv(inventory))
-		
-	pass
-
+	var temp_data = $DataInventories.get_data("Inventories")
+	var temp_inv = RPGWeightInventory.new()
+	inventories = []
+	
+	for inventory in temp_data.values():
+		inventories.append(temp_inv.dict2inv(inventory))
+	
 func create_stats():
 #	var temp_data
 #	temp_data = $Stats.get_data("Stats")
