@@ -4,6 +4,7 @@
 
 [node name="GEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
+view_distance = 25.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 
