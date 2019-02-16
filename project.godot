@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "GPlayer",
+"language": "GDScript",
+"path": "res://scenes/actors/players/GPlayer.gd"
+}, {
 "base": "RigidBody2D",
 "class": "ItemInWorld",
 "language": "GDScript",
@@ -120,6 +125,7 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
 } ]
 _global_script_class_icons={
+"GPlayer": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
 "PHCharacter": "",

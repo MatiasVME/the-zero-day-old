@@ -11,6 +11,9 @@ var players = []
 var inventories = []
 var stats = []
 
+# El player el cual tiene el foco o es el actual
+var current_player : int = 0 setget set_current_player, get_current_player
+
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
 var delete_data = 0
@@ -67,7 +70,7 @@ func create_players():
 	var temp_data
 	temp_data = $DataPlayers.get_data("Players")
 
-	players.append($RPGHelper.get_inst_character())
+	players.append(PHCharacter.new())
 
 	# Esto solo funcionaria con un player
 	temp_data[0] = inst2dict(players[0])
@@ -187,3 +190,20 @@ func remove_all_data():
 #	$Inventories.remove_all_data()
 #	$Stats.remove_all_data()
 	pass
+
+func set_current_player(player_num : int) -> void:
+	current_player = player_num
+
+func get_current_player() -> int:
+	return current_player
+
+func get_current_player_instance():
+	return players[current_player]
+
+# Funcion que crea un nuevo player con sus datos asociados,
+# crea la data del player, la data del inventario y la data
+# del jugador. Y lo añade a la lista de players.
+func create_player():
+	players.append(PHCharacter.new())
+	inventories.append(RPGInventory.new()) # Por el momento
+	stats.append(RPGStats.new()) # Por el momento

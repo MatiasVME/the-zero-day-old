@@ -1,5 +1,10 @@
 extends KinematicBody2D
 
+class_name GPlayer
+
+# Es la data del player y la logica del mismo
+var data : PHCharacter
+
 export (int) var speed = 2500
 
 var move_x

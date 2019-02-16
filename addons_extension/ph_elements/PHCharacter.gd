@@ -12,3 +12,17 @@ extends RPGCharacter
 
 class_name PHCharacter
 
+enum PlayerType {
+	DORBOT,
+	MATBOT,
+	PIXBOT,
+	SERBOT
+}
+var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
+
+var unique_id : String
+
+func _init():
+	randomize()
+	unique_id = str(OS.get_unix_time(), "-", randi())
+	print("unique_id: ", unique_id)

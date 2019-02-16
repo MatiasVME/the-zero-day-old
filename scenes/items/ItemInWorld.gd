@@ -2,6 +2,8 @@ extends RigidBody2D
 
 class_name ItemInWorld
 
+var data : PHItem
+
 enum ItemState {
 	IDLE,
 	SEEKER
@@ -11,7 +13,7 @@ var item_state = ItemState.IDLE
 var mouse_entered = false
 
 func _physics_process(delta):
-	if PlayerManager.current_player and item_state == ItemState.SEEKER:
+	if PlayerManager.get_current_player() and item_state == ItemState.SEEKER:
 		set_axis_velocity((PlayerManager.current_player.global_position - global_position) * 80 * delta) 
 
 func _on_Anim_animation_finished(anim_name):
