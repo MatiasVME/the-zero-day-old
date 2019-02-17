@@ -25,6 +25,8 @@ func take_item(inv : RPGInventory):
 		# Con esto guardaria el inventario cada vez que se
 		# obtenga un item.
 		DataManager.save_inventories()
+		# Por el momento se borra solamente, luego se va a
+		# hacer con una animacion
 		queue_free()
 
 func _on_Anim_animation_finished(anim_name):
