@@ -30,11 +30,11 @@ export (float) var max_weight = 20 setget set_max_weight, get_max_weight
 var current_weight = 0 setget , get_current_weight
 var inventory_full = false setget , is_full
 
-signal is_full
+signal fulled
 
 func _ready():
 	if debug:
-		connect("is_full", self, "_on_is_full")
+		connect("fulled", self, "_on_fulled")
 
 # Métodos Públicos y Setters/Getters
 #
@@ -143,5 +143,5 @@ func stack_all_items():
 # Eventos
 #
 
-func _on_is_full():
+func _on_fulled():
 	.debug("Full Inventory: ", inv_name)

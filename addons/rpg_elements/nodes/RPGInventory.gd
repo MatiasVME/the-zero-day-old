@@ -27,9 +27,9 @@ class_name RPGInventory, "../icons/RPGInventory.png"
 var inv = [] setget , get_inv
 export (String) var inv_name = "" setget set_inv_name, get_inv_name
 
-signal item_added
+signal item_added(item)
 signal item_removed
-signal item_taken
+signal item_taken(item)
 
 # Métodos Públicos y Setters/Getters
 #
@@ -41,7 +41,7 @@ func get_inv():
 func add_item(item):
 	if typeof(inv) == TYPE_ARRAY:
 		inv.append(item)
-		emit_signal("item_added")
+		emit_signal("item_added", item)
 	else:
 		.debug("Por algún motivo ", inv, " no es un array.")
 

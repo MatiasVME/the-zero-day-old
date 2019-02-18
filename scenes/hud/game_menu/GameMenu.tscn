@@ -23,6 +23,7 @@
 [ext_resource path="res://scenes/hud/game_menu/Images/Icons/button_chat_disabled.png" type="Texture" id=21]
 
 [node name="GameMenu" type="Node2D"]
+editor/display_folded = true
 
 [node name="MenuBG" type="Sprite" parent="."]
 position = Vector2( 353, 120 )
@@ -34,6 +35,7 @@ margin_top = 76.0
 margin_right = 360.0
 margin_bottom = 90.0
 focus_mode = 0
+toggle_mode = true
 enabled_focus_mode = 0
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
@@ -46,6 +48,7 @@ margin_top = 91.0
 margin_right = 360.0
 margin_bottom = 105.0
 focus_mode = 0
+toggle_mode = true
 enabled_focus_mode = 0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -58,6 +61,7 @@ margin_top = 106.0
 margin_right = 360.0
 margin_bottom = 120.0
 focus_mode = 0
+toggle_mode = true
 enabled_focus_mode = 0
 texture_normal = ExtResource( 10 )
 texture_pressed = ExtResource( 11 )
@@ -70,6 +74,7 @@ margin_top = 121.0
 margin_right = 360.0
 margin_bottom = 135.0
 focus_mode = 0
+toggle_mode = true
 enabled_focus_mode = 0
 texture_normal = ExtResource( 14 )
 texture_pressed = ExtResource( 15 )
@@ -82,6 +87,7 @@ margin_top = 136.0
 margin_right = 360.0
 margin_bottom = 150.0
 focus_mode = 0
+toggle_mode = true
 enabled_focus_mode = 0
 texture_normal = ExtResource( 18 )
 texture_pressed = ExtResource( 19 )

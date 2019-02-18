@@ -42,7 +42,9 @@ func init_player(player_num : int) -> GPlayer:
 	player.data = DataManager.players[player_num]
 	
 	return player
-	
+
+# Devuelve la instancia de el player actual (GPlayer)
 func get_current_player():
 	if players.size() > 0:
 		return players[DataManager.get_current_player()]
+

@@ -208,6 +208,12 @@ func get_current_player() -> int:
 
 func get_current_player_instance():
 	return players[current_player]
+	
+func get_current_inv():
+	return inventories[current_player]
+
+func get_current_stats():
+	return stats[current_player]
 
 # Funcion que crea un nuevo player con sus datos asociados,
 # crea la data del player, la data del inventario y la data
