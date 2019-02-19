@@ -17,64 +17,95 @@ margin_bottom = 120.0
 size_flags_horizontal = 0
 size_flags_vertical = 2
 
-[node name="Space" type="Control" parent="HorizontalContainer"]
+[node name="MarginContarnerNotes" type="MarginContainer" parent="HorizontalContainer"]
 margin_right = 117.0
-margin_bottom = 240.0
+margin_bottom = 242.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 36
+custom_constants/margin_bottom = 36
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HorizontalContainer/MarginContarnerNotes"]
+margin_top = 36.0
+margin_right = 117.0
+margin_bottom = 206.0
+
+[node name="Notes" parent="HorizontalContainer/MarginContarnerNotes/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_right = 90.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 64, 24 )
+size_flags_vertical = 4
+size_flags_stretch_ratio = 10.42
+
+[node name="TextNotes" parent="HorizontalContainer/MarginContarnerNotes/VBoxContainer" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 26.0
+margin_top = 28.0
+margin_right = 90.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 64, 142 )
+focus_mode = 0
+disabled = true
 
 [node name="VerticalContainer" type="VBoxContainer" parent="HorizontalContainer"]
 margin_left = 121.0
 margin_right = 238.0
-margin_bottom = 240.0
+margin_bottom = 242.0
 size_flags_horizontal = 3
 size_flags_vertical = 5
 size_flags_stretch_ratio = 2.0
 
-[node name="MarginContainerPlay" type="MarginContainer" parent="HorizontalContainer/VerticalContainer"]
+[node name="CenterContainerPlay" type="CenterContainer" parent="HorizontalContainer/VerticalContainer"]
 margin_right = 117.0
-margin_bottom = 109.0
+margin_bottom = 110.0
 size_flags_vertical = 3
 
-[node name="Play" parent="HorizontalContainer/VerticalContainer/MarginContainerPlay" instance=ExtResource( 2 )]
+[node name="Play" parent="HorizontalContainer/VerticalContainer/CenterContainerPlay" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 34.0
-margin_top = 36.0
+margin_top = 37.0
 margin_right = 82.0
-margin_bottom = 72.0
+margin_bottom = 73.0
+focus_neighbour_left = NodePath("../../../MarginContarnerNotes/VBoxContainer/Notes")
 focus_neighbour_right = NodePath("../../../Options")
-focus_neighbour_bottom = NodePath("../../MarginContainerCredits/Credits")
+focus_neighbour_bottom = NodePath("../../CenterContainerCredits/Credits")
 size_flags_horizontal = 4
 size_flags_vertical = 6
 
-[node name="MarginContainerLogo" type="MarginContainer" parent="HorizontalContainer/VerticalContainer"]
-margin_top = 113.0
+[node name="CenterContainerLogo" type="MarginContainer" parent="HorizontalContainer/VerticalContainer"]
+margin_top = 114.0
 margin_right = 117.0
-margin_bottom = 127.0
+margin_bottom = 128.0
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.0
 
-[node name="Label" type="Label" parent="HorizontalContainer/VerticalContainer/MarginContainerLogo"]
+[node name="Label" type="Label" parent="HorizontalContainer/VerticalContainer/CenterContainerLogo"]
 margin_right = 117.0
 margin_bottom = 14.0
 text = "Logo Aquí"
 align = 1
 
-[node name="MarginContainerCredits" type="MarginContainer" parent="HorizontalContainer/VerticalContainer"]
-margin_top = 131.0
+[node name="CenterContainerCredits" type="CenterContainer" parent="HorizontalContainer/VerticalContainer"]
+margin_top = 132.0
 margin_right = 117.0
-margin_bottom = 240.0
+margin_bottom = 242.0
 size_flags_vertical = 3
 
-[node name="Credits" parent="HorizontalContainer/VerticalContainer/MarginContainerCredits" instance=ExtResource( 2 )]
+[node name="Credits" parent="HorizontalContainer/VerticalContainer/CenterContainerCredits" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 34.0
-margin_top = 36.0
+margin_top = 37.0
 margin_right = 82.0
-margin_bottom = 72.0
-focus_neighbour_top = NodePath("../../MarginContainerPlay/Play")
+margin_bottom = 73.0
+focus_neighbour_left = NodePath("../../../MarginContarnerNotes/VBoxContainer/Notes")
+focus_neighbour_top = NodePath("../../CenterContainerPlay/Play")
 focus_neighbour_right = NodePath("../../../Options")
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -83,17 +114,22 @@ size_flags_vertical = 6
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 277.0
-margin_top = 102.0
+margin_top = 103.0
 margin_right = 325.0
-margin_bottom = 138.0
-focus_neighbour_top = NodePath("../VerticalContainer/MarginContainerPlay/Play")
-focus_neighbour_bottom = NodePath("../VerticalContainer/MarginContainerCredits/Credits")
+margin_bottom = 139.0
+focus_neighbour_top = NodePath("../VerticalContainer/CenterContainerPlay/Play")
+focus_neighbour_bottom = NodePath("../VerticalContainer/CenterContainerCredits/Credits")
 size_flags_vertical = 6
 size_flags_stretch_ratio = 2.0
 
-[connection signal="mouse_lost_focus" from="HorizontalContainer/VerticalContainer/MarginContainerPlay/Play" to="." method="_on_mouse_lost_focus"]
-[connection signal="pressed" from="HorizontalContainer/VerticalContainer/MarginContainerPlay/Play" to="." method="_on_Play_pressed"]
-[connection signal="mouse_lost_focus" from="HorizontalContainer/VerticalContainer/MarginContainerCredits/Credits" to="." method="_on_mouse_lost_focus"]
-[connection signal="pressed" from="HorizontalContainer/VerticalContainer/MarginContainerCredits/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="pressed" from="HorizontalContainer/MarginContarnerNotes/VBoxContainer/Notes" to="." method="_on_Notes_pressed"]
+[connection signal="toggled" from="HorizontalContainer/MarginContarnerNotes/VBoxContainer/Notes" to="." method="_on_Notes_toggled"]
+[connection signal="mouse_got_focus" from="HorizontalContainer/VerticalContainer/CenterContainerPlay/Play" to="." method="_on_mouse_got_focus"]
+[connection signal="mouse_lost_focus" from="HorizontalContainer/VerticalContainer/CenterContainerPlay/Play" to="." method="_on_mouse_lost_focus"]
+[connection signal="pressed" from="HorizontalContainer/VerticalContainer/CenterContainerPlay/Play" to="." method="_on_Play_pressed"]
+[connection signal="mouse_got_focus" from="HorizontalContainer/VerticalContainer/CenterContainerCredits/Credits" to="." method="_on_mouse_got_focus"]
+[connection signal="mouse_lost_focus" from="HorizontalContainer/VerticalContainer/CenterContainerCredits/Credits" to="." method="_on_mouse_lost_focus"]
+[connection signal="pressed" from="HorizontalContainer/VerticalContainer/CenterContainerCredits/Credits" to="." method="_on_Credits_pressed"]
+[connection signal="mouse_got_focus" from="HorizontalContainer/Options" to="." method="_on_mouse_got_focus"]
 [connection signal="mouse_lost_focus" from="HorizontalContainer/Options" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="HorizontalContainer/Options" to="." method="_on_Options_pressed"]

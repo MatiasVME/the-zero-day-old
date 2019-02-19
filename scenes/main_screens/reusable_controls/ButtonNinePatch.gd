@@ -1,6 +1,7 @@
 extends TextureButton
 #Signals
 signal mouse_lost_focus
+signal mouse_got_focus
 
 #Properties
 onready var rect = $RectNinePatch as NinePatchRect
@@ -32,6 +33,7 @@ func _on_ButtonNinePatch_focus_exited():
 	pass
 
 func _on_ButtonNinePatch_mouse_entered():
+	emit_signal("mouse_got_focus")
 	_on_ButtonNinePatch_focus_entered()
 	pass
 

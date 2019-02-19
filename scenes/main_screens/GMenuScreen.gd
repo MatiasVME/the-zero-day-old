@@ -19,6 +19,9 @@ func _input(event):
 
 func _on_mouse_lost_focus():
 	press_any_key = false
+
+func _on_mouse_got_focus():
+	press_any_key = true
 	
 func set_focus(val : bool) -> void:
 	focus = val

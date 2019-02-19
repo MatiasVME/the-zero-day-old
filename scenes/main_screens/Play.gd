@@ -9,7 +9,6 @@ onready var campaign : = $VBoxContainer/HBoxContainer/Campaign
 
 func _ready():
 	first_focus = campaign
-	connect("mouse_lost_focus", self, "_on_mouse_lost_focus")
 
 func _on_Campaign_pressed():
 	emit_signal("campaign_pressed")

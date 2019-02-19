@@ -66,8 +66,12 @@ focus_neighbour_top = NodePath("../HBoxContainer/Campaign")
 focus_neighbour_right = NodePath("../HBoxContainer/Multiplayer")
 size_flags_vertical = 2
 
+[connection signal="mouse_got_focus" from="VBoxContainer/HBoxContainer/Campaign" to="." method="_on_mouse_got_focus"]
+[connection signal="mouse_lost_focus" from="VBoxContainer/HBoxContainer/Campaign" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Campaign" to="." method="_on_Campaign_pressed"]
+[connection signal="mouse_got_focus" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_mouse_got_focus"]
 [connection signal="mouse_lost_focus" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_Multiplayer_pressed"]
+[connection signal="mouse_got_focus" from="VBoxContainer/Back" to="." method="_on_mouse_got_focus"]
 [connection signal="mouse_lost_focus" from="VBoxContainer/Back" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Back_pressed"]
