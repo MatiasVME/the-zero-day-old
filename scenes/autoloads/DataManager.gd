@@ -82,12 +82,14 @@ func create_global_config():
 func create_players():
 	var temp_data
 	temp_data = $DataPlayers.get_data("Players")
-
+	
 	players.append(PHCharacter.new())
-
+	
+	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+	
 	# Esto solo funcionaria con un player
-	temp_data[0] = inst2dict(players[0])
-
+#	temp_data[0] = inst2dict(players[0])
+	
 	$DataPlayers.save_data("Players")
 	
 func save_players():
@@ -208,6 +210,20 @@ func get_current_player() -> int:
 
 func get_current_player_instance():
 	return players[current_player]
+	
+func get_next_player():
+	if players.size() > 0:
+		if players.size() == 1:
+			return current_player
+		else:
+			# Si no ha llegado al limite
+			if not current_player + 1 % players.size() == 0:
+				return current_player + 1
+			else:
+				return 0
+	
+func set_next_player():
+	current_player = get_next_player()
 	
 func get_current_inv():
 	return inventories[current_player]

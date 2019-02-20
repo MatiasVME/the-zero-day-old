@@ -6,8 +6,11 @@ enum Mode {FOLLOW, FREE}
 var mode = Mode.FOLLOW
 
 var input_dir : Vector2
+var input_change_focus : bool
 
 func _physics_process(delta):
+	input_change_focus = Input.is_action_just_pressed("change_focus")
+	
 	if mode == Mode.FOLLOW and following:
 		global_position = following.global_position
 	elif mode == Mode.FREE:
@@ -23,5 +26,6 @@ func _physics_process(delta):
 			global_position.y += 500 * delta
 		elif input_dir.y == - 1:
 			global_position.y -= 500 * delta
-			
-		
+
+func change_focus():
+	following = PlayerManager.get_next_player()
