@@ -217,7 +217,6 @@ func get_current_player_instance():
 	
 func get_next_player():
 	if players.size() > 0:
-		print(players.size())
 		# Si no ha llegado al limite
 		return (current_player + 1) % players.size()
 	

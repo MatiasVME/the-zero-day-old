@@ -25,6 +25,11 @@ _global_script_classes=[ {
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
 "base": "Node",
+"class": "PHAmmo",
+"language": "GDScript",
+"path": "res://addons_extension/ph_elements/items_specialization/PHAmmo.gd"
+}, {
+"base": "Node",
 "class": "PHCharacter",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHCharacter.gd"
@@ -128,6 +133,7 @@ _global_script_class_icons={
 "GPlayer": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
+"PHAmmo": "",
 "PHCharacter": "",
 "PHCloseRangeWeapon": "",
 "PHComponent": "",
