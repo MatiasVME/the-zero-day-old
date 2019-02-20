@@ -22,7 +22,7 @@ func _ready():
 	configure_persistence_node()
 	create_or_load_data_if_not_exist()
 	
-	create_player() # Solo para Test
+#	create_player() # Solo para Test
 
 func configure_persistence_node():
 	if Main.DEBUG:
@@ -217,6 +217,7 @@ func get_current_player_instance():
 	
 func get_next_player():
 	if players.size() > 0:
+		print(players.size())
 		# Si no ha llegado al limite
 		return (current_player + 1) % players.size()
 	
