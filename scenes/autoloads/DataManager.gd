@@ -84,7 +84,9 @@ func create_players():
 	temp_data = $DataPlayers.get_data("Players")
 	
 	players.append(PHCharacter.new())
+	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	
+	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	
 	# Esto solo funcionaria con un player
@@ -213,14 +215,8 @@ func get_current_player_instance():
 	
 func get_next_player():
 	if players.size() > 0:
-		if players.size() == 1:
-			return current_player
-		else:
-			# Si no ha llegado al limite
-			if not current_player + 1 % players.size() == 0:
-				return current_player + 1
-			else:
-				return 0
+		# Si no ha llegado al limite
+		return (current_player + 1) % players.size()
 	
 func set_next_player():
 	current_player = get_next_player()
