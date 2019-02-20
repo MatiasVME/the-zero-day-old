@@ -11,6 +11,9 @@ var input_change_focus : bool
 func _physics_process(delta):
 	input_change_focus = Input.is_action_just_pressed("change_focus")
 	
+	if input_change_focus:
+		change_focus()
+	
 	if mode == Mode.FOLLOW and following:
 		global_position = following.global_position
 	elif mode == Mode.FREE:
@@ -29,3 +32,4 @@ func _physics_process(delta):
 
 func change_focus():
 	following = PlayerManager.get_next_player()
+	print(following)

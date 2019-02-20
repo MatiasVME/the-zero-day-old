@@ -21,6 +21,8 @@ var delete_data = 0
 func _ready():
 	configure_persistence_node()
 	create_or_load_data_if_not_exist()
+	
+	create_player() # Solo para Test
 
 func configure_persistence_node():
 	if Main.DEBUG:

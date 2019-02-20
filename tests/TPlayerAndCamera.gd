@@ -8,6 +8,6 @@ func _ready():
 	
 	$Camera.following = player
 	
-#	var player2 = PlayerManager.init_player(1)
-#	player2.global_position = Vector2(100, 100)
-#	add_child(player2)
+	var player2 = PlayerManager.init_player(1)
+	player2.global_position = Vector2(100, 100)
+	add_child(player2)
