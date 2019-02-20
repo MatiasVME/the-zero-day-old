@@ -13,7 +13,7 @@ func _physics_process(delta):
 	
 	if input_change_focus:
 		change_focus()
-	
+		
 	if mode == Mode.FOLLOW and following:
 		global_position = following.global_position
 	elif mode == Mode.FREE:
@@ -31,5 +31,6 @@ func _physics_process(delta):
 			global_position.y -= 500 * delta
 
 func change_focus():
+	following.can_move = false
 	following = PlayerManager.get_next_player()
-	print(following)
+	following.can_move = true
