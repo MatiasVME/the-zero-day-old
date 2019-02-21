@@ -1,34 +1,12 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://tests/shaders/TestShader.gd" type="Script" id=1]
-
-[sub_resource type="Shader" id=1]
-code = "shader_type canvas_item;
-
-uniform float time;
-uniform vec2 mouse;
-uniform vec2 resolution;
-
-void fragment()
-{
-	float t;
-	t = TIME * 0.5;
-    vec2 r = 1.0 / SCREEN_PIXEL_SIZE,
-    o = FRAGCOORD.xy - r/2.;
-    o = vec2(length(o) / r.y - .3, atan(o.y,o.x));    
-    vec4 s = 0.07*cos(1.5*vec4(0,1,2,3) + t + o.y + sin(o.y) * cos(t)),
-    e = s.yzwx, 
-    f = max(o.x-s,e-o.x);
-
-    COLOR = dot(clamp(f*r.y,0.,1.), 72.*(s-e)) * (s-.1) + f;
-}"
+[ext_resource path="res://shaders/AnimatedCircle.shader" type="Shader" id=2]
 
 [sub_resource type="ShaderMaterial" id=2]
 render_priority = 1
-shader = SubResource( 1 )
-shader_param/time = null
+shader = ExtResource( 2 )
 shader_param/mouse = Vector2( 100, 100 )
-shader_param/resolution = null
 
 [node name="TestShader" type="Node2D"]
 script = ExtResource( 1 )
