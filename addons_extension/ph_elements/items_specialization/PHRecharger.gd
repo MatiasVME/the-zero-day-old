@@ -1,3 +1,9 @@
+"""
+PHRecharger.gd
+
+Se utiliza para pociones de distintos tipos.
+"""
+
 extends PHConsumable
 
 class_name PHRecharger

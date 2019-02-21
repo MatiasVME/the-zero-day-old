@@ -18,6 +18,6 @@ func _ready():
 	item3.global_position = Vector2(200, 100)
 	add_child(item3)
 	
-	var item4 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	var item4 = Factory.ItemInWorldFactory.create_test_ammo()
 	item4.global_position = Vector2(200, 100)
 	add_child(item4)
