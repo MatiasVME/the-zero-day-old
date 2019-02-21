@@ -1,21 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=2]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=3]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "idle",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -35,6 +30,11 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
+"name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
 "name": "walk_side",
 "speed": 5.0
 }, {
@@ -45,11 +45,9 @@ animations = [ {
 } ]
 
 [sub_resource type="CircleShape2D" id=2]
-
 radius = 5.5
 
 [sub_resource type="CircleShape2D" id=3]
-
 
 [node name="GPlayer" type="KinematicBody2D" groups=[
 "Player",
@@ -69,5 +67,7 @@ shape = SubResource( 2 )
 
 [node name="Collision" type="CollisionShape2D" parent="GetArea"]
 shape = SubResource( 3 )
+
+[node name="GWeaponInBattle" parent="." instance=ExtResource( 5 )]
 
 [connection signal="body_entered" from="GetArea" to="." method="_on_GetArea_body_entered"]

@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends "res://scenes/actors/GActor.gd"
 
 class_name GPlayer
 
@@ -14,6 +14,14 @@ var input_dir : Vector2 = Vector2()
 var input_run : bool = false
 
 var can_move : bool = false
+var can_fire : bool = false
+
+signal fire(dir)
+signal dead
+signal spawn
+
+func _ready():
+	connect("fire", self, "_on_fire")
 
 func _physics_process(delta):
 	if not can_move:
@@ -22,7 +30,6 @@ func _physics_process(delta):
 	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 	input_run = Input.is_action_pressed("run")
-	
 	
 	if not input_run:
 		move_x = input_dir.x * speed * delta
@@ -65,6 +72,11 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
+	if can_fire and Input.is_action_just_pressed("fire"):
+		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
+		print(dir)
+		emit_signal("fire", dir)
+	
 func disable_player():
 	visible = false
 	$Collision.disabled = true
@@ -82,3 +94,12 @@ func _on_GetArea_body_entered(body):
 			body.take_item(DataManager.inventories[DataManager.current_player])
 #			DataManager.inventories.add_item(body.data)
 #			body.queue_free()
+
+func _on_fire(dir):
+	# Temp
+	var bullet = ShootManager.fire(dir)
+	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
+	get_parent().add_child(bullet)
+	
+	pass
+

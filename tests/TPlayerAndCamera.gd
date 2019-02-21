@@ -5,6 +5,7 @@ func _ready():
 	player.global_position = Vector2(130, 100)
 	add_child(player)
 	player.can_move = true
+	player.can_fire = true
 	
 	$Camera.following = player
 	

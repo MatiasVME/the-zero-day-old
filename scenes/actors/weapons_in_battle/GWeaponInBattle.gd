@@ -1,8 +1,5 @@
 extends Node2D
 
-func _ready():
-	pass
-
 func _physics_process(delta):
 	if $Sprite.rotation_degrees < 90 and $Sprite.rotation_degrees > -90:
 		$Sprite.flip_v = false

@@ -10,6 +10,16 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
+"class": "GActor",
+"language": "GDScript",
+"path": "res://scenes/actors/GActor.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "GBullet",
+"language": "GDScript",
+"path": "res://scenes/actors/bullets/GBullet.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
@@ -34,32 +44,32 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHCharacter.gd"
 }, {
-"base": "PHWeapon",
+"base": "Node",
 "class": "PHCloseRangeWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHCloseRangeWeapon.gd"
 }, {
-"base": "PHConsumable",
+"base": "Node",
 "class": "PHComponent",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHComponent.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHConsumable",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHConsumable.gd"
 }, {
-"base": "PHEquipment",
+"base": "Node",
 "class": "PHDefence",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHDefence.gd"
 }, {
-"base": "PHWeapon",
+"base": "Node",
 "class": "PHDistanceWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHDistanceWeapon.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHEquipment",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHEquipment.gd"
@@ -69,17 +79,17 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHItem.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHMaterial",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHMaterial.gd"
 }, {
-"base": "PHConsumable",
+"base": "Node",
 "class": "PHRecharger",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHRecharger.gd"
 }, {
-"base": "PHEquipment",
+"base": "Node",
 "class": "PHWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHWeapon.gd"
@@ -130,6 +140,8 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
 } ]
 _global_script_class_icons={
+"GActor": "",
+"GBullet": "",
 "GPlayer": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
@@ -168,6 +180,7 @@ Main="*res://scenes/autoloads/Main.gd"
 DataManager="*res://scenes/autoloads/DataManager.tscn"
 PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
 Factory="*res://scenes/autoloads/Factory.gd"
+ShootManager="*res://scenes/autoloads/ShootManager.gd"
 
 [display]
 
