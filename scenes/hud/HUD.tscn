@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/bullets/BulletPlaceholder.png" type="Texture" id=6]
+[ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/items/ammo/normal_ammo/Ammo.png" type="Texture" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "hide"
@@ -87,6 +91,9 @@ tracks/2/keys = {
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="Inventory" parent="." instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 0 )
@@ -99,6 +106,51 @@ anims/show = SubResource( 2 )
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
 
 [node name="Hotbar" parent="." instance=ExtResource( 4 )]
+
+[node name="BulletInfo" parent="." instance=ExtResource( 5 )]
+
+[node name="Background" type="ColorRect" parent="BulletInfo"]
+margin_left = 301.0
+margin_top = 208.0
+margin_right = 360.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Bullet" type="Node2D" parent="BulletInfo"]
+
+[node name="BulletImg" type="Sprite" parent="BulletInfo/Bullet"]
+position = Vector2( 351, 215 )
+texture = ExtResource( 6 )
+
+[node name="CurrentAndMax" type="Label" parent="BulletInfo/Bullet"]
+margin_left = 303.0
+margin_top = 210.0
+margin_right = 343.0
+margin_bottom = 220.0
+custom_fonts/font = ExtResource( 7 )
+text = "100/100"
+align = 2
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="Total" type="Node2D" parent="BulletInfo"]
+
+[node name="TotalImg" type="Sprite" parent="BulletInfo/Total"]
+position = Vector2( 351, 231 )
+texture = ExtResource( 8 )
+
+[node name="Total" type="Label" parent="BulletInfo/Total"]
+margin_left = 303.0
+margin_top = 226.0
+margin_right = 343.0
+margin_bottom = 236.0
+custom_fonts/font = ExtResource( 7 )
+text = "100000"
+align = 2
+valign = 1
+autowrap = true
+clip_text = true
 
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]
 

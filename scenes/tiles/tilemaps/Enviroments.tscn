@@ -16,93 +16,67 @@
 
 [node name="Enviroments" type="Node"]
 
-[node name="bush" type="Sprite" parent="." index="0"]
-
+[node name="bush" type="Sprite" parent="."]
 position = Vector2( 48, 0 )
 texture = ExtResource( 1 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="big_tree" type="Sprite" parent="." index="1"]
-
+[node name="big_tree" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
 
-[node name="bush_root" type="Sprite" parent="." index="2"]
-
+[node name="bush_root" type="Sprite" parent="."]
 position = Vector2( 48, 16 )
 texture = ExtResource( 3 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="flower_fern" type="Sprite" parent="." index="3"]
-
+[node name="flower_fern" type="Sprite" parent="."]
 position = Vector2( 64, 0 )
 texture = ExtResource( 4 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="medium_tree" type="Sprite" parent="." index="4"]
-
+[node name="medium_tree" type="Sprite" parent="."]
 position = Vector2( 80, 0 )
 texture = ExtResource( 5 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="small_tree" type="Sprite" parent="." index="5"]
-
+[node name="small_tree" type="Sprite" parent="."]
 position = Vector2( 112, 0 )
 texture = ExtResource( 6 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="small_roots" type="Sprite" parent="." index="6"]
-
+[node name="small_roots" type="Sprite" parent="."]
 position = Vector2( 48, 32 )
 texture = ExtResource( 7 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="bone" type="Sprite" parent="." index="7"]
-
+[node name="bone" type="Sprite" parent="."]
 position = Vector2( 0, 48 )
 texture = ExtResource( 8 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="cactus" type="Sprite" parent="." index="8"]
-
+[node name="cactus" type="Sprite" parent="."]
 position = Vector2( 16, 48 )
 texture = ExtResource( 9 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="shell_a" type="Sprite" parent="." index="9"]
-
+[node name="shell_a" type="Sprite" parent="."]
 position = Vector2( 32, 48 )
 texture = ExtResource( 10 )
 centered = false
-_sections_unfolded = [ "Animation", "Offset" ]
 
-[node name="shell_b" type="Sprite" parent="." index="10"]
-
+[node name="shell_b" type="Sprite" parent="."]
 position = Vector2( 32, 64 )
 texture = ExtResource( 11 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="skull" type="Sprite" parent="." index="11"]
-
+[node name="skull" type="Sprite" parent="."]
 position = Vector2( 48, 48 )
 texture = ExtResource( 12 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 
-[node name="tree_log" type="Sprite" parent="." index="12"]
-
+[node name="tree_log" type="Sprite" parent="."]
 position = Vector2( 48, 64 )
 texture = ExtResource( 13 )
 centered = false
-_sections_unfolded = [ "Offset" ]
-
 
