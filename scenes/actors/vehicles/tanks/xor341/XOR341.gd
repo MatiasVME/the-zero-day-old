@@ -1,4 +1,4 @@
-extends "res://scenes/actors/vehicles/tanks/Tank.gd"
+extends Tank
 
 func _ready():
 	pass

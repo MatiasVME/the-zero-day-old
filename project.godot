@@ -135,6 +135,11 @@ _global_script_classes=[ {
 "path": "res://addons/rpg_elements/nodes/RPGWeightInventory.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "Tank",
+"language": "GDScript",
+"path": "res://scenes/actors/vehicles/tanks/Tank.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "Vehicle",
 "language": "GDScript",
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
@@ -165,6 +170,7 @@ _global_script_class_icons={
 "RPGItem": "res://addons/rpg_elements/icons/RPGItem.png",
 "RPGStats": "res://addons/rpg_elements/icons/RPGStats.png",
 "RPGWeightInventory": "res://addons/rpg_elements/icons/RPGWeightInventory.png",
+"Tank": "",
 "Vehicle": ""
 }
 

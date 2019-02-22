@@ -13,7 +13,6 @@
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_cannon.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
-
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
@@ -27,7 +26,6 @@ animations = [ {
 } ]
 
 [sub_resource type="Animation" id=2]
-
 resource_name = "Foward"
 loop = true
 step = 0.25
@@ -57,7 +55,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base:frame")
@@ -85,11 +82,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=4]
-
 extents = Vector2( 10, 5 )
 
 [node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+capacity = 2
 
 [node name="Base" parent="." index="0"]
 frames = SubResource( 1 )

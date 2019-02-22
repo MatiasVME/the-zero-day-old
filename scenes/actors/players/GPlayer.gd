@@ -80,11 +80,9 @@ func _physics_process(delta):
 func disable_player():
 	visible = false
 	$Collision.disabled = true
-	can_move = false
 	
 func enable_player():
 	visible = true
-	can_move = true
 	$Collision.disabled = false
 
 func _on_GetArea_body_entered(body):
