@@ -108,6 +108,7 @@ anims/show = SubResource( 2 )
 [node name="Hotbar" parent="." instance=ExtResource( 4 )]
 
 [node name="BulletInfo" parent="." instance=ExtResource( 5 )]
+editor/display_folded = true
 
 [node name="Background" type="ColorRect" parent="BulletInfo"]
 margin_left = 301.0

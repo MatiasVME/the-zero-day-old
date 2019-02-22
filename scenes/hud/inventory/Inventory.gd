@@ -21,7 +21,7 @@ func update():
 	
 	for item in DataManager.get_current_inv().get_inv():
 		add_item(item)
-		print("item_added: ", item)
+#		print("item_added: ", item)
 
 # Añade un item al inventario visual (no al inventario del jugador)
 # normalmente el item es añadido con anterioridad.

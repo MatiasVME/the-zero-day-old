@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/HotbarSelector.png-f58e9f2174768efa5980e4bf4e3e090b.stex"
+path="res://.import/HotbarSlot-Pressed.png-45901726e6ff4ce07c91a1b2aff94fb5.stex"
 
 [deps]
 
-source_file="res://scenes/hud/hotbar/Images/HotbarSelector.png"
-dest_files=[ "res://.import/HotbarSelector.png-f58e9f2174768efa5980e4bf4e3e090b.stex" ]
+source_file="res://scenes/hud/hotbar/Images/HotbarSlot-Pressed.png"
+dest_files=[ "res://.import/HotbarSlot-Pressed.png-45901726e6ff4ce07c91a1b2aff94fb5.stex" ]
 
 [params]
 
