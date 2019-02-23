@@ -3,6 +3,7 @@ extends Node2D
 var hotbar_row : int = 1
 var is_fulled : bool = false
 
+# Contiene instancias de Row.tcn
 var rows = []
 
 var current_inv : RPGWeightInventory
@@ -13,7 +14,6 @@ func _ready():
 	DataManager.get_current_inv().connect("item_added", self, "_on_item_added")
 	
 	update()
-	pass
 
 # Actualiza el inventario en caso de un cambio
 func update():
@@ -47,7 +47,7 @@ func create_row_if_can():
 	# Caso no exista un row y caso en el cual el ultimo row este lleno
 	if rows.size() < 1 or get_last_row().is_full():
 		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
-		$Background/Container/MainColumn.add_child(rows[rows.size() - 1])
+		$Container/MainColumn.add_child(rows[rows.size() - 1])
 	
 func get_last_row():
 	return rows[rows.size() - 1]

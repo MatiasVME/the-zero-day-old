@@ -6,6 +6,8 @@ func _ready():
 	add_child(player)
 	player.can_move = true
 	player.can_fire = true
+	
+	$HUD.set_hud_actor(player)
 
 	var item1 = Factory.ItemInWorldFactory.create_test_distance_weapon()
 	item1.global_position = Vector2(200, 100)

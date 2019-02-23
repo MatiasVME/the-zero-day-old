@@ -19,6 +19,7 @@ var can_fire : bool = false
 signal fire(dir)
 signal dead
 signal spawn
+signal item_taken(item)
 
 func _ready():
 	connect("fire", self, "_on_fire")
@@ -87,9 +88,9 @@ func enable_player():
 
 func _on_GetArea_body_entered(body):
 	if body is ItemInWorld:
-#		print(DataManager.inventories)
 		if DataManager.inventories.size() > 0:
 			body.take_item(DataManager.inventories[DataManager.current_player])
+			emit_signal("item_taken", body.data)
 
 func _on_fire(dir):
 	# Temp

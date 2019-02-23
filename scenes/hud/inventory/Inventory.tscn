@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 centered = false
 
-[node name="Container" type="ScrollContainer" parent="Background"]
+[node name="Container" type="ScrollContainer" parent="."]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 176.0
@@ -18,5 +18,5 @@ margin_bottom = 232.0
 rect_min_size = Vector2( 166, 222 )
 scroll_horizontal_enabled = false
 
-[node name="MainColumn" type="VBoxContainer" parent="Background/Container"]
+[node name="MainColumn" type="VBoxContainer" parent="Container"]
 
