@@ -74,7 +74,7 @@ func _physics_process(delta):
 	
 	if can_fire and Input.is_action_just_pressed("fire"):
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
-		print(dir)
+#		print(dir)
 		emit_signal("fire", dir)
 	
 func disable_player():
@@ -87,17 +87,13 @@ func enable_player():
 
 func _on_GetArea_body_entered(body):
 	if body is ItemInWorld:
-		print(DataManager.inventories)
+#		print(DataManager.inventories)
 		if DataManager.inventories.size() > 0:
 			body.take_item(DataManager.inventories[DataManager.current_player])
-#			DataManager.inventories.add_item(body.data)
-#			body.queue_free()
 
 func _on_fire(dir):
 	# Temp
 	var bullet = ShootManager.fire(dir)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
 	get_parent().add_child(bullet)
-	
-	pass
 
