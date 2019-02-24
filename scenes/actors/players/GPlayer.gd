@@ -23,6 +23,8 @@ signal item_taken(item)
 
 func _ready():
 	connect("fire", self, "_on_fire")
+	
+	update_weapon()
 
 func _physics_process(delta):
 	if not can_move:
@@ -75,8 +77,16 @@ func _physics_process(delta):
 	
 	if can_fire and Input.is_action_just_pressed("fire"):
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
-#		print(dir)
 		emit_signal("fire", dir)
+
+func update_weapon():
+	$GWeaponInBattle.set_weapon(data.equip)
+	
+	if not data.equip:
+		can_fire = false
+
+	if data.equip is PHWeapon:
+		can_fire = true
 	
 func disable_player():
 	visible = false
@@ -89,15 +99,17 @@ func disable_player():
 	if data:
 		data.disconnect("item_equiped", self, "_on_item_equiped")
 	
-func enable_player():
+func enable_player(_can_fire : bool = false):
 	visible = true
 	can_move = true
-	can_fire = true
+	can_fire = _can_fire
 	$Collision.disabled = false
+	
 	data.connect("item_equiped", self, "_on_item_equiped")
 
 func _on_item_equiped(item):
 	print("item_equiped: ", item)
+	update_weapon()
 
 func _on_GetArea_body_entered(body):
 	if body is ItemInWorld:

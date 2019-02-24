@@ -20,9 +20,12 @@ func _physics_process(delta):
 	
 	$Sprite.look_at(get_global_mouse_position())
 	
-func add_weapon(weapon : PHWeapon):
+func set_weapon(weapon : PHWeapon):
 	data = weapon
-	$Sprite.texture = load(data.texture_path)
+	
+	if data:
+		$Sprite.texture = load(data.texture_path)
+	
 	emit_signal("weapon_added", data)
 	set_physics_process(true)
 
