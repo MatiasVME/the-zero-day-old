@@ -1,10 +1,13 @@
 extends Node2D
 
 onready var hud = get_parent()
+var current_item : PHItem
 # Items en la hotbar actual
 var items = []
 
 var current_hotbar = 0
+
+signal slot_selected(slot_data)
 
 func _ready():
 	select_slot(1)
@@ -34,7 +37,17 @@ func set_hotbar_actor(actor : GActor):
 # Seleccionar un slot del 1 al 5
 func select_slot(slot : int):
 	unselect_all_slots(slot)
-	get_node("Slots/Slot" + str(slot)).pressed = true
+	var slot_selected = get_node("Slots/Slot" + str(slot))
+	slot_selected.pressed = true
+	
+	current_item = slot_selected.data
+	
+	if hud.hud_actor:
+		hud.hud_actor.data.equip = current_item
+	
+#	print("slot_selected.data: ", slot_selected.data)
+	
+	emit_signal("slot_selected", current_item)
 
 func unselect_all_slots(except):
 	for i in $Slots.get_child_count():
@@ -60,9 +73,11 @@ func update_hotbar_row(row : int):
 		
 		if item:
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = load(item.texture_path)
+			get_node("Slots/Slot" + str(i + 1)).data = item
 		else:
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = null
-		
+			get_node("Slots/Slot" + str(i + 1)).data = null
+			
 func _on_slot_pressed(slot):
 	select_slot(int(slot.name.substr(slot.name.length() - 1,1)))
 	update_hotbar_row(current_hotbar)

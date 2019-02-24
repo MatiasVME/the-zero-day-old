@@ -80,11 +80,20 @@ func _physics_process(delta):
 	
 func disable_player():
 	visible = false
+	can_move = false
+	can_fire = false
 	$Collision.disabled = true
+	data.disconnect("item_equiped", self, "_on_item_equiped")
 	
 func enable_player():
 	visible = true
+	can_move = true
+	can_fire = true
 	$Collision.disabled = false
+	data.connect("item_equiped", self, "_on_item_equiped")
+
+func _on_item_equiped(item):
+	print("item_equiped: ", item)
 
 func _on_GetArea_body_entered(body):
 	if body is ItemInWorld:
@@ -97,4 +106,3 @@ func _on_fire(dir):
 	var bullet = ShootManager.fire(dir)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
 	get_parent().add_child(bullet)
-

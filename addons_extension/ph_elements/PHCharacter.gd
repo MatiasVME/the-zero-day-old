@@ -22,7 +22,18 @@ var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
 
 var unique_id : String
 
+var equip : PHItem setget set_equip, get_equip
+
+signal item_equiped(weapon)
+
 func _init():
 	randomize()
 	unique_id = str(OS.get_unix_time(), "-", randi())
-	print("unique_id: ", unique_id)
+#	print("unique_id: ", unique_id)
+
+func set_equip(_equip : PHItem):
+	equip = _equip
+	emit_signal("item_equiped", _equip)
+	
+func get_equip():
+	return equip
