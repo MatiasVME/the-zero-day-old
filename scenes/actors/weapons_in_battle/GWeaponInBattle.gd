@@ -1,6 +1,8 @@
 extends Node2D
 
-var data : PHWeapon
+# Normalmente es un PHWeapon pero a veces puede ser
+# null
+var data
 
 signal weapon_added(weapon)
 signal weapon_removed()
@@ -19,12 +21,15 @@ func _physics_process(delta):
 		$Sprite.rotation_degrees = 0
 	
 	$Sprite.look_at(get_global_mouse_position())
-	
-func set_weapon(weapon : PHWeapon):
+
+# Puede recibir un PHWeapon o un null
+func set_weapon(weapon):
 	data = weapon
 	
 	if data:
 		$Sprite.texture = load(data.texture_path)
+	else:
+		$Sprite.texture = null
 	
 	emit_signal("weapon_added", data)
 	set_physics_process(true)
