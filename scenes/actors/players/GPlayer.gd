@@ -83,7 +83,11 @@ func disable_player():
 	can_move = false
 	can_fire = false
 	$Collision.disabled = true
-	data.disconnect("item_equiped", self, "_on_item_equiped")
+	
+	# Puede que no exista data ya que el player se
+	# puede instanciar directamente.
+	if data:
+		data.disconnect("item_equiped", self, "_on_item_equiped")
 	
 func enable_player():
 	visible = true

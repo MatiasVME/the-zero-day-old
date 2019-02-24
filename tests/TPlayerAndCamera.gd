@@ -2,10 +2,9 @@ extends Node2D
 
 func _ready():
 	var player = PlayerManager.init_player(0)
-	player.global_position = Vector2(130, 100)
+	player.global_position = Vector2(10, 10)
 	add_child(player)
-	player.can_move = true
-	player.can_fire = true
+	player.enable_player()
 	
 	$Camera.following = player
 	

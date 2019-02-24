@@ -1,6 +1,7 @@
 extends Vehicle
 
 class_name Tank
+
 # Properties
 export (float) var MAX_VELOCITY = 4000
 export (float) var MAX_VELOCITY_REVERSE = -1000
@@ -38,12 +39,13 @@ func get_input(delta : float) -> void:
 		elif has_driver() and self.can_move:
 			.leave(get_driver())
 	
+#	print("has_driver(): ", has_driver())
+#	if has_driver():
+#		self.can_move = get_driver().can_move
+#	else:
+#		self.can_move = false
+	
 	if has_driver():
-		self.can_move = get_driver().can_move
-	else:
-		self.can_move = false
-		
-	if self.can_move:
 		$Pivot.aim(delta)
 		
 		for p in drivers:
@@ -71,7 +73,6 @@ func get_input(delta : float) -> void:
 				current_speed *= 0.90
 
 func _physics_process(delta):
-		
 	get_input(delta)
 	
 	if abs(current_speed) > min_velocity_to_stop:
@@ -83,6 +84,7 @@ func _physics_process(delta):
 	elif $Anim.current_animation != "Idle" or not $Anim.is_playing():
 		$Anim.playback_speed = 1
 		$Anim.play("Idle")
+		
 	move_and_slide(dir_move.rotated(deg2rad(rotation_degrees)) * current_speed * delta, Vector2())
 
 func _on_unmounted(who):
