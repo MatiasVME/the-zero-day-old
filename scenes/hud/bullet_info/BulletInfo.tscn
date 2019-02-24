@@ -16,7 +16,6 @@ margin_bottom = 240.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Bullet" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="BulletImg" type="Sprite" parent="Bullet"]
 position = Vector2( 351, 215 )
