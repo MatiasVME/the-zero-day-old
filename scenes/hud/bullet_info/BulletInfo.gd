@@ -16,6 +16,8 @@ func update_bullet_info():
 			$Bullet/CurrentAndMax.text = str(current_equip.current_shot) + "/" + str(current_equip.weapon_capacity)
 		else:
 			$Bullet/CurrentAndMax.text = "-/-"
+	else:
+		hide()
 			
 # Normalmente recibe un PHItem pero puede recibir null
 func set_current_equip(equip):

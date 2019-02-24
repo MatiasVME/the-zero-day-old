@@ -14,6 +14,8 @@ class_name PHAmmo
 # de una caja.
 var ammo_amount = 1
 
+# Esta estructura tiene que ser una replica del
+# AmmoType de PHDistanceWapon
 enum AmmoType {
 	NORMAL,
 	PLASMA

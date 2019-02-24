@@ -6,6 +6,7 @@ var current_item : PHItem
 var items = []
 
 var current_hotbar = 0
+var current_slot = 0 # No seleccionado aun
 
 signal slot_selected(slot_data)
 
@@ -36,7 +37,9 @@ func set_hotbar_actor(actor : GActor):
 
 # Seleccionar un slot del 1 al 5
 func select_slot(slot : int):
+	current_slot = slot
 	unselect_all_slots(slot)
+	
 	var slot_selected = get_node("Slots/Slot" + str(slot))
 	slot_selected.pressed = true
 	
@@ -87,6 +90,7 @@ func _on_slot_pressed(slot):
 	
 func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
+	select_slot(current_slot)
 
 
 

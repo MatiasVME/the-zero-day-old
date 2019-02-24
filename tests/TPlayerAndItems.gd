@@ -4,8 +4,7 @@ func _ready():
 	var player = PlayerManager.init_player(0)
 	player.global_position = Vector2(140, 100)
 	add_child(player)
-	player.can_move = true
-	player.can_fire = true
+	player.enable_player()
 	
 	$HUD.set_hud_actor(player)
 
