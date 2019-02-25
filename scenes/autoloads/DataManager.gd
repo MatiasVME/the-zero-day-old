@@ -216,6 +216,8 @@ func get_current_player_instance():
 	return players[current_player]
 	
 func get_next_player():
+	# players es el conjunto de players, no
+	# necesariamente instanciados en el juego
 	if players.size() > 0:
 		# Si no ha llegado al limite
 		return (current_player + 1) % players.size()

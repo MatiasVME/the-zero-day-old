@@ -49,11 +49,15 @@ func get_current_player():
 		return players[DataManager.get_current_player()]
 
 func get_next_player():
-	var next_player = players[DataManager.get_next_player()]
-	DataManager.set_next_player()
+	var next_player_num = DataManager.get_next_player()
 	
-	return next_player
-				
-				
-				
-				
+	if next_player_num <= players.size() - 1:
+		var next_player = players[next_player_num]
+		DataManager.set_next_player()
+	
+		return next_player
+	else:
+		return get_current_player()
+	
+	
+	
