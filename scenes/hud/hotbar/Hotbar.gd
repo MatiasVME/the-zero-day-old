@@ -48,8 +48,6 @@ func select_slot(slot : int):
 	if hud.hud_actor:
 		hud.hud_actor.data.equip = current_item
 	
-#	print("slot_selected.data: ", slot_selected.data)
-
 	var bullet_info = hud.get_node("BulletInfo")
 	bullet_info.set_current_equip(current_item)
 	

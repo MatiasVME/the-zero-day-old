@@ -1,7 +1,7 @@
 """
 PlayerManager.gd
 
-Gestiona las instancias de los players.
+Gestiona las instancias de los players (GPlayer).
 """
 
 extends Node
