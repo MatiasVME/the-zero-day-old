@@ -11,6 +11,3 @@ offset = Vector2( 16, 0 )
 [node name="FireSpawn" type="Position2D" parent="Sprite"]
 position = Vector2( 24, 0 )
 
-[node name="TimeToReload" type="Timer" parent="."]
-one_shot = true
-

@@ -75,7 +75,8 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
-	if can_fire and Input.is_action_just_pressed("fire") and data.fire():
+	# Puede disparar? Se preciono fire?
+	if can_fire and Input.is_action_just_pressed("fire") and data.equip.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		emit_signal("fire", dir)
 	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
@@ -116,25 +117,27 @@ func reload():
 	if data.equip.current_shot >= data.equip.weapon_capacity:
 		return
 	
-	# Obtener la primera municion
+	# Obtener las municiones
 	var ammunition_inv = []
 	
 	for ammo in DataManager.get_current_inv().inv:
 		if ammo is PHAmmo:
 			ammunition_inv.append(ammo)
 	
-	var i : int = 0
-	while i < ammunition_inv.size():
-		if data.reload(ammunition_inv[i]):
+	# Si no hay ammunition_inv entonces se sale de la
+	# funcion
+	if ammunition_inv.size() < 1:
+		return
+	
+	for ammo in ammunition_inv:
+		if data.equip.reload(ammo):
 			break
-		elif ammunition_inv[i].ammo_amount == 0:
-			ammunition_inv[i].queue_free()
-			print("ammunition_inv[i].queue_free()")
-		
-		i += 1
-
+	
+	for i in ammunition_inv.size() - 1:
+		if ammunition_inv[i].ammo_amount == 0:
+			ammunition_inv.pop_front()
+	
 func _on_item_equiped(item):
-	print("item_equiped: ", item)
 	update_weapon()
 
 func _on_GetArea_body_entered(body):

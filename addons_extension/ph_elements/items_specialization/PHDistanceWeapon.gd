@@ -25,3 +25,45 @@ var weapon_capacity = 6
 var current_shot = 0
 # Tiempo en segundos para recargar
 var time_to_reload : int = 1
+
+# Recarga dependiendo de la municion que reciba.
+# devuelve true si se recarga completamente y
+# false si no lo hace.
+func reload(ammo : PHAmmo) -> bool:
+	# Validar si puede hacer el reload
+	# 1) Tiene que haber municion disponible
+	# 2) No tiene que estar ya recargada
+	if ammo.ammo_amount < 1:
+		return false
+	if is_recharged():
+		return true
+	
+	for i in weapon_capacity - current_shot:
+		if is_recharged():
+			return true
+		# No queda municion disponible
+		if ammo.ammo_amount < 1:
+			return false
+		
+		current_shot += 1
+		ammo.ammo_amount -= 1
+	
+	# Nunca llega a esto (segun yo)
+	return false
+
+func fire() -> bool:
+	# Validar:
+	# 1) No tiene un arma equipada?
+	# 2) Tiene balas disponibles para usar?
+	if current_shot < 1:
+		return false
+	
+	# De lo contrario...
+	current_shot -= 1
+	return true
+
+func is_recharged():
+	return weapon_capacity == current_shot
+
+
+
