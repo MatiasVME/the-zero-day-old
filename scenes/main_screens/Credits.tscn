@@ -1,4 +1,24 @@
 [gd_scene format=2]
 
 [node name="Credits" type="Node2D"]
+position = Vector2( 180, 120 )
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -180.0
+margin_top = -120.0
+margin_right = 180.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 360, 240 )
+custom_constants/margin_right = 16
+custom_constants/margin_top = 16
+custom_constants/margin_left = 16
+custom_constants/margin_bottom = 16
+
+[node name="ColorRect" type="ReferenceRect" parent="MarginContainer"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 344.0
+margin_bottom = 224.0
 

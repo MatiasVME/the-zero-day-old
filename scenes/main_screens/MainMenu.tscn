@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/main_screens/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main_screens/reusable_controls/ButtonNinePatch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/buttons/credits/Credits-Normal.png" type="Texture" id=3]
+[ext_resource path="res://scenes/buttons/credits/Credits-Pressed.png" type="Texture" id=4]
+[ext_resource path="res://scenes/buttons/credits/Credits-Hover.png" type="Texture" id=5]
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2( 180, 120 )
@@ -109,6 +112,9 @@ focus_neighbour_top = NodePath("../../CenterContainerPlay/Play")
 focus_neighbour_right = NodePath("../../../Options")
 size_flags_horizontal = 4
 size_flags_vertical = 6
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 
 [node name="Options" parent="HorizontalContainer" instance=ExtResource( 2 )]
 anchor_right = 0.0
