@@ -3,7 +3,7 @@ extends "res://scenes/actors/GActor.gd"
 class_name GPlayer
 
 # Es la data del player y la logica del mismo
-var data : PHCharacter
+var data : PHCharacter # Este es el que equipa el arma
 
 export (int) var speed = 2500
 
@@ -75,9 +75,11 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
-	if can_fire and Input.is_action_just_pressed("fire"):
+	if can_fire and Input.is_action_just_pressed("fire") and data.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		emit_signal("fire", dir)
+	else:
+		reload()
 
 func update_weapon():
 	$GWeaponInBattle.set_weapon(data.equip)
@@ -106,6 +108,23 @@ func enable_player(_can_fire : bool = false):
 	$Collision.disabled = false
 	
 	data.connect("item_equiped", self, "_on_item_equiped")
+
+func reload():
+	# Obtener la primera municion
+	var ammunition_inv = []
+	
+	for ammo in DataManager.get_current_inv().inv:
+		if ammo is PHAmmo:
+			ammunition_inv.append(ammo)
+	
+	var i : int = 0
+	while i < ammunition_inv.size():
+		if data.reload(ammunition_inv[i]):
+			break
+		else:
+			ammunition_inv[i].queue_free()
+		
+		i += 1
 
 func _on_item_equiped(item):
 	print("item_equiped: ", item)

@@ -193,9 +193,10 @@ func inv2dict():
 	
 	var i = 0
 	while i < inv.size():
-		dict_inv.append(gdc2gd(inst2dict(inv[i])))
+		# dict_inv.append(gdc2gd(inst2dict(inv[i]))) # OLD
+		dict_inv.append(gdc2gd(inv[i]))
 		i += 1
-
+	
 	var dict = gdc2gd(inst2dict(self))
 	dict["inv"] = dict_inv
 	

@@ -70,12 +70,15 @@ func update_hotbar_row(row : int):
 		print("inventory and inventory.rows < 1")
 		return
 	
-	items.clear()
+	items = []
 	for i in range(0, 5):
+		print(items)
 		var item = inventory.rows[row].get_item(i)
+		
 		items.append(item)
 		
 		if item:
+			print("item: ", item)
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = load(item.texture_path)
 			get_node("Slots/Slot" + str(i + 1)).data = item
 		else:
