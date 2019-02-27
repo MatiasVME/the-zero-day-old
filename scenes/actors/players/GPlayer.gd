@@ -78,7 +78,7 @@ func _physics_process(delta):
 	if can_fire and Input.is_action_just_pressed("fire") and data.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		emit_signal("fire", dir)
-	else:
+	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
 		reload()
 
 func update_weapon():
@@ -110,6 +110,12 @@ func enable_player(_can_fire : bool = false):
 	data.connect("item_equiped", self, "_on_item_equiped")
 
 func reload():
+	# Prevenir que se llame a esta funcion inecesariamente
+	if not data.equip is PHDistanceWeapon:
+		return
+	if data.equip.current_shot >= data.equip.weapon_capacity:
+		return
+	
 	# Obtener la primera municion
 	var ammunition_inv = []
 	
@@ -121,8 +127,9 @@ func reload():
 	while i < ammunition_inv.size():
 		if data.reload(ammunition_inv[i]):
 			break
-		else:
+		elif ammunition_inv[i].ammo_amount == 0:
 			ammunition_inv[i].queue_free()
+			print("ammunition_inv[i].queue_free()")
 		
 		i += 1
 

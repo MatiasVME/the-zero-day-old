@@ -41,6 +41,8 @@ func get_equip():
 # devuelve true si se recarga completamente y
 # false si no lo hace.
 func reload(ammo : PHAmmo) -> bool:
+	print("Se ha llamado a reload()")
+	
 	# Validar si puede hacer el reload
 	# 1) Tiene que tener el arma equipada
 	# 2) Tiene que haber municion disponible
@@ -77,4 +79,5 @@ func fire() -> bool:
 	
 	# De lo contrario...
 	equip.current_shot -= 1
+	print("equip.current_shot",equip.current_shot)
 	return true
