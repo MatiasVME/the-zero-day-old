@@ -21,13 +21,11 @@ func _on_ButtonNinePatch_button_up():
 	pass
 
 func _on_ButtonNinePatch_focus_entered():
-	modulate = Color.aqua
 	self.grab_focus()
 	rect.texture = texture_rect_focused as Texture
 	pass
 
 func _on_ButtonNinePatch_focus_exited():
-	modulate = Color.white
 	self.release_focus()
 	rect.texture = texture_rect_normal as Texture
 	pass
