@@ -55,7 +55,6 @@ animations = [ {
 radius = 100.0
 
 [node name="Gluton" instance=ExtResource( 1 )]
-position = Vector2( 177.1, 148.109 )
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
@@ -64,7 +63,7 @@ shape = SubResource( 1 )
 [node name="Body" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "Run_Side"
-frame = 5
+frame = 3
 playing = true
 
 [node name="Area2D" type="Area2D" parent="." index="2"]
