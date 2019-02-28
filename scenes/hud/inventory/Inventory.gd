@@ -7,27 +7,25 @@ var is_fulled : bool = false
 var rows = []
 
 var current_inv : RPGWeightInventory
+# Municion total de la arma actual
+var total_ammo = 0
 
 signal item_added
+signal item_removed(row_num, slot_num)
 
 func _ready():
 	DataManager.get_current_inv().connect("item_added", self, "_on_item_added")
 	
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 	
-	update()
+	init_inventory()
 
 # Actualiza el inventario en caso de un cambio
-func update():
+func init_inventory():
 	create_row_if_can()
 	
+	print("DataManager.get_current_inv().inv",DataManager.get_current_inv().inv)
 	for item in DataManager.get_current_inv().inv:
-		# Ve si el item es municion y si esta vacia
-		# la borra
-		if item is PHAmmo and item.ammo_amount == 0:
-			print("removiendo item: ", item)
-			DataManager.get_current_inv().delete_item(item)
-			
 		add_item(item)
 
 # Añade un item al inventario visual (no al inventario del jugador)
@@ -41,8 +39,14 @@ func drop_item():
 
 # Elimina un item directamente
 func remove_item(item):
+	for row in rows:
+		if row.has_item(item):
+			row.remove_item(item)
+	
+# Remover todos las rows (visualmente)
+func remove_all_rows():
 	pass
-
+	
 # Hay slots disponibles? Puede que no existan ya que puede
 # que el peso este completado
 func has_slots():
@@ -54,14 +58,38 @@ func create_row_if_can():
 	# Caso no exista un row y caso en el cual el ultimo row este lleno
 	if rows.size() < 1 or get_last_row().is_full():
 		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
-		$Container/MainColumn.add_child(rows[rows.size() - 1])
+		$Container/MainColumn.add_child(get_last_row())
+		get_last_row().connect("item_removed", self, "_on_item_removed", [rows.size() - 1])
 	
 func get_last_row():
 	return rows[rows.size() - 1]
+
+# Devuelve el total de municion que puede ocupar,
+# dependiendo de las municiones -para la arma actual- 
+# que que hay en el inventario
+func get_total_ammo():
+	var inv = DataManager.get_current_inv().inv
+	total_ammo = 0
+	
+	for item in inv:
+		if item is PHAmmo and DataManager.get_current_player_instance().equip.ammo_type == item.ammo_type:
+			total_ammo += item.ammo_amount
+	
+	return total_ammo
 	
 func _on_item_added(item):
 	add_item(item)
 	
 func _on_player_shooting(player, direction):
-	if not player.has_ammo:
-		print("hola")
+	# Verificamos player.equip.current_shot == 0 primero
+	# ya que es mas costoso llamar a get_total_ammo 
+	if player.data.equip is PHDistanceWeapon and player.data.equip.current_shot == 0:
+		# Buscamos en el inventario si hay municion a borrar
+		for item in DataManager.get_current_inv().inv:
+			if item is PHAmmo and item.ammo_amount == 0:
+				remove_item(item)
+
+func _on_item_removed(slot_num, row_num):
+	emit_signal("item_removed", row_num, slot_num)
+			
+			

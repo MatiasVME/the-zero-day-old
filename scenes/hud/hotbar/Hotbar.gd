@@ -18,6 +18,10 @@ func _ready():
 		slot.connect("pressed", self, "_on_slot_pressed", [slot])
 		
 	update_hotbar_row(0)
+	
+	# Conectamos la hotbar al inventario para escuchar cuando
+	# hay un item es removido o etc.
+	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
 
 func _input(event):
 	if event.is_action_pressed("hotbar1"):
@@ -91,7 +95,8 @@ func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
 	select_slot(current_slot)
 
-
+func _on_item_removed(row_num, slot_num):
+	update_hotbar_row(row_num)
 
 
 
