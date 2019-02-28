@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://tests/test_menu_screens/TMenuScreens.gd" type="Script" id=1]
 [ext_resource path="res://tests/test_menu_screens/CameraMenu.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/main_screens/MainMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/main_screens/Play.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=8]
 
 [node name="TMenuScreens" type="Node2D"]
 script = ExtResource( 1 )
@@ -36,6 +37,9 @@ position = Vector2( 180, -120 )
 [node name="Splash" parent="." instance=ExtResource( 7 )]
 position = Vector2( 180, -120 )
 
+[node name="Credits" parent="." instance=ExtResource( 8 )]
+position = Vector2( 180, 360 )
+
 [connection signal="target_reached" from="CameraMenu" to="." method="_on_CameraMenu_target_reached"]
 [connection signal="back_from_notes_pressed" from="NotesMenu" to="." method="_on_NotesMenu_back_from_notes_pressed"]
 [connection signal="credits_pressed" from="MainMenu" to="." method="_on_MainMenu_credits_pressed"]
@@ -44,3 +48,4 @@ position = Vector2( 180, -120 )
 [connection signal="play_pressed" from="MainMenu" to="." method="_on_MainMenu_play_pressed"]
 [connection signal="back_pressed" from="Play" to="." method="_on_Play_back_pressed"]
 [connection signal="splash_finished" from="Splash" to="." method="_on_Splash_splash_finished"]
+[connection signal="back_from_credits_pressed" from="Credits" to="." method="_on_Credits_back_from_credits_pressed"]

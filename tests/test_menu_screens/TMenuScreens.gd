@@ -6,6 +6,7 @@ onready var main_menu : = $MainMenu
 onready var splash : = $Splash
 onready var play_menu : = $Play
 onready var notes_menu : = $NotesMenu
+onready var credits_menu : = $Credits
 
 func _ready():
 	camera.target = splash
@@ -24,12 +25,13 @@ func _on_MainMenu_options_pressed():
 
 func _on_MainMenu_credits_pressed():
 #Cambiar a menu Credits
-	pass
+	camera.target.focus = false
+	camera.target = credits_menu
+	camera.target.focus = true
 
 func _on_Splash_splash_finished():
 	camera.target = main_menu
 	camera.target.focus = true
-	pass
 
 func _on_Play_back_pressed():
 	camera.target.focus = false
@@ -51,4 +53,9 @@ func _on_NotesMenu_back_from_notes_pressed():
 func _on_MainMenu_notes_pressed():
 	camera.target.focus = false
 	camera.target = notes_menu
+	camera.target.focus = true
+
+func _on_Credits_back_from_credits_pressed():
+	camera.target.focus = false
+	camera.target = main_menu
 	camera.target.focus = true

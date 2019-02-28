@@ -15,6 +15,7 @@ func _input(event):
 	if event is InputEventKey and not press_any_key:
 		if not event.is_pressed():
 			press_any_key = true
+		
 			first_focus.grab_focus()
 
 func _on_mouse_lost_focus():
@@ -27,3 +28,9 @@ func set_focus(val : bool) -> void:
 	focus = val
 	if val:
 		press_any_key = false
+	self._resume()
+	
+
+func _resume() -> void:
+#	Debe implementarse en las clases hijas
+	pass

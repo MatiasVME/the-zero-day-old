@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Control",
 "class": "CreditSection",
 "language": "GDScript",
 "path": "res://scenes/main_screens/reusable_controls/CreditsSection.gd"
@@ -209,7 +209,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 
