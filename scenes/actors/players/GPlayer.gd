@@ -16,6 +16,8 @@ var input_run : bool = false
 var can_move : bool = false
 var can_fire : bool = false
 
+
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -76,7 +78,7 @@ func _physics_process(delta):
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
 	# Puede disparar? Se preciono fire?
-	if can_fire and Input.is_action_just_pressed("fire") and data.equip.fire():
+	if data.equip is PHDistanceWeapon and can_fire and Input.is_action_just_pressed("fire") and data.equip.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		emit_signal("fire", dir)
 	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:

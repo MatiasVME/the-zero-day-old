@@ -13,15 +13,22 @@ signal item_added
 func _ready():
 	DataManager.get_current_inv().connect("item_added", self, "_on_item_added")
 	
+	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
+	
 	update()
 
 # Actualiza el inventario en caso de un cambio
 func update():
 	create_row_if_can()
 	
-	for item in DataManager.get_current_inv().get_inv():
+	for item in DataManager.get_current_inv().inv:
+		# Ve si el item es municion y si esta vacia
+		# la borra
+		if item is PHAmmo and item.ammo_amount == 0:
+			print("removiendo item: ", item)
+			DataManager.get_current_inv().delete_item(item)
+			
 		add_item(item)
-#		print("item_added: ", item)
 
 # Añade un item al inventario visual (no al inventario del jugador)
 # normalmente el item es añadido con anterioridad.
@@ -33,7 +40,7 @@ func drop_item():
 	pass
 
 # Elimina un item directamente
-func remove_item():
+func remove_item(item):
 	pass
 
 # Hay slots disponibles? Puede que no existan ya que puede
@@ -54,3 +61,7 @@ func get_last_row():
 	
 func _on_item_added(item):
 	add_item(item)
+	
+func _on_player_shooting(player, direction):
+	if not player.has_ammo:
+		print("hola")

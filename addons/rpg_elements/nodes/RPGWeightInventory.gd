@@ -87,7 +87,6 @@ func take_item(item, amount = 1):
 		return
 
 # Borra un item devuelve si lo elimina o no
-# NEEDTEST
 func delete_item(item):
 	if inv.has(item):
 		current_weight -= item.weight * item.amount

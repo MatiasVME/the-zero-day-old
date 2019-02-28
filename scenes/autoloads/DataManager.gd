@@ -91,9 +91,6 @@ func create_players():
 	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	
-	# Esto solo funcionaria con un player
-#	temp_data[0] = inst2dict(players[0])
-	
 	$DataPlayers.save_data("Players")
 	
 func save_players():

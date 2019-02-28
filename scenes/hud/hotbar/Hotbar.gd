@@ -72,19 +72,17 @@ func update_hotbar_row(row : int):
 	
 	items = []
 	for i in range(0, 5):
-		print(items)
 		var item = inventory.rows[row].get_item(i)
 		
 		items.append(item)
 		
 		if item:
-			print("item: ", item)
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = load(item.texture_path)
 			get_node("Slots/Slot" + str(i + 1)).data = item
 		else:
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = null
 			get_node("Slots/Slot" + str(i + 1)).data = null
-			
+	
 func _on_slot_pressed(slot):
 	select_slot(int(slot.name.substr(slot.name.length() - 1,1)))
 	update_hotbar_row(current_hotbar)
