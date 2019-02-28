@@ -16,8 +16,6 @@ var input_run : bool = false
 var can_move : bool = false
 var can_fire : bool = false
 
-var has_ammo : bool = false
-
 signal fire(dir)
 signal dead
 signal spawn
