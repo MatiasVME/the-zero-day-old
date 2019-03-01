@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tiles_snow.png-88d6cb064d22c4fbf85592d6f5b14ee4.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

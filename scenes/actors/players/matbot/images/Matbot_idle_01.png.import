@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/Matbot_idle_01.png-da66cd7a5efcb63beeeb3f737d3f2db5.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

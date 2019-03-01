@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/button_chat_pressed.png-206c4c47b421317ecaaa75c4e85c5ea4.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

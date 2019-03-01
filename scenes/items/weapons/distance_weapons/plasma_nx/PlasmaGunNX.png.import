@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/PlasmaGunNX.png-b8e109ba54ca2580cc75e2475c298dc5.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

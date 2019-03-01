@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SlotInv-Normal.png-a8fd35aa8b7a635d0b0db7c4e22d89ab.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

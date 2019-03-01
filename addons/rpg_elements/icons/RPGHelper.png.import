@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/RPGHelper.png-92facb7ec3b1ead21fd1934e0f055b94.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/HotbarSlot-Hover.png-f227df8138524e12d4f6ecda8d068f89.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/HotbarEnergy-Void.png-e0ce1e84cc898a50032d94a6b5dadc8c.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

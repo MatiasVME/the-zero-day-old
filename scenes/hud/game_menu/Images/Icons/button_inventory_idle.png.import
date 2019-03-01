@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/button_inventory_idle.png-8dbb3a0c5fb59e22dc19ff70ecb35222.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tank_cannon.png-8408a5e3972a8ff4074527430abb887d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

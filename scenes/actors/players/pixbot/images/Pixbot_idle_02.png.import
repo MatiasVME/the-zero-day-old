@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/Pixbot_idle_02.png-8a1331605d9d227b433ce73e35bdcb48.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

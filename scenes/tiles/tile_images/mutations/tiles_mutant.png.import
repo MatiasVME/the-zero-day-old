@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tiles_mutant.png-d9a077f4c66f71ff2e8c3cf8ae8d954e.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

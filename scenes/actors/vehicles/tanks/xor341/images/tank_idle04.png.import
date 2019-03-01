@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tank_idle04.png-5602835fa7e4478b9a78f27982c1ec94.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

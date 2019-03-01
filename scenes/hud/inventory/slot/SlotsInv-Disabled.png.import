@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/SlotsInv-Disabled.png-dfb9267f856013a925c6085710d12ae2.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

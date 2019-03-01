@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/selected_hotbar_button.png-442f2944132678b21247100b95ae4579.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

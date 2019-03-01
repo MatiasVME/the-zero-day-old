@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/big_tree.png-a8a29a593f32a1750a6e431b64249d55.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/rect_9patch_button_normal.png-3c4da8faff12e8f68f6ef369223c0dc9.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

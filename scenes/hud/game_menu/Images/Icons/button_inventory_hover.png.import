@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/button_inventory_hover.png-b6de04df1524652a030d60f6c851d5e4.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

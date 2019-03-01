@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/HotbarBackground.png-a42a2a1b9d9d90773df4fa74b5116eac.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 

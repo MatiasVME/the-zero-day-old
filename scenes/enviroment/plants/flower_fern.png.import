@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/flower_fern.png-da0450e46b9e87a3251cc200464273a4.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
