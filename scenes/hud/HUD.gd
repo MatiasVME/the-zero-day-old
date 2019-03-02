@@ -13,4 +13,6 @@ func _on_Inventory_toggled(button_pressed):
 # mas internos.
 func set_hud_actor(actor : GActor):
 	hud_actor = actor
+	
 	$Hotbar.set_hotbar_actor(actor)
+	$AvatarHandler.set_avatar_handler_actor(actor)
