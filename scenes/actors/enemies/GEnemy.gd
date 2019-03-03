@@ -18,6 +18,13 @@ var current_state : int = 0
 # Puede recibir daño ?
 var can_damage = false
 
+# Contine el PHCharacter con todos los datos
+# y eventos que invulucra
+var data
+
+func _init():
+	data = PHCharacter.new()
+
 func _physics_process(delta):
 	# Estas 4 lineas funcionan como seguro contra tontos.
 	if current_state != state:

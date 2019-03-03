@@ -151,10 +151,16 @@ anims/dead = SubResource( 5 )
 anims/spawn = SubResource( 6 )
 
 [node name="DamageArea" type="Area2D" parent="." index="5"]
+editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource( 7 )
 
+[node name="ChangeRandomObjective" type="Timer" parent="." index="6"]
+wait_time = 4.0
+autostart = true
+
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
+[connection signal="timeout" from="ChangeRandomObjective" to="." method="_on_ChangeRandomObjective_timeout"]
