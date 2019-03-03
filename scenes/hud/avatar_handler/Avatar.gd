@@ -1,5 +1,7 @@
 extends Control
 
+class_name Avatar
+
 func _ready():
 	PlayerManager.connect("player_gain_hp", self, "_on_player_gain_hp")
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")

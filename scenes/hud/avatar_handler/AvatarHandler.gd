@@ -2,6 +2,10 @@ extends Node2D
 
 onready var hud = get_parent()
 
-func set_avatar_handler_actor(actor):
-	# temp
-	$VBox/Avatar.set_avatar_actor(actor)
+var avatars = []
+
+func add_avatar(actor : GActor):
+	var avatar = load("res://scenes/hud/avatar_handler/Avatar.tscn").instance()
+	$VBox.add_child(avatar)
+	avatar.set_avatar_actor(actor)
+	

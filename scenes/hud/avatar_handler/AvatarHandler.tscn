@@ -13,6 +13,7 @@ margin_right = 37.0
 margin_bottom = 50.0
 
 [node name="Avatar" parent="VBox" instance=ExtResource( 2 )]
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 27.0

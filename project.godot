@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Control",
+"class": "Avatar",
+"language": "GDScript",
+"path": "res://scenes/hud/avatar_handler/Avatar.gd"
+}, {
+"base": "Control",
 "class": "CreditSection",
 "language": "GDScript",
 "path": "res://scenes/main_screens/reusable_controls/CreditsSection.gd"
@@ -150,6 +155,7 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
 } ]
 _global_script_class_icons={
+"Avatar": "",
 "CreditSection": "",
 "GActor": "",
 "GBullet": "",

@@ -4,9 +4,16 @@
 
 [node name="GEnemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
-view_distance = 25.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 
 [node name="Body" type="AnimatedSprite" parent="."]
 
+[node name="Anim" type="AnimationPlayer" parent="."]
+
+[node name="DamageDelay" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
+[connection signal="timeout" from="DamageDelay" to="." method="_on_DamageDelay_timeout"]
