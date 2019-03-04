@@ -43,22 +43,22 @@ func _physics_process(delta):
 		move_y = input_dir.y * speed * 2 * delta
 		$Sprite.speed_scale = 1.2
 	
-	if input_dir.x == -1 and input_dir.y == 0:
+	if input_dir == Vector2.LEFT:
 		$Anim.play("MoveSide")
 		$Sprite.flip_h = true
 	elif input_dir.x == -1 and input_dir.y == -1:
 		$Anim.play("MoveUp")
-	elif input_dir.x == 0 and input_dir.y == -1:
+	elif input_dir == Vector2.UP:
 		$Anim.play("MoveUp")
 	elif input_dir.x == 1 and input_dir.y == -1:
 		$Anim.play("MoveUp")
-	elif input_dir.x == 1 and input_dir.y == 0:
+	elif input_dir == Vector2.RIGHT:
 		$Anim.play("MoveSide")
 		$Sprite.flip_h = false
 	elif input_dir.x == 1 and input_dir.y == 1:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
-	elif input_dir.x == 0 and input_dir.y == 1:
+	elif input_dir == Vector2.DOWN:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
 	elif input_dir.x == -1 and input_dir.y == 1:

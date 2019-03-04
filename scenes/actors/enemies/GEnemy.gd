@@ -2,7 +2,7 @@
 
 extends "res://scenes/actors/GActor.gd"
 
-signal state_changed
+class_name GEnemy
 
 enum State {
 	STAND,
@@ -18,9 +18,16 @@ var current_state : int = 0
 # Puede recibir daño ?
 var can_damage = false
 
+# Cuando esta marcado para morir, es para evitar que
+# muera o se haga la animacion de morir mas de una
+# vez
+var is_mark_to_dead : bool = false
+
 # Contine el PHCharacter con todos los datos
 # y eventos que invulucra
 var data
+
+signal state_changed
 
 func _init():
 	data = PHCharacter.new()
@@ -45,7 +52,9 @@ func damage(amount):
 	
 	if $Anim.has_animation("damage"):
 		$Anim.play("damage")
-
+	
+	data.damage(amount)
+	
 # Golpe al jugador
 func hit():
 	pass
@@ -64,4 +73,3 @@ func _on_DamageDelay_timeout():
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "dead":
 		queue_free()
-

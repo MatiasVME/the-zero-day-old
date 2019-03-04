@@ -10,7 +10,6 @@ var velocity = Vector2()
 
 export (int, "SEEK", "FLEE") var mode = 0
 
-var hp : int = 10
 var speed : int = 3
 var attack : int = 2
 
@@ -20,7 +19,7 @@ var attack_distance : float = 1
 # Objetivo random cuando no esta haciendo nada
 var random_objective : Vector2 = Vector2()
 # Ultima posicion del objetivo
-var last_objective_position
+var last_objective_position : Vector2
 
 onready var objective = null
 
@@ -35,16 +34,15 @@ func _ready():
 	randomize()
 	random_objective = get_random_objective()
 	
+	data.connect("dead", self, "_on_dead")
+	
 func _physics_process(delta):
-	if hp <= 0 and not $Anim.current_animation == "dead":
-		change_state(State.DIE)
-		
 	match state:
 		State.SEEKER:
-			if objective and hp > 3:
+			if objective and data.hp > 3:
 				sekeer(objective.global_position)
 				
-				if self.hp < 3:
+				if data.hp < 3:
 					change_state(State.RUN)
 			else:
 				change_state(State.RANDOM_WALK)
@@ -57,17 +55,18 @@ func _physics_process(delta):
 			objective.damage(10)
 			if global_position.distance_to(objective.global_position) > 20:
 				change_state(State.SEEKER)
-			if hp < 3:
+			if data.hp < 3:
 				change_state(State.RUN)
 		State.DIE:
-			if not $Anim.current_animation == "dead":
+			if not is_mark_to_dead:
+				is_mark_to_dead = true
 				.dead()
 		State.RANDOM_WALK:
 			if not objective:
 				sekeer(random_objective)
-			if hp < 3 and objective:
+			elif data.hp < 3 and objective:
 				change_state(State.RUN)
-			if hp > 3 and objective:
+			elif data.hp > 3 and objective:
 				change_state(State.SEEKER)
 
 # Devuelve la direccion en grados
@@ -121,7 +120,7 @@ func run(objective):
 			$Body.play("Run_Side")
 	
 	velocity = steer(objective)
-	move_and_slide(velocity)
+	move_and_slide(velocity * 2)
 	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
@@ -150,6 +149,8 @@ func get_random_objective():
 				rand_range(global_position.x + RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE),
 				rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.y + -RANDOM_RUN_DISTANCE) 
 			)
+			
+			print("iterando")
 	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
 		return random_objective
 	else:
@@ -158,7 +159,7 @@ func get_random_objective():
 			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.y + -RANDOM_RUN_DISTANCE) 
 		)
 
-	return random_objective 
+	return random_objective
 
 func _on_DetectArea_body_entered(body):
 	if body as GPlayer:
@@ -170,11 +171,15 @@ func _on_DetectArea_body_exited(body):
 	
 func _on_DamageDelay_timeout():
 	can_damage = true
+
+func _on_dead():
+	print("ha muerto")
+	change_state(State.DIE)
 	
 func _on_DamageArea_body_entered(body):
-	if body is GBullet:
-		.damage(1)
-		hp -= 1
+	if body is GBullet and not is_mark_to_dead:
+		.damage(1) # temp
 	
 func _on_ChangeRandomObjective_timeout():
 	random_objective = get_random_objective()
+	
