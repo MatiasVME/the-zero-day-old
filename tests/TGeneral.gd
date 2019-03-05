@@ -28,3 +28,15 @@ func _ready():
 	var item5 = Factory.ItemInWorldFactory.create_test_ammo()
 	item5.global_position = Vector2(201, 100)
 	add_child(item5)
+	
+	var item6 = Factory.ItemInWorldFactory.create_test_ammo()
+	item6.global_position = Vector2(201, 100)
+	add_child(item6)
+	
+	var item7 = Factory.ItemInWorldFactory.create_test_ammo()
+	item7.global_position = Vector2(201, 100)
+	add_child(item7)
+	
+	var item8 = Factory.ItemInWorldFactory.create_test_ammo()
+	item8.global_position = Vector2(201, 100)
+	add_child(item8)

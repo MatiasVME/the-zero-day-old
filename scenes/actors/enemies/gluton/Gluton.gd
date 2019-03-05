@@ -173,7 +173,6 @@ func _on_DamageDelay_timeout():
 	can_damage = true
 
 func _on_dead():
-	print("ha muerto")
 	change_state(State.DIE)
 	
 func _on_DamageArea_body_entered(body):
