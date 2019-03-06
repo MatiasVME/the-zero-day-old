@@ -30,6 +30,11 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/bullets/GBullet.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "GEnemy",
+"language": "GDScript",
+"path": "res://scenes/actors/enemies/GEnemy.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
@@ -109,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/PersistenceNode/persistence_node.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGCharacter",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGCharacter.gd"
@@ -144,7 +149,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGWeightInventory.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Vehicle",
 "class": "Tank",
 "language": "GDScript",
 "path": "res://scenes/actors/vehicles/tanks/Tank.gd"
@@ -159,6 +164,7 @@ _global_script_class_icons={
 "CreditSection": "",
 "GActor": "",
 "GBullet": "",
+"GEnemy": "",
 "GPlayer": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
@@ -216,7 +222,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 

@@ -57,6 +57,8 @@ var is_dead = false
 
 signal level_up(current_level)
 signal add_xp(amount)
+# Si muere, si drop_xp > 0, entonces dropea xp
+signal drop_xp(amount)
 # El amount es la cantidad que se añadió, no siempre es la
 # cantidad enviada por medio de "add_hp(amount)"
 signal add_hp(amount)
@@ -167,6 +169,9 @@ func remove_hp(_hp):
 			is_dead = true
 			emit_signal("remove_hp", hp_deleted)
 			emit_signal("dead")
+			
+			if xp_drop > 0: emit_signal("drop_xp", xp_drop)
+			
 			return
 	
 	emit_signal("remove_hp", hp_deleted)
@@ -255,7 +260,7 @@ func set_hp(_hp):
 		emit_signal("full_hp")
 	elif hp <= 0:
 		hp = 0
-		emit_signal("dead")
+		emit_signal("dead") # Es necesario?
 	
 func get_hp():
 	return hp

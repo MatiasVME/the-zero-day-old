@@ -26,8 +26,8 @@ func _on_player_get_damage(player, damage):
 func _on_player_gain_xp(player, xp):
 	$XPBar.value = player.data.xp
 	$XPBar.max_value = player.data.xp_required
-#	$XPBar.min_value = 0 # se puede obviar
 	
 func _on_player_level_up(player, new_level):
 	$HealthBar.max_value = player.data.max_hp
+	$Level.text = str(new_level)
 	

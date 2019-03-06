@@ -34,7 +34,11 @@ func _ready():
 	randomize()
 	random_objective = get_random_objective()
 	
+	data.hp = 10
+	data.xp_drop = 5 # temp
+	
 	data.connect("dead", self, "_on_dead")
+	data.connect("drop_xp", self, "_on_drop_xp")
 	
 func _physics_process(delta):
 	match state:
@@ -120,7 +124,7 @@ func run(objective):
 			$Body.play("Run_Side")
 	
 	velocity = steer(objective)
-	move_and_slide(velocity * 2)
+	move_and_slide(velocity * 3)
 	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
@@ -165,6 +169,10 @@ func _on_DetectArea_body_entered(body):
 	if body as GPlayer:
 		objective = body
 		
+func _on_drop_xp(amount):
+	# TEMP
+	DataManager.get_current_player_instance().add_xp(amount)
+	
 func _on_DetectArea_body_exited(body):
 	if body as GPlayer:
 		objective = null

@@ -25,6 +25,33 @@ position = Vector2( 354, 159 )
 [node name="Gluton3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 271, 198 )
 
+[node name="Gluton4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 425.755, 64.4223 )
+
+[node name="Gluton5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 471, 169 )
+
+[node name="Gluton6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 549, 43 )
+
+[node name="Gluton7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 621, 156 )
+
+[node name="Gluton8" parent="." instance=ExtResource( 5 )]
+position = Vector2( 667, 38 )
+
+[node name="Gluton9" parent="." instance=ExtResource( 5 )]
+position = Vector2( 521, 101 )
+
+[node name="Gluton10" parent="." instance=ExtResource( 5 )]
+position = Vector2( 450, -16 )
+
+[node name="Gluton11" parent="." instance=ExtResource( 5 )]
+position = Vector2( 333, -11 )
+
+[node name="Gluton12" parent="." instance=ExtResource( 5 )]
+position = Vector2( 391, 193 )
+
 [node name="XOR341" parent="." instance=ExtResource( 6 )]
 position = Vector2( 286, 68 )
 can_move = true
