@@ -87,10 +87,10 @@ func take_item(item, amount = 1):
 		return
 
 # Borra un item devuelve si lo elimina o no
-func delete_item(item):
+func delete_item(item, free_item = true):
 	if inv.has(item):
 		current_weight -= item.weight * item.amount
-		return .delete_item(item)
+		return .delete_item(item, free_item)
 
 func add_max_weight(weight):
 	max_weight += weight

@@ -20,6 +20,7 @@ var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
 
 signal player_changed(new_player)
 signal player_shooting(player, direction)
+signal player_reload
 
 signal player_gain_hp(player, amount)
 signal player_get_damage(player, amount)
@@ -58,6 +59,7 @@ func init_player(player_num : int) -> GPlayer:
 func cad_players(new_player : GPlayer, old_player = null):
 	if not new_player.is_connected("fire", self, "_on_player_fire"):
 		new_player.connect("fire", self, "_on_player_fire", [new_player])
+		new_player.connect("reload", self, "_on_player_reload")
 		
 		new_player.data.connect("add_hp", self, "_on_add_hp", [new_player])
 		new_player.data.connect("add_xp", self, "_on_add_xp", [new_player])
@@ -66,6 +68,7 @@ func cad_players(new_player : GPlayer, old_player = null):
 		
 	if old_player and not old_player.is_connected("fire", self, "_on_player_fire"):
 		old_player.disconnect("fire", self, "_on_player_fire")
+		old_player.disconnect("reload", self, "_on_player_reload")
 		
 		old_player.data.disconnect("add_hp", self, "_on_add_hp")
 		old_player.data.disconnect("add_xp", self, "_on_add_xp")
@@ -93,6 +96,9 @@ func get_next_player():
 	
 func _on_player_fire(direction, player):
 	emit_signal("player_shooting", player, direction)
+
+func _on_player_reload():
+	emit_signal("player_reload")
 
 func _on_add_hp(amount, player):
 	emit_signal("player_gain_hp", player, amount)

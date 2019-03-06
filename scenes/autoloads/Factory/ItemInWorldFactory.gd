@@ -15,3 +15,11 @@ static func create_test_ammo():
 	ammo_in_world.data = ammo
 	
 	return ammo_in_world
+
+# Encapsula un Item en un ItemInWorld
+static func create_from_item(item):
+	var item_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
+	
+	item_in_world.data = item
+	
+	return item_in_world

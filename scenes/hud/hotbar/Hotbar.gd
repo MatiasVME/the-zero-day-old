@@ -96,7 +96,8 @@ func _on_item_taken(item):
 	select_slot(current_slot)
 
 func _on_item_removed(row_num, slot_num):
-	update_hotbar_row(row_num)
+	update_hotbar_row(0)
+	# 0 para que siempre se quede en el primer row
 
 
 

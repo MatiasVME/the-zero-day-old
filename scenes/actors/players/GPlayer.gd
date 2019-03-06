@@ -19,6 +19,7 @@ var can_fire : bool = false
 signal fire(dir)
 signal dead
 signal spawn
+signal reload
 signal item_taken(item)
 
 func _ready():
@@ -110,6 +111,7 @@ func enable_player(_can_fire : bool = false):
 	
 	data.connect("item_equiped", self, "_on_item_equiped")
 
+# Esta funcion se llama mas de lo necesario - Necesita Revisión
 func reload():
 	# Prevenir que se llame a esta funcion inecesariamente
 	if not data.equip is PHDistanceWeapon:
@@ -136,6 +138,9 @@ func reload():
 	for i in ammunition_inv.size() - 1:
 		if ammunition_inv[i].ammo_amount == 0:
 			ammunition_inv.pop_front()
+	
+	# Para que BulletInfo se actualize
+	emit_signal("reload")
 	
 func _on_item_equiped(item):
 	update_weapon()

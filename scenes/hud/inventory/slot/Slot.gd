@@ -1,6 +1,7 @@
 extends Control
 
 var data : PHItem
+var slot_num = -1
 
 func add_item(item_data : PHItem):
 	data = item_data

@@ -166,10 +166,10 @@ func search_all_items_with_the_name(item_name):
 
 # Borra totalmente un item
 # NEEDTEST
-func delete_item(item):
+func delete_item(item, free_item = true):
 	if inv.has(item):
 		inv.erase(item)
-		item.queue_free()
+		if free_item : item.queue_free()
 		emit_signal("item_removed")
 		return true
 		

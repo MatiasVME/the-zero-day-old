@@ -9,6 +9,10 @@ var current_equip setget set_current_equip, get_current_equip
 func _ready():
 	PlayerManager.connect("player_changed", self, "_on_player_changed")
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
+	PlayerManager.connect("player_reload", self, "_on_player_reload")
+	
+	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
+	
 	
 func update_bullet_info():
 	if current_equip:
@@ -38,4 +42,9 @@ func _on_player_changed(new_player):
 
 func _on_player_shooting(player, direction):
 	update_bullet_info()
-	
+
+func _on_player_reload():
+	update_bullet_info()
+
+func _on_item_removed(row_num, slot_num):
+	update_bullet_info()

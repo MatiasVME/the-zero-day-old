@@ -6,6 +6,12 @@ var is_fulled : bool = false
 # Contiene instancias de Row.tcn
 var rows = []
 
+# Muestra si esta abierto el inventario
+var is_inventory_open = false
+
+# num de row y slot seleccionado
+var last_selected_slot = [-1,-1]
+
 var current_inv : RPGWeightInventory
 # Municion total de la arma actual
 var total_ammo = 0
@@ -20,6 +26,12 @@ func _ready():
 	
 	init_inventory()
 
+# Esto sera temporal hasta que le pongamos un botón
+func _input(event):
+	if not is_inventory_open : return
+	if event.is_action_pressed("ui_select"):
+		drop_selected_slot()
+
 # Actualiza el inventario en caso de un cambio
 func init_inventory():
 	create_row_if_can()
@@ -31,9 +43,43 @@ func init_inventory():
 # Añade un item al inventario visual (no al inventario del jugador)
 # normalmente el item es añadido con anterioridad.
 func add_item(item_data : PHItem):
-	get_last_row().add_item(item_data)
-	create_row_if_can()
+	var was_added = false
+	for row in rows:
+		if row.num_items < 5:
+			row.add_item(item_data)
+			was_added = true
+			break
+	if not was_added :
+		create_row_if_can()
+		get_last_row().add_item(item_data)
+
+func update_last_selected_slot(row, slot):
+	last_selected_slot = [row, slot]
+
+func drop_selected_slot():
+	if last_selected_slot[0] == -1 : return
 	
+	var row = rows[last_selected_slot[0]]
+	var item = row.remove_slot(last_selected_slot[1], false)
+	
+	if item == null : return
+	
+	# Si el equip actual es el item a borrar -> equip = null
+	if DataManager.get_current_player_instance().equip == item : DataManager.get_current_player_instance().equip = null
+	
+	var dropped_item = Factory.ItemInWorldFactory.create_from_item(item)
+	
+	dropped_item.global_position = PlayerManager.get_current_player().global_position + random_drop_distance(30) # Esto de aqui seria la distancia lejos del player que dropea el item
+	
+	PlayerManager.get_current_player().get_parent().add_child(dropped_item)
+	get_total_ammo()
+
+# Devuelve una posicion alrededor de un determinado radio
+func random_drop_distance(radius):
+	var x = ( randi() % radius*2 ) - radius # Random desde -radius a +radius
+	var y = sqrt(pow(radius,2) - pow(x,2))
+	return Vector2(x,y)
+
 func drop_item():
 	pass
 
@@ -60,7 +106,8 @@ func create_row_if_can():
 		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
 		$Container/MainColumn.add_child(get_last_row())
 		get_last_row().connect("item_removed", self, "_on_item_removed", [rows.size() - 1])
-	
+		get_last_row().init_row(rows.size() - 1) # le añadimos un identificador igual a su posición en el array row
+
 func get_last_row():
 	return rows[rows.size() - 1]
 
@@ -68,13 +115,16 @@ func get_last_row():
 # dependiendo de las municiones -para la arma actual- 
 # que que hay en el inventario
 func get_total_ammo():
+	# si el equip es null -> sale de la funcion
+	var equip = DataManager.get_current_player_instance().equip
+	if equip == null : return
+	
 	var inv = DataManager.get_current_inv().inv
 	total_ammo = 0
 	
 	for item in inv:
-		if item is PHAmmo and DataManager.get_current_player_instance().equip.ammo_type == item.ammo_type:
+		if item is PHAmmo and equip.ammo_type == item.ammo_type:
 			total_ammo += item.ammo_amount
-	
 	return total_ammo
 	
 func _on_item_added(item):
