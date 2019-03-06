@@ -18,7 +18,6 @@ rotation = -1.5708
 script = ExtResource( 3 )
 
 [node name="Cannon" type="Sprite" parent="Pivot" index="0"]
-rotation = 1.5708
 
 [connection signal="body_entered" from="EnterArea" to="." method="_on_EnterArea_body_entered"]
 [connection signal="body_exited" from="EnterArea" to="." method="_on_EnterArea_body_exited"]

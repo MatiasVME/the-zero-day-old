@@ -1,27 +1,56 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://scenes/actors/vehicles/tanks/Tank.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.gd" type="Script" id=2]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle01.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle02.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle03.png" type="Texture" id=5]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_idle04.png" type="Texture" id=6]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run01.png" type="Texture" id=7]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run02.png" type="Texture" id=8]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run03.png" type="Texture" id=9]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_run04.png" type="Texture" id=10]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/tank_cannon.png" type="Texture" id=11]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_01.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_02.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_04.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_down_01.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_down_02.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_down_03.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_down_04.png" type="Texture" id=10]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run01.png" type="Texture" id=11]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run02.png" type="Texture" id=12]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run03.png" type="Texture" id=13]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run04.png" type="Texture" id=14]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_up_01.png" type="Texture" id=15]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_up_02.png" type="Texture" id=16]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_up_03.png" type="Texture" id=17]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_up_04.png" type="Texture" id=18]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_down_01.png" type="Texture" id=19]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_down_02.png" type="Texture" id=20]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_down_03.png" type="Texture" id=21]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_run_side_down_04.png" type="Texture" id=22]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_canon.png" type="Texture" id=23]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_canon_side.png" type="Texture" id=24]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/images/new_tank-perspective/tank_canon_down.png" type="Texture" id=25]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "idle",
+"name": "foward_side",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
-"name": "foward",
+"name": "foward_down",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "foward_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ), ExtResource( 18 ) ],
+"loop": true,
+"name": "foward_side_up",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 19 ), ExtResource( 20 ), ExtResource( 21 ), ExtResource( 22 ) ],
+"loop": true,
+"name": "foward_side_down",
 "speed": 5.0
 } ]
 
@@ -40,18 +69,6 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 3, 0, 1, 2 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Base:animation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ "foward" ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -90,15 +107,18 @@ capacity = 2
 
 [node name="Base" parent="." index="0"]
 frames = SubResource( 1 )
-animation = "foward"
-frame = 3
+animation = "foward_up"
 
 [node name="Pivot" parent="." index="2"]
 position = Vector2( 0, 4 )
+cannon_up = ExtResource( 23 )
+cannon_side = ExtResource( 24 )
+cannon_down = ExtResource( 25 )
 
 [node name="Cannon" parent="Pivot" index="0"]
 position = Vector2( 3, 0 )
-texture = ExtResource( 11 )
+rotation = 1.5708
+texture = ExtResource( 23 )
 
 [node name="Anim" parent="." index="3"]
 anims/Foward = SubResource( 2 )

@@ -30,11 +30,6 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/bullets/GBullet.gd"
 }, {
 "base": "KinematicBody2D",
-"class": "GEnemy",
-"language": "GDScript",
-"path": "res://scenes/actors/enemies/GEnemy.gd"
-}, {
-"base": "KinematicBody2D",
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
@@ -164,7 +159,6 @@ _global_script_class_icons={
 "CreditSection": "",
 "GActor": "",
 "GBullet": "",
-"GEnemy": "",
 "GPlayer": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
@@ -222,7 +216,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 
