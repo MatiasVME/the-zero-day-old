@@ -4,7 +4,7 @@ extends Node
 var current_user : String = "User"
 
 var global_config # Es una referencia al diccionario de $GlobalConfig
-var user_config # Es una referencia al diccionario de $UserConfig
+var user_config # Es una referencia al diccionario de $DataUserConfig
 
 # Instancias, para ser utilizadas. Instancias de RPGElements.
 var players = []
@@ -108,6 +108,8 @@ func load_players():
 
 	for player in temp_data.values():
 		players.append(dict2inst(player))
+		
+	print("cargado los players: ", players)
 
 func create_user_config():
 	user_config = $DataUserConfig.get_data("UserConfig")
@@ -121,7 +123,7 @@ func create_user_config():
 	save_user_config()
 
 func load_user_config():
-	user_config = $UserConfig.get_data("UserConfig")
+	user_config = $DataUserConfig.get_data("UserConfig")
 	
 func save_user_config():
 #	user_config["Gold"] = Main.current_gold

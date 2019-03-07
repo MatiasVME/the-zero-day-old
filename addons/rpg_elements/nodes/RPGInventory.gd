@@ -124,24 +124,6 @@ func take_item_by_name(item_name, amount = 1):
 				pass
 	pass
 
-# Busca el item por el id y lo retorna si lo encuentra
-# retorna null si no lo encuentra. La cantidad es la
-# del item como esta apilado.
-# NEEDTEST
-#func take_item_by_id(id):
-#	var item
-#
-#	for i in range(0, inv.size()):
-#		if inv[i].get_instance_ID() == id:
-#			item = inv[i]
-#			remove(i)
-#			break
-#
-#	if item != null:
-#		emit_signal("item_taken")
-#
-#	return item
-
 # Retorna el primer item o pila de items que encuentra con 
 # el nombre indicado
 # NEEDTEST
@@ -193,11 +175,10 @@ func inv2dict():
 	
 	var i = 0
 	while i < inv.size():
-		# dict_inv.append(gdc2gd(inst2dict(inv[i]))) # OLD
-		dict_inv.append(gdc2gd(inv[i]))
+		dict_inv.append(gdc2gd(inst2dict(inv[i]))) # OLD
 		i += 1
 	
-	var dict = gdc2gd(inst2dict(self))
+	var dict = gdc2gd(inst2dict(self)) # OLD
 	dict["inv"] = dict_inv
 	
 	return dict

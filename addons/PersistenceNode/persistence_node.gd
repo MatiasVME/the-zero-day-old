@@ -393,7 +393,7 @@ func create_main_folder() -> void:
 func load_data(profile_name : String = "") -> bool:
 	var result
 	
-	if profile_name == null:
+	if profile_name == "":
 		if load_profile_default():
 			emit_signal("loaded")
 			return true

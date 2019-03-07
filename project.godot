@@ -34,7 +34,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/enemies/GEnemy.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "GActor",
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
@@ -129,7 +129,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGHelper.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGInventory",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGInventory.gd"
@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGStats.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGWeightInventory",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGWeightInventory.gd"

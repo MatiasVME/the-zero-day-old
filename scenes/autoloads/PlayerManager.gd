@@ -35,7 +35,9 @@ func init_player(player_num : int) -> GPlayer:
 	
 	var player
 	
-	match DataManager.players[player_num].player_type:
+	# Por algun motivo que la humanidad desconoce hay que
+	# castear eso a int :S
+	match int(DataManager.players[player_num].player_type):
 		PlayerType.DORBOT:
 			pass
 		PlayerType.MATBOT:

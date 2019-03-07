@@ -1,4 +1,4 @@
-extends "res://scenes/actors/GActor.gd"
+extends GActor
 
 class_name GPlayer
 

@@ -1,4 +1,4 @@
-extends "res://scenes/actors/players/GPlayer.gd"
+extends GPlayer
 
 func _ready():
 	pass
