@@ -36,4 +36,5 @@ func _on_player_level_up(player, new_level):
 	$HealthBar.max_value = player.data.max_hp
 	$Level.text = str(new_level)
 	$XPBar/AnimXP.play("level_up")
+	SoundManager.play(SoundManager.Sound.LEVEL_UP)
 	

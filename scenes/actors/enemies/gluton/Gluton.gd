@@ -64,6 +64,7 @@ func _physics_process(delta):
 		State.DIE:
 			if not is_mark_to_dead:
 				is_mark_to_dead = true
+				SoundManager.play(SoundManager.Sound.MONSTER_DEAD_1)
 				.dead()
 		State.RANDOM_WALK:
 			if not objective:
@@ -185,6 +186,7 @@ func _on_dead():
 	
 func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
+		SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
 		.damage(1) # temp
 	
 func _on_ChangeRandomObjective_timeout():

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Fire1.wav-b3d01032b1226dd0d0e03f7f6be7dfb8.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/Fire1.wav"
+dest_files=[ "res://.import/Fire1.wav-b3d01032b1226dd0d0e03f7f6be7dfb8.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

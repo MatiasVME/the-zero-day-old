@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/hit_1.wav-cdc58fdd5186867d2d45f447ae497946.sample"
+path="res://.import/LevelUp.wav-cf981cce2f018735c1eacf3ccfd610b4.sample"
 
 [deps]
 
-source_file="res://sounds/sfx/hit_1.wav"
-dest_files=[ "res://.import/hit_1.wav-cdc58fdd5186867d2d45f447ae497946.sample" ]
+source_file="res://sounds/sfx/LevelUp.wav"
+dest_files=[ "res://.import/LevelUp.wav-cf981cce2f018735c1eacf3ccfd610b4.sample" ]
 
 [params]
 
