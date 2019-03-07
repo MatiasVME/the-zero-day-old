@@ -154,8 +154,6 @@ func get_random_objective():
 				rand_range(global_position.x + RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE),
 				rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.y + -RANDOM_RUN_DISTANCE) 
 			)
-			
-			print("iterando")
 	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
 		return random_objective
 	else:
@@ -187,6 +185,7 @@ func _on_dead():
 func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
+		body.dead()
 		.damage(1) # temp
 	
 func _on_ChangeRandomObjective_timeout():
