@@ -19,15 +19,21 @@ func set_avatar_actor(avatar_actor):
 	
 func _on_player_gain_hp(player, hp):
 	$HealthBar.value = player.data.hp
+	$HealthBar/AnimHealth.play("health")
 	
 func _on_player_get_damage(player, damage):
 	$HealthBar.value = player.data.hp
+	$HealthBar/AnimHealth.play("damage")
 	
 func _on_player_gain_xp(player, xp):
 	$XPBar.value = player.data.xp
 	$XPBar.max_value = player.data.xp_required
 	
+	if not $XPBar/AnimXP.current_animation == "level_up" and not $XPBar/AnimXP.is_playing():
+		$XPBar/AnimXP.play("gain_xp")
+	
 func _on_player_level_up(player, new_level):
 	$HealthBar.max_value = player.data.max_hp
 	$Level.text = str(new_level)
+	$XPBar/AnimXP.play("level_up")
 	

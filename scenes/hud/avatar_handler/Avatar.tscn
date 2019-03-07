@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/hud/avatar_handler/Avatar.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/avatar_handler/images/avatar-background-normal.png" type="Texture" id=2]
@@ -9,6 +9,94 @@
 [ext_resource path="res://scenes/hud/avatar_handler/images/bars/XPBar.png" type="Texture" id=7]
 [ext_resource path="res://scenes/hud/avatar_handler/images/star.png" type="Texture" id=8]
 [ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "damage"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "health"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Heart:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "gain_xp"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Star:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "level_up"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("Star:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 4, 4 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Star:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( -2, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Level:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 3, 3 ), Vector2( 1, 1 ) ]
+}
 
 [node name="Avatar" type="Control"]
 anchor_right = 1.0
@@ -38,6 +126,10 @@ texture_progress = ExtResource( 5 )
 position = Vector2( -1, 0 )
 texture = ExtResource( 6 )
 
+[node name="AnimHealth" type="AnimationPlayer" parent="HealthBar"]
+anims/damage = SubResource( 1 )
+anims/health = SubResource( 2 )
+
 [node name="XPBar" type="TextureProgress" parent="."]
 margin_top = 29.0
 margin_right = 27.0
@@ -48,12 +140,18 @@ texture_progress = ExtResource( 7 )
 
 [node name="Star" type="Sprite" parent="XPBar"]
 position = Vector2( 30, 2 )
+rotation = 6.28319
 texture = ExtResource( 8 )
+
+[node name="AnimXP" type="AnimationPlayer" parent="XPBar"]
+anims/gain_xp = SubResource( 3 )
+anims/level_up = SubResource( 4 )
 
 [node name="Level" type="Label" parent="."]
 margin_left = 8.0
 margin_right = 26.0
 margin_bottom = 10.0
+rect_pivot_offset = Vector2( 9, 6 )
 custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.94902, 0.65098, 0.368627, 1 )
 text = "999"
