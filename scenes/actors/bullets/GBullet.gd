@@ -28,7 +28,6 @@ func dead():
 
 func _on_TimeToDead_timeout():
 	if not is_mark_to_dead:
-		is_mark_to_dead = true
 		dead()
 
 func _on_Anim_animation_finished(anim_name):

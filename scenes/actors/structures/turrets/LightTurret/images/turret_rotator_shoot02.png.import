@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/turret_rotator_shoot02.png-f8c795dd850d0e8abfb023f585e28a87.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
