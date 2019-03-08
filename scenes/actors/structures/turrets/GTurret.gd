@@ -36,7 +36,7 @@ func change_state(state):
 # Si no puede recivir daño talves tambien pueda lanzar
 # una animación de invulnerabilidad - TODO
 func damage(amount):
-
+	if is_mark_to_destroy : return
 	if $Anim.has_animation("damage"):
 		$Anim.play("damage")
 	if $Pivot/RotatorAnim.has_animation("damage"):# Animamos tambien el Rotator
@@ -45,6 +45,7 @@ func damage(amount):
 	data.damage(amount)
 
 func detect():
+	if is_mark_to_destroy : return
 	if $Anim.has_animation("detect"):
 		$Anim.play("detect")
 	if $Pivot/RotatorAnim.has_animation("detect"):
@@ -52,6 +53,7 @@ func detect():
 
 # Golpe al jugador
 func shoot():
+	if is_mark_to_destroy : return
 	if $Anim.has_animation("shoot"):
 		$Anim.play("shoot")
 	if $Pivot/RotatorAnim.has_animation("shoot"):
@@ -70,7 +72,7 @@ func destroy():
 		$Anim.emit_signal("animation_finished")
 
 func _on_destroy_animation_end(anim_name):
-	if anim_name == "dead":
+	if anim_name == "destroy":
 		queue_free()
 		
 	
