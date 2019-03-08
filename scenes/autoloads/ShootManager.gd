@@ -7,7 +7,8 @@ ShootManager.gd
 extends Node
 
 enum Bullet {
-	PLASMA
+	PLASMA,
+	COMMON_BULLET
 }
 #var bullet = Bullet.PLASMA
 
@@ -24,3 +25,5 @@ func get_bullet_instance(bullet):
 	match bullet:
 		Bullet.PLASMA:
 			return load("res://scenes/actors/bullets/plasma/Plasma.tscn").instance()
+		Bullet.COMMON_BULLET:
+			return load("res://scenes/actors/bullets/common_bullet/CommonBullet.tscn").instance()

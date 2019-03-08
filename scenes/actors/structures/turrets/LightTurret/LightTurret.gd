@@ -106,8 +106,9 @@ func track():
 
 func shoot():
 	
-	var bullet = ShootManager.fire((objective.global_position - global_position).normalized())
+	var bullet = ShootManager.fire((objective.global_position - global_position).normalized(), ShootManager.Bullet.COMMON_BULLET)
 	bullet.global_position = $Pivot/ShootPivot.global_position
+	bullet.rotation = $Pivot.rotation
 	get_parent().add_child(bullet)
 	
 	$Pivot/Rotator.frame = 0
