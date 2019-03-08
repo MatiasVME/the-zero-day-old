@@ -19,7 +19,8 @@ func _ready():
 
 func _physics_process(delta):
 	if trajectory == Trajectory.LINEAL:
-		move_and_slide(direction * delta * 10000)
+		# move_and_slide() no requiere delta
+		move_and_slide(direction * 250)
 
 func dead():
 	if not is_mark_to_dead:

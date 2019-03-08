@@ -56,11 +56,9 @@ func _physics_process(delta):
 			else:
 				change_state(State.RANDOM_WALK)
 		State.ATTACK:
-			objective.damage(10)
-			if global_position.distance_to(objective.global_position) > 20:
-				change_state(State.SEEKER)
-			if data.hp < 3:
-				change_state(State.RUN)
+			$Body.look_at(objective.position)
+			$Body.flip_h = false
+			pass
 		State.DIE:
 			if not is_mark_to_dead:
 				is_mark_to_dead = true
@@ -191,3 +189,12 @@ func _on_DamageArea_body_entered(body):
 func _on_ChangeRandomObjective_timeout():
 	random_objective = get_random_objective()
 	
+func _on_AttackArea_body_entered(body):
+	if body is GPlayer:
+		change_state(State.ATTACK)
+		$Body.play("Attack")
+
+func _on_AttackArea_body_exited(body):
+	if body is GPlayer:
+		$Body.rotation_degrees = 0
+		change_state(State.SEEKER)
