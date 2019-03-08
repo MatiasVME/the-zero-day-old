@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/actors/structures/GStructure.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/structures/turrets/GTurret.gd" type="Script" id=2]
+
+[node name="GTurret" instance=ExtResource( 1 )]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="Base" parent="." index="1"]
+animation = ""
+
+[node name="DetectArea" type="Area2D" parent="." index="3"]
+editor/display_folded = true
+
+[node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
+
+[node name="DamageArea" type="Area2D" parent="." index="4"]
+editor/display_folded = true
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="DamageArea" index="0"]
+
+[node name="Pivot" type="Position2D" parent="." index="5"]
+
+[node name="Rotator" type="AnimatedSprite" parent="Pivot" index="0"]
+
+[node name="RotatorAnim" type="AnimationPlayer" parent="Pivot" index="1"]
+root_node = NodePath("../Rotator")
+
+[node name="ShootPivot" type="Position2D" parent="Pivot" index="2"]
+position = Vector2( 16, 0 )
+
+[node name="AttackDelay" type="Timer" parent="." index="6"]
+

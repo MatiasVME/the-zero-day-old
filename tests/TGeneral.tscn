@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tests/TGeneral.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/camera/Camera.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=7]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
@@ -55,4 +56,14 @@ position = Vector2( 391, 193 )
 [node name="XOR341" parent="." instance=ExtResource( 6 )]
 position = Vector2( 286, 68 )
 can_move = true
+
+[node name="LightTurret" parent="." instance=ExtResource( 7 )]
+position = Vector2( 63.4653, 271.965 )
+collision_layer = 1
+collision_mask = 1
+
+[node name="LightTurret2" parent="." instance=ExtResource( 7 )]
+position = Vector2( -42.1653, 189.963 )
+collision_layer = 1
+collision_mask = 1
 
