@@ -14,18 +14,18 @@ func _ready():
 	pass
 
 func _on_MainMenu_play_pressed():
-#Cambiar a menu Play
+	# Cambiar a menu Play
 	camera.target.focus = false
 	camera.target = play_menu
 	camera.target.focus = true
 	pass
 
 func _on_MainMenu_options_pressed():
-#Cambiar a menu Options
+	# Cambiar a menu Options
 	pass
 
 func _on_MainMenu_credits_pressed():
-#Cambiar a menu Credits
+	# Cambiar a menu Credits
 	camera.target.focus = false
 	camera.target = credits_menu
 	camera.target.focus = true
@@ -41,15 +41,13 @@ func _on_Play_back_pressed():
 
 func _on_CameraMenu_target_reached():
 	if splash and camera.target != splash:
-		splash.queue_free()
+		splash.get_node("AnimSplash").play("finish")
 		splash = null
-
 
 func _on_NotesMenu_back_from_notes_pressed():
 	camera.target.focus = false
 	camera.target = main_menu
 	camera.target.focus = true
-
 
 func _on_MainMenu_notes_pressed():
 	camera.target.focus = false
