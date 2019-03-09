@@ -1,3 +1,8 @@
 extends KinematicBody2D
 
 class_name GActor
+
+# Cuando esta marcado para morir, es para evitar que
+# muera mas de una vez o se haga la animacion de morir 
+# mas de una vez
+var is_mark_to_dead = false

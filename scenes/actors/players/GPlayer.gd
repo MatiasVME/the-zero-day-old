@@ -16,6 +16,8 @@ var input_run : bool = false
 var can_move : bool = false
 var can_fire : bool = false
 
+var is_disabled = false
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -24,11 +26,12 @@ signal item_taken(item)
 
 func _ready():
 	connect("fire", self, "_on_fire")
+	data.connect("dead", self, "_on_dead")
 	
 	update_weapon()
 
 func _physics_process(delta):
-	if not can_move:
+	if not can_move or is_disabled:
 		return
 		
 	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
@@ -92,8 +95,9 @@ func update_weapon():
 	if data.equip is PHWeapon:
 		can_fire = true
 	
-func disable_player():
-	visible = false
+func disable_player(_visible : = false):
+	is_disabled = true
+	visible = _visible
 	can_move = false
 	can_fire = false
 	$Collision.disabled = true
@@ -104,6 +108,7 @@ func disable_player():
 		data.disconnect("item_equiped", self, "_on_item_equiped")
 	
 func enable_player(_can_fire : bool = false):
+	is_disabled = false
 	visible = true
 	can_move = true
 	can_fire = _can_fire
@@ -141,7 +146,13 @@ func reload():
 	
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
-	
+
+func _on_dead():
+	is_mark_to_dead = true
+	disable_player(true)
+	$Anim.play("dead")
+	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
+
 func _on_item_equiped(item):
 	update_weapon()
 
@@ -156,3 +167,8 @@ func _on_fire(dir):
 	var bullet = ShootManager.fire(dir)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
 	get_parent().add_child(bullet)
+
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "dead":
+		visible = false
+		

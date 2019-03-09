@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/autoloads/SoundManager.gd" type="Script" id=1]
 [ext_resource path="res://sounds/sfx/Fire1.wav" type="AudioStream" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://sounds/sfx/MonsterDamage2.wav" type="AudioStream" id=7]
 [ext_resource path="res://sounds/sfx/LevelUp.wav" type="AudioStream" id=8]
 [ext_resource path="res://sounds/sfx/PlayerDamage1.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/sfx/PlayerDead1.wav" type="AudioStream" id=10]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource( 1 )
@@ -38,4 +39,7 @@ stream = ExtResource( 8 )
 
 [node name="PlayerDamage1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="PlayerDead1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 

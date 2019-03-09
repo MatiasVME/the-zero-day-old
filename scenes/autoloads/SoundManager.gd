@@ -8,7 +8,8 @@ enum Sound {
 	MONSTER_DAMAGE_1,
 	MONSTER_DAMAGE_2,
 	LEVEL_UP,
-	PLAYER_DAMAGE_1
+	PLAYER_DAMAGE_1,
+	PLAYER_DEAD_1
 }
 
 func play(sound):
@@ -32,5 +33,6 @@ func play(sound):
 			$LevelUp.play()
 		Sound.PLAYER_DAMAGE_1:
 			$PlayerDamage1.play()
-			
+		Sound.PLAYER_DEAD_1:
+			$PlayerDead1.play()
 			

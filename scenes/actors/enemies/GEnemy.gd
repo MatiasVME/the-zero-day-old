@@ -18,11 +18,6 @@ var current_state : int = 0
 # Puede recibir daño ?
 var can_damage = false
 
-# Cuando esta marcado para morir, es para evitar que
-# muera o se haga la animacion de morir mas de una
-# vez
-var is_mark_to_dead : bool = false
-
 # Contine el PHCharacter con todos los datos
 # y eventos que invulucra
 var data
