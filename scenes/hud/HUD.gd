@@ -2,6 +2,10 @@ extends CanvasLayer
 
 var hud_actor
 
+func _ready():
+	PlayerManager.connect("player_dead", self, "_on_player_dead")
+	PlayerManager.connect("player_get_damage", self, "_on_get_damage")
+	
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
 		$AnimInv.play("show")
@@ -18,3 +22,17 @@ func set_hud_actor(actor : GActor):
 	
 	$Hotbar.set_hotbar_actor(actor)
 	$AvatarHandler.add_avatar(actor)
+	
+func _on_player_dead(player):
+	$CurtainAnim.play("dead")
+	
+#	$AnimInv.play("hide")
+	$AnimGameMenu.play("hide")
+	$AnimHotbar.play("hide")
+	$AnimBulletInfo.play("hide")
+	$AnimAvatarHandler.play("hide")
+	
+func _on_get_damage(player, damage):
+	$CurtainAnim.play("hit")
+	
+	

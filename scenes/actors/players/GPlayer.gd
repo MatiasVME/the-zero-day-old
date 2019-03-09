@@ -26,7 +26,9 @@ signal item_taken(item)
 
 func _ready():
 	connect("fire", self, "_on_fire")
+	
 	data.connect("dead", self, "_on_dead")
+	data.connect("remove_hp", self, "_on_remove_hp")
 	
 	update_weapon()
 
@@ -69,7 +71,7 @@ func _physics_process(delta):
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
 	else:
-		if $Anim.current_animation != "Idle" or not $Anim.is_playing():
+		if $Anim.current_animation != "Idle" and $Anim.current_animation != "hit" or not $Anim.is_playing():
 			$Anim.play("Idle")
 			$Sprite.speed_scale = 0.1
 		
@@ -152,6 +154,9 @@ func _on_dead():
 	disable_player(true)
 	$Anim.play("dead")
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
+
+func _on_remove_hp(amount):
+	$Anim.play("hit")
 
 func _on_item_equiped(item):
 	update_weapon()

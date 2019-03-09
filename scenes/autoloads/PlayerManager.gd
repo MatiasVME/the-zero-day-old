@@ -26,6 +26,7 @@ signal player_gain_hp(player, amount)
 signal player_get_damage(player, amount)
 signal player_gain_xp(player, amount)
 signal player_level_up(player, new_level)
+signal player_dead(player)
 
 # Inicia y retorna un player de los que estan creados en el
 # DataManager.
@@ -67,6 +68,7 @@ func cad_players(new_player : GPlayer, old_player = null):
 		new_player.data.connect("add_xp", self, "_on_add_xp", [new_player])
 		new_player.data.connect("remove_hp", self, "_on_remove_hp", [new_player])
 		new_player.data.connect("level_up", self, "_on_level_up", [new_player])
+		new_player.data.connect("dead", self, "_on_dead", [new_player])
 		
 	if old_player and not old_player.is_connected("fire", self, "_on_player_fire"):
 		old_player.disconnect("fire", self, "_on_player_fire")
@@ -76,6 +78,7 @@ func cad_players(new_player : GPlayer, old_player = null):
 		old_player.data.disconnect("add_xp", self, "_on_add_xp")
 		old_player.data.disconnect("remove_hp", self, "_on_remove_hp")
 		old_player.data.disconnect("level_up", self, "_on_level_up")
+		old_player.data.disconnect("dead", self, "_on_dead")
 
 # Devuelve la instancia de el player actual (GPlayer)
 func get_current_player():
@@ -95,7 +98,10 @@ func get_next_player():
 		return next_player
 	else:
 		return get_current_player()
-	
+
+func _on_dead(player):
+	emit_signal("player_dead", player)
+
 func _on_player_fire(direction, player):
 	emit_signal("player_shooting", player, direction)
 

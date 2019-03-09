@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
@@ -6,6 +6,38 @@
 [ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Animation" id=11]
+resource_name = "dead"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Curtain:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Curtain:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.921569, 0.337255, 0.294118, 0 ), Color( 0.921569, 0.337255, 0.294118, 0.588235 ), Color( 0.921569, 0.337255, 0.294118, 0 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "hide"
@@ -87,13 +119,152 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 16, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hotbar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 20 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Hotbar:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("BulletInfo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.0408333, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 80, 0 ) ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("BulletInfo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 80, 0 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AvatarHandler:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -96, 0 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("AvatarHandler:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5 ),
+"update": 0,
+"values": [ Vector2( -96, 0 ), Vector2( 0, 0 ) ]
+}
+
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_horizontal_guides_": [  ]
 }
 
+[node name="Curtain" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 1, 1, 1, 0 )
+
+[node name="CurtainAnim" type="AnimationPlayer" parent="."]
+anims/dead = SubResource( 11 )
+anims/hit = SubResource( 12 )
+
 [node name="Inventory" parent="." instance=ExtResource( 2 )]
+visible = false
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 360, 0 )
 
@@ -102,12 +273,36 @@ anims/hide = SubResource( 1 )
 anims/show = SubResource( 2 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
+position = Vector2( 16, 0 )
+
+[node name="AnimGameMenu" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/hide = SubResource( 3 )
+anims/show = SubResource( 4 )
 
 [node name="Hotbar" parent="." instance=ExtResource( 4 )]
+position = Vector2( 0, 20 )
+
+[node name="AnimHotbar" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/hide = SubResource( 5 )
+anims/show = SubResource( 6 )
 
 [node name="BulletInfo" parent="." instance=ExtResource( 5 )]
+position = Vector2( 80, 0 )
+
+[node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/hide = SubResource( 7 )
+anims/show = SubResource( 8 )
 
 [node name="AvatarHandler" parent="." instance=ExtResource( 6 )]
+position = Vector2( -96, 0 )
+
+[node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
+autoplay = "show"
+anims/hide = SubResource( 9 )
+anims/show = SubResource( 10 )
 
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]
 
