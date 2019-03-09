@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/main_screens/Splash.gd" type="Script" id=1]
-[ext_resource path="res://scenes/enviroment/desert/cactus.png" type="Texture" id=2]
-[ext_resource path="res://scenes/enviroment/plants/big_tree.png" type="Texture" id=3]
+[ext_resource path="res://scenes/main_screens/images/logo.png" type="Texture" id=2]
+[ext_resource path="res://scenes/main_screens/images/cloud1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/main_screens/images/cloud2.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
-
 resource_name = "Intro"
 length = 5.0
 tracks/0/type = "value"
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Cloud:position")
+tracks/1/path = NodePath("Cloud1:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
@@ -57,7 +57,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Cloud:modulate")
+tracks/4/path = NodePath("Cloud1:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -87,26 +87,24 @@ anchor_bottom = 1.0
 
 [node name="TextureRect" type="TextureRect" parent="Sky/CenterContainer"]
 modulate = Color( 1, 1, 1, 0 )
-margin_left = 172.0
-margin_top = 104.0
-margin_right = 188.0
-margin_bottom = 136.0
+margin_left = 52.0
+margin_top = 48.0
+margin_right = 308.0
+margin_bottom = 192.0
 texture = ExtResource( 2 )
 
-[node name="Cloud" type="Sprite" parent="."]
+[node name="Cloud1" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( -109.794, -164.931 )
-scale = Vector2( 4.14858, 1.84929 )
 texture = ExtResource( 3 )
 
 [node name="Cloud2" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0 )
 position = Vector2( 88.655, -40 )
-scale = Vector2( 7.50464, 3.1929 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
-[node name="AnimationSplash" type="AnimationPlayer" parent="."]
+[node name="AnimSplash" type="AnimationPlayer" parent="."]
 autoplay = "Intro"
 anims/Intro = SubResource( 1 )
 
-[connection signal="animation_finished" from="AnimationSplash" to="." method="_on_AnimationSplash_animation_finished"]
+[connection signal="animation_finished" from="AnimSplash" to="." method="_on_AnimationSplash_animation_finished"]

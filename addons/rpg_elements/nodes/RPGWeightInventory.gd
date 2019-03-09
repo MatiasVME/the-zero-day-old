@@ -56,7 +56,7 @@ func add_item(item : RPGItem) -> bool:
 		
 		if total_weight == max_weight:
 			inventory_full = true
-			emit_signal("is_full")
+			emit_signal("fulled")
 		
 		return true
 	else:
