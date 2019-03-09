@@ -23,6 +23,9 @@ var last_objective_position : Vector2
 
 onready var objective = null
 
+# Se usa para atacar solo una vez
+var ot_attack = true
+
 func _ready():
 	state = State.RANDOM_WALK
 	
@@ -58,7 +61,12 @@ func _physics_process(delta):
 		State.ATTACK:
 			$Body.look_at(objective.position)
 			$Body.flip_h = false
-			pass
+			
+			if $Body.frame == 10 and ot_attack:
+				ot_attack = false
+				objective.data.damage(1)
+			elif $Body.frame == 11:
+				ot_attack = true
 		State.DIE:
 			if not is_mark_to_dead:
 				is_mark_to_dead = true

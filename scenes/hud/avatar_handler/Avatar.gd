@@ -25,6 +25,8 @@ func _on_player_get_damage(player, damage):
 	$HealthBar.value = player.data.hp
 	$HealthBar/AnimHealth.play("damage")
 	
+	SoundManager.play(SoundManager.Sound.PLAYER_DAMAGE_1)
+	
 func _on_player_gain_xp(player, xp):
 	$XPBar.value = player.data.xp
 	$XPBar.max_value = player.data.xp_required

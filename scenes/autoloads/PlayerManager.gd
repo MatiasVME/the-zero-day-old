@@ -106,7 +106,7 @@ func _on_add_hp(amount, player):
 	emit_signal("player_gain_hp", player, amount)
 	
 func _on_remove_hp(amount, player):
-	emit_signal("player_get_damge", player, amount)
+	emit_signal("player_get_damage", player, amount)
 
 func _on_add_xp(amount, player):
 	emit_signal("player_gain_xp", player, amount)
