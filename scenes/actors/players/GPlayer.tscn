@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=2]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=3]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/melee_attack/BoxingAttack.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -15,17 +16,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk_side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "run_down",
+"name": "run_side",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -40,7 +31,17 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "run_side",
+"name": "walk_side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "run_down",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk_down",
 "speed": 5.0
 } ]
 
@@ -86,7 +87,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "hit"
 length = 0.2
 tracks/0/type = "value"
@@ -114,7 +115,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 
 [node name="GPlayer" type="KinematicBody2D" groups=[
 "Player",
@@ -133,14 +134,17 @@ shape = SubResource( 2 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 3 )
-anims/hit = SubResource( 5 )
+anims/hit = SubResource( 4 )
 
 [node name="GetArea" type="Area2D" parent="."]
+editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="GetArea"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
-[node name="GWeaponInBattle" parent="." instance=ExtResource( 5 )]
+[node name="BoxingAttack" parent="." instance=ExtResource( 5 )]
+
+[node name="GWeaponInBattle" parent="." instance=ExtResource( 6 )]
 
 [node name="TimeToReload" type="Timer" parent="."]
 one_shot = true
