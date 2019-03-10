@@ -1,10 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/actors/melee_attack/BoxingAttack.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/melee_attack/Images/boxing.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 6.08276
+radius = 3.16228
 
 [sub_resource type="Animation" id=2]
 resource_name = "box_hit"
@@ -58,8 +58,24 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Vector2( -5, 0 ), Vector2( 0, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("HitArea/Collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, false, true ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 6.08276
 
 [node name="BoxingAttack" type="Node2D"]
+z_index = 3
 script = ExtResource( 1 )
 
 [node name="Weapon" type="KinematicBody2D" parent="."]
@@ -72,10 +88,21 @@ shape = SubResource( 1 )
 disabled = true
 
 [node name="WeaponSprite" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -5, 0 )
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 offset = Vector2( 13, 0 )
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/box_hit = SubResource( 2 )
 
+[node name="HitArea" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="HitArea"]
+position = Vector2( 12, 0 )
+shape = SubResource( 3 )
+disabled = true
+
+[connection signal="body_entered" from="HitArea" to="." method="_on_HitArea_body_entered"]

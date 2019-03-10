@@ -91,7 +91,7 @@ func _physics_process(delta):
 	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
 		reload()
 	elif not data.equip and input_fire:
-		$BoxingAttack/Anim.play("box_hit")
+		melee_attack()
 
 func update_weapon():
 	$GWeaponInBattle.set_weapon(data.equip)
@@ -153,6 +153,10 @@ func reload():
 	
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
+
+func melee_attack():
+	$BoxingAttack/Anim.play("box_hit")
+	SoundManager.play(SoundManager.Sound.HIT_1)
 
 func _on_dead():
 	is_mark_to_dead = true

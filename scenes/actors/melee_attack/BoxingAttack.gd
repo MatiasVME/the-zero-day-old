@@ -38,3 +38,9 @@ func remove_weapon():
 	data = null
 	$WeaponSprite.texture = load("res://scenes/actors/melee_attack/Images/boxing.png")
 	emit_signal("weapon_removed")
+
+func _on_HitArea_body_entered(body):
+	if body is GEnemy:
+		body.damage(1)
+	elif body is GBullet:
+		body.direction = body.direction.bounce(global_position.normalized())
