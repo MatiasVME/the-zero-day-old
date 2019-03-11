@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/main_screens/NotesMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main_screens/images/rect_9patch_button_normal.png" type="Texture" id=2]
 [ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/main_screens/reusable_controls/ButtonNinePatch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/buttons/arrow_right/button_arrow_normal_right.png" type="Texture" id=4]
+[ext_resource path="res://scenes/buttons/arrow_right/button_arrow_pressed_right.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/arrow_right/button_arrow_hover_right.png" type="Texture" id=6]
 
 [node name="NotesMenu" type="Node2D"]
 position = Vector2( 180, 120 )
@@ -71,16 +73,14 @@ margin_right = 360.0
 margin_bottom = 240.0
 size_flags_horizontal = 3
 
-[node name="BackFromNotes" parent="HBoxContainer/CenterContainer" instance=ExtResource( 4 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 12.0
-margin_top = 102.0
-margin_right = 60.0
-margin_bottom = 138.0
-focus_neighbour_left = NodePath("../../MarginContainer/NinePatchRect/MarginContainer/ScrollContainer")
+[node name="BackFromNotes" type="TextureButton" parent="HBoxContainer/CenterContainer"]
+margin_left = 20.0
+margin_top = 104.0
+margin_right = 52.0
+margin_bottom = 136.0
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
 
 [connection signal="gui_input" from="HBoxContainer/MarginContainer/NinePatchRect" to="." method="_on_NinePatchRect_gui_input"]
-[connection signal="mouse_got_focus" from="HBoxContainer/CenterContainer/BackFromNotes" to="." method="_on_mouse_got_focus"]
-[connection signal="mouse_lost_focus" from="HBoxContainer/CenterContainer/BackFromNotes" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="HBoxContainer/CenterContainer/BackFromNotes" to="." method="_on_BackFromNotes_pressed"]

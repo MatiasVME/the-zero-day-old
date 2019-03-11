@@ -9,12 +9,9 @@ func _ready():
 	pass
 	
 func get_notes(path : String):
-#Cargar notas e version
+	# Cargar notas e version
 	pass
 
 func _on_BackFromNotes_pressed():
 	emit_signal("back_from_notes_pressed")
 
-
-func _on_BackFromNotes_mouse_got_focus():
-	pass # Replace with function body.

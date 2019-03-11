@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/main_screens/Play.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main_screens/reusable_controls/ButtonNinePatch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down.png" type="Texture" id=3]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_pressed.png" type="Texture" id=4]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_hover.png" type="Texture" id=5]
 
 [node name="Play" type="Node2D"]
 position = Vector2( 180, 120 )
@@ -18,14 +21,14 @@ rect_min_size = Vector2( 360, 240 )
 
 [node name="Control" type="Control" parent="VBoxContainer"]
 margin_right = 360.0
-margin_bottom = 58.0
+margin_bottom = 66.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 62.0
+margin_top = 70.0
 margin_right = 360.0
-margin_bottom = 178.0
+margin_bottom = 203.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -34,9 +37,9 @@ size_flags_stretch_ratio = 2.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 25.0
-margin_top = 40.0
+margin_top = 48.0
 margin_right = 153.0
-margin_bottom = 76.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 128, 36 )
 focus_neighbour_right = NodePath("../Multiplayer")
 focus_neighbour_bottom = NodePath("../../Back")
@@ -46,25 +49,23 @@ size_flags_vertical = 4
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 207.0
-margin_top = 40.0
+margin_top = 48.0
 margin_right = 335.0
-margin_bottom = 76.0
+margin_bottom = 84.0
 rect_min_size = Vector2( 128, 36 )
 focus_neighbour_left = NodePath("../Campaign")
 focus_neighbour_bottom = NodePath("../../Back")
 size_flags_vertical = 4
 
-[node name="Back" parent="VBoxContainer" instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 156.0
-margin_top = 182.0
-margin_right = 204.0
-margin_bottom = 218.0
-focus_neighbour_left = NodePath("../HBoxContainer/Campaign")
-focus_neighbour_top = NodePath("../HBoxContainer/Campaign")
-focus_neighbour_right = NodePath("../HBoxContainer/Multiplayer")
-size_flags_vertical = 2
+[node name="Back" type="TextureButton" parent="VBoxContainer"]
+margin_left = 164.0
+margin_top = 207.0
+margin_right = 196.0
+margin_bottom = 239.0
+size_flags_horizontal = 4
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
 
 [connection signal="mouse_got_focus" from="VBoxContainer/HBoxContainer/Campaign" to="." method="_on_mouse_got_focus"]
 [connection signal="mouse_lost_focus" from="VBoxContainer/HBoxContainer/Campaign" to="." method="_on_mouse_lost_focus"]
@@ -72,6 +73,4 @@ size_flags_vertical = 2
 [connection signal="mouse_got_focus" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_mouse_got_focus"]
 [connection signal="mouse_lost_focus" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Multiplayer" to="." method="_on_Multiplayer_pressed"]
-[connection signal="mouse_got_focus" from="VBoxContainer/Back" to="." method="_on_mouse_got_focus"]
-[connection signal="mouse_lost_focus" from="VBoxContainer/Back" to="." method="_on_mouse_lost_focus"]
 [connection signal="pressed" from="VBoxContainer/Back" to="." method="_on_Back_pressed"]

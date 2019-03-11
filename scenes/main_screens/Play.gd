@@ -13,10 +13,8 @@ func _ready():
 func _on_Campaign_pressed():
 	emit_signal("campaign_pressed")
 
-
 func _on_Multiplayer_pressed():
 	emit_signal("multiplayer_pressed")
-
 
 func _on_Back_pressed():
 	emit_signal("back_pressed")
