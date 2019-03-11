@@ -20,7 +20,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "damage"
 length = 0.4
 tracks/0/type = "value"
@@ -36,8 +36,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.751659 ), Color( 0.721569, 0.247059, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "destroy"
+[sub_resource type="Animation" id=4]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -64,7 +63,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base:scale")
@@ -79,12 +78,12 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 70.0
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 
-[sub_resource type="SpriteFrames" id=7]
+[sub_resource type="SpriteFrames" id=8]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
@@ -97,7 +96,7 @@ animations = [ {
 "speed": 13.3
 } ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -124,29 +123,29 @@ frames = SubResource( 2 )
 animation = "Idle"
 
 [node name="Anim" parent="." index="2"]
-anims/damage = SubResource( 9 )
-anims/destroy = SubResource( 3 )
-anims/detect = SubResource( 4 )
+anims/damage = SubResource( 3 )
+anims/destroy = SubResource( 4 )
+anims/detect = SubResource( 5 )
 
 [node name="DetectArea" parent="." index="3"]
 editor/display_folded = false
 
 [node name="Collision" parent="DetectArea" index="0"]
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="DamageArea" parent="." index="4"]
 editor/display_folded = false
 
 [node name="Collision" parent="DamageArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="Rotator" parent="Pivot" index="0"]
 rotation = 1.5708
-frames = SubResource( 7 )
+frames = SubResource( 8 )
 animation = "Idle"
 
 [node name="RotatorAnim" parent="Pivot" index="1"]
-anims/shoot = SubResource( 8 )
+anims/shoot = SubResource( 9 )
 
 [node name="PatrolDelay" type="Timer" parent="." index="7"]
 

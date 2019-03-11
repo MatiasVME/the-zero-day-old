@@ -43,4 +43,4 @@ func _on_HitArea_body_entered(body):
 	if body is GEnemy:
 		body.damage(1)
 	elif body is GBullet:
-		body.direction = body.direction.bounce(global_position.normalized())
+		body.direction = body.direction.bounce(get_parent().global_position.normalized())

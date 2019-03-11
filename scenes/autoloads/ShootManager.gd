@@ -10,15 +10,15 @@ enum Bullet {
 	PLASMA,
 	COMMON_BULLET
 }
-#var bullet = Bullet.PLASMA
 
 func _physics_process(delta):
 	pass
 
-func fire(direction : Vector2, _bullet = Bullet.PLASMA, time_life : float = 5.0, trajectory : int = 0) -> GBullet:
+func fire(direction : Vector2, _bullet = Bullet.PLASMA, damage : int = 1, time_life : float = 3.0, trajectory : int = 0) -> GBullet:
 	var bullet = get_bullet_instance(_bullet)
 	bullet.direction = direction
-		
+	bullet.damage = damage
+	
 	return bullet
 	
 func get_bullet_instance(bullet):

@@ -170,12 +170,6 @@ func _on_remove_hp(amount):
 func _on_item_equiped(item):
 	update_weapon()
 
-func _on_GetArea_body_entered(body):
-	if body is ItemInWorld:
-		if DataManager.inventories.size() > 0:
-			body.take_item(DataManager.inventories[DataManager.current_player])
-			emit_signal("item_taken", body.data)
-
 func _on_fire(dir):
 	# Temp
 	var bullet = ShootManager.fire(dir)
@@ -185,4 +179,16 @@ func _on_fire(dir):
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "dead":
 		visible = false
-		
+
+func _on_InteractArea_body_entered(body):
+	if body is ItemInWorld:
+		if DataManager.inventories.size() > 0:
+			body.take_item(DataManager.inventories[DataManager.current_player])
+			emit_signal("item_taken", body.data)
+	elif body is GBullet:
+		data.damage(body.damage)
+		body.dead()
+
+
+
+

@@ -190,9 +190,9 @@ func _on_dead():
 	
 func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
-		SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
 		body.dead()
 		.damage(1) # temp
+		if data.hp != 0: SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
 	
 func _on_ChangeRandomObjective_timeout():
 	random_objective = get_random_objective()

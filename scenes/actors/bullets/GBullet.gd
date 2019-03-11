@@ -10,6 +10,12 @@ var trajectory = Trajectory.LINEAL
 #var origin : Vector2
 var direction : Vector2
 
+# El que dispara las balas le dice a la bala cuanto daño
+# hace, por ejemplo. Una torreta dispara y le asigna
+# 2 de daño a la bala y la bala cuando choca con el
+# player le hace 2 de daño.
+var damage = 1
+
 # Previene que se haga la animacion de dead mas
 # de una vez.
 var is_mark_to_dead = false

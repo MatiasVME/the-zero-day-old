@@ -93,6 +93,7 @@ func get_random_objective():
 	
 	var x = rand_range(-1,1)
 	var y = rand_range(-1,1)
+	
 	return global_position + Vector2(x,y)
 	
 func patrol():
@@ -105,8 +106,12 @@ func track():
 	$PatrolDelay.stop()
 
 func shoot():
+	var bullet = ShootManager.fire(
+		(objective.global_position - global_position).normalized(),
+		ShootManager.Bullet.COMMON_BULLET,
+		attack
+	)
 	
-	var bullet = ShootManager.fire((objective.global_position - global_position).normalized(), ShootManager.Bullet.COMMON_BULLET)
 	bullet.global_position = $Pivot/ShootPivot.global_position
 	bullet.rotation = $Pivot.rotation
 	get_parent().add_child(bullet)
@@ -126,6 +131,8 @@ func _on_drop_xp(amount):
 	DataManager.get_current_player_instance().add_xp(amount)
 	
 func _on_DetectArea_body_exited(body):
+	print(body)
+	
 	if body as GPlayer:
 		patrol()
 		patrol_objetive = objective.global_position
