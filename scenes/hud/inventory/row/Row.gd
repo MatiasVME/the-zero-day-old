@@ -1,19 +1,26 @@
 extends HBoxContainer
 
+class_name InventoryRow
+
 var row_num = -1
 var num_items = 0
 
 signal item_removed(slot_num)
+signal slot_selected(row, slot)
 
 # Añade un identificador y conecta cada slot con "update_last_selected_slot"
 func init_row(row_num):
 	self.row_num = row_num
 	var Slots = $Slots.get_children()
 	for i in range(Slots.size()):
-		Slots[i].slot_num = i	# Se le añade un identificador a cada slot
+		Slots[i].slot_num = i # Se le añade un identificador a cada slot
 		var hud_inv = get_parent().get_parent().get_parent() # Por ahora la unica forma de obtener el hud desde aquí
 		Slots[i].get_node("Slot").connect("button_up", hud_inv, "update_last_selected_slot", [row_num, i])
-
+		
+		# Se connectan los slots
+		# TODO: Hay que desconectarlos cuando no se esten usando
+		Slots[i].connect("selected", self, "_on_slot_selected")
+		
 func add_item(item_data : PHItem):
 	for slot in $Slots.get_children():
 		if not slot.has_item():
@@ -76,4 +83,5 @@ func remove_slot(slot_num : int, free_item = true):
 	
 	if not free_item : return item
 	
-	
+func _on_slot_selected(slot):
+	emit_signal("slot_selected", self, slot)

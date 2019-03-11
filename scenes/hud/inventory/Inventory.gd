@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Inventory
+
 var hotbar_row : int = 1
 var is_fulled : bool = false
 
@@ -106,10 +108,22 @@ func create_row_if_can():
 		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
 		$Container/MainColumn.add_child(get_last_row())
 		get_last_row().connect("item_removed", self, "_on_item_removed", [rows.size() - 1])
+		get_last_row().connect("slot_selected", self, "_on_slot_selected")
 		get_last_row().init_row(rows.size() - 1) # le añadimos un identificador igual a su posición en el array row
 
 func get_last_row():
 	return rows[rows.size() - 1]
+
+# Deselecciona todos los slots con excepciones, por ejemplo:
+# no deselecciona los items equipados ni tampoco el ultimo
+# item seleccionado.
+func unselect_all_slots(exceptions := true):
+	for row_i in rows.size():
+		for slot in range(5):
+			if exceptions and last_selected_slot[0] == row_i and last_selected_slot[1] == slot:
+				continue
+				
+			rows[row_i].get_slot(slot).get_node("Slot").pressed = false
 
 # Devuelve el total de municion que puede ocupar,
 # dependiendo de las municiones -para la arma actual- 
@@ -129,7 +143,10 @@ func get_total_ammo():
 	
 func _on_item_added(item):
 	add_item(item)
-	
+
+func _on_slot_selected(row, slot):
+	unselect_all_slots()
+
 func _on_player_shooting(player, direction):
 	# Verificamos player.equip.current_shot == 0 primero
 	# ya que es mas costoso llamar a get_total_ammo 
@@ -142,4 +159,4 @@ func _on_player_shooting(player, direction):
 func _on_item_removed(slot_num, row_num):
 	emit_signal("item_removed", row_num, slot_num)
 			
-			
+	

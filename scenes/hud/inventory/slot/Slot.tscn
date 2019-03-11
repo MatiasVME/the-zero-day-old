@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/hud/inventory/slot/SlotInv-Hover.png" type="Texture" id=4]
 [ext_resource path="res://scenes/hud/inventory/slot/SlotsInv-Disabled.png" type="Texture" id=5]
 
-[node name="Slot1" type="Control"]
+[node name="Slot" type="Control"]
 margin_left = 12.0
 margin_right = 38.0
 margin_bottom = 26.0
@@ -28,3 +28,4 @@ texture_disabled = ExtResource( 5 )
 position = Vector2( 5, 5 )
 centered = false
 
+[connection signal="pressed" from="Slot" to="." method="_on_Slot_pressed"]
