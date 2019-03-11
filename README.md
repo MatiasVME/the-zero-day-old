@@ -15,7 +15,7 @@ Para organizarnos usamos Hacknplan.
 
 ## Compilar
 
-Necesita Godot Engine 3.1-Beta11
+Necesita Godot Engine 3.1-rc2
 
 ## Licencias
 - MPL2 Plugin - JSON Beautifier

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Ammo.png-7f6927bb1364de47ae363bce126e3ae9.stex"
+path="res://.import/button_arrow_up.png-a54b97ae7fc1096ab00da856c23d7f3c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/items/ammo/normal_ammo/Ammo.png"
-dest_files=[ "res://.import/Ammo.png-7f6927bb1364de47ae363bce126e3ae9.stex" ]
+source_file="res://scenes/buttons/arrow_up/button_arrow_up.png"
+dest_files=[ "res://.import/button_arrow_up.png-a54b97ae7fc1096ab00da856c23d7f3c.stex" ]
 
 [params]
 

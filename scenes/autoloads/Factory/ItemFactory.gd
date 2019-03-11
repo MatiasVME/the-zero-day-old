@@ -19,6 +19,6 @@ static func create_test_ammo():
 	ammo.ammo_type = ammo.AmmoType.NORMAL
 	ammo.buy_price = ammo.ammo_amount * 10
 	ammo.sell_price = ammo.buy_price / 4
-	ammo.texture_path = "res://scenes/items/ammo/normal_ammo/Ammo.png"
+	ammo.texture_path = "res://scenes/items/ammo/normal/normal_bullet_ammo.png"
 	
 	return ammo

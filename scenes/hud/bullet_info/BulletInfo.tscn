@@ -3,7 +3,8 @@
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/bullets/BulletPlaceholder.png" type="Texture" id=2]
 [ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/items/ammo/normal_ammo/Ammo.png" type="Texture" id=4]
+[ext_resource path="res://scenes/items/ammo/normal/Ammo.png" type="Texture" id=4]
+
 
 [node name="BulletInfo" type="Node2D"]
 script = ExtResource( 1 )
