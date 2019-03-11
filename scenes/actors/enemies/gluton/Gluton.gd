@@ -37,7 +37,7 @@ func _ready():
 	randomize()
 	random_objective = get_random_objective()
 	
-	data.hp = 10
+	data.hp = 8
 	data.xp_drop = 5 # temp
 	
 	data.connect("dead", self, "_on_dead")
@@ -64,7 +64,7 @@ func _physics_process(delta):
 			
 			if $Body.frame == 10 and ot_attack:
 				ot_attack = false
-				objective.data.damage(1)
+				objective.data.damage(1) # TEMP
 			elif $Body.frame == 11:
 				ot_attack = true
 		State.DIE:

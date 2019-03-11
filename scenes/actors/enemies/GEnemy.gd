@@ -45,7 +45,7 @@ func change_state(state):
 func damage(amount):
 	can_damage = false
 	
-	if $Anim.has_animation("damage"):
+	if $Anim.has_animation("damage") and not $Anim.is_playing():
 		$Anim.play("damage")
 	
 	data.damage(amount)
