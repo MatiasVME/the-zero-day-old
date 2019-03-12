@@ -44,16 +44,18 @@ func update_drivers():
 func mount_pilot(who):
 	pilot = who
 	who.disable_player()
+	CameraManager.current_camera.following = self
 	
 func mount_co_pilot(who):
 	co_pilot = who
 	who.disable_player()
+	CameraManager.current_camera.following = self
 	
 func unmount(who):
 	if pilot == who : pilot = null
 	else : co_pilot = null
 	who.enable_player()
-	who.can_move = true
+	CameraManager.current_camera.following = who
 
 func _on_EnterArea_body_entered(body, enter_area_tag):
 	if not pilot and body == PlayerManager.get_current_player():

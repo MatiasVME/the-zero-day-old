@@ -1,47 +1,38 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
-[ext_resource path="res://tests/test_menu_screens/CameraMenu.gd" type="Script" id=2]
-[ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/main_screens/NotesMenu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/main_screens/MainMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/main_screens/Play.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/main_screens/NotesMenu.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/main_screens/MainMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/main_screens/Play.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="CameraMenu" type="Camera2D" parent="."]
-position = Vector2( 180, -120 )
-current = true
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
-script = ExtResource( 2 )
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-editor/display_folded = true
 scroll_base_scale = Vector2( 0.7, 0.7 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+editor/display_folded = true
 
-[node name="Example1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 3 )]
+[node name="Example1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 2 )]
 
-[node name="NotesMenu" parent="." instance=ExtResource( 4 )]
+[node name="NotesMenu" parent="." instance=ExtResource( 3 )]
 position = Vector2( -180, 120 )
 
-[node name="MainMenu" parent="." instance=ExtResource( 5 )]
+[node name="MainMenu" parent="." instance=ExtResource( 4 )]
 
-[node name="Play" parent="." instance=ExtResource( 6 )]
+[node name="Play" parent="." instance=ExtResource( 5 )]
 position = Vector2( 180, -120 )
 
-[node name="Splash" parent="." instance=ExtResource( 7 )]
+[node name="Splash" parent="." instance=ExtResource( 6 )]
 position = Vector2( 180, -120 )
 
-[node name="Credits" parent="." instance=ExtResource( 8 )]
+[node name="Credits" parent="." instance=ExtResource( 7 )]
 position = Vector2( 180, 360 )
 
-[connection signal="target_reached" from="CameraMenu" to="." method="_on_CameraMenu_target_reached"]
 [connection signal="back_from_notes_pressed" from="NotesMenu" to="." method="_on_NotesMenu_back_from_notes_pressed"]
 [connection signal="credits_pressed" from="MainMenu" to="." method="_on_MainMenu_credits_pressed"]
 [connection signal="notes_pressed" from="MainMenu" to="." method="_on_MainMenu_notes_pressed"]
