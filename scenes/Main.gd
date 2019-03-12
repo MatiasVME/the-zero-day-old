@@ -2,7 +2,7 @@ extends Node2D
 
 const CameraMenu = preload("res://tests/test_menu_screens/CameraMenu.gd")
 
-onready var camera : CameraMenu = $CameraMenu
+onready var camera : CameraMenu = CameraManager.set_camera_menu()
 onready var main_menu : = $MainMenu
 onready var splash : = $Splash
 onready var play_menu : = $Play

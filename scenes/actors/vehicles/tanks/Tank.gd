@@ -105,12 +105,14 @@ func check_animation(rot_deg : float) -> void:
 func _on_unmounted(who):
 	who.position = $EnterArea/Collision.global_position
 	who.enable_player()
+	CameraManager.current_camera.following = who
 
 func _on_mounted(who):
 	who.disable_player()
 	who.can_move = true #Para probar en escena de test TTank
+	CameraManager.current_camera.following = self
 	# TODO: Casos en los cuales hay mas de un driver en el auto
-
+	
 func _on_EnterArea_body_entered(body):
 	if not player and body is GPlayer:
 		player = body

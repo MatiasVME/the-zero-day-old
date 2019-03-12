@@ -1,12 +1,14 @@
 extends Node2D
 
+var camera
+
 func _ready():
 	var player = PlayerManager.init_player(0)
 	player.global_position = Vector2(140, 100)
 	add_child(player)
 	player.enable_player()
-	
-	$Camera.following = player
+	camera = CameraManager.set_camera_game()
+	camera.following = player
 	$HUD.set_hud_actor(player)
 	
 	var item1 = Factory.ItemInWorldFactory.create_test_distance_weapon()
