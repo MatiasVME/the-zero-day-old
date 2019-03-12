@@ -40,6 +40,9 @@ func set_hotbar_actor(actor : GActor):
 
 # Seleccionar un slot del 1 al 5 o null
 func select_slot(slot : int):
+	if slot == 0:
+		return
+	
 	var slot_selected = get_node("Slots/Slot" + str(slot))
 	
 	if slot_selected.pressed != true:
