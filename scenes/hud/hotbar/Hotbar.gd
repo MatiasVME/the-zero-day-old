@@ -11,11 +11,10 @@ var current_slot = 0 # No seleccionado aun
 signal slot_selected(slot_data)
 
 func _ready():
-	select_slot(1)
-	
 	for i in $Slots.get_child_count():
 		var slot = get_node("Slots/Slot" + str(i + 1))
-		slot.connect("pressed", self, "_on_slot_pressed", [slot])
+		var slot_num = int(slot.name.substr(slot.name.length() - 1,1))
+		slot.connect("toggled", self, "_on_slot_toggled", [slot_num])
 		
 	update_hotbar_row(0)
 	
@@ -39,15 +38,18 @@ func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
 		actor.connect("item_taken", self, "_on_item_taken")
 
-# Seleccionar un slot del 1 al 5
+# Seleccionar un slot del 1 al 5 o null
 func select_slot(slot : int):
-	current_slot = slot
-	unselect_all_slots(slot)
-	
 	var slot_selected = get_node("Slots/Slot" + str(slot))
-	slot_selected.pressed = true
 	
-	current_item = slot_selected.data
+	if slot_selected.pressed != true:
+		slot_selected.pressed = false
+		unselect_all_slots()
+		current_item = null
+	else:
+		slot_selected.pressed = true
+		unselect_all_slots(slot)
+		current_item = slot_selected.data
 	
 	if hud.hud_actor:
 		hud.hud_actor.data.equip = current_item
@@ -56,10 +58,12 @@ func select_slot(slot : int):
 	bullet_info.set_current_equip(current_item)
 	
 	emit_signal("slot_selected", current_item)
+	
+	current_slot = slot
 
-func unselect_all_slots(except):
+func unselect_all_slots(except = -1):
 	for i in $Slots.get_child_count():
-		if i != except - 1:
+		if i != except - 1 or except == -1:
 			get_node("Slots/Slot" + str(i + 1)).pressed = false
 
 # Cambia de hotbar desde 0 a ..
@@ -87,10 +91,11 @@ func update_hotbar_row(row : int):
 			get_node("Slots/Slot" + str(i + 1) + "/ItemSprite").texture = null
 			get_node("Slots/Slot" + str(i + 1)).data = null
 	
-func _on_slot_pressed(slot):
-	select_slot(int(slot.name.substr(slot.name.length() - 1,1)))
+# Slot es un texturebutton pero se le extrae el nombre
+func _on_slot_toggled(button_pressed, slot):
+	select_slot(slot)
 	update_hotbar_row(current_hotbar)
-	
+		
 func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
 	select_slot(current_slot)
