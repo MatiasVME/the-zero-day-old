@@ -12,6 +12,8 @@ var attack_delay_end : bool = false
 var track_distance : float = 75
 
 var patrol_objetive : Vector2 = Vector2(0,-1)
+var patrol_delay : float = 2
+var patrol_time : float = 0
 
 onready var objective = null
 
@@ -32,12 +34,6 @@ func _ready():
 	# DetectArea
 	$DetectArea.connect("body_entered", self, "_on_DetectArea_body_entered")
 	$DetectArea.connect("body_exited", self, "_on_DetectArea_body_exited")
-
-	# PatrolDelay
-	# Cambiara de objetivo random cada 2 seg
-	$PatrolDelay.connect("timeout", self, "_on_PatrolDelay_timeout")
-	$PatrolDelay.set_wait_time(2)
-	$PatrolDelay.start()
 	
 	$AttackDelay.connect("timeout", self, "_on_AttackDelay_timeout")
 	
@@ -55,6 +51,11 @@ func _physics_process(delta):
 			state = State.PATROL
 		State.PATROL:
 			rot_pivot_to(patrol_objetive, delta)
+			patrol_time += delta
+			if patrol_time >= patrol_delay:
+				patrol_time = 0
+				patrol_objetive = get_random_objective()
+				print("upd")
 		State.TRACK:
 			if rot_pivot_to(objective.global_position, delta):
 				shoot()
@@ -62,6 +63,7 @@ func _physics_process(delta):
 				attack_delay_end = false
 				$AttackDelay.start()
 		State.SHOOT:
+			if objective.is_mark_to_dead : patrol()
 			if not rot_pivot_to(objective.global_position, delta):
 				track()
 			if attack_delay_end : 
@@ -98,12 +100,11 @@ func get_random_objective():
 	
 func patrol():
 	state = State.PATROL
-	$PatrolDelay.start()
+	patrol_time = 0
 	$Pivot/Rotator.animation = "Idle"
 
 func track():
 	state = State.TRACK
-	$PatrolDelay.stop()
 
 func shoot():
 	var bullet = ShootManager.fire(
@@ -146,9 +147,6 @@ func _on_DamageArea_body_entered(body):
 		SoundManager.play(SoundManager.Sound.HIT_1) # Por ahora usara el sonido de M
 		body.dead()
 		.damage(1) # temp
-	
-func _on_PatrolDelay_timeout():
-	patrol_objetive = get_random_objective()
 
 func _on_AttackDelay_timeout():
 	$AttackDelay.stop()

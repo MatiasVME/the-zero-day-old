@@ -147,5 +147,3 @@ animation = "Idle"
 [node name="RotatorAnim" parent="Pivot" index="1"]
 anims/shoot = SubResource( 9 )
 
-[node name="PatrolDelay" type="Timer" parent="." index="7"]
-
