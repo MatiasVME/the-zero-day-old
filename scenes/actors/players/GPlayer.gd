@@ -19,6 +19,8 @@ var can_fire : bool = false
 
 var is_disabled = false
 
+var reload_progress := 0.0
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -89,7 +91,12 @@ func _physics_process(delta):
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		emit_signal("fire", dir)
 	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
-		reload()
+		if reload_progress > data.equip.time_to_reload:
+			SoundManager.play(SoundManager.Sound.RELOAD_1)
+			reload()
+			reload_progress = 0
+		else:
+			reload_progress += delta
 	elif not data.equip and input_fire:
 		melee_attack()
 

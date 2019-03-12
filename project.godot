@@ -14,6 +14,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/hud/avatar_handler/Avatar.gd"
 }, {
+"base": "Vehicle",
+"class": "Car",
+"language": "GDScript",
+"path": "res://scenes/actors/vehicles/cars/Car.gd"
+}, {
 "base": "GBullet",
 "class": "CommonBullet",
 "language": "GDScript",
@@ -206,6 +211,7 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Avatar": "",
+"Car": "",
 "CommonBullet": "",
 "CreditSection": "",
 "GActor": "",
