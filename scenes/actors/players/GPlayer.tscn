@@ -21,12 +21,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk_up",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "run_up",
+"name": "run_down",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -36,7 +31,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "run_down",
+"name": "run_up",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk_up",
 "speed": 5.0
 }, {
 "frames": [  ],
