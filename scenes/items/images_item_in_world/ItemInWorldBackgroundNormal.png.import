@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ItemInWorldBackground.png-3e09b82e3955817888e3aa083187a76f.stex"
+path="res://.import/ItemInWorldBackgroundNormal.png-7900668020c3b44f2856d9c1c5b8eeca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/items/images_item_in_world/ItemInWorldBackground.png"
-dest_files=[ "res://.import/ItemInWorldBackground.png-3e09b82e3955817888e3aa083187a76f.stex" ]
+source_file="res://scenes/items/images_item_in_world/ItemInWorldBackgroundNormal.png"
+dest_files=[ "res://.import/ItemInWorldBackgroundNormal.png-7900668020c3b44f2856d9c1c5b8eeca.stex" ]
 
 [params]
 
