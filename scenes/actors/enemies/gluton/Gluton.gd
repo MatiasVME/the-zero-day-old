@@ -46,7 +46,7 @@ func _ready():
 func _physics_process(delta):
 	match state:
 		State.SEEKER:
-			if objective and data.hp > 3:
+			if objective and not objective.is_mark_to_dead and data.hp > 3:
 				sekeer(objective.global_position)
 				
 				if data.hp < 3:
@@ -54,11 +54,14 @@ func _physics_process(delta):
 			else:
 				change_state(State.RANDOM_WALK)
 		State.RUN:
-			if objective:
+			if objective and not objective.is_mark_to_dead:
 				run(objective.global_position)
 			else:
 				change_state(State.RANDOM_WALK)
 		State.ATTACK:
+			if objective.is_mark_to_dead : 
+				change_state(State.RANDOM_WALK)
+				return
 			$Body.look_at(objective.position)
 			$Body.flip_h = false
 			
@@ -73,11 +76,11 @@ func _physics_process(delta):
 				SoundManager.play(SoundManager.Sound.MONSTER_DEAD_1)
 				.dead()
 		State.RANDOM_WALK:
-			if not objective:
+			if not objective or objective.is_mark_to_dead:
 				sekeer(random_objective)
-			elif data.hp < 3 and objective:
+			elif data.hp < 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.RUN)
-			elif data.hp > 3 and objective:
+			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
 
 # Devuelve la direccion en grados
