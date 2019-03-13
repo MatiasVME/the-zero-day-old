@@ -10,7 +10,8 @@ enum ItemState {
 }
 var item_state = ItemState.IDLE
 
-var mouse_entered = false
+var mouse_entered := false
+var is_mark_to_dead := false
 
 func _physics_process(delta):
 	if PlayerManager.get_current_player() and item_state == ItemState.SEEKER:
@@ -24,14 +25,15 @@ func take_item(inv : RPGInventory):
 	if inv.add_item(data):
 		# Con esto guardaria el inventario cada vez que se
 		# obtenga un item.
-		DataManager.save_inventories()
-		# Por el momento se borra solamente, luego se va a
-		# hacer con una animacion
-		queue_free()
+#		DataManager.save_inventories()
+
+		$Anim.play("take")
 
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "show":
 		$Anim.play("idle")
+	elif anim_name == "take":
+		queue_free()
 
 func _on_InteractArea_mouse_entered():
 	mouse_entered = true

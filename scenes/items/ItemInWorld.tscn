@@ -1,19 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/items/ItemInWorld.gd" type="Script" id=1]
 [ext_resource path="res://scenes/items/images_item_in_world/ItemInWorldBackground.png" type="Texture" id=2]
 [ext_resource path="res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-
-radius = 8.0
+radius = 11.0454
 
 [sub_resource type="CircleShape2D" id=2]
-
-radius = 8.0
+radius = 12.0
 
 [sub_resource type="Animation" id=3]
-
 resource_name = "idle"
 length = 6.0
 loop = true
@@ -31,7 +28,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-
 resource_name = "select"
 length = 0.2
 tracks/0/type = "value"
@@ -48,7 +44,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=5]
-
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Images/Item:scale")
@@ -74,6 +69,70 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("InteractArea/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Collision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "take"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Images:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.4, 1.4 ), Vector2( 1e-05, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("InteractArea/Collision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [node name="ItemInWorld" type="RigidBody2D"]
 mass = 5.0
@@ -87,9 +146,11 @@ shape = SubResource( 1 )
 [node name="Images" type="Node2D" parent="."]
 
 [node name="Background" type="Sprite" parent="Images"]
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 2 )
 
 [node name="Item" type="Sprite" parent="Images"]
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 3 )
 
 [node name="InteractArea" type="Area2D" parent="."]
@@ -102,6 +163,7 @@ autoplay = "show"
 anims/idle = SubResource( 3 )
 anims/select = SubResource( 4 )
 anims/show = SubResource( 5 )
+anims/take = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 
