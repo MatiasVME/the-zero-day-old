@@ -15,8 +15,6 @@ var current_state : int = 0
 # Puede recibir daño ?
 #var can_damage = true
 
-var is_mark_to_destroy : bool = false
-
 # Contiene la data, sera un PHCharacter?
 # Talves no sea necesario
 var data
