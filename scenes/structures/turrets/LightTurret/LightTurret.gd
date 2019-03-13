@@ -16,7 +16,7 @@ var patrol_delay : float = 2
 var patrol_time : float = 0
 
 onready var objective = null
-
+ 
 
 func _ready():
 	
@@ -55,7 +55,6 @@ func _physics_process(delta):
 			if patrol_time >= patrol_delay:
 				patrol_time = 0
 				patrol_objetive = get_random_objective()
-				print("upd")
 		State.TRACK:
 			if rot_pivot_to(objective.global_position, delta):
 				shoot()
@@ -132,8 +131,6 @@ func _on_drop_xp(amount):
 	DataManager.get_current_player_instance().add_xp(amount)
 	
 func _on_DetectArea_body_exited(body):
-	print(body)
-	
 	if body as GPlayer:
 		patrol()
 		patrol_objetive = objective.global_position

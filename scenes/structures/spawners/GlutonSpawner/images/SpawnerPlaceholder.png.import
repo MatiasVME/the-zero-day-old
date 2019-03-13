@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turret_base.png-5b2413e1af81d9487fd7a76a3b06f6e4.stex"
+path="res://.import/SpawnerPlaceholder.png-cee3d8dd281a0ebe89097a0459af5000.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/structures/turrets/LightTurret/images/turret_base.png"
-dest_files=[ "res://.import/turret_base.png-5b2413e1af81d9487fd7a76a3b06f6e4.stex" ]
+source_file="res://scenes/structures/spawners/GlutonSpawner/images/SpawnerPlaceholder.png"
+dest_files=[ "res://.import/SpawnerPlaceholder.png-cee3d8dd281a0ebe89097a0459af5000.stex" ]
 
 [params]
 
