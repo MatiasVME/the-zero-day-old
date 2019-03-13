@@ -63,11 +63,11 @@ func spawn():
 
 # Equivalente a Morir
 func destroy():
-	$Anim.connect("animation_finished", self, "_on_destroy_animation_end")
 	if $Anim.has_animation("destroy"):
+		$Anim.connect("animation_finished", self, "_on_destroy_animation_end")
 		$Anim.play("destroy")
 	else:
-		$Anim.emit_signal("animation_finished")
+		queue_free()
 
 func _on_destroy_animation_end(anim_name):
 	if anim_name == "destroy":

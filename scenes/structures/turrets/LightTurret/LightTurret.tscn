@@ -9,11 +9,10 @@
 [ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot04.png" type="Texture" id=7]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot03.png" type="Texture" id=8]
 
-
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=8]
 radius = 7.5
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=9]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
@@ -21,7 +20,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=6]
 resource_name = "damage"
 length = 0.4
 tracks/0/type = "value"
@@ -37,7 +36,8 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.751659 ), Color( 0.721569, 0.247059, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=7]
+resource_name = "destroy"
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -64,7 +64,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=10]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base:scale")
@@ -79,12 +79,12 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=11]
 radius = 70.0
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=12]
 
-[sub_resource type="SpriteFrames" id=8]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ ExtResource( 4 ) ],
 "loop": false,
@@ -97,7 +97,7 @@ animations = [ {
 "speed": 13.3
 } ]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=14]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
@@ -113,38 +113,39 @@ tracks/0/keys = {
 }
 
 [node name="LightTurret" instance=ExtResource( 1 )]
+modulate = Color( 1, 1, 1, 0.751659 )
 scale = Vector2( 1.07409, 1.07409 )
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
-shape = SubResource( 1 )
+shape = SubResource( 8 )
 
 [node name="Base" parent="." index="1"]
-frames = SubResource( 2 )
+frames = SubResource( 9 )
 animation = "Idle"
 
 [node name="Anim" parent="." index="2"]
-anims/damage = SubResource( 3 )
-anims/destroy = SubResource( 4 )
-anims/detect = SubResource( 5 )
+anims/damage = SubResource( 6 )
+anims/destroy = SubResource( 7 )
+anims/detect = SubResource( 10 )
 
 [node name="DetectArea" parent="." index="3"]
 editor/display_folded = false
 
 [node name="Collision" parent="DetectArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 11 )
 
 [node name="DamageArea" parent="." index="4"]
 editor/display_folded = false
 
 [node name="Collision" parent="DamageArea" index="0"]
-shape = SubResource( 7 )
+shape = SubResource( 12 )
 
 [node name="Rotator" parent="Pivot" index="0"]
 rotation = 1.5708
-frames = SubResource( 8 )
+frames = SubResource( 13 )
 animation = "Idle"
 
 [node name="RotatorAnim" parent="Pivot" index="1"]
-anims/shoot = SubResource( 9 )
+anims/shoot = SubResource( 14 )
 
