@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turret_rotator_idle.png-b0029d585da002ea42cb4528506e71de.stex"
+path="res://.import/turret_rotator_shoot01.png-3e61bbd858e45baa03aa201779252774.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_idle.png"
-dest_files=[ "res://.import/turret_rotator_idle.png-b0029d585da002ea42cb4528506e71de.stex" ]
+source_file="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot01.png"
+dest_files=[ "res://.import/turret_rotator_shoot01.png-3e61bbd858e45baa03aa201779252774.stex" ]
 
 [params]
 

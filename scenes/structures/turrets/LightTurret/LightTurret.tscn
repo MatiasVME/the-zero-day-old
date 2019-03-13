@@ -1,13 +1,14 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://scenes/actors/structures/turrets/GTurret.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/LightTurret.gd" type="Script" id=2]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_base.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_idle.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_shoot01.png" type="Texture" id=5]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_shoot02.png" type="Texture" id=6]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_shoot04.png" type="Texture" id=7]
-[ext_resource path="res://scenes/actors/structures/turrets/LightTurret/images/turret_rotator_shoot03.png" type="Texture" id=8]
+[ext_resource path="res://scenes/structures/turrets/GTurret.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.gd" type="Script" id=2]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_base.png" type="Texture" id=3]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_idle.png" type="Texture" id=4]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot01.png" type="Texture" id=5]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot02.png" type="Texture" id=6]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot04.png" type="Texture" id=7]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/images/turret_rotator_shoot03.png" type="Texture" id=8]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 7.5
