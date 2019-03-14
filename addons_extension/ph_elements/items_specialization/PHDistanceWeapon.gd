@@ -22,9 +22,11 @@ var requires_ammo : bool = true
 var weapon_capacity = 6
 # Disparo actual por ejemplo disparo 3 de 6, cuando llega a
 # 0 se recarga.
-var current_shot = 0
+var current_shot := 0
 # Tiempo en segundos para recargar
-var time_to_reload : int = 1
+var time_to_reload := 1
+# Tiempo entre cada bala
+# Usar time_to_next_action
 
 # Recarga dependiendo de la municion que reciba.
 # devuelve true si se recarga completamente y

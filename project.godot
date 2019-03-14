@@ -114,7 +114,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHDefence.gd"
 }, {
-"base": "Node",
+"base": "PHWeapon",
 "class": "PHDistanceWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHDistanceWeapon.gd"
@@ -149,7 +149,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHStructure.gd"
 }, {
-"base": "Node",
+"base": "PHEquipment",
 "class": "PHWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHWeapon.gd"

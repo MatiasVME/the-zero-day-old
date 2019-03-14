@@ -8,6 +8,7 @@ static func create_test_distance_weapon():
 	weapon.buy_price = 200
 	weapon.sell_price = weapon.buy_price / 4
 	weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
+	weapon.time_to_next_action = 0.2
 	
 	return weapon
 	
