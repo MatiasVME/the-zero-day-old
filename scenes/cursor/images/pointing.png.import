@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mira_idle.png-5b5918321c0c2ef07bca8c8ba2d91da3.stex"
+path="res://.import/pointing.png-f1c55c856d925bd3e4054c966ecb0b00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/scopes/images/mira_idle.png"
-dest_files=[ "res://.import/mira_idle.png-5b5918321c0c2ef07bca8c8ba2d91da3.stex" ]
+source_file="res://scenes/cursor/images/pointing.png"
+dest_files=[ "res://.import/pointing.png-f1c55c856d925bd3e4054c966ecb0b00.stex" ]
 
 [params]
 

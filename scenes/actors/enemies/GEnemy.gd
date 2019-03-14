@@ -68,3 +68,9 @@ func _on_DamageDelay_timeout():
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "dead":
 		queue_free()
+
+func _on_GEnemy_mouse_entered():
+	CursorManager.change_cursor(CursorManager.Cursor.POINTING)
+
+func _on_GEnemy_mouse_exited():
+	CursorManager.change_cursor(CursorManager.Cursor.IDLE)

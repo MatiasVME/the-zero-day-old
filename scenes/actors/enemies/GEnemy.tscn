@@ -4,6 +4,7 @@
 
 [node name="GEnemy" type="KinematicBody2D"]
 z_index = 1
+input_pickable = true
 collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
@@ -18,5 +19,7 @@ script = ExtResource( 1 )
 wait_time = 0.5
 autostart = true
 
+[connection signal="mouse_entered" from="." to="." method="_on_GEnemy_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_GEnemy_mouse_exited"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="timeout" from="DamageDelay" to="." method="_on_DamageDelay_timeout"]

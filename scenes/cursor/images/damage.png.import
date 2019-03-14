@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mira_pointing.png-63ba6c9ece8d58e85a3dd486a349ef8e.stex"
+path="res://.import/damage.png-d295c22c0f79f772be426fe9bebff260.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/scopes/images/mira_pointing.png"
-dest_files=[ "res://.import/mira_pointing.png-63ba6c9ece8d58e85a3dd486a349ef8e.stex" ]
+source_file="res://scenes/cursor/images/damage.png"
+dest_files=[ "res://.import/damage.png-d295c22c0f79f772be426fe9bebff260.stex" ]
 
 [params]
 

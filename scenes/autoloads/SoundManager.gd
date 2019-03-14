@@ -10,7 +10,8 @@ enum Sound {
 	LEVEL_UP,
 	PLAYER_DAMAGE_1,
 	PLAYER_DEAD_1,
-	RELOAD_1
+	RELOAD_1,
+	CONSUME_ITEM_1
 }
 
 func play(sound):
@@ -38,3 +39,5 @@ func play(sound):
 			$PlayerDead1.play()
 		Sound.RELOAD_1:
 			$Reload1.play()
+		Sound.CONSUME_ITEM_1:
+			$ConsumeItem1.play()

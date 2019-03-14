@@ -26,7 +26,8 @@ func take_item(inv : RPGInventory):
 		# Con esto guardaria el inventario cada vez que se
 		# obtenga un item.
 #		DataManager.save_inventories()
-
+		
+		SoundManager.play(SoundManager.Sound.CONSUME_ITEM_1)
 		$Anim.play("take")
 
 func _on_Anim_animation_finished(anim_name):

@@ -273,6 +273,7 @@ PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
 Factory="*res://scenes/autoloads/Factory.gd"
 ShootManager="*res://scenes/autoloads/ShootManager.gd"
 SoundManager="*res://scenes/autoloads/SoundManager.tscn"
+CursorManager="*res://scenes/autoloads/CursorManager.gd"
 
 [debug]
 

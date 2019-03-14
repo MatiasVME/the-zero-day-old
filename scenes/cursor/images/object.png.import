@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/mira_object.png-1d258fd1285a015749832e1f510adc69.stex"
+path="res://.import/object.png-0df6c9f9e633cf8e597e82e397c0eb69.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/scopes/images/mira_object.png"
-dest_files=[ "res://.import/mira_object.png-1d258fd1285a015749832e1f510adc69.stex" ]
+source_file="res://scenes/cursor/images/object.png"
+dest_files=[ "res://.import/object.png-0df6c9f9e633cf8e597e82e397c0eb69.stex" ]
 
 [params]
 
