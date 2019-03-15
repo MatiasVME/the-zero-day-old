@@ -9,7 +9,7 @@ static func create_test_distance_weapon():
 	return weapon_in_world
 
 static func create_test_ammo():
-	var ammo = Factory.ItemFactory.create_test_ammo()
+	var ammo = Factory.ItemFactory.create_normal_ammo()
 	var ammo_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
 	
 	ammo_in_world.data = ammo

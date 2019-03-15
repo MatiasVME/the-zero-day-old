@@ -3,6 +3,10 @@ Project Humanity es un juego sandbox top down shooter (En desarrollo)
 
 ![Project Humanity](https://i.imgur.com/8n4OCAe.png)
 
+# Último devlog
+
+[![Último Devlog Project Humanity](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=y_V8qkavjbw "Último Devlog Project Humanity")
+
 ## Se buscan colaboradores
 
 Si desea participar en este proyecto puede ir al siguiente discord:

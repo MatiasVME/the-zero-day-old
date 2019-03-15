@@ -20,6 +20,16 @@ var can_fire : bool = false
 var is_disabled = false
 
 var reload_progress := 0.0
+var need_reload = false
+# Tiempo para la proxima accion de la arma
+var time_to_next_action := 1.0
+# Tiempo de espera entre cada bala
+var time_to_next_action_progress := 0.0
+
+# Tiempo para la proxima accion melee
+var melee_time_to_next_action := 0.4
+# Tiempo de espera entre cada ataque melee
+var melee_time_to_next_action_progress := 0.0
 
 signal fire(dir)
 signal dead
@@ -84,30 +94,40 @@ func _physics_process(delta):
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 	
-	input_fire = Input.is_action_just_pressed("fire")
+	if data.equip and time_to_next_action_progress < time_to_next_action:
+		time_to_next_action_progress += delta
+		return
+	elif not data.equip and melee_time_to_next_action_progress < melee_time_to_next_action:
+		melee_time_to_next_action_progress += delta
+		return
+	
+	input_fire = Input.is_action_pressed("fire")
 	
 	# Puede disparar? Se preciono fire?
 	if data.equip is PHDistanceWeapon and can_fire and input_fire and data.equip.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
+		time_to_next_action_progress = 0.0
 		emit_signal("fire", dir)
 	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
 		if reload_progress > data.equip.time_to_reload:
-			SoundManager.play(SoundManager.Sound.RELOAD_1)
-			reload()
-			reload_progress = 0
+			if reload():
+				SoundManager.play(SoundManager.Sound.RELOAD_1)
+				reload_progress = 0.0
 		else:
 			reload_progress += delta
 	elif not data.equip and input_fire:
+		melee_time_to_next_action_progress = 0.0
 		melee_attack()
 
 func update_weapon():
-	$GWeaponInBattle.set_weapon(data.equip)
-	
-	if not data.equip:
-		can_fire = false
-
-	if data.equip is PHWeapon:
+	if data.equip is PHDistanceWeapon:
+		$GWeaponInBattle.set_weapon(data.equip)
 		can_fire = true
+		time_to_next_action = data.equip.time_to_next_action
+	else:
+		$GWeaponInBattle.set_weapon(null)
+		can_fire = false
+		
 	
 func disable_player(_visible : = false):
 	is_disabled = true
@@ -131,12 +151,15 @@ func enable_player(_can_fire : bool = false):
 	data.connect("item_equiped", self, "_on_item_equiped")
 
 # Esta funcion se llama mas de lo necesario - Necesita Revisión
+# Retorna true si hace reload correctamente y
+# false de lo contrario.
 func reload():
+	print("reload")
 	# Prevenir que se llame a esta funcion inecesariamente
 	if not data.equip is PHDistanceWeapon:
-		return
+		return false
 	if data.equip.current_shot >= data.equip.weapon_capacity:
-		return
+		return false
 	
 	# Obtener las municiones
 	var ammunition_inv = []
@@ -148,7 +171,7 @@ func reload():
 	# Si no hay ammunition_inv entonces se sale de la
 	# funcion
 	if ammunition_inv.size() < 1:
-		return
+		return false
 	
 	for ammo in ammunition_inv:
 		if data.equip.reload(ammo):
@@ -160,6 +183,8 @@ func reload():
 	
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
+	
+	return true
 
 func melee_attack():
 	$BoxingAttack/Anim.play("box_hit")

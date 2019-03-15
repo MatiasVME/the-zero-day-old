@@ -34,3 +34,5 @@ func _ready():
 	var item8 = Factory.ItemInWorldFactory.create_test_ammo()
 	item8.global_position = Vector2(201, 100)
 	add_child(item8)
+	
+#	Factory.ItemFactory.test()
