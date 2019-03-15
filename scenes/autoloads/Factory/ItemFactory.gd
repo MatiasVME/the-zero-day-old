@@ -56,7 +56,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	var points = get_points(enemy_level, enemy_type, player_luck)
 	var weapon = PHDistanceWeapon.new()
 	
-	weapon.buy_price = 25 * points # temp
+	weapon.buy_price = int(round(25 * points)) # temp
 	weapon.sell_price = weapon.buy_price / 4
 	
 	weapon.weapon_type = int(round(rand_range(0, 1)))
@@ -93,7 +93,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 				
 				weapon.time_to_reload = 1.0
 				max_feature_time_to_reload = 1.0
-				min_feature_time_to_reload = 0.1
+				min_feature_time_to_reload = 0.05
 				
 				weapon.weapon_capacity = 4.0
 				max_feature_weapon_capacity = 32.0
