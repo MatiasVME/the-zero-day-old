@@ -11,7 +11,7 @@ func _ready():
 	camera.following = player
 	$HUD.set_hud_actor(player)
 	
-	var item1 = Factory.ItemInWorldFactory.create_test_distance_weapon()
+	var item1 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 	item1.global_position = Vector2(200, 104)
 	add_child(item1)
 	
@@ -35,4 +35,16 @@ func _ready():
 	item8.global_position = Vector2(201, 100)
 	add_child(item8)
 	
+	var item9 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
+	item9.global_position = Vector2(200, 104)
+	add_child(item9)
+	
+	var item10 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
+	item10.global_position = Vector2(200, 104)
+	add_child(item10)
+	
+	var item11 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
+	item11.global_position = Vector2(200, 104)
+	add_child(item11)
+
 #	Factory.ItemFactory.test()

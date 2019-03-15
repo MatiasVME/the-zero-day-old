@@ -19,12 +19,12 @@ var ammo_type = AmmoType.NORMAL
 # Requiere municion?
 var requires_ammo : bool = true
 # Capacidad maxima de balas que puede contener el arma
-var weapon_capacity = 6
+var weapon_capacity = 6.0
 # Disparo actual por ejemplo disparo 3 de 6, cuando llega a
 # 0 se recarga.
 var current_shot := 0
 # Tiempo en segundos para recargar
-var time_to_reload := 1
+var time_to_reload := 1.0
 # Tiempo entre cada bala
 # Usar time_to_next_action
 

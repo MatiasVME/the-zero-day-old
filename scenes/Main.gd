@@ -11,7 +11,6 @@ onready var credits_menu : = $Credits
 
 func _ready():
 	camera.target = splash
-	pass
 
 func _on_MainMenu_play_pressed():
 	# Cambiar a menu Play
