@@ -19,6 +19,11 @@ editor/display_folded = true
 
 [node name="Example1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 2 )]
 
+[node name="Background" type="ColorRect" parent="ParallaxBackground"]
+margin_right = 360.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 0.196078 )
+
 [node name="NotesMenu" parent="." instance=ExtResource( 3 )]
 position = Vector2( -180, 120 )
 

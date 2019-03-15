@@ -153,26 +153,26 @@ margin_bottom = 72.0
 texture = ExtResource( 3 )
 
 [node name="Cloud1" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.981042 )
-position = Vector2( -136.298, 165.88 )
+modulate = Color( 1, 1, 1, 0.999427 )
+position = Vector2( -136.315, 166.099 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="Cloud2" type="Sprite" parent="."]
-modulate = Color( 1, 1, 1, 0.981832 )
-position = Vector2( 88.6544, 222.284 )
+modulate = Color( 1, 1, 1, 0.99945 )
+position = Vector2( 88.6553, 222.479 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 5 )
 
 [node name="Cloud3" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.978198 )
-position = Vector2( -39.8851, 210.507 )
+self_modulate = Color( 1, 1, 1, 0.999341 )
+position = Vector2( -39.9484, 210.788 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 6 )
 
 [node name="Cloud4" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.972938 )
-position = Vector2( 113.15, 164.756 )
+self_modulate = Color( 1, 1, 1, 0.989687 )
+position = Vector2( 113.285, 164.908 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 7 )
 

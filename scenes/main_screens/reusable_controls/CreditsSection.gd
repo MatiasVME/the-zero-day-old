@@ -35,6 +35,6 @@ func show_section() -> void:
 		animation.play("Intro")
 
 func stop_showing() -> void:
-			animation.set_current_animation("Intro")
-			animation.seek(0, true)
-			animation.stop(true)
+	animation.set_current_animation("Intro")
+	animation.seek(0, true)
+	animation.stop(true)
