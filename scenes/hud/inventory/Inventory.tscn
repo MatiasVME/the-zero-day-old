@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/hud/inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/panel/Inventory.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hud/inventory/item_info/Info.gd" type="Script" id=3]
+[ext_resource path="res://scenes/hud/inventory/item_info/panel_images/panel1.png" type="Texture" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://scenes/hud/inventory/item_info/PropertyLabel.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/live.png" type="Texture" id=7]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/attack.png" type="Texture" id=8]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/armor.png" type="Texture" id=9]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/buy.png" type="Texture" id=10]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/sell.png" type="Texture" id=11]
+[ext_resource path="res://scenes/hud/inventory/item_info/PressButton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button.png" type="Texture" id=13]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button_pressed.png" type="Texture" id=14]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button.png" type="Texture" id=15]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button_pressed.png" type="Texture" id=16]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/trash.png" type="Texture" id=17]
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,4 +34,228 @@ rect_min_size = Vector2( 166, 222 )
 scroll_horizontal_enabled = false
 
 [node name="MainColumn" type="VBoxContainer" parent="Container"]
+
+[node name="Info" type="ScrollContainer" parent="."]
+margin_left = 182.858
+margin_top = 8.2039
+margin_right = 357.858
+margin_bottom = 230.204
+rect_min_size = Vector2( 166, 222 )
+scroll_horizontal_enabled = false
+script = ExtResource( 3 )
+
+[node name="PanelsColumn" type="VBoxContainer" parent="Info"]
+margin_right = 175.0
+margin_bottom = 85.0
+custom_constants/separation = -8
+
+[node name="ItemData" type="MarginContainer" parent="Info/PanelsColumn"]
+margin_right = 175.0
+margin_bottom = 52.0
+rect_min_size = Vector2( 175, 50 )
+custom_constants/margin_right = 3
+custom_constants/margin_top = 6
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 6
+
+[node name="BackPanel" type="NinePatchRect" parent="Info/PanelsColumn/ItemData"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 172.0
+margin_bottom = 46.0
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Data" type="MarginContainer" parent="Info/PanelsColumn/ItemData"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 172.0
+margin_bottom = 46.0
+custom_constants/margin_right = 4
+custom_constants/margin_top = 4
+custom_constants/margin_left = 4
+custom_constants/margin_bottom = 4
+
+[node name="DataRow" type="HBoxContainer" parent="Info/PanelsColumn/ItemData/Data"]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 165.0
+margin_bottom = 36.0
+
+[node name="ItemIcon" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="TextureRect" type="TextureRect" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemIcon"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+texture = ExtResource( 5 )
+expand = true
+
+[node name="ItemConsumableProp" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
+
+[node name="Amount" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemConsumableProp" instance=ExtResource( 6 )]
+margin_right = 32.0
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Heal" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemConsumableProp" instance=ExtResource( 6 )]
+margin_top = 14.0
+margin_right = 32.0
+margin_bottom = 24.0
+icon = ExtResource( 7 )
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="ItemEquipmentProp" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+editor/display_folded = true
+margin_left = 72.0
+margin_right = 100.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 22, 22 )
+
+[node name="Attack" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemEquipmentProp" instance=ExtResource( 6 )]
+margin_right = 28.0
+icon = ExtResource( 8 )
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Defense" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemEquipmentProp" instance=ExtResource( 6 )]
+margin_top = 14.0
+margin_right = 28.0
+margin_bottom = 24.0
+icon = ExtResource( 9 )
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="ItemBuySell" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+editor/display_folded = true
+margin_left = 104.0
+margin_right = 132.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 22, 22 )
+
+[node name="Buy" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemBuySell" instance=ExtResource( 6 )]
+margin_right = 28.0
+icon = ExtResource( 10 )
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Sell" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemBuySell" instance=ExtResource( 6 )]
+margin_top = 14.0
+margin_right = 28.0
+margin_bottom = 24.0
+icon = ExtResource( 11 )
+icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="ItemMaterialProp" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+visible = false
+margin_left = 136.0
+margin_right = 158.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 22, 22 )
+
+[node name="ItemType" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+margin_left = 136.0
+margin_right = 158.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 22, 22 )
+
+[node name="ItemAccions" type="MarginContainer" parent="Info/PanelsColumn"]
+margin_top = 44.0
+margin_right = 175.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 175, 40 )
+custom_constants/margin_right = 3
+custom_constants/margin_top = 6
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 6
+
+[node name="BackPanel" type="NinePatchRect" parent="Info/PanelsColumn/ItemAccions"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 172.0
+margin_bottom = 35.0
+hint_tooltip = "AAAA"
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Accions" type="MarginContainer" parent="Info/PanelsColumn/ItemAccions"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 172.0
+margin_bottom = 35.0
+custom_constants/margin_right = 3
+custom_constants/margin_top = 6
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 6
+
+[node name="AccionRow" type="HBoxContainer" parent="Info/PanelsColumn/ItemAccions/Accions"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 166.0
+margin_bottom = 23.0
+alignment = 1
+
+[node name="Equip" type="VBoxContainer" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow"]
+editor/display_folded = true
+margin_left = 54.0
+margin_right = 87.0
+margin_bottom = 17.0
+
+[node name="PressButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 33.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 33, 17 )
+icon = ExtResource( 9 )
+icon_size = Vector2( 10, 10 )
+normal_texture = ExtResource( 13 )
+pressed_texture = ExtResource( 14 )
+text = "+10"
+
+[node name="PressButton2" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 12 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 23.0
+margin_right = 31.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 33, 17 )
+icon = ExtResource( 9 )
+icon_size = Vector2( 10, 10 )
+normal_texture = ExtResource( 15 )
+pressed_texture = ExtResource( 16 )
+text = "-10"
+
+[node name="Drop" type="VBoxContainer" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow"]
+margin_left = 91.0
+margin_right = 108.0
+margin_bottom = 17.0
+
+[node name="DropButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Drop" instance=ExtResource( 12 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 17.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 17, 17 )
+icon = ExtResource( 17 )
+icon_size = Vector2( 11, 10 )
+normal_texture = ExtResource( 15 )
+pressed_texture = ExtResource( 16 )
+text = ""
+separation = 0
 
