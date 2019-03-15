@@ -150,6 +150,7 @@ margin_left = -128.0
 margin_top = -72.0
 margin_right = 128.0
 margin_bottom = 72.0
+mouse_filter = 2
 texture = ExtResource( 3 )
 
 [node name="Cloud1" type="Sprite" parent="."]

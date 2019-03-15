@@ -14,5 +14,7 @@ current = false
 position = Vector2( 180, -120 )
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 50.0
 script = ExtResource( 3 )
 

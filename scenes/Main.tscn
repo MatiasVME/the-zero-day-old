@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/main_screens/Play.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/main_screens/AventureMode.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
@@ -22,6 +23,7 @@ editor/display_folded = true
 [node name="Background" type="ColorRect" parent="ParallaxBackground"]
 margin_right = 360.0
 margin_bottom = 240.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 0.196078 )
 
 [node name="NotesMenu" parent="." instance=ExtResource( 3 )]
@@ -38,11 +40,15 @@ position = Vector2( 180, -120 )
 [node name="Credits" parent="." instance=ExtResource( 7 )]
 position = Vector2( 180, 360 )
 
+[node name="AventureMode" parent="." instance=ExtResource( 8 )]
+position = Vector2( 180, -370 )
+
 [connection signal="back_from_notes_pressed" from="NotesMenu" to="." method="_on_NotesMenu_back_from_notes_pressed"]
 [connection signal="credits_pressed" from="MainMenu" to="." method="_on_MainMenu_credits_pressed"]
 [connection signal="notes_pressed" from="MainMenu" to="." method="_on_MainMenu_notes_pressed"]
 [connection signal="options_pressed" from="MainMenu" to="." method="_on_MainMenu_options_pressed"]
 [connection signal="play_pressed" from="MainMenu" to="." method="_on_MainMenu_play_pressed"]
 [connection signal="back_pressed" from="Play" to="." method="_on_Play_back_pressed"]
+[connection signal="campaign_pressed" from="Play" to="." method="_on_Play_campaign_pressed"]
 [connection signal="splash_finished" from="Splash" to="." method="_on_Splash_splash_finished"]
 [connection signal="back_from_credits_pressed" from="Credits" to="." method="_on_Credits_back_from_credits_pressed"]

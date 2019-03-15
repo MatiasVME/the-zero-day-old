@@ -3,11 +3,12 @@ extends Node2D
 const CameraMenu = preload("res://tests/test_menu_screens/CameraMenu.gd")
 
 onready var camera : CameraMenu = CameraManager.set_camera_menu()
-onready var main_menu : = $MainMenu
-onready var splash : = $Splash
-onready var play_menu : = $Play
-onready var notes_menu : = $NotesMenu
-onready var credits_menu : = $Credits
+onready var main_menu := $MainMenu
+onready var splash := $Splash
+onready var play_menu := $Play
+onready var notes_menu := $NotesMenu
+onready var credits_menu := $Credits
+onready var aventure_mode := $AventureMode
 
 func _ready():
 	camera.target = splash
@@ -56,4 +57,9 @@ func _on_MainMenu_notes_pressed():
 func _on_Credits_back_from_credits_pressed():
 	camera.target.focus = false
 	camera.target = main_menu
+	camera.target.focus = true
+
+func _on_Play_campaign_pressed():
+	camera.target.focus = false
+	camera.target = aventure_mode
 	camera.target.focus = true
