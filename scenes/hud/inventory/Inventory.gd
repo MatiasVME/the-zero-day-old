@@ -20,6 +20,7 @@ var total_ammo = 0
 
 signal item_added
 signal item_removed(row_num, slot_num)
+signal inventory_item_selected(item)
 
 func _ready():
 	DataManager.get_current_inv().connect("item_added", self, "_on_item_added")
@@ -28,11 +29,7 @@ func _ready():
 	
 	init_inventory()
 
-# Esto sera temporal hasta que le pongamos un botón
-func _input(event):
-	if not is_inventory_open : return
-	if event.is_action_pressed("ui_select"):
-		drop_selected_slot()
+
 
 # Actualiza el inventario en caso de un cambio
 func init_inventory():
@@ -57,6 +54,8 @@ func add_item(item_data : PHItem):
 
 func update_last_selected_slot(row, slot):
 	last_selected_slot = [row, slot]
+	var item = rows[last_selected_slot[0]].get_item(last_selected_slot[1])
+	emit_signal("inventory_item_selected", item)
 
 func drop_selected_slot():
 	if last_selected_slot[0] == -1 : return
