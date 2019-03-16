@@ -14,13 +14,17 @@ func create_new_camera(camera_name):
 	return new_camera
 
 func set_camera_game():
+	$CameraMenu.current = false
 	current_camera = $CameraGame
 	current_camera.current = true
+	
 	return current_camera
 	
 func set_camera_menu():
+	$CameraGame.current = false
 	current_camera = $CameraMenu
 	current_camera.current = true
+	
 	return current_camera
 
 func get_current():

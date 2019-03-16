@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	CameraManager.set_camera_menu()
-	CameraManager.current_camera.smoothing_speed = 25
+	CameraManager.current_camera.smoothing_speed = 15
 	CameraManager.current_camera.global_position = global_position
 	
 	$Version.text = Main.VERSION

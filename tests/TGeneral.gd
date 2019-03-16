@@ -7,8 +7,11 @@ func _ready():
 	player.global_position = Vector2(-224, 288)
 	add_child(player)
 	player.enable_player()
+	
 	camera = CameraManager.set_camera_game()
 	camera.following = player
+	camera.mode = camera.Mode.FOLLOW
+	
 	$HUD.set_hud_actor(player)
 	
 	var item1 = Factory.ItemInWorldFactory.create_rand_distance_weapon()

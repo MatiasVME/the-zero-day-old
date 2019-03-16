@@ -144,3 +144,4 @@ texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
 
+[connection signal="pressed" from="Maps/Map1" to="." method="_on_Map1_pressed"]

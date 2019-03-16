@@ -261,7 +261,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ProjectHumanity"
-run/main_scene="res://tests/TGeneral.tscn"
+run/main_scene="res://scenes/main_screens/temp_main_menu/TempMainMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
