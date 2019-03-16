@@ -7,12 +7,10 @@
 [node name="Row1" type="HBoxContainer"]
 margin_right = 158.0
 margin_bottom = 26.0
+rect_min_size = Vector2( 158, 26 )
 script = ExtResource( 1 )
 
 [node name="Diamond" parent="." instance=ExtResource( 2 )]
-margin_top = 0.0
-margin_bottom = 26.0
-rect_min_size = Vector2( 8, 26 )
 
 [node name="Slots" type="Node2D" parent="."]
 
@@ -39,3 +37,5 @@ editor/display_folded = true
 margin_left = 132.0
 margin_right = 158.0
 
+
+[editable path="Diamond"]

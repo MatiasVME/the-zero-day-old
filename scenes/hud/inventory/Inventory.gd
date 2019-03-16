@@ -21,6 +21,7 @@ var total_ammo = 0
 signal item_added
 signal item_removed(row_num, slot_num)
 signal inventory_item_selected(item)
+signal change_diamond(row)
 
 func _ready():
 	DataManager.get_current_inv().connect("item_added", self, "_on_item_added")
@@ -29,13 +30,22 @@ func _ready():
 	
 	init_inventory()
 
-
-
+func _input(event):
+	if event.is_action_pressed("next_hotbar"):
+		var next_hotbar = (get_current_row().row_num + 1) % rows.size()
+		set_row_diamond_selected(next_hotbar)
+		emit_signal("change_diamond", rows[next_hotbar])
+	elif event.is_action_pressed("previous_hotbar"):
+		var next_hotbar = (get_current_row().row_num - 1) % rows.size()
+		set_row_diamond_selected(next_hotbar)
+		emit_signal("change_diamond", rows[next_hotbar])
+	
 # Actualiza el inventario en caso de un cambio
 func init_inventory():
 	create_row_if_can()
+	rows[0].get_node("Diamond/DButton").pressed = true
 	
-	print("DataManager.get_current_inv().inv",DataManager.get_current_inv().inv)
+#	print("DataManager.get_current_inv().inv",DataManager.get_current_inv().inv)
 	for item in DataManager.get_current_inv().inv:
 		add_item(item)
 
@@ -75,6 +85,10 @@ func drop_selected_slot():
 	PlayerManager.get_current_player().get_parent().add_child(dropped_item)
 	get_total_ammo()
 
+func set_row_diamond_selected(row):
+	unselect_row_diammond()
+	rows[row].get_node("Diamond/DButton").pressed = true
+	
 # Devuelve una posicion alrededor de un determinado radio
 func random_drop_distance(radius):
 	var x = ( randi() % radius*2 ) - radius # Random desde -radius a +radius
@@ -106,9 +120,13 @@ func create_row_if_can():
 	if rows.size() < 1 or get_last_row().is_full():
 		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
 		$Container/MainColumn.add_child(get_last_row())
+		
 		get_last_row().connect("item_removed", self, "_on_item_removed", [rows.size() - 1])
 		get_last_row().connect("slot_selected", self, "_on_slot_selected")
-		get_last_row().init_row(rows.size() - 1) # le añadimos un identificador igual a su posición en el array row
+		get_last_row().connect("row_diamond_pressed", self, "_on_row_diammond_pressed")
+		
+		# le añadimos un identificador igual a su posición en el array row
+		get_last_row().init_row(rows.size() - 1) 
 
 func get_last_row():
 	return rows[rows.size() - 1]
@@ -123,6 +141,21 @@ func unselect_all_slots(exceptions := true):
 				continue
 				
 			rows[row_i].get_slot(slot).get_node("Slot").pressed = false
+
+func unselect_row_diammond():
+	for row in rows:
+		row.get_node("Diamond/DButton").pressed = false
+
+func select_row_diammond(row_num):
+	for row in rows:
+		if row.row_num == row_num:
+			row.get_node("Diamond/DButton").pressed = true
+			break
+
+func get_current_row():
+	for row in rows:
+		if row.get_node("Diamond/DButton").pressed:
+			return row
 
 # Devuelve el total de municion que puede ocupar,
 # dependiendo de las municiones -para la arma actual- 
@@ -157,5 +190,9 @@ func _on_player_shooting(player, direction):
 
 func _on_item_removed(slot_num, row_num):
 	emit_signal("item_removed", row_num, slot_num)
-			
 	
+func _on_row_diammond_pressed(row, pressed):
+	if pressed:
+		unselect_row_diammond()
+		select_row_diammond(row.row_num)
+		emit_signal("change_diamond", row)

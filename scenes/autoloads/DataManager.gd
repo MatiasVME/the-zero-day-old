@@ -134,7 +134,7 @@ func save_user_config():
 
 func create_inventories():
 	var w_inv = RPGWeightInventory.new()
-	w_inv.max_weight = 10 # Cantidad temporal
+	w_inv.max_weight = 15 # Cantidad temporal
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))

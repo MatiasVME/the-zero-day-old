@@ -18,6 +18,14 @@ func _ready():
 	item1.global_position = Vector2(200, 104)
 	add_child(item1)
 	
+	var item2 = Factory.ItemInWorldFactory.create_normal_ammo()
+	item2.global_position = Vector2(200, 101)
+	add_child(item2)
+	
+	var item3 = Factory.ItemInWorldFactory.create_plasma_ammo()
+	item3.global_position = Vector2(201, 100)
+	add_child(item3)
+	
 	var item4 = Factory.ItemInWorldFactory.create_normal_ammo()
 	item4.global_position = Vector2(200, 101)
 	add_child(item4)
@@ -49,5 +57,21 @@ func _ready():
 	var item11 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 	item11.global_position = Vector2(200, 104)
 	add_child(item11)
+	
+	var item12 = Factory.ItemInWorldFactory.create_normal_ammo()
+	item12.global_position = Vector2(200, 101)
+	add_child(item12)
+	
+	var item13 = Factory.ItemInWorldFactory.create_plasma_ammo()
+	item13.global_position = Vector2(201, 100)
+	add_child(item13)
+	
+	var item14 = Factory.ItemInWorldFactory.create_normal_ammo()
+	item14.global_position = Vector2(201, 100)
+	add_child(item14)
+	
+	var item15 = Factory.ItemInWorldFactory.create_plasma_ammo()
+	item15.global_position = Vector2(201, 100)
+	add_child(item15)
 
 #	Factory.ItemFactory.test()

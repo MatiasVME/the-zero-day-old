@@ -9,9 +9,11 @@ func _ready():
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
 		$AnimInv.play("show")
+		$AnimAvatarHandler.play("hide")
 		$Inventory.is_inventory_open = true
 	else:
 		$AnimInv.play("hide")
+		$AnimAvatarHandler.play("show")
 		$Inventory.is_inventory_open = false
 
 # Establece un actor al HUD, para que se conecten las

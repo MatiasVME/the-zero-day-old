@@ -36,6 +36,7 @@ scroll_horizontal_enabled = false
 [node name="MainColumn" type="VBoxContainer" parent="Container"]
 
 [node name="Info" type="ScrollContainer" parent="."]
+editor/display_folded = true
 margin_left = 182.858
 margin_top = 8.2039
 margin_right = 357.858
@@ -226,6 +227,7 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 13 )
 pressed_texture = ExtResource( 14 )
 text = "+10"
+separation = 3
 
 [node name="PressButton2" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 12 )]
 visible = false
@@ -240,6 +242,7 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 15 )
 pressed_texture = ExtResource( 16 )
 text = "-10"
+separation = 3
 
 [node name="Drop" type="VBoxContainer" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow"]
 margin_left = 91.0

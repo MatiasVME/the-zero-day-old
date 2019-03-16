@@ -21,6 +21,9 @@ func _ready():
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# hay un item es removido o etc.
 	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
+	# Conectamos la hotbar al inventario para escuchar cuando
+	# se cambia de hotbar.
+	hud.get_node("Inventory").connect("change_diamond", self, "_on_change_diamond")
 
 func _input(event):
 	if event.is_action_pressed("hotbar1"):
@@ -81,6 +84,8 @@ func update_hotbar_row(row : int):
 		print("inventory and inventory.rows < 1")
 		return
 	
+	current_hotbar = row
+	
 	items = []
 	for i in range(0, 5):
 		var item = inventory.rows[row].get_item(i)
@@ -98,14 +103,14 @@ func update_hotbar_row(row : int):
 func _on_slot_toggled(button_pressed, slot):
 	select_slot(slot)
 	update_hotbar_row(current_hotbar)
-		
+
+func _on_change_diamond(row):
+	update_hotbar_row(row.row_num)
+	
 func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
 	select_slot(current_slot)
 
 func _on_item_removed(row_num, slot_num):
-	update_hotbar_row(0)
-	# 0 para que siempre se quede en el primer row
-
-
+	update_hotbar_row(row_num)
 
