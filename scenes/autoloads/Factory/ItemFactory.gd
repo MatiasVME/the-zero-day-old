@@ -104,7 +104,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 				weapon.item_name = "Submachine"
 				
 	elif weapon.weapon_type == 1:
-		match int(round(randi() % 1)):
+		match int(round(randi() % 2)):
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
 				
@@ -128,8 +128,8 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 			1: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
 				
-				weapon.time_to_next_action = 0.25
-				max_feature_time_to_next_action = 0.025
+				weapon.time_to_next_action = 0.15
+				max_feature_time_to_next_action = 0.15
 				min_feature_time_to_next_action = 0.001
 				
 				weapon.damage = 1.0
@@ -152,7 +152,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 		var rand_num
 		
 		while i < points:
-			rand_num = int(round(randi() % 3))
+			rand_num = int(round(randi() % 4))
 			match rand_num:
 				0:
 					weapon.damage += max_feature_damage / (MAX_POINTS / 4)
