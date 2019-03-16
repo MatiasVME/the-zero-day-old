@@ -291,7 +291,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 

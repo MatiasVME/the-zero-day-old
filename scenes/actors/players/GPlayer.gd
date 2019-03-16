@@ -204,7 +204,7 @@ func _on_item_equiped(item):
 
 func _on_fire(dir):
 	# Temp
-	var bullet = ShootManager.fire(dir)
+	var bullet = ShootManager.fire(dir, ShootManager.Bullet.PLASMA, data.equip.damage)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
 	get_parent().add_child(bullet)
 
