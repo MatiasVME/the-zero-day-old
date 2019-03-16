@@ -7,9 +7,6 @@ func _ready():
 	
 	$Version.text = Main.VERSION
 	
-func _on_ButtonAventureMode_pressed():
-	CameraManager.current_camera.global_position = $AventureMode.global_position
-
 func _on_Back_pressed():
 	CameraManager.current_camera.global_position = global_position
 
@@ -19,3 +16,6 @@ func _on_ButtonCredits_pressed():
 
 func _on_BackFromCredits_pressed():
 	CameraManager.current_camera.global_position = global_position
+
+func _on_ButtonAdventureMode_pressed():
+	CameraManager.current_camera.global_position = $AdventureMode.global_position

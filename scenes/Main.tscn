@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/main_screens/Play.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/main_screens/AventureMode.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/main_screens/AdventureMode.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
