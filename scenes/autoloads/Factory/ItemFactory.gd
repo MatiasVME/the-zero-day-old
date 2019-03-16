@@ -61,7 +61,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	weapon.buy_price = int(round(25 * points)) # temp
 	weapon.sell_price = weapon.buy_price / 4
 	
-	weapon.weapon_type = int(round(rand_range(0, 1)))
+	weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
 	# Caracteristicas de las armas que dependen de los puntos
 	var feature_damage = 0
@@ -80,7 +80,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	var max_feature_weapon_capacity = 0
 	var min_feature_weapon_capacity = 0
 	
-	if weapon.weapon_type == 0:
+	if weapon.ammo_type == weapon.AmmoType.NORMAL:
 		match 0:
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
@@ -103,8 +103,8 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 				
 				weapon.item_name = "Submachine"
 				
-	elif weapon.weapon_type == 1:
-		match int(round(randi() % 2)):
+	elif weapon.ammo_type == weapon.AmmoType.PLASMA:
+		match int(round(randi() % 2) - 0.001):
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
 				
@@ -152,7 +152,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 		var rand_num
 		
 		while i < points:
-			rand_num = int(round(randi() % 4))
+			rand_num = int(round(randi() % 4) - 0.001)
 			match rand_num:
 				0:
 					weapon.damage += max_feature_damage / (MAX_POINTS / 4)
@@ -197,16 +197,27 @@ static func create_test_distance_weapon():
 	
 	return weapon
 	
-static func create_normal_ammo():
+static func create_normal_ammo(ammo_ammount := 16):
 	var ammo = PHAmmo.new()
 	
-	ammo.item_name = "Test Ammo"
-	ammo.ammo_amount = 16
+	ammo.item_name = "Normal Ammo"
+	ammo.ammo_amount = ammo_ammount
 	ammo.ammo_type = ammo.AmmoType.NORMAL
 	ammo.buy_price = ammo.ammo_amount * 10
 	ammo.sell_price = ammo.buy_price / 4
 	ammo.texture_path = "res://scenes/items/ammo/normal/normal_bullet_ammo.png"
 	
 	return ammo
+
+static func create_plasma_ammo(ammo_amount := 8):
+	var ammo = PHAmmo.new()
 	
+	ammo.item_name = "Plasma Ammo"
+	ammo.ammo_amount = ammo_amount
+	ammo.ammo_type = ammo.AmmoType.PLASMA
+	ammo.buy_price = ammo.ammo_amount * 20
+	ammo.sell_price = ammo.buy_price / 4
+	ammo.texture_path = "res://scenes/items/ammo/plasma/plasma_bullet_ammo.png"
+	
+	return ammo
 	

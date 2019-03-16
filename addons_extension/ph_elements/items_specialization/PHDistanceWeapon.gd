@@ -2,6 +2,7 @@ extends PHWeapon
 
 class_name PHDistanceWeapon
 
+# No se bien para que serviria esto aun..
 enum WeaponType {
 	GUN,
 	MACHINEGUN

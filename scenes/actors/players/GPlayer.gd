@@ -156,16 +156,14 @@ func enable_player(_can_fire : bool = false):
 func reload():
 	print("reload")
 	# Prevenir que se llame a esta funcion inecesariamente
-	if not data.equip is PHDistanceWeapon:
-		return false
-	if data.equip.current_shot >= data.equip.weapon_capacity:
+	if not data.equip is PHDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
 		return false
 	
 	# Obtener las municiones
 	var ammunition_inv = []
 	
 	for ammo in DataManager.get_current_inv().inv:
-		if ammo is PHAmmo:
+		if ammo is PHAmmo and ammo.ammo_type == data.equip.ammo_type:
 			ammunition_inv.append(ammo)
 	
 	# Si no hay ammunition_inv entonces se sale de la
@@ -204,7 +202,7 @@ func _on_item_equiped(item):
 
 func _on_fire(dir):
 	# Temp
-	var bullet = ShootManager.fire(dir, ShootManager.Bullet.PLASMA, data.equip.damage)
+	var bullet = ShootManager.fire(dir, data.equip.ammo_type, data.equip.damage)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
 	get_parent().add_child(bullet)
 

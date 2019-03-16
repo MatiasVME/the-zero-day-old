@@ -24,6 +24,22 @@ static func create_test_ammo():
 	
 	return ammo_in_world
 
+static func create_normal_ammo():
+	var ammo = Factory.ItemFactory.create_normal_ammo()
+	var ammo_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
+	
+	ammo_in_world.data = ammo
+	
+	return ammo_in_world
+	
+static func create_plasma_ammo():
+	var ammo = Factory.ItemFactory.create_plasma_ammo()
+	var ammo_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
+	
+	ammo_in_world.data = ammo
+	
+	return ammo_in_world
+
 # Encapsula un Item en un ItemInWorld
 static func create_from_item(item):
 	var item_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()

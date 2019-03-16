@@ -18,23 +18,23 @@ func _ready():
 	item1.global_position = Vector2(200, 104)
 	add_child(item1)
 	
-	var item4 = Factory.ItemInWorldFactory.create_test_ammo()
+	var item4 = Factory.ItemInWorldFactory.create_normal_ammo()
 	item4.global_position = Vector2(200, 101)
 	add_child(item4)
 	
-	var item5 = Factory.ItemInWorldFactory.create_test_ammo()
+	var item5 = Factory.ItemInWorldFactory.create_plasma_ammo()
 	item5.global_position = Vector2(201, 100)
 	add_child(item5)
 	
-	var item6 = Factory.ItemInWorldFactory.create_test_ammo()
+	var item6 = Factory.ItemInWorldFactory.create_normal_ammo()
 	item6.global_position = Vector2(201, 100)
 	add_child(item6)
 	
-	var item7 = Factory.ItemInWorldFactory.create_test_ammo()
+	var item7 = Factory.ItemInWorldFactory.create_plasma_ammo()
 	item7.global_position = Vector2(201, 100)
 	add_child(item7)
 	
-	var item8 = Factory.ItemInWorldFactory.create_test_ammo()
+	var item8 = Factory.ItemInWorldFactory.create_normal_ammo()
 	item8.global_position = Vector2(201, 100)
 	add_child(item8)
 	

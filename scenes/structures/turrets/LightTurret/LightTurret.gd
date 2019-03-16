@@ -108,7 +108,7 @@ func track():
 func shoot():
 	var bullet = ShootManager.fire(
 		(objective.global_position - global_position).normalized(),
-		ShootManager.Bullet.COMMON_BULLET,
+		ShootManager.Bullet.NORMAL,
 		attack
 	)
 	
