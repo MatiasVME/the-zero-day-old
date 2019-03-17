@@ -8,12 +8,14 @@ func _ready():
 	set_camera_game()
 
 # Crea una nueva cámara
-func create_new_camera(camera_name):
-	var new_camera = Camera2D.new()
-	add_child(new_camera)
-	return new_camera
+#func create_new_camera(camera_name):
+#	var new_camera = Camera2D.new()
+#	add_child(new_camera)
+#	return new_camera
 
 func set_camera_game():
+	$CameraGame.visible = true
+	$CameraMenu.visible = false
 	$CameraMenu.current = false
 	current_camera = $CameraGame
 	current_camera.current = true
@@ -21,6 +23,8 @@ func set_camera_game():
 	return current_camera
 	
 func set_camera_menu():
+	$CameraGame.visible = false
+	$CameraMenu.visible = true
 	$CameraGame.current = false
 	current_camera = $CameraMenu
 	current_camera.current = true

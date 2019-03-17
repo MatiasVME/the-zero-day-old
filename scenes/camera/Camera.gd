@@ -11,11 +11,18 @@ var input_dir : Vector2
 var input_change_focus : bool
 
 func _physics_process(delta):
+	# Verificamos si following no a sido borrado
+	if following and not weakref(following).get_ref():
+		# Ha sido borrado
+		# NEEDFIX: Esto se llama muchas veces y puede
+		# que sea caro llamara mucho a weakref
+		return
+	
 	input_change_focus = Input.is_action_just_pressed("change_focus")
 	
 	if input_change_focus:
 		change_focus()
-		
+
 	if mode == Mode.FOLLOW:
 		if following and not following.is_disabled:
 			global_position = following.global_position
@@ -39,3 +46,6 @@ func change_focus():
 	following.can_move = false
 	following = PlayerManager.get_next_player()
 	following.can_move = true
+
+func _on_Camera_tree_entered():
+	print("_on_Camera_tree_entered")

@@ -29,12 +29,16 @@ func _on_player_dead(player):
 	$CurtainAnim.play("dead")
 	
 #	$AnimInv.play("hide")
-	$AnimGameMenu.play("hide")
+#	$AnimGameMenu.play("hide")
 	$AnimHotbar.play("hide")
 	$AnimBulletInfo.play("hide")
 	$AnimAvatarHandler.play("hide")
 	
 func _on_get_damage(player, damage):
 	$CurtainAnim.play("hit")
-	
-	
+
+func _on_Menu_toggled(button_pressed):
+	if button_pressed:
+		$AnimGameMenu.play("show_game_menu")
+	else:
+		$AnimGameMenu.play("hide_game_menu")

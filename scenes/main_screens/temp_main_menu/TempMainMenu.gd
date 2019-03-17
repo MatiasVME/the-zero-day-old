@@ -6,7 +6,7 @@ func _ready():
 	CameraManager.current_camera.global_position = global_position
 	
 	$Version.text = Main.VERSION
-	
+
 func _on_Back_pressed():
 	CameraManager.current_camera.global_position = global_position
 
