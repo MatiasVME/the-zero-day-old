@@ -104,7 +104,9 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 				weapon.item_name = "Submachine"
 				
 	elif weapon.ammo_type == weapon.AmmoType.PLASMA:
-		match int(round(randi() % 2) - 0.001):
+		var rand_num = int(round(rand_range(0, 1)))
+#		print("de 0 a 2: ", rand_num)
+		match rand_num:
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
 				

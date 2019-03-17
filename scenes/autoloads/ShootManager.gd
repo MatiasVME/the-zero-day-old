@@ -22,8 +22,10 @@ func fire(direction : Vector2, _bullet = Bullet.NORMAL, damage : int = 1, time_l
 	return bullet
 	
 func get_bullet_instance(bullet):
-	match bullet:
+	match int(bullet):
 		Bullet.PLASMA:
 			return load("res://scenes/actors/bullets/plasma/Plasma.tscn").instance()
 		Bullet.NORMAL:
 			return load("res://scenes/actors/bullets/common_bullet/CommonBullet.tscn").instance()
+	
+	print("ERROR: no se encuentra la bullet: ", bullet)

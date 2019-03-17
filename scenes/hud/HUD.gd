@@ -33,6 +33,9 @@ func _on_player_dead(player):
 	$AnimHotbar.play("hide")
 	$AnimBulletInfo.play("hide")
 	$AnimAvatarHandler.play("hide")
+	$GameMenu/Inventory.disabled = true
+	
+	DataManager.save_all_data()
 	
 func _on_get_damage(player, damage):
 	$CurtainAnim.play("hit")

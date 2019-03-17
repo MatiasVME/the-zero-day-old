@@ -132,7 +132,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 16, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=6]
 resource_name = "hide_game_menu"
 length = 0.4
 tracks/0/type = "value"
@@ -160,7 +160,7 @@ tracks/1/keys = {
 "values": [ true, true, false ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameMenu:position")
@@ -175,8 +175,7 @@ tracks/0/keys = {
 "values": [ Vector2( 16, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "show_game_menu"
+[sub_resource type="Animation" id=8]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("GameMenu:position")
@@ -203,7 +202,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hotbar:position")
@@ -218,7 +217,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 20 ) ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hotbar:position")
@@ -233,7 +232,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BulletInfo:position")
@@ -248,7 +247,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 80, 0 ) ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BulletInfo:position")
@@ -263,7 +262,7 @@ tracks/0/keys = {
 "values": [ Vector2( 80, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AvatarHandler:position")
@@ -278,7 +277,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -96, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=14]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AvatarHandler:position")
@@ -326,33 +325,33 @@ visible = false
 [node name="AnimGameMenu" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/hide = SubResource( 5 )
-anims/hide_game_menu = SubResource( 14 )
-anims/show = SubResource( 6 )
-anims/show_game_menu = SubResource( 7 )
+anims/hide_game_menu = SubResource( 6 )
+anims/show = SubResource( 7 )
+anims/show_game_menu = SubResource( 8 )
 
 [node name="Hotbar" parent="." instance=ExtResource( 4 )]
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 8 )
-anims/show = SubResource( 9 )
+anims/hide = SubResource( 9 )
+anims/show = SubResource( 10 )
 
 [node name="BulletInfo" parent="." instance=ExtResource( 5 )]
 position = Vector2( 80, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 10 )
-anims/show = SubResource( 11 )
+anims/hide = SubResource( 11 )
+anims/show = SubResource( 12 )
 
 [node name="AvatarHandler" parent="." instance=ExtResource( 6 )]
 position = Vector2( -96, 0 )
 
 [node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 12 )
-anims/show = SubResource( 13 )
+anims/hide = SubResource( 13 )
+anims/show = SubResource( 14 )
 
 [connection signal="toggled" from="GameMenu/Menu" to="." method="_on_Menu_toggled"]
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]

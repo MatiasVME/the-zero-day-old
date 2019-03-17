@@ -100,6 +100,8 @@ func save_players():
 	for i in players.size():
 		temp_data[i] = inst2dict(players[i])
 	
+	# print("temp_data: ",temp_data)
+	
 	$DataPlayers.save_data("Players")
 	
 func load_players():
@@ -109,7 +111,7 @@ func load_players():
 	for player in temp_data.values():
 		players.append(dict2inst(player))
 		
-	print("cargado los players: ", players)
+#	print("cargado los players: ", players)
 
 func create_user_config():
 	user_config = $DataUserConfig.get_data("UserConfig")
@@ -159,6 +161,8 @@ func load_inventories():
 	
 	for inventory in temp_data.values():
 		inventories.append(temp_inv.dict2inv(inventory))
+		
+#	print("inventories", inst2dict(inst2dict(inventories[0])["inv"][0]))
 	
 func create_stats():
 #	var temp_data

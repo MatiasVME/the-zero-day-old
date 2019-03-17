@@ -54,6 +54,9 @@ func init_player(player_num : int) -> GPlayer:
 	player.data = DataManager.players[player_num]
 	cad_players(player)
 	
+	if player.data.is_dead:
+		player.data.revive()
+	
 	return player
 
 # Conecta señales y desconecta señales si es que hay otro
