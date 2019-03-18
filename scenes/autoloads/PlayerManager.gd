@@ -18,6 +18,10 @@ enum PlayerType {
 }
 var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
 
+# Este es el player connectado, se usa esta variable
+# para luego desconectarlo
+var current_player_connected
+
 signal player_changed(new_player)
 signal player_shooting(player, direction)
 signal player_reload
@@ -59,29 +63,46 @@ func init_player(player_num : int) -> GPlayer:
 	
 	return player
 
+# Siempre hay que llamar a esta funcion antes de salir del
+# juego!!
+func clear_players():
+	players.clear()
+	disconnect_player(current_player_connected)
+
 # Conecta señales y desconecta señales si es que hay otro
 # player
 # Connect And Disconnect Players
-func cad_players(new_player : GPlayer, old_player = null):
-	if not new_player.is_connected("fire", self, "_on_player_fire"):
-		new_player.connect("fire", self, "_on_player_fire", [new_player])
-		new_player.connect("reload", self, "_on_player_reload")
-		
-		new_player.data.connect("add_hp", self, "_on_add_hp", [new_player])
-		new_player.data.connect("add_xp", self, "_on_add_xp", [new_player])
-		new_player.data.connect("remove_hp", self, "_on_remove_hp", [new_player])
-		new_player.data.connect("level_up", self, "_on_level_up", [new_player])
-		new_player.data.connect("dead", self, "_on_dead", [new_player])
-		
+func cad_players(_new_player : GPlayer, old_player = null):
+	current_player_connected = _new_player
+	
+	print("cad_players(): new_player: ", current_player_connected)
+	print("cad_players(): old_player: ", old_player)
+	
+	if not current_player_connected.is_connected("fire", self, "_on_player_fire"):
+		connect_player(current_player_connected)
+	
 	if old_player and not old_player.is_connected("fire", self, "_on_player_fire"):
-		old_player.disconnect("fire", self, "_on_player_fire")
-		old_player.disconnect("reload", self, "_on_player_reload")
+		disconnect_player(old_player)
+	
+func connect_player(player):
+	player.connect("fire", self, "_on_player_fire", [player])
+	player.connect("reload", self, "_on_player_reload")
+	
+	player.data.connect("add_hp", self, "_on_add_hp", [player])
+	player.data.connect("add_xp", self, "_on_add_xp", [player])
+	player.data.connect("remove_hp", self, "_on_remove_hp", [player])
+	player.data.connect("level_up", self, "_on_level_up", [player])
+	player.data.connect("dead", self, "_on_dead", [player])
 		
-		old_player.data.disconnect("add_hp", self, "_on_add_hp")
-		old_player.data.disconnect("add_xp", self, "_on_add_xp")
-		old_player.data.disconnect("remove_hp", self, "_on_remove_hp")
-		old_player.data.disconnect("level_up", self, "_on_level_up")
-		old_player.data.disconnect("dead", self, "_on_dead")
+func disconnect_player(player):
+	player.disconnect("fire", self, "_on_player_fire")
+	player.disconnect("reload", self, "_on_player_reload")
+	
+	player.data.disconnect("add_hp", self, "_on_add_hp")
+	player.data.disconnect("add_xp", self, "_on_add_xp")
+	player.data.disconnect("remove_hp", self, "_on_remove_hp")
+	player.data.disconnect("level_up", self, "_on_level_up")
+	player.data.disconnect("dead", self, "_on_dead")
 
 # Devuelve la instancia de el player actual (GPlayer)
 func get_current_player():

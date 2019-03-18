@@ -7,6 +7,7 @@ func _ready():
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")
 	PlayerManager.connect("player_gain_xp", self, "_on_player_gain_xp")
 	PlayerManager.connect("player_level_up", self, "_on_player_level_up")
+	print("PlayerManager.connect()")
 	
 func set_avatar_actor(avatar_actor):
 	$HealthBar.value = avatar_actor.data.hp

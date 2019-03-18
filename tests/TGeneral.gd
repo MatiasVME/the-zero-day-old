@@ -8,6 +8,10 @@ func _ready():
 	add_child(player)
 	player.enable_player()
 	
+	var player2 = PlayerManager.init_player(0)
+	player2.global_position = Vector2(-224, 320)
+	add_child(player2)
+	
 	camera = CameraManager.set_camera_game()
 	camera.following = player
 	camera.mode = camera.Mode.FOLLOW
