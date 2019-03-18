@@ -16,7 +16,7 @@ var current_player : int = 0 setget set_current_player, get_current_player
 
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
-var delete_data = 0
+var delete_data = 2
 
 func _ready():
 	configure_persistence_node()
@@ -205,9 +205,8 @@ func remove_all_data():
 	$DataGlobalConfig.remove_all_data()
 	$DataPlayers.remove_all_data()
 	$DataUserConfig.remove_all_data()
-#	$Inventories.remove_all_data()
-#	$Stats.remove_all_data()
-	pass
+	$DataInventories.remove_all_data()
+	$DataStats.remove_all_data()
 
 func set_current_player(player_num : int) -> void:
 	current_player = player_num
