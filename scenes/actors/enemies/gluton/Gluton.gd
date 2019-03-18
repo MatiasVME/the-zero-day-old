@@ -175,15 +175,14 @@ func get_random_objective():
 
 func drop_item():
 	var rand_num = rand_range(0, 100)
-	print("rand_num: ", rand_num)
 	
 	# Si el numero no esta dentro de la probabilidad, entonces return
 	if rand_num > 25:
 		return
 	
 	var item_pos := Vector2(
-		rand_range(position.x + 0, position.y + 0),
-		rand_range(position.x - 0, position.y - 0) 
+		rand_range(10, 10),
+		rand_range(-10, -10) 
 	)
 	
 	# Los glutones normales pueden dropear balas normales y raramente armas.
@@ -198,14 +197,12 @@ func drop_item():
 		else:
 			normal_ammo = Factory.ItemInWorldFactory.create_normal_ammo(16)
 		
-		add_child(normal_ammo)
-		normal_ammo.position = item_pos
+		get_parent().add_child(normal_ammo)
+		normal_ammo.position = global_position + item_pos
 	else:
 		var weapon = Factory.ItemInWorldFactory.create_rand_distance_weapon(data.level, 1)
-		add_child(weapon)
-		weapon.position = item_pos
-	
-	print("dropea")
+		get_parent().add_child(weapon)
+		weapon.position = global_position + item_pos
 	
 func _on_DetectArea_body_entered(body):
 	if body as GPlayer:
