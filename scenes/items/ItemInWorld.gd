@@ -23,10 +23,6 @@ func set_data(_data):
 
 func take_item(inv : RPGInventory):
 	if inv.add_item(data):
-		# Con esto guardaria el inventario cada vez que se
-		# obtenga un item.
-#		DataManager.save_inventories()
-		
 		SoundManager.play(SoundManager.Sound.CONSUME_ITEM_1)
 		$Anim.play("take")
 

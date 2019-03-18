@@ -179,33 +179,21 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	weapon.damage = int(round(weapon.damage))
 	weapon.weapon_capacity = int(round(weapon.weapon_capacity))
 	
-	print(weapon.item_name)
-	print("weapon.damage ",weapon.damage)
-	print("weapon.weapon_capacity ",weapon.weapon_capacity)
-	print("weapon.time_to_next_action ",weapon.time_to_next_action)
-	print("weapon.time_to_reload ",weapon.time_to_reload)
+#	print(weapon.item_name)
+#	print("weapon.damage ",weapon.damage)
+#	print("weapon.weapon_capacity ",weapon.weapon_capacity)
+#	print("weapon.time_to_next_action ",weapon.time_to_next_action)
+#	print("weapon.time_to_reload ",weapon.time_to_reload)
 	
 	return weapon
 
-static func create_test_distance_weapon():
-	var weapon = PHDistanceWeapon.new()
-	
-	weapon.item_name = "Test Weapon"
-	weapon.damage = 3
-	weapon.buy_price = 200
-	weapon.sell_price = weapon.buy_price / 4
-	weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
-	weapon.time_to_next_action = 0.2
-	
-	return weapon
-	
-static func create_normal_ammo(ammo_ammount := 16):
+static func create_normal_ammo(ammo_amount := 16):
 	var ammo = PHAmmo.new()
 	
 	ammo.item_name = "Normal Ammo"
-	ammo.ammo_amount = ammo_ammount
+	ammo.ammo_amount = ammo_amount
 	ammo.ammo_type = ammo.AmmoType.NORMAL
-	ammo.buy_price = ammo.ammo_amount * 10
+	ammo.buy_price = ammo_amount * 10
 	ammo.sell_price = ammo.buy_price / 4
 	ammo.texture_path = "res://scenes/items/ammo/normal/normal_bullet_ammo.png"
 	
@@ -217,7 +205,7 @@ static func create_plasma_ammo(ammo_amount := 8):
 	ammo.item_name = "Plasma Ammo"
 	ammo.ammo_amount = ammo_amount
 	ammo.ammo_type = ammo.AmmoType.PLASMA
-	ammo.buy_price = ammo.ammo_amount * 20
+	ammo.buy_price = ammo_amount * 20
 	ammo.sell_price = ammo.buy_price / 4
 	ammo.texture_path = "res://scenes/items/ammo/plasma/plasma_bullet_ammo.png"
 	
