@@ -1,24 +1,32 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/hud/inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/panel/Inventory.png" type="Texture" id=2]
 [ext_resource path="res://scenes/hud/inventory/item_info/Info.gd" type="Script" id=3]
 [ext_resource path="res://scenes/hud/inventory/item_info/panel_images/panel1.png" type="Texture" id=4]
-[ext_resource path="res://icon.png" type="Texture" id=5]
-[ext_resource path="res://scenes/hud/inventory/item_info/PropertyLabel.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/amount.png" type="Texture" id=7]
+[ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scenes/hud/inventory/item_info/PropertyLabel.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/hud/inventory/item_info/icons/buy.png" type="Texture" id=8]
 [ext_resource path="res://scenes/hud/inventory/item_info/icons/sell.png" type="Texture" id=9]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/health.png" type="Texture" id=10]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/defense.png" type="Texture" id=11]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/attack.png" type="Texture" id=12]
-[ext_resource path="res://scenes/hud/inventory/item_info/PressButton.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/armor.png" type="Texture" id=14]
-[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button.png" type="Texture" id=15]
-[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button_pressed.png" type="Texture" id=16]
-[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button.png" type="Texture" id=17]
-[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button_pressed.png" type="Texture" id=18]
-[ext_resource path="res://scenes/hud/inventory/item_info/icons/trash.png" type="Texture" id=19]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/weight.png" type="Texture" id=10]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/amount.png" type="Texture" id=11]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/health.png" type="Texture" id=12]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/damage.png" type="Texture" id=13]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/attack.png" type="Texture" id=14]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/type.png" type="Texture" id=15]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/time_to_next_action.png" type="Texture" id=16]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/time_to_reload.png" type="Texture" id=17]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/weapon_capacity.png" type="Texture" id=18]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/requires_ammo.png" type="Texture" id=19]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/defense.png" type="Texture" id=20]
+[ext_resource path="res://scenes/hud/inventory/item_info/PressButton.tscn" type="PackedScene" id=21]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/armor.png" type="Texture" id=22]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button.png" type="Texture" id=23]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/blue_button_pressed.png" type="Texture" id=24]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button.png" type="Texture" id=25]
+[ext_resource path="res://scenes/hud/inventory/item_info/button_images/orange_button_pressed.png" type="Texture" id=26]
+[ext_resource path="res://scenes/hud/inventory/item_info/icons/trash.png" type="Texture" id=27]
 
 [node name="Inventory" type="Node2D"]
 script = ExtResource( 1 )
@@ -48,12 +56,46 @@ script = ExtResource( 3 )
 
 [node name="PanelsColumn" type="VBoxContainer" parent="Info"]
 margin_right = 175.0
-margin_bottom = 85.0
+margin_bottom = 151.0
 custom_constants/separation = -8
 
-[node name="ItemData" type="MarginContainer" parent="Info/PanelsColumn"]
+[node name="ItemName" type="MarginContainer" parent="Info/PanelsColumn"]
+editor/display_folded = true
 margin_right = 175.0
-margin_bottom = 52.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 175, 30 )
+custom_constants/margin_right = 3
+custom_constants/margin_top = 6
+custom_constants/margin_left = 3
+custom_constants/margin_bottom = 6
+
+[node name="BackPanel" type="NinePatchRect" parent="Info/PanelsColumn/ItemName"]
+margin_left = 3.0
+margin_top = 6.0
+margin_right = 172.0
+margin_bottom = 24.0
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="ItemName" type="Label" parent="Info/PanelsColumn/ItemName/BackPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+custom_colors/font_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+text = "Hola Hola HOla hOla Holaffgd gd dffgfdggdfgf"
+align = 1
+valign = 1
+autowrap = true
+clip_text = true
+
+[node name="ItemData" type="MarginContainer" parent="Info/PanelsColumn"]
+editor/display_folded = true
+margin_top = 22.0
+margin_right = 175.0
+margin_bottom = 118.0
 rect_min_size = Vector2( 175, 50 )
 custom_constants/margin_right = 3
 custom_constants/margin_top = 6
@@ -64,7 +106,7 @@ custom_constants/margin_bottom = 6
 margin_left = 3.0
 margin_top = 6.0
 margin_right = 172.0
-margin_bottom = 46.0
+margin_bottom = 90.0
 texture = ExtResource( 4 )
 patch_margin_left = 8
 patch_margin_top = 8
@@ -75,7 +117,7 @@ patch_margin_bottom = 8
 margin_left = 3.0
 margin_top = 6.0
 margin_right = 172.0
-margin_bottom = 46.0
+margin_bottom = 90.0
 custom_constants/margin_right = 4
 custom_constants/margin_top = 4
 custom_constants/margin_left = 4
@@ -85,83 +127,134 @@ custom_constants/margin_bottom = 4
 margin_left = 4.0
 margin_top = 4.0
 margin_right = 165.0
-margin_bottom = 36.0
+margin_bottom = 80.0
 
 [node name="ItemIcon" type="VBoxContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
+editor/display_folded = true
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 76.0
 size_flags_horizontal = 4
 alignment = 1
 
 [node name="Icon" type="TextureRect" parent="Info/PanelsColumn/ItemData/Data/DataRow/ItemIcon"]
+margin_top = 22.0
 margin_right = 32.0
-margin_bottom = 32.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 32, 32 )
 size_flags_horizontal = 5
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 4
 
 [node name="Grid" type="GridContainer" parent="Info/PanelsColumn/ItemData/Data/DataRow"]
 margin_left = 49.0
 margin_right = 147.0
-margin_bottom = 32.0
+margin_bottom = 76.0
 size_flags_horizontal = 6
 columns = 3
 
-[node name="Amount" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
+[node name="Buy" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
 margin_right = 30.0
 margin_bottom = 12.0
-icon = ExtResource( 7 )
+icon = ExtResource( 8 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Sell" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 34.0
+margin_right = 64.0
+margin_bottom = 12.0
+icon = ExtResource( 9 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Weight" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 68.0
+margin_right = 98.0
+margin_bottom = 12.0
+icon = ExtResource( 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="AmmoAmount" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_top = 16.0
+margin_right = 30.0
+margin_bottom = 28.0
+icon = ExtResource( 11 )
 icon_size = Vector2( 12, 12 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
-[node name="Buy" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
-margin_left = 34.0
-margin_right = 64.0
-margin_bottom = 12.0
-icon = ExtResource( 8 )
-icon_size = Vector2( 10, 10 )
-text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
-
-[node name="Sell" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
-margin_left = 68.0
-margin_right = 98.0
-margin_bottom = 12.0
-icon = ExtResource( 9 )
-icon_size = Vector2( 10, 10 )
-text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
-
-[node name="Heal" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
-margin_top = 16.0
-margin_right = 30.0
-margin_bottom = 28.0
-icon = ExtResource( 10 )
-icon_size = Vector2( 10, 10 )
-text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
-
-[node name="Defense" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
+[node name="Heal" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
 margin_left = 34.0
 margin_top = 16.0
 margin_right = 64.0
-margin_bottom = 28.0
-icon = ExtResource( 11 )
-icon_size = Vector2( 10, 10 )
-text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
-
-[node name="Attack" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
-margin_left = 68.0
-margin_top = 16.0
-margin_right = 98.0
 margin_bottom = 28.0
 icon = ExtResource( 12 )
-icon_size = Vector2( 10, 10 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Damage" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 68.0
+margin_top = 16.0
+margin_right = 98.0
+margin_bottom = 28.0
+icon = ExtResource( 13 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Attack" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_top = 32.0
+margin_right = 30.0
+margin_bottom = 44.0
+icon = ExtResource( 14 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Type" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 34.0
+margin_top = 32.0
+margin_right = 64.0
+margin_bottom = 44.0
+icon = ExtResource( 15 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="TimeToNextAction" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 68.0
+margin_top = 32.0
+margin_right = 98.0
+margin_bottom = 44.0
+icon = ExtResource( 16 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="TimeToReload" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_top = 48.0
+margin_right = 30.0
+margin_bottom = 60.0
+icon = ExtResource( 17 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="WeaponCapacity" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 34.0
+margin_top = 48.0
+margin_right = 64.0
+margin_bottom = 60.0
+icon = ExtResource( 18 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="RequiresAmmo" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_left = 68.0
+margin_top = 48.0
+margin_right = 98.0
+margin_bottom = 60.0
+icon = ExtResource( 19 )
+text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
+
+[node name="Defense" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 7 )]
+margin_top = 64.0
+margin_right = 30.0
+margin_bottom = 76.0
+icon = ExtResource( 20 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="ItemAccions" type="MarginContainer" parent="Info/PanelsColumn"]
-margin_top = 44.0
+editor/display_folded = true
+margin_top = 110.0
 margin_right = 175.0
-margin_bottom = 85.0
+margin_bottom = 151.0
 rect_min_size = Vector2( 175, 40 )
 custom_constants/margin_right = 3
 custom_constants/margin_top = 6
@@ -203,20 +296,20 @@ margin_left = 54.0
 margin_right = 87.0
 margin_bottom = 17.0
 
-[node name="PressButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 13 )]
+[node name="PressButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 33.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 33, 17 )
-icon = ExtResource( 14 )
+icon = ExtResource( 22 )
 icon_size = Vector2( 10, 10 )
-normal_texture = ExtResource( 15 )
-pressed_texture = ExtResource( 16 )
+normal_texture = ExtResource( 23 )
+pressed_texture = ExtResource( 24 )
 text = "+10"
 separation = 3
 
-[node name="PressButton2" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 13 )]
+[node name="PressButton2" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 21 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
@@ -224,10 +317,10 @@ margin_top = 23.0
 margin_right = 31.0
 margin_bottom = 42.0
 rect_min_size = Vector2( 33, 17 )
-icon = ExtResource( 14 )
+icon = ExtResource( 22 )
 icon_size = Vector2( 10, 10 )
-normal_texture = ExtResource( 17 )
-pressed_texture = ExtResource( 18 )
+normal_texture = ExtResource( 25 )
+pressed_texture = ExtResource( 26 )
 text = "-10"
 separation = 3
 
@@ -236,16 +329,16 @@ margin_left = 91.0
 margin_right = 108.0
 margin_bottom = 17.0
 
-[node name="DropButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Drop" instance=ExtResource( 13 )]
+[node name="DropButton" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Drop" instance=ExtResource( 21 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 17.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 17, 17 )
-icon = ExtResource( 19 )
+icon = ExtResource( 27 )
 icon_size = Vector2( 11, 10 )
-normal_texture = ExtResource( 17 )
-pressed_texture = ExtResource( 18 )
+normal_texture = ExtResource( 25 )
+pressed_texture = ExtResource( 26 )
 text = ""
 separation = 0
 

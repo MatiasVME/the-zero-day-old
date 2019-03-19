@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/live.png-3be631c4a470b33d6cbeec7c7ca2cc69.stex"
+path="res://.import/damage.png-aa2b9c4e774a5822ec3eb720a3bf69af.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/inventory/item_info/icons/live.png"
-dest_files=[ "res://.import/live.png-3be631c4a470b33d6cbeec7c7ca2cc69.stex" ]
+source_file="res://scenes/hud/inventory/item_info/icons/damage.png"
+dest_files=[ "res://.import/damage.png-aa2b9c4e774a5822ec3eb720a3bf69af.stex" ]
 
 [params]
 
