@@ -40,7 +40,7 @@ func remove_weapon():
 	emit_signal("weapon_removed")
 
 func _on_HitArea_body_entered(body):
-	if body is GEnemy:
+	if body is GEnemy or body is GStructure:
 		body.damage(1)
 	elif body is GBullet:
 		body.direction = body.direction.bounce(get_parent().global_position.normalized())
