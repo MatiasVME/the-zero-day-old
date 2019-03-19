@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cuadrados-11.png-7643869f02ecb1a20309282ec672cc9f.stex"
+path="res://.import/time_to_next_action.png-dbbd07e3324bd4f6a6904b2a53b07e23.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/inventory/item_info/icons/cuadrados-11.png"
-dest_files=[ "res://.import/cuadrados-11.png-7643869f02ecb1a20309282ec672cc9f.stex" ]
+source_file="res://scenes/hud/inventory/item_info/icons/time_to_next_action.png"
+dest_files=[ "res://.import/time_to_next_action.png-dbbd07e3324bd4f6a6904b2a53b07e23.stex" ]
 
 [params]
 

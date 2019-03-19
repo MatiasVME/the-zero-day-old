@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cuadrados-9.png-b14331deba7630233fc1b448cf5528fd.stex"
+path="res://.import/weapon_capacity.png-11a98639fdec31d7e9149b08d228b4e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/inventory/item_info/icons/cuadrados-9.png"
-dest_files=[ "res://.import/cuadrados-9.png-b14331deba7630233fc1b448cf5528fd.stex" ]
+source_file="res://scenes/hud/inventory/item_info/icons/weapon_capacity.png"
+dest_files=[ "res://.import/weapon_capacity.png-11a98639fdec31d7e9149b08d228b4e2.stex" ]
 
 [params]
 

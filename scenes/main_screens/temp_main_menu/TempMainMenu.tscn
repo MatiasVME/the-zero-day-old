@@ -18,6 +18,7 @@ script = ExtResource( 1 )
 position = Vector2( -180, -120 )
 
 [node name="AdventureMode" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 0, -240 )
 
 [node name="ButtonAdventureMode" type="Button" parent="."]
