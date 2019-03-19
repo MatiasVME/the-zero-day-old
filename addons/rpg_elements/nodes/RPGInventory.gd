@@ -151,7 +151,7 @@ func search_all_items_with_the_name(item_name):
 func delete_item(item, free_item = true):
 	if inv.has(item):
 		inv.erase(item)
-		if free_item : item.queue_free()
+		#if free_item : item.queue_free()
 		emit_signal("item_removed")
 		return true
 		
