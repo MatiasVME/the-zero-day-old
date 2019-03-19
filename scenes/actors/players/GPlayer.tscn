@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=2]
@@ -16,22 +16,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk_side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "walk_down",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
 "name": "run_side",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "run_up",
+"name": "walk_down",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -42,6 +32,16 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "walk_up",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "walk_side",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "run_up",
 "speed": 5.0
 } ]
 
@@ -115,7 +115,35 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="Animation" id=5]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.921569, 0.337255, 0.294118, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=6]
 radius = 7.07107
 
 [node name="GPlayer" type="KinematicBody2D" groups=[
@@ -138,13 +166,16 @@ shape = SubResource( 2 )
 anims/dead = SubResource( 3 )
 anims/hit = SubResource( 4 )
 
+[node name="Anim2" type="AnimationPlayer" parent="."]
+anims/hit = SubResource( 5 )
+
 [node name="InteractArea" type="Area2D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2( 0, 2 )
-shape = SubResource( 5 )
+shape = SubResource( 6 )
 
 [node name="BoxingAttack" parent="." instance=ExtResource( 5 )]
 
@@ -154,4 +185,5 @@ shape = SubResource( 5 )
 one_shot = true
 
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
+[connection signal="animation_finished" from="Anim2" to="." method="_on_Anim_animation_finished"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_InteractArea_body_entered"]

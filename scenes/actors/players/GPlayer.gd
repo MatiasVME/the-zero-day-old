@@ -195,7 +195,7 @@ func _on_dead():
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
 
 func _on_remove_hp(amount):
-	$Anim.play("hit")
+	$Anim2.play("hit")
 
 func _on_item_equiped(item):
 	update_weapon()
