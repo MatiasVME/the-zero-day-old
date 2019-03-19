@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 0.5, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("WeaponSprite:self_modulate")
@@ -91,7 +91,7 @@ disabled = true
 
 [node name="WeaponSprite" type="Sprite" parent="."]
 position = Vector2( -5, 0 )
-scale = Vector2( 1e-05, 1e-05 )
+scale = Vector2( 1e-005, 1e-005 )
 texture = ExtResource( 2 )
 offset = Vector2( 13, 0 )
 

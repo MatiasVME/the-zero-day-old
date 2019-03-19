@@ -204,6 +204,7 @@ func _on_fire(dir):
 	# Temp
 	var bullet = ShootManager.fire(dir, data.equip.ammo_type, data.equip.damage)
 	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
+	bullet.rotation = $GWeaponInBattle/Sprite.rotation
 	get_parent().add_child(bullet)
 
 func _on_Anim_animation_finished(anim_name):

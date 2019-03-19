@@ -15,7 +15,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "damage"
 length = 0.4
 tracks/0/type = "value"
@@ -31,7 +31,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.751659 ), Color( 0.721569, 0.247059, 0.247059, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=4]
 resource_name = "destroy"
 length = 0.4
 tracks/0/type = "value"
@@ -59,16 +59,16 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 70.0
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=6]
 radius = 9.0
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=7]
 radius = 120.0
 
-[node name="GlutonSpawner" instance=ExtResource( 1 )]
+[node name="GlutonSpawner" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
@@ -79,15 +79,15 @@ frames = SubResource( 2 )
 animation = "Default"
 
 [node name="Anim" parent="." index="2"]
-anims/damage = SubResource( 6 )
-anims/destroy = SubResource( 7 )
+anims/damage = SubResource( 3 )
+anims/destroy = SubResource( 4 )
 
 [node name="Collision" parent="ActiveArea" index="0"]
-shape = SubResource( 3 )
-
-[node name="Collision" parent="DamageArea" index="0"]
 shape = SubResource( 5 )
 
+[node name="Collision" parent="DamageArea" index="0"]
+shape = SubResource( 6 )
+
 [node name="Collision" parent="ObjectsArea" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 7 )
 
