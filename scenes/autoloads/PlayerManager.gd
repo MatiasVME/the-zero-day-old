@@ -24,7 +24,7 @@ var current_player_connected
 
 signal player_changed(new_player)
 signal player_shooting(player, direction)
-signal player_reload
+signal player_reload(player)
 
 signal player_gain_hp(player, amount)
 signal player_get_damage(player, amount)
@@ -86,7 +86,7 @@ func cad_players(_new_player : GPlayer, old_player = null):
 	
 func connect_player(player):
 	player.connect("fire", self, "_on_player_fire", [player])
-	player.connect("reload", self, "_on_player_reload")
+	player.connect("reload", self, "_on_player_reload", [player])
 	
 	player.data.connect("add_hp", self, "_on_add_hp", [player])
 	player.data.connect("add_xp", self, "_on_add_xp", [player])
@@ -129,8 +129,8 @@ func _on_dead(player):
 func _on_player_fire(direction, player):
 	emit_signal("player_shooting", player, direction)
 
-func _on_player_reload():
-	emit_signal("player_reload")
+func _on_player_reload(player):
+	emit_signal("player_reload", player)
 
 func _on_add_hp(amount, player):
 	emit_signal("player_gain_hp", player, amount)
