@@ -172,12 +172,16 @@ func get_total_ammo():
 		if item is PHAmmo and equip.ammo_type == item.ammo_type:
 			total_ammo += item.ammo_amount
 	return total_ammo
-	
+
+func update_info_panel(slot):
+	pass
+
 func _on_item_added(item):
 	add_item(item)
 
 func _on_slot_selected(row, slot):
 	unselect_all_slots()
+	update_info_panel(slot)
 
 func _on_player_shooting(player, direction):
 	# Verificamos player.equip.current_shot == 0 primero
