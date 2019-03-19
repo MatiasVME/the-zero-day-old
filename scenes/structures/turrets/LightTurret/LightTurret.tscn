@@ -42,10 +42,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.00217629, 0.396085 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.00217629, 0.396085 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -112,8 +112,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -1.5, 0 ), Vector2( 0, 0 ) ]
 }
 
-[node name="LightTurret" instance=ExtResource( 1 )]
-modulate = Color( 1, 1, 1, 0.751659 )
+[node name="LightTurret" index="0" instance=ExtResource( 1 )]
 scale = Vector2( 1.07409, 1.07409 )
 script = ExtResource( 2 )
 

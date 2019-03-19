@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends Node
+#extends Node
 
 export (bool) var debug = false
 
@@ -36,3 +36,7 @@ func gdc2gd(dict):
 	else:
 		debug("gdc2gd(): No es un diccionario o no se encuentra el path")
 		return dict
+
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		print("se elimina automaticamente el objeto ", self)
