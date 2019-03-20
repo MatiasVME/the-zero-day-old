@@ -133,6 +133,8 @@ func _physics_process(delta):
 		melee_attack()
 
 func update_weapon():
+	total_ammo = -1
+	
 	if data.equip is PHDistanceWeapon:
 		$GWeaponInBattle.set_weapon(data.equip)
 		can_fire = true
