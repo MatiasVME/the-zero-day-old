@@ -10,12 +10,13 @@ export (int) var speed = 2500
 var move_x
 var move_y
 
-var input_dir : Vector2 = Vector2()
-var input_run : bool = false
-var input_fire = false
+var input_dir := Vector2()
+var input_run := false
+var input_fire := false
+var input_reload := false
 
-var can_move : bool = false
-var can_fire : bool = false
+var can_move := false
+var can_fire := false
 
 var is_disabled = false
 
@@ -30,6 +31,9 @@ var time_to_next_action_progress := 0.0
 var melee_time_to_next_action := 0.4
 # Tiempo de espera entre cada ataque melee
 var melee_time_to_next_action_progress := 0.0
+
+# Total current ammo
+var total_ammo = -1
 
 signal fire(dir)
 signal dead
@@ -102,19 +106,24 @@ func _physics_process(delta):
 		return
 	
 	input_fire = Input.is_action_pressed("fire")
+	input_reload = Input.is_action_just_pressed("reload")
 	
 	# Puede disparar? Se preciono fire?
 	if data.equip is PHDistanceWeapon and can_fire and input_fire and data.equip.fire():
 		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		time_to_next_action_progress = 0.0
 		emit_signal("fire", dir)
-	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0:
+	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
 		if reload_progress > data.equip.time_to_reload:
 			if reload():
 				SoundManager.play(SoundManager.Sound.RELOAD_1)
 				reload_progress = 0.0
 		else:
 			reload_progress += delta
+	elif input_reload and data.equip is PHDistanceWeapon and total_ammo != 0:
+		if reload():
+			SoundManager.play(SoundManager.Sound.RELOAD_1)
+			reload_progress = 0.0
 	elif not data.equip and input_fire:
 		melee_time_to_next_action_progress = 0.0
 		melee_attack()
@@ -161,10 +170,12 @@ func reload():
 	
 	# Obtener las municiones
 	var ammunition_inv = []
+	total_ammo = 0
 	
 	for ammo in DataManager.get_current_inv().inv:
 		if ammo is PHAmmo and ammo.ammo_type == data.equip.ammo_type:
 			ammunition_inv.append(ammo)
+			total_ammo += ammo.ammo_amount
 	
 	# Si no hay ammunition_inv entonces se sale de la
 	# funcion
@@ -215,6 +226,7 @@ func _on_InteractArea_body_entered(body):
 	if body is ItemInWorld:
 		if DataManager.inventories.size() > 0:
 			body.take_item(DataManager.inventories[DataManager.current_player])
+			total_ammo = -1
 			emit_signal("item_taken", body.data)
 	elif body is GBullet:
 		data.damage(body.damage)
