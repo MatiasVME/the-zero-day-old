@@ -16,7 +16,7 @@ var current_player : int = 0 setget set_current_player, get_current_player
 
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
-var delete_data = 2
+var delete_data = 0
 
 func _ready():
 	configure_persistence_node()
@@ -136,7 +136,7 @@ func save_user_config():
 
 func create_inventories():
 	var w_inv = RPGWeightInventory.new()
-	w_inv.max_weight = 15 # Cantidad temporal
+	w_inv.max_weight = 25 # Cantidad temporal
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
 #	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))

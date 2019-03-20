@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://tests/TGeneral.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
@@ -6,8 +6,7 @@
 [ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/actors/vehicles/cars/suv41/SUV41.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=7]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
@@ -53,7 +52,7 @@ position = Vector2( 333, -11 )
 position = Vector2( 391, 193 )
 
 [node name="XOR341" parent="." instance=ExtResource( 5 )]
-position = Vector2( 286, 68 )
+position = Vector2( 840, -80 )
 can_move = true
 
 [node name="LightTurret" parent="." instance=ExtResource( 6 )]
@@ -62,13 +61,21 @@ collision_layer = 1
 collision_mask = 1
 
 [node name="LightTurret2" parent="." instance=ExtResource( 6 )]
-position = Vector2( -42.1653, 189.963 )
+position = Vector2( 786, -77 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="SUV41" parent="." instance=ExtResource( 7 )]
-position = Vector2( 131.234, 127.158 )
+[node name="LightTurret3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 829, -31 )
+collision_layer = 1
+collision_mask = 1
 
-[node name="GlutonSpawner" parent="." instance=ExtResource( 8 )]
+[node name="GlutonSpawner" parent="." instance=ExtResource( 7 )]
 position = Vector2( 26.1504, 110.312 )
+
+[node name="GlutonSpawner2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 559, -74 )
+
+[node name="GlutonSpawner3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 246, 413 )
 

@@ -57,9 +57,10 @@ columns = 2
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 83.0
-margin_bottom = 36.0
+margin_right = 166.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 expand = false
 stretch_mode = 0
 
@@ -74,12 +75,14 @@ valign = 1
 
 [node name="Map2" parent="Maps" instance=ExtResource( 3 )]
 editor/display_folded = true
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 87.0
 margin_right = 170.0
-margin_bottom = 36.0
+margin_bottom = 116.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 expand = false
 stretch_mode = 0
 
@@ -94,12 +97,14 @@ valign = 1
 
 [node name="Map3" parent="Maps" instance=ExtResource( 3 )]
 editor/display_folded = true
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 40.0
+margin_top = 62.0
 margin_right = 83.0
-margin_bottom = 76.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 expand = false
 stretch_mode = 0
 
@@ -114,13 +119,15 @@ valign = 1
 
 [node name="Map4" parent="Maps" instance=ExtResource( 3 )]
 editor/display_folded = true
+visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 87.0
-margin_top = 40.0
+margin_top = 62.0
 margin_right = 170.0
-margin_bottom = 76.0
+margin_bottom = 120.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 expand = false
 stretch_mode = 0
 
