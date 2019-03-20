@@ -101,7 +101,7 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 20, 20 )
 
-[node name="XOR341" index="0" instance=ExtResource( 1 )]
+[node name="XOR341" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 capacity = 2
 

@@ -47,6 +47,10 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
 	
+	# Al iniciar el data equip se va a null siempre
+	# para que no suceda un bug, de un arma fantasma.
+	data.equip = null
+	
 	update_weapon()
 
 func _physics_process(delta):
