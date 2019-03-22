@@ -3,11 +3,7 @@
 [ext_resource path="res://scenes/tiles/tilesets/terrain.tres" type="TileSet" id=1]
 [ext_resource path="res://scenes/tiles/tilesets/eviroments.tres" type="TileSet" id=2]
 
-[node name="Map1" type="Node2D"]
-__meta__ = {
-"_edit_horizontal_guides_": [  ],
-"_edit_vertical_guides_": [  ]
-}
+[node name="Map1" type="Navigation2D"]
 
 [node name="Terrain" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
