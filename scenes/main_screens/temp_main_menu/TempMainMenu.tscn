@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/main_screens/temp_main_menu/TempMainMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main_screens/AdventureMode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://themes/ph_theme.tres" type="Theme" id=4]
-[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=5]
-[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/buttons/play/button_play.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/play/button_play_pressed.png" type="Texture" id=6]
+[ext_resource path="res://scenes/buttons/play/button_play_hover.png" type="Texture" id=7]
+[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=8]
+[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 6 )
+font_data = ExtResource( 9 )
 
 [node name="TempMainMenu" type="Node2D"]
 position = Vector2( 180, 120 )
@@ -22,15 +25,19 @@ z_index = -1
 editor/display_folded = true
 position = Vector2( 0, -240 )
 
-[node name="ButtonAdventureMode" type="Button" parent="."]
-margin_left = -88.0
+[node name="ButtonAdventureMode" type="TextureButton" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -16.0
 margin_top = -100.0
-margin_right = 86.0
-margin_bottom = -62.0
+margin_right = 16.0
+margin_bottom = -68.0
 theme = ExtResource( 4 )
-text = "Adventure Mode"
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
 
-[node name="Credits" parent="." instance=ExtResource( 5 )]
+[node name="Credits" parent="." instance=ExtResource( 8 )]
 editor/display_folded = true
 position = Vector2( 0, 240 )
 
@@ -41,14 +48,6 @@ margin_right = 98.0
 margin_bottom = 108.0
 theme = ExtResource( 4 )
 text = "Credits"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -180.0
-margin_top = 120.0
-margin_right = 180.0
-margin_bottom = 360.0
-mouse_filter = 2
-color = Color( 0, 0, 0, 0.196078 )
 
 [node name="Version" type="Label" parent="."]
 margin_left = 100.0
