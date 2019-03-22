@@ -143,7 +143,6 @@ func update_weapon():
 		$GWeaponInBattle.set_weapon(null)
 		can_fire = false
 		
-	
 func disable_player(_visible : = false):
 	is_disabled = true
 	visible = _visible
