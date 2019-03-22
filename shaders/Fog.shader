@@ -3,8 +3,8 @@ shader_type canvas_item;
 // Gonkee's fog shader for Godot 3 - full tutorial https://youtu.be/QEaTsz_0o44
 // If you use this shader, I would prefer it if you gave credit to me and my channel
 
-uniform vec3 color = vec3(0.35, 0.48, 0.95);
-uniform int OCTAVES = 4;
+uniform vec3 color = vec3(0.55, 0.78, 0.95);
+uniform int OCTAVES = 1;
 
 float rand(vec2 coord){
 	return fract(sin(dot(coord, vec2(56, 78)) * 1000.0) * 1000.0);
@@ -40,7 +40,7 @@ float fbm(vec2 coord){
 void fragment() {
 	vec2 coord = UV * 20.0;
 
-	vec2 motion = vec2( fbm(coord + vec2(TIME * -0.5, TIME * 0.5)) );
+	vec2 motion = vec2( fbm(coord + vec2(TIME * -2.5, TIME * 0.5)) );
 
 	float final = fbm(coord + motion);
 

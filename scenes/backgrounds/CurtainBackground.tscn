@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://shaders/Fog.shader" type="Shader" id=1]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/color = Vector3( 0.55, 0.78, 0.95 )
+shader_param/OCTAVES = 2
+
+[node name="CurtainBackground" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 360.0
+margin_bottom = 240.0
+color = Color( 1, 0.894118, 0.470588, 0.196078 )
+
+[node name="CurtainShader" type="ColorRect" parent="."]
+material = SubResource( 1 )
+margin_right = 360.0
+margin_bottom = 240.0
+
