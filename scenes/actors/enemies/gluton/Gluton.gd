@@ -109,9 +109,7 @@ func get_direction_to_see(objective):
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(objective):
-	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
-		
 		$Navigator.update_navigation_path(objective)
 		
 		#print($Navigator.navigation_path)
