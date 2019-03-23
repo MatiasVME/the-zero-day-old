@@ -19,3 +19,20 @@ var store_ruby_earned := 0
 # Win or Lose?
 enum Result {NONE, WIN, LOSE}
 var result = Result.NONE
+
+signal win_adventure
+signal lose_adventure
+
+func win_adventure():
+	result = Result.WIN
+	emit_signal("win_adventure")
+	
+func lose_adventure():
+	result = Result.LOSE
+	emit_signal("lose_adventure")
+	
+func reset_store():
+	store_iron_earned = 0
+	store_titanium_earned = 0
+	store_steel_earned = 0
+	store_ruby_earned = 0

@@ -6,6 +6,9 @@ func _ready():
 	PlayerManager.connect("player_dead", self, "_on_player_dead")
 	PlayerManager.connect("player_get_damage", self, "_on_get_damage")
 	
+	Main.connect("win_adventure", self, "_on_win_adventure")
+	Main.connect("lose_adventure", self, "_on_lose_adventure")
+	
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
 		$AnimInv.play("show")
@@ -45,3 +48,15 @@ func _on_Menu_toggled(button_pressed):
 		$AnimGameMenu.play("show_game_menu")
 	else:
 		$AnimGameMenu.play("hide_game_menu")
+
+func _on_win_adventure():
+	$AnimHotbar.play("hide")
+	$AnimBulletInfo.play("hide")
+	$AnimAvatarHandler.play("hide")
+	$AnimEndLevel.play("show")
+	
+	var current_player = PlayerManager.get_current_player()
+	current_player.can_move = false
+	current_player.get_node("Anim").play("DanceOfVictory")
+	
+	$GameMenu/Inventory.disabled = true

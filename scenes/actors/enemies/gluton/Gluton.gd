@@ -2,7 +2,7 @@
 
 extends "res://scenes/actors/enemies/GEnemy.gd"
 
-const MAX_SPEED = 25
+const MAX_SPEED = 50
 const MAX_FORCE = 0.02
 const RANDOM_RUN_DISTANCE = 100
 

@@ -22,13 +22,12 @@ func _ready():
 	pass
 
 func have_you_won():
-	var won = false
 	var objectives_to_won = objectives.size()
 	var current_objectives = 0
 	
 	var i := 0
 	while (i < objectives_to_won):
-		if objectives[i].is_optional:
+		if objectives[i].is_optional_objective:
 			objectives_to_won -= 1
 		elif objectives[i].objective_status == ObjectiveStatus.COMPLETED:
 			current_objectives += 1
@@ -36,8 +35,9 @@ func have_you_won():
 		i += 1
 		
 	if current_objectives == objectives_to_won:
-#		Main.win()
-		pass
+		return true
+		
+	return false
 	
 func _on_EnterArea_body_entered(body):
 	if body is GPlayer:
@@ -47,6 +47,9 @@ func _on_EnterArea_body_entered(body):
 			objective_status = ObjectiveStatus.COMPLETED
 		
 		$Sprite.texture = player_inside
+		
+		if have_you_won():
+			Main.win_adventure()
 
 func _on_EnterArea_body_exited(body):
 	if body is GPlayer:
