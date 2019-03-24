@@ -95,18 +95,20 @@ func change_state(_state):
 
 # Devuelve la direccion en grados
 func get_direction_to_see(objective):
-	var rounded_angle = round(transform.origin.angle_to_point(objective))
-	
-	if rounded_angle == 2:
+	var dir_degree = rad2deg((objective - global_position).normalized().angle())
+
+	if dir_degree > -150 and dir_degree < -60:
+#		print("up")
 		return 0
-	elif rounded_angle == -2:
-		return 180
-	elif rounded_angle == 0:
-		return -90
-	elif rounded_angle == 3:
+	elif dir_degree > -60 and dir_degree < 60:
+#		print("right")
 		return 90
+	elif dir_degree > 60 and dir_degree < 150:
+#		print("down")
+		return 180
 	else:
-		return $Body.get_animation()
+#		print("left")
+		return -90
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(objective):
@@ -177,35 +179,6 @@ func steer(target : Vector2):
 	var target_velocity = velocity + (steer * MAX_FORCE)
 	
 	return(target_velocity)
-
-#func get_random_objective():
-##	print("get_random_objective")
-#
-#	if objective:
-#		last_objective_position = objective.global_position
-#	randomize()
-#	# Caso en el cual a visto al jugador alguna ves
-#	if last_objective_position and random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-#		random_objective = Vector2(
-#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-#		)
-#
-#		while random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-#			random_objective = Vector2(
-#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-#		)
-#	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
-##		print(random_objective)
-#		return random_objective
-#	else:
-#		random_objective = Vector2(
-#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-#		)
-##	print(random_objective)
-#	return random_objective
 
 # Se supone que esta funcion deberia ser 
 # mas inteligente que la anterior :S
