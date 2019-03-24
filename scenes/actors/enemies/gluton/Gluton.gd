@@ -4,7 +4,7 @@ extends "res://scenes/actors/enemies/GEnemy.gd"
 
 const MAX_SPEED = 50
 const MAX_FORCE = 0.02
-const RANDOM_RUN_DISTANCE = 100
+const RANDOM_RUN_DISTANCE = 200
 
 var velocity = Vector2()
 
@@ -43,17 +43,20 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
 	
+	$Sounds/Spawn.play()
+	
 func _physics_process(delta):
+#	update()
+	
 	match state:
 		State.SEEKER:
 			if objective and not objective.is_mark_to_dead and data.hp > 3:
-				
 				if $Navigator.can_navigate:
 					$Navigator.time_current += delta
 				
 				sekeer(objective.global_position)
 				
-				if data.hp < 3:
+				if data.hp < int(data.max_hp / 3):
 					change_state(State.RUN)
 			else:
 				change_state(State.RANDOM_WALK)
@@ -77,7 +80,7 @@ func _physics_process(delta):
 		State.DIE:
 			if not is_mark_to_dead:
 				is_mark_to_dead = true
-				SoundManager.play(SoundManager.Sound.MONSTER_DEAD_1)
+				$Sounds/Dead.play()
 				.dead()
 		State.RANDOM_WALK:
 			if not objective or objective.is_mark_to_dead:
@@ -87,6 +90,12 @@ func _physics_process(delta):
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
 
+#func _draw():
+##	draw_circle(global_position, 3, Color(0.5, 0.5, 0.5))
+#	draw_line(global_position, random_objective, Color(1, 0, 0), 2)
+#	print("ro: ", random_objective)
+#	print("gp: ", global_position)
+	
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
@@ -129,7 +138,6 @@ func sekeer(objective):
 			$Body.play("Run_Side")
 			
 	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
-		
 		velocity = steer($Navigator.get_current_point())
 		move_and_slide(velocity)
 		
@@ -141,7 +149,7 @@ func sekeer(objective):
 			
 		var AB = b_point.distance_to($Navigator.get_current_point())
 		var b_dist = global_position.distance_to(b_point)
-		if b_dist*0.95 <= AB :
+		if b_dist * 0.95 <= AB :
 			$Navigator.next_index()
 
 	else:
@@ -164,8 +172,10 @@ func run(objective):
 				$Body.flip_h = false
 			$Body.play("Run_Side")
 	
+	print("holax")
+	
 	velocity = steer(objective)
-	move_and_slide(velocity * 3)
+	move_and_slide(velocity * 2)
 	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
@@ -179,6 +189,8 @@ func steer(target : Vector2):
 	return(target_velocity)
 
 func get_random_objective():
+#	print("get_random_objective")
+	
 	if objective:
 		last_objective_position = objective.global_position
 	randomize()
@@ -195,16 +207,54 @@ func get_random_objective():
 			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
 		)
 	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
-		print(random_objective)
+#		print(random_objective)
 		return random_objective
 	else:
 		random_objective = Vector2(
 			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
 			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
 		)
-	print(random_objective)
+#	print(random_objective)
 	return random_objective
 
+func get_rand_objective_with_pathfinding():
+	# Obtener 10 objetivos posibles
+	#
+	
+	var objectives_amount := 0
+	var objectives = []
+	
+	var rand_objective := Vector2()
+	
+	while objectives_amount < 10:
+		random_objective = Vector2(
+			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
+			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
+		)
+		
+		if test_move(transform, random_objective):
+			objectives.append(random_objective)
+			objectives_amount += 1
+			
+	# De esos 10 objetivos elegir el mas distante
+	#
+	
+	var distance := 0
+	var dist_temp
+	var pos_objective_result
+	
+	for i_objective in objectives:
+		dist_temp = i_objective.distance_to(global_position)
+		if dist_temp > distance:
+			distance = dist_temp
+			pos_objective_result = i_objective
+	
+#	get_parent().re_draw_paths(pos_objective_result)
+	
+	# wip
+	
+	return pos_objective_result
+	
 func drop_item():
 	var rand_num = rand_range(0, 100)
 	
@@ -260,10 +310,7 @@ func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		body.dead()
 		.damage(body.damage)
-		if data.hp != 0: SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
-	
-func _on_ChangeRandomObjective_timeout():
-	random_objective = get_random_objective()
+		if data.hp != 0: $Sounds/Damage.play()
 	
 func _on_AttackArea_body_entered(body):
 	if body is GPlayer:
@@ -274,3 +321,7 @@ func _on_AttackArea_body_exited(body):
 	if body is GPlayer:
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
+		
+func _on_TestTimer_timeout():
+	print("get_random_objective(): ", get_random_objective())
+	random_objective = get_random_objective()

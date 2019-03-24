@@ -12,7 +12,6 @@ func _ready():
 	player.position = $PlayerSpawn.position
 	player.enable_player()
 	
-#	
 	camera = CameraManager.set_camera_game()
 	camera.following = player
 	camera.mode = camera.Mode.FOLLOW
@@ -25,9 +24,7 @@ func re_draw_paths(_paths):
 	if paths.size() > 0:
 		update()
 
-
 func _draw():
-	
 	if paths and paths.size() > 0:
 		for point in paths:
 			draw_circle(point, 4, Color(1, 0, 0))

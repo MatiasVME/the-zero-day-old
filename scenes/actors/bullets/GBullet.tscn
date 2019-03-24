@@ -74,5 +74,7 @@ autostart = true
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 3 )
 
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="timeout" from="TimeToDead" to="." method="_on_TimeToDead_timeout"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
