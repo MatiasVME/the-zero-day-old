@@ -12,10 +12,9 @@ script = ExtResource( 1 )
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
 [node name="Nav" parent="." instance=ExtResource( 3 )]
-z_index = -1
 
 [node name="Objective" parent="." instance=ExtResource( 4 )]
-position = Vector2( 480, 352 )
+position = Vector2( 480, 260 )
 
 [node name="Objective2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 536, 352 )
@@ -51,5 +50,5 @@ position = Vector2( 864, 416 )
 position = Vector2( 800, 352 )
 
 [node name="GlutonSpawn10" parent="." instance=ExtResource( 5 )]
-position = Vector2( 720, 368 )
+position = Vector2( 720, 336 )
 
