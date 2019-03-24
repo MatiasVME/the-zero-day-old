@@ -17,10 +17,6 @@ var completed_objective = preload("res://scenes/structures/objective/CompletedOb
 
 onready var objectives = get_tree().get_nodes_in_group("Objective")
 
-func _ready():
-#	print(objectives)
-	pass
-
 func have_you_won():
 	var objectives_to_won = objectives.size()
 	var current_objectives = 0
@@ -59,6 +55,4 @@ func _on_EnterArea_body_exited(body):
 			$Sprite.texture = completed_objective
 		else:
 			$Sprite.texture = idle_objective
-			
-			
-			
+	
