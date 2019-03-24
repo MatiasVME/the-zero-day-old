@@ -4,7 +4,7 @@ extends "res://scenes/actors/enemies/GEnemy.gd"
 
 const MAX_SPEED = 50
 const MAX_FORCE = 0.02
-const RANDOM_RUN_DISTANCE = 200
+const RANDOM_RUN_DISTANCE = 4
 
 var velocity = Vector2()
 
@@ -35,7 +35,7 @@ func _ready():
 	.spawn()
 	
 	randomize()
-	random_objective = get_random_objective()
+	random_objective = get_rand_objective()
 	
 	data.hp = 8
 	data.xp_drop = 5 # temp
@@ -46,8 +46,6 @@ func _ready():
 	$Sounds/Spawn.play()
 	
 func _physics_process(delta):
-#	update()
-	
 	match state:
 		State.SEEKER:
 			if objective and not objective.is_mark_to_dead and data.hp > 3:
@@ -89,12 +87,6 @@ func _physics_process(delta):
 				change_state(State.RUN)
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
-
-#func _draw():
-##	draw_circle(global_position, 3, Color(0.5, 0.5, 0.5))
-#	draw_line(global_position, random_objective, Color(1, 0, 0), 2)
-#	print("ro: ", random_objective)
-#	print("gp: ", global_position)
 	
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
@@ -172,8 +164,6 @@ func run(objective):
 				$Body.flip_h = false
 			$Body.play("Run_Side")
 	
-	print("holax")
-	
 	velocity = steer(objective)
 	move_and_slide(velocity * 2)
 	
@@ -188,72 +178,46 @@ func steer(target : Vector2):
 	
 	return(target_velocity)
 
-func get_random_objective():
-#	print("get_random_objective")
-	
-	if objective:
-		last_objective_position = objective.global_position
-	randomize()
-	# Caso en el cual a visto al jugador alguna ves
-	if last_objective_position and random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-		random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-		
-		while random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-			random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
-#		print(random_objective)
-		return random_objective
-	else:
-		random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-#	print(random_objective)
-	return random_objective
+#func get_random_objective():
+##	print("get_random_objective")
+#
+#	if objective:
+#		last_objective_position = objective.global_position
+#	randomize()
+#	# Caso en el cual a visto al jugador alguna ves
+#	if last_objective_position and random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
+#		random_objective = Vector2(
+#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
+#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
+#		)
+#
+#		while random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
+#			random_objective = Vector2(
+#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
+#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
+#		)
+#	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
+##		print(random_objective)
+#		return random_objective
+#	else:
+#		random_objective = Vector2(
+#			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
+#			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
+#		)
+##	print(random_objective)
+#	return random_objective
 
-func get_rand_objective_with_pathfinding():
-	# Obtener 10 objetivos posibles
-	#
-	
-	var objectives_amount := 0
-	var objectives = []
-	
+# Se supone que esta funcion deberia ser 
+# mas inteligente que la anterior :S
+func get_rand_objective():
 	var rand_objective := Vector2()
 	
-	while objectives_amount < 10:
-		random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-		
-		if test_move(transform, random_objective):
-			objectives.append(random_objective)
-			objectives_amount += 1
-			
-	# De esos 10 objetivos elegir el mas distante
-	#
+	random_objective = Vector2(
+		rand_range(500, -500),
+		rand_range(500, -500) 
+	) + global_position
 	
-	var distance := 0
-	var dist_temp
-	var pos_objective_result
-	
-	for i_objective in objectives:
-		dist_temp = i_objective.distance_to(global_position)
-		if dist_temp > distance:
-			distance = dist_temp
-			pos_objective_result = i_objective
-	
-#	get_parent().re_draw_paths(pos_objective_result)
-	
-	# wip
-	
-	return pos_objective_result
+	return random_objective
 	
 func drop_item():
 	var rand_num = rand_range(0, 100)
@@ -291,12 +255,11 @@ func _on_DetectArea_body_entered(body):
 		objective = body
 		
 func _on_drop_xp(amount):
-	# TEMP
 	DataManager.get_current_player_instance().add_xp(amount)
 	
 func _on_DetectArea_body_exited(body):
 	if body as GPlayer:
-		random_objective = get_random_objective()
+		random_objective = get_rand_objective()
 		objective = null
 	
 func _on_DamageDelay_timeout():
@@ -321,7 +284,6 @@ func _on_AttackArea_body_exited(body):
 	if body is GPlayer:
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
-		
-func _on_TestTimer_timeout():
-	print("get_random_objective(): ", get_random_objective())
-	random_objective = get_random_objective()
+
+func _on_ChangeRandomMove_timeout():
+	random_objective = get_rand_objective()
