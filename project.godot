@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/main_screens/reusable_controls/CreditsSection.gd"
 }, {
+"base": "Node2D",
+"class": "FloatingText",
+"language": "GDScript",
+"path": "res://scenes/hud/floating_hud/FloatingText.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "GActor",
 "language": "GDScript",
@@ -94,22 +99,22 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "Node",
+"base": "PHItem",
 "class": "PHAmmo",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHAmmo.gd"
 }, {
-"base": "Node",
+"base": "RPGCharacter",
 "class": "PHCharacter",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHCharacter.gd"
 }, {
-"base": "Node",
+"base": "PHConsumable",
 "class": "PHComponent",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHComponent.gd"
 }, {
-"base": "Node",
+"base": "PHItem",
 "class": "PHConsumable",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHConsumable.gd"
@@ -134,7 +139,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHItem.gd"
 }, {
-"base": "Node",
+"base": "PHItem",
 "class": "PHMaterial",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHMaterial.gd"
@@ -144,7 +149,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHMeleeWeapon.gd"
 }, {
-"base": "Node",
+"base": "PHConsumable",
 "class": "PHRecharger",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHRecharger.gd"
@@ -174,12 +179,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGCharacter.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGDialog",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGDialog.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGHelper",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGHelper.gd"
@@ -189,12 +194,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGInventory.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGItem",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGItem.gd"
 }, {
-"base": "Node",
+"base": "",
 "class": "RPGStats",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGStats.gd"
@@ -224,6 +229,7 @@ _global_script_class_icons={
 "Car": "",
 "CommonBullet": "",
 "CreditSection": "",
+"FloatingText": "",
 "GActor": "",
 "GBullet": "",
 "GEnemy": "",
@@ -297,7 +303,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 
