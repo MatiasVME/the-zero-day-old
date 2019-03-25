@@ -4,7 +4,8 @@ export(float) var time_to_update_path = 1.3
 
 var time_current = 0.0
 
-var nav : Navigation2D
+# Se usa para un navigator2d
+var nav
 
 var can_navigate : bool = false
 
@@ -15,8 +16,10 @@ var current_index : int = 0
 var out_of_index : bool = false
 
 func _ready():
-	if get_parent().get_parent().has_node("Nav"):
-		nav = get_parent().get_parent().get_node("Nav")
+	nav = get_tree().get_nodes_in_group("Map")
+	
+	if nav.size() > 0:
+		nav = nav[0]
 		can_navigate = true
 
 func update_navigation_path(target_pos):
