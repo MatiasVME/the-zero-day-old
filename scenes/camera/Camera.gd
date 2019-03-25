@@ -51,9 +51,5 @@ func change_focus():
 	following = PlayerManager.get_next_player()
 	following.can_move = true
 
-func _on_Camera_tree_entered():
-	print("_on_Camera_tree_entered")
-
 func _on_player_shooting(player, dir):
-	print("wut")
 	$Anim.play("fire")
