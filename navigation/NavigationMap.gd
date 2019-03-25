@@ -8,7 +8,7 @@ export(String, FILE, "*.tres") var data_file_path setget set_data_file_path
 signal data_file_path_changed
 
 func _ready():
-	if update_on_start :
+	if update_on_start and not Engine.is_editor_hint() :
 		update_no_navegable_tiles()
 
 func set_data_file_path(_path):
