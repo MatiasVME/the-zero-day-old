@@ -35,13 +35,13 @@ func _physics_process(delta):
 	if not is_mark_to_dead and collision_count > 0:
 		for i in collision_count:
 			collision = get_slide_collision(i)
-			print(collision)
 			if collision.collider.is_in_group("Terrain") or collision.collider.is_in_group("Enviroment"):
 				dead()
 	
 func dead():
 	if not is_mark_to_dead:
 		is_mark_to_dead = true
+		$HitWall.play()
 		$Anim.play("dead")
 
 func _on_TimeToDead_timeout():

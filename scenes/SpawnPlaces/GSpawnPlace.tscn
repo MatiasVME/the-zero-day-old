@@ -39,3 +39,6 @@ shape = SubResource( 2 )
 wait_time = 0.4
 one_shot = true
 
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+volume_db = -20.0
+

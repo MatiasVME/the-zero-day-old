@@ -2,7 +2,6 @@ extends GSpawnPlace
 
 onready var gluton = preload("res://scenes/actors/enemies/gluton/Gluton.tscn").instance()
 
-var ot_spawn_frame = true
 var ot_queue = true
 
 # Cuerpo tocado
@@ -12,10 +11,6 @@ func _ready():
 	monsters.append(gluton)
 	
 func _process(delta):
-#	if ot_spawn_frame and$Signals.frame == 6:
-#		spawn_gluton()
-#		ot_spawn_frame = false
-#	el
 	if ot_queue and $Signals.frame == 10:
 		queue_free()
 		ot_queue = false
@@ -26,6 +21,7 @@ func spawn():
 	spawn_gluton()
 	
 	$Signals.play("default")
+	$Spawn.play()
 
 func spawn_gluton():
 	get_parent().add_child(gluton)

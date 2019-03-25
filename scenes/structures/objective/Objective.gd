@@ -46,6 +46,8 @@ func _on_EnterArea_body_entered(body):
 		
 		if have_you_won():
 			Main.win_adventure()
+		else:
+			$In.play()
 
 func _on_EnterArea_body_exited(body):
 	if body is GPlayer:
@@ -55,4 +57,6 @@ func _on_EnterArea_body_exited(body):
 			$Sprite.texture = completed_objective
 		else:
 			$Sprite.texture = idle_objective
+		
+		$Out.play()
 	

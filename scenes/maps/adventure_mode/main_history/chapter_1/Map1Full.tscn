@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1Full.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/structures/objective/Objective.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/SpawnPlaces/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sounds/music/Sunless.ogg" type="AudioStream" id=6]
 
 [node name="Map1Full" type="Node2D"]
 script = ExtResource( 1 )
@@ -51,4 +52,9 @@ position = Vector2( 800, 352 )
 
 [node name="GlutonSpawn10" parent="." instance=ExtResource( 5 )]
 position = Vector2( 720, 336 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+autoplay = true
 
