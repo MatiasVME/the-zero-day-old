@@ -9,7 +9,6 @@
 [ext_resource path="res://scenes/tiles/tile_images/stone/stone_tiles.png" type="Texture" id=7]
 [ext_resource path="res://scenes/tiles/tile_images/test/all_tiles_16x_v2.png" type="Texture" id=8]
 [ext_resource path="res://scenes/tiles/tile_images/base/Base_tiles.png" type="Texture" id=9]
-[ext_resource path="res://scenes/tiles/tilesets/terrain_script.gd" type="Script" id=10]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -806,6 +805,8 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 vertices = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
+[sub_resource type="GDScript" id=213]
+
 [resource]
 0/name = "grass_tiles"
 0/texture = ExtResource( 1 )
@@ -1249,7 +1250,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 10/tile_mode = 1
 10/autotile/bitmask_mode = 1
 10/autotile/bitmask_flags = [ Vector2( 0, 0 ), 432, Vector2( 0, 1 ), 438, Vector2( 0, 2 ), 54, Vector2( 0, 3 ), 48, Vector2( 0, 4 ), 182, Vector2( 0, 5 ), 59, Vector2( 0, 6 ), 251, Vector2( 0, 7 ), 506, Vector2( 1, 0 ), 504, Vector2( 1, 1 ), 511, Vector2( 1, 2 ), 63, Vector2( 1, 3 ), 56, Vector2( 1, 4 ), 440, Vector2( 1, 5 ), 218, Vector2( 1, 6 ), 191, Vector2( 1, 7 ), 446, Vector2( 2, 0 ), 216, Vector2( 2, 1 ), 219, Vector2( 2, 2 ), 27, Vector2( 2, 3 ), 24, Vector2( 2, 4 ), 248, Vector2( 2, 5 ), 434, Vector2( 2, 6 ), 176, Vector2( 2, 7 ), 50, Vector2( 3, 0 ), 144, Vector2( 3, 1 ), 146, Vector2( 3, 2 ), 18, Vector2( 3, 3 ), 16, Vector2( 3, 4 ), 155, Vector2( 3, 5 ), 62, Vector2( 3, 6 ), 152, Vector2( 3, 7 ), 26, Vector2( 4, 0 ), 255, Vector2( 4, 1 ), 507, Vector2( 4, 2 ), 254, Vector2( 4, 3 ), 443, Vector2( 4, 4 ), 178, Vector2( 4, 5 ), 58, Vector2( 5, 0 ), 447, Vector2( 5, 1 ), 510, Vector2( 5, 2 ), 443, Vector2( 5, 3 ), 254, Vector2( 5, 4 ), 184, Vector2( 5, 5 ), 154, Vector2( 6, 0 ), 190, Vector2( 6, 1 ), 187, Vector2( 6, 2 ), 186, Vector2( 6, 4 ), 184, Vector2( 6, 5 ), 178, Vector2( 7, 0 ), 442, Vector2( 7, 1 ), 250, Vector2( 7, 4 ), 154, Vector2( 7, 5 ), 58 ]
-10/autotile/icon_coordinate = Vector2( 0, 0 )
+10/autotile/icon_coordinate = Vector2( 1, 1 )
 10/autotile/tile_size = Vector2( 16, 16 )
 10/autotile/spacing = 0
 10/autotile/occluder_map = [  ]
@@ -1260,5 +1261,5 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 10/navigation_offset = Vector2( 0, 0 )
 10/shapes = [  ]
 10/z_index = 0
-script = ExtResource( 10 )
+script = SubResource( 213 )
 
