@@ -21,7 +21,7 @@ func _ready():
 
 func update_navigation_path(target_pos):
 	navigation_path = calcule_navigation_path(target_pos)
-	get_parent().get_parent().re_draw_paths(navigation_path)
+#	get_parent().get_parent().re_draw_paths(navigation_path)
 	time_current = 0
 	current_index = 0
 	out_of_index = false

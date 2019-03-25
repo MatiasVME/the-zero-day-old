@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/tiles/tile_images/wall/wall.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tiles/tile_images/top_wall/top_of_wall_tiles.png" type="Texture" id=2]
+
+[node name="Structures" type="Node"]
+
+[node name="Wall" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="TopWall" type="Sprite" parent="."]
+position = Vector2( 128, 0 )
+texture = ExtResource( 2 )
+centered = false
+

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/structures/objective/Objective.gd" type="Script" id=1]
 [ext_resource path="res://scenes/structures/objective/IdleObjective.png" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/Objective1.wav" type="AudioStream" id=3]
+[ext_resource path="res://sounds/sfx/Objective2.wav" type="AudioStream" id=4]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
@@ -23,6 +25,12 @@ centered = false
 [node name="Collision" type="CollisionShape2D" parent="EnterArea"]
 position = Vector2( 24, 24 )
 shape = SubResource( 2 )
+
+[node name="In" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[node name="Out" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="EnterArea" to="." method="_on_EnterArea_body_entered"]
 [connection signal="body_exited" from="EnterArea" to="." method="_on_EnterArea_body_exited"]

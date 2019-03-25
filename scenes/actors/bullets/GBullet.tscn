@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/actors/bullets/GBullet.gd" type="Script" id=1]
 [ext_resource path="res://scenes/actors/bullets/BulletPlaceholder.png" type="Texture" id=2]
+[ext_resource path="res://sounds/sfx/HitWall1.wav" type="AudioStream" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -73,6 +74,11 @@ autostart = true
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 3 )
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="."]
+
+[node name="HitWall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 
 [connection signal="timeout" from="TimeToDead" to="." method="_on_TimeToDead_timeout"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]

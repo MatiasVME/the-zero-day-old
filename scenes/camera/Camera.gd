@@ -10,10 +10,14 @@ var mode = Mode.FOLLOW
 var input_dir : Vector2
 var input_change_focus : bool
 
+func _ready():
+	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
+
 func _physics_process(delta):
 	# Verificamos si following no a sido borrado
 	if following and not weakref(following).get_ref():
 		# Ha sido borrado
+		
 		# NEEDFIX: Esto se llama muchas veces y puede
 		# que sea caro llamara mucho a weakref
 		return
@@ -47,5 +51,5 @@ func change_focus():
 	following = PlayerManager.get_next_player()
 	following.can_move = true
 
-func _on_Camera_tree_entered():
-	print("_on_Camera_tree_entered")
+func _on_player_shooting(player, dir):
+	$Anim.play("fire")

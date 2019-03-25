@@ -4,7 +4,7 @@ var camera
 
 func _ready():
 	var player = PlayerManager.init_player(0)
-	player.global_position = Vector2(256, 369)
+	player.global_position = Vector2(128, 128)
 	add_child(player)
 	player.enable_player()
 	

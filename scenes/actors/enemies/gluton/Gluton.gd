@@ -2,9 +2,9 @@
 
 extends "res://scenes/actors/enemies/GEnemy.gd"
 
-const MAX_SPEED = 25
+const MAX_SPEED = 50
 const MAX_FORCE = 0.02
-const RANDOM_RUN_DISTANCE = 100
+const RANDOM_RUN_DISTANCE = 4
 
 var velocity = Vector2()
 
@@ -35,7 +35,7 @@ func _ready():
 	.spawn()
 	
 	randomize()
-	random_objective = get_random_objective()
+	random_objective = get_rand_objective()
 	
 	data.hp = 8
 	data.xp_drop = 5 # temp
@@ -43,17 +43,18 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
 	
+	$Sounds/Spawn.play()
+	
 func _physics_process(delta):
 	match state:
 		State.SEEKER:
 			if objective and not objective.is_mark_to_dead and data.hp > 3:
-				
 				if $Navigator.can_navigate:
 					$Navigator.time_current += delta
 				
 				sekeer(objective.global_position)
 				
-				if data.hp < 3:
+				if data.hp < int(data.max_hp / 3):
 					change_state(State.RUN)
 			else:
 				change_state(State.RANDOM_WALK)
@@ -77,7 +78,7 @@ func _physics_process(delta):
 		State.DIE:
 			if not is_mark_to_dead:
 				is_mark_to_dead = true
-				SoundManager.play(SoundManager.Sound.MONSTER_DEAD_1)
+				$Sounds/Dead.play()
 				.dead()
 		State.RANDOM_WALK:
 			if not objective or objective.is_mark_to_dead:
@@ -86,7 +87,7 @@ func _physics_process(delta):
 				change_state(State.RUN)
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
-
+	
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
@@ -94,24 +95,24 @@ func change_state(_state):
 
 # Devuelve la direccion en grados
 func get_direction_to_see(objective):
-	var rounded_angle = round(transform.origin.angle_to_point(objective))
-	
-	if rounded_angle == 2:
+	var dir_degree = rad2deg((objective - global_position).normalized().angle())
+
+	if dir_degree > -150 and dir_degree < -60:
+#		print("up")
 		return 0
-	elif rounded_angle == -2:
-		return 180
-	elif rounded_angle == 0:
-		return -90
-	elif rounded_angle == 3:
+	elif dir_degree > -60 and dir_degree < 60:
+#		print("right")
 		return 90
+	elif dir_degree > 60 and dir_degree < 150:
+#		print("down")
+		return 180
 	else:
-		return $Body.get_animation()
+#		print("left")
+		return -90
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(objective):
-	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
-		
 		$Navigator.update_navigation_path(objective)
 		
 		#print($Navigator.navigation_path)
@@ -131,7 +132,6 @@ func sekeer(objective):
 			$Body.play("Run_Side")
 			
 	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
-		
 		velocity = steer($Navigator.get_current_point())
 		move_and_slide(velocity)
 		
@@ -143,7 +143,7 @@ func sekeer(objective):
 			
 		var AB = b_point.distance_to($Navigator.get_current_point())
 		var b_dist = global_position.distance_to(b_point)
-		if b_dist*0.95 <= AB :
+		if b_dist * 0.95 <= AB :
 			$Navigator.next_index()
 
 	else:
@@ -167,7 +167,7 @@ func run(objective):
 			$Body.play("Run_Side")
 	
 	velocity = steer(objective)
-	move_and_slide(velocity * 3)
+	move_and_slide(velocity * 2)
 	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
@@ -180,33 +180,18 @@ func steer(target : Vector2):
 	
 	return(target_velocity)
 
-func get_random_objective():
-	if objective:
-		last_objective_position = objective.global_position
-	randomize()
-	# Caso en el cual a visto al jugador alguna ves
-	if last_objective_position and random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-		random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-		
-		while random_objective.distance_to(last_objective_position) <= RANDOM_RUN_DISTANCE:
-			random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-	elif last_objective_position and random_objective and random_objective.distance_to(last_objective_position) > RANDOM_RUN_DISTANCE:
-		print(random_objective)
-		return random_objective
-	else:
-		random_objective = Vector2(
-			rand_range(global_position.x + -RANDOM_RUN_DISTANCE, global_position.x + RANDOM_RUN_DISTANCE),
-			rand_range(global_position.y + -RANDOM_RUN_DISTANCE, global_position.y + RANDOM_RUN_DISTANCE) 
-		)
-	print(random_objective)
+# Se supone que esta funcion deberia ser 
+# mas inteligente que la anterior :S
+func get_rand_objective():
+	var rand_objective := Vector2()
+	
+	random_objective = Vector2(
+		rand_range(500, -500),
+		rand_range(500, -500) 
+	) + global_position
+	
 	return random_objective
-
+	
 func drop_item():
 	var rand_num = rand_range(0, 100)
 	
@@ -243,12 +228,11 @@ func _on_DetectArea_body_entered(body):
 		objective = body
 		
 func _on_drop_xp(amount):
-	# TEMP
 	DataManager.get_current_player_instance().add_xp(amount)
 	
 func _on_DetectArea_body_exited(body):
 	if body as GPlayer:
-		random_objective = get_random_objective()
+		random_objective = get_rand_objective()
 		objective = null
 	
 func _on_DamageDelay_timeout():
@@ -262,10 +246,7 @@ func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		body.dead()
 		.damage(body.damage)
-		if data.hp != 0: SoundManager.play(SoundManager.Sound.MONSTER_DAMAGE_2)
-	
-func _on_ChangeRandomObjective_timeout():
-	random_objective = get_random_objective()
+		if data.hp != 0: $Sounds/Damage.play()
 	
 func _on_AttackArea_body_entered(body):
 	if body is GPlayer:
@@ -276,3 +257,6 @@ func _on_AttackArea_body_exited(body):
 	if body is GPlayer:
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
+
+func _on_ChangeRandomMove_timeout():
+	random_objective = get_rand_objective()

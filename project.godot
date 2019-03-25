@@ -29,6 +29,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/main_screens/reusable_controls/CreditsSection.gd"
 }, {
+"base": "Node2D",
+"class": "FloatingText",
+"language": "GDScript",
+"path": "res://scenes/hud/floating_hud/FloatingText.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "GActor",
 "language": "GDScript",
@@ -39,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/bullets/GBullet.gd"
 }, {
+"base": "Node2D",
+"class": "GChest",
+"language": "GDScript",
+"path": "res://scenes/structures/chests/GChest.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "GEnemy",
 "language": "GDScript",
@@ -48,6 +58,11 @@ _global_script_classes=[ {
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
+}, {
+"base": "Node2D",
+"class": "GSpawnPlace",
+"language": "GDScript",
+"path": "res://scenes/SpawnPlaces/GSpawnPlace.gd"
 }, {
 "base": "GStructure",
 "class": "GSpawner",
@@ -89,22 +104,22 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHAmmo",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHAmmo.gd"
 }, {
-"base": "RPGCharacter",
+"base": "Node",
 "class": "PHCharacter",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHCharacter.gd"
 }, {
-"base": "PHConsumable",
+"base": "Node",
 "class": "PHComponent",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHComponent.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHConsumable",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHConsumable.gd"
@@ -129,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/PHItem.gd"
 }, {
-"base": "PHItem",
+"base": "Node",
 "class": "PHMaterial",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHMaterial.gd"
@@ -139,7 +154,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHMeleeWeapon.gd"
 }, {
-"base": "PHConsumable",
+"base": "Node",
 "class": "PHRecharger",
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/PHRecharger.gd"
@@ -169,12 +184,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGCharacter.gd"
 }, {
-"base": "",
+"base": "Node",
 "class": "RPGDialog",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGDialog.gd"
 }, {
-"base": "",
+"base": "Node",
 "class": "RPGHelper",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGHelper.gd"
@@ -184,12 +199,12 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGInventory.gd"
 }, {
-"base": "",
+"base": "Node",
 "class": "RPGItem",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGItem.gd"
 }, {
-"base": "",
+"base": "Node",
 "class": "RPGStats",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGStats.gd"
@@ -219,10 +234,13 @@ _global_script_class_icons={
 "Car": "",
 "CommonBullet": "",
 "CreditSection": "",
+"FloatingText": "",
 "GActor": "",
 "GBullet": "",
+"GChest": "",
 "GEnemy": "",
 "GPlayer": "",
+"GSpawnPlace": "",
 "GSpawner": "",
 "GStructure": "",
 "GTurret": "",
@@ -291,7 +309,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "PersistenceNode", "rpg_elements" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 

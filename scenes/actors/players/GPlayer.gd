@@ -35,6 +35,9 @@ var melee_time_to_next_action_progress := 0.0
 # Total current ammo
 var total_ammo = -1
 
+#Escena para mostrar el daño en forma numérica
+var damage_label = load("res://scenes/hud/floating_hud/FloatingText.tscn")
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -212,6 +215,11 @@ func _on_dead():
 
 func _on_remove_hp(amount):
 	$Anim2.play("hit")
+	#Instancia un label indicando el daño recibido y lo agrega al árbol
+	var dmg_label : FloatingText = damage_label.instance()
+	dmg_label.init(amount, FloatingText.Type.DAMAGE)
+	dmg_label.position = global_position
+	get_parent().add_child(dmg_label)
 
 func _on_item_equiped(item):
 	update_weapon()
