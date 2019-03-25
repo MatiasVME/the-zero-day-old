@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/06 - Rebels Be.ogg-19fbcb12d397ae48f00e80f92d867853.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/06 - Rebels Be.ogg"
+dest_files=[ "res://.import/06 - Rebels Be.ogg-19fbcb12d397ae48f00e80f92d867853.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

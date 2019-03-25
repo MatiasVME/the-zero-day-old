@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/main_screens/temp_main_menu/TempMainMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/buttons/play/button_play_hover.png" type="Texture" id=7]
 [ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=8]
 [ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://sounds/music/02 - BWV 1007 - Prelude.ogg" type="AudioStream" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 9 )
@@ -60,6 +61,10 @@ text = "v0.1.0"
 align = 2
 valign = 1
 autowrap = true
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 
 [connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="ButtonAdventureMode" to="." method="_on_ButtonAdventureMode_pressed"]

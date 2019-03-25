@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sounds/music/Sunless.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=8]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
@@ -80,7 +80,7 @@ position = Vector2( 536, -48 )
 [node name="GlutonSpawner3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 246, 413 )
 
-[node name="TempMusic" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 

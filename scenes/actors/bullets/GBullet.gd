@@ -23,8 +23,14 @@ var is_mark_to_dead := false
 var collision
 var collision_count := 0
 
+onready var terrain = get_tree().get_nodes_in_group("Terrain")
+
 func _ready():
 	$Sprite.playing = true
+	
+	if terrain.size() > 0:
+		print("terrain: ", terrain)
+		add_collision_exception_with(terrain[0].tile_set)
 
 func _physics_process(delta):
 	if trajectory == Trajectory.LINEAL:

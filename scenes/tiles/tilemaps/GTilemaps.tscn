@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/tiles/tilesets/terrain.tres" type="TileSet" id=1]
+[ext_resource path="res://scenes/tiles/tilesets/structures.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/tiles/tilesets/eviroments.tres" type="TileSet" id=3]
+
+[node name="GTilemaps" type="Navigation2D"]
+
+[node name="Terrain" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Structures" type="TileMap" parent="."]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
+[node name="Enviroment" type="TileMap" parent="."]
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
