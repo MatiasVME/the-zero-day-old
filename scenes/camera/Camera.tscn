@@ -19,7 +19,9 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 1.01, 1.01 ), Vector2( 1, 1 ) ]
 }
 
-[node name="Camera" type="Camera2D"]
+[node name="Camera" type="Camera2D" groups=[
+"GameCamera",
+]]
 current = true
 zoom = Vector2( 1.01, 1.01 )
 process_mode = 0
