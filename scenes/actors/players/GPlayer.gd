@@ -172,7 +172,6 @@ func enable_player(_can_fire : bool = false):
 # Retorna true si hace reload correctamente y
 # false de lo contrario.
 func reload():
-	print("reload")
 	# Prevenir que se llame a esta funcion inecesariamente
 	if not data.equip is PHDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
 		return false

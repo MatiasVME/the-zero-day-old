@@ -149,7 +149,6 @@ func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_destroy:
 		SoundManager.play(SoundManager.Sound.HIT_1) # Por ahora usara el sonido de M
 		body.dead()
-		print(body.damage)
 		.damage(body.damage)
 
 func _on_AttackDelay_timeout():
