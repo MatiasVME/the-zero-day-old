@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/hud/end_screens/EndLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/backgrounds/CurtainBackground.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/enviroment/minerals/titanium/RefinedTitanium.png" type="Texture" id=6]
 [ext_resource path="res://scenes/enviroment/minerals/steel/RefinedSteel.png" type="Texture" id=7]
 [ext_resource path="res://themes/ph_theme.tres" type="Theme" id=8]
+[ext_resource path="res://sounds/music/17 - Victory.ogg" type="AudioStream" id=9]
 
 [node name="EndLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -33,6 +34,7 @@ autowrap = true
 
 [node name="Stats" type="Control" parent="."]
 editor/display_folded = true
+visible = false
 margin_left = 100.0
 margin_top = 50.0
 margin_right = 256.0
@@ -113,10 +115,11 @@ text = "10000"
 valign = 1
 
 [node name="Next" type="Button" parent="."]
+visible = false
 margin_left = 250.0
-margin_top = 190.0
+margin_top = 144.0
 margin_right = 343.0
-margin_bottom = 228.0
+margin_bottom = 182.0
 theme = ExtResource( 8 )
 text = "Next"
 
@@ -129,6 +132,7 @@ theme = ExtResource( 8 )
 text = "Resume"
 
 [node name="Base" type="Button" parent="."]
+visible = false
 margin_left = 10.0
 margin_top = 144.0
 margin_right = 104.0
@@ -138,14 +142,20 @@ text = "Base"
 
 [node name="Menu" type="Button" parent="."]
 margin_left = 250.0
-margin_top = 144.0
+margin_top = 190.0
 margin_right = 343.0
-margin_bottom = 182.0
+margin_bottom = 228.0
 theme = ExtResource( 8 )
 text = "Menu"
 
 [node name="CamPos" type="Position2D" parent="."]
 position = Vector2( 180, 120 )
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
+[connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
 
 [editable path="CurtainBackground"]

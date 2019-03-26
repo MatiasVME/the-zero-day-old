@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1Full.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1.tscn" type="PackedScene" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=5]
 [ext_resource path="res://scenes/SpawnPlaces/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/structures/objective/Objective.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/structures/chests/item_chest/NormalChest.tscn" type="PackedScene" id=9]
 
 [node name="Map1Full" type="Node2D"]
 script = ExtResource( 1 )
@@ -16,16 +19,60 @@ data_file_path = "res://scenes/maps/adventure_mode/main_history/chapter_1/Map1No
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." groups=[
+"Music",
+]]
 stream = ExtResource( 5 )
 autoplay = true
 
 [node name="GlutonSpawn" parent="." instance=ExtResource( 6 )]
-position = Vector2( 378, 166.204 )
+position = Vector2( 496, 368 )
 
 [node name="GlutonSpawn2" parent="." instance=ExtResource( 6 )]
-position = Vector2( 336, 224 )
+position = Vector2( 576, 320 )
 
 [node name="GlutonSpawn3" parent="." instance=ExtResource( 6 )]
-position = Vector2( 405, 112 )
+position = Vector2( 624, 272 )
+
+[node name="GlutonSpawn4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 581.858, 400 )
+
+[node name="GlutonSpawn5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 542.858, 464 )
+
+[node name="GlutonSpawn6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 629.858, 448 )
+
+[node name="GlutonSpawn7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 672, 416 )
+
+[node name="GlutonSpawn8" parent="." instance=ExtResource( 6 )]
+position = Vector2( 624, 336 )
+
+[node name="GlutonSpawn9" parent="." instance=ExtResource( 6 )]
+position = Vector2( 524, 336 )
+
+[node name="LightTurret" parent="." instance=ExtResource( 7 )]
+position = Vector2( 581.858, 560 )
+
+[node name="LightTurret2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 662.451, 663.407 )
+
+[node name="LightTurret3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 736, 784 )
+
+[node name="LightTurret4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 629.858, 896 )
+
+[node name="Objective" parent="." instance=ExtResource( 8 )]
+position = Vector2( 662.858, 537.244 )
+
+[node name="Objective2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 464, 1104 )
+
+[node name="Objective3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 176, 1408 )
+
+[node name="NormalChest" parent="." instance=ExtResource( 9 )]
+position = Vector2( 217, 87.7693 )
 

@@ -37,6 +37,6 @@ func gdc2gd(dict):
 		debug("gdc2gd(): No es un diccionario o no se encuentra el path")
 		return dict
 
-func _notification(what):
-	if what == NOTIFICATION_PREDELETE:
-		print("se elimina automaticamente el objeto ", self)
+#func _notification(what):
+#	if debug and what == NOTIFICATION_PREDELETE:
+#		print("se elimina automaticamente el objeto ", self)

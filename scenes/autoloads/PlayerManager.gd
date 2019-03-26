@@ -75,8 +75,8 @@ func clear_players():
 func cad_players(_new_player : GPlayer, old_player = null):
 	current_player_connected = _new_player
 	
-	print("cad_players(): new_player: ", current_player_connected)
-	print("cad_players(): old_player: ", old_player)
+#	print("cad_players(): new_player: ", current_player_connected)
+#	print("cad_players(): old_player: ", old_player)
 	
 	if not current_player_connected.is_connected("fire", self, "_on_player_fire"):
 		connect_player(current_player_connected)

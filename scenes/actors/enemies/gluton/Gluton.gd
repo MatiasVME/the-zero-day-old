@@ -8,7 +8,7 @@ const RANDOM_RUN_DISTANCE = 4
 
 var velocity = Vector2()
 
-export (int, "SEEK", "FLEE") var mode = 0
+export (State) var mode = 0
 
 var speed : int = 3
 var attack : int = 2
@@ -258,5 +258,5 @@ func _on_AttackArea_body_exited(body):
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
 
-func _on_ChangeRandomMove_timeout():
+func _on_ChangeRandomObjective_timeout():
 	random_objective = get_rand_objective()

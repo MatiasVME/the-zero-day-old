@@ -18,6 +18,13 @@ func _ready():
 func win():
 	$Title.text = "You Win!!"
 	
+	var music_arr = get_tree().get_nodes_in_group("Music")
+	
+	for music in music_arr:
+		music.stop()
+		
+	$Music.play()
+	
 	update_minerals()
 
 func lose():
@@ -35,3 +42,14 @@ func _on_win_adventure():
 func _on_lose_adventure():
 	lose()
 	
+func _on_Resume_pressed():
+	Main.prepare_to_exit()
+	get_tree().change_scene("res://scenes/maps/adventure_mode/main_history/chapter_1/Map1Full.tscn")
+
+func _on_Next_pressed():
+#	get_tree().change_scene("")
+	pass
+
+func _on_Menu_pressed():
+	Main.prepare_to_exit()
+	get_tree().change_scene("res://scenes/main_screens/temp_main_menu/TempMainMenu.tscn")

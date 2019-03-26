@@ -155,7 +155,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 18.0278
 
-[node name="Gluton" index="0" instance=ExtResource( 1 )]
+[node name="Gluton" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
@@ -185,17 +185,13 @@ collision_mask = 3
 [node name="Collision" type="CollisionShape2D" parent="DamageArea" index="0"]
 shape = SubResource( 7 )
 
-[node name="ChangeRandomObjective" type="Timer" parent="." index="6"]
-wait_time = 4.0
-autostart = true
-
-[node name="AttackArea" type="Area2D" parent="." index="7"]
+[node name="AttackArea" type="Area2D" parent="." index="6"]
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource( 8 )
 
-[node name="Sounds" type="Node2D" parent="." index="9"]
+[node name="Sounds" type="Node2D" parent="." index="8"]
 editor/display_folded = true
 
 [node name="Dead" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
@@ -207,14 +203,13 @@ stream = ExtResource( 42 )
 [node name="Damage" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 stream = ExtResource( 43 )
 
-[node name="ChangeRandomMove" type="Timer" parent="." index="10"]
+[node name="ChangeRandomObjective" type="Timer" parent="." index="9"]
 wait_time = 3.0
 autostart = true
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
-[connection signal="timeout" from="ChangeRandomObjective" to="." method="_on_ChangeRandomObjective_timeout"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
-[connection signal="timeout" from="ChangeRandomMove" to="." method="_on_ChangeRandomMove_timeout"]
+[connection signal="timeout" from="ChangeRandomObjective" to="." method="_on_ChangeRandomObjective_timeout"]
