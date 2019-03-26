@@ -32,9 +32,14 @@ func set_weapon(weapon):
 		$Sprite.texture = null
 	
 	emit_signal("weapon_added", data)
+	$Anim.play("show")
 	set_physics_process(true)
 
 func remove_weapon():
-	data = null
-	$Sprite.texture = null
-	emit_signal("weapon_removed")
+	$Anim.play("hide")
+	
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "hide":
+		data = null
+		$Sprite.texture = null
+		emit_signal("weapon_removed")

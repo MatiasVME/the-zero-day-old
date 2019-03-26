@@ -15,6 +15,8 @@ var patrol_objetive : Vector2 = Vector2(0,-1)
 var patrol_delay : float = 2
 var patrol_time : float = 0
 
+var collider
+
 onready var objective = null
  
 
@@ -57,15 +59,21 @@ func _physics_process(delta):
 				patrol_objetive = get_random_objective()
 		State.TRACK:
 			if rot_pivot_to(objective.global_position, delta):
-				if $Pivot/RayCanFire.get_collider().is_in_group("Player"): shoot()
+				collider = $Pivot/RayCanFire.get_collider()
+				if collider and collider.is_in_group("Player"): shoot()
+				
 				state = State.SHOOT
 				attack_delay_end = false
 				$AttackDelay.start()
 		State.SHOOT:
 			if objective.is_mark_to_dead : patrol()
+			
 			if not rot_pivot_to(objective.global_position, delta):
 				track()
-			if attack_delay_end and $Pivot/RayCanFire.get_collider().is_in_group("Player"): 
+				
+			collider = $Pivot/RayCanFire.get_collider()
+			
+			if attack_delay_end and collider and collider.is_in_group("Player"): 
 				shoot()
 				attack_delay_end = false
 				$AttackDelay.start()

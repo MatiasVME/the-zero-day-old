@@ -18,10 +18,11 @@ var input_reload := false
 var can_move := false
 var can_fire := false
 
-var is_disabled = false
+var is_disabled := false
+var is_inmortal := false
 
 var reload_progress := 0.0
-var need_reload = false
+var need_reload := false
 # Tiempo para la proxima accion de la arma
 var time_to_next_action := 1.0
 # Tiempo de espera entre cada bala
@@ -241,10 +242,11 @@ func _on_InteractArea_body_entered(body):
 			body.take_item(DataManager.inventories[DataManager.current_player])
 			total_ammo = -1
 			emit_signal("item_taken", body.data)
-	elif body is GBullet:
+	elif body is GBullet and not is_inmortal:
 		data.damage(body.damage)
 		body.dead()
-
+	elif body is GBullet and is_inmortal:
+		body.dead()
 
 
 

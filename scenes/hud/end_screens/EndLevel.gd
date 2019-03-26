@@ -23,6 +23,9 @@ func win():
 	for music in music_arr:
 		music.stop()
 		
+	PlayerManager.get_current_player().get_node("GWeaponInBattle").remove_weapon()
+	PlayerManager.get_current_player().is_inmortal = true
+	
 	$Music.play()
 	
 	update_minerals()
