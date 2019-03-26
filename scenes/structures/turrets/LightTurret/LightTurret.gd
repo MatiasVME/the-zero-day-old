@@ -12,16 +12,15 @@ var attack_delay_end := false
 var track_distance := 75
 
 var patrol_objetive : Vector2 = Vector2(0,-1)
-var patrol_delay : float = 2
-var patrol_time : float = 0
+var patrol_delay := 2.0
+var patrol_time := 0.0
 
+# Collider que encuentra con el raycast
 var collider
 
 onready var objective = null
  
-
 func _ready():
-	
 	patrol_objetive = get_random_objective()
 	
 	# Su modo por defecto sera PATROL
@@ -41,8 +40,9 @@ func _ready():
 	
 	.spawn()
 	
-	data.hp = 20
-	data.xp_drop = 30 # temp
+	data.max_hp = int(round(rand_range(50, 70)))
+	data.restore_hp()
+	data.xp_drop = 5 # temp
 	
 	data.connect("destroy", self, "_on_destroy")
 	#data.connect("drop_xp", self, "_on_drop_xp")
@@ -149,7 +149,8 @@ func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_destroy:
 		SoundManager.play(SoundManager.Sound.HIT_1) # Por ahora usara el sonido de M
 		body.dead()
-		.damage(1) # temp
+		print(body.damage)
+		.damage(body.damage)
 
 func _on_AttackDelay_timeout():
 	$AttackDelay.stop()

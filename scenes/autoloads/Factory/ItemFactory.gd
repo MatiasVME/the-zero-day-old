@@ -52,7 +52,7 @@ static func get_points(enemy_level, enemy_type, player_luck):
 	
 	return points
 
-static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1):
+static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1, ammo_type = null):
 	var points = get_points(enemy_level, enemy_type, player_luck)
 	var weapon = PHDistanceWeapon.new()
 	
@@ -61,7 +61,8 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	weapon.buy_price = int(round(25 * points)) # temp
 	weapon.sell_price = weapon.buy_price / 4
 	
-	weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
+	if not ammo_type:
+		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
 	# Caracteristicas de las armas que dependen de los puntos
 	var feature_damage = 0

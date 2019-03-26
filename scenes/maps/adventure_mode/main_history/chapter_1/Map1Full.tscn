@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1Full.gd" type="Script" id=1]
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/Map1.tscn" type="PackedScene" id=2]
@@ -8,11 +8,14 @@
 [ext_resource path="res://scenes/SpawnPlaces/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/structures/objective/Objective.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/structures/chests/item_chest/NormalChest.tscn" type="PackedScene" id=9]
-[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=9]
 
 [node name="Map1Full" type="Node2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 153.204, 25.142, 94.2039 ],
+"_edit_vertical_guides_": [ 120.0 ]
+}
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
 script = ExtResource( 3 )
@@ -110,18 +113,15 @@ position = Vector2( 464, 1104 )
 [node name="Objective3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 176, 1408 )
 
-[node name="NormalChest" parent="." instance=ExtResource( 9 )]
-position = Vector2( 217, 87.7693 )
-
-[node name="GlutonSpawner" parent="." instance=ExtResource( 10 )]
+[node name="GlutonSpawner" parent="." instance=ExtResource( 9 )]
 position = Vector2( 678.858, 1272 )
 
-[node name="GlutonSpawner2" parent="." instance=ExtResource( 10 )]
+[node name="GlutonSpawner2" parent="." instance=ExtResource( 9 )]
 position = Vector2( 656.858, 1344 )
 
-[node name="GlutonSpawner3" parent="." instance=ExtResource( 10 )]
+[node name="GlutonSpawner3" parent="." instance=ExtResource( 9 )]
 position = Vector2( 590.451, 1312 )
 
-[node name="GlutonSpawner4" parent="." instance=ExtResource( 10 )]
+[node name="GlutonSpawner4" parent="." instance=ExtResource( 9 )]
 position = Vector2( 768, 1216 )
 

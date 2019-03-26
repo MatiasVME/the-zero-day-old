@@ -15,8 +15,7 @@ var current_state : int = 0
 # Puede recibir daño ?
 #var can_damage = true
 
-# Contiene la data, sera un PHCharacter?
-# Talves no sea necesario
+# Contiene la data
 var data
 
 signal state_changed

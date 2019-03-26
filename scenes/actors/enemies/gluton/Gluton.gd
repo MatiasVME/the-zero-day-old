@@ -40,8 +40,9 @@ func _ready():
 	randomize()
 	random_objective = get_rand_objective()
 	
-	data.hp = 8
-	data.xp_drop = 5 # temp
+	data.max_hp = int(round(rand_range(20, 30)))
+	data.restore_hp()
+	data.xp_drop = 1 # temp
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
