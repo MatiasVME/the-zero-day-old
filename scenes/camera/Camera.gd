@@ -14,6 +14,7 @@ func _ready():
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 
 func _physics_process(delta):
+	
 	# Verificamos si following no a sido borrado
 	if following and not weakref(following).get_ref():
 		# Ha sido borrado

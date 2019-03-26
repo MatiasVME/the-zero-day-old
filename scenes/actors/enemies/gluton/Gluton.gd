@@ -8,7 +8,7 @@ const RANDOM_RUN_DISTANCE = 4
 
 var velocity = Vector2()
 
-export (int, "SEEK", "FLEE") var mode = 0
+export (State) var mode = 0
 
 var speed : int = 3
 var attack : int = 2
@@ -263,6 +263,7 @@ func _on_AttackArea_body_exited(body):
 	if body is GPlayer:
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
+
 
 func _get_new_random_objective():
 	random_objective = get_rand_objective()

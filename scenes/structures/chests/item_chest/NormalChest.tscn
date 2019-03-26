@@ -9,6 +9,7 @@ extents = Vector2( 4.70412, 3.50718 )
 
 [node name="NormalChest" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+capacity = 8
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

@@ -203,8 +203,10 @@ stream = ExtResource( 42 )
 [node name="Damage" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 stream = ExtResource( 43 )
 
+
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+

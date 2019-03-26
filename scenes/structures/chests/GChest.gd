@@ -7,8 +7,9 @@ var content : Array #Arreglo con la informacion de los item que contiene
 enum States {LOCKET, CLOSED, OPENED} #Estados temporales hasta definir herencia
 export (States) var state : int = States.CLOSED
 
-func _ready():
-	pass
+signal chest_opened
+signal chest_closed
+signal chest_locked
 
 #TODO:Revisar que parametro usar para la info del Item
 func add_item(item_data : PHItem) -> void:
@@ -26,6 +27,27 @@ func drop_item(index : int = 0) -> PHItem:
 	
 func is_empty() -> bool:
 	return content.empty()
+	
+func is_full() -> bool:
+	return content.size() == capacity
+
+#Funciones temporales para tratar de encapsular comportamiento
+#TODO:Analizar si son necesarias
+func open_chest() -> void:
+	if _change_state(States.OPENED):
+		emit_signal("chest_opened")
+	
+func close_chest() -> void:
+	if _change_state(States.CLOSED):
+		emit_signal("chest_closed")
+	
+func lock_chest() -> void:
+	if _change_state(States.LOCKET):
+		emit_signal("chest_locked")
+	
+func unlock_chest() -> void:
+	if _change_state(States.CLOSE):
+		emit_signal("chest_closed")
 
 #Funcion que debe sobreescribirse en las subclases
 func _change_state(new_state : int) -> bool:

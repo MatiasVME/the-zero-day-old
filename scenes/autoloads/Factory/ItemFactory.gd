@@ -56,7 +56,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	var points = get_points(enemy_level, enemy_type, player_luck)
 	var weapon = PHDistanceWeapon.new()
 	
-	print("points: ",points)
+#	print("points: ",points)
 	
 	weapon.buy_price = int(round(25 * points)) # temp
 	weapon.sell_price = weapon.buy_price / 4

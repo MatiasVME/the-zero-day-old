@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION := "0.1.0.alpha"
+const VERSION := "0.2.0.alpha"
 const DEBUG := true
 
 var music_enable := true
@@ -36,3 +36,13 @@ func reset_store():
 	store_titanium_earned = 0
 	store_steel_earned = 0
 	store_ruby_earned = 0
+	
+func prepare_to_exit():
+	result = Result.NONE
+	DataManager.get_current_player_instance().restore_hp()
+	DataManager.save_all_data()
+	PlayerManager.clear_players()
+	
+	
+	
+	
