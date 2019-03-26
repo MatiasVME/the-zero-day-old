@@ -43,6 +43,7 @@ func _ready():
 	data.max_hp = int(round(rand_range(20, 30)))
 	data.restore_hp()
 	data.xp_drop = 1 # temp
+	data.attack = 3
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
@@ -76,7 +77,7 @@ func _physics_process(delta):
 			
 			if $Body.frame == 10 and ot_attack:
 				ot_attack = false
-				objective.data.damage(1) # TEMP
+				objective.data.damage(data.attack)
 			elif $Body.frame == 11:
 				ot_attack = true
 		State.DIE:

@@ -13,8 +13,8 @@
 [node name="Map1Full" type="Node2D"]
 script = ExtResource( 1 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 153.204, 25.142, 94.2039 ],
-"_edit_vertical_guides_": [ 120.0 ]
+"_edit_horizontal_guides_": [  ],
+"_edit_vertical_guides_": [  ]
 }
 
 [node name="Map" parent="." instance=ExtResource( 2 )]

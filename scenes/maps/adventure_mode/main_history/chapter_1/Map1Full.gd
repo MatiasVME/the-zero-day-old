@@ -26,4 +26,15 @@ func _ready():
 	ammo2.global_position = Vector2(200, 152)
 	add_child(ammo2)
 	
+	var ammo3 = Factory.ItemInWorldFactory.create_normal_ammo(32)
+	ammo3.global_position = Vector2(296, 272)
+	add_child(ammo3)
+	
+	var ammo4 = Factory.ItemInWorldFactory.create_normal_ammo(32)
+	ammo4.global_position = Vector2(544, 592)
+	add_child(ammo4)
+	
+	var weapon2 = Factory.ItemInWorldFactory.create_rand_distance_weapon(2, 1, 1)
+	weapon2.global_position = Vector2(391, 1224)
+	add_child(weapon2)
 	
