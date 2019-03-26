@@ -19,7 +19,7 @@ func update_no_navegable_tiles():
 	if not has_node("Terrain") : return
 	var tiles_pos = get_tiles_pos_list()
 	for tile_pos in tiles_pos:
-		print("=========")
+#		print("=========")
 		var current_tile_name = $Terrain.tile_set.tile_get_name($Terrain.get_cell(tile_pos.x, tile_pos.y))
 		var opposite_tile = $Terrain.tile_set.find_tile_by_name(current_tile_name + "_not_navigable")
 		var autotile_coord = $Terrain.get_cell_autotile_coord(tile_pos.x, tile_pos.y)

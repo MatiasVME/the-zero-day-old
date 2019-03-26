@@ -43,9 +43,13 @@ editor/display_folded = true
 position = Vector2( 0, 240 )
 
 [node name="ButtonCredits" type="Button" parent="."]
-margin_left = -88.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -49.0
 margin_top = 70.0
-margin_right = 98.0
+margin_right = 49.0
 margin_bottom = 108.0
 theme = ExtResource( 4 )
 text = "Credits"
