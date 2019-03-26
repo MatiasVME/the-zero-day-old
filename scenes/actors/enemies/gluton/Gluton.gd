@@ -18,6 +18,9 @@ var attack_distance : float = 18 # Igual que el AttackArea
 
 # Objetivo random cuando no esta haciendo nada
 var random_objective : Vector2 = Vector2()
+var time_to_random_objective : float = 4
+var current_time_to_random_objective : float = 0
+
 # Ultima posicion del objetivo
 var last_objective_position : Vector2
 
@@ -81,12 +84,15 @@ func _physics_process(delta):
 				$Sounds/Dead.play()
 				.dead()
 		State.RANDOM_WALK:
+			if current_time_to_random_objective >= time_to_random_objective:
+				_get_new_random_objective()
 			if not objective or objective.is_mark_to_dead:
 				sekeer(random_objective)
 			elif data.hp < 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.RUN)
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
+			current_time_to_random_objective += delta
 	
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
@@ -137,13 +143,13 @@ func sekeer(objective):
 		
 		var b_point
 		if $Navigator.navigation_path.size()-1 -$Navigator.current_index < 1 :
-			b_point = global_position
+			b_point = objective
 		else:
 			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
 			
 		var AB = b_point.distance_to($Navigator.get_current_point())
 		var b_dist = global_position.distance_to(b_point)
-		if b_dist * 0.95 <= AB :
+		if b_dist <= AB :
 			$Navigator.next_index()
 
 	else:
@@ -258,5 +264,6 @@ func _on_AttackArea_body_exited(body):
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
 
-func _on_ChangeRandomMove_timeout():
+func _get_new_random_objective():
 	random_objective = get_rand_objective()
+	current_time_to_random_objective = 0

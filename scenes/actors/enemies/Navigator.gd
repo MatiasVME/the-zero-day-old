@@ -24,7 +24,6 @@ func _ready():
 
 func update_navigation_path(target_pos):
 	navigation_path = calcule_navigation_path(target_pos)
-#	get_parent().get_parent().re_draw_paths(navigation_path)
 	time_current = 0
 	current_index = 0
 	out_of_index = false
@@ -32,8 +31,12 @@ func update_navigation_path(target_pos):
 func calcule_navigation_path(target_pos):
 	#var t = OS.get_ticks_usec()
 	var path = nav.get_simple_path(get_parent().global_position, target_pos)
+	if path.size() > 1:
+		path.remove(0)
+	else:
+		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos)
 	#print(OS.get_ticks_usec() - t)
-	path.remove(0)
+	
 	return path
 
 func get_current_point():
