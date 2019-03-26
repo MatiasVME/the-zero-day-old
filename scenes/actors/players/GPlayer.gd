@@ -45,26 +45,7 @@ signal spawn
 signal reload
 signal item_taken(item)
 
-onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
-
 func _ready():
-	# Obtenemos la camara si es que existe
-	if game_camera.size() > 0: 
-		game_camera = game_camera[0]
-	else:
-		return
-	
-	if has_node("Terrain"):
-		var top_left = $Terrain.map_to_world($Terrain.get_cellv(Vector2(0, 0)))
-		var bottom_right = $Terrain.map_to_world($Terrain.get_cellv($Terrain.get_used_rect().size()))
-		print(top_left)
-		print(bottom_right)
-		
-		game_camera.limit_left = top_left.x
-		game_camera.limit_top = top_left.y
-		game_camera.limit_right = bottom_right.x
-		game_camera.limit_bottom = bottom_right.y
-
 	connect("fire", self, "_on_fire")
 	
 	data.connect("dead", self, "_on_dead")
