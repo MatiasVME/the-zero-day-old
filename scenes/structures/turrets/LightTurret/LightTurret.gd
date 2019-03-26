@@ -4,12 +4,12 @@ extends GTurret
 # Velocidad del rotator en rad/s, posiblemente se cambie a RPS
 var rotator_velocity = 3.5
 
-var attack : int = 2
-var attack_delay : float= 0.4
+export (int) var attack := 2
+export (float) var attack_delay := 0.4
 
-var attack_delay_end : bool = false
+var attack_delay_end := false
 
-var track_distance : float = 75
+var track_distance := 75
 
 var patrol_objetive : Vector2 = Vector2(0,-1)
 var patrol_delay : float = 2
@@ -57,7 +57,7 @@ func _physics_process(delta):
 				patrol_objetive = get_random_objective()
 		State.TRACK:
 			if rot_pivot_to(objective.global_position, delta):
-				shoot()
+				if $Pivot/RayCanFire.get_collider().is_in_group("Player"): shoot()
 				state = State.SHOOT
 				attack_delay_end = false
 				$AttackDelay.start()
@@ -65,19 +65,17 @@ func _physics_process(delta):
 			if objective.is_mark_to_dead : patrol()
 			if not rot_pivot_to(objective.global_position, delta):
 				track()
-			if attack_delay_end : 
-					shoot()
-					attack_delay_end = false
-					$AttackDelay.start()
+			if attack_delay_end and $Pivot/RayCanFire.get_collider().is_in_group("Player"): 
+				shoot()
+				attack_delay_end = false
+				$AttackDelay.start()
 		State.DESTROYED:
-			
 			if not is_mark_to_destroy:
 				is_mark_to_destroy = true
 				.destroy()
 
 # Rotara el pivot hacia el objetivo, devolvera TRUE si lo apunta directamente
 func rot_pivot_to(objective_pos, delta) -> bool:
-	
 	var angle = $Pivot.get_angle_to(objective_pos)
 	if abs(angle) < rotator_velocity*delta: 
 		$Pivot.look_at(objective_pos)
