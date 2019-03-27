@@ -30,6 +30,7 @@ func is_empty() -> bool:
 	
 func is_full() -> bool:
 	return content.size() == capacity
+	
 
 #Funciones temporales para tratar de encapsular comportamiento
 #TODO:Analizar si son necesarias

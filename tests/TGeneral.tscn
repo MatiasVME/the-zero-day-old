@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://tests/TGeneral.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=8]
+[ext_resource path="res://scenes/structures/chests/item_chest/NormalChest.tscn" type="PackedScene" id=9]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
@@ -83,4 +84,8 @@ position = Vector2( 246, 413 )
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
+
+[node name="NormalChest" parent="." instance=ExtResource( 9 )]
+position = Vector2( -122, 267 )
+capacity = 4
 

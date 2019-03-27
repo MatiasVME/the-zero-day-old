@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/structures/chests/GChest.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/structures/chests/item_chest/NormalChest.gd" type="Script" id=2]
@@ -7,7 +7,9 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4.70412, 3.50718 )
 
-[node name="NormalChest" index="0" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=2]
+
+[node name="NormalChest" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 capacity = 8
 
@@ -18,3 +20,9 @@ texture = ExtResource( 3 )
 position = Vector2( -1.06962, 3.56543 )
 shape = SubResource( 1 )
 
+[node name="InteractCollision" parent="InteracArea" index="0"]
+shape = SubResource( 2 )
+
+[connection signal="animation_finished" from="AnimationChest" to="." method="_on_AnimationChest_animation_finished"]
+[connection signal="body_entered" from="InteracArea" to="." method="_on_InteracArea_body_entered"]
+[connection signal="body_exited" from="InteracArea" to="." method="_on_InteracArea_body_exited"]
