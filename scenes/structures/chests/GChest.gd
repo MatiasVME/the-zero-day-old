@@ -3,7 +3,7 @@ extends Node2D
 class_name GChest
 
 export (int) var capacity : int = 0 #Cantidad de items que puede contener
-var content : Array #Arreglo con la informacion de los item que contiene
+var content : Array = [] #Arreglo con la informacion de los item que contiene
 enum States {LOCKET, CLOSED, OPENED} #Estados temporales hasta definir herencia
 export (States) var state : int = States.CLOSED
 
@@ -30,6 +30,7 @@ func is_empty() -> bool:
 	
 func is_full() -> bool:
 	return content.size() == capacity
+	
 
 #Funciones temporales para tratar de encapsular comportamiento
 #TODO:Analizar si son necesarias
