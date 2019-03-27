@@ -87,7 +87,9 @@ autoplay = true
 
 [node name="NormalChest" parent="." instance=ExtResource( 9 )]
 position = Vector2( -204, 352 )
+capacity = 10
 
 [node name="NormalChest2" parent="." instance=ExtResource( 9 )]
 position = Vector2( -121, 278 )
+capacity = 5
 

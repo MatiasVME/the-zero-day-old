@@ -3,6 +3,7 @@ extends GChest
 NormalChest es un cofre sin llave que puede contener items normales
 """
 onready var animation : = $AnimationChest
+var interact : bool
 
 func _ready():
 	add_random_items()#Para pruebas
@@ -11,11 +12,11 @@ func _ready():
 	set_process_unhandled_input(false)
 	
 func _unhandled_input(event):
-	var interact : bool = false
-	if event is InputEvent and event.is_pressed():
-		interact = event.is_action("interact")
+	if event is InputEvent:
+		interact = Input.is_action_just_pressed("interact")
 	
 	if interact:
+		interact = false
 		if state == States.CLOSED:
 			open_chest()
 		else:
@@ -79,7 +80,7 @@ func _on_AnimationChest_animation_finished(anim_name):
 			while not is_empty():
 				var item = drop_item()
 				var item_in_world = Factory.ItemInWorldFactory.create_from_item(item)
-				item_in_world.global_position = global_position + Vector2(sign( rand_range(-1, 1) ) * 20, 20)
+				item_in_world.global_position = global_position + Vector2(rand_range(-20.0, 20.0), 20)
 				get_parent().add_child(item_in_world)
 
 
