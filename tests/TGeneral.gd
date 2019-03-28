@@ -53,6 +53,12 @@ func _ready():
 	var item9 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 	item9.global_position = Vector2(200, 104)
 	add_child(item9)
+	
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.add_random_items()
+	$NormalChest2.add_random_items()
 #
 #	var item10 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 #	item10.global_position = Vector2(200, 104)

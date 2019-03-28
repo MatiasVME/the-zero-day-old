@@ -3,10 +3,11 @@ extends GChest
 NormalChest es un cofre sin llave que puede contener items normales
 """
 onready var animation : = $AnimationChest
+onready var timer_drop : = $TimerDrop
 var interact : bool
 
 func _ready():
-	add_random_items()#Para pruebas
+#	add_random_items()#Para pruebas
 	connect("chest_opened", self, "_on_chest_opened")
 	connect("chest_closed", self, "_on_chest_closed")
 	set_process_unhandled_input(false)
@@ -17,10 +18,13 @@ func _unhandled_input(event):
 	
 	if interact:
 		interact = false
-		if state == States.CLOSED:
-			open_chest()
-		else:
-			close_chest()
+		match state:
+			States.CLOSED:
+				open_chest()
+			States.OPENED:
+				close_chest()
+			States.LOCKED:#TODO: (Para pruebas) Borrar, este cofre no debería estar bloqueado
+				animation.play("Lock")
 
 #Funcion para definir los tipos de items que puede contener
 #si se utiliza el llenado aleatorio 	
@@ -78,17 +82,20 @@ func _on_AnimationChest_animation_finished(anim_name):
 	match anim_name:
 		"Open":
 			while not is_empty():
-				var item = drop_item()
-				var item_in_world = Factory.ItemInWorldFactory.create_from_item(item)
-				item_in_world.global_position = global_position + Vector2(rand_range(-20.0, 20.0), 20)
-				get_parent().add_child(item_in_world)
-
-
+				timer_drop.start()
+				yield(timer_drop, "timeout")
+	
 func _on_InteracArea_body_entered(body):
 #TODO:Ver que otra condición agregar para que se trate del current player
-	if body is GPlayer:
+	if body is GPlayer and body == PlayerManager.get_current_player():
 		set_process_unhandled_input(true)
 	
 func _on_InteracArea_body_exited(body):
-	if body is GPlayer:
+	if body is GPlayer and body == PlayerManager.get_current_player():
 		set_process_unhandled_input(false)
+	
+func _on_TimerDrop_timeout():
+		var item = drop_item()
+		var item_in_world = Factory.ItemInWorldFactory.create_from_item(item)
+		item_in_world.global_position = global_position + Vector2(rand_range(-20.0, 20.0), rand_range(-20.0, 20.0))
+		get_parent().add_child(item_in_world)

@@ -86,10 +86,11 @@ stream = ExtResource( 8 )
 autoplay = true
 
 [node name="NormalChest" parent="." instance=ExtResource( 9 )]
-position = Vector2( -204, 352 )
-capacity = 10
+position = Vector2( -128.21, 279.369 )
+capacity = 4
 
 [node name="NormalChest2" parent="." instance=ExtResource( 9 )]
-position = Vector2( -121, 278 )
+position = Vector2( -187.316, 280.105 )
 capacity = 5
+state = 0
 
