@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-#extends Node
+class_name RPGElement
 
 export (bool) var debug = false
 
@@ -29,12 +29,12 @@ func debug(message, something1 = "", something2 = ""):
 		print("[RPGElements] ", message, " ", something1, " ", something2)
 
 # Función para convertir la extención .gdc a .gd
-func gdc2gd(dict):
+static func gdc2gd(dict):
 	if typeof(dict) == TYPE_DICTIONARY and dict.has("@path"):
 		dict["@path"] = dict["@path"].replace('.gdc', '.gd')
 		return dict
 	else:
-		debug("gdc2gd(): No es un diccionario o no se encuentra el path")
+		print("gdc2gd(): No es un diccionario o no se encuentra el path")
 		return dict
 
 #func _notification(what):

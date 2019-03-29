@@ -98,7 +98,7 @@ func save_players():
 	temp_data.clear()
 	
 	for i in players.size():
-		temp_data[i] = inst2dict(players[i])
+		temp_data[i] = RPGElement.gdc2gd(inst2dict(players[i]))
 	
 	# print("temp_data: ",temp_data)
 	
@@ -194,7 +194,7 @@ func load_stats():
 func save_stats():
 #	var temp_data = $Stats.get_data("Stats")
 #	temp_data.clear()
-#
+#   # usar --> RPGElement.gdc2gd()
 #	for i in stats.size():
 #		temp_data[i] = inst2dict(stats[i])
 #
