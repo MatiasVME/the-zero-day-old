@@ -22,6 +22,7 @@
 # SOFTWARE.
 
 extends "RPGElement.gd"
+
 class_name RPGInventory, "../icons/RPGInventory.png"
 
 var inv = [] setget , get_inv
@@ -175,12 +176,12 @@ func inv2dict():
 	
 	var i = 0
 	while i < inv.size():
-		dict_inv.append(gdc2gd(inst2dict(inv[i]))) # OLD
-#		dict_inv.append(inst2dict(inv[i])) # NEW
+#		dict_inv.append(gdc2gd(inst2dict(inv[i]))) # OLD
+		dict_inv.append(inst2dict(inv[i])) # NEW
 		i += 1
 	
-	var dict = gdc2gd(inst2dict(self)) # OLD
-#	var dict = inst2dict(self) # NEW
+#	var dict = gdc2gd(inst2dict(self)) # OLD
+	var dict = inst2dict(self) # NEW
 	dict["inv"] = dict_inv
 	
 	return dict

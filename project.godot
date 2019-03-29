@@ -190,11 +190,6 @@ _global_script_classes=[ {
 "path": "res://addons/rpg_elements/nodes/RPGDialog.gd"
 }, {
 "base": "",
-"class": "RPGHelper",
-"language": "GDScript",
-"path": "res://addons/rpg_elements/nodes/RPGHelper.gd"
-}, {
-"base": "",
 "class": "RPGInventory",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGInventory.gd"
@@ -214,7 +209,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGStructure.gd"
 }, {
-"base": "",
+"base": "RPGInventory",
 "class": "RPGWeightInventory",
 "language": "GDScript",
 "path": "res://addons/rpg_elements/nodes/RPGWeightInventory.gd"
@@ -266,7 +261,6 @@ _global_script_class_icons={
 "PlasmaBullet": "",
 "RPGCharacter": "res://addons/rpg_elements/icons/RPGCharacter.png",
 "RPGDialog": "res://addons/rpg_elements/icons/RPGDialog.png",
-"RPGHelper": "res://addons/rpg_elements/icons/RPGHelper.png",
 "RPGInventory": "res://addons/rpg_elements/icons/RPGInventory.png",
 "RPGItem": "res://addons/rpg_elements/icons/RPGItem.png",
 "RPGStats": "res://addons/rpg_elements/icons/RPGStats.png",

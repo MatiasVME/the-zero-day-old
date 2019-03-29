@@ -1,7 +1,7 @@
 extends Node
 
 # En la alpha v0.2.0 existira solo el usuario User por default
-var current_user : String = "User"
+var current_user := "User"
 
 var global_config # Es una referencia al diccionario de $GlobalConfig
 var user_config # Es una referencia al diccionario de $DataUserConfig
@@ -16,7 +16,7 @@ var current_player : int = 0 setget set_current_player, get_current_player
 
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
-var delete_data = 1
+var delete_data = 2
 
 func _ready():
 	configure_persistence_node()

@@ -21,7 +21,8 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-extends "RPGInventory.gd"
+extends RPGInventory
+
 class_name RPGWeightInventory, "../icons/RPGWeightInventory.png"
 
 const MIN_WEIGHT_INV = 4

@@ -22,6 +22,7 @@
 # SOFTWARE.
 
 extends "RPGElement.gd"
+
 class_name RPGCharacter, "../icons/RPGCharacter.png"
 
 export (String) var character_name setget set_character_name, get_character_name
