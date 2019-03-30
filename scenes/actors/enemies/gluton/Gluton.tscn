@@ -41,7 +41,7 @@
 [ext_resource path="res://scenes/actors/enemies/gluton/images/GlutonAttack-13.png" type="Texture" id=39]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/GlutonAttack-14.png" type="Texture" id=40]
 [ext_resource path="res://sounds/sfx/MonsterDead1.wav" type="AudioStream" id=41]
-[ext_resource path="res://sounds/sfx/MonsterSpawn1.wav" type="AudioStream" id=42]
+[ext_resource path="res://sounds/sfx/Hit2.wav" type="AudioStream" id=42]
 [ext_resource path="res://sounds/sfx/MonsterDamage2.wav" type="AudioStream" id=43]
 
 [sub_resource type="CircleShape2D" id=1]
@@ -155,7 +155,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 18.0278
 
-[node name="Gluton" instance=ExtResource( 1 )]
+[node name="Gluton" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
@@ -192,16 +192,18 @@ editor/display_folded = true
 shape = SubResource( 8 )
 
 [node name="Sounds" type="Node2D" parent="." index="8"]
-editor/display_folded = true
 
 [node name="Dead" type="AudioStreamPlayer2D" parent="Sounds" index="0"]
 stream = ExtResource( 41 )
+volume_db = -10.0
 
-[node name="Spawn" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
+[node name="Hit" type="AudioStreamPlayer2D" parent="Sounds" index="1"]
 stream = ExtResource( 42 )
+volume_db = -10.0
 
 [node name="Damage" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 stream = ExtResource( 43 )
+volume_db = -10.0
 
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]

@@ -48,8 +48,6 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
 	
-	$Sounds/Spawn.play()
-	
 func _physics_process(delta):
 	match state:
 		State.SEEKER:
@@ -78,6 +76,7 @@ func _physics_process(delta):
 			if $Body.frame == 10 and ot_attack:
 				ot_attack = false
 				objective.data.damage(data.attack)
+				$Sounds/Hit.play()
 			elif $Body.frame == 11:
 				ot_attack = true
 		State.DIE:
