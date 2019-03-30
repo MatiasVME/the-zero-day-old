@@ -131,6 +131,7 @@ func _on_DetectArea_body_entered(body):
 		track()
 		objective = body
 		.detect()
+		$Sounds/Alert1.play()
 		
 func _on_drop_xp(amount):
 	# TEMP
@@ -147,7 +148,7 @@ func _on_destroy():
 	
 func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_destroy:
-		SoundManager.play(SoundManager.Sound.HIT_1) # Por ahora usara el sonido de M
+		$Sounds/Hit1.play()
 		body.dead()
 		.damage(body.damage)
 
