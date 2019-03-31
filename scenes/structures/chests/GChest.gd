@@ -10,6 +10,7 @@ export (States) var state : int = States.CLOSED
 signal chest_opened
 signal chest_closed
 signal chest_locked
+signal chest_unlocked
 
 #Función para agregar un PHItem al cofre
 func add_item(item_data : PHItem) -> void:
@@ -47,7 +48,7 @@ func lock_chest() -> void:
 	
 func unlock_chest() -> void:
 	if _change_state(States.CLOSE):
-		emit_signal("chest_closed")
+		emit_signal("chest_unlocked")
 
 #Función que debe sobreescribirse en las subclases
 #representando los cambios de estado válidos

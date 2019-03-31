@@ -1,12 +1,11 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/structures/chests/GChest.gd" type="Script" id=1]
-[ext_resource path="res://scenes/structures/chests/images/Chest-1.png" type="Texture" id=2]
-[ext_resource path="res://scenes/structures/chests/images/Chest-0.png" type="Texture" id=3]
-[ext_resource path="res://scenes/structures/chests/images/Chest-2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/structures/chests/drop_chest/images/Chest-1.png" type="Texture" id=2]
+[ext_resource path="res://scenes/structures/chests/drop_chest/images/Chest-0.png" type="Texture" id=3]
+[ext_resource path="res://scenes/structures/chests/drop_chest/images/Chest-2.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Close"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -22,7 +21,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Lock"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:position")
@@ -38,7 +36,6 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "Open"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
