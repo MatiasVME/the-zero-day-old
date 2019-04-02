@@ -11,6 +11,8 @@ Normalmente usamos estas herramientas principales:
 - Github : Repositorio
 - Discord : Comunicación
 
+Para que el proceso de desarrollo sea más motivante sacamos versiones cada cierto tiempo. Puede ser cada un semana o cada un més, dependiendo lo que necesitemos cambiar para la próxima versión. Esto nos sirve para ir mostrando el juego y ir solucionando bugs y no concentrarnos totalmente en features, sino que tener una versión jugable para el final del milestone (objetivo del mes/semana).
+
 ## Ingreso al proyecto
 
 Para ingresar al proyecto puede enviar un correo a writkas2{{at}}gmail{{dot}}com o también puede entrar al siguiente discord y preguntar por Matías y acerca de este proyecto: https://discord.gg/TpWVGfF
