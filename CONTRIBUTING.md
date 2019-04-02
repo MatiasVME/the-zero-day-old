@@ -1,13 +1,13 @@
 ## Aclaración antes de participar
 
-Es un proyecto Open Source, por lo que normalmente el código estará bajo licencia MIT y los asset bajo licencia CC-BY. Esto no quiere decir que en un futuro el proyecto pueda cambiar a ser un proyecto privativo. Normalmente vamos a querer hacer que el proyecto sea Open Source, pero si por motivos de beneficio al proyecto se puede convertir a un proyecto privativo.
+Es un proyecto Open Source, por lo que normalmente el código estará bajo licencia MIT y los asset bajo licencia CC-BY. Esto no quiere decir que en un futuro el proyecto pueda cambiar a ser un proyecto privativo. Normalmente vamos a querer hacer que el proyecto sea Open Source, pero por motivos de beneficio al proyecto se puede convertir a un proyecto privativo.
 
 Si por algún motivo el juego cambia de licencia, prometemos dejar el código fuente de la última instancia en el cuál el proyecto era libre en Github.
 
 ## Forma de trabajo
 
 Normalmente usamos estas herramientas principales: 
-- HackNPlan : para la gestión de proyectosç
+- HackNPlan : para la gestión de proyectos
 - Github : Repositorio
 - Discord : Comunicación
 
