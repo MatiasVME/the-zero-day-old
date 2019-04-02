@@ -8,19 +8,6 @@ Project Humanity es un juego sandbox, top down shooter, rpg, etc.
 
 Manejas un personaje, desde una perspectiva top-down, con los controles WASD. Este personaje puede disparar, hacer combate cuerpo a cuerpo, manejar vehículos, construir, subir de nivel, entre otras cosas.
 
-# Creditos
-
-- Matías Muñoz Espinoza - Programmer
-- Markus Ellisca - Programmer
-- Jonathan Moreno - Programmer
-- Jean Ferreira - Programmer
-
-
-- MG.Pix - Art
-
-
-- Avgvsta - Music (CC-BY)
-
 # Características principales del juego
 
 * Modo acción: Se podrá disparar y luchar contra enemigos, todos los enemigos tienen atributos.
@@ -43,7 +30,20 @@ Si desea participar en este proyecto puede ir al siguiente discord:
 
 Y luego debe preguntar por Matías o enviarle un mensaje directamente.
 
-Para organizarnos usamos Hacknplan.
+Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github.com/MatiasVME/project-humanity/blob/master/CONTRIBUTING.md)
+
+# Creditos
+
+- Matías Muñoz Espinoza - Programmer
+- Markus Ellisca - Programmer
+- Jonathan Moreno - Programmer
+- Jean Ferreira - Programmer
+
+
+- MG.Pix - Art
+
+
+- Avgvsta - Music (CC-BY)
 
 ## Compilar
 
