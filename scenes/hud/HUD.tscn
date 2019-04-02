@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hud/stats/images/BackgroundStatsPanel.png" type="Texture" id=4]
+[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dead"
@@ -359,10 +360,14 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 
 [node name="ResumeMenu" parent="GameMenu" index="6"]
+editor/display_folded = true
 visible = false
+
+[node name="StatsMenu" type="Sprite" parent="GameMenu"]
+position = Vector2( 450, 120 )
+texture = ExtResource( 4 )
 
 [node name="AnimGameMenu" type="AnimationPlayer" parent="."]
 autoplay = "show"
@@ -371,7 +376,7 @@ anims/hide_game_menu = SubResource( 6 )
 anims/show = SubResource( 7 )
 anims/show_game_menu = SubResource( 8 )
 
-[node name="Hotbar" parent="." instance=ExtResource( 4 )]
+[node name="Hotbar" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
@@ -379,7 +384,7 @@ autoplay = "show"
 anims/hide = SubResource( 9 )
 anims/show = SubResource( 10 )
 
-[node name="BulletInfo" parent="." instance=ExtResource( 5 )]
+[node name="BulletInfo" parent="." instance=ExtResource( 6 )]
 position = Vector2( 80, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
@@ -387,7 +392,7 @@ autoplay = "show"
 anims/hide = SubResource( 11 )
 anims/show = SubResource( 12 )
 
-[node name="AvatarHandler" parent="." instance=ExtResource( 6 )]
+[node name="AvatarHandler" parent="." instance=ExtResource( 7 )]
 position = Vector2( -96, 0 )
 
 [node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
@@ -395,7 +400,7 @@ autoplay = "show"
 anims/hide = SubResource( 13 )
 anims/show = SubResource( 14 )
 
-[node name="EndLevel" parent="." instance=ExtResource( 7 )]
+[node name="EndLevel" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 0, -214.858 )
 

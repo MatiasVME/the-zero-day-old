@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/SpawnPlaces/GSpawnPlace.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/SpawnPlaces/GlutonSpawn/GlutonSpawn.gd" type="Script" id=2]
+[ext_resource path="res://scenes/spawn_places/GSpawnPlace.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.gd" type="Script" id=2]
 [ext_resource path="res://sounds/sfx/Spawn1.wav" type="AudioStream" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 60 )

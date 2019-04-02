@@ -5,10 +5,11 @@
 [ext_resource path="res://navigation/NavigationMap.gd" type="Script" id=3]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=5]
-[ext_resource path="res://scenes/SpawnPlaces/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/structures/objective/Objective.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=9]
+
 
 [node name="Map1Full" type="Node2D"]
 script = ExtResource( 1 )

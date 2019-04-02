@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/EffectGlutonSpawn-3.png-adafc84373a7b7498258fe8ecae44142.stex"
+path="res://.import/AddStat-Normal.png-a3c5e21d01b17824a3203728a166dd1e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/SpawnPlaces/GlutonSpawn/images/EffectGlutonSpawn-3.png"
-dest_files=[ "res://.import/EffectGlutonSpawn-3.png-adafc84373a7b7498258fe8ecae44142.stex" ]
+source_file="res://scenes/hud/stats/images/AddStat-Normal.png"
+dest_files=[ "res://.import/AddStat-Normal.png-a3c5e21d01b17824a3203728a166dd1e.stex" ]
 
 [params]
 

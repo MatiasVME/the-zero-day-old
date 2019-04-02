@@ -5,7 +5,20 @@ Project Humanity es un juego sandbox top down shooter (En desarrollo)
 
 # Último devlog
 
-[![Último Devlog Project Humanity](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=y_V8qkavjbw "Último Devlog Project Humanity")
+[![Último Devlog Project Humanity](https://img.youtube.com/vi/bB4H3_K0LSo/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo "Último Devlog Project Humanity")
+
+# Creditos
+
+- Matías Muñoz Espinoza - Programmer
+- Markus Ellisca - Programmer
+- Jonathan Moreno - Programmer
+- Jean Ferreira - Programmer
+
+
+- MG.Pix - Art
+
+
+- Avgvsta - Music (CC-BY)
 
 ## Se buscan colaboradores
 
@@ -22,6 +35,7 @@ Para organizarnos usamos Hacknplan.
 Necesita Godot Engine 3.1.x stable
 
 ## Licencias
+
 - MPL2 Plugin - JSON Beautifier
 - CC-BY - Assets
 - MIT - Resto del código

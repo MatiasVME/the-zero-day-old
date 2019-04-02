@@ -62,7 +62,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "GSpawnPlace",
 "language": "GDScript",
-"path": "res://scenes/SpawnPlaces/GSpawnPlace.gd"
+"path": "res://scenes/spawn_places/GSpawnPlace.gd"
 }, {
 "base": "GStructure",
 "class": "GSpawner",
