@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=7]
 [ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=8]
-[ext_resource path="res://scenes/structures/chests/item_chest/NormalChest.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=9]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
@@ -91,6 +91,4 @@ capacity = 4
 
 [node name="NormalChest2" parent="." instance=ExtResource( 9 )]
 position = Vector2( -187.316, 280.105 )
-capacity = 5
-state = 0
 
