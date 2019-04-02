@@ -51,9 +51,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( -2, -2 ),
+"transitions": PoolRealArray( 1, -2 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 360, 0 ) ]
+"values": [ Vector2( 60, 0 ), Vector2( 360, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Inventory:modulate")
@@ -89,10 +89,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( -2, -2 ),
+"times": PoolRealArray( 0, 0.356862, 0.364689, 0.372653 ),
+"transitions": PoolRealArray( -2, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 360, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 360, 0 ), Vector2( 60, 0 ), Vector2( 60, 0 ), Vector2( 60, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Inventory:modulate")
@@ -131,7 +131,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 16, 0 ) ]
+"values": [ Vector2( 60, 0 ), Vector2( 76, 0 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -145,9 +145,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3 ),
-"transitions": PoolRealArray( 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -88, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( -28, 0 ), Vector2( 60, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("GameMenu/ResumeMenu:visible")
@@ -172,9 +172,9 @@ tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.5, 0.5 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 16, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 76, 0 ), Vector2( 60, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -186,10 +186,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 0.5, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 16, 0 ), Vector2( -88, 0 ) ]
+"values": [ Vector2( 60, 0 ), Vector2( 60, 0 ), Vector2( -28, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("GameMenu/ResumeMenu:visible")
@@ -198,10 +198,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true, true ]
+"values": [ false, true, true ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -243,10 +243,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0.0408333, 0.4 ),
-"transitions": PoolRealArray( 0.5, 0.5 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 80, 0 ) ]
+"values": [ Vector2( 60, 0 ), Vector2( 124, 0 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -261,7 +261,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 80, 0 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 124, 0 ), Vector2( 60, 0 ) ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -344,7 +344,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 1, 0.992186, 0.96093, 0.0217056 )
+color = Color( 1, 0.999149, 0.995747, 0.00236299 )
 
 [node name="CurtainAnim" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 1 )
@@ -360,12 +360,15 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 76, 0 )
 
 [node name="ResumeMenu" parent="GameMenu" index="6"]
 editor/display_folded = true
 visible = false
 
 [node name="StatsMenu" type="Sprite" parent="GameMenu"]
+visible = false
 position = Vector2( 450, 120 )
 texture = ExtResource( 4 )
 
@@ -385,7 +388,7 @@ anims/hide = SubResource( 9 )
 anims/show = SubResource( 10 )
 
 [node name="BulletInfo" parent="." instance=ExtResource( 6 )]
-position = Vector2( 80, 0 )
+position = Vector2( 124, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
 autoplay = "show"
@@ -402,7 +405,7 @@ anims/show = SubResource( 14 )
 
 [node name="EndLevel" parent="." instance=ExtResource( 8 )]
 visible = false
-position = Vector2( 0, -214.858 )
+position = Vector2( 0, -235.931 )
 
 [node name="AnimEndLevel" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 15 )

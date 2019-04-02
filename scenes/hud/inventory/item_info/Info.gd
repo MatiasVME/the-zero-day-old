@@ -1,7 +1,5 @@
 extends ScrollContainer
 
-var default_icon_texture = preload("res://icon.png")
-
 func _ready():
 	get_parent().connect("inventory_item_selected", self, "_on_inventory_item_selected")
 	$PanelsColumn/ItemAccions/Accions/AccionRow/Drop/DropButton.connect("button_up", self, "_on_drop_button_up")
@@ -84,8 +82,8 @@ func reset_panel_item_info():
 	$PanelsColumn/ItemData.hide()
 	$PanelsColumn/ItemAccions.hide()
 
-func reset_icon_texture():
-	$PanelsColumn/ItemData/Data/DataRow/ItemIcon/Icon.texture = default_icon_texture
+#func reset_icon_texture():
+#	$PanelsColumn/ItemData/Data/DataRow/ItemIcon/Icon.texture = default_icon_texture
 
 func _on_inventory_item_selected(item):
 	if not item : return
