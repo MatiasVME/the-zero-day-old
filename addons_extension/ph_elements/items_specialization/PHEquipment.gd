@@ -16,3 +16,8 @@ func get_str_equipment_type():
 		2: return "I"
 	
 	return "?"
+	
+func copy_properties(phequipment : PHItem) -> void:
+	.copy_properties(phequipment)
+	equipment_type = phequipment.equipment_type
+	

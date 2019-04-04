@@ -91,4 +91,5 @@ capacity = 4
 
 [node name="NormalChest2" parent="." instance=ExtResource( 9 )]
 position = Vector2( -187.316, 280.105 )
+capacity = 10
 

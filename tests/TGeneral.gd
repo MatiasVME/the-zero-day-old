@@ -18,6 +18,12 @@ func _ready():
 	
 	$HUD.set_hud_actor(player)
 	
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
+	$NormalChest.test()
+	$NormalChest2.test()
+	
 	var item1 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 	item1.global_position = Vector2(200, 104)
 	add_child(item1)
@@ -54,11 +60,6 @@ func _ready():
 	item9.global_position = Vector2(200, 104)
 	add_child(item9)
 	
-	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
-	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
-	$NormalChest.add_item(Factory.ItemFactory.create_rand_distance_weapon())
-	$NormalChest.test()
-	$NormalChest2.test()
 #
 #	var item10 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 #	item10.global_position = Vector2(200, 104)
