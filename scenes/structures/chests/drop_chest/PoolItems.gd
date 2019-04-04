@@ -48,6 +48,8 @@ func get_random_item(erase : bool = false) -> PHItem:
 	
 	if erase:
 		remove_item_on_pool(index -1)
+	else:
+		return Factory.ItemFactory.create_item_copy(item_in_pool.phitem)
 	
 	return item_in_pool.phitem
 	
@@ -68,4 +70,4 @@ func print_prob() -> void:
 	var accum : = 0.0
 	for i in pool:
 		accum += i.weight / total
-		print(i.phitem.item_name + " : Probabilidad Acumulada = " + str(accum) )
+		print(str(i.phitem.get_script().resource_path) + " : Probabilidad Acumulada = " + str(accum) )

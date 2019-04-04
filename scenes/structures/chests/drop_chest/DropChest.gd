@@ -10,7 +10,6 @@ onready var sprite : = $Sprite
 var interact : bool
 var lock_unlock : bool = false #Variable para controlar si el cofre es bloqueable o desbloqueable
 const PoolItem = preload("PoolItems.gd")
-var pool_items : PoolItem
 export (Texture) var texture_close = preload("images/Chest-0.png")
 export (Texture) var texture_open = preload("images/Chest-2.png")
 export (Texture) var texture_lock = preload("images/Chest-0.png")
@@ -48,18 +47,8 @@ func _unhandled_input(event):
 				else:
 					animation.play("Lock")
 
-func set_pool_items(pool : PoolItem) -> void:
-	pool_items = pool
 	
-func get_pool_items() -> PoolItem:
-	return pool_items
-
-func test_pool_items() -> PoolItem:
-	pool_items = PoolItem.new()
-	pool_items.test()
-	return pool_items
-	
-func add_random_items() -> void:
+func add_random_items(pool_items : PoolItem) -> void:
 	if not pool_items:
 		return
 		
@@ -113,5 +102,9 @@ func _on_TimerDrop_timeout():
 		get_parent().add_child(item_in_world)
 
 func test() -> void:
-	test_pool_items()
-	add_random_items()
+	add_random_items( test_pool_items() )
+	
+func test_pool_items() -> PoolItem:
+	var pool_items = PoolItem.new()
+	pool_items.test()
+	return pool_items
