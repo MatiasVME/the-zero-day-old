@@ -60,3 +60,9 @@ func _on_win_adventure():
 	current_player.get_node("Anim").play("DanceOfVictory")
 	
 	$GameMenu/Inventory.disabled = true
+
+func _on_Stats_toggled(button_pressed):
+	if button_pressed:
+		$AnimStatsPanel.play("show")
+	else:
+		$AnimStatsPanel.play("hide")
