@@ -56,7 +56,7 @@ func create_or_load_data_if_not_exist():
 		create_players()
 		create_user_config()
 		create_inventories()
-#		create_stats()
+		create_stats()
 	elif global_config["DeleteData"] != delete_data:
 		remove_all_data()
 		get_tree().quit()
@@ -69,13 +69,13 @@ func create_or_load_data_if_not_exist():
 		load_players()
 		load_user_config()
 		load_inventories()
-#		load_stats()
+		load_stats()
 
 func save_all_data():
 	save_players()
 	save_user_config()
 	save_inventories()
-#	save_stats()
+	save_stats()
 
 func create_global_config():
 	global_config["DeleteData"] = delete_data
@@ -88,6 +88,7 @@ func create_players():
 	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	
+	# TEMP: Crea otro player
 	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	
@@ -165,41 +166,34 @@ func load_inventories():
 #	print("inventories", inst2dict(inst2dict(inventories[0])["inv"][0]))
 	
 func create_stats():
-#	var temp_data
-#	temp_data = $Stats.get_data("Stats")
-#
-#	var first_stats = $HMRPGHelper.get_inst_stats()
-#	first_stats.add_stat("Strength", 0, 30)
-#	first_stats.add_stat("Luck", 0, 20)
-#	first_stats.add_stat("Vitality", 0, 30)
-#
-#	stats.append(first_stats)
-#
-#	temp_data[0] = inst2dict(stats[0])
-#
-#	$Stats.save_data("Stats")
+	var temp_stats = $DataStats.get_data("Stats")
+
+	var first_stats = RPGStats.new()
+	first_stats.add_stat("Strength", 0, 100)
+	first_stats.add_stat("Luck", 0, 100)
+	first_stats.add_stat("Vitality", 0, 100)
 	
-	# Test
-#	stats[0].add_points(100)
-	pass
+	stats.append(first_stats)
+	
+	temp_stats[stats.size() - 1] = inst2dict(stats[stats.size() - 1])
+	
+	$DataStats.save_data("Stats")
 	
 func load_stats():
-#	var temp_data = $Stats.get_data("Stats")
-#	stats = []
-#
-#	for stat in temp_data.values():
-#		stats.append(dict2inst(stat))
-	pass
+	var temp_data = $DataStats.get_data("Stats")
+	stats = []
+
+	for stat in temp_data.values():
+		stats.append(dict2inst(stat))
 
 func save_stats():
-#	var temp_data = $Stats.get_data("Stats")
-#	temp_data.clear()
-#   # usar --> RPGElement.gdc2gd()
-#	for i in stats.size():
-#		temp_data[i] = inst2dict(stats[i])
-#
-#	$Stats.save_data("Stats")
-	pass
+	var temp_data = $DataStats.get_data("Stats")
+	temp_data.clear()
+	
+	for i in stats.size():
+		temp_data[i] = RPGElement.gdc2gd(inst2dict(stats[i]))
+
+	$DataStats.save_data("Stats")
 	
 func remove_all_data():
 	$DataGlobalConfig.remove_all_data()

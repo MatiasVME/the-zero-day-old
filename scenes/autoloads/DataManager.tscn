@@ -8,26 +8,21 @@ script = ExtResource( 1 )
 
 [node name="DataGlobalConfig" type="Node" parent="."]
 script = ExtResource( 2 )
-debug_on = true
 beautifier_active = false
 
 [node name="DataUserConfig" type="Node" parent="."]
 script = ExtResource( 2 )
-debug_on = true
 beautifier_active = false
 
 [node name="DataPlayers" type="Node" parent="."]
 script = ExtResource( 2 )
-debug_on = true
 beautifier_active = false
 
 [node name="DataInventories" type="Node" parent="."]
 script = ExtResource( 2 )
-debug_on = true
 beautifier_active = false
 
 [node name="DataStats" type="Node" parent="."]
 script = ExtResource( 2 )
-debug_on = true
 beautifier_active = false
 
