@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Health.png-dafc95288e5264a9b1a05f05f67e81d8.stex"
+path="res://.import/Vitality.png-4a98ac015f36967999838fb614b38a8b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/stats_images/Health.png"
-dest_files=[ "res://.import/Health.png-dafc95288e5264a9b1a05f05f67e81d8.stex" ]
+source_file="res://scenes/hud/stats/stats_images/Vitality.png"
+dest_files=[ "res://.import/Vitality.png-4a98ac015f36967999838fb614b38a8b.stex" ]
 
 [params]
 

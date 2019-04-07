@@ -108,3 +108,19 @@ func get_stat(stat_name):
 
 func get_stats():
 	return stats
+	
+func get_stat_names():
+	var stats_names : Array
+	
+	for stat in stats:
+		stats_names.append(stat[0])
+	
+	return stats_names
+
+func get_stat_assigned_points(stat_name):
+	var stat_assigned_points : int
+	
+	for stat in stats:
+		if stat[0] == stat_name:
+			return stat[1]
+	

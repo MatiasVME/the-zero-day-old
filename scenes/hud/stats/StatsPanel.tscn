@@ -1,14 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/hud/stats/StatsPanel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/stats/images/BackgroundStatsPanel.png" type="Texture" id=2]
-[ext_resource path="res://scenes/hud/stats/Stat.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/hud/stats/images/Points.png" type="Texture" id=4]
-[ext_resource path="res://fonts/retro_gaming/RetroGaming.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://scenes/hud/stats/images/Points.png" type="Texture" id=3]
+[ext_resource path="res://fonts/retro_gaming/RetroGaming.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 11
-font_data = ExtResource( 5 )
+font_data = ExtResource( 4 )
 
 [node name="StatsPanel" type="Node2D"]
 script = ExtResource( 1 )
@@ -17,7 +16,6 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 
 [node name="StatsContainer" type="ScrollContainer" parent="."]
-editor/display_folded = true
 margin_left = -73.0
 margin_top = -114.0
 margin_right = 85.0
@@ -25,13 +23,8 @@ margin_bottom = 75.0
 scroll_horizontal_enabled = false
 
 [node name="VBox" type="VBoxContainer" parent="StatsContainer"]
-margin_right = 150.0
-margin_bottom = 31.0
-
-[node name="Stat" parent="StatsContainer/VBox" instance=ExtResource( 3 )]
 
 [node name="PointsContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 margin_left = -30.0
 margin_top = 85.0
 margin_right = 33.0
@@ -41,7 +34,7 @@ margin_bottom = 117.0
 margin_right = 32.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture = ExtResource( 4 )
+texture = ExtResource( 3 )
 
 [node name="Points" type="Label" parent="PointsContainer"]
 margin_left = 36.0

@@ -138,10 +138,7 @@ func save_user_config():
 func create_inventories():
 	var w_inv = RPGWeightInventory.new()
 	w_inv.max_weight = 25 # Cantidad temporal
-#	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
-#	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
-#	w_inv.add_item(ItemGenerator.get_health_potion(Main.HMHealth.TYPE_10))
-#
+	
 	inventories.append(w_inv)
 	
 	save_inventories()
@@ -172,6 +169,9 @@ func create_stats():
 	first_stats.add_stat("Strength", 0, 100)
 	first_stats.add_stat("Luck", 0, 100)
 	first_stats.add_stat("Vitality", 0, 100)
+	
+	# TEMP
+	first_stats.add_points(5)
 	
 	stats.append(first_stats)
 	
@@ -234,3 +234,6 @@ func create_player():
 	players.append(PHCharacter.new())
 	inventories.append(RPGInventory.new()) # Por el momento
 	stats.append(RPGStats.new()) # Por el momento
+
+func get_stats(player_num : int):
+	return stats[player_num]
