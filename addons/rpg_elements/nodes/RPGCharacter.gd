@@ -120,6 +120,8 @@ func level_up():
 	
 	emit_signal("level_up", level)
 
+# Restaura una cantidad de hp (No supera la
+# cantidad maxima)
 func add_hp(_hp):
 	if is_dead:
 		.debug("add_hp(): El character esta muerto requiere ser revivido")

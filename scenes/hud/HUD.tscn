@@ -413,6 +413,7 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 60, 0 )
 
 [node name="Stats" parent="GameMenu" index="4"]

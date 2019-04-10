@@ -69,6 +69,7 @@ autowrap = true
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 autoplay = true
+bus = "Music"
 
 [connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="ButtonAdventureMode" to="." method="_on_ButtonAdventureMode_pressed"]

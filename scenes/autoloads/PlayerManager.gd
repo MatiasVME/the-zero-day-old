@@ -29,7 +29,8 @@ signal player_reload(player)
 signal player_gain_hp(player, amount)
 signal player_get_damage(player, amount)
 signal player_gain_xp(player, amount)
-signal player_level_up(player, new_level)
+#signal player_level_up(player, new_level) # old
+signal player_level_up(player)
 signal player_dead(player)
 
 # Inicia y retorna un player de los que estan creados en el
@@ -141,6 +142,14 @@ func _on_remove_hp(amount, player):
 func _on_add_xp(amount, player):
 	emit_signal("player_gain_xp", player, amount)
 
-func _on_level_up(new_level, player):
-	emit_signal("player_level_up", player, new_level)
-
+func _on_level_up(player):
+	var stats = DataManager.get_stats(DataManager.get_current_player())
+	stats.add_points(5)
+	
+	var player_data = DataManager.get_current_player_instance()
+	# Se le añade el 10%
+	var to_add = 10 * player_data.max_hp / 100 
+	player_data.max_hp += clamp(to_add, 2, 1000)
+	player_data.hp += clamp(to_add, 2, 1000)
+	
+	emit_signal("player_level_up", player)

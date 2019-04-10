@@ -5,6 +5,7 @@ var hud_actor
 func _ready():
 	PlayerManager.connect("player_dead", self, "_on_player_dead")
 	PlayerManager.connect("player_get_damage", self, "_on_get_damage")
+	PlayerManager.connect("player_level_up", self, "_on_player_level_up")
 	
 	Main.connect("win_adventure", self, "_on_win_adventure")
 	Main.connect("lose_adventure", self, "_on_lose_adventure")
@@ -64,5 +65,11 @@ func _on_win_adventure():
 func _on_Stats_toggled(button_pressed):
 	if button_pressed:
 		$AnimStatsPanel.play("show")
+		$AnimBulletInfo.play("hide")
 	else:
 		$AnimStatsPanel.play("hide")
+		$AnimBulletInfo.play("show")
+
+func _on_player_level_up(player):
+	print("update??-1")
+	$GameMenu/StatPanel.update_all()

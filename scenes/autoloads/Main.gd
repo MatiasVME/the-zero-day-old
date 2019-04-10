@@ -3,10 +3,10 @@ extends Node
 const VERSION := "0.3.0.alpha"
 const DEBUG := false
 
-var music_enable := true
+var music_enable := false
 var sound_enable := true
 
-const RES_X := 360
+const RES_X := 420
 const RES_Y := 240
 
 # Almacenamiento de data temporal par el
@@ -23,6 +23,12 @@ var result = Result.NONE
 signal win_adventure
 signal lose_adventure
 
+func _ready():
+	if not music_enable:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -60)
+	if not sound_enable:
+		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), -60)
+	
 func win_adventure():
 	result = Result.WIN
 	emit_signal("win_adventure")

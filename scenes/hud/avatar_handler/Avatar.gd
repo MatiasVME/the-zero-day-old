@@ -7,7 +7,6 @@ func _ready():
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")
 	PlayerManager.connect("player_gain_xp", self, "_on_player_gain_xp")
 	PlayerManager.connect("player_level_up", self, "_on_player_level_up")
-	print("PlayerManager.connect()")
 	
 func set_avatar_actor(avatar_actor):
 	$HealthBar.value = avatar_actor.data.hp
@@ -35,9 +34,9 @@ func _on_player_gain_xp(player, xp):
 	if not $XPBar/AnimXP.current_animation == "level_up" and not $XPBar/AnimXP.is_playing():
 		$XPBar/AnimXP.play("gain_xp")
 	
-func _on_player_level_up(player, new_level):
+func _on_player_level_up(player):
 	$HealthBar.max_value = player.data.max_hp
-	$Level.text = str(new_level)
+	$Level.text = str(player.level)
 	$XPBar/AnimXP.play("level_up")
 	SoundManager.play(SoundManager.Sound.LEVEL_UP)
 	
