@@ -1,10 +1,9 @@
 extends Node2D
 
-func _ready():	
+func _ready():
 	var stats = DataManager.get_stats(DataManager.get_current_player())
-	var stat_names = stats.get_stat_names()
 	
-	for stat_name in stat_names:
+	for stat_name in stats.get_stat_names():
 		var stat_row = load("res://scenes/hud/stats/Stat.tscn").instance()
 		stat_row.stat = stat_name
 		
@@ -25,7 +24,7 @@ func update_all():
 		stat.update_button()
 		stat.update_assigned_points()
 	
-	print("update??-2")
+#	print("update??-2")
 	
 func _on_update_assigned_points():
 	update_points()

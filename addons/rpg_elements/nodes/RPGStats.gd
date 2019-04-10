@@ -110,7 +110,7 @@ func get_stats():
 	return stats
 	
 func get_stat_names():
-	var stats_names : Array
+	var stats_names := []
 	
 	for stat in stats:
 		stats_names.append(stat[0])
