@@ -27,7 +27,6 @@ onready var base : = $Base
 func _ready():
 	current_speed = 0
 	dir_move = Vector2(0, -1).normalized()
-	
 	connect("mounted", self, "_on_mounted")
 	connect("unmounted", self, "_on_unmounted")
 
@@ -116,10 +115,15 @@ func _on_mounted(who):
 func _on_EnterArea_body_entered(body):
 	if not player and body is GPlayer:
 		player = body
+	if body is GBullet:
+		damage(body.damage)
+		body.dead()
+		
 		
 func _on_EnterArea_body_exited(body):
 	if body is GPlayer and body == player:
 		player = null
+		
 
 #TODO: Revisar (puede haber casos en que entre en un loop infinito
 # o no se pocisione correctamente)
@@ -141,5 +145,22 @@ func get_exit_position() -> Vector2:
 
 	return pos + global_position
 	
-	
-	
+#TODO: Falta comprobar que pasa si hay un conductor dentro
+func damage(mount : int = 1) -> void:
+	HP -= mount
+	if HP > 0 :
+		var tween = Tween.new()
+		self.add_child(tween)
+		tween.interpolate_property(self, "modulate", Color.white, Color(5, 5, 5), 0.05, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+		tween.start()
+		yield(tween, "tween_completed")
+		tween.interpolate_property(self, "modulate", Color(5, 5, 5), Color.white, 0.05, Tween.TRANS_ELASTIC, Tween.EASE_IN)
+		tween.start()
+		yield(tween, "tween_completed")
+		tween.queue_free()
+	else:
+		HP = 0
+		while has_driver():
+			.leave(get_driver())
+		$EnterArea/Collision.disabled = true
+		$Anim.play("Destroy")
