@@ -103,8 +103,8 @@ func check_animation(rot_deg : float) -> void:
 
 
 func _on_unmounted(who):
-	who.position = $EnterArea/Collision.global_position
-	who.enable_player()
+	who.position = get_exit_position()
+	who.call_deferred("enable_player")
 	CameraManager.current_camera.following = who
 
 func _on_mounted(who):
@@ -120,3 +120,26 @@ func _on_EnterArea_body_entered(body):
 func _on_EnterArea_body_exited(body):
 	if body is GPlayer and body == player:
 		player = null
+
+#TODO: Revisar (puede haber casos en que entre en un loop infinito
+# o no se pocisione correctamente)
+func get_exit_position() -> Vector2:
+	var area_shape = $EnterArea/Collision.shape
+	var pos : Vector2 = Vector2(0, area_shape.extents.y)
+
+	var ray : = RayCast2D.new()
+	ray.enabled = true
+	ray.position = Vector2()
+	self.add_child(ray)
+	ray.cast_to = pos 
+	ray.force_raycast_update()
+	while ray.is_colliding():
+		ray.cast_to = ray.cast_to.rotated(PI / 4)
+		ray.force_raycast_update()
+	pos = ray.cast_to.rotated(ray.global_rotation)
+	ray.queue_free()
+
+	return pos + global_position
+	
+	
+	
