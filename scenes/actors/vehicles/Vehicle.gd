@@ -1,11 +1,13 @@
-extends KinematicBody2D
+extends GActor
 
 class_name Vehicle
 
 export (int) var capacity = 1
 export (bool) var can_move = false
+export (int) var HP = 50
 var drivers : Array = []
 var is_disabled : bool = false
+
 # Signals
 signal mounted(who)
 signal unmounted(who)
