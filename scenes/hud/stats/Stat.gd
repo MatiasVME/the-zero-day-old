@@ -32,15 +32,6 @@ func update_button():
 	else:
 		$AddPoint.disabled = true
 		
-	update_assigned_points()
-		
 func update_assigned_points():
 	var stats = DataManager.get_stats(DataManager.get_current_player())
 	$PointsBackground/Points.text = str(stats.get_stat_assigned_points(stat))
-	
-	emit_signal("update_assigned_points")
-	
-func _on_AddPoint_pressed():
-	var stats = DataManager.get_stats(DataManager.get_current_player())
-	stats.add_points_to_stat(1, stat)
-	update_button()

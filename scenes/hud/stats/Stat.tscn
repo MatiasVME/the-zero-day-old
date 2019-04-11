@@ -53,4 +53,3 @@ texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 texture_disabled = ExtResource( 8 )
 
-[connection signal="pressed" from="AddPoint" to="." method="_on_AddPoint_pressed"]
