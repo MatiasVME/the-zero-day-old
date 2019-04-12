@@ -4,3 +4,4 @@ extends Node
 var ItemFactory = preload("res://scenes/autoloads/Factory/ItemFactory.gd")
 var PlayerFactory = preload("res://scenes/autoloads/Factory/PlayerFactory.gd")
 var ItemInWorldFactory = preload("res://scenes/autoloads/Factory/ItemInWorldFactory.gd")
+var ItemPackFactory = preload("res://scenes/autoloads/Factory/ItemPackFactory.gd")

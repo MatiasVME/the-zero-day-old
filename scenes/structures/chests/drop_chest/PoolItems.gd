@@ -1,8 +1,10 @@
 extends Object
+
 """
 PoolsItems es un script para definir conjuntos de items con
 un peso de probabilidad para poder obtenerlos aleatoriamente
 """
+
 var pool : Array = []
 var total : float = 0
 
@@ -10,12 +12,12 @@ class ItemInPool:
 	var phitem : PHItem
 	var weight : int#Peso de probabilidad
 	
-	#Inicialización de un ItemInPool
+	# Inicialización de un ItemInPool
 	func _init(i : PHItem, w : int):
 		phitem = i
 		weight = w
 
-#Agrega un item con un peso de probabilidad
+# Agrega un item con un peso de probabilidad
 func add_item_on_pool(item : PHItem, weight : int = 1) -> void:
 	if weight < 1:
 		print_debug("Weight is less than 1")
@@ -58,11 +60,11 @@ func is_empty() -> bool:
 	
 #Para probar funcionalidad
 func test() -> void:
-	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(8), 1 )
-	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(16), 3 )
-	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(32), 2 )
-	self.add_item_on_pool(Factory.ItemFactory.create_plasma_ammo(8), 1 )
-	self.add_item_on_pool(Factory.ItemFactory.create_plasma_ammo(16), 7 )
+	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(8), 1)
+	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(16), 3)
+	self.add_item_on_pool(Factory.ItemFactory.create_normal_ammo(32), 2)
+	self.add_item_on_pool(Factory.ItemFactory.create_plasma_ammo(8), 1)
+	self.add_item_on_pool(Factory.ItemFactory.create_plasma_ammo(16), 7)
 #	print_prob()
 	
 #Para imprimir las probabilidades acumuladas del conjunto

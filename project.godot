@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/enemies/GEnemy.gd"
 }, {
+"base": "Node",
+"class": "GGeneratorFactory",
+"language": "GDScript",
+"path": "res://scenes/autoloads/Factory/GGeneratorFactory.gd"
+}, {
 "base": "GActor",
 "class": "GPlayer",
 "language": "GDScript",
@@ -229,7 +234,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/vehicles/tanks/Tank.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "GActor",
 "class": "Vehicle",
 "language": "GDScript",
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
@@ -245,6 +250,7 @@ _global_script_class_icons={
 "GBullet": "",
 "GChest": "",
 "GEnemy": "",
+"GGeneratorFactory": "",
 "GPlayer": "",
 "GSpawnPlace": "",
 "GSpawner": "",

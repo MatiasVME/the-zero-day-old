@@ -2,10 +2,12 @@ extends Node2D
 
 class_name GChest
 
-export (int) var capacity : int = 0 #Cantidad de items que puede contener
-var content : Array = [] #Arreglo con la informacion de los item que contiene
+# Cantidad de items que puede contener
+export (int) var capacity := 0 
+# Arreglo con la informacion de los item que contiene
+var content := [] 
 enum States {LOCKED, CLOSED, OPENED}
-export (States) var state : int = States.CLOSED
+export (States) var state := States.CLOSED
 
 signal chest_opened
 signal chest_closed

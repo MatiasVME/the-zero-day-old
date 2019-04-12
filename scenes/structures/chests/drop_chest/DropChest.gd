@@ -1,14 +1,17 @@
 extends GChest
+
 """
 DropChest es un cofre que puede contener items y soltarlos al ser abierto
 """
+
 class_name DropChest
 
 onready var animation : = $AnimationChest
 onready var timer_drop : = $TimerDrop
 onready var sprite : = $Sprite
 var interact : bool
-var lock_unlock : bool = false #Variable para controlar si el cofre es bloqueable o desbloqueable
+# Variable para controlar si el cofre es bloqueable o desbloqueable
+var lock_unlock : bool = false 
 const PoolItem = preload("PoolItems.gd")
 export (Texture) var texture_close = preload("images/Chest-0.png")
 export (Texture) var texture_open = preload("images/Chest-2.png")
@@ -18,7 +21,9 @@ func _ready():
 	connect("chest_opened", self, "_on_chest_opened")
 	connect("chest_closed", self, "_on_chest_closed")
 	connect("chest_locked", self, "_on_chest_locked")
+	
 	set_process_unhandled_input(false)
+	
 	match state:
 			States.CLOSED:
 				sprite.texture = texture_close
@@ -47,7 +52,6 @@ func _unhandled_input(event):
 				else:
 					animation.play("Lock")
 
-	
 func add_random_items(pool_items : PoolItem) -> void:
 	if not pool_items:
 		return
@@ -102,7 +106,7 @@ func _on_TimerDrop_timeout():
 		get_parent().add_child(item_in_world)
 
 func test() -> void:
-	add_random_items( test_pool_items() )
+	add_random_items(test_pool_items())
 	
 func test_pool_items() -> PoolItem:
 	var pool_items = PoolItem.new()
