@@ -11,7 +11,7 @@ var input_dir : Vector2
 var input_change_focus : bool
 
 onready var mouse_pos
-var clamp_vector := 25.0
+var clamp_vector := 30.0
 
 func _ready():
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
@@ -33,8 +33,7 @@ func _physics_process(delta):
 	if mode == Mode.FOLLOW:
 		if following and not following.is_disabled:
 			mouse_pos = get_global_mouse_position()
-			global_position = (following.global_position + mouse_pos) / 2
-			global_position = following.global_position + (global_position - following.global_position).clamped(clamp_vector)
+			global_position = following.global_position + (((following.global_position + mouse_pos) / 2) - following.global_position).clamped(clamp_vector)
 		else:
 			mode = Mode.FREE
 	elif mode == Mode.FREE:

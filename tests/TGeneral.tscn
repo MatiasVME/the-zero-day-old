@@ -1,96 +1,101 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tests/TGeneral.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/tiles/maps/Example2.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=7]
-[ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=8]
-[ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/tiles/maps/Example2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=9]
+[ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=10]
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="HUD" parent="." instance=ExtResource( 2 )]
 
-[node name="Example2" parent="." instance=ExtResource( 3 )]
+[node name="GameCamera" parent="." instance=ExtResource( 3 )]
 
-[node name="Gluton" parent="." instance=ExtResource( 4 )]
+[node name="Example2" parent="." instance=ExtResource( 4 )]
+
+[node name="Gluton" parent="." instance=ExtResource( 5 )]
 position = Vector2( 321, 42 )
 
-[node name="Gluton2" parent="." instance=ExtResource( 4 )]
+[node name="Gluton2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 354, 159 )
 
-[node name="Gluton3" parent="." instance=ExtResource( 4 )]
+[node name="Gluton3" parent="." instance=ExtResource( 5 )]
 position = Vector2( 271, 198 )
 
-[node name="Gluton4" parent="." instance=ExtResource( 4 )]
+[node name="Gluton4" parent="." instance=ExtResource( 5 )]
 position = Vector2( 425.755, 64.4223 )
 
-[node name="Gluton5" parent="." instance=ExtResource( 4 )]
+[node name="Gluton5" parent="." instance=ExtResource( 5 )]
 position = Vector2( 471, 169 )
 
-[node name="Gluton6" parent="." instance=ExtResource( 4 )]
+[node name="Gluton6" parent="." instance=ExtResource( 5 )]
 position = Vector2( 549, 43 )
 
-[node name="Gluton7" parent="." instance=ExtResource( 4 )]
+[node name="Gluton7" parent="." instance=ExtResource( 5 )]
 position = Vector2( 621, 156 )
 
-[node name="Gluton8" parent="." instance=ExtResource( 4 )]
+[node name="Gluton8" parent="." instance=ExtResource( 5 )]
 position = Vector2( 667, 38 )
 
-[node name="Gluton9" parent="." instance=ExtResource( 4 )]
+[node name="Gluton9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 521, 101 )
 
-[node name="Gluton10" parent="." instance=ExtResource( 4 )]
+[node name="Gluton10" parent="." instance=ExtResource( 5 )]
 position = Vector2( 450, -16 )
 
-[node name="Gluton11" parent="." instance=ExtResource( 4 )]
+[node name="Gluton11" parent="." instance=ExtResource( 5 )]
 position = Vector2( 333, -11 )
 
-[node name="Gluton12" parent="." instance=ExtResource( 4 )]
+[node name="Gluton12" parent="." instance=ExtResource( 5 )]
 position = Vector2( 391, 193 )
 
-[node name="XOR341" parent="." instance=ExtResource( 5 )]
+[node name="XOR341" parent="." instance=ExtResource( 6 )]
 position = Vector2( 736, 8.2039 )
-can_move = true
+capacity = 1
 
-[node name="LightTurret" parent="." instance=ExtResource( 6 )]
+[node name="LightTurret" parent="." instance=ExtResource( 7 )]
 position = Vector2( 63.4653, 271.965 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="LightTurret2" parent="." instance=ExtResource( 6 )]
+[node name="LightTurret2" parent="." instance=ExtResource( 7 )]
 position = Vector2( 681.858, 0 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="LightTurret3" parent="." instance=ExtResource( 6 )]
+[node name="LightTurret3" parent="." instance=ExtResource( 7 )]
 position = Vector2( 736, 48 )
 collision_layer = 1
 collision_mask = 1
 
-[node name="GlutonSpawner" parent="." instance=ExtResource( 7 )]
+[node name="GlutonSpawner" parent="." instance=ExtResource( 8 )]
 position = Vector2( 26.1504, 110.312 )
 
-[node name="GlutonSpawner2" parent="." instance=ExtResource( 7 )]
+[node name="GlutonSpawner2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 536, -48 )
 
-[node name="GlutonSpawner3" parent="." instance=ExtResource( 7 )]
+[node name="GlutonSpawner3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 246, 413 )
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 8 )
+[node name="Music" type="AudioStreamPlayer" parent="." groups=[
+"Music",
+]]
+stream = ExtResource( 9 )
 autoplay = true
 bus = "Music"
 
-[node name="NormalChest" parent="." instance=ExtResource( 9 )]
+[node name="NormalChest" parent="." instance=ExtResource( 10 )]
 position = Vector2( -128.21, 279.369 )
 capacity = 4
 
-[node name="NormalChest2" parent="." instance=ExtResource( 9 )]
+[node name="NormalChest2" parent="." instance=ExtResource( 10 )]
 position = Vector2( -187.316, 280.105 )
 capacity = 10
 

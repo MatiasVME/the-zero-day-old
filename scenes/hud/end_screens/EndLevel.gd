@@ -3,7 +3,6 @@ extends Node2D
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")[0]
 
 func _ready():
-	game_camera.smoothing_speed = 15
 	game_camera.global_position = $CamPos.global_position
 	
 	if Main.result == Main.Result.WIN:

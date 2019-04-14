@@ -3,7 +3,7 @@ extends Node
 const VERSION := "0.3.0.alpha"
 const DEBUG := false
 
-var music_enable := false
+var music_enable := true
 var sound_enable := true
 
 const RES_X := 420
