@@ -298,7 +298,6 @@ config/icon="res://icon.png"
 
 Main="*res://scenes/autoloads/Main.gd"
 DataManager="*res://scenes/autoloads/DataManager.tscn"
-CameraManager="*res://scenes/autoloads/CameraManager.tscn"
 PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
 Factory="*res://scenes/autoloads/Factory.gd"
 ShootManager="*res://scenes/autoloads/ShootManager.gd"
