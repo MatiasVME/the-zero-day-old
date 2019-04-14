@@ -164,7 +164,9 @@ text = "Menu"
 [node name="CamPos" type="Position2D" parent="."]
 position = Vector2( 210, 120 )
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="." groups=[
+"Music",
+]]
 stream = ExtResource( 9 )
 
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
