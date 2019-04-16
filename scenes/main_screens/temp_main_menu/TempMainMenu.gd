@@ -18,3 +18,7 @@ func _on_BackFromCredits_pressed():
 
 func _on_ButtonAdventureMode_pressed():
 	$Camera.global_position = $AdventureMode.global_position
+
+func _on_DeleteData_pressed():
+	DataManager.remove_all_data()
+	get_tree().quit()

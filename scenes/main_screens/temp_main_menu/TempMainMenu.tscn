@@ -54,6 +54,18 @@ margin_bottom = 108.0
 theme = ExtResource( 4 )
 text = "Credits"
 
+[node name="DeleteData" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 60.0
+margin_top = -110.0
+margin_right = 198.0
+margin_bottom = -88.0
+theme = ExtResource( 4 )
+text = "Delete Game Data"
+
 [node name="Version" type="Label" parent="."]
 margin_left = 130.0
 margin_top = 100.0
@@ -83,6 +95,7 @@ drag_margin_bottom = 0.0
 [connection signal="pressed" from="ButtonAdventureMode" to="." method="_on_ButtonAdventureMode_pressed"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
 [connection signal="pressed" from="ButtonCredits" to="." method="_on_ButtonCredits_pressed"]
+[connection signal="pressed" from="DeleteData" to="." method="_on_DeleteData_pressed"]
 
 [editable path="AdventureMode"]
 

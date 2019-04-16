@@ -94,7 +94,7 @@ func connect_player(player):
 	player.data.connect("remove_hp", self, "_on_remove_hp", [player])
 	player.data.connect("level_up", self, "_on_level_up", [player])
 	player.data.connect("dead", self, "_on_dead", [player])
-		
+	
 func disconnect_player(player):
 	player.disconnect("fire", self, "_on_player_fire")
 	player.disconnect("reload", self, "_on_player_reload")
@@ -142,7 +142,7 @@ func _on_remove_hp(amount, player):
 func _on_add_xp(amount, player):
 	emit_signal("player_gain_xp", player, amount)
 
-func _on_level_up(player):
+func _on_level_up(current_level, player):
 	var stats = DataManager.get_stats(DataManager.get_current_player())
 	stats.add_points(5)
 	
@@ -152,4 +152,5 @@ func _on_level_up(player):
 	player_data.max_hp += clamp(to_add, 2, 1000)
 	player_data.hp += clamp(to_add, 2, 1000)
 	
+	print("hasta aca esta bien??")
 	emit_signal("player_level_up", player)

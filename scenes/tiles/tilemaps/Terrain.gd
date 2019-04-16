@@ -1,5 +1,7 @@
 extends TileMap
 
+class_name GTilemap
+
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
 
 func _ready():

@@ -140,7 +140,6 @@ texture_progress = ExtResource( 7 )
 
 [node name="Star" type="Sprite" parent="XPBar"]
 position = Vector2( 30, 2 )
-rotation = 6.28319
 texture = ExtResource( 8 )
 
 [node name="AnimXP" type="AnimationPlayer" parent="XPBar"]
