@@ -16,7 +16,7 @@ var current_player : int = 0 setget set_current_player, get_current_player
 
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
-var delete_data = 2
+var delete_data = 3
 
 func _ready():
 	configure_persistence_node()

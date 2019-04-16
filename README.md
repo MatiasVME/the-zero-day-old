@@ -1,8 +1,8 @@
-# Project Humanity (En desarrollo)
+# The Zero Day (En desarrollo)
 
-Project Humanity es un juego sandbox, top down shooter, rpg, etc.
+The Zero Day es un juego sandbox, top down shooter, rpg, etc.
 
-![Project Humanity](https://i.imgur.com/8n4OCAe.png)
+![The Zero Day](https://i.imgur.com/8n4OCAe.png)
 
 # Forma de jugar
 
@@ -20,7 +20,7 @@ Manejas un personaje, desde una perspectiva top-down, con los controles WASD. Es
 
 # Devlogs
 
-[![Último Devlog Project Humanity](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo&list=PLCCvCjJoQ5QV7Gei_Yc2H1JArNLPylgzQ "Devlog Project Humanity")
+[![Último Devlog The Zero Day](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo&list=PLCCvCjJoQ5QV7Gei_Yc2H1JArNLPylgzQ "Devlog The Zero Day")
 
 ## Se buscan colaboradores
 
@@ -34,15 +34,12 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 
 # Creditos
 
-- Matías Muñoz Espinoza - Programmer
+- Matías Muñoz Espinoza - Programmer & Game Design
 - Markus Ellisca - Programmer
 - Jonathan Moreno - Programmer
 - Jean Ferreira - Programmer
-
-
+- Javier Ocampos - Game Design
 - MG.Pix - Art
-
-
 - Avgvsta - Music (CC-BY)
 
 ## Compilar

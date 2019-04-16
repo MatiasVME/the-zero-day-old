@@ -33,6 +33,12 @@ use_top_left = true
 [node name="Sections" type="Node2D" parent="MarginContainer/CenterContainer"]
 position = Vector2( 163.022, 103.747 )
 
+[node name="CreditSection4" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
+name_section = "Game Design"
+color_section = Color( 0.0745098, 0.0705882, 0.678431, 1 )
+name_staff = PoolStringArray( "Matias Muñoz Espinoza", "Javier Ocampos" )
+color_staff = Color( 0.0901961, 0.686275, 0.0862745, 1 )
+
 [node name="CreditSection" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "Programmers"
 name_staff = PoolStringArray( "Matias Muñoz Espinoza", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira" )
