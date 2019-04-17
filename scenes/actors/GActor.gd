@@ -6,3 +6,7 @@ class_name GActor
 # muera mas de una vez o se haga la animacion de morir 
 # mas de una vez
 var is_mark_to_dead = false
+
+var can_move := false
+
+var is_disabled := false
