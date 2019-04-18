@@ -21,6 +21,7 @@ var collider
 onready var objective = null
  
 func _ready():
+	structure_size = StructureSize.S1X1
 	patrol_objetive = get_random_objective()
 	
 	# Su modo por defecto sera PATROL

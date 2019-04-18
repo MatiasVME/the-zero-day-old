@@ -259,7 +259,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=11]
 resource_name = "hide"
 length = 0.4
 tracks/0/type = "value"
@@ -287,7 +287,7 @@ tracks/1/keys = {
 "values": [ Vector2( -12, 0 ), Vector2( 60, 0 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=12]
 resource_name = "show"
 length = 0.4
 tracks/0/type = "value"
@@ -315,7 +315,7 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=13]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hotbar:position")
@@ -330,7 +330,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( 0, 20 ) ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=14]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Hotbar:position")
@@ -345,7 +345,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 20 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=15]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BulletInfo:position")
@@ -360,7 +360,7 @@ tracks/0/keys = {
 "values": [ Vector2( 60, 0 ), Vector2( 124, 0 ) ]
 }
 
-[sub_resource type="Animation" id=14]
+[sub_resource type="Animation" id=16]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("BulletInfo:position")
@@ -375,7 +375,7 @@ tracks/0/keys = {
 "values": [ Vector2( 124, 0 ), Vector2( 60, 0 ) ]
 }
 
-[sub_resource type="Animation" id=15]
+[sub_resource type="Animation" id=17]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AvatarHandler:position")
@@ -390,7 +390,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ), Vector2( -96, 0 ) ]
 }
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=18]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("AvatarHandler:position")
@@ -405,7 +405,7 @@ tracks/0/keys = {
 "values": [ Vector2( -96, 0 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=19]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("EndLevel:position")
@@ -470,6 +470,7 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 60, 0 )
 
 [node name="Build" parent="GameMenu" index="3"]
@@ -501,39 +502,39 @@ anims/hide = SubResource( 9 )
 anims/show = SubResource( 10 )
 
 [node name="AnimBuildPanel" type="AnimationPlayer" parent="."]
-anims/hide = SubResource( 19 )
-anims/show = SubResource( 18 )
+anims/hide = SubResource( 11 )
+anims/show = SubResource( 12 )
 
 [node name="Hotbar" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 11 )
-anims/show = SubResource( 12 )
+anims/hide = SubResource( 13 )
+anims/show = SubResource( 14 )
 
 [node name="BulletInfo" parent="." instance=ExtResource( 7 )]
 position = Vector2( 124, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 13 )
-anims/show = SubResource( 14 )
+anims/hide = SubResource( 15 )
+anims/show = SubResource( 16 )
 
 [node name="AvatarHandler" parent="." instance=ExtResource( 8 )]
 position = Vector2( -96, 0 )
 
 [node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
 autoplay = "show"
-anims/hide = SubResource( 15 )
-anims/show = SubResource( 16 )
+anims/hide = SubResource( 17 )
+anims/show = SubResource( 18 )
 
 [node name="EndLevel" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 0, -235.931 )
 
 [node name="AnimEndLevel" type="AnimationPlayer" parent="."]
-anims/show = SubResource( 17 )
+anims/show = SubResource( 19 )
 
 [connection signal="toggled" from="GameMenu/Menu" to="." method="_on_Menu_toggled"]
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]

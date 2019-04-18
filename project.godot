@@ -310,6 +310,7 @@ ShootManager="*res://scenes/autoloads/ShootManager.gd"
 SoundManager="*res://scenes/autoloads/SoundManager.tscn"
 CursorManager="*res://scenes/autoloads/CursorManager.gd"
 RandomNameGenerator="*res://scenes/autoloads/random_name_generator/RandomNameGenerator.gd"
+BuildManager="*res://scenes/autoloads/BuildManager.gd"
 
 [debug]
 

@@ -58,7 +58,6 @@ position = Vector2( 391, 193 )
 
 [node name="XOR341" parent="." instance=ExtResource( 6 )]
 position = Vector2( 736, 8.2039 )
-capacity = 1
 
 [node name="LightTurret" parent="." instance=ExtResource( 7 )]
 position = Vector2( 63.4653, 271.965 )

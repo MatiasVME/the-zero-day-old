@@ -8,18 +8,23 @@ enum GridState {
 	SELECTING,
 	CANT_SELECT
 }
-var grid_state = GridState.HIDE
+var grid_state = GridState.HIDE setget set_grid_state, get_grid_state
 
 var mouse_gpos
 
-var gtilemap
+var tilemap
 var structure
+var actor
 
 func _ready():
-	pass
+	BuildManager.connect("prepare_to_build", self, "_on_prepare_to_build")
 	
-func setup(gtilemap : GTilemap, structure : GStructure):
-	pass
+func setup(_tilemap : GTilemap, _structure : GStructure, _actor : GActor):
+	tilemap = _tilemap
+	structure = _structure
+	actor = _actor
+	
+	grid_state = GridState.SELECTING
 
 func _process(delta):
 	match grid_state:
@@ -30,19 +35,32 @@ func _process(delta):
 		GridState.CANT_SELECT:
 			state_cant_select()
 
+func set_grid_state(_grid_state):
+	grid_state = _grid_state
+
+func get_grid_state():
+	return grid_state
+
 func state_hide():
 	hide()
 
 func state_selecting():
+	show()
 	mouse_gpos = get_global_mouse_position()
 	
 	$Place.rect_position.x = mouse_gpos.x - (int(round(mouse_gpos.x)) % 16)
 	$Place.rect_position.y = mouse_gpos.y - (int(round(mouse_gpos.y)) % 16)
+	$Structure.rect_position = $Place.rect_position
 	
 	if Input.is_action_just_pressed("select"):
 		pass
+		
+	print("selecting")
 	
 func state_cant_select():
 	pass
-	
+
+func _on_prepare_to_build(tilemap, build_id, actor):
+	setup(tilemap, BuildManager.get_constructible(build_id), actor)
+	$Structure.texture = BuildManager.get_build_texture_for_terrain(build_id)
 	
