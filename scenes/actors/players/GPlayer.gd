@@ -55,48 +55,35 @@ func _ready():
 	
 	update_weapon()
 
-func _move_handler(delta, input_dir, input_run):
-	pass
-
-func _fire_handler():
-	pass
-
-func _physics_process(delta):
-	if not can_move or is_disabled:
-		return
-		
-	input_dir.x = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	input_dir.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
-	input_run = Input.is_action_pressed("run")
-	
-	if not input_run:
-		move_x = input_dir.x * speed * delta
-		move_y = input_dir.y * speed * delta
+func _move_handler(delta, dir, run):
+	if not run:
+		move_x = dir.x * speed * delta
+		move_y = dir.y * speed * delta
 		$Sprite.speed_scale = 0.6
 	else:
-		move_x = input_dir.x * speed * 2 * delta
-		move_y = input_dir.y * speed * 2 * delta
+		move_x = dir.x * speed * 2 * delta
+		move_y = dir.y * speed * 2 * delta
 		$Sprite.speed_scale = 1.2
 	
-	if input_dir == Vector2.LEFT:
+	if dir == Vector2.LEFT:
 		$Anim.play("MoveSide")
 		$Sprite.flip_h = true
-	elif input_dir.x == -1 and input_dir.y == -1:
+	elif dir.x == -1 and dir.y == -1:
 		$Anim.play("MoveUp")
-	elif input_dir == Vector2.UP:
+	elif dir == Vector2.UP:
 		$Anim.play("MoveUp")
-	elif input_dir.x == 1 and input_dir.y == -1:
+	elif dir.x == 1 and dir.y == -1:
 		$Anim.play("MoveUp")
-	elif input_dir == Vector2.RIGHT:
+	elif dir == Vector2.RIGHT:
 		$Anim.play("MoveSide")
 		$Sprite.flip_h = false
-	elif input_dir.x == 1 and input_dir.y == 1:
+	elif dir.x == 1 and dir.y == 1:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
-	elif input_dir == Vector2.DOWN:
+	elif dir == Vector2.DOWN:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
-	elif input_dir.x == -1 and input_dir.y == 1:
+	elif dir.x == -1 and dir.y == 1:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
 	else:
@@ -109,7 +96,27 @@ func _physics_process(delta):
 		move_y /= 1.5
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
+
+func _fire_handler():
 	
+	if data.equip is PHDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
+		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
+		time_to_next_action_progress = 0.0
+		emit_signal("fire", dir)
+	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
+		melee_time_to_next_action_progress = 0.0
+		melee_attack()
+	
+func _reload_handler():
+	if data.equip is PHDistanceWeapon and total_ammo != 0:
+		if reload():
+			SoundManager.play(SoundManager.Sound.RELOAD_1)
+			reload_progress = 0.0
+
+func _physics_process(delta):
+	if not can_move or is_disabled:
+		return
+		
 	if data.equip and time_to_next_action_progress < time_to_next_action:
 		time_to_next_action_progress += delta
 		return
@@ -117,29 +124,14 @@ func _physics_process(delta):
 		melee_time_to_next_action_progress += delta
 		return
 	
-	input_fire = Input.is_action_pressed("fire")
-	input_reload = Input.is_action_just_pressed("reload")
-	
-	# Puede disparar? Se preciono fire?
-	if data.equip is PHDistanceWeapon and can_fire and input_fire and data.equip.fire():
-		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
-		time_to_next_action_progress = 0.0
-		emit_signal("fire", dir)
-	elif data.equip is PHDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
+	if data.equip is PHDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
 		if reload_progress > data.equip.time_to_reload:
 			if reload():
 				SoundManager.play(SoundManager.Sound.RELOAD_1)
 				reload_progress = 0.0
 		else:
 			reload_progress += delta
-	elif input_reload and data.equip is PHDistanceWeapon and total_ammo != 0:
-		if reload():
-			SoundManager.play(SoundManager.Sound.RELOAD_1)
-			reload_progress = 0.0
-	elif not data.equip and input_fire:
-		melee_time_to_next_action_progress = 0.0
-		melee_attack()
-
+	
 func update_weapon():
 	total_ammo = -1
 	

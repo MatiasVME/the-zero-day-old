@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/autoloads/Factory/GGeneratorFactory.gd"
 }, {
+"base": "Node",
+"class": "GInput",
+"language": "GDScript",
+"path": "res://scenes/input/GInput.gd"
+}, {
 "base": "GActor",
 "class": "GPlayer",
 "language": "GDScript",
@@ -256,6 +261,7 @@ _global_script_class_icons={
 "GChest": "",
 "GEnemy": "",
 "GGeneratorFactory": "",
+"GInput": "",
 "GPlayer": "",
 "GSpawnPlace": "",
 "GSpawner": "",
@@ -327,7 +333,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 

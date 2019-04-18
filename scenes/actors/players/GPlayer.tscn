@@ -1,15 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.gd" type="Script" id=1]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=2]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/melee_attack/BoxingAttack.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/input/GInput.gd" type="Script" id=2]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_02.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/melee_attack/BoxingAttack.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
@@ -26,7 +27,7 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk_side",
+"name": "run_up",
 "speed": 5.0
 }, {
 "frames": [  ],
@@ -36,12 +37,12 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
-"name": "walk_down",
+"name": "walk_side",
 "speed": 5.0
 }, {
 "frames": [  ],
 "loop": true,
-"name": "run_up",
+"name": "walk_down",
 "speed": 5.0
 } ]
 
@@ -153,6 +154,9 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource( 1 )
 
+[node name="GInput" type="Node" parent="."]
+script = ExtResource( 2 )
+
 [node name="Sprite" type="AnimatedSprite" parent="."]
 modulate = Color( 1, 1, 1, 0.975503 )
 frames = SubResource( 1 )
@@ -177,9 +181,9 @@ collision_mask = 3
 position = Vector2( 0, 2 )
 shape = SubResource( 6 )
 
-[node name="BoxingAttack" parent="." instance=ExtResource( 5 )]
+[node name="BoxingAttack" parent="." instance=ExtResource( 6 )]
 
-[node name="GWeaponInBattle" parent="." instance=ExtResource( 6 )]
+[node name="GWeaponInBattle" parent="." instance=ExtResource( 7 )]
 
 [node name="TimeToReload" type="Timer" parent="."]
 one_shot = true
