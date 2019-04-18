@@ -71,5 +71,10 @@ func _on_Stats_toggled(button_pressed):
 		$AnimBulletInfo.play("show")
 
 func _on_player_level_up(player):
-	print("update??-1")
 	$GameMenu/StatPanel.update_all()
+
+func _on_Build_toggled(button_pressed):
+	if button_pressed:
+		$AnimBuildPanel.play("show")
+	else:
+		$AnimBuildPanel.play("hide")

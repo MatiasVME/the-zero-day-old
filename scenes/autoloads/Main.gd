@@ -3,7 +3,7 @@ extends Node
 const VERSION := "0.3.0.alpha"
 const DEBUG := false
 
-var music_enable := true
+var music_enable := false
 var sound_enable := true
 
 const RES_X := 420
@@ -53,5 +53,3 @@ func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST and PlayerManager.players.size() != 0:
 		DataManager.get_current_player_instance().restore_hp()
 		DataManager.save_all_data()
-#		prepare_to_exit()
-#		print("get_current_player",

@@ -1,13 +1,14 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/stats/StatsPanel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/hud/build_menu/BuildMenu.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dead"
@@ -258,6 +259,62 @@ tracks/1/keys = {
 "values": [ true, true ]
 }
 
+[sub_resource type="Animation" id=19]
+resource_name = "hide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameMenu/BuildMenu:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameMenu:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( -12, 0 ), Vector2( 60, 0 ) ]
+}
+
+[sub_resource type="Animation" id=18]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("GameMenu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 60, 0 ), Vector2( -12, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("GameMenu/BuildMenu:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
 [sub_resource type="Animation" id=11]
 length = 0.4
 tracks/0/type = "value"
@@ -413,8 +470,10 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 60, 0 )
+
+[node name="Build" parent="GameMenu" index="3"]
+disabled = false
 
 [node name="Stats" parent="GameMenu" index="4"]
 disabled = false
@@ -427,6 +486,9 @@ visible = false
 visible = false
 position = Vector2( 450, 120 )
 
+[node name="BuildMenu" parent="GameMenu" instance=ExtResource( 5 )]
+visible = false
+
 [node name="AnimGameMenu" type="AnimationPlayer" parent="."]
 autoplay = "show"
 anims/hide = SubResource( 5 )
@@ -438,7 +500,11 @@ anims/show_game_menu = SubResource( 8 )
 anims/hide = SubResource( 9 )
 anims/show = SubResource( 10 )
 
-[node name="Hotbar" parent="." instance=ExtResource( 5 )]
+[node name="AnimBuildPanel" type="AnimationPlayer" parent="."]
+anims/hide = SubResource( 19 )
+anims/show = SubResource( 18 )
+
+[node name="Hotbar" parent="." instance=ExtResource( 6 )]
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
@@ -446,7 +512,7 @@ autoplay = "show"
 anims/hide = SubResource( 11 )
 anims/show = SubResource( 12 )
 
-[node name="BulletInfo" parent="." instance=ExtResource( 6 )]
+[node name="BulletInfo" parent="." instance=ExtResource( 7 )]
 position = Vector2( 124, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
@@ -454,7 +520,7 @@ autoplay = "show"
 anims/hide = SubResource( 13 )
 anims/show = SubResource( 14 )
 
-[node name="AvatarHandler" parent="." instance=ExtResource( 7 )]
+[node name="AvatarHandler" parent="." instance=ExtResource( 8 )]
 position = Vector2( -96, 0 )
 
 [node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
@@ -462,7 +528,7 @@ autoplay = "show"
 anims/hide = SubResource( 15 )
 anims/show = SubResource( 16 )
 
-[node name="EndLevel" parent="." instance=ExtResource( 8 )]
+[node name="EndLevel" parent="." instance=ExtResource( 9 )]
 visible = false
 position = Vector2( 0, -235.931 )
 
@@ -471,6 +537,7 @@ anims/show = SubResource( 17 )
 
 [connection signal="toggled" from="GameMenu/Menu" to="." method="_on_Menu_toggled"]
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]
+[connection signal="toggled" from="GameMenu/Build" to="." method="_on_Build_toggled"]
 [connection signal="toggled" from="GameMenu/Stats" to="." method="_on_Stats_toggled"]
 
 [editable path="GameMenu"]
