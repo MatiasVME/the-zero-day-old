@@ -15,10 +15,8 @@ var input_run := false
 var input_fire := false
 var input_reload := false
 
-var can_move := false
 var can_fire := false
 
-var is_disabled := false
 var is_inmortal := false
 
 var reload_progress := 0.0
@@ -56,6 +54,12 @@ func _ready():
 	data.equip = null
 	
 	update_weapon()
+
+func _move_handler(delta, input_dir, input_run):
+	pass
+
+func _fire_handler():
+	pass
 
 func _physics_process(delta):
 	if not can_move or is_disabled:
@@ -147,8 +151,15 @@ func update_weapon():
 		$GWeaponInBattle.set_weapon(null)
 		can_fire = false
 		
-func disable_player(_visible : = false):
+func disable_player(_visible := false):
 	is_disabled = true
+	disable_interact(_visible)
+	
+func enable_player(_can_fire := false):
+	is_disabled = false
+	enable_interact(_can_fire)
+	
+func disable_interact(_visible := false):
 	visible = _visible
 	can_move = false
 	can_fire = false
@@ -158,16 +169,15 @@ func disable_player(_visible : = false):
 	# puede instanciar directamente.
 	if data:
 		data.disconnect("item_equiped", self, "_on_item_equiped")
-	
-func enable_player(_can_fire : bool = false):
-	is_disabled = false
+
+func enable_interact(_can_fire := false):
 	visible = true
 	can_move = true
 	can_fire = _can_fire
 	$Collision.disabled = false
 	
 	data.connect("item_equiped", self, "_on_item_equiped")
-
+	
 # Esta funcion se llama mas de lo necesario - Necesita Revisión
 # Retorna true si hace reload correctamente y
 # false de lo contrario.
