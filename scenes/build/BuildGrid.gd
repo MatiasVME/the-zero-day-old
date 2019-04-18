@@ -15,6 +15,7 @@ var mouse_gpos
 var tilemap
 var structure
 var actor
+var build_id
 
 func _ready():
 	BuildManager.connect("prepare_to_build", self, "_on_prepare_to_build")
@@ -53,14 +54,18 @@ func state_selecting():
 	$Structure.rect_position = $Place.rect_position
 	
 	if Input.is_action_just_pressed("select"):
-		pass
+		var structure = BuildManager.get_constructible(build_id)
+		structure.global_position = $Structure.rect_position
+		structure.global_position.x += 8
+		structure.global_position.y += 8
+		get_parent().add_child(structure)
 		
 	print("selecting")
 	
 func state_cant_select():
 	pass
 
-func _on_prepare_to_build(tilemap, build_id, actor):
-	setup(tilemap, BuildManager.get_constructible(build_id), actor)
-	$Structure.texture = BuildManager.get_build_texture_for_terrain(build_id)
-	
+func _on_prepare_to_build(tilemap, _build_id, actor):
+	setup(tilemap, BuildManager.get_constructible(_build_id), actor)
+	$Structure.texture = BuildManager.get_build_texture_for_terrain(_build_id)
+	build_id = _build_id
