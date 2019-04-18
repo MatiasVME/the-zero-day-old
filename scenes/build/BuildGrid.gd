@@ -59,8 +59,6 @@ func state_selecting():
 		structure.global_position.x += 8
 		structure.global_position.y += 8
 		get_parent().add_child(structure)
-		
-	print("selecting")
 	
 func state_cant_select():
 	pass

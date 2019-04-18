@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://scenes/tiles/tile_images/grass/grass_tiles.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tiles/tile_images/grass1/grass_tiles.png" type="Texture" id=1]
 [ext_resource path="res://scenes/tiles/tile_images/water/water_tiles.png" type="Texture" id=2]
 [ext_resource path="res://scenes/tiles/tile_images/mutations/tiles_mutant.png" type="Texture" id=3]
 [ext_resource path="res://scenes/tiles/tile_images/sand/sand_tiles.png" type="Texture" id=4]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/tiles/tile_images/stone/stone_tiles.png" type="Texture" id=6]
 [ext_resource path="res://scenes/tiles/tile_images/test/all_tiles_16x_v2.png" type="Texture" id=7]
 [ext_resource path="res://scenes/tiles/tile_images/base/Base_tiles.png" type="Texture" id=8]
+
 
 [node name="Terrain" type="Node"]
 

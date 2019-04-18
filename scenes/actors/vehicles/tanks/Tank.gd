@@ -3,18 +3,18 @@ extends Vehicle
 class_name Tank
 
 # Properties
-export (float) var MAX_VELOCITY = 4000
-export (float) var MAX_VELOCITY_REVERSE = 1000
-export (float) var MIN_VELOCITY = 200
-export (float) var ACCELERATION = 1000
-export (float) var DESACCELERATION = 170
+export (float) var MAX_VELOCITY = 60
+export (float) var MAX_VELOCITY_REVERSE = 30
+export (float) var MIN_VELOCITY = 5
+export (float) var ACCELERATION = 15
+export (float) var DESACCELERATION = 60
 export (float) var ANGULAR_VELOCITY = 20
 export (float) var ANIM_SPEED_FACTOR = 5
 
 const DEG_CHANGE_ANIM : float = 30.0
 enum States {IDLE, MOVING, DESTROYING, DESTROYED}
 var state : int = States.IDLE
-var min_velocity_to_stop : float = 1 + DESACCELERATION * ( 1.0 / 60.0 ) 
+var min_velocity_to_stop : float = DESACCELERATION * ( 1.0 / 60.0 ) 
 var dir_move : float
 var dir_rotation : float
 var current_speed : float
@@ -38,7 +38,7 @@ func _ready():
 func get_input() -> void:
 	input_action = Input.is_action_just_pressed("interact")
 	
-	if input_action:	
+	if input_action and state != States.DESTROYING :
 		if player and player == PlayerManager.get_current_player():
 			if not .mount(player):
 				# TODO: Caso en los cuales no pueda montar el vehiculo
@@ -66,19 +66,22 @@ func _physics_process(delta):
 				current_speed = MIN_VELOCITY
 			else:
 				current_speed = min(MAX_VELOCITY, current_speed + ACCELERATION * delta)
-		elif dir_move == 1 and current_speed < min_velocity_to_stop:
+		elif dir_move == 1 :
 				current_speed = max(- MAX_VELOCITY_REVERSE, current_speed - ACCELERATION * delta)
 		
 		if abs(current_speed) > min_velocity_to_stop:
-			rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
+			rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed)) * delta
 			check_animation(rotation_degrees)
 			if change_state(States.MOVING):
 				animation.play("Foward")
 	
 	if not get_driver() or dir_move == 0:
-		current_speed = current_speed * 0.9
+		current_speed -= sign(current_speed) * DESACCELERATION * delta
 	
-	move_and_slide(Vector2.UP.rotated(deg2rad(rotation_degrees)) * current_speed * delta, Vector2())
+	if abs(current_speed) > min_velocity_to_stop:
+		var body = move_and_collide(Vector2.UP.rotated(deg2rad(rotation_degrees)) * current_speed * delta, true)
+		if body and body.collider.has_method("smash"):
+			body.collider.smash()
 
 
 func check_state() -> void:
@@ -127,8 +130,6 @@ func _on_EnterArea_body_entered(body):
 	if body is GBullet:
 		damage(body.damage)
 		body.dead()
-	if body is GEnemy and body.has_method("smash"):
-		body.smash()
 
 
 func _on_EnterArea_body_exited(body):
@@ -140,7 +141,7 @@ func _on_EnterArea_body_exited(body):
 # o no se pocisione correctamente)
 func get_exit_position() -> Vector2:
 	var area_shape = interact_area.shape
-	var pos : Vector2 = Vector2(0, area_shape.extents.y)
+	var pos : Vector2 = Vector2(0, area_shape.extents.y + 5)
 
 	var ray : = RayCast2D.new()
 	ray.enabled = true
@@ -173,9 +174,9 @@ func damage(mount : int = 1) -> void:
 	else:
 		HP = 0
 		if change_state(States.DESTROYING):
+			interact_area.disabled = true
 			while has_driver():
 				.leave(get_driver())
-			interact_area.disabled = true
 			animation.play("Destroy")
 
 
