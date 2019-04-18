@@ -15,7 +15,7 @@ const DEG_CHANGE_ANIM : float = 30.0
 enum States {IDLE, MOVING, DESTROYING, DESTROYED}
 var state : int = States.IDLE
 var min_velocity_to_stop : float = 1 + DESACCELERATION * ( 1.0 / 60.0 ) 
-var dir_move : Vector2
+var dir_move : float
 var dir_rotation : float
 var current_speed : float
 
@@ -47,7 +47,7 @@ func get_input() -> void:
 			.leave(get_driver())
 		
 	dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-	dir_move.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	dir_move = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
 
 
 func _physics_process(delta):
@@ -61,22 +61,23 @@ func _physics_process(delta):
 		for p in drivers:
 			p.position = global_position
 	
-		if dir_move.y == -1 :
+		if dir_move == -1 :
 			if current_speed < MIN_VELOCITY:
 				current_speed = MIN_VELOCITY
 			else:
 				current_speed = min(MAX_VELOCITY, current_speed + ACCELERATION * delta)
-		elif dir_move.y == 1 and current_speed < min_velocity_to_stop:
+		elif dir_move == 1 and current_speed < min_velocity_to_stop:
 				current_speed = max(- MAX_VELOCITY_REVERSE, current_speed - ACCELERATION * delta)
-		if dir_move.y == 0:
-			current_speed = current_speed * 0.9
 		
 		if abs(current_speed) > min_velocity_to_stop:
 			rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
 			check_animation(rotation_degrees)
 			if change_state(States.MOVING):
 				animation.play("Foward")
-		
+	
+	if not get_driver() or dir_move == 0:
+		current_speed = current_speed * 0.9
+	
 	move_and_slide(Vector2.UP.rotated(deg2rad(rotation_degrees)) * current_speed * delta, Vector2())
 
 
@@ -126,6 +127,8 @@ func _on_EnterArea_body_entered(body):
 	if body is GBullet:
 		damage(body.damage)
 		body.dead()
+	if body is GEnemy and body.has_method("smash"):
+		body.smash()
 
 
 func _on_EnterArea_body_exited(body):
