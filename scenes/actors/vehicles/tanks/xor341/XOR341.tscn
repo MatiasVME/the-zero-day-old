@@ -54,7 +54,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "Destroy"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -95,8 +95,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Foward"
+[sub_resource type="Animation" id=3]
 loop = true
 step = 0.25
 tracks/0/type = "value"
@@ -112,7 +111,7 @@ tracks/0/keys = {
 "values": [ 3, 0, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 5.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Base:frame")
@@ -139,7 +138,7 @@ tracks/1/keys = {
 "values": [ "idle" ]
 }
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 14.1349, 14.8266 )
 
 [node name="XOR341" instance=ExtResource( 1 )]
@@ -149,9 +148,6 @@ capacity = 2
 [node name="Base" parent="." index="0"]
 frames = SubResource( 1 )
 animation = "foward_up"
-
-[node name="Collision" parent="." index="1"]
-disabled = true
 
 [node name="Pivot" parent="." index="2"]
 position = Vector2( 0, 4 )
@@ -165,10 +161,10 @@ rotation = 1.5708
 texture = ExtResource( 23 )
 
 [node name="Anim" parent="." index="3"]
-anims/Destroy = SubResource( 5 )
-anims/Foward = SubResource( 2 )
-anims/Idle = SubResource( 3 )
+anims/Destroy = SubResource( 2 )
+anims/Foward = SubResource( 3 )
+anims/Idle = SubResource( 4 )
 
 [node name="Collision" parent="EnterArea" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 

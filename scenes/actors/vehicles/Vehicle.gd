@@ -3,10 +3,8 @@ extends GActor
 class_name Vehicle
 
 export (int) var capacity = 1
-export (bool) var can_move = false
 export (int) var HP = 50
 var drivers : Array = []
-var is_disabled : bool = false
 
 # Signals
 signal mounted(who)
@@ -37,7 +35,6 @@ func has_driver() -> bool:
 	
 func get_driver() -> GPlayer:
 	for i in drivers.size():
-		if drivers[i].can_move:
+		if drivers[i] == PlayerManager.get_current_player():
 			return drivers[i]
-			break
-	return drivers[0]
+	return null

@@ -4,7 +4,7 @@ class_name Tank
 
 # Properties
 export (float) var MAX_VELOCITY = 4000
-export (float) var MAX_VELOCITY_REVERSE = -1000
+export (float) var MAX_VELOCITY_REVERSE = 1000
 export (float) var MIN_VELOCITY = 200
 export (float) var ACCELERATION = 1000
 export (float) var DESACCELERATION = 170
@@ -12,6 +12,8 @@ export (float) var ANGULAR_VELOCITY = 20
 export (float) var ANIM_SPEED_FACTOR = 5
 
 const DEG_CHANGE_ANIM : float = 30.0
+enum States {IDLE, MOVING, DESTROYING, DESTROYED}
+var state : int = States.IDLE
 var min_velocity_to_stop : float = 1 + DESACCELERATION * ( 1.0 / 60.0 ) 
 var dir_move : Vector2
 var dir_rotation : float
@@ -23,67 +25,74 @@ var input_action : bool = false
 var player
 
 onready var base : = $Base
+onready var interact_area : = $EnterArea/Collision
+onready var cannon : = $Pivot
+onready var animation : = $Anim
 
 func _ready():
 	current_speed = 0
-	dir_move = Vector2(0, -1).normalized()
 	connect("mounted", self, "_on_mounted")
 	connect("unmounted", self, "_on_unmounted")
 
-func get_input(delta : float) -> void:
-	input_action = Input.is_action_just_pressed("ui_accept")
+
+func get_input() -> void:
+	input_action = Input.is_action_just_pressed("interact")
 	
 	if input_action:	
-		if player and player.can_move:
+		if player and player == PlayerManager.get_current_player():
 			if not .mount(player):
 				# TODO: Caso en los cuales no pueda montar el vehiculo
 				pass
-		elif has_driver() and get_driver().can_move:
+		elif get_driver():
 			.leave(get_driver())
-	
-#	print("has_driver(): ", has_driver())
-#	if has_driver():
-#		self.can_move = get_driver().can_move
-#	else:
-#		self.can_move = false
-	
-	if has_driver():
-		$Pivot.aim(delta)
-		$Pivot.set_cannon_sprite(DEG_CHANGE_ANIM)
-		for p in drivers:
-			p.position = $EnterArea/Collision.global_position
 		
-		dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
-		if Input.is_action_pressed("ui_up"):
+	dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
+	dir_move.y = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+
+
+func _physics_process(delta):
+
+	get_input()
+	check_state()
+	
+	if get_driver():
+		cannon.aim(delta)
+		cannon.set_cannon_sprite(DEG_CHANGE_ANIM)
+		for p in drivers:
+			p.position = global_position
+	
+		if dir_move.y == -1 :
 			if current_speed < MIN_VELOCITY:
 				current_speed = MIN_VELOCITY
 			else:
 				current_speed = min(MAX_VELOCITY, current_speed + ACCELERATION * delta)
-		elif Input.is_action_pressed("ui_down") && current_speed < min_velocity_to_stop:
-					current_speed = max(MAX_VELOCITY_REVERSE, current_speed - ACCELERATION * delta)
-		else:
-			if abs(current_speed) > min_velocity_to_stop:
-				current_speed *= 0.90
-#				current_speed -= DESACCELERATION * sign(current_speed) * delta
-	else:
-		if abs(current_speed) > min_velocity_to_stop:
-				current_speed *= 0.90
-
-func _physics_process(delta):
-	get_input(delta)
-	
-	if abs(current_speed) > min_velocity_to_stop:
-		rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
-		check_animation(rotation_degrees)
-		if $Anim.current_animation != "Foward":
-			$Anim.play("Foward")
-		else:
-			$Anim.playback_speed = ANIM_SPEED_FACTOR * current_speed / MAX_VELOCITY
-#	elif $Anim.current_animation != "Idle" or not $Anim.is_playing():
-#		$Anim.playback_speed = 1
-#		$Anim.play("Idle")
+		elif dir_move.y == 1 and current_speed < min_velocity_to_stop:
+				current_speed = max(- MAX_VELOCITY_REVERSE, current_speed - ACCELERATION * delta)
+		if dir_move.y == 0:
+			current_speed = current_speed * 0.9
 		
-	move_and_slide(dir_move.rotated(deg2rad(rotation_degrees)) * current_speed * delta, Vector2())
+		if abs(current_speed) > min_velocity_to_stop:
+			rotation_degrees += dir_rotation * (ANGULAR_VELOCITY + abs(current_speed) * 0.01) * delta
+			check_animation(rotation_degrees)
+			if change_state(States.MOVING):
+				animation.play("Foward")
+		
+	move_and_slide(Vector2.UP.rotated(deg2rad(rotation_degrees)) * current_speed * delta, Vector2())
+
+
+func check_state() -> void:
+	match state:
+		States.IDLE:
+			pass
+			#TODO:Determinar cosas para este estado
+		States.MOVING:
+			animation.playback_speed = ANIM_SPEED_FACTOR * current_speed / MAX_VELOCITY
+		States.DESTROYING:
+			animation.playback_speed = 1
+		States.DESTROYED:
+			pass
+			#TODO:Determinar cosas para este estado
+
 
 func check_animation(rot_deg : float) -> void:
 	if abs(rot_deg) < 0 + DEG_CHANGE_ANIM:
@@ -103,32 +112,31 @@ func check_animation(rot_deg : float) -> void:
 
 func _on_unmounted(who):
 	who.position = get_exit_position()
-	who.call_deferred("enable_player")
-	CameraManager.current_camera.following = who
+	who.call_deferred("enable_interact")
+
 
 func _on_mounted(who):
-	who.disable_player()
-	who.can_move = true #Para probar en escena de test TTank
-	CameraManager.current_camera.following = self
+	who.call_deferred("disable_interact")
 	# TODO: Casos en los cuales hay mas de un driver en el auto
-	
+
+
 func _on_EnterArea_body_entered(body):
 	if not player and body is GPlayer:
 		player = body
 	if body is GBullet:
 		damage(body.damage)
 		body.dead()
-		
-		
+
+
 func _on_EnterArea_body_exited(body):
 	if body is GPlayer and body == player:
 		player = null
-		
+
 
 #TODO: Revisar (puede haber casos en que entre en un loop infinito
 # o no se pocisione correctamente)
 func get_exit_position() -> Vector2:
-	var area_shape = $EnterArea/Collision.shape
+	var area_shape = interact_area.shape
 	var pos : Vector2 = Vector2(0, area_shape.extents.y)
 
 	var ray : = RayCast2D.new()
@@ -144,7 +152,8 @@ func get_exit_position() -> Vector2:
 	ray.queue_free()
 
 	return pos + global_position
-	
+
+
 #TODO: Falta comprobar que pasa si hay un conductor dentro
 func damage(mount : int = 1) -> void:
 	HP -= mount
@@ -160,7 +169,35 @@ func damage(mount : int = 1) -> void:
 		tween.queue_free()
 	else:
 		HP = 0
-		while has_driver():
-			.leave(get_driver())
-		$EnterArea/Collision.disabled = true
-		$Anim.play("Destroy")
+		if change_state(States.DESTROYING):
+			while has_driver():
+				.leave(get_driver())
+			interact_area.disabled = true
+			animation.play("Destroy")
+
+
+#Máquina de estados
+func change_state(new_state : int) -> bool:
+	match new_state:
+		States.IDLE:
+			if state == States.MOVING:
+				state = new_state
+				return true
+		States.MOVING:
+			if state == States.IDLE:
+				state = new_state
+				return true
+		States.DESTROYING:
+			if state == States.IDLE or state == States.MOVING:
+				state = new_state
+				return true
+		States.DESTROYED:
+			if state == States.DESTROYING:
+				state = new_state
+				return true
+	return false
+
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "Destroy":
+		if change_state(States.DESTROYED):
+			queue_free()
