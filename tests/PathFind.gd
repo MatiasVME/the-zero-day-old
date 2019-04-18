@@ -12,25 +12,8 @@ func _ready():
 	player.position = $PlayerSpawn.position
 	player.enable_player()
 	
-	camera = CameraManager.set_camera_game()
-	camera.following = player
-	camera.mode = camera.Mode.FOLLOW
+	$GameCamera.following = player
+	$GameCamera.mode = $GameCamera.Mode.FOLLOW
 	
 	$HUD.set_hud_actor(player)
 
-func _process(delta):
-	update()
-
-func re_draw_paths(_paths):
-	paths = _paths
-	print(paths)
-	if paths.size() > 0:
-		update()
-
-func _draw():
-#	if paths and paths.size() > 0:
-#		for point in paths:
-#			draw_circle(point, 4, Color(1, 0, 0))
-	draw_line($Gluton.global_position, $Gluton.random_objective, Color(0, 1, 0), 2)
-	
-	

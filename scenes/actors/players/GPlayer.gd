@@ -55,7 +55,12 @@ func _ready():
 	
 	update_weapon()
 
-func _move_handler(delta, dir, run):
+func _move_handler(delta, distance, run):
+	
+	var dir := Vector2()
+	dir.x = sign(distance.x)
+	dir.y = sign(distance.y)
+	
 	if not run:
 		move_x = dir.x * speed * delta
 		move_y = dir.y * speed * delta
@@ -86,16 +91,17 @@ func _move_handler(delta, dir, run):
 	elif dir.x == -1 and dir.y == 1:
 		$Anim.play("MoveDown")
 		$Sprite.flip_h = false
-	else:
-		if $Anim.current_animation != "Idle" and $Anim.current_animation != "hit" or not $Anim.is_playing():
-			$Anim.play("Idle")
-			$Sprite.speed_scale = 0.1
 		
 	if move_x != 0 and move_y != 0:
 		move_x /= 1.5
 		move_y /= 1.5
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
+
+func _stop_handler(delta):
+	if $Anim.current_animation != "Idle" and $Anim.current_animation != "hit" or not $Anim.is_playing():
+			$Anim.play("Idle")
+			$Sprite.speed_scale = 0.1
 
 func _fire_handler():
 	

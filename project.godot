@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/hud/floating_hud/FloatingText.gd"
 }, {
+"base": "Node",
+"class": "GAI",
+"language": "GDScript",
+"path": "res://scenes/ai/GAI.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "GActor",
 "language": "GDScript",
@@ -73,6 +78,11 @@ _global_script_classes=[ {
 "class": "GPlayer",
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
+}, {
+"base": "GAI",
+"class": "GPlayerAI",
+"language": "GDScript",
+"path": "res://scenes/ai/GPlayerAI.gd"
 }, {
 "base": "Node2D",
 "class": "GSpawnPlace",
@@ -123,6 +133,11 @@ _global_script_classes=[ {
 "class": "JSONBeautifier",
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
+}, {
+"base": "Node",
+"class": "Navigator",
+"language": "GDScript",
+"path": "res://scenes/navigator/Navigator.gd"
 }, {
 "base": "PHItem",
 "class": "PHAmmo",
@@ -256,6 +271,7 @@ _global_script_class_icons={
 "CreditSection": "",
 "DropChest": "",
 "FloatingText": "",
+"GAI": "",
 "GActor": "",
 "GBullet": "",
 "GChest": "",
@@ -263,6 +279,7 @@ _global_script_class_icons={
 "GGeneratorFactory": "",
 "GInput": "",
 "GPlayer": "",
+"GPlayerAI": "",
 "GSpawnPlace": "",
 "GSpawner": "",
 "GStructure": "",
@@ -273,6 +290,7 @@ _global_script_class_icons={
 "InventorySlot": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
+"Navigator": "",
 "PHAmmo": "",
 "PHCharacter": "",
 "PHComponent": "",
