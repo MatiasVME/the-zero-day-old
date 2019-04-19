@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=223 format=2]
 
-[ext_resource path="res://scenes/tiles/tile_images/grass/grass_tiles.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tiles/tile_images/grass1/grass_tiles.png" type="Texture" id=1]
 [ext_resource path="res://scenes/tiles/tile_images/water/water_tiles.png" type="Texture" id=2]
-[ext_resource path="res://scenes/tiles/tile_images/grass/grass_tiles_not_navigable.png" type="Texture" id=3]
+[ext_resource path="res://scenes/tiles/tile_images/grass1/grass_tiles_not_navigable.png" type="Texture" id=3]
 [ext_resource path="res://scenes/tiles/tile_images/mutations/tiles_mutant.png" type="Texture" id=4]
 [ext_resource path="res://scenes/tiles/tile_images/sand/sand_tiles.png" type="Texture" id=5]
 [ext_resource path="res://scenes/tiles/tile_images/snow/tiles_snow.png" type="Texture" id=6]
