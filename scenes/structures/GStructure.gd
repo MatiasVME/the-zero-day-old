@@ -4,8 +4,10 @@ extends KinematicBody2D
 
 class_name GStructure
 
-var is_invulnerable : bool = false
-var is_mark_to_destroy : bool = false
+var is_invulnerable := false
+var is_mark_to_destroy := false
+
+var structure_owner : String
 
 enum StructureSize {
 	W1X1, # Wall 1x1

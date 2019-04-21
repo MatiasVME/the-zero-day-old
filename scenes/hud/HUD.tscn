@@ -509,7 +509,6 @@ anims/show = SubResource( 12 )
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
-autoplay = "show"
 anims/hide = SubResource( 13 )
 anims/show = SubResource( 14 )
 

@@ -40,7 +40,7 @@ func _input(event):
 func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
 		actor.connect("item_taken", self, "_on_item_taken")
-
+	
 # Seleccionar un slot del 1 al 5 o null
 func select_slot(slot : int):
 	if slot == 0:
