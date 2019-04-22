@@ -6,8 +6,14 @@ class_name GStructure
 
 var is_invulnerable := false
 var is_mark_to_destroy := false
+# Se puede interactuar con el? Es util cuando queremos
+# desplegar un panel cuando presionamos la tecla e
+# o interact
+var is_interactable := false
 
 var structure_owner : String
+
+var _can_iteract := false
 
 enum StructureSize {
 	W1X1, # Wall 1x1
@@ -19,3 +25,13 @@ enum StructureSize {
 }
 var structure_size
 
+signal interacted
+
+func _on_InteractArea_body_entered(body):
+	if body is GPlayer:
+		_can_iteract = true
+
+func _on_InteractArea_body_exited(body):
+	if body is GPlayer:
+		_can_iteract = false
+	

@@ -1,0 +1,153 @@
+[gd_scene load_steps=41 format=2]
+
+[ext_resource path="res://scenes/autoloads/StructurePanelManager.gd" type="Script" id=1]
+[ext_resource path="res://scenes/panels/core_panel/CorePanel.png" type="Texture" id=2]
+[ext_resource path="res://scenes/structures/core/Images/core_01.png" type="Texture" id=3]
+[ext_resource path="res://scenes/structures/core/Images/core_02.png" type="Texture" id=4]
+[ext_resource path="res://scenes/structures/core/Images/core_03.png" type="Texture" id=5]
+[ext_resource path="res://scenes/structures/core/Images/core_04.png" type="Texture" id=6]
+[ext_resource path="res://scenes/structures/core/Images/core_05.png" type="Texture" id=7]
+[ext_resource path="res://scenes/structures/core/Images/core_06.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_idle-0.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_idle-2.png" type="Texture" id=10]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_01.png" type="Texture" id=11]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_02.png" type="Texture" id=12]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_03.png" type="Texture" id=13]
+[ext_resource path="res://scenes/actors/players/dorbot/images/Dorbot_run_side_04.png" type="Texture" id=14]
+[ext_resource path="res://scenes/actors/players/dorbot/images/DorbotGray.png" type="Texture" id=15]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_01.png" type="Texture" id=16]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_idle_03.png" type="Texture" id=17]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_01.png" type="Texture" id=18]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_02.png" type="Texture" id=19]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_03.png" type="Texture" id=20]
+[ext_resource path="res://scenes/actors/players/matbot/images/Matbot_run_side_04.png" type="Texture" id=21]
+[ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_idle_01.png" type="Texture" id=22]
+[ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_idle_03.png" type="Texture" id=23]
+[ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_01.png" type="Texture" id=24]
+[ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_02.png" type="Texture" id=25]
+[ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_03.png" type="Texture" id=26]
+[ext_resource path="res://scenes/actors/players/pixbot/images/PixbotGray.png" type="Texture" id=27]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_idle_01.png" type="Texture" id=28]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_idle_03.png" type="Texture" id=29]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_01.png" type="Texture" id=30]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_02.png" type="Texture" id=31]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_03.png" type="Texture" id=32]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_04.png" type="Texture" id=33]
+[ext_resource path="res://scenes/actors/players/serbot/images/SerbotGray.png" type="Texture" id=34]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="AnimatedTexture" id=3]
+frames = 4
+frame_0/texture = ExtResource( 11 )
+frame_1/texture = ExtResource( 12 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 13 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 14 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=2]
+frames = 4
+frame_0/texture = ExtResource( 18 )
+frame_1/texture = ExtResource( 19 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 20 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 21 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="StreamTexture" id=4]
+load_path = "res://.import/Pixbot_run_side_04.png-1ff1b7e3e2e20c0abba5b854cb1c7382.stex"
+
+[sub_resource type="AnimatedTexture" id=5]
+frames = 4
+frame_0/texture = ExtResource( 24 )
+frame_1/texture = ExtResource( 25 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 26 )
+frame_2/delay_sec = 0.0
+frame_3/texture = SubResource( 4 )
+frame_3/delay_sec = 0.0
+
+[sub_resource type="AnimatedTexture" id=6]
+frames = 4
+frame_0/texture = ExtResource( 30 )
+frame_1/texture = ExtResource( 31 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 32 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 33 )
+frame_3/delay_sec = 0.0
+
+[node name="StructurePanelManager" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 420.0
+margin_bottom = 240.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="CorePanel" type="Sprite" parent="."]
+position = Vector2( 290, 110 )
+texture = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="CorePanel"]
+position = Vector2( 0, -45 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="Grid" type="GridContainer" parent="CorePanel"]
+margin_left = -38.0
+margin_top = -15.0
+margin_right = 38.0
+margin_bottom = 22.0
+custom_constants/vseparation = 4
+custom_constants/hseparation = 4
+columns = 4
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bot1" type="TextureButton" parent="CorePanel/Grid"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = SubResource( 3 )
+texture_disabled = ExtResource( 15 )
+
+[node name="Bot2" type="TextureButton" parent="CorePanel/Grid"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 16 )
+texture_pressed = ExtResource( 17 )
+texture_hover = SubResource( 2 )
+texture_disabled = ExtResource( 21 )
+
+[node name="Bot3" type="TextureButton" parent="CorePanel/Grid"]
+margin_left = 40.0
+margin_right = 56.0
+margin_bottom = 16.0
+texture_normal = ExtResource( 22 )
+texture_pressed = ExtResource( 23 )
+texture_hover = SubResource( 5 )
+texture_disabled = ExtResource( 27 )
+
+[node name="Bot4" type="TextureButton" parent="CorePanel/Grid"]
+margin_left = 60.0
+margin_right = 76.0
+margin_bottom = 16.0
+disabled = true
+texture_normal = ExtResource( 28 )
+texture_pressed = ExtResource( 29 )
+texture_hover = SubResource( 6 )
+texture_disabled = ExtResource( 34 )
+

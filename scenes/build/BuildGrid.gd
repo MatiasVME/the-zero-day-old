@@ -80,6 +80,8 @@ func state_inite_core():
 		structure.global_position = $Structure.rect_position
 		structure.global_position += 8 * cursor_size
 		get_parent().add_child(structure)
+		
+		grid_state = GridState.HIDE
 
 func state_selecting():
 	show()
