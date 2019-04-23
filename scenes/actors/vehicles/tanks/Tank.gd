@@ -80,8 +80,8 @@ func _physics_process(delta):
 	
 	if abs(current_speed) > min_velocity_to_stop:
 		var body = move_and_collide(Vector2.UP.rotated(deg2rad(rotation_degrees)) * current_speed * delta, true)
-		if body and body.collider.has_method("smash"):
-			body.collider.smash()
+		if body and body.collider.has_method("crushed"):
+			body.collider.crushed()
 
 
 func check_state() -> void:

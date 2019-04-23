@@ -45,7 +45,7 @@ func init_player(player_num : int) -> GPlayer:
 	# castear eso a int :S
 	match int(DataManager.players[player_num].player_type):
 		PlayerType.DORBOT:
-			pass
+			player = load("res://scenes/actors/players/dorbot/Dorbot.tscn").instance()
 		PlayerType.MATBOT:
 			player = load("res://scenes/actors/players/matbot/Matbot.tscn").instance()
 		PlayerType.PIXBOT:
@@ -152,5 +152,4 @@ func _on_level_up(current_level, player):
 	player_data.max_hp += clamp(to_add, 2, 1000)
 	player_data.hp += clamp(to_add, 2, 1000)
 	
-	print("hasta aca esta bien??")
 	emit_signal("player_level_up", player)

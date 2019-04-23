@@ -18,7 +18,7 @@ enum PlayerType {
 	PIXBOT,
 	SERBOT
 }
-var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
+var player_type = PlayerType.DORBOT
 
 var unique_id : String
 

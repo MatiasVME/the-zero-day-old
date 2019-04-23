@@ -1,6 +1,6 @@
 extends Node
 
-const VERSION := "0.3.0.alpha"
+const VERSION := "0.4.0.alpha"
 const DEBUG := false
 
 var music_enable := false
@@ -9,7 +9,7 @@ var sound_enable := true
 const RES_X := 420
 const RES_Y := 240
 
-# Almacenamiento de data temporal par el
+# Almacenamiento de data temporal para el
 # final de nivel
 var store_iron_earned := 0
 var store_titanium_earned := 0

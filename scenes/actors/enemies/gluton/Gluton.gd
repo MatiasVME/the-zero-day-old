@@ -269,3 +269,8 @@ func _on_AttackArea_body_exited(body):
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
 	current_time_to_random_objective = 0
+
+#Funcion que se define cuando un enemigo es aplastable
+func crushed() -> void:
+	#TODO: Definir el comportamieto cuado es aplastado
+	change_state(State.DIE)
