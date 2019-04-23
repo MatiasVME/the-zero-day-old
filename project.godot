@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AI",
+"language": "GDScript",
+"path": "res://scenes/ai/AI.gd"
+}, {
 "base": "Control",
 "class": "Avatar",
 "language": "GDScript",
@@ -38,11 +43,6 @@ _global_script_classes=[ {
 "class": "FloatingText",
 "language": "GDScript",
 "path": "res://scenes/hud/floating_hud/FloatingText.gd"
-}, {
-"base": "Node",
-"class": "GAI",
-"language": "GDScript",
-"path": "res://scenes/ai/GAI.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "GActor",
@@ -79,7 +79,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/players/GPlayer.gd"
 }, {
-"base": "GAI",
+"base": "AI",
 "class": "GPlayerAI",
 "language": "GDScript",
 "path": "res://scenes/ai/GPlayerAI.gd"
@@ -265,13 +265,13 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/vehicles/Vehicle.gd"
 } ]
 _global_script_class_icons={
+"AI": "",
 "Avatar": "",
 "Car": "",
 "CommonBullet": "",
 "CreditSection": "",
 "DropChest": "",
 "FloatingText": "",
-"GAI": "",
 "GActor": "",
 "GBullet": "",
 "GChest": "",
@@ -351,7 +351,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 

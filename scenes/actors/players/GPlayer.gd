@@ -10,11 +10,6 @@ export (int) var speed = 2500
 var move_x
 var move_y
 
-var input_dir := Vector2()
-var input_run := false
-var input_fire := false
-var input_reload := false
-
 var can_fire := false
 
 var is_inmortal := false

@@ -1,12 +1,6 @@
 extends Node
 
-class_name GAI
-
-enum STATE{
-	IDLE,
-	RANDOM_WALK,
-	WALK_TARGET
-}
+class_name AI
 
 var is_active = false
 
@@ -14,29 +8,35 @@ onready var actor = get_parent()
 
 onready var navigator = actor.get_node("navigator") if actor.has_node("navigator") else null
 
-var state : int = STATE.IDLE setget set_state
+var state : int = 0 setget set_state
 
 var target_point := Vector2()
 
 var random_walk_area_center := Vector2()
 var random_walk_area_radius := 15.0
 
-##
-
+## RandomWalk Timer
 var time_to_update_random_walk := 3.0
 var time_to_update_random_walk_progress := 0.0
-
 ##
 
 # True : termino de moverse
 var move_state_x := true
 var move_state_y := true
 
+# DetectArea
+var detected_bodies := []
+var last_body : GActor
 
 ## Señales
 
 signal changed_state(old_state, new_state)
 
+func _ready():
+	if actor.has_node("DetectArea"):
+		actor.get_node("DetectArea").connect("body_entered", self, "_on_DetectArea_body_entered")
+		actor.get_node("DetectArea").connect("body_exited", self, "_on_DetectArea_body_exited")
+	
 func active(_active := true):
 	is_active = _active
 
@@ -79,3 +79,12 @@ func move_to_point(delta, point) -> bool:
 	
 	if move_state_x and move_state_y : return true
 	return false
+
+func _on_DetectArea_body_entered(body : PhysicsBody2D):
+	if body is GActor:
+		detected_bodies.append(body)
+
+func _on_DetectArea_body_exited(body : PhysicsBody2D):
+	if body is GActor:
+		var i = detected_bodies.find(body)
+		if i != -1 : detected_bodies.remove(i)
