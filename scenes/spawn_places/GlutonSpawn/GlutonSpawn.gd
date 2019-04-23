@@ -1,6 +1,6 @@
 extends GSpawnPlace
 
-onready var gluton = preload("res://scenes/actors/enemies/gluton/Gluton.tscn").instance()
+onready var gluton = preload("res://scenes/actors/enemies/gluton/Gluton.tscn")
 
 var ot_queue = true
 
@@ -24,8 +24,9 @@ func spawn():
 	$Spawn.play()
 
 func spawn_gluton():
-	get_parent().add_child(gluton)
-	gluton.global_position = $Pos.global_position
+	var instance = gluton.instance()
+	get_parent().add_child(instance)
+	instance.global_position = $Pos.global_position
 	
 func _on_TouchForSpawn_body_entered(body):
 	if not only_player and body is GActor:
