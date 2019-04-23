@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.gd" type="Script" id=1]
 [ext_resource path="res://scenes/input/GInput.gd" type="Script" id=2]
@@ -28,6 +28,11 @@ animations = [ {
 }, {
 "frames": [  ],
 "loop": true,
+"name": "run_down",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
 "name": "walk_down",
 "speed": 5.0
 }, {
@@ -39,11 +44,6 @@ animations = [ {
 "frames": [  ],
 "loop": true,
 "name": "run_side",
-"speed": 5.0
-}, {
-"frames": [  ],
-"loop": true,
-"name": "run_down",
 "speed": 5.0
 } ]
 
@@ -148,6 +148,9 @@ tracks/1/keys = {
 [sub_resource type="CircleShape2D" id=6]
 radius = 7.07107
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 50.0
+
 [node name="GPlayer" type="KinematicBody2D" groups=[
 "Player",
 ]]
@@ -184,6 +187,14 @@ collision_mask = 3
 [node name="Collision" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2( 0, 2 )
 shape = SubResource( 6 )
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2( 0, 2 )
+shape = SubResource( 7 )
 
 [node name="BoxingAttack" parent="." instance=ExtResource( 7 )]
 
