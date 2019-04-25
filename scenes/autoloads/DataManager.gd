@@ -87,11 +87,17 @@ func create_players():
 	
 	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+	players[players.size() - 1].player_type = PHCharacter.PlayerType.DORBOT
 	
 	# TEMP: Crea otro player
 	players.append(PHCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+	players[players.size() - 1].player_type = PHCharacter.PlayerType.MATBOT
 	
+	# TEMP: Crea otro player
+	players.append(PHCharacter.new())
+	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+	players[players.size() - 1].player_type = PHCharacter.PlayerType.PIXBOT
 	
 	$DataPlayers.save_data("Players")
 	

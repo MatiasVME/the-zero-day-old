@@ -67,7 +67,7 @@ func _physics_process(delta):
 			else:
 				change_state(State.RANDOM_WALK)
 		State.ATTACK:
-			if objective.is_mark_to_dead : 
+			if objective and objective.is_mark_to_dead : 
 				change_state(State.RANDOM_WALK)
 				return
 			$Body.look_at(objective.position)

@@ -49,7 +49,7 @@ func init_player(player_num : int) -> GPlayer:
 		PlayerType.MATBOT:
 			player = load("res://scenes/actors/players/matbot/Matbot.tscn").instance()
 		PlayerType.PIXBOT:
-			pass
+			player = load("res://scenes/actors/players/pixbot/Pixbot.tscn").instance()
 		PlayerType.SERBOT:
 			pass
 	

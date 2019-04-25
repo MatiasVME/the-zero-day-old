@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://scenes/actors/players/GPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/players/pixbot/Pixbot.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DanceOfVictory"
+
+[sub_resource type="Animation" id=2]
+resource_name = "Idle"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "idle", "idle" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 1.4, 2.4, 2.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 0, 2 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, false ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "MoveDown"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "move_down", "move_down" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "MoveSide"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "move_side", "move_side" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "MoveUp"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "move_up", "move_up" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[node name="Pixbot" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Anim" parent="." index="4"]
+anims/DanceOfVictory = SubResource( 1 )
+anims/Idle = SubResource( 2 )
+anims/MoveDown = SubResource( 3 )
+anims/MoveSide = SubResource( 4 )
+anims/MoveUp = SubResource( 5 )
+
