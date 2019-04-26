@@ -9,6 +9,7 @@ extends Node
 # Son los GPlayers que el jugador puede llegar a controlar
 var players = []
 var current_player = get_current_player() setget , get_current_player
+var name_of_available_players := [] setget , get_name_of_available_players
 
 enum PlayerType {
 	DORBOT,
@@ -63,6 +64,14 @@ func init_player(player_num : int) -> GPlayer:
 		player.data.revive()
 	
 	return player
+
+func get_name_of_available_players():
+	var names := []
+	
+	for player in DataManager.players:
+		names.append(player.character_name)
+	
+	return names
 
 # Siempre hay que llamar a esta funcion antes de salir del
 # juego!!

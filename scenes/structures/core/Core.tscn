@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/structures/core/Images/core_05.png" type="Texture" id=7]
 [ext_resource path="res://scenes/structures/core/Images/core_06.png" type="Texture" id=8]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=1]
 radius = 24.0
 
 [sub_resource type="SpriteFrames" id=2]
@@ -20,19 +20,33 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=3]
 radius = 32.0
 
-[node name="Core" index="0" instance=ExtResource( 1 )]
+[node name="Core" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [node name="Base" parent="." index="1"]
 frames = SubResource( 2 )
 animation = "idle"
 
+[node name="InteractArea" parent="." index="3"]
+editor/display_folded = true
+
 [node name="Collision" parent="InteractArea" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 3 )
+
+[node name="Spawns" type="Node" parent="." index="4"]
+
+[node name="Spawn1" type="Position2D" parent="Spawns" index="0"]
+position = Vector2( 0, 32 )
+
+[node name="Spawn2" type="Position2D" parent="Spawns" index="1"]
+position = Vector2( 32, 0 )
+
+[node name="Spawn3" type="Position2D" parent="Spawns" index="2"]
+position = Vector2( -32, 0 )
 

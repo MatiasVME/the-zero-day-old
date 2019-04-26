@@ -18,7 +18,7 @@ enum PlayerType {
 	PIXBOT,
 	SERBOT
 }
-var player_type = PlayerType.DORBOT
+var player_type = PlayerType.DORBOT setget set_player_type, get_player_type
 
 var unique_id : String
 
@@ -36,3 +36,24 @@ func set_equip(_equip : PHItem):
 	
 func get_equip():
 	return equip
+	
+func set_player_type(_player_type):
+	player_type = _player_type
+	character_name = _get_character_name(player_type)
+	
+func get_player_type():
+	return player_type
+
+# Metodos "Privados"
+#
+
+func _get_character_name(player_type):
+	match player_type:
+		PlayerType.DORBOT:
+			return "Dorbot"
+		PlayerType.MATBOT:
+			return "Matbot"
+		PlayerType.PIXBOT:
+			return "Pixbot"
+		PlayerType.SERBOT:
+			return "Serbot"

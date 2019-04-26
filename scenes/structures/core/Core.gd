@@ -5,5 +5,4 @@ func _init():
 
 func _ready():
 	$Base.play("idle")
-	
-	
+	StructurePanelManager.show_panel(StructurePanelManager.StructurePanel.CORE)

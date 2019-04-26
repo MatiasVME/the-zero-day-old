@@ -92,6 +92,7 @@ frame_3/texture = ExtResource( 34 )
 frame_3/delay_sec = 0.0
 
 [node name="CorePanel" type="Sprite"]
+position = Vector2( 111, 130 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
@@ -101,6 +102,7 @@ frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Grid" type="GridContainer" parent="."]
+editor/display_folded = true
 margin_left = -38.0
 margin_top = -15.0
 margin_right = 38.0
@@ -112,39 +114,43 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Bot1" type="TextureButton" parent="Grid"]
+[node name="Dorbot" type="TextureButton" parent="Grid"]
 margin_right = 16.0
 margin_bottom = 16.0
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_hover = SubResource( 2 )
 texture_disabled = ExtResource( 15 )
 
-[node name="Bot2" type="TextureButton" parent="Grid"]
+[node name="Matbot" type="TextureButton" parent="Grid"]
 margin_left = 20.0
 margin_right = 36.0
 margin_bottom = 16.0
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource( 16 )
 texture_pressed = ExtResource( 17 )
 texture_hover = SubResource( 3 )
 texture_disabled = ExtResource( 22 )
 
-[node name="Bot3" type="TextureButton" parent="Grid"]
+[node name="Pixbot" type="TextureButton" parent="Grid"]
 margin_left = 40.0
 margin_right = 56.0
 margin_bottom = 16.0
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource( 23 )
 texture_pressed = ExtResource( 24 )
 texture_hover = SubResource( 5 )
 texture_disabled = ExtResource( 28 )
 
-[node name="Bot4" type="TextureButton" parent="Grid"]
+[node name="Serbot" type="TextureButton" parent="Grid"]
 margin_left = 60.0
 margin_right = 76.0
 margin_bottom = 16.0
+disabled = true
 toggle_mode = true
 texture_normal = ExtResource( 29 )
 texture_pressed = ExtResource( 30 )
