@@ -51,7 +51,7 @@ func init_player(player_num : int) -> GPlayer:
 		PlayerType.PIXBOT:
 			player = load("res://scenes/actors/players/pixbot/Pixbot.tscn").instance()
 		PlayerType.SERBOT:
-			pass
+			player = load("res://scenes/actors/players/serbot/Serbot.tscn").instance()
 	
 	players.append(player)
 	

@@ -15,3 +15,7 @@ func _ready():
 	var player3 = PlayerManager.init_player(2)
 	player3.global_position = Vector2(100, 140)
 	add_child(player3)
+	
+	var player4 = PlayerManager.init_player(3)
+	player4.global_position = Vector2(100, 180)
+	add_child(player4)
