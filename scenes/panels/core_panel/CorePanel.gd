@@ -3,7 +3,9 @@ extends Sprite
 var all_button_bots := []
 var bot_selected
 
-signal take_off_player(player_name)
+#signal take_off_player(player_name)
+
+onready var core = get_tree().get_nodes_in_group("StructureCore")
 
 func _ready():
 	# Conectar los botones
@@ -18,6 +20,13 @@ func _ready():
 	for button in $Grid.get_children():
 		if PlayerManager.name_of_available_players.has(button.name):
 			button.disabled = false
+			
+	# Seleccionar core principal
+	if core.size() > 0:
+		core = core[0]
+	else:
+		print("No hay core")
+		core = null
 	
 func disable_all_bot_buttons(button_exception = null):
 	for button in all_button_bots:
@@ -40,4 +49,10 @@ func _on_OkBots_pressed():
 	bot_selected.disabled = true
 	
 	StructurePanelManager.hide_panel()
+	
+	if core:
+		core.init_player(bot_selected.name)
+	else:
+		print("No hay core")
+	
 #	emit_signal("take_off_player", bot_selected.name)
