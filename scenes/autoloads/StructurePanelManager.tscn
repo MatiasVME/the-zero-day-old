@@ -8,7 +8,7 @@ script = ExtResource( 1 )
 [node name="Curtain" type="ColorRect" parent="."]
 margin_right = 420.0
 margin_bottom = 240.0
-mouse_filter = 1
+mouse_filter = 2
 color = Color( 0, 0, 0, 0 )
 
 [node name="CurtainTween" type="Tween" parent="."]
