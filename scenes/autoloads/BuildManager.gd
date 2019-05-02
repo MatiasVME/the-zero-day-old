@@ -1,10 +1,5 @@
 extends Node
 
-enum Build {
-	CORE,
-	LIGHT_TURRET
-}
-
 signal prepare_to_build(tilemap, build_id, actor)
 
 func prepare_to_build(build_id):
@@ -24,14 +19,14 @@ func get_constructibles():
 	
 func get_constructible(build_id):
 	match build_id:
-		Build.CORE:
+		Enums.StructureType.CORE:
 			return load("res://scenes/structures/core/Core.tscn").instance()
-		Build.LIGHT_TURRET:
+		Enums.StructureType.LIGHT_TURRET:
 			return load("res://scenes/structures/turrets/LightTurret/LightTurret.tscn").instance()
 			
 func get_build_textures(build_id):
 	match build_id:
-		Build.LIGHT_TURRET:
+		Enums.StructureType.LIGHT_TURRET:
 			return [
 				preload("res://scenes/hud/build_menu/BuildsImages/LightTurret-Normal.png"),
 				preload("res://scenes/hud/build_menu/BuildsImages/LightTurret-Pressed.png"),
@@ -40,7 +35,7 @@ func get_build_textures(build_id):
 	
 func get_build_texture_for_terrain(build_id):
 	match build_id:
-		Build.LIGHT_TURRET:
+		Enums.StructureType.LIGHT_TURRET:
 			return preload("res://scenes/actors/turrets/common-turret/images/LightTurret.png")
 
 

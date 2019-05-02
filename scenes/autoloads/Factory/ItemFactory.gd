@@ -178,9 +178,20 @@ static func create_plasma_ammo(ammo_amount := 8):
 	
 	return ammo
 	
-#Crea una nueva intancia de un PHItem copiando las propidades del pasado cómo parámetro
+# Crea una nueva intancia de un PHItem copiando las propidades del pasado cómo parámetro
 static func create_item_copy(item : PHItem) -> PHItem:
 	var new_item : PHItem = load( str(item.get_script().resource_path) ).new()
 	new_item.copy_properties(item)
-	return new_item
 	
+	return new_item
+
+static func create_structure_box(StructureBoxType):
+	pass
+	
+	
+
+
+
+
+
+

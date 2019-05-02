@@ -1262,4 +1262,3 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 10/shapes = [  ]
 10/z_index = 0
 script = SubResource( 213 )
-

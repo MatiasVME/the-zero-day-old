@@ -8,7 +8,7 @@ extends RPGStructure
 
 class_name PHStructure
 
-# Tipo de estructura, quizá las refinerias y extractores hereden de aqui 
+# Tipo de estructura
 enum StructureType {
 	Building,
 	Defensive,

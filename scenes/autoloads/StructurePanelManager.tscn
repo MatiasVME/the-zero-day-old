@@ -14,6 +14,5 @@ color = Color( 0, 0, 0, 0 )
 [node name="CurtainTween" type="Tween" parent="."]
 
 [node name="PanelTween" type="Tween" parent="."]
-
 [connection signal="mouse_entered" from="Curtain" to="." method="_on_ColorRect_mouse_entered"]
 [connection signal="tween_completed" from="PanelTween" to="." method="_on_PanelTween_tween_completed"]

@@ -327,6 +327,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Main="*res://scenes/autoloads/Main.gd"
+Enums="*res://scenes/autoloads/Enums.gd"
 DataManager="*res://scenes/autoloads/DataManager.tscn"
 PlayerManager="*res://scenes/autoloads/PlayerManager.gd"
 Factory="*res://scenes/autoloads/Factory.gd"

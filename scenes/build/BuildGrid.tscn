@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/build/BuildGrid.gd" type="Script" id=1]
-[ext_resource path="res://scenes/build/place/CantSelecting.png" type="Texture" id=2]
-[ext_resource path="res://scenes/build/place/Selecting.png" type="Texture" id=3]
+[ext_resource path="res://scenes/build/Area.tscn" type="PackedScene" id=2]
 
 [node name="BuildGrid" type="Node2D"]
 script = ExtResource( 1 )
@@ -14,12 +13,62 @@ format = 1
 [node name="Structure" type="TextureRect" parent="."]
 margin_right = 16.0
 margin_bottom = 16.0
-texture = ExtResource( 2 )
+rect_min_size = Vector2( 16, 16 )
 
 [node name="Place" type="TextureRect" parent="."]
 margin_right = 16.0
 margin_bottom = 16.0
-texture = ExtResource( 3 )
-expand = true
-stretch_mode = 1
+rect_min_size = Vector2( 16, 16 )
 
+[node name="BuildArea" type="Node2D" parent="."]
+position = Vector2( -24, -24 )
+
+[node name="BuildArea" type="GridContainer" parent="BuildArea"]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+custom_constants/vseparation = 0
+custom_constants/hseparation = 0
+columns = 3
+
+[node name="Area1" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+
+[node name="Area2" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_right = 32.0
+
+[node name="Area3" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 32.0
+margin_right = 48.0
+
+[node name="Area4" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_top = 16.0
+margin_bottom = 32.0
+
+[node name="Area5" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="Area6" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 32.0
+margin_top = 16.0
+margin_right = 48.0
+margin_bottom = 32.0
+
+[node name="Area7" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_top = 32.0
+margin_bottom = 48.0
+
+[node name="Area8" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 16.0
+margin_top = 32.0
+margin_right = 32.0
+margin_bottom = 48.0
+
+[node name="Area9" parent="BuildArea/BuildArea" instance=ExtResource( 2 )]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 48.0
+margin_bottom = 48.0

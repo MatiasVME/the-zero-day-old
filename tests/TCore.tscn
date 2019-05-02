@@ -14,4 +14,3 @@ script = ExtResource( 1 )
 position = Vector2( 210, 124.204 )
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
-

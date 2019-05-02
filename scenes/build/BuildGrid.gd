@@ -72,15 +72,15 @@ func state_inite_core():
 	show()
 	
 	mouse_gpos = get_global_mouse_position()
-	$Place.rect_position.x = (mouse_gpos.x - (int(round(mouse_gpos.x)) % 16)) - cursor_position.x * 16
-	$Place.rect_position.y = (mouse_gpos.y - (int(round(mouse_gpos.y)) % 16)) - cursor_position.y * 16
-	$Structure.rect_position = $Place.rect_position
-	
+	$BuildArea.position.x = (mouse_gpos.x - (int(abs(mouse_gpos.x)) % 16)) - cursor_position.x * 16
+	$BuildArea.position.y = (mouse_gpos.y - (int(abs(mouse_gpos.y)) % 16)) - cursor_position.y * 16
+	$Structure.rect_position = $BuildArea.position
+
 	if Input.is_action_just_pressed("select"):
 		structure.global_position = $Structure.rect_position
 		structure.global_position += 8 * cursor_size
 		get_parent().add_child(structure)
-		
+
 		grid_state = GridState.HIDE
 
 func state_selecting():
