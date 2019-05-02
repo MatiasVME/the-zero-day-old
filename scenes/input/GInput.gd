@@ -11,7 +11,7 @@ var input_run := false
 
 func _ready():
 	if actor is GActor:
-		is_active = true
+		active()
 
 func _physics_process(delta):
 	

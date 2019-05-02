@@ -11,6 +11,14 @@ func _ready():
 	add_child(player)
 	player.position = $PlayerSpawn.position
 	player.enable_player()
+	player.get_node("GInput").active()
+	
+	var player2 = PlayerManager.init_player(1)
+	add_child(player2)
+	player2.position = $PlayerSpawn.position + Vector2(30,30)
+	player2.enable_player()
+	player2.get_node("GInput").active(false)
+	player2.get_node("GPlayerAI").active()
 	
 	$GameCamera.following = player
 	$GameCamera.mode = $GameCamera.Mode.FOLLOW
