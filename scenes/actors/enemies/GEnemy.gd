@@ -10,7 +10,8 @@ enum State {
 	RUN,
 	ATTACK,
 	DIE,
-	RANDOM_WALK
+	RANDOM_WALK,
+	STUNNED
 }
 var state : int = 0
 var current_state : int = 0
@@ -49,7 +50,11 @@ func damage(amount):
 		$Anim.play("damage")
 	
 	data.damage(amount)
-	
+
+
+func knockback(distance : Vector2):
+	pass
+
 # Golpe al jugador
 func hit():
 	pass
@@ -59,6 +64,7 @@ func spawn():
 		$Anim.play("spawn")
 
 func dead():
+	$Collision.disabled = true
 	if $Anim.has_animation("dead"):
 		$Anim.play("dead")
 

@@ -204,7 +204,6 @@ volume_db = -10.0
 [node name="Damage" type="AudioStreamPlayer2D" parent="Sounds" index="2"]
 stream = ExtResource( 43 )
 volume_db = -10.0
-
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]
