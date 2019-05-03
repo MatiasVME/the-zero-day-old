@@ -2,8 +2,8 @@
 
 [ext_resource path="res://scenes/hud/build_menu/BuildMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/build_menu/BuildPanel.png" type="Texture" id=2]
-[ext_resource path="res://themes/ph_theme.tres" type="Theme" id=3]
-[ext_resource path="res://scenes/hud/build_menu/BuildButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/hud/build_menu/BuildButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/build_menu/BuildsImages/LightTurret-Disabled.png" type="Texture" id=4]
 
 [node name="BuildMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,22 +12,45 @@ script = ExtResource( 1 )
 position = Vector2( 396, 121 )
 texture = ExtResource( 2 )
 
-[node name="Scroll" type="ScrollContainer" parent="Background"]
-margin_left = -33.0
-margin_top = -55.0
-margin_right = 35.0
-margin_bottom = 39.0
-rect_min_size = Vector2( 68, 94 )
-theme = ExtResource( 3 )
-scroll_horizontal_enabled = false
-
-[node name="Grid" type="GridContainer" parent="Background/Scroll"]
-margin_right = 29.0
-margin_bottom = 30.0
+[node name="Grid" type="GridContainer" parent="Background"]
+margin_left = -12.0
+margin_top = -69.0
+margin_right = 14.0
+margin_bottom = 69.0
+rect_min_size = Vector2( 26, 138 )
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
-columns = 2
 
-[node name="LightTurret" parent="Background/Scroll/Grid" instance=ExtResource( 4 )]
+[node name="LightTurret" parent="Background/Grid" instance=ExtResource( 3 )]
+margin_right = 26.0
+margin_bottom = 26.0
+texture_disabled = ExtResource( 4 )
 
-[connection signal="pressed" from="Background/Scroll/Grid/LightTurret" to="." method="_on_LightTurret_pressed"]
+[node name="LightTurret2" parent="Background/Grid" instance=ExtResource( 3 )]
+margin_top = 28.0
+margin_right = 26.0
+margin_bottom = 54.0
+texture_disabled = ExtResource( 4 )
+
+[node name="LightTurret3" parent="Background/Grid" instance=ExtResource( 3 )]
+margin_top = 56.0
+margin_right = 26.0
+margin_bottom = 82.0
+texture_disabled = ExtResource( 4 )
+
+[node name="LightTurret4" parent="Background/Grid" instance=ExtResource( 3 )]
+margin_top = 84.0
+margin_right = 26.0
+margin_bottom = 110.0
+texture_disabled = ExtResource( 4 )
+
+[node name="LightTurret5" parent="Background/Grid" instance=ExtResource( 3 )]
+margin_top = 112.0
+margin_right = 26.0
+margin_bottom = 138.0
+texture_disabled = ExtResource( 4 )
+[connection signal="pressed" from="Background/Grid/LightTurret" to="." method="_on_LightTurret_pressed"]
+[connection signal="pressed" from="Background/Grid/LightTurret2" to="." method="_on_LightTurret_pressed"]
+[connection signal="pressed" from="Background/Grid/LightTurret3" to="." method="_on_LightTurret_pressed"]
+[connection signal="pressed" from="Background/Grid/LightTurret4" to="." method="_on_LightTurret_pressed"]
+[connection signal="pressed" from="Background/Grid/LightTurret5" to="." method="_on_LightTurret_pressed"]

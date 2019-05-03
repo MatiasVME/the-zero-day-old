@@ -281,10 +281,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0.011964, 0.3 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( -12, 0 ), Vector2( 60, 0 ) ]
+"values": [ Vector2( 28, 0 ), Vector2( 60, 0 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -297,10 +297,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
+"times": PoolRealArray( 0.1, 0.4 ),
 "transitions": PoolRealArray( 0.5, 1 ),
 "update": 0,
-"values": [ Vector2( 60, 0 ), Vector2( -12, 0 ) ]
+"values": [ Vector2( 60, 0 ), Vector2( 28, 0 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("GameMenu/BuildMenu:visible")
@@ -472,7 +472,6 @@ anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
 [node name="GameMenu" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 60, 0 )
 
 [node name="Build" parent="GameMenu" index="3"]
@@ -491,6 +490,7 @@ position = Vector2( 450, 120 )
 
 [node name="BuildMenu" parent="GameMenu" instance=ExtResource( 5 )]
 visible = false
+position = Vector2( -20, -4 )
 
 [node name="AnimGameMenu" type="AnimationPlayer" parent="."]
 autoplay = "show"
@@ -536,7 +536,6 @@ position = Vector2( 0, -235.931 )
 
 [node name="AnimEndLevel" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 19 )
-
 [connection signal="toggled" from="GameMenu/Menu" to="." method="_on_Menu_toggled"]
 [connection signal="toggled" from="GameMenu/Inventory" to="." method="_on_Inventory_toggled"]
 [connection signal="toggled" from="GameMenu/Build" to="." method="_on_Build_toggled"]
