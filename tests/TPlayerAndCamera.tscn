@@ -13,4 +13,3 @@ script = ExtResource( 1 )
 [node name="Camera" parent="." instance=ExtResource( 3 )]
 
 [node name="HUD" parent="." instance=ExtResource( 4 )]
-

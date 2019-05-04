@@ -18,3 +18,12 @@ enum StructureType {
 	SHOP_FACTORY,
 	LIGHT_TURRET
 }
+
+enum StructureSize {
+	W1X1, # Wall 1x1
+	S1X1, # Structure 1x1
+	S2X2, # ... 2x2
+	S3X3, # ..
+	S2X3,
+	S3X2
+}

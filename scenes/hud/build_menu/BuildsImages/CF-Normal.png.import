@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LightTurret-Pressed.png-fef1311c07a212c515e60e30cb58d918.stex"
+path="res://.import/CF-Normal.png-7366c05f302f0b0a8b38a6638ff21daa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/build_menu/BuildsImages/LightTurret-Pressed.png"
-dest_files=[ "res://.import/LightTurret-Pressed.png-fef1311c07a212c515e60e30cb58d918.stex" ]
+source_file="res://scenes/hud/build_menu/BuildsImages/CF-Normal.png"
+dest_files=[ "res://.import/CF-Normal.png-7366c05f302f0b0a8b38a6638ff21daa.stex" ]
 
 [params]
 

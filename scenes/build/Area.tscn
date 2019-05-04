@@ -17,7 +17,7 @@ script = ExtResource( 2 )
 
 [node name="IsBuildable" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="IsBuildable"]
+[node name="Collision" type="CollisionShape2D" parent="IsBuildable"]
 position = Vector2( 8, 8 )
 shape = SubResource( 1 )
 [connection signal="body_entered" from="IsBuildable" to="." method="_on_IsBuildable_body_entered"]

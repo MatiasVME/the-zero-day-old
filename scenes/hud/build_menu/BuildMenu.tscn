@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/hud/build_menu/BuildMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/build_menu/BuildPanel.png" type="Texture" id=2]
-[ext_resource path="res://scenes/hud/build_menu/BuildButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/hud/build_menu/BuildsImages/LightTurret-Disabled.png" type="Texture" id=4]
+[ext_resource path="res://scenes/hud/build_menu/BuildsImages/CF-Normal.png" type="Texture" id=3]
+[ext_resource path="res://scenes/hud/build_menu/BuildsImages/CF-Pressed.png" type="Texture" id=4]
+[ext_resource path="res://scenes/hud/build_menu/BuildsImages/CF-Hover.png" type="Texture" id=5]
+[ext_resource path="res://scenes/hud/build_menu/BuildsImages/CF-Disabled.png" type="Texture" id=6]
 
 [node name="BuildMenu" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,36 +23,11 @@ rect_min_size = Vector2( 26, 138 )
 custom_constants/vseparation = 2
 custom_constants/hseparation = 2
 
-[node name="LightTurret" parent="Background/Grid" instance=ExtResource( 3 )]
+[node name="CF" type="TextureButton" parent="Background/Grid"]
 margin_right = 26.0
 margin_bottom = 26.0
-texture_disabled = ExtResource( 4 )
-
-[node name="LightTurret2" parent="Background/Grid" instance=ExtResource( 3 )]
-margin_top = 28.0
-margin_right = 26.0
-margin_bottom = 54.0
-texture_disabled = ExtResource( 4 )
-
-[node name="LightTurret3" parent="Background/Grid" instance=ExtResource( 3 )]
-margin_top = 56.0
-margin_right = 26.0
-margin_bottom = 82.0
-texture_disabled = ExtResource( 4 )
-
-[node name="LightTurret4" parent="Background/Grid" instance=ExtResource( 3 )]
-margin_top = 84.0
-margin_right = 26.0
-margin_bottom = 110.0
-texture_disabled = ExtResource( 4 )
-
-[node name="LightTurret5" parent="Background/Grid" instance=ExtResource( 3 )]
-margin_top = 112.0
-margin_right = 26.0
-margin_bottom = 138.0
-texture_disabled = ExtResource( 4 )
-[connection signal="pressed" from="Background/Grid/LightTurret" to="." method="_on_LightTurret_pressed"]
-[connection signal="pressed" from="Background/Grid/LightTurret2" to="." method="_on_LightTurret_pressed"]
-[connection signal="pressed" from="Background/Grid/LightTurret3" to="." method="_on_LightTurret_pressed"]
-[connection signal="pressed" from="Background/Grid/LightTurret4" to="." method="_on_LightTurret_pressed"]
-[connection signal="pressed" from="Background/Grid/LightTurret5" to="." method="_on_LightTurret_pressed"]
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 5 )
+texture_disabled = ExtResource( 6 )
+[connection signal="pressed" from="Background/Grid/CF" to="." method="_on_CF_pressed"]

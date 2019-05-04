@@ -14,11 +14,12 @@ var grid_state = GridState.HIDE setget set_grid_state, get_grid_state
 var is_setup = false
 
 var mouse_gpos : Vector2
-var cursor_position : Vector2
+var cursor_position := Vector2(1, 1)
 var cursor_size : Vector2
 
 var tilemap
 var structure
+var structure_box
 var actor
 var build_id
 
@@ -38,9 +39,13 @@ func setup(_tilemap : GTilemap, _build_id : int, _actor):
 	tilemap = _tilemap
 	build_id = _build_id
 	structure = BuildManager.get_constructible(build_id)
+	structure_box = BuildManager.get_structure_box(build_id)
 	actor = _actor
 	
 	is_setup = true
+	
+	if _actor:
+		grid_state = GridState.SELECTING
 
 func reset_setup():
 	tilemap = null
@@ -92,39 +97,36 @@ func state_selecting():
 	$Structure.rect_position = $Place.rect_position
 	
 	if Input.is_action_just_pressed("select"):
-		structure.global_position = $Structure.rect_position
-		structure.global_position += 8 * cursor_size
-		get_parent().add_child(structure)
+		structure_box.global_position = $Structure.rect_position
+		structure_box.global_position += 8 * cursor_size
+		get_parent().add_child(structure_box)
 	
 func state_cant_select():
 	pass
 
 func adaptate_cursor(_structure : GStructure):
-	$Structure.texture = BuildManager.get_build_texture_for_terrain(build_id)
-
 	match _structure.structure_size:
-		_structure.StructureSize.W1X1:
+		Enums.StructureSize.W1X1:
 			pass
-		_structure.StructureSize.S1X1:
+		Enums.StructureSize.S1X1:
 			cursor_size = Vector2(1, 1)
-			$Place.rect_size = 16 * cursor_size
-			cursor_position = Vector2(0, 0)
-		_structure.StructureSize.S2X2:
+		Enums.StructureSize.S2X2:
 			cursor_size = Vector2(2, 2)
-			$Place.rect_size = 16 * cursor_size
-			cursor_position = Vector2(1, 1)
-		_structure.StructureSize.S3X3:
+			
+			$BuildArea/BuildArea/Area3.disable_area()
+			$BuildArea/BuildArea/Area6.disable_area()
+			$BuildArea/BuildArea/Area7.disable_area()
+			$BuildArea/BuildArea/Area8.disable_area()
+			$BuildArea/BuildArea/Area9.disable_area()
+		Enums.StructureSize.S3X3:
 			cursor_size = Vector2(3, 3)
 			$Place.rect_size = 16 * cursor_size
-			cursor_position = Vector2(1, 1)
-		_structure.StructureSize.S2X3:
+		Enums.StructureSize.S2X3:
 			cursor_size = Vector2(2, 3)
 			$Place.rect_size = 16 * cursor_size
-			cursor_position = Vector2(1, 1)
-		_structure.StructureSize.S3X2:
+		Enums.StructureSize.S3X2:
 			cursor_size = Vector2(3, 2)
 			$Place.rect_size = 16 * cursor_size
-			cursor_position = Vector2(1, 1)
 	
 func _on_prepare_to_build(tilemap, _build_id, actor):
 	# A veces actor puede ser null, esto es en los

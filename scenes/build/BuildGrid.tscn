@@ -24,7 +24,6 @@ rect_min_size = Vector2( 16, 16 )
 position = Vector2( -24, -24 )
 
 [node name="BuildArea" type="GridContainer" parent="BuildArea"]
-editor/display_folded = true
 margin_right = 40.0
 margin_bottom = 40.0
 custom_constants/vseparation = 0

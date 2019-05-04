@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/LightTurret-Disabled.png-9bb4f2597921ad21fbdc47d6adfbf180.stex"
+path="res://.import/StructureBoxProgress-Progress.png-a622c21dcbbcf5ea7fa626cbe7f119a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/build_menu/BuildsImages/LightTurret-Disabled.png"
-dest_files=[ "res://.import/LightTurret-Disabled.png-9bb4f2597921ad21fbdc47d6adfbf180.stex" ]
+source_file="res://scenes/items/structure_boxes/StructureBoxProgress-Progress.png"
+dest_files=[ "res://.import/StructureBoxProgress-Progress.png-a622c21dcbbcf5ea7fa626cbe7f119a7.stex" ]
 
 [params]
 

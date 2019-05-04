@@ -37,4 +37,3 @@ root_node = NodePath("../Rotator")
 position = Vector2( 12, 0 )
 
 [node name="AttackDelay" type="Timer" parent="." index="7"]
-

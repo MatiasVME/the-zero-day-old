@@ -15,6 +15,8 @@ var structure_owner : String
 
 var _can_iteract := false
 
+# De momento esto esta replicado en el Enums, mas adelante
+# hay que borrarlo
 enum StructureSize {
 	W1X1, # Wall 1x1
 	S1X1, # Structure 1x1
