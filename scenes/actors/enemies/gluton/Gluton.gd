@@ -94,7 +94,9 @@ func _physics_process(delta):
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
 			current_time_to_random_objective += delta
-	
+		State.STUNNED:
+			stunned(delta)
+				
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
@@ -176,6 +178,13 @@ func run(objective):
 	velocity = steer(objective)
 	move_and_slide(velocity * 2)
 	
+#Rutina cuando es impactado por un proyectil con Knockback
+func stunned(delta : float):
+	var collider = move_and_collide(velocity * delta)
+	velocity *= 0.9
+	if velocity.length() < 1.0 and not (state == State.ATTACK or state == State.DIE):
+		change_state(State.RANDOM_WALK) 
+	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
 	
@@ -253,6 +262,9 @@ func _on_DamageArea_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		body.dead()
 		.damage(body.damage)
+		if body.get("repulsion") and state != State.DIE:
+			change_state(State.STUNNED)
+			knockback(body.global_position, body.repulsion)
 		if data.hp != 0: $Sounds/Damage.play()
 	
 func _on_AttackArea_body_entered(body):
@@ -269,6 +281,9 @@ func _on_AttackArea_body_exited(body):
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
 	current_time_to_random_objective = 0
+
+func knockback(from : Vector2, impulse :float = 1) -> void:
+	velocity = (global_position - from).normalized() * impulse
 
 #Funcion que se define cuando un enemigo es aplastable
 func crushed() -> void:

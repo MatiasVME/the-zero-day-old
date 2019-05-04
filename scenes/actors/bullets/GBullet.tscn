@@ -1,12 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/actors/bullets/GBullet.gd" type="Script" id=1]
-[ext_resource path="res://scenes/actors/bullets/BulletPlaceholder.png" type="Texture" id=2]
-[ext_resource path="res://sounds/sfx/HitWall1.wav" type="AudioStream" id=3]
+[ext_resource path="res://scenes/actors/bullets/xor341-bullet/proyectil_01.png" type="Texture" id=2]
+[ext_resource path="res://scenes/actors/bullets/xor341-bullet/proyectil_02.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/bullets/xor341-bullet/proyectil_03.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/bullets/xor341-bullet/proyectil_04.png" type="Texture" id=5]
+[ext_resource path="res://sounds/sfx/HitWall1.wav" type="AudioStream" id=6]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -78,7 +81,6 @@ anims/dead = SubResource( 3 )
 [node name="Fire" type="AudioStreamPlayer2D" parent="."]
 
 [node name="HitWall" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 3 )
-
+stream = ExtResource( 6 )
 [connection signal="timeout" from="TimeToDead" to="." method="_on_TimeToDead_timeout"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]

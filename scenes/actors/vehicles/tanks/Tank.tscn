@@ -22,7 +22,6 @@ script = ExtResource( 3 )
 [node name="EnterArea" parent="." index="4"]
 collision_layer = 3
 collision_mask = 3
-
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="body_entered" from="EnterArea" to="." method="_on_EnterArea_body_entered"]
 [connection signal="body_exited" from="EnterArea" to="." method="_on_EnterArea_body_exited"]

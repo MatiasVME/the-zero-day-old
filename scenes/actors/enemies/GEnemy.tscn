@@ -21,7 +21,6 @@ autostart = true
 
 [node name="Navigator" type="Node" parent="."]
 script = ExtResource( 2 )
-
 [connection signal="mouse_entered" from="." to="." method="_on_GEnemy_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_GEnemy_mouse_exited"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]

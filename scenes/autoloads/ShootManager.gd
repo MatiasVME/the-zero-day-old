@@ -8,7 +8,8 @@ extends Node
 
 enum Bullet {
 	NORMAL,
-	PLASMA
+	PLASMA,
+	XOR341
 }
 
 func _physics_process(delta):
@@ -27,6 +28,8 @@ func get_bullet_instance(bullet_num):
 			return load("res://scenes/actors/bullets/plasma/Plasma.tscn").instance()
 		Bullet.NORMAL:
 			return load("res://scenes/actors/bullets/common_bullet/CommonBullet.tscn").instance()
+		Bullet.XOR341:
+			return load("res://scenes/actors/bullets/xor341-bullet/KnockBackBullet.tscn").instance()
 	
 	print("ERROR: no se encuentra la bullet: ", bullet_num)
 	

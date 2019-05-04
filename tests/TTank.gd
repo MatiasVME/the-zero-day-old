@@ -10,3 +10,5 @@ func _ready():
 	$GameCamera.mode = $GameCamera.Mode.FOLLOW
 	
 	$HUD.set_hud_actor(player)
+	
+	$NormalChest.test()

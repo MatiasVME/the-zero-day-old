@@ -48,6 +48,9 @@ func get_input() -> void:
 		
 	dir_rotation = int(Input.is_action_pressed("ui_right")) - int(Input.is_action_pressed("ui_left"))
 	dir_move = int(Input.is_action_pressed("ui_down")) - int(Input.is_action_pressed("ui_up"))
+	
+	if get_driver() and Input.is_action_just_pressed("fire"):
+		cannon.fire()
 
 
 func _physics_process(delta):
