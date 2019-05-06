@@ -37,8 +37,21 @@ func get_build_texture_button(build_id):
 			]
 	
 func get_structure_box(build_id):
+	var structure_box
+	
 	match build_id:
 		Enums.StructureType.COMMON_FACTORY:
-			return load("res://scenes/items/structure_boxes/factories/common/CommonFactoryBoxInWorld.tscn")
+			structure_box = ZDStructureBox.new()
+			structure_box.time_to_open = 3.0
+			structure_box.structure_box_type = Enums.StructureType.COMMON_FACTORY
+			return structure_box
 
-
+func get_structure_box_in_world(build_id):
+	var structure_box = get_structure_box(build_id)
+	var structure_box_in_world
+	
+	match build_id:
+		Enums.StructureType.COMMON_FACTORY:
+			structure_box_in_world = load("res://scenes/items/structure_boxes/factories/common/CommonFactoryBoxInWorld.tscn").instance()
+			structure_box_in_world.setup(structure_box)
+			return structure_box_in_world

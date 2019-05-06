@@ -134,6 +134,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/json_beautifier/json_beautifier.gd"
 }, {
+"base": "GBullet",
+"class": "KnockBackBullet",
+"language": "GDScript",
+"path": "res://scenes/actors/bullets/xor341-bullet/KnockBackBullet.gd"
+}, {
 "base": "Node",
 "class": "Navigator",
 "language": "GDScript",
@@ -295,6 +300,7 @@ _global_script_class_icons={
 "InventorySlot": "",
 "ItemInWorld": "",
 "JSONBeautifier": "",
+"KnockBackBullet": "",
 "Navigator": "",
 "PHAmmo": "",
 "PHCharacter": "",

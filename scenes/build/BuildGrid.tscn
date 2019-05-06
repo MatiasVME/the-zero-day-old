@@ -10,11 +10,6 @@ script = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
 format = 1
 
-[node name="Structure" type="TextureRect" parent="."]
-margin_right = 16.0
-margin_bottom = 16.0
-rect_min_size = Vector2( 16, 16 )
-
 [node name="Place" type="TextureRect" parent="."]
 margin_right = 16.0
 margin_bottom = 16.0

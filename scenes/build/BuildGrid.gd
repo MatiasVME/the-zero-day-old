@@ -20,6 +20,8 @@ var cursor_size : Vector2
 var tilemap
 var structure
 var structure_box
+var structure_box_in_world
+var build_location : Vector2
 var actor
 var build_id
 
@@ -79,27 +81,33 @@ func state_inite_core():
 	mouse_gpos = get_global_mouse_position()
 	$BuildArea.position.x = (mouse_gpos.x - (int(abs(mouse_gpos.x)) % 16)) - cursor_position.x * 16
 	$BuildArea.position.y = (mouse_gpos.y - (int(abs(mouse_gpos.y)) % 16)) - cursor_position.y * 16
-	$Structure.rect_position = $BuildArea.position
 
 	if Input.is_action_just_pressed("select"):
-		structure.global_position = $Structure.rect_position
+		structure.global_position = $BuildArea.position
 		structure.global_position += 8 * cursor_size
+		
 		get_parent().add_child(structure)
 
 		grid_state = GridState.HIDE
 
 func state_selecting():
 	show()
+	
 	mouse_gpos = get_global_mouse_position()
-	
-	$Place.rect_position.x = (mouse_gpos.x - (int(round(mouse_gpos.x)) % 16)) - cursor_position.x * 16
-	$Place.rect_position.y = (mouse_gpos.y - (int(round(mouse_gpos.y)) % 16)) - cursor_position.y * 16
-	$Structure.rect_position = $Place.rect_position
-	
+	$BuildArea.position.x = (mouse_gpos.x - (int(abs(mouse_gpos.x)) % 16)) - cursor_position.x * 16
+	$BuildArea.position.y = (mouse_gpos.y - (int(abs(mouse_gpos.y)) % 16)) - cursor_position.y * 16
+
 	if Input.is_action_just_pressed("select"):
-		structure_box.global_position = $Structure.rect_position
-		structure_box.global_position += 8 * cursor_size
-		get_parent().add_child(structure_box)
+		structure_box_in_world = BuildManager.get_structure_box_in_world(Enums.StructureType.COMMON_FACTORY)
+		structure_box_in_world.global_position.x = $BuildArea.position.x + 8 + 16
+		structure_box_in_world.global_position.y = $BuildArea.position.y + 8 + 16
+		
+		get_parent().add_child(structure_box_in_world)
+		
+		structure_box_in_world.connect("finished", self, "_on_structure_box_finished")
+		structure_box_in_world.start()
+
+		grid_state = GridState.HIDE
 	
 func state_cant_select():
 	pass
@@ -128,6 +136,10 @@ func adaptate_cursor(_structure : GStructure):
 			cursor_size = Vector2(3, 2)
 			$Place.rect_size = 16 * cursor_size
 	
+func _on_structure_box_finished(structure_type):
+	structure.global_position = $BuildArea.position + 8 * cursor_size
+	add_child(structure)
+	
 func _on_prepare_to_build(tilemap, _build_id, actor):
 	# A veces actor puede ser null, esto es en los
 	# casos de que se necesite crear el core primero
@@ -137,5 +149,5 @@ func _on_prepare_to_build(tilemap, _build_id, actor):
 	
 	if not actor:
 		grid_state = GridState.INIT_CORE
-	
+
 	

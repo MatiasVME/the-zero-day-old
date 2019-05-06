@@ -5,14 +5,17 @@ var texture_disabled = preload("res://scenes/build/place/CantSelecting.png")
 
 func disable_area():
 	$IsBuildable/Collision.disabled = true
-	hide()
+	texture = null
 	
 func enable_area():
 	$IsBuildable/Collision.disabled = false
-	show()
+	texture = texture_enable
 
 func _on_IsBuildable_body_entered(body):
 	texture = texture_disabled
 
 func _on_IsBuildable_body_exited(body):
-	texture = texture_enable
+	if not $IsBuildable/Collision.disabled:
+		texture = texture_enable
+	else:
+		texture = null
