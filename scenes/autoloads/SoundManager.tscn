@@ -50,4 +50,3 @@ stream = ExtResource( 11 )
 
 [node name="ConsumeItem1" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
-

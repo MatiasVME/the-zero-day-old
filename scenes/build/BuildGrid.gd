@@ -26,6 +26,10 @@ var actor
 var build_id
 
 onready var initial_players = get_tree().get_nodes_in_group("Player")
+onready var areas = $BuildArea/BuildArea.get_children()
+
+# Se emite cuando no puede seleccionar un area para construir
+signal cant_select()
 
 func _ready():
 	BuildManager.connect("prepare_to_build", self, "_on_prepare_to_build")
@@ -63,8 +67,8 @@ func _process(delta):
 			state_inite_core()
 		GridState.SELECTING:
 			state_selecting()
-		GridState.CANT_SELECT:
-			state_cant_select()
+#		GridState.CANT_SELECT:
+#			state_cant_select()
 
 func set_grid_state(_grid_state):
 	grid_state = _grid_state
@@ -79,10 +83,10 @@ func state_inite_core():
 	show()
 	
 	mouse_gpos = get_global_mouse_position()
-	$BuildArea.position.x = (mouse_gpos.x - (int(abs(mouse_gpos.x)) % 16)) - cursor_position.x * 16
-	$BuildArea.position.y = (mouse_gpos.y - (int(abs(mouse_gpos.y)) % 16)) - cursor_position.y * 16
+	$BuildArea.position.x = (mouse_gpos.x - (int(mouse_gpos.x) % 16)) - cursor_position.x * 16
+	$BuildArea.position.y = (mouse_gpos.y - (int(mouse_gpos.y) % 16)) - cursor_position.y * 16
 
-	if Input.is_action_just_pressed("select"):
+	if Input.is_action_just_pressed("select") and can_select():
 		structure.global_position = $BuildArea.position
 		structure.global_position += 8 * cursor_size
 		
@@ -94,10 +98,10 @@ func state_selecting():
 	show()
 	
 	mouse_gpos = get_global_mouse_position()
-	$BuildArea.position.x = (mouse_gpos.x - (int(abs(mouse_gpos.x)) % 16)) - cursor_position.x * 16
-	$BuildArea.position.y = (mouse_gpos.y - (int(abs(mouse_gpos.y)) % 16)) - cursor_position.y * 16
+	$BuildArea.position.x = (mouse_gpos.x - (int(mouse_gpos.x) % 16)) - cursor_position.x * 16
+	$BuildArea.position.y = (mouse_gpos.y - (int(mouse_gpos.y) % 16)) - cursor_position.y * 16
 
-	if Input.is_action_just_pressed("select"):
+	if Input.is_action_just_pressed("select") and can_select():
 		structure_box_in_world = BuildManager.get_structure_box_in_world(Enums.StructureType.COMMON_FACTORY)
 		structure_box_in_world.global_position.x = $BuildArea.position.x + 8 + 16
 		structure_box_in_world.global_position.y = $BuildArea.position.y + 8 + 16
@@ -109,8 +113,12 @@ func state_selecting():
 
 		grid_state = GridState.HIDE
 	
-func state_cant_select():
-	pass
+func can_select():
+	for area in areas:
+		if not area.is_disabled and not area.is_selectable:
+			emit_signal("cant_select")
+			return false
+	return true
 
 func adaptate_cursor(_structure : GStructure):
 	match _structure.structure_size:
