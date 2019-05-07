@@ -102,7 +102,7 @@ func state_selecting():
 		structure_box_in_world.global_position.x = $BuildArea.position.x + 8 + 16
 		structure_box_in_world.global_position.y = $BuildArea.position.y + 8 + 16
 		
-		get_parent().add_child(structure_box_in_world)
+		get_parent().get_parent().add_child(structure_box_in_world)
 		
 		structure_box_in_world.connect("finished", self, "_on_structure_box_finished")
 		structure_box_in_world.start()
@@ -138,7 +138,7 @@ func adaptate_cursor(_structure : GStructure):
 	
 func _on_structure_box_finished(structure_type):
 	structure.global_position = $BuildArea.position + 8 * cursor_size
-	add_child(structure)
+	get_parent().get_parent().add_child(structure)
 	
 func _on_prepare_to_build(tilemap, _build_id, actor):
 	# A veces actor puede ser null, esto es en los
@@ -149,5 +149,4 @@ func _on_prepare_to_build(tilemap, _build_id, actor):
 	
 	if not actor:
 		grid_state = GridState.INIT_CORE
-
 	

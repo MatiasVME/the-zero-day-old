@@ -19,7 +19,7 @@ func start():
 func _on_TimerStep_timeout():
 	$Progress.value += $TimerStep.wait_time
 	
-	if $Progress.value == $Progress.max_value:
+	if $Progress.value >= $Progress.max_value:
 		$TimerStep.stop()
 		
 		$Anim.play_backwards("show")
