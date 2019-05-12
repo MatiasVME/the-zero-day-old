@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/new-dorbot-face.png-6f9ea26b3e9b5b05839bff42bf7b11a4.stex"
+path="res://.import/matbot-face.png-297d9a1fff0ca63abddfb1486e2e5e3f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/avatar_handler/players_images/new-dorbot-face.png"
-dest_files=[ "res://.import/new-dorbot-face.png-6f9ea26b3e9b5b05839bff42bf7b11a4.stex" ]
+source_file="res://scenes/hud/avatar_handler/players_images/matbot-face.png"
+dest_files=[ "res://.import/matbot-face.png-297d9a1fff0ca63abddfb1486e2e5e3f.stex" ]
 
 [params]
 

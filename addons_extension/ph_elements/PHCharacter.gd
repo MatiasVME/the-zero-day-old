@@ -12,13 +12,7 @@ extends RPGCharacter
 
 class_name PHCharacter
 
-enum PlayerType {
-	DORBOT,
-	MATBOT,
-	PIXBOT,
-	SERBOT
-}
-var player_type = PlayerType.DORBOT setget set_player_type, get_player_type
+var player_type = Enums.PlayerType.DORBOT setget set_player_type, get_player_type
 
 var unique_id : String
 
@@ -49,11 +43,11 @@ func get_player_type():
 
 func _get_character_name(player_type):
 	match player_type:
-		PlayerType.DORBOT:
+		Enums.PlayerType.DORBOT:
 			return "Dorbot"
-		PlayerType.MATBOT:
+		Enums.PlayerType.MATBOT:
 			return "Matbot"
-		PlayerType.PIXBOT:
+		Enums.PlayerType.PIXBOT:
 			return "Pixbot"
-		PlayerType.SERBOT:
+		Enums.PlayerType.SERBOT:
 			return "Serbot"

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/new-serbot-face.png-3dce3a733adda3b661f7de5cd385b948.stex"
+path="res://.import/pixbot-face.png-4f2c4ef8359bb937363ede8dddb20f2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/avatar_handler/players_images/new-serbot-face.png"
-dest_files=[ "res://.import/new-serbot-face.png-3dce3a733adda3b661f7de5cd385b948.stex" ]
+source_file="res://scenes/hud/avatar_handler/players_images/pixbot-face.png"
+dest_files=[ "res://.import/pixbot-face.png-4f2c4ef8359bb937363ede8dddb20f2a.stex" ]
 
 [params]
 

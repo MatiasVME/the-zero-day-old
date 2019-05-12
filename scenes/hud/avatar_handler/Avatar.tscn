@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/hud/avatar_handler/Avatar.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/avatar_handler/images/avatar-background-normal.png" type="Texture" id=2]
-[ext_resource path="res://scenes/hud/avatar_handler/players_images/new-dorbot-face.png" type="Texture" id=3]
+[ext_resource path="res://scenes/hud/avatar_handler/players_images/dorbot-face.png" type="Texture" id=3]
 [ext_resource path="res://scenes/hud/avatar_handler/images/bars/BackgroundBar.png" type="Texture" id=4]
 [ext_resource path="res://scenes/hud/avatar_handler/images/bars/HealthBar.png" type="Texture" id=5]
 [ext_resource path="res://scenes/hud/avatar_handler/images/heart.png" type="Texture" id=6]
@@ -155,4 +155,3 @@ custom_fonts/font = ExtResource( 9 )
 custom_colors/font_color = Color( 0.94902, 0.65098, 0.368627, 1 )
 text = "999"
 align = 2
-
