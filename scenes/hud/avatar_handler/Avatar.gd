@@ -4,6 +4,9 @@ class_name Avatar
 
 var actor
 
+onready var avatar_selected = preload("res://scenes/hud/avatar_handler/images/avatar-background-selected.png")
+onready var avatar_not_selected = preload("res://scenes/hud/avatar_handler/images/avatar-background-normal.png")
+
 func _ready():
 	PlayerManager.connect("player_gain_hp", self, "_on_player_gain_hp")
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")
@@ -34,7 +37,13 @@ func get_photo(player_type):
 			return load("res://scenes/hud/avatar_handler/players_images/pixbot-face.png")
 		Enums.PlayerType.SERBOT:
 			return load("res://scenes/hud/avatar_handler/players_images/serbot-face.png")
-		
+
+func select():
+	$AvatarBackground.texture = avatar_selected
+	
+func deselect():
+	$AvatarBackground.texture = avatar_not_selected
+	
 func _on_player_gain_hp(player, hp):
 	$HealthBar.value = player.data.hp
 	$HealthBar/AnimHealth.play("health")

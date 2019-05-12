@@ -27,7 +27,7 @@ func set_hud_actor(actor : GActor):
 	hud_actor = actor
 	
 	$Hotbar.set_hotbar_actor(actor)
-	$AvatarHandler.add_avatar(actor)
+	$AvatarHandler.select_avatar(actor)
 	
 	$AnimHotbar.play("show")
 
