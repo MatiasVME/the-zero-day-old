@@ -31,7 +31,7 @@ func set_hud_actor(actor : GActor):
 	
 	$AnimHotbar.play("show")
 
-func add_to_hud(actor : GActor):
+func add_actor_to_hud(actor : GActor):
 	$AvatarHandler.add_avatar(actor)
 	
 func _on_player_dead(player):

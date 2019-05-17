@@ -97,22 +97,19 @@ texture = ExtResource( 1 )
 script = ExtResource( 2 )
 
 [node name="CoreImg" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -45 )
+position = Vector2( 0, -35 )
 frames = SubResource( 1 )
 animation = "idle"
 
 [node name="Grid" type="GridContainer" parent="."]
 editor/display_folded = true
 margin_left = -38.0
-margin_top = -15.0
+margin_top = -5.0
 margin_right = 38.0
-margin_bottom = 22.0
+margin_bottom = 32.0
 custom_constants/vseparation = 4
 custom_constants/hseparation = 4
 columns = 4
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Dorbot" type="TextureButton" parent="Grid"]
 margin_right = 16.0
@@ -159,13 +156,12 @@ texture_disabled = ExtResource( 35 )
 
 [node name="OkBots" type="TextureButton" parent="."]
 margin_left = -19.0
-margin_top = 26.0
+margin_top = 16.0
 margin_right = 19.0
-margin_bottom = 36.0
+margin_bottom = 26.0
 disabled = true
 texture_normal = ExtResource( 36 )
 texture_pressed = ExtResource( 37 )
 texture_hover = ExtResource( 38 )
 texture_disabled = ExtResource( 39 )
-
 [connection signal="pressed" from="OkBots" to="." method="_on_OkBots_pressed"]
