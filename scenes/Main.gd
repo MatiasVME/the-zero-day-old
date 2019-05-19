@@ -1,65 +1,24 @@
 extends Node2D
 
-const CameraMenu = preload("res://tests/test_menu_screens/CameraMenu.gd")
+func _ready():
+	$Camera.smoothing_speed = 15
+	$Camera.global_position = global_position
+	
+	$Version.text = Main.VERSION
 
-#onready var camera : CameraMenu = CameraManager.set_camera_menu()
-onready var main_menu := $MainMenu
-onready var splash := $Splash
-onready var play_menu := $Play
-onready var notes_menu := $NotesMenu
-onready var credits_menu := $Credits
-onready var aventure_mode := $AventureMode
+func _on_Back_pressed():
+	$Camera.global_position = global_position
 
-#func _ready():
-#	camera.target = splash
+func _on_ButtonCredits_pressed():
+	$Camera.global_position = $Credits.global_position
+	$Credits._resume()
 
-func _on_MainMenu_play_pressed():
-	# Cambiar a menu Play
-	camera.target.focus = false
-	camera.target = play_menu
-	camera.target.focus = true
-	pass
+func _on_BackFromCredits_pressed():
+	$Camera.global_position = global_position
 
-func _on_MainMenu_options_pressed():
-	# Cambiar a menu Options
-	pass
+func _on_ButtonAdventureMode_pressed():
+	$Camera.global_position = $AdventureMode.global_position
 
-func _on_MainMenu_credits_pressed():
-	# Cambiar a menu Credits
-	camera.target.focus = false
-	camera.target = credits_menu
-	camera.target.focus = true
-
-func _on_Splash_splash_finished():
-	camera.target = main_menu
-	camera.target.focus = true
-
-func _on_Play_back_pressed():
-	camera.target.focus = false
-	camera.target = main_menu
-	camera.target.focus = true
-
-func _on_CameraMenu_target_reached():
-	if splash and camera.target != splash:
-		splash.get_node("AnimSplash").play("finish")
-		splash = null
-
-func _on_NotesMenu_back_from_notes_pressed():
-	camera.target.focus = false
-	camera.target = main_menu
-	camera.target.focus = true
-
-func _on_MainMenu_notes_pressed():
-	camera.target.focus = false
-	camera.target = notes_menu
-	camera.target.focus = true
-
-func _on_Credits_back_from_credits_pressed():
-	camera.target.focus = false
-	camera.target = main_menu
-	camera.target.focus = true
-
-func _on_Play_campaign_pressed():
-	camera.target.focus = false
-	camera.target = aventure_mode
-	camera.target.focus = true
+func _on_DeleteData_pressed():
+	DataManager.remove_all_data()
+	get_tree().quit()

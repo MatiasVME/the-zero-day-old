@@ -47,7 +47,6 @@ valign = 1
 autowrap = true
 
 [node name="Maps" type="GridContainer" parent="."]
-editor/display_folded = true
 margin_left = 10.0
 margin_top = -60.0
 margin_right = 200.0
@@ -79,9 +78,9 @@ editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 87.0
-margin_right = 170.0
-margin_bottom = 116.0
+margin_left = 97.0
+margin_right = 190.0
+margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -102,7 +101,7 @@ visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 62.0
-margin_right = 83.0
+margin_right = 93.0
 margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -123,9 +122,9 @@ editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 87.0
+margin_left = 97.0
 margin_top = 62.0
-margin_right = 170.0
+margin_right = 190.0
 margin_bottom = 120.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -149,5 +148,4 @@ margin_bottom = 112.0
 texture_normal = ExtResource( 4 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
-
 [connection signal="pressed" from="Maps/Map1" to="." method="_on_Map1_pressed"]
