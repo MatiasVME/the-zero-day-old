@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/test.png-111711164618f9c3fa78d775411aa3af.res"
+
+[deps]
+
+source_file="res://scenes/buttons/main_menu_button/test.png"
+dest_files=[ "res://.import/test.png-111711164618f9c3fa78d775411aa3af.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5

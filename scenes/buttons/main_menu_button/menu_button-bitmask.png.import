@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/menu_button-bitmask.png-165b32265ca0b9ea9a90a3e9c94d35ab.res"
+
+[deps]
+
+source_file="res://scenes/buttons/main_menu_button/menu_button-bitmask.png"
+dest_files=[ "res://.import/menu_button-bitmask.png-165b32265ca0b9ea9a90a3e9c94d35ab.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
