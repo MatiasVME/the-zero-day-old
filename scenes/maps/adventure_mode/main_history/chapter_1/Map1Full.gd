@@ -11,6 +11,7 @@ func _ready():
 	$GameCamera.following = player
 	$GameCamera.mode = $GameCamera.Mode.FOLLOW
 	
+	$HUD.add_actor_to_hud(player)
 	$HUD.set_hud_actor(player)
 	
 	var weapon = Factory.ItemInWorldFactory.create_from_item(Factory.ItemFactory.create_rand_distance_weapon(1, 1, 1, 1))

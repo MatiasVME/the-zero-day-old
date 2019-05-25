@@ -154,7 +154,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	
 	return weapon
 
-static func create_normal_ammo(ammo_amount := 16):
+static func create_normal_ammo(ammo_amount := 32):
 	var ammo = PHAmmo.new()
 	
 	ammo.item_name = "Normal Ammo"
@@ -166,7 +166,7 @@ static func create_normal_ammo(ammo_amount := 16):
 	
 	return ammo
 
-static func create_plasma_ammo(ammo_amount := 8):
+static func create_plasma_ammo(ammo_amount := 16):
 	var ammo = PHAmmo.new()
 	
 	ammo.item_name = "Plasma Ammo"
