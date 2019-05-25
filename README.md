@@ -18,9 +18,13 @@ Manejas un personaje, desde una perspectiva top-down, con los controles WASD. Es
 * Sin idioma: Las cosas se explicarán con imágenes y animaciones, dentro de lo posible no usar letras. Excepto para el nombre de los ítems.
 * Generación aleatoria controlada del mapa: Los mapas de multiplayer se generarán de forma aleatoria. También se generarán dúngeons aleatorias.
 
+# Alpha 3
+
+[![Alpha 3 The Zero Day](https://img.youtube.com/vi/ekdGdXfN0s8/0.jpg)](https://www.youtube.com/watch?v=ekdGdXfN0s8 "Alpha 3 The Zero Day")
+
 # Devlogs
 
-[![Último Devlog The Zero Day](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo&list=PLCCvCjJoQ5QV7Gei_Yc2H1JArNLPylgzQ "Devlog The Zero Day")
+[![Último Devlog The Zero Da](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo&list=PLCCvCjJoQ5QV7Gei_Yc2H1JArNLPylgzQ "Devlog The Zero Day")
 
 ## Se buscan colaboradores
 
