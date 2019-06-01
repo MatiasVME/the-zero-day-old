@@ -264,6 +264,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/vehicles/tanks/Tank.gd"
 }, {
+"base": "EditorPlugin",
+"class": "TerrainGenerator",
+"language": "GDScript",
+"path": "res://addons/terrain_generator/TerrainGenerator.gd"
+}, {
 "base": "GActor",
 "class": "Vehicle",
 "language": "GDScript",
@@ -326,6 +331,7 @@ _global_script_class_icons={
 "RPGStructure": "",
 "RPGWeightInventory": "res://addons/rpg_elements/icons/RPGWeightInventory.png",
 "Tank": "",
+"TerrainGenerator": "res://addons/terrain_generator/icon.png",
 "Vehicle": "",
 "ZDStructureBox": ""
 }
@@ -349,6 +355,7 @@ CursorManager="*res://scenes/autoloads/CursorManager.gd"
 RandomNameGenerator="*res://scenes/autoloads/random_name_generator/RandomNameGenerator.gd"
 BuildManager="*res://scenes/autoloads/BuildManager.gd"
 StructurePanelManager="*res://scenes/autoloads/StructurePanelManager.tscn"
+TerrainGenerator="*res://addons/terrain_generator/TerrainGenerator.gd"
 
 [debug]
 
@@ -365,7 +372,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "terrain_generator", "wakatime" )
 
 [importer_defaults]
 

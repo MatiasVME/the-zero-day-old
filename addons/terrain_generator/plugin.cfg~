@@ -1,0 +1,7 @@
+[plugin]
+
+name="RPGElements"
+description="Plugin for Godot Engine that adds new nodes to facilitate RPG game logic."
+author="Matías Muñoz Espinoza"
+version="0.4.0"
+script="plugin.gd"
