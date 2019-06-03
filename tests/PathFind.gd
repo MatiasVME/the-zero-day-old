@@ -19,6 +19,7 @@ func _ready():
 	player2.enable_player()
 	player2.get_node("GInput").active(false)
 	player2.get_node("GPlayerAI").active()
+	player2.get_node("GPlayerAI").PLAYER_TARGET = player
 	
 	$GameCamera.following = player
 	$GameCamera.mode = $GameCamera.Mode.FOLLOW

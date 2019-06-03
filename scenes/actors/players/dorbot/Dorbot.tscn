@@ -42,7 +42,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "DanceOfVictory"
 
 [sub_resource type="Animation" id=3]
@@ -134,9 +134,8 @@ modulate = Color( 1, 1, 1, 0.961091 )
 frames = SubResource( 1 )
 
 [node name="Anim" parent="." index="4"]
-anims/DanceOfVictory = SubResource( 6 )
+anims/DanceOfVictory = SubResource( 2 )
 anims/Idle = ExtResource( 18 )
 anims/MoveDown = SubResource( 3 )
 anims/MoveSide = SubResource( 4 )
 anims/MoveUp = SubResource( 5 )
-
