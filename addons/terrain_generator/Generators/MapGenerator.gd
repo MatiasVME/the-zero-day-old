@@ -13,14 +13,12 @@ static func create(config, result_type):
 	noise.octaves = config["Octaves"]
 	noise.period = config["Period"]
 	noise.persistence = config["Persistence"]
-#	noise.lacunarity = config["Lacunarity"]
-	print("Noise.lacunarity ", noise.lacunarity)
+	noise.lacunarity = config["Lacunarity"]
 	
 	match result_type:
-		ResultType.ARRAY: return _create_array(config, noise)
+		ResultType.ARRAY: return _create_array_map(config, noise)
 	
-static func _create_array(config, noise):
-#	print("Config: ", config)
+static func _create_array_map(config, noise):
 	var result = []
 
 	for y in config["ChunkMapSize"].y:
@@ -30,40 +28,38 @@ static func _create_array(config, noise):
 			row.append(_create_chunk(config, noise, Vector2(x, y)))
 		
 		result.append(row)
-
-#	for y in size:
-#		var  = 
-#
-#		for x in size:
-#			arr.append(noise.get_noise_2dv(Vector2(x, y)))
-#
-#		result.append(arr)
-#
-#	return result
+		
+	return result
 	
 static func _create_chunk(config, noise, position):
 	var result = {
 		"Position" : position,
-		"Biome" : _get_biome(config, noise, position),
-		"Data" : {}
+		"Data" : _get_chunk(config, noise, position)
 	}
-	print(result)
+	return result
+
+static func _get_chunk(config, noise, position : Vector2):
+	var result = []
 	
-static func _get_biome(config, noise, position):
-#	print(config["Biomes"].size())
-	var biomes = config["Biomes"].keys()
-	
-	for biome_num in config["Biomes"].size():
-#	for biome in config["Biomes"].values():
-		var e = noise.get_noise_2dv(position)
-		print(e)
-#		print(config["Biomes"][biome_num])
-#		print(e)
+	for y in config["ChunkSize"]:
+		var row = []
 		
-		if e < config["Biomes"][biomes[biome_num]]["Occurrence"]:
-			return biomes[biome_num]
+		for x in config["ChunkSize"]:
+			row.append(_get_block(config, noise, Vector2(x + position.x * config["ChunkSize"], y + position.y * config["ChunkSize"])))
+			
+		result.append(row)
 	
+	return result
 	
+static func _get_block(config, noise, position : Vector2) -> String:
+	var pos_value = noise.get_noise_2dv(position)
 	
+	var blocks_osccurrence_keys = config["BlocksOccurrence"].keys()
+	var blocks_osccurrence_values = config["BlocksOccurrence"].values()
 	
+	for i in config["BlocksOccurrence"].size():
+		if pos_value < blocks_osccurrence_values[i]:
+			return blocks_osccurrence_keys[i]
+	
+	return ""
 	

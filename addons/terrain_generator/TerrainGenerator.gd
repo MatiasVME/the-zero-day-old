@@ -40,10 +40,10 @@ func create_terrain(terrain_type, config, result_type):
 #			_create_dungeon_terrain(result_type)
 			pass
 		TerrainType.MAP:
-			_create_map_terrain(config, result_type)
+			return _create_map_terrain(config, result_type)
 
 func _create_map_terrain(config, result_type):
-	MapGenerator.create(config, result_type)
+	return MapGenerator.create(config, result_type)
 
 func _get_cave_config():
 	pass
@@ -54,39 +54,17 @@ func _get_dungeon_config():
 func _get_map_config():
 	return {
 		"Seed" : 1234,
-		"ChunkSize" : 16,
-		"ChunkMapSize" : Vector2(4, 4),
+		"ChunkSize" : 64,
+		"ChunkMapSize" : Vector2(1, 1),
 		"Octaves" : 4,
 		"Period" : 40,
 		"Persistence" : 0.9,
 		"Lacunarity" :  2,
-		"Biomes" : {
-			"Ocean" : {
-				"Occurrence" : 0.1,
-				"Distribution" : {
-					"Water" : 1
-				}
-			},
-			"Beach" : {
-				"Occurrence" : 0.3,
-				"Distribution" : {
-					"Water" : 0.6,
-					"Sand" : 1
-				}
-			},
-			"Grassland" : {
-				"Occurrence" : 1,
-				"Distribution" : {
-					"Grass" : 0.6,
-					"Water" : 0.7,
-					"Dirt" : 0.9,
-					"Sand" : 1,
-				}
-			}
+		"BlocksOccurrence" : {
+			"Water" : 0,
+			"Grass" : 0.3,
+			"Dirt" : 0.4,
+			"Sand" : 1,
 		}
 	}
-	
-	
-	
-	
 	

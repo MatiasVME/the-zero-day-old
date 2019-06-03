@@ -5,6 +5,10 @@
 
 [node name="TestTerrainGenerator" type="Node2D"]
 script = ExtResource( 1 )
+water = Color( 0.180392, 0.0627451, 0.678431, 1 )
+grass = Color( 0.254902, 0.72549, 0.0431373, 1 )
+dirt = Color( 0.392157, 0.266667, 0.109804, 1 )
+sand = Color( 0.705882, 0.768627, 0.247059, 1 )
 
 [node name="TerrainGenerator" type="EditorPlugin" parent="."]
 script = ExtResource( 2 )
