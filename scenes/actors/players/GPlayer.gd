@@ -53,6 +53,7 @@ func _ready():
 func _move_handler(delta, distance, run):
 	
 	var dir := Vector2()
+	
 	dir.x = sign(distance.x)
 	dir.y = sign(distance.y)
 	
@@ -65,27 +66,18 @@ func _move_handler(delta, distance, run):
 		move_y = dir.y * speed * 2 * delta
 		$Sprite.speed_scale = 1.2
 	
-	if dir == Vector2.LEFT:
+	if dir.y > 0:
+		$Anim.play("MoveDown")
+		if dir.x > 0 : $Sprite.flip_h = false
+		elif dir.x < 0 : $Sprite.flip_h = true
+	elif dir.y < 0:
+		$Anim.play("MoveUp")
+		if dir.x > 0 : $Sprite.flip_h = false
+		elif dir.x < 0 : $Sprite.flip_h = true
+	else:
 		$Anim.play("MoveSide")
-		$Sprite.flip_h = true
-	elif dir.x == -1 and dir.y == -1:
-		$Anim.play("MoveUp")
-	elif dir == Vector2.UP:
-		$Anim.play("MoveUp")
-	elif dir.x == 1 and dir.y == -1:
-		$Anim.play("MoveUp")
-	elif dir == Vector2.RIGHT:
-		$Anim.play("MoveSide")
-		$Sprite.flip_h = false
-	elif dir.x == 1 and dir.y == 1:
-		$Anim.play("MoveDown")
-		$Sprite.flip_h = false
-	elif dir == Vector2.DOWN:
-		$Anim.play("MoveDown")
-		$Sprite.flip_h = false
-	elif dir.x == -1 and dir.y == 1:
-		$Anim.play("MoveDown")
-		$Sprite.flip_h = false
+		if dir.x > 0 : $Sprite.flip_h = false
+		elif dir.x < 0 : $Sprite.flip_h = true
 		
 	if move_x != 0 and move_y != 0:
 		move_x /= 1.5

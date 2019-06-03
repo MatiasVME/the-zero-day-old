@@ -15,10 +15,10 @@ var target_point := Vector2()
 export var distance_to_end_move := 5.0
 
 var random_walk_area_center := Vector2(150,100)
-var random_walk_area_radius := 20.0
+var random_walk_area_radius := 30.0
 
 ## RandomWalk Timer
-var time_to_update_random_walk := 3.0
+var time_to_update_random_walk := 5.0
 var time_to_update_random_walk_progress := 0.0
 ##
 
