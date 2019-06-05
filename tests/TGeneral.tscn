@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://tests/TGeneral.gd" type="Script" id=1]
-[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hud/HUD_old.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/tiles/maps/Example2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=5]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=10]
+
 
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )

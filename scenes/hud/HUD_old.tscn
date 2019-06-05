@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=2]
 
-[ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=1]
+[ext_resource path="res://scenes/hud/HUD_old.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/stats/StatsPanel.tscn" type="PackedScene" id=4]
