@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Analog.png-1694fceebdc7696d2a642d6ed180e2a1.stex"
+path="res://.import/AnalogCenter.png-027806d53e3ab2c5a5db0e3b53621f78.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/controls/Android/Analog/Analog.png"
-dest_files=[ "res://.import/Analog.png-1694fceebdc7696d2a642d6ed180e2a1.stex" ]
+source_file="res://scenes/controls/Mobile/Analog/AnalogCenter.png"
+dest_files=[ "res://.import/AnalogCenter.png-027806d53e3ab2c5a5db0e3b53621f78.stex" ]
 
 [params]
 

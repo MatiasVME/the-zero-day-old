@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/hud/GHUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/hud/HUDMobile.gd" type="Script" id=2]
+[ext_resource path="res://scenes/controls/Mobile/Analog/Analog.tscn" type="PackedScene" id=3]
+
+[node name="HUDMobile" groups=[
+"HUD",
+] instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Analog" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 50, 190 )

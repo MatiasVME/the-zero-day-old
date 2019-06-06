@@ -63,6 +63,7 @@ valign = 1
 autowrap = true
 
 [node name="BackgroundButtons" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 7 )
 
 [node name="Play" type="TextureButton" parent="BackgroundButtons"]

@@ -1,6 +1,8 @@
 extends Node2D
 
 onready var hud = get_parent()
+onready var inventory = hud.get_node("Inventory")
+
 var current_item : PHItem
 # Items en la hotbar actual
 var items = []
@@ -15,7 +17,11 @@ func _ready():
 		var slot = get_node("Slots/Slot" + str(i + 1))
 		var slot_num = int(slot.name.substr(slot.name.length() - 1,1))
 		slot.connect("toggled", self, "_on_slot_toggled", [slot_num])
-		
+	
+	if not inventory:
+		print("Inventory not found")
+		return
+	
 	update_hotbar_row(0)
 	
 	# Conectamos la hotbar al inventario para escuchar cuando
