@@ -3,7 +3,6 @@ extends Node2D
 const INACTIVE_IDX = -1;
 export var isDynamicallyShowing = false
 export var listenerNodePath = "/root/game/player"
-export var padname = ""
 
 var ball
 var bg 
@@ -17,6 +16,8 @@ var halfSize = Vector2()
 var ballPos = Vector2()
 var squaredHalfSizeLength = 0
 var currentPointerIDX = INACTIVE_IDX;
+
+signal current_force_updated(force)
 
 func _ready():
 	set_process_input(true)
@@ -119,6 +120,8 @@ func calculateForce(var x, var y):
 	currentForce.y = -(y - centerPoint.y)/halfSize.y
 	if currentForce.length_squared()>1:
 		currentForce=currentForce/currentForce.length()
+	
+	emit_signal("current_force_updated", currentForce)
 	
 	sendSignal2Listener()
 

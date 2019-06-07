@@ -4,7 +4,9 @@
 [ext_resource path="res://scenes/controls/Mobile/Analog/Analog.png" type="Texture" id=2]
 [ext_resource path="res://scenes/controls/Mobile/Analog/AnalogCenter.png" type="Texture" id=3]
 
-[node name="Analog" type="Node2D"]
+[node name="Analog" type="Node2D" groups=[
+"Analog",
+]]
 modulate = Color( 1, 1, 1, 0.784314 )
 script = ExtResource( 1 )
 

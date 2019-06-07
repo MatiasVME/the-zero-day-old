@@ -7,12 +7,14 @@ extends Node
 var hud
 
 func _ready():
-	if OS.has_touchscreen_ui_hint():
+	if OS.has_touchscreen_ui_hint() or Main.force_mobile_mode:
 		hud = load("res://scenes/hud/HUDMobile.tscn").instance()
+		Main.is_mobile = true
 		add_child(hud)
 	else:
 		# TEMP -->
 		hud = load("res://scenes/hud/HUD_old.tscn").instance()
+		Main.is_mobile = false
 		add_child(hud)
 
 func add_actor_to_hud(player : GActor):

@@ -456,7 +456,7 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 1, 0.999149, 0.995747, 0.00236299 )
+color = Color( 0.921569, 0.337255, 0.294118, 0 )
 
 [node name="CurtainAnim" type="AnimationPlayer" parent="."]
 anims/dead = SubResource( 1 )

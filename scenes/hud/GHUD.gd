@@ -28,44 +28,36 @@ func set_hud_actor(actor : GActor):
 	
 	$Hotbar.set_hotbar_actor(actor)
 	$AvatarHandler.select_avatar(actor)
-	
-	$AnimHotbar.play("show")
 
 func add_actor_to_hud(actor : GActor):
 	$AvatarHandler.add_avatar(actor)
 	
 func _on_player_dead(player):
-	$CurtainAnim.play("dead")
+#	$CurtainAnim.play("dead")
 	
 #	$AnimInv.play("hide")
 #	$AnimGameMenu.play("hide")
-	$AnimHotbar.play("hide")
-	$AnimBulletInfo.play("hide")
-	$AnimAvatarHandler.play("hide")
-	$GameMenu/Inventory.disabled = true
+#	$AnimHotbar.play("hide")
+#	$AnimBulletInfo.play("hide")
+#	$AnimAvatarHandler.play("hide")
+#	$GameMenu/Inventory.disabled = true
 	
 	DataManager.save_all_data()
 	
 func _on_get_damage(player, damage):
-	$CurtainAnim.play("hit")
-
-func _on_Menu_toggled(button_pressed):
-	if button_pressed:
-		$AnimGameMenu.play("show_game_menu")
-	else:
-		$AnimGameMenu.play("hide_game_menu")
+	$Curtain.anim_hit()
 
 func _on_win_adventure():
-	$AnimHotbar.play("hide")
-	$AnimBulletInfo.play("hide")
-	$AnimAvatarHandler.play("hide")
-	$AnimEndLevel.play("show")
+#	$AnimHotbar.play("hide")
+#	$AnimBulletInfo.play("hide")
+#	$AnimAvatarHandler.play("hide")
+#	$AnimEndLevel.play("show")
 	
 	var current_player = PlayerManager.get_current_player()
 	current_player.can_move = false
 	current_player.get_node("Anim").play("DanceOfVictory")
 	
-	$GameMenu/Inventory.disabled = true
+#	$GameMenu/Inventory.disabled = true
 
 func _on_player_level_up(player):
 	$GameMenu/StatPanel.update_all()

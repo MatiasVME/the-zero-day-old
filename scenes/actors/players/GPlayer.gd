@@ -51,11 +51,13 @@ func _ready():
 	update_weapon()
 
 func _move_handler(delta, distance, run):
-	
 	var dir := Vector2()
 	
-	dir.x = sign(distance.x)
-	dir.y = sign(distance.y)
+	if not Main.is_mobile:
+		dir.x = sign(distance.x)
+		dir.y = sign(distance.y)
+	else:
+		dir = distance
 	
 	if not run:
 		move_x = dir.x * speed * delta
@@ -66,11 +68,11 @@ func _move_handler(delta, distance, run):
 		move_y = dir.y * speed * 2 * delta
 		$Sprite.speed_scale = 1.2
 	
-	if dir.y > 0:
+	if dir.y > 0.49:
 		$Anim.play("MoveDown")
 		if dir.x > 0 : $Sprite.flip_h = false
 		elif dir.x < 0 : $Sprite.flip_h = true
-	elif dir.y < 0:
+	elif dir.y < -0.49:
 		$Anim.play("MoveUp")
 		if dir.x > 0 : $Sprite.flip_h = false
 		elif dir.x < 0 : $Sprite.flip_h = true
