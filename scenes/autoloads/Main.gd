@@ -6,10 +6,10 @@ const DEBUG := false
 const RES_X := 420
 const RES_Y := 240
 
-var music_enable := false
+var music_enable := true
 var sound_enable := true
 
-var force_mobile_mode := false
+var force_mobile_mode := true
 # No editar desde aca, solo edite force_mobile si lo necesita
 var is_mobile := false
 

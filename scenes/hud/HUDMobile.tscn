@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/controls/Mobile/Analog/Analog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Buttons.tscn" type="PackedScene" id=4]
 
-[node name="HUDMobile" index="0" groups=[
+[node name="HUDMobile" groups=[
 "HUD",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )

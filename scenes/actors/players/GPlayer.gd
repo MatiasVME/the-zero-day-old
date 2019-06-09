@@ -32,6 +32,11 @@ var total_ammo = -1
 #Escena para mostrar el daño en forma numérica
 var damage_label = load("res://scenes/hud/floating_hud/FloatingText.tscn")
 
+# Mobile
+var selectables := []
+var selected_num := -1 # -1 es nignuno seleccionado
+var selected_enemy
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -204,6 +209,20 @@ func melee_attack():
 	$BoxingAttack/Anim.play("box_hit")
 	SoundManager.play(SoundManager.Sound.HIT_1)
 
+# Mobil
+func select_next():
+	if selectables.size() > 1:
+		if (selected_num + 1) % selectables.size() == 0:
+			selected_num = 0
+		else:
+			selected_num += 1
+		selected_enemy = selectables[selected_num]
+	elif selectables.size() == 1:
+		selected_num = 0
+		selected_enemy = selectables[selected_num]
+	else:
+		selected_num = -1
+	
 func _on_dead():
 	is_mark_to_dead = true
 	disable_player(true)
@@ -244,5 +263,20 @@ func _on_InteractArea_body_entered(body):
 	elif body is GBullet and is_inmortal:
 		body.dead()
 
+func _on_DetectArea_body_entered(body):
+	if body is GEnemy:
+		selectables.append(body)
+		
+		if selectables.size() == 1:
+			select_next()
+
+func _on_DetectArea_body_exited(body):
+	if body is GEnemy:
+		if selectables.has(body):
+			var enemy_exited_num = selectables.find(body)
+			selectables.remove(enemy_exited_num)
+			
+			if selected_num == enemy_exited_num:
+				select_next()
 
 

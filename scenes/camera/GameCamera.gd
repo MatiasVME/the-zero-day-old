@@ -10,7 +10,7 @@ var mode = Mode.FOLLOW setget set_mode
 var input_dir : Vector2
 var input_change_focus : bool
 
-onready var mouse_pos
+var objective_pos
 var clamp_vector := 30.0
 
 func _ready():
@@ -32,8 +32,15 @@ func _physics_process(delta):
 
 	if mode == Mode.FOLLOW:
 		if following and not following.is_disabled:
-			mouse_pos = get_global_mouse_position()
-			global_position = following.global_position + (((following.global_position + mouse_pos) / 2) - following.global_position).clamped(clamp_vector)
+			if not Main.is_mobile or following.selected_num == -1:
+				objective_pos = get_global_mouse_position()
+				$MobileSelected.hide()
+			else:
+				objective_pos = following.selected_enemy.global_position
+				$MobileSelected.show()
+				$MobileSelected.global_position = objective_pos
+			
+			global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
 		else:
 			mode = Mode.FREE
 	elif mode == Mode.FREE:
