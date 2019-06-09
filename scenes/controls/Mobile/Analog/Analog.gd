@@ -2,7 +2,6 @@ extends Node2D
 
 const INACTIVE_IDX = -1;
 export var isDynamicallyShowing = false
-export var listenerNodePath = "/root/game/player"
 
 var ball
 var bg 
@@ -15,23 +14,19 @@ var currentForce = Vector2(0,0)
 var halfSize = Vector2()
 var ballPos = Vector2()
 var squaredHalfSizeLength = 0
-var currentPointerIDX = INACTIVE_IDX;
+var currentPointerIDX = INACTIVE_IDX
 
 signal current_force_updated(force)
 
 func _ready():
 	set_process_input(true)
+	
 	bg = $Background
 	ball = $Center
 #	animation_player = get_node("AnimationPlayer")
 	parent = get_parent()
 	halfSize = bg.texture.get_size()/2
 	squaredHalfSizeLength = halfSize.x * halfSize.y
-	
-	if (listenerNodePath != "" && listenerNodePath!=null):
-		listenerNodePath = get_node(listenerNodePath)
-	elif listenerNodePath=="":
-		listenerNodePath = null
 
 	if isDynamicallyShowing:
 		modulate.a = 0
@@ -42,13 +37,13 @@ func get_force():
 func _input(event):
 	var incomingPointer = extractPointerIdx(event)
 	
-	if incomingPointer == INACTIVE_IDX:
+	if incomingPointer == INACTIVE_IDX or event is InputEventScreenTouch and event.get_index() != 0:
 		return
 	
 	if need2ChangeActivePointer(event):
 		if (currentPointerIDX != incomingPointer) and event.is_pressed():
-			currentPointerIDX = incomingPointer;
-			showAtPos(Vector2(event.position.x, event.position.y));
+			currentPointerIDX = incomingPointer
+			showAtPos(Vector2(event.position.x, event.position.y))
 
 	var theSamePointer = currentPointerIDX == incomingPointer
 	if isActive() and theSamePointer:
@@ -84,13 +79,15 @@ func extractPointerIdx(event):
 		return INACTIVE_IDX
 		
 func process_input(event):
+#	if not touched:
+#		return
+	
 	calculateForce(event.position.x - global_position.x, event.position.y - global_position.y)
 	updateBallPos()
 	
 	var isReleased = isReleased(event)
 	if isReleased:
 		reset()
-
 
 func reset():
 	currentPointerIDX = INACTIVE_IDX
@@ -122,12 +119,6 @@ func calculateForce(var x, var y):
 		currentForce=currentForce/currentForce.length()
 	
 	emit_signal("current_force_updated", currentForce)
-	
-	sendSignal2Listener()
-
-func sendSignal2Listener():
-	if (listenerNodePath != null):
-		listenerNodePath.analog_force_change(currentForce, self)
 
 func isPressed(event):
 	if event is InputEventMouseMotion:
