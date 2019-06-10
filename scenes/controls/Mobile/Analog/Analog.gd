@@ -16,6 +16,8 @@ var ballPos = Vector2()
 var squaredHalfSizeLength = 0
 var currentPointerIDX = INACTIVE_IDX
 
+var incomingPointer
+
 signal current_force_updated(force)
 
 func _ready():
@@ -35,7 +37,7 @@ func get_force():
 	return currentForce
 	
 func _input(event):
-	var incomingPointer = extractPointerIdx(event)
+	incomingPointer = extractPointerIdx(event)
 	
 	if incomingPointer == INACTIVE_IDX or event is InputEventScreenTouch and event.get_index() != 1:
 		return

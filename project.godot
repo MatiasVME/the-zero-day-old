@@ -378,7 +378,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "terrain_generator", "wakatime" )
+enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 
@@ -507,6 +507,8 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 quality/driver/driver_name="GLES2"
+quality/intended_usage/framebuffer_allocation=0
+quality/intended_usage/framebuffer_allocation.mobile=0
 quality/2d/use_pixel_snap=true
 vram_compression/import_etc=true
 environment/default_environment="res://default_env.tres"
