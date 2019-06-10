@@ -13,10 +13,14 @@ var item_state = ItemState.IDLE
 var mouse_entered := false
 var is_mark_to_dead := false
 
+func _ready():
+	set_process(false)
+	set_physics_process(false)
+
 func _physics_process(delta):
 	if PlayerManager.get_current_player() and item_state == ItemState.SEEKER:
 		set_axis_velocity((PlayerManager.current_player.global_position - global_position) * 80 * delta) 
-
+	
 func set_data(_data):
 	data = _data
 	$Images/Item.texture = load(data.texture_path)
@@ -41,3 +45,11 @@ func _on_InteractArea_mouse_exited():
 func _on_InteractArea_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("select"):
 		item_state = ItemState.SEEKER
+
+func _on_VisibilityNotifier_screen_entered():
+	set_process(true)
+	set_physics_process(true)
+
+func _on_VisibilityNotifier_screen_exited():
+	set_process(false)
+	set_physics_process(false)

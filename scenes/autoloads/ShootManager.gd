@@ -6,6 +6,10 @@ ShootManager.gd
 
 extends Node
 
+var plasma = preload("res://scenes/actors/bullets/plasma/Plasma.tscn")
+var common_bullet = preload("res://scenes/actors/bullets/common_bullet/CommonBullet.tscn")
+var knockback_bullet = preload("res://scenes/actors/bullets/xor341-bullet/KnockBackBullet.tscn")
+
 enum Bullet {
 	NORMAL,
 	PLASMA,
@@ -25,11 +29,11 @@ func fire(direction : Vector2, _bullet = Bullet.NORMAL, damage : int = 1, time_l
 func get_bullet_instance(bullet_num):
 	match int(bullet_num):
 		Bullet.PLASMA:
-			return load("res://scenes/actors/bullets/plasma/Plasma.tscn").instance()
+			return plasma.instance()
 		Bullet.NORMAL:
-			return load("res://scenes/actors/bullets/common_bullet/CommonBullet.tscn").instance()
+			return common_bullet.instance()
 		Bullet.XOR341:
-			return load("res://scenes/actors/bullets/xor341-bullet/KnockBackBullet.tscn").instance()
+			return knockback_bullet.instance()
 	
 	print("ERROR: no se encuentra la bullet: ", bullet_num)
 	

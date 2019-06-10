@@ -71,5 +71,3 @@ func destroy():
 func _on_destroy_animation_end(anim_name):
 	if anim_name == "destroy":
 		queue_free()
-		
-	

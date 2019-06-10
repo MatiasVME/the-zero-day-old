@@ -167,7 +167,12 @@ anims/take = SubResource( 6 )
 
 [node name="Tween" type="Tween" parent="."]
 
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -9.53674e-07, -9.53674e-07 )
+scale = Vector2( 2, 2 )
 [connection signal="input_event" from="InteractArea" to="." method="_on_InteractArea_input_event"]
 [connection signal="mouse_entered" from="InteractArea" to="." method="_on_InteractArea_mouse_entered"]
 [connection signal="mouse_exited" from="InteractArea" to="." method="_on_InteractArea_mouse_exited"]
 [connection signal="animation_finished" from="Anim" to="." method="_on_Anim_animation_finished"]
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

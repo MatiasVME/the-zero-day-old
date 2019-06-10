@@ -27,14 +27,12 @@ func update_navigation_path(target_pos):
 	out_of_index = false
 
 func calcule_navigation_path(target_pos):
-	#var t = OS.get_ticks_usec()
 	var path = nav.get_simple_path(get_parent().global_position, target_pos)
 	if path.size() > 1:
 		path.remove(0)
 	else:
 		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos)
-	#print(OS.get_ticks_usec() - t)
-	
+
 	return path
 
 func get_current_point():

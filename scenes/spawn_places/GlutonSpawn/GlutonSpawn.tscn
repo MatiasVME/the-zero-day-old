@@ -4,7 +4,6 @@
 [ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.gd" type="Script" id=2]
 [ext_resource path="res://sounds/sfx/Spawn1.wav" type="AudioStream" id=3]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 60, 60 )
 
@@ -22,6 +21,5 @@ wait_time = 0.6
 
 [node name="Spawn" parent="." index="4"]
 stream = ExtResource( 3 )
-
 [connection signal="body_entered" from="TouchForSpawn" to="." method="_on_TouchForSpawn_body_entered"]
 [connection signal="timeout" from="Delay" to="." method="_on_Delay_timeout"]

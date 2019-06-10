@@ -13,7 +13,6 @@
 [ext_resource path="res://scenes/spawn_places/GlutonSpawn/images/EffectGlutonSpawn-9.png" type="Texture" id=11]
 [ext_resource path="res://scenes/spawn_places/GlutonSpawn/images/EffectGlutonSpawn-10.png" type="Texture" id=12]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
@@ -43,3 +42,8 @@ one_shot = true
 [node name="Spawn" type="AudioStreamPlayer2D" parent="."]
 volume_db = -20.0
 
+[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -4.76837e-07, -4.76837e-07 )
+scale = Vector2( 2.4, 2.4 )
+[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]

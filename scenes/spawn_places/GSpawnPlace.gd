@@ -9,3 +9,9 @@ var monsters = []
 
 func spawn():
 	pass
+
+func _on_VisibilityNotifier_screen_entered():
+	set_process(true)
+
+func _on_VisibilityNotifier_screen_exited():
+	set_process(false)

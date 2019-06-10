@@ -10,6 +10,8 @@ var is_mark_to_destroy := false
 # desplegar un panel cuando presionamos la tecla e
 # o interact
 var is_interactable := false
+# Para activarla solo cuando esta visible, etc.
+var is_active := false
 
 var structure_owner : String
 
@@ -29,6 +31,10 @@ var structure_size
 
 signal interacted
 
+func _ready():
+	set_process(false)
+	set_physics_process(false)
+
 func _on_InteractArea_body_entered(body):
 	if body is GPlayer:
 		_can_iteract = true
@@ -37,3 +43,12 @@ func _on_InteractArea_body_exited(body):
 	if body is GPlayer:
 		_can_iteract = false
 	
+func _on_VisibilityNotifier_screen_entered():
+	set_process(true)
+	set_physics_process(true)
+	print("screen_entered")
+
+func _on_VisibilityNotifier_screen_exited():
+	set_process(false)
+	set_physics_process(false)
+	print("screen_exited")
