@@ -146,7 +146,7 @@ tracks/1/keys = {
 radius = 7.07107
 
 [sub_resource type="CircleShape2D" id=7]
-radius = 200.0
+radius = 125.0
 
 [node name="GPlayer" type="KinematicBody2D" groups=[
 "Player",

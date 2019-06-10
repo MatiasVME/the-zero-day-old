@@ -37,7 +37,7 @@ func get_force():
 func _input(event):
 	var incomingPointer = extractPointerIdx(event)
 	
-	if incomingPointer == INACTIVE_IDX or event is InputEventScreenTouch and event.get_index() != 0:
+	if incomingPointer == INACTIVE_IDX or event is InputEventScreenTouch and event.get_index() != 1:
 		return
 	
 	if need2ChangeActivePointer(event):
