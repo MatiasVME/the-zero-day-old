@@ -60,4 +60,5 @@ func _on_win_adventure():
 #	$GameMenu/Inventory.disabled = true
 
 func _on_player_level_up(player):
-	$GameMenu/StatPanel.update_all()
+#	$GameMenu/StatPanel.update_all()
+	pass

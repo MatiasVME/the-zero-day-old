@@ -41,9 +41,3 @@ one_shot = true
 
 [node name="Spawn" type="AudioStreamPlayer2D" parent="."]
 volume_db = -20.0
-
-[node name="VisibilityNotifier" type="VisibilityNotifier2D" parent="."]
-position = Vector2( -4.76837e-07, -4.76837e-07 )
-scale = Vector2( 2.4, 2.4 )
-[connection signal="screen_entered" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier" to="." method="_on_VisibilityNotifier_screen_exited"]
