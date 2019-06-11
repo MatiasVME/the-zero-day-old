@@ -36,12 +36,13 @@ position = Vector2( 163.022, 103.747 )
 [node name="CreditSection4" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "Game Design"
 color_section = Color( 0.0745098, 0.0705882, 0.678431, 1 )
-name_staff = PoolStringArray( "Matias Muñoz Espinoza", "Javier Ocampos" )
+name_staff = PoolStringArray( "Matias Muñoz Espinoza" )
 color_staff = Color( 0.0901961, 0.686275, 0.0862745, 1 )
 
 [node name="CreditSection" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "Programmers"
 name_staff = PoolStringArray( "Matias Muñoz Espinoza", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira" )
+color_staff = Color( 0.0196078, 0.380392, 0.537255, 1 )
 
 [node name="CreditSection2" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "Art"
@@ -49,11 +50,23 @@ color_section = Color( 0.705882, 0, 0, 1 )
 name_staff = PoolStringArray( "MG.Pix" )
 color_staff = Color( 1, 0.964706, 0.0705882, 1 )
 
+[node name="CreditSection5" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
+name_section = "History"
+color_section = Color( 0.0823529, 0.619608, 0.0784314, 1 )
+name_staff = PoolStringArray( "Javier Ocampos" )
+color_staff = Color( 1, 0.964706, 0.0705882, 1 )
+
 [node name="CreditSection3" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "Music"
 color_section = Color( 0, 0.109804, 1, 1 )
 name_staff = PoolStringArray( "Attribute to Avgvst", "Licensed CC-BY" )
-color_staff = Color( 0.109804, 1, 0.623529, 1 )
+color_staff = Color( 0.054902, 0.0705882, 1, 1 )
+
+[node name="CreditSection6" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
+name_section = "Thanks"
+color_section = Color( 1, 0.843137, 0, 1 )
+name_staff = PoolStringArray( "RDCKGames" )
+color_staff = Color( 1, 0.254902, 0.054902, 1 )
 
 [node name="BackFromCredits" type="TextureButton" parent="."]
 anchor_left = 0.5
@@ -65,5 +78,4 @@ margin_bottom = -77.4733
 texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
-
 [connection signal="pressed" from="BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
