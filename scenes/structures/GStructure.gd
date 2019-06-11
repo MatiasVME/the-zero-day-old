@@ -13,7 +13,7 @@ var is_interactable := false
 # Para activarla solo cuando esta visible, etc.
 var is_active := false
 
-var structure_owner : String
+var structure_owner : String = ""
 
 var _can_iteract := false
 
@@ -46,9 +46,7 @@ func _on_InteractArea_body_exited(body):
 func _on_VisibilityNotifier_screen_entered():
 	set_process(true)
 	set_physics_process(true)
-	print("screen_entered")
 
 func _on_VisibilityNotifier_screen_exited():
 	set_process(false)
 	set_physics_process(false)
-	print("screen_exited")

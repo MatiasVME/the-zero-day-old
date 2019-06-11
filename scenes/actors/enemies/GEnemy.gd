@@ -33,9 +33,7 @@ func _physics_process(delta):
 	if current_state != state:
 		self.emit_signal("state_changed")
 		current_state = state
-	
-	print(self)
-	
+
 # Esta funcion es una forma segura de cambiar entre estados.
 func change_state(state): 
 	self.state = state

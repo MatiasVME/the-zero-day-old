@@ -22,7 +22,7 @@
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 6 )
 
-[node name="TempMainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D"]
 position = Vector2( 210, 120 )
 script = ExtResource( 1 )
 
@@ -35,7 +35,6 @@ editor/display_folded = true
 position = Vector2( 0, -240 )
 
 [node name="Credits" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 0, 240 )
 
 [node name="DeleteData" type="Button" parent="."]
@@ -144,6 +143,7 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="Splash" parent="." instance=ExtResource( 18 )]
+visible = false
 position = Vector2( -28.978, 0 )
 [connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]

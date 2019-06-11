@@ -18,8 +18,10 @@ func _ready():
 func update_bullet_info(equip):
 	if equip:
 		show()
+		$Anim.play("show")
 	else:
-		hide()
+#		hide()
+		$Anim.play_backwards("show")
 		return
 	
 	if equip is PHWeapon:
@@ -30,6 +32,7 @@ func update_bullet_info(equip):
 			$Bullet/CurrentAndMax.text = "-/-"
 	else:
 		hide()
+#		$Anim.play_backwards("show")
 
 func update_images_bullet_info(equip):
 	if equip:

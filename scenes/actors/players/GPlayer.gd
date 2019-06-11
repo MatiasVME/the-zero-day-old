@@ -107,7 +107,7 @@ func _fire_handler():
 		if not Main.is_mobile:
 			fire_dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
 		else:
-			if not selected_enemy.is_queued_for_deletion():
+			if selected_enemy and not selected_enemy.is_queued_for_deletion():
 				fire_dir = (selected_enemy.global_position - global_position).normalized()
 			
 		time_to_next_action_progress = 0.0
@@ -276,15 +276,15 @@ func _on_InteractArea_body_entered(body):
 		body.dead()
 
 func _on_DetectArea_body_entered(body):
-	if body is GEnemy:
+	if body is GEnemy or body.has_meta("structure_owner"):
 		selectables.append(body)
 		
 		if selectables.size() == 1:
 			select_next()
-
+	
 func _on_DetectArea_body_exited(body):
 	if body is GEnemy:
-		if selectables.has(body):
+		if selectables.has(body) or body.has_meta("structure_owner"):
 			var enemy_exited_num = selectables.find(body)
 			selectables.remove(enemy_exited_num)
 			
