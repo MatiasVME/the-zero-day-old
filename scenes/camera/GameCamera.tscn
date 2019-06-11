@@ -40,3 +40,5 @@ anims/fire = SubResource( 1 )
 [node name="MobileSelected" type="Sprite" parent="."]
 z_index = 10
 texture = ExtResource( 2 )
+
+[node name="Pos" type="Position2D" parent="MobileSelected"]

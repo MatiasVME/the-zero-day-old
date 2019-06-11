@@ -30,7 +30,7 @@ func _ready():
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# se cambia de hotbar.
 	hud.get_node("Inventory").connect("change_diamond", self, "_on_change_diamond")
-
+	
 func _input(event):
 	if event.is_action_pressed("hotbar1"):
 		select_slot(1)
@@ -86,7 +86,10 @@ func update_hotbar_row(row : int):
 		
 	var inventory = hud.get_node("Inventory")
 	
-	if inventory and inventory.rows.size() < 1:
+	if not inventory:
+		print("not inventory")
+		return
+	elif inventory and inventory.rows.size() < 1:
 		print("inventory and inventory.rows < 1")
 		return
 	

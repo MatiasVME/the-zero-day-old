@@ -4,9 +4,18 @@ extends Node2D
 # null
 var data
 
+# Mobile
+onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
+var mobile_selected_pos
+
 signal weapon_added(weapon)
 signal weapon_removed()
 
+func _ready():
+	if Main.is_mobile and game_camera.size() > 0:
+		game_camera = game_camera[0]
+		mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
+	
 func _physics_process(delta):
 	if not data:
 		set_physics_process(false)
@@ -20,8 +29,11 @@ func _physics_process(delta):
 	if $Sprite.rotation_degrees < -360 or $Sprite.rotation_degrees > 360:
 		$Sprite.rotation_degrees = 0
 	
-	$Sprite.look_at(get_global_mouse_position())
-
+	if not Main.is_mobile:
+		$Sprite.look_at(get_global_mouse_position())
+	else:
+		$Sprite.look_at(mobile_selected_pos.global_position)
+	
 # Puede recibir un PHWeapon o un null
 func set_weapon(weapon):
 	data = weapon

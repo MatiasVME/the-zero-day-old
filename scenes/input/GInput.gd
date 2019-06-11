@@ -34,12 +34,10 @@ func _physics_process(delta):
 		else:
 			actor._move_handler(delta, input_dir, input_run)
 	
-	if Input.is_action_pressed("fire"):
-		
+	if not Main.is_mobile and Input.is_action_pressed("fire"):
 		actor._fire_handler()
 	
-	if Input.is_action_just_pressed("reload"):
-		
+	if not Main.is_mobile and Input.is_action_just_pressed("reload"):
 		actor._reload_handler()
 	
 func active(_active := true):

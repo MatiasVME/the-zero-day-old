@@ -12,8 +12,6 @@ var move_y
 
 var can_fire := false
 
-var is_inmortal := false
-
 var reload_progress := 0.0
 var need_reload := false
 # Tiempo para la proxima accion de la arma
@@ -29,13 +27,17 @@ var melee_time_to_next_action_progress := 0.0
 # Total current ammo
 var total_ammo = -1
 
-#Escena para mostrar el daño en forma numérica
-var damage_label = load("res://scenes/hud/floating_hud/FloatingText.tscn")
+# Escena para mostrar el daño en forma numérica
+var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
+
+var fire_dir := Vector2()
 
 # Mobile
 var selectables := []
 var selected_num := -1 # -1 es nignuno seleccionado
 var selected_enemy
+
+onready var mobile_selected_pos = get_tree().get_nodes_in_group("GameCamera")
 
 signal fire(dir)
 signal dead
@@ -54,6 +56,9 @@ func _ready():
 	data.equip = null
 	
 	update_weapon()
+	
+	if mobile_selected_pos.size() > 0:
+		mobile_selected_pos = mobile_selected_pos[0].get_node("MobileSelected/Pos")
 
 func _move_handler(delta, distance, run):
 	var dir := Vector2()
@@ -98,11 +103,15 @@ func _stop_handler(delta):
 			$Sprite.speed_scale = 0.1
 
 func _fire_handler():
-	
 	if data.equip is PHDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
-		var dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
+		if not Main.is_mobile:
+			fire_dir = ($GWeaponInBattle/Sprite.get_global_mouse_position() - global_position).normalized()
+		else:
+			if not selected_enemy.is_queued_for_deletion():
+				fire_dir = (selected_enemy.global_position - global_position).normalized()
+			
 		time_to_next_action_progress = 0.0
-		emit_signal("fire", dir)
+		emit_signal("fire", fire_dir)
 	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
 		melee_time_to_next_action_progress = 0.0
 		melee_attack()
@@ -230,8 +239,11 @@ func _on_dead():
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
 
 func _on_remove_hp(amount):
+	if is_inmortal: return
+
 	$Anim2.play("hit")
-	#Instancia un label indicando el daño recibido y lo agrega al árbol
+	
+	# Instancia un label indicando el daño recibido y lo agrega al árbol
 	var dmg_label : FloatingText = damage_label.instance()
 	dmg_label.init(amount, FloatingText.Type.DAMAGE)
 	dmg_label.position = global_position
