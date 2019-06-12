@@ -7,10 +7,19 @@ var data
 # WeaponSprite RotationDegrees
 var ws_rd = 0
 
+# Mobile
+onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
+var mobile_selected_pos
+
 signal weapon_added(weapon)
 signal weapon_removed()
 
-func _physics_process(delta):
+func _ready():
+	if Main.is_mobile and game_camera.size() > 0:
+		game_camera = game_camera[0]
+		mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
+	
+func _process(delta):
 	ws_rd = rotation_degrees
 	
 	if ws_rd > 90 and ws_rd < 270 or ws_rd < -90 and ws_rd > -270:
@@ -21,7 +30,10 @@ func _physics_process(delta):
 	if ws_rd < -360 or ws_rd > 360:
 		rotation_degrees = 0
 	
-	look_at(get_global_mouse_position())
+	if not Main.is_mobile:
+		$Weapon.look_at(get_global_mouse_position())
+	elif mobile_selected_pos:
+		$Weapon.look_at(mobile_selected_pos.global_position)
 
 # Puede recibir un PHMeleeWeapon o un null
 func set_weapon(weapon = null):

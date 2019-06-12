@@ -16,9 +16,9 @@ func _ready():
 		game_camera = game_camera[0]
 		mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
 	
-func _physics_process(delta):
+func _process(delta):
 	if not data:
-		set_physics_process(false)
+		set_process(false)
 		return
 	
 	if $Sprite.rotation_degrees > 90 and $Sprite.rotation_degrees < 270 or $Sprite.rotation_degrees < -90 and $Sprite.rotation_degrees > -270:
@@ -32,7 +32,10 @@ func _physics_process(delta):
 	if not Main.is_mobile:
 		$Sprite.look_at(get_global_mouse_position())
 	else:
-		$Sprite.look_at(mobile_selected_pos.global_position)
+		if not mobile_selected_pos.visible:
+			$Sprite.look_at(mobile_selected_pos.global_position)
+		else:
+			$Sprite.look_at(mobile_selected_pos.position)
 	
 # Puede recibir un PHWeapon o un null
 func set_weapon(weapon):
@@ -45,7 +48,7 @@ func set_weapon(weapon):
 	
 	emit_signal("weapon_added", data)
 	$Anim.play("show")
-	set_physics_process(true)
+	set_process(true)
 
 func remove_weapon():
 	$Anim.play("hide")

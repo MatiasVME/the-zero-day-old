@@ -5,7 +5,7 @@ class_name GPlayer
 # Es la data del player y la logica del mismo
 var data : PHCharacter # Este es el que equipa el arma
 
-export (int) var speed = 2500
+export (int) var speed = 3000
 
 var move_x
 var move_y
@@ -109,7 +109,7 @@ func _fire_handler():
 		else:
 			if selected_enemy and not selected_enemy.is_queued_for_deletion():
 				fire_dir = (selected_enemy.global_position - global_position).normalized()
-			
+				
 		time_to_next_action_progress = 0.0
 		emit_signal("fire", fire_dir)
 	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
@@ -276,14 +276,20 @@ func _on_InteractArea_body_entered(body):
 		body.dead()
 
 func _on_DetectArea_body_entered(body):
-	if body is GEnemy or body.has_meta("structure_owner"):
+	if body is GActor:
+		if body == self:
+			return
+		
 		selectables.append(body)
 		
 		if selectables.size() == 1:
 			select_next()
 	
 func _on_DetectArea_body_exited(body):
-	if body is GEnemy:
+	if body is GActor:
+		if body == self:
+			return
+		
 		if selectables.has(body) or body.has_meta("structure_owner"):
 			var enemy_exited_num = selectables.find(body)
 			selectables.remove(enemy_exited_num)

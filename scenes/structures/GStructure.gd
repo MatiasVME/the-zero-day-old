@@ -1,6 +1,6 @@
 # Estructuras fijas con las que se puede interactuar
 
-extends KinematicBody2D
+extends GActor
 
 class_name GStructure
 

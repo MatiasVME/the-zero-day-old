@@ -27,8 +27,7 @@ position = Vector2( 210, 120 )
 script = ExtResource( 1 )
 
 [node name="Example1" parent="." instance=ExtResource( 2 )]
-position = Vector2( -180, -120 )
-z_index = -1
+position = Vector2( -210.859, -110 )
 
 [node name="AdventureMode" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
