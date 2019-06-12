@@ -32,11 +32,12 @@ func _process(delta):
 	if not Main.is_mobile:
 		$Sprite.look_at(get_global_mouse_position())
 	else:
-		if not mobile_selected_pos.visible:
+		if mobile_selected_pos.visible:
 			$Sprite.look_at(mobile_selected_pos.global_position)
 		else:
-			$Sprite.look_at(mobile_selected_pos.position)
-	
+#			$Sprite.look_at(mobile_selected_pos.global_position.rotated(deg2rad(90)))
+			pass
+			
 # Puede recibir un PHWeapon o un null
 func set_weapon(weapon):
 	data = weapon
