@@ -21,11 +21,10 @@ var random_walk_area_radius := 30.0
 var time_to_update_random_walk := 5.0
 var time_to_update_random_walk_progress := 0.0
 ##
-
-# True : termino de moverse
-var move_state := true
-var move_state_x := true
-var move_state_y := true
+# True : moviendose
+var is_moving := false setget set_moving
+var is_moving_x := false setget set_moving_x
+var is_moving_y := false setget set_moving_y
 
 # DetectArea
 var detected_bodies := []
@@ -50,7 +49,7 @@ func set_state(_state):
 
 func random_walk(delta):
 	
-	if not move_state_x or not move_state_y:
+	if is_moving_xoy():
 		move_to_point(delta, target_point)
 		
 	else:
@@ -65,13 +64,13 @@ func random_walk(delta):
 		#(navigator as Navigator).update_path(target_point)
 		
 		time_to_update_random_walk_progress = 0.0
-		move_state_x = false
-		move_state_y = false
+		is_moving_x = true
+		is_moving_y = true
 
 func random_walk2(delta):
 	
-	if not move_state and move_to_point(delta, target_point):
-		move_state = true
+	if is_moving and move_to_point(delta, target_point):
+		is_moving = false
 	else:
 		actor._stop_handler(delta)
 		
@@ -84,7 +83,7 @@ func random_walk2(delta):
 		#(navigator as Navigator).update_path(target_point)
 		
 		time_to_update_random_walk_progress = 0.0
-		move_state = false
+		is_moving = true
 
 func move_to_point2(delta, point) -> bool:
 	
@@ -96,21 +95,39 @@ func move_to_point2(delta, point) -> bool:
 	
 	return true
 
+# Cuando termina de moverse retorna true
 func move_to_point(delta, point) -> bool:
 	
 	var AP = point - actor.position
 	
-	var move_vector = AP*Vector2(!move_state_x, !move_state_y)
+	var move_vector = AP*Vector2(is_moving_x, is_moving_y)
 	
 	actor._move_handler(delta, move_vector, false)
 	
 	var NAP = point - actor.position
 	
-	if not move_state_x and sign(AP.x) != sign(NAP.x): move_state_x = true
-	if not move_state_y and sign(AP.y) != sign(NAP.y): move_state_y = true
+	if is_moving_x and sign(AP.x) != sign(NAP.x): is_moving_x = false
+	if is_moving_y and sign(AP.y) != sign(NAP.y): is_moving_y = false
 	
-	if move_state_x and move_state_y : return true
+	if not is_moving_xoy() : return true
 	return false
+
+func is_moving_xoy():
+	return is_moving_x or is_moving_y
+
+func set_moving(_is_moving):
+	is_moving = _is_moving
+	is_moving_x = _is_moving
+	is_moving_y = _is_moving
+
+func set_moving_x(_is_moving_x):
+	is_moving_x = _is_moving_x
+	is_moving = is_moving_x and is_moving_y
+
+func set_moving_y(_is_moving_y):
+	is_moving_y = _is_moving_y
+	is_moving = is_moving_y and is_moving_x
+
 
 func _on_DetectArea_body_entered(body : PhysicsBody2D):
 	if not is_active : return

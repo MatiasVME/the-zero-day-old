@@ -25,7 +25,6 @@ enum MOVING_STATE{
 
 var moving_state : int = MOVING_STATE.END
 
-
 func _physics_process(delta):
 	if not is_active : return
 	
@@ -54,7 +53,9 @@ func follow_player_state(delta) -> void:
 		else:
 			moving_state = MOVING_STATE.END
 			random_walk_area_center = PLAYER_TARGET.position
-			time_to_update_random_walk_progress = time_to_update_random_walk
+			time_to_update_random_walk_progress = 0
+			target_point = actor.position
+			self.is_moving = false
 			print(random_walk_area_center)
 			set_state(STATE.RANDOM_WALK)
 	
@@ -77,6 +78,5 @@ func actor_exited(body) -> void:
 	if body is GPlayer and body != actor:
 		set_state(STATE.FOLLOW_PLAYER)
 		moving_state = MOVING_STATE.MOVING
-		move_state_x = false
-		move_state_y = false
+		self.is_moving = true
 		print("exited")

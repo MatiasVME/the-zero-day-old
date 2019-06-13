@@ -67,7 +67,8 @@ func _move_handler(delta, distance, run):
 		dir.x = sign(distance.x)
 		dir.y = sign(distance.y)
 	else:
-		dir = distance
+		dir = distance.normalized()
+		
 	
 	if not run:
 		move_x = dir.x * speed * delta
