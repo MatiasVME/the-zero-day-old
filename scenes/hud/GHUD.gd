@@ -1,5 +1,6 @@
 extends CanvasLayer
 
+# Actor que esta asociado o utilizando el hud
 var hud_actor
 
 func _ready():

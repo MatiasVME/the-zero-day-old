@@ -48,7 +48,7 @@ func set_hotbar_actor(actor : GActor):
 		actor.connect("item_taken", self, "_on_item_taken")
 	
 # Seleccionar un slot del 1 al 5 o null
-func select_slot(slot : int):
+func select_slot(slot : int = 0):
 	if slot == 0:
 		return
 	
@@ -69,10 +69,36 @@ func select_slot(slot : int):
 	var bullet_info = hud.get_node("BulletInfo")
 	bullet_info.set_current_equip(current_item)
 	
-	emit_signal("slot_selected", current_item)
-	
 	current_slot = slot
+	
+	emit_signal("slot_selected", current_item)
 
+# Selección el próximo slot, cuando sale del límite 1 o 5
+# se vuelve 0 y si esta en 0 (no seleccionado) se selecciona
+# 1 o 5 dependiendo si esta invertido o no.
+func limited_next_slot(invert := false):
+	if current_slot == 0:
+		if invert: current_slot = 5
+		else: current_slot = 1
+	else:
+		if invert:
+			if (current_slot - 1) % 1 == 0:
+				current_slot -= 1
+			else:
+				current_slot = 0
+		else:
+			if (current_slot + 1) % 6 != 0:
+				current_slot += 1
+			else:
+				current_slot = 0
+			
+	select_slot(current_slot)
+	
+	if current_slot != 0: 
+		get_node("Slots/Slot"+str(current_slot)).pressed = true
+	else:
+		unselect_all_slots()
+	
 func unselect_all_slots(except = -1):
 	for i in $Slots.get_child_count():
 		if i != except - 1 or except == -1:

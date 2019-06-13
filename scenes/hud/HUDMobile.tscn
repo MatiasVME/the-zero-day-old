@@ -7,7 +7,7 @@
 [ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
 
-[node name="HUDMobile" groups=[
+[node name="HUDMobile" index="0" groups=[
 "HUD",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
