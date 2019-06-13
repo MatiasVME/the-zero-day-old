@@ -1,28 +1,49 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Buttons.gd" type="Script" id=1]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Fire-Normal.png" type="Texture" id=2]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Fire-Pressed.png" type="Texture" id=3]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Normal.png" type="Texture" id=4]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Pressed.png" type="Texture" id=5]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemUP-Normal.png" type="Texture" id=6]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemUP-Pressed.png" type="Texture" id=7]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemDOWN-Normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemDOWN-Pressed.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 10, 7 )
 
 [node name="Buttons" type="Node2D"]
 modulate = Color( 1, 1, 1, 0.588235 )
 script = ExtResource( 1 )
 
 [node name="Fire" type="TouchScreenButton" parent="."]
-position = Vector2( 356, 176 )
+position = Vector2( 364, 184 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 shape = SubResource( 1 )
 
 [node name="Select" type="TouchScreenButton" parent="."]
-position = Vector2( 356, 120 )
+position = Vector2( 364, 132 )
 normal = ExtResource( 4 )
 pressed = ExtResource( 5 )
 shape = SubResource( 1 )
+
+[node name="SelectNextItemUp" type="TouchScreenButton" parent="."]
+position = Vector2( 392, 95 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
+shape = SubResource( 2 )
+
+[node name="SelectNextItemDown" type="TouchScreenButton" parent="."]
+position = Vector2( 392, 110 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+shape = SubResource( 2 )
 [connection signal="pressed" from="Fire" to="." method="_on_Fire_pressed"]
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]
+[connection signal="pressed" from="SelectNextItemUp" to="." method="_on_SelectNextItemUp_pressed"]
+[connection signal="pressed" from="SelectNextItemDown" to="." method="_on_SelectNextItemDown_pressed"]
