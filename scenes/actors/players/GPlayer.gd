@@ -33,8 +33,13 @@ var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 var fire_dir := Vector2()
 
 # Mobile
+#
+
+# GActors seleccionados
 var selectables := []
+# Indice del GActor actual
 var selected_num := -1 # -1 es nignuno seleccionado
+# GActor seleccionado
 var selected_enemy
 
 onready var mobile_selected_pos = get_tree().get_nodes_in_group("GameCamera")
@@ -222,7 +227,7 @@ func melee_attack():
 # Mobil
 func select_next():
 	if selectables.size() > 1:
-		if (selected_num + 1) % selectables.size() == 0:
+		if (selected_num + 1) % selectables.size() == 0 or selected_num >= selectables.size():
 			selected_num = 0
 		else:
 			selected_num += 1
@@ -232,7 +237,7 @@ func select_next():
 		selected_enemy = selectables[selected_num]
 	else:
 		selected_num = -1
-	
+
 func _on_dead():
 	is_mark_to_dead = true
 	disable_player(true)
