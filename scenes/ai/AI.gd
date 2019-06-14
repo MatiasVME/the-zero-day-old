@@ -6,16 +6,20 @@ var is_active = false
 
 onready var actor = get_parent()
 
-onready var navigator = actor.get_node("navigator") if actor.has_node("navigator") else null
+
+var navigator : Navigator
+var has_navigator := false
+var time_update_navigator := 3.0
+var time_update_navigator_progress := 0.0
 
 var state : int = 0 setget set_state
 
 var target_point := Vector2()
 
-export var distance_to_end_move := 5.0
+export var distance_to_end_move := 2.0
 
 var random_walk_area_center := Vector2(150,100)
-var random_walk_area_radius := 30.0
+var random_walk_area_radius := 50.0
 
 ## RandomWalk Timer
 var time_to_update_random_walk := 5.0
@@ -38,6 +42,9 @@ func _ready():
 	if actor.has_node("DetectArea"):
 		actor.get_node("DetectArea").connect("body_entered", self, "_on_DetectArea_body_entered")
 		actor.get_node("DetectArea").connect("body_exited", self, "_on_DetectArea_body_exited")
+	if actor.has_node("Navigator"):
+		navigator = actor.get_node("Navigator")
+		has_navigator = true
 	
 func active(_active := true):
 	is_active = _active
@@ -50,7 +57,7 @@ func set_state(_state):
 func random_walk(delta):
 	
 	if is_moving_xoy():
-		move_to_point(delta, target_point)
+		move_to(delta, target_point)
 		
 	else:
 		actor._stop_handler(delta)
@@ -69,7 +76,7 @@ func random_walk(delta):
 
 func random_walk2(delta):
 	
-	if is_moving and move_to_point(delta, target_point):
+	if is_moving and move_to(delta, target_point):
 		is_moving = false
 	else:
 		actor._stop_handler(delta)
@@ -85,7 +92,29 @@ func random_walk2(delta):
 		time_to_update_random_walk_progress = 0.0
 		is_moving = true
 
-func move_to_point2(delta, point) -> bool:
+func move_to(delta, point) -> bool:
+	
+	if has_navigator:
+		if time_update_navigator_progress >= time_update_navigator:
+			navigator.update_path(point)
+			time_update_navigator_progress = 0
+		else:
+			time_update_navigator_progress += delta
+			if move_to_point_circle(delta, navigator.get_current_point()):
+				navigator.next_index()
+				if navigator.out_of_index:
+					set_moving(false)
+					return true
+		
+	else:
+		if move_to_point_circle(delta, point):
+			set_moving(false)
+			return true
+	return false
+	
+	
+
+func move_to_point_circle(delta, point) -> bool:
 	
 	var AP = point - actor.position
 	
@@ -96,7 +125,7 @@ func move_to_point2(delta, point) -> bool:
 	return true
 
 # Cuando termina de moverse retorna true
-func move_to_point(delta, point) -> bool:
+func move_to_point_square(delta, point) -> bool:
 	
 	var AP = point - actor.position
 	
