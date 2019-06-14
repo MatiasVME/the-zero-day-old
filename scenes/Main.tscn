@@ -142,7 +142,7 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="Splash" parent="." instance=ExtResource( 18 )]
-position = Vector2( -28.978, 0 )
+position = Vector2( -30, 0 )
 [connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
 [connection signal="pressed" from="DeleteData" to="." method="_on_DeleteData_pressed"]
