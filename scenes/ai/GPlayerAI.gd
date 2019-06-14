@@ -49,7 +49,7 @@ func random_walk_state(delta) -> void:
 func follow_player_state(delta) -> void:
 	if moving_state == MOVING_STATE.MOVING:
 		if actor.position.distance_to(PLAYER_TARGET.position) > 30:
-			move_to_point(delta, PLAYER_TARGET.position)
+			move_to(delta, PLAYER_TARGET.position)
 		else:
 			moving_state = MOVING_STATE.END
 			random_walk_area_center = PLAYER_TARGET.position
@@ -78,5 +78,7 @@ func actor_exited(body) -> void:
 	if body is GPlayer and body != actor:
 		set_state(STATE.FOLLOW_PLAYER)
 		moving_state = MOVING_STATE.MOVING
+		if has_navigator:
+			navigator.update_path(PLAYER_TARGET.position)
 		self.is_moving = true
 		print("exited")
