@@ -23,7 +23,7 @@ tracks/0/keys = {
 }
 
 [node name="BulletInfo" type="Node2D"]
-position = Vector2( 60, -200 )
+position = Vector2( 122, -200 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]

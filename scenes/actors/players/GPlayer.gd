@@ -302,5 +302,3 @@ func _on_DetectArea_body_exited(body):
 			
 			if selected_num == enemy_exited_num:
 				select_next()
-
-

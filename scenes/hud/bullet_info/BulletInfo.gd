@@ -4,7 +4,8 @@ onready var hud = get_parent()
 
 # Item equipado (a veces es null)
 var current_equip setget set_current_equip, get_current_equip
-# Total de balas disponibles para la arma equipada
+
+var is_showing := false
 
 func _ready():
 	PlayerManager.connect("player_changed", self, "_on_player_changed")
@@ -16,12 +17,18 @@ func _ready():
 	update_bullet_info(null)
 	
 func update_bullet_info(equip):
-	if equip:
-		show()
+	print("update")
+	# Si esta equipado y no se muestra
+	if equip and not is_showing:
 		$Anim.play("show")
-	else:
-#		hide()
+		is_showing = true
+	# Si no esta equipado y se esta mostrando
+	elif not equip and is_showing:
 		$Anim.play_backwards("show")
+		is_showing = false
+		return
+	# No este equipado y no se esta mostrando
+	else: 
 		return
 	
 	if equip is PHWeapon:
@@ -31,8 +38,9 @@ func update_bullet_info(equip):
 		else:
 			$Bullet/CurrentAndMax.text = "-/-"
 	else:
-		hide()
-#		$Anim.play_backwards("show")
+		if is_showing:
+			$Anim.play_backwards("show")
+			is_showing = false
 
 func update_images_bullet_info(equip):
 	if equip:
