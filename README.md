@@ -4,6 +4,10 @@ The Zero Day es un juego sandbox, top down shooter, rpg, etc.
 
 ![The Zero Day](https://i.imgur.com/8n4OCAe.png)
 
+# Requerimientos
++ Este repositorio requiere que instales la [extención LFS de Git](https://git-lfs.github.com/)
++ Godot 3.1.x
+
 # Forma de jugar
 
 Manejas un personaje, desde una perspectiva top-down, con los controles WASD. Este personaje puede disparar, hacer combate cuerpo a cuerpo, manejar vehículos, construir, subir de nivel, entre otras cosas.
