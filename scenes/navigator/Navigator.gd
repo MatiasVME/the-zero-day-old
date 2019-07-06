@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 class_name Navigator
 
@@ -30,11 +30,11 @@ func update_path(target_pos):
 
 func calculate_path(target_pos):
 	
-	var path = nav.get_simple_path(get_parent().global_position, target_pos)
+	var path = nav.get_simple_path(get_parent().global_position, target_pos, false)
 	if path.size() > 1:
 		path.remove(0)
 	else:
-		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos)
+		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos, false)
 	
 	return path
 
@@ -42,6 +42,20 @@ func get_current_point():
 	return navigation_path[current_index]
 
 func next_index():
+	
+	if out_of_index : 
+		return
 	current_index += 1
-	if current_index >= navigation_path.size():
+	if current_index >= navigation_path.size() -1:
 		out_of_index = true
+		current_index = navigation_path.size()-1
+
+func compare_points(current_pos):
+	if out_of_index:
+		return false
+	var vec_to_point1 = navigation_path[current_index] - current_pos
+	var vec_to_point2 = navigation_path[current_index + 1] - navigation_path[current_index] 
+	
+	var angle = vec_to_point1.angle_to(vec_to_point2)
+	return angle > -0.7 or angle < 0.7
+	

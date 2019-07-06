@@ -48,15 +48,16 @@ func random_walk_state(delta) -> void:
 	
 func follow_player_state(delta) -> void:
 	if moving_state == MOVING_STATE.MOVING:
-		if actor.position.distance_to(PLAYER_TARGET.position) > 30:
+		#print(actor.position.distance_to(PLAYER_TARGET.position))
+		if actor.position.distance_to(PLAYER_TARGET.position) > 40:
 			move_to(delta, PLAYER_TARGET.position)
 		else:
 			moving_state = MOVING_STATE.END
-			random_walk_area_center = PLAYER_TARGET.position
-			time_to_update_random_walk_progress = 0
+			random_walk_area_center = actor.position
+			time_to_update_random_walk_progress = time_to_update_random_walk
 			target_point = actor.position
-			self.is_moving = false
 			print(random_walk_area_center)
+			#set_state(STATE.IDLE)
 			set_state(STATE.RANDOM_WALK)
 	
 
@@ -80,5 +81,4 @@ func actor_exited(body) -> void:
 		moving_state = MOVING_STATE.MOVING
 		if has_navigator:
 			navigator.update_path(PLAYER_TARGET.position)
-		self.is_moving = true
 		print("exited")

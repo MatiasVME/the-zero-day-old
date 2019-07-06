@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/terrain_generator/Generators/MapGenerator.gd"
 }, {
-"base": "Node",
+"base": "Node2D",
 "class": "Navigator",
 "language": "GDScript",
 "path": "res://scenes/navigator/Navigator.gd"
@@ -378,7 +378,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements" )
 
 [importer_defaults]
 
