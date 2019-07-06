@@ -17,7 +17,6 @@ func _ready():
 	update_bullet_info(null)
 	
 func update_bullet_info(equip):
-	print("update")
 	# Si esta equipado y no se muestra
 	if equip and not is_showing:
 		$Anim.play("show")

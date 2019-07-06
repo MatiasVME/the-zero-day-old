@@ -5,16 +5,16 @@
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Fire-Pressed.png" type="Texture" id=3]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Normal.png" type="Texture" id=4]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Pressed.png" type="Texture" id=5]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemUP-Normal.png" type="Texture" id=6]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemUP-Pressed.png" type="Texture" id=7]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemDOWN-Normal.png" type="Texture" id=8]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonChangeItemDOWN-Pressed.png" type="Texture" id=9]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Normal.png" type="Texture" id=6]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Pressed.png" type="Texture" id=7]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Pressed.png" type="Texture" id=9]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 10, 7 )
+extents = Vector2( 20, 13 )
 
 [node name="Buttons" type="Node2D"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -33,13 +33,13 @@ pressed = ExtResource( 5 )
 shape = SubResource( 1 )
 
 [node name="SelectNextItemUp" type="TouchScreenButton" parent="."]
-position = Vector2( 392, 95 )
+position = Vector2( 368, 72 )
 normal = ExtResource( 6 )
 pressed = ExtResource( 7 )
 shape = SubResource( 2 )
 
 [node name="SelectNextItemDown" type="TouchScreenButton" parent="."]
-position = Vector2( 392, 110 )
+position = Vector2( 368, 99 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 9 )
 shape = SubResource( 2 )

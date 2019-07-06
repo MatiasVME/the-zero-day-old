@@ -47,6 +47,8 @@ func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
 		actor.connect("item_taken", self, "_on_item_taken")
 	
+	update_hotbar_row(0)
+	
 # Seleccionar un slot del 1 al 5 o null
 func select_slot(slot : int = 0):
 	if slot == 0:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ButtonChangeItemUP-Pressed.png-fed7f83823a9e180e32dd49ae9ae64f2.stex"
+path="res://.import/ChangeItemButtonBottom-Pressed.png-b67476193d057813549a494297cf118c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/controls/Mobile/Buttons/ButtonChangeItemUP-Pressed.png"
-dest_files=[ "res://.import/ButtonChangeItemUP-Pressed.png-fed7f83823a9e180e32dd49ae9ae64f2.stex" ]
+source_file="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Pressed.png"
+dest_files=[ "res://.import/ChangeItemButtonBottom-Pressed.png-b67476193d057813549a494297cf118c.stex" ]
 
 [params]
 
