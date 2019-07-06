@@ -62,6 +62,8 @@ margin_left = 128.0
 margin_top = 222.0
 margin_right = 146.0
 margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
 shortcut = SubResource( 2 )
 
 [node name="Slot2" parent="Slots" instance=ExtResource( 5 )]
@@ -69,6 +71,8 @@ margin_left = 146.0
 margin_top = 222.0
 margin_right = 164.0
 margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
 shortcut = SubResource( 4 )
 
 [node name="Slot3" parent="Slots" instance=ExtResource( 5 )]
@@ -76,6 +80,8 @@ margin_left = 164.0
 margin_top = 222.0
 margin_right = 182.0
 margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
 shortcut = SubResource( 6 )
 
 [node name="Slot4" parent="Slots" instance=ExtResource( 5 )]
@@ -83,6 +89,8 @@ margin_left = 182.0
 margin_top = 222.0
 margin_right = 200.0
 margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
 shortcut = SubResource( 8 )
 
 [node name="Slot5" parent="Slots" instance=ExtResource( 5 )]
@@ -90,4 +98,6 @@ margin_left = 200.0
 margin_top = 222.0
 margin_right = 218.0
 margin_bottom = 240.0
+focus_mode = 0
+enabled_focus_mode = 0
 shortcut = SubResource( 10 )

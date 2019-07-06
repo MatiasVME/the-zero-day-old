@@ -31,18 +31,6 @@ func _ready():
 	# se cambia de hotbar.
 	hud.get_node("Inventory").connect("change_diamond", self, "_on_change_diamond")
 	
-func _input(event):
-	if event.is_action_pressed("hotbar1"):
-		select_slot(1)
-	elif event.is_action_pressed("hotbar2"):
-		select_slot(2)
-	elif event.is_action_pressed("hotbar3"):
-		select_slot(3)
-	elif event.is_action_pressed("hotbar4"):
-		select_slot(4)
-	elif event.is_action_pressed("hotbar5"):
-		select_slot(5)
-
 func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
 		actor.connect("item_taken", self, "_on_item_taken")
@@ -93,13 +81,16 @@ func limited_next_slot(invert := false):
 				current_slot += 1
 			else:
 				current_slot = 0
-			
-	select_slot(current_slot)
 	
-	if current_slot != 0: 
+	if current_slot != 0:
+		# Por algún motivo que desconozco se tiene que presionar
+		# el botón por código también.
 		get_node("Slots/Slot"+str(current_slot)).pressed = true
 	else:
 		unselect_all_slots()
+		
+	select_slot(current_slot)
+	update_hotbar_row(current_hotbar)
 	
 func unselect_all_slots(except = -1):
 	for i in $Slots.get_child_count():
@@ -140,7 +131,7 @@ func update_hotbar_row(row : int):
 func _on_slot_toggled(button_pressed, slot):
 	select_slot(slot)
 	update_hotbar_row(current_hotbar)
-
+	
 func _on_change_diamond(row):
 	update_hotbar_row(row.row_num)
 	
