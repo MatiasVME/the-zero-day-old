@@ -22,3 +22,4 @@ func add_actor_to_hud(player : GActor):
 
 func set_hud_actor(player : GActor):
 	hud.set_hud_actor(player)
+	player.set_hud(hud)

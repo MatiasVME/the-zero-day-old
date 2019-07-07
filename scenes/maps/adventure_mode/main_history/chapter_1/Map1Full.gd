@@ -12,6 +12,8 @@ func _ready():
 	$GameCamera.mode = $GameCamera.Mode.FOLLOW
 	
 	$HUD.add_actor_to_hud(player)
+	# Con esto el hud tiene acceso al player
+	# y el player tiene acceso al hud
 	$HUD.set_hud_actor(player)
 	
 	var weapon = Factory.ItemInWorldFactory.create_from_item(Factory.ItemFactory.create_rand_distance_weapon(1, 1, 1, 1))

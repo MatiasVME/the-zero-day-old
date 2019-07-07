@@ -31,6 +31,9 @@ var total_ammo = -1
 var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
 var fire_dir := Vector2()
+var current_move_dir := Vector2()
+
+var hud
 
 # Mobile
 #
@@ -224,7 +227,14 @@ func melee_attack():
 	$BoxingAttack/Anim.play("box_hit")
 	SoundManager.play(SoundManager.Sound.HIT_1)
 
-# Mobil
+# Player tiene acceso al hud y lo configura
+func set_hud(_hud):
+	hud = _hud
+	
+	# Configurar HUD
+	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
+
+# Mobile
 func select_next():
 	if selectables.size() > 1:
 		if (selected_num + 1) % selectables.size() == 0 or selected_num >= selectables.size():
@@ -302,3 +312,6 @@ func _on_DetectArea_body_exited(body):
 			
 			if selected_num == enemy_exited_num:
 				select_next()
+
+func _on_current_force_updated(force):
+	current_move_dir = force

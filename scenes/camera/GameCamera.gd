@@ -53,7 +53,7 @@ func _physics_process(delta):
 			global_position.y += SPEED * delta
 		elif input_dir.y == - 1:
 			global_position.y -= SPEED * delta
-
+	
 func set_following(_following : GActor):
 	following = _following
 	

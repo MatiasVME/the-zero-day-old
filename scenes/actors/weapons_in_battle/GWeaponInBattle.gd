@@ -4,6 +4,8 @@ extends Node2D
 # null
 var data
 
+onready var player = get_parent()
+
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
 var mobile_selected_pos
@@ -34,20 +36,10 @@ func _process(delta):
 		$Sprite.look_at(get_global_mouse_position())
 	else:
 		if mobile_selected_pos.visible:
-			# Esto funciona mas o menos
-#			$Sprite.rotation_degrees = 0
-#			$Sprite.look_at(mobile_selected_pos.global_position)
-#			$Sprite.rotation_degrees += 180
-
-			$Sprite.rotation_degrees = 0
-			$Sprite.look_at(old_sprite_global_pos)
-			$Sprite.rotation_degrees += 180
-			
-			if $Sprite.global_position != global_position:
-				old_sprite_global_pos = $Sprite.global_position
-			
-			print("dir: ", old_sprite_global_pos)
-			print(mobile_selected_pos.global_position)
+			if mobile_selected_pos.global_position != $Sprite.global_position:
+				$Sprite.rotation_degrees = 0
+				$Sprite.look_at(mobile_selected_pos.global_position)
+				$Sprite.rotation_degrees += 180
 		else:
 #			$Sprite.look_at(mobile_selected_pos.global_position.rotated(deg2rad(90)))
 			pass
