@@ -7,6 +7,7 @@ var data
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
 var mobile_selected_pos
+var old_sprite_global_pos = Vector2.LEFT
 
 signal weapon_added(weapon)
 signal weapon_removed()
@@ -33,7 +34,20 @@ func _process(delta):
 		$Sprite.look_at(get_global_mouse_position())
 	else:
 		if mobile_selected_pos.visible:
-			$Sprite.look_at(mobile_selected_pos.global_position)
+			# Esto funciona mas o menos
+#			$Sprite.rotation_degrees = 0
+#			$Sprite.look_at(mobile_selected_pos.global_position)
+#			$Sprite.rotation_degrees += 180
+
+			$Sprite.rotation_degrees = 0
+			$Sprite.look_at(old_sprite_global_pos)
+			$Sprite.rotation_degrees += 180
+			
+			if $Sprite.global_position != global_position:
+				old_sprite_global_pos = $Sprite.global_position
+			
+			print("dir: ", old_sprite_global_pos)
+			print(mobile_selected_pos.global_position)
 		else:
 #			$Sprite.look_at(mobile_selected_pos.global_position.rotated(deg2rad(90)))
 			pass
