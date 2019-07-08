@@ -43,6 +43,9 @@ offset = Vector2( 16, 0 )
 [node name="FireSpawn" type="Position2D" parent="Sprite"]
 position = Vector2( 24, 0 )
 
+[node name="Direction" type="Node2D" parent="Sprite"]
+position = Vector2( 100000, 0 )
+
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 1 )
 anims/show = SubResource( 2 )

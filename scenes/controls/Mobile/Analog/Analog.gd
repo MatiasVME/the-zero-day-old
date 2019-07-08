@@ -18,6 +18,8 @@ var currentPointerIDX = INACTIVE_IDX
 
 var incomingPointer
 
+# NEEDFIX: El valor force en Y necesita ser arreglado,
+# ya que esta invertido.
 signal current_force_updated(force)
 
 func _ready():
@@ -113,10 +115,11 @@ func updateBallPos():
 	ball.position = Vector2(ballPos.x, ballPos.y)
 
 func calculateForce(var x, var y):
-	currentForce.x = (x - centerPoint.x)/halfSize.x
-	currentForce.y = -(y - centerPoint.y)/halfSize.y
-	if currentForce.length_squared()>1:
-		currentForce=currentForce/currentForce.length()
+	currentForce.x = (x - centerPoint.x) / halfSize.x
+	currentForce.y = - (y - centerPoint.y) / halfSize.y # xd
+	
+	if currentForce.length_squared() > 1:
+		currentForce = currentForce/currentForce.length()
 	
 	emit_signal("current_force_updated", currentForce)
 
