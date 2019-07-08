@@ -63,6 +63,7 @@ margin_top = 222.0
 margin_right = 146.0
 margin_bottom = 240.0
 focus_mode = 0
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 2 )
 
@@ -72,6 +73,7 @@ margin_top = 222.0
 margin_right = 164.0
 margin_bottom = 240.0
 focus_mode = 0
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 4 )
 
@@ -81,6 +83,7 @@ margin_top = 222.0
 margin_right = 182.0
 margin_bottom = 240.0
 focus_mode = 0
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 6 )
 
@@ -90,6 +93,7 @@ margin_top = 222.0
 margin_right = 200.0
 margin_bottom = 240.0
 focus_mode = 0
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 8 )
 
@@ -99,5 +103,6 @@ margin_top = 222.0
 margin_right = 218.0
 margin_bottom = 240.0
 focus_mode = 0
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 10 )
