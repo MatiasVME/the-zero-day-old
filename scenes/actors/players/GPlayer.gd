@@ -119,7 +119,6 @@ func _fire_handler():
 		else:
 			if selected_enemy:
 				fire_dir = selected_enemy.global_position - global_position
-				print("hola")
 			else:
 				if current_move_dir != Vector2.ZERO:
 					fire_dir = current_move_dir
