@@ -24,7 +24,6 @@ tracks/0/keys = {
 "GameCamera",
 ]]
 current = true
-zoom = Vector2( 1.01, 1.01 )
 process_mode = 0
 smoothing_enabled = true
 smoothing_speed = 4.0

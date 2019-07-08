@@ -37,7 +37,7 @@ func calcule_navigation_path(target_pos):
 
 func get_current_point():
 	return navigation_path[current_index]
-
+	
 func next_index():
 	current_index += 1
 	if current_index >= navigation_path.size():

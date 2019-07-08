@@ -8,8 +8,6 @@ onready var player = get_parent()
 
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
-var mobile_selected_pos
-var mobile_selected
 
 signal weapon_added(weapon)
 signal weapon_removed()
@@ -17,9 +15,7 @@ signal weapon_removed()
 func _ready():
 	if Main.is_mobile and game_camera.size() > 0:
 		game_camera = game_camera[0]
-		mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
-		mobile_selected = game_camera.get_node("MobileSelected")
-	
+
 func _process(delta):
 	if not data:
 		set_process(false)
@@ -36,13 +32,18 @@ func _process(delta):
 	if not Main.is_mobile:
 		$Sprite.look_at(get_global_mouse_position())
 	else:
+		# Apunta al enemigo
 		if player.selected_enemy or is_instance_valid(player.selected_enemy):
-			$Sprite.look_at(mobile_selected_pos.global_position)
-		elif mobile_selected_pos.global_position != $Sprite.global_position:
+			$Sprite.look_at(player.selected_enemy.global_position)
+		# Cuando se mueve con el arma
+		elif game_camera.global_position != $Sprite.global_position:
 			$Sprite.rotation_degrees = 0
-			$Sprite.look_at(mobile_selected_pos.global_position)
+			$Sprite.look_at(game_camera.global_position)
 			$Sprite.rotation_degrees += 180
-		
+		# Cuando esta quieto con el arma
+		else:
+			$Sprite.look_at(game_camera.global_position)
+
 # Puede recibir un PHWeapon o un null
 func set_weapon(weapon):
 	data = weapon

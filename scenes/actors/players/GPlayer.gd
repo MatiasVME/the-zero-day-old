@@ -318,6 +318,9 @@ func _on_DetectArea_body_exited(body):
 			
 			if selected_num == enemy_exited_num:
 				select_next()
+			
+			if selectables.size() == 0:
+				selected_enemy = null
 
 func _on_current_force_updated(force):
 	current_move_dir = force
