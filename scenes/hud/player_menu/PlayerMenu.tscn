@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://scenes/hud/player_menu/BG.png" type="Texture" id=1]
+[ext_resource path="res://scenes/buttons/player_menu_config/PlayerMenuButton-0.png" type="Texture" id=2]
+[ext_resource path="res://scenes/buttons/player_menu_config/PlayerMenuButton-1.png" type="Texture" id=3]
+[ext_resource path="res://scenes/buttons/player_menu_config/PlayerMenuButton-2.png" type="Texture" id=4]
+[ext_resource path="res://scenes/buttons/player_menu_inventory/PlayerMenuButton-6.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/player_menu_inventory/PlayerMenuButton-7.png" type="Texture" id=6]
+[ext_resource path="res://scenes/buttons/player_menu_inventory/PlayerMenuButton-8.png" type="Texture" id=7]
+[ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-3.png" type="Texture" id=8]
+[ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-4.png" type="Texture" id=9]
+[ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-5.png" type="Texture" id=10]
+[ext_resource path="res://scenes/hud/player_menu/skills/Skills.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/hud/player_menu/menu/Menu.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/hud/player_menu/inventory/Inventory.tscn" type="PackedScene" id=13]
+
+[node name="PlayerMenu" type="Node2D"]
+
+[node name="Background" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Config" type="TextureButton" parent="."]
+margin_left = 95.0
+margin_right = 169.0
+margin_bottom = 41.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_disabled = ExtResource( 4 )
+
+[node name="Inventory" type="TextureButton" parent="."]
+margin_left = 173.0
+margin_right = 247.0
+margin_bottom = 41.0
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_disabled = ExtResource( 7 )
+
+[node name="Skills" type="TextureButton" parent="."]
+margin_left = 251.0
+margin_right = 325.0
+margin_bottom = 41.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_disabled = ExtResource( 10 )
+
+[node name="Panels" type="Node2D" parent="."]
+position = Vector2( 0, 44 )
+
+[node name="Skills" parent="Panels" instance=ExtResource( 11 )]
+
+[node name="Menu" parent="Panels" instance=ExtResource( 12 )]
+
+[node name="Inventory" parent="Panels" instance=ExtResource( 13 )]

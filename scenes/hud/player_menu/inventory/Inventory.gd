@@ -1,6 +1,6 @@
 extends Node2D
 
-#class_name Inventory
+class_name Inventory
 
 var hotbar_row : int = 1
 var is_fulled : bool = false
@@ -17,6 +17,8 @@ var last_selected_slot = [-1,-1]
 var current_inv : RPGWeightInventory
 # Municion total de la arma actual
 var total_ammo = 0
+
+var row_rec = preload("res://scenes/hud/player_menu/inventory/row/Row.tscn")
 
 signal item_added
 signal item_removed(row_num, slot_num)
@@ -118,8 +120,8 @@ func has_slots():
 func create_row_if_can():
 	# Caso no exista un row y caso en el cual el ultimo row este lleno
 	if rows.size() < 1 or get_last_row().is_full():
-		rows.append(load("res://scenes/hud/inventory/row/Row.tscn").instance())
-		$Container/MainColumn.add_child(get_last_row())
+		rows.append(row_rec.instance())
+		$Control/Cont/Inventory/HBox/Container/MainColumn.add_child(get_last_row())
 		
 		get_last_row().connect("item_removed", self, "_on_item_removed", [rows.size() - 1])
 		get_last_row().connect("slot_selected", self, "_on_slot_selected")
