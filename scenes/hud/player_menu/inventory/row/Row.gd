@@ -2,6 +2,8 @@ extends HBoxContainer
 
 class_name InventoryRow
 
+var inventory = get_owner()
+
 var row_num = -1
 var num_items = 0
 
@@ -11,13 +13,17 @@ signal row_diamond_pressed(row, pressed)
 
 # Añade un identificador y conecta cada slot con "update_last_selected_slot"
 func init_row(row_num):
+	inventory = get_parent().get_owner()
+	
 	self.row_num = row_num
 	
 	var Slots = $Slots.get_children()
 	for i in range(Slots.size()):
 		Slots[i].slot_num = i # Se le añade un identificador a cada slot
-		var hud_inv = get_parent().get_parent().get_parent() # Por ahora la unica forma de obtener el hud desde aquí
-		Slots[i].get_node("Slot").connect("button_up", hud_inv, "update_last_selected_slot", [row_num, i])
+#		var hud_inv = get_parent().get_parent().get_parent() # Por ahora la unica forma de obtener el hud desde aquí
+#		print(hud_inv.get_owner().name)
+		Slots[i].get_node("Slot").connect("button_up", inventory, "update_last_selected_slot", [row_num, i])
+		print(inventory.name)
 		
 		# Se connectan los slots
 		# TODO: Hay que desconectarlos cuando no se esten usando
