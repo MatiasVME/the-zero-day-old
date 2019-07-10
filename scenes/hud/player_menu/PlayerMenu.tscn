@@ -44,6 +44,8 @@ tracks/1/keys = {
 }
 
 [node name="PlayerMenu" type="Node2D"]
+visible = false
+position = Vector2( 0, -223.946 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]

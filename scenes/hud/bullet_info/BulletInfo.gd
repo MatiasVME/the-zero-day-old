@@ -34,7 +34,7 @@ func update_bullet_info(equip):
 	if equip is PHWeapon:
 		if equip.requires_ammo:
 			$Bullet/CurrentAndMax.text = str(equip.current_shot) + "/" + str(equip.weapon_capacity)
-			$Total/Total.text = str(hud.get_node("Inventory").get_total_ammo())
+			$Total/Total.text = str(hud.inventory.get_total_ammo())
 		else:
 			$Bullet/CurrentAndMax.text = "-/-"
 	else:

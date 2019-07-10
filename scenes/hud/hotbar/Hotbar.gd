@@ -1,7 +1,6 @@
 extends Node2D
 
 onready var hud = get_parent()
-onready var inventory = hud.get_node("Inventory")
 
 var current_item : PHItem
 # Items en la hotbar actual
@@ -18,7 +17,7 @@ func _ready():
 		var slot_num = int(slot.name.substr(slot.name.length() - 1,1))
 		slot.connect("toggled", self, "_on_slot_toggled", [slot_num])
 	
-	if not inventory:
+	if not hud.inventory:
 		print("Inventory not found")
 		return
 	
@@ -26,10 +25,10 @@ func _ready():
 	
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# hay un item es removido o etc.
-	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
+	hud.inventory.connect("item_removed", self, "_on_item_removed")
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# se cambia de hotbar.
-	hud.get_node("Inventory").connect("change_diamond", self, "_on_change_diamond")
+	hud.inventory.connect("change_diamond", self, "_on_change_diamond")
 	
 func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
@@ -102,13 +101,11 @@ func update_hotbar_row(row : int):
 	if not hud:
 		print("HUD not found")
 		return
-		
-	var inventory = hud.get_node("Inventory")
 	
-	if not inventory:
+	if not hud.inventory:
 		print("not inventory")
 		return
-	elif inventory and inventory.rows.size() < 1:
+	elif hud.inventory and hud.inventory.rows.size() < 1:
 		print("inventory and inventory.rows < 1")
 		return
 	
@@ -116,7 +113,7 @@ func update_hotbar_row(row : int):
 	
 	items = []
 	for i in range(0, 5):
-		var item = inventory.rows[row].get_item(i)
+		var item = hud.inventory.rows[row].get_item(i)
 		
 		items.append(item)
 		

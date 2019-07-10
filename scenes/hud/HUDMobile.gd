@@ -1,5 +1,7 @@
 extends "GHUD.gd"
 
+onready var inventory = get_node("PlayerMenu/Panels/Inventory")
+
 func _ready():
 	$Buttons.connect("fire", self, "_on_fire")
 	$Buttons.connect("select", self, "_on_select")
