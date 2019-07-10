@@ -12,7 +12,8 @@ func _ready():
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 	PlayerManager.connect("player_reload", self, "_on_player_reload")
 	
-	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
+	# TODO: Necesita ser activado
+#	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
 	
 	update_bullet_info(null)
 	

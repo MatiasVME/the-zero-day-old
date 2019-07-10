@@ -21,8 +21,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
 margin_top = 29.0
-margin_right = -375.0
-margin_bottom = -187.0
+margin_right = -5.0
+margin_bottom = -5.0
 
 [node name="HBox" type="HBoxContainer" parent="Control/Cont/Inventory"]
 anchor_right = 1.0
@@ -33,7 +33,7 @@ rect_min_size = Vector2( 410, 162 )
 
 [node name="Container" type="ScrollContainer" parent="Control/Cont/Inventory/HBox"]
 margin_right = 166.0
-margin_bottom = 162.0
+margin_bottom = 298.0
 rect_min_size = Vector2( 166, 100 )
 scroll_horizontal_enabled = false
 
