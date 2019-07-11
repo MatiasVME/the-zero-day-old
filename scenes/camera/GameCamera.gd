@@ -18,6 +18,7 @@ func _ready():
 	
 func _physics_process(delta):
 	if not following or not is_instance_valid(following):
+		print("following no es valido: ", following)
 		return
 		
 	input_change_focus = Input.is_action_just_pressed("change_focus")
@@ -30,7 +31,10 @@ func _physics_process(delta):
 			if not Main.is_mobile:
 				objective_pos = get_global_mouse_position()
 				global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
-			elif following.selected_num == -1:
+			# No estoy seguro por qué hay que validar de nuevo si es
+			# una instancia valida o no, pero creo que hay que hacerlo.
+			# Antes daba error.
+			elif is_instance_valid(following) and following.selected_num == -1:
 				$MobileSelected.hide()
 				global_position = following.global_position
 			else:
