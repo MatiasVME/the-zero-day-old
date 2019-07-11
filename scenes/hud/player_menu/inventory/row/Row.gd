@@ -2,7 +2,7 @@ extends HBoxContainer
 
 class_name InventoryRow
 
-var inventory = get_owner()
+var inventory
 
 var row_num = -1
 var num_items = 0
@@ -21,8 +21,7 @@ func init_row(row_num):
 	for i in range(Slots.size()):
 		Slots[i].slot_num = i # Se le añade un identificador a cada slot
 		Slots[i].get_node("Slot").connect("button_up", inventory, "update_last_selected_slot", [row_num, i])
-
-		
+	
 		# Se connectan los slots
 		# TODO: Hay que desconectarlos cuando no se esten usando
 		Slots[i].connect("selected", self, "_on_slot_selected")

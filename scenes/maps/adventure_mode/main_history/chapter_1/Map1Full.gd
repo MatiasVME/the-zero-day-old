@@ -1,7 +1,5 @@
 extends Node2D
 
-var camera
-
 func _ready():
 	var player = PlayerManager.init_player(0)
 	player.global_position = Vector2(120, 152)

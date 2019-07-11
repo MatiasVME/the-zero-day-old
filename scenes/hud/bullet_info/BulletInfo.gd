@@ -27,8 +27,9 @@ func update_bullet_info(equip):
 		$Anim.play_backwards("show")
 		is_showing = false
 		return
-	# No este equipado y no se esta mostrando
-	else: 
+	# No este equipado
+	elif not equip:
+#		print("No este equipado")
 		return
 	
 	if equip is PHWeapon:
@@ -49,6 +50,7 @@ func update_images_bullet_info(equip):
 	
 # Normalmente recibe un PHWeapon pero puede recibir null
 func set_current_equip(equip):
+#	print("update_bullet_info(equip) (equip): ", (equip is PHWeapon))
 	update_bullet_info(equip)
 	update_images_bullet_info(equip)
 
