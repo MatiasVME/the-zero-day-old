@@ -20,10 +20,8 @@ func init_row(row_num):
 	var Slots = $Slots.get_children()
 	for i in range(Slots.size()):
 		Slots[i].slot_num = i # Se le añade un identificador a cada slot
-#		var hud_inv = get_parent().get_parent().get_parent() # Por ahora la unica forma de obtener el hud desde aquí
-#		print(hud_inv.get_owner().name)
 		Slots[i].get_node("Slot").connect("button_up", inventory, "update_last_selected_slot", [row_num, i])
-		print(inventory.name)
+
 		
 		# Se connectan los slots
 		# TODO: Hay que desconectarlos cuando no se esten usando

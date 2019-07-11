@@ -17,7 +17,7 @@ func _ready():
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 	
 func _physics_process(delta):
-	if not following and not is_instance_valid(following):
+	if not following or not is_instance_valid(following):
 		return
 		
 	input_change_focus = Input.is_action_just_pressed("change_focus")

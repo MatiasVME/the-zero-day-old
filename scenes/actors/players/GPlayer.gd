@@ -32,7 +32,6 @@ var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
 var fire_dir := Vector2()
 var current_move_dir := Vector2()
-var old_current_move_dir := Vector2.RIGHT
 
 var hud
 
@@ -123,8 +122,9 @@ func _fire_handler():
 				if current_move_dir != Vector2.ZERO:
 					fire_dir = current_move_dir
 				else:
-					fire_dir = old_current_move_dir
-				
+					# Necesitamos que fire_dir sea igual a la dirección donde apunta gweaponinbattle
+					fire_dir = $GWeaponInBattle/Sprite/Direction.global_position
+					
 		time_to_next_action_progress = 0.0
 		emit_signal("fire", fire_dir.normalized())
 	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
@@ -327,6 +327,3 @@ func _on_current_force_updated(force):
 	
 	# Arreglo para corregir la dirección
 	current_move_dir.y *= -1
-
-	if current_move_dir != Vector2.ZERO:
-		old_current_move_dir = current_move_dir

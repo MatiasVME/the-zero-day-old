@@ -27,8 +27,6 @@
 [ext_resource path="res://scenes/hud/player_menu/inventory/info_items/button_images/orange_button_pressed.png" type="Texture" id=25]
 [ext_resource path="res://scenes/hud/player_menu/inventory/info_items/icons/trash.png" type="Texture" id=26]
 
-
-
 [node name="Inventory" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -155,7 +153,6 @@ columns = 3
 margin_right = 30.0
 margin_bottom = 12.0
 icon = ExtResource( 7 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Sell" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -163,7 +160,6 @@ margin_left = 34.0
 margin_right = 64.0
 margin_bottom = 12.0
 icon = ExtResource( 8 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Weight" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -171,7 +167,6 @@ margin_left = 68.0
 margin_right = 98.0
 margin_bottom = 12.0
 icon = ExtResource( 9 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="AmmoAmount" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -188,7 +183,6 @@ margin_top = 16.0
 margin_right = 64.0
 margin_bottom = 28.0
 icon = ExtResource( 11 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Damage" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -197,7 +191,6 @@ margin_top = 16.0
 margin_right = 98.0
 margin_bottom = 28.0
 icon = ExtResource( 12 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Attack" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -205,7 +198,6 @@ margin_top = 32.0
 margin_right = 30.0
 margin_bottom = 44.0
 icon = ExtResource( 13 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Type" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -214,7 +206,6 @@ margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 44.0
 icon = ExtResource( 14 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="TimeToNextAction" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -223,7 +214,6 @@ margin_top = 32.0
 margin_right = 98.0
 margin_bottom = 44.0
 icon = ExtResource( 15 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="TimeToReload" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -231,7 +221,6 @@ margin_top = 48.0
 margin_right = 30.0
 margin_bottom = 60.0
 icon = ExtResource( 16 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="WeaponCapacity" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -240,7 +229,6 @@ margin_top = 48.0
 margin_right = 64.0
 margin_bottom = 60.0
 icon = ExtResource( 17 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="RequiresAmmo" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -249,7 +237,6 @@ margin_top = 48.0
 margin_right = 98.0
 margin_bottom = 60.0
 icon = ExtResource( 18 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Defense" parent="Info/PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 6 )]
@@ -257,7 +244,6 @@ margin_top = 64.0
 margin_right = 30.0
 margin_bottom = 76.0
 icon = ExtResource( 19 )
-icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="ItemAccions" type="MarginContainer" parent="Info/PanelsColumn"]
@@ -315,7 +301,6 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 22 )
 pressed_texture = ExtResource( 23 )
 text = "+10"
-separation = 3
 
 [node name="PressButton2" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 20 )]
 visible = false
@@ -330,7 +315,6 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 24 )
 pressed_texture = ExtResource( 25 )
 text = "-10"
-separation = 3
 
 [node name="Drop" type="VBoxContainer" parent="Info/PanelsColumn/ItemAccions/Accions/AccionRow"]
 margin_left = 91.0

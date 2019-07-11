@@ -35,14 +35,17 @@ func _process(delta):
 		# Apunta al enemigo
 		if player.selected_enemy or is_instance_valid(player.selected_enemy):
 			$Sprite.look_at(player.selected_enemy.global_position)
+#			print("---1---")
 		# Cuando se mueve con el arma
 		elif game_camera.global_position != $Sprite.global_position:
 			$Sprite.rotation_degrees = 0
 			$Sprite.look_at(game_camera.global_position)
 			$Sprite.rotation_degrees += 180
+#			print("---2---")
 		# Cuando esta quieto con el arma
 		else:
 			$Sprite.look_at(game_camera.global_position)
+#			print("---3---")
 
 # Puede recibir un PHWeapon o un null
 func set_weapon(weapon):
