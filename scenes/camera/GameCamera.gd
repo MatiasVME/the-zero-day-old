@@ -17,31 +17,32 @@ func _ready():
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 	
 func _physics_process(delta):
-	if not following or not is_instance_valid(following):
-		print("following no es valido: ", following)
-		return
-		
 	input_change_focus = Input.is_action_just_pressed("change_focus")
 	
 	if input_change_focus:
 		change_focus()
+		
+	if not is_instance_valid(following):
+		print("following no es valido: ", following)
+		return
 
 	if mode == Mode.FOLLOW:
 		if following and not following.is_disabled:
 			if not Main.is_mobile:
 				objective_pos = get_global_mouse_position()
+				
 				global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
-			# No estoy seguro por qué hay que validar de nuevo si es
-			# una instancia valida o no, pero creo que hay que hacerlo.
-			# Antes daba error.
-			elif is_instance_valid(following) and following.selected_num == -1:
+			elif following.selected_num == -1:
 				$MobileSelected.hide()
 				global_position = following.global_position
 			else:
-				objective_pos = following.selected_enemy.global_position
-				$MobileSelected.show()
-				$MobileSelected.global_position = objective_pos
-				global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
+				if is_instance_valid(following.selected_enemy):
+					objective_pos = following.selected_enemy.global_position
+					$MobileSelected.show()
+					$MobileSelected.global_position = objective_pos
+					global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
+				else:
+					print("following.selected_enemy no es valida")
 		else:
 			mode = Mode.FREE
 	elif mode == Mode.FREE:
@@ -68,6 +69,10 @@ func set_mode(_mode):
 	mode = _mode
 
 func change_focus():
+	if not is_instance_valid(following):
+		print("following no es una instancia valida")
+		return
+		
 	following.can_move = false
 	following = PlayerManager.get_next_player()
 	following.can_move = true

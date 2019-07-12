@@ -33,7 +33,7 @@ func _process(delta):
 		$Sprite.look_at(get_global_mouse_position())
 	else:
 		# Apunta al enemigo
-		if player.selected_enemy or is_instance_valid(player.selected_enemy):
+		if is_instance_valid(player.selected_enemy):
 			$Sprite.look_at(player.selected_enemy.global_position)
 #			print("---1---")
 		# Cuando se mueve con el arma

@@ -8,18 +8,18 @@
 [ext_resource path="res://scenes/actors/players/serbot/images/Serbot_idle_01.png" type="Texture" id=6]
 [ext_resource path="res://scenes/actors/players/serbot/images/Serbot_idle_02.png" type="Texture" id=7]
 [ext_resource path="res://scenes/actors/players/serbot/images/Serbot_idle_03.png" type="Texture" id=8]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_01.png" type="Texture" id=9]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_02.png" type="Texture" id=10]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_03.png" type="Texture" id=11]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_04.png" type="Texture" id=12]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_01.png" type="Texture" id=13]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_02.png" type="Texture" id=14]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_03.png" type="Texture" id=15]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_04.png" type="Texture" id=16]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_01.png" type="Texture" id=17]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_02.png" type="Texture" id=18]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_03.png" type="Texture" id=19]
-[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_04.png" type="Texture" id=20]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_01.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_02.png" type="Texture" id=10]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_03.png" type="Texture" id=11]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_up_04.png" type="Texture" id=12]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_01.png" type="Texture" id=13]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_02.png" type="Texture" id=14]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_03.png" type="Texture" id=15]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_side_04.png" type="Texture" id=16]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_01.png" type="Texture" id=17]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_02.png" type="Texture" id=18]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_03.png" type="Texture" id=19]
+[ext_resource path="res://scenes/actors/players/serbot/images/Serbot_run_down_04.png" type="Texture" id=20]
 [ext_resource path="res://scenes/actors/melee_attack/BoxingAttack.tscn" type="PackedScene" id=21]
 [ext_resource path="res://scenes/actors/weapons_in_battle/GWeaponInBattle.tscn" type="PackedScene" id=22]
 
@@ -32,17 +32,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "move_up",
+"name": "move_side",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 13 ), ExtResource( 14 ), ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
-"name": "move_side",
+"name": "move_down",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 17 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
 "loop": true,
-"name": "move_down",
+"name": "move_up",
 "speed": 5.0
 } ]
 

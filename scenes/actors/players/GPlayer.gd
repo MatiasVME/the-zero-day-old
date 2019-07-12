@@ -284,6 +284,7 @@ func _on_fire(dir):
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "dead":
 		visible = false
+		.dead()
 
 func _on_InteractArea_body_entered(body):
 	if body is ItemInWorld:
