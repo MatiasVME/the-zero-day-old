@@ -17,18 +17,7 @@ func _ready():
 		var slot_num = int(slot.name.substr(slot.name.length() - 1,1))
 		slot.connect("toggled", self, "_on_slot_toggled", [slot_num])
 	
-	if not hud.inventory:
-		print("Inventory not found")
-		return
-	
-	update_hotbar_row(0)
-	
-	# Conectamos la hotbar al inventario para escuchar cuando
-	# hay un item es removido o etc.
-	hud.inventory.connect("item_removed", self, "_on_item_removed")
-	# Conectamos la hotbar al inventario para escuchar cuando
-	# se cambia de hotbar.
-	hud.inventory.connect("change_diamond", self, "_on_change_diamond")
+	hud.connect("ready", self, "_on_hud_ready")
 	
 func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
@@ -131,6 +120,7 @@ func _on_slot_toggled(button_pressed, slot):
 	
 func _on_change_diamond(row):
 	update_hotbar_row(row.row_num)
+	print("sd",row.row_num)
 	
 func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
@@ -139,3 +129,18 @@ func _on_item_taken(item):
 func _on_item_removed(row_num, slot_num):
 	update_hotbar_row(current_hotbar)
 
+func _on_hud_ready():
+	if not hud.inventory:
+		print("Inventory not found xd")
+		return
+	
+	update_hotbar_row(0)
+	
+	# Conectamos la hotbar al inventario para escuchar cuando
+	# hay un item es removido o etc.
+	hud.inventory.connect("item_removed", self, "_on_item_removed")
+	# Conectamos la hotbar al inventario para escuchar cuando
+	# se cambia de hotbar.
+	hud.inventory.connect("change_diamond", self, "_on_change_diamond")
+	
+	print("hud.inventory:",hud.inventory)

@@ -202,3 +202,4 @@ func _on_row_diammond_pressed(row, pressed):
 		unselect_row_diammond()
 		select_row_diammond(row.row_num)
 		emit_signal("change_diamond", row)
+		
