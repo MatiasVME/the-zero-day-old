@@ -1,14 +1,13 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://scenes/hud/HUD_old.gd" type="Script" id=1]
-[ext_resource path="res://scenes/hud/inventory/Inventory.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/hud/stats/StatsPanel.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/hud/build_menu/BuildMenu.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hud/stats/StatsPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/build_menu/BuildMenu.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dead"
@@ -44,81 +43,9 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Inventory:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, -2 ),
-"update": 0,
-"values": [ Vector2( 60, 0 ), Vector2( 360, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Inventory:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Inventory:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Inventory:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.356862, 0.364689, 0.372653 ),
-"transitions": PoolRealArray( -2, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 360, 0 ), Vector2( 60, 0 ), Vector2( 60, 0 ), Vector2( 60, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Inventory:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Inventory:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=5]
 length = 0.4
@@ -462,17 +389,11 @@ color = Color( 0.921569, 0.337255, 0.294118, 0 )
 anims/dead = SubResource( 1 )
 anims/hit = SubResource( 2 )
 
-[node name="Inventory" parent="." instance=ExtResource( 2 )]
-visible = false
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 360, 0 )
-
 [node name="AnimInv" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 3 )
 anims/show = SubResource( 4 )
 
-[node name="GameMenu" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
+[node name="GameMenu" parent="." instance=ExtResource( 2 )]
 position = Vector2( 60, 0 )
 
 [node name="Build" parent="GameMenu" index="3"]
@@ -482,14 +403,13 @@ disabled = false
 disabled = false
 
 [node name="ResumeMenu" parent="GameMenu" index="6"]
-editor/display_folded = true
 visible = false
 
-[node name="StatPanel" parent="GameMenu" instance=ExtResource( 4 )]
+[node name="StatPanel" parent="GameMenu" instance=ExtResource( 3 )]
 visible = false
 position = Vector2( 450, 120 )
 
-[node name="BuildMenu" parent="GameMenu" instance=ExtResource( 5 )]
+[node name="BuildMenu" parent="GameMenu" instance=ExtResource( 4 )]
 visible = false
 position = Vector2( -20, -4 )
 
@@ -508,14 +428,14 @@ anims/show = SubResource( 10 )
 anims/hide = SubResource( 11 )
 anims/show = SubResource( 12 )
 
-[node name="Hotbar" parent="." instance=ExtResource( 6 )]
+[node name="Hotbar" parent="." instance=ExtResource( 5 )]
 position = Vector2( 0, 20 )
 
 [node name="AnimHotbar" type="AnimationPlayer" parent="."]
 anims/hide = SubResource( 13 )
 anims/show = SubResource( 14 )
 
-[node name="BulletInfo" parent="." instance=ExtResource( 7 )]
+[node name="BulletInfo" parent="." instance=ExtResource( 6 )]
 position = Vector2( 124, 0 )
 
 [node name="AnimBulletInfo" type="AnimationPlayer" parent="."]
@@ -523,7 +443,7 @@ autoplay = "show"
 anims/hide = SubResource( 15 )
 anims/show = SubResource( 16 )
 
-[node name="AvatarHandler" parent="." instance=ExtResource( 8 )]
+[node name="AvatarHandler" parent="." instance=ExtResource( 7 )]
 position = Vector2( -96, 0 )
 
 [node name="AnimAvatarHandler" type="AnimationPlayer" parent="."]
@@ -531,7 +451,7 @@ autoplay = "show"
 anims/hide = SubResource( 17 )
 anims/show = SubResource( 18 )
 
-[node name="EndLevel" parent="." instance=ExtResource( 9 )]
+[node name="EndLevel" parent="." instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 0, -235.931 )
 

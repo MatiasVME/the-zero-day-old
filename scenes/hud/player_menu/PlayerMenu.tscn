@@ -80,6 +80,7 @@ texture_pressed = ExtResource( 10 )
 texture_disabled = ExtResource( 11 )
 
 [node name="Panels" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( 0, 44 )
 
 [node name="Skills" parent="Panels" instance=ExtResource( 12 )]

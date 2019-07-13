@@ -24,6 +24,12 @@ func _on_select_next_item_down():
 func _on_toggle_player_menu_pressed(toggled):
 	if toggled:
 		$PlayerMenu/Anim.play("show")
+		
+		# Si no hay ningún boton del menú presionado,
+		# presiona config.
+		if not ($PlayerMenu/Config.is_pressed() or $PlayerMenu/Inventory.is_pressed() or $PlayerMenu/Skills.is_pressed()):
+			$PlayerMenu._on_Config_toggled(true)
+			$PlayerMenu/Config.pressed = true
 	else:
 		$PlayerMenu/Anim.play_backwards("show")
 	
