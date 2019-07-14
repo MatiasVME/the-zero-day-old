@@ -52,4 +52,3 @@ texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 texture_disabled = ExtResource( 8 )
-

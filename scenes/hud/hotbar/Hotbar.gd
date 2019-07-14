@@ -120,7 +120,6 @@ func _on_slot_toggled(button_pressed, slot):
 	
 func _on_change_diamond(row):
 	update_hotbar_row(row.row_num)
-	print("sd",row.row_num)
 	
 func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)

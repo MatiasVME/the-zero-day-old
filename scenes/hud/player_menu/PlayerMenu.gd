@@ -1,5 +1,7 @@
 extends Node2D
 
+signal menu_button_unpressed
+
 func _on_Config_toggled(button_pressed):
 	if button_pressed:
 		$Panels/Menu.show()
@@ -17,6 +19,7 @@ func _on_Config_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		emit_signal("menu_button_unpressed")
 
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
@@ -35,6 +38,7 @@ func _on_Inventory_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		emit_signal("menu_button_unpressed")
 
 func _on_Skills_toggled(button_pressed):
 	if button_pressed:
@@ -53,6 +57,7 @@ func _on_Skills_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		emit_signal("menu_button_unpressed")
 
 func _on_InfoPlayers_toggled(button_pressed):
 	if button_pressed:
@@ -71,3 +76,4 @@ func _on_InfoPlayers_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		emit_signal("menu_button_unpressed")

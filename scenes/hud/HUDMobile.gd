@@ -9,6 +9,8 @@ func _ready():
 	$Buttons.connect("select_next_item_down", self, "_on_select_next_item_down")
 	$Buttons.connect("toggle_player_menu_pressed", self, "_on_toggle_player_menu_pressed")
 	
+	$PlayerMenu.connect("menu_button_unpressed", self, "_on_player_menu_button_unpressed")
+	
 func _on_fire():
 	hud_actor._fire_handler()
 	
@@ -32,4 +34,6 @@ func _on_toggle_player_menu_pressed(toggled):
 			$PlayerMenu/Config.pressed = true
 	else:
 		$PlayerMenu/Anim.play_backwards("show")
-	
+
+func _on_player_menu_button_unpressed():
+	$Buttons/Index/TogglePlayerMenu.pressed = false
