@@ -14,6 +14,7 @@ func _on_Config_toggled(button_pressed):
 		$Panels/Skills.hide()
 		
 		$Anim.play_backwards("show")
+		get_parent().get_node("Index/TogglePlayerMenu")
 
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:

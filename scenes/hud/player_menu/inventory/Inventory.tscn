@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/hud/player_menu/inventory/Inventory.gd" type="Script" id=1]
 [ext_resource path="res://themes/ph_theme.tres" type="Theme" id=2]
 [ext_resource path="res://scenes/hud/player_menu/inventory/info_items/InfoItems.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/player_menu/inventory/slot/Slot.tscn" type="PackedScene" id=4]
 
 [node name="Inventory" type="Node2D" groups=[
 "Inventory",
@@ -55,3 +56,82 @@ margin_left = 5.0
 margin_top = 29.0
 margin_right = -5.0
 margin_bottom = -5.0
+
+[node name="HBox" type="HBoxContainer" parent="Control/Cont/Equipment"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/Cont/Equipment/HBox"]
+margin_right = 166.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 166, 0 )
+
+[node name="VBox" type="VBoxContainer" parent="Control/Cont/Equipment/HBox/CenterContainer"]
+margin_left = 83.0
+margin_top = 81.0
+margin_right = 83.0
+margin_bottom = 81.0
+
+[node name="EquipmentGrid" type="GridContainer" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox"]
+margin_right = 86.0
+margin_bottom = 86.0
+columns = 3
+
+[node name="Slot1" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_right = 26.0
+is_disabled = true
+
+[node name="Slot2" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 30.0
+margin_right = 56.0
+
+[node name="Slot3" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 60.0
+margin_right = 86.0
+is_disabled = true
+
+[node name="Slot4" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 30.0
+margin_right = 26.0
+margin_bottom = 56.0
+is_disabled = true
+
+[node name="Slot5" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 30.0
+margin_top = 30.0
+margin_right = 56.0
+margin_bottom = 56.0
+
+[node name="Slot6" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 60.0
+margin_top = 30.0
+margin_right = 86.0
+margin_bottom = 56.0
+is_disabled = true
+
+[node name="Slot7" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 60.0
+margin_right = 26.0
+margin_bottom = 86.0
+is_disabled = true
+
+[node name="Slot8" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 30.0
+margin_top = 60.0
+margin_right = 56.0
+margin_bottom = 86.0
+
+[node name="Slot9" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
+margin_left = 60.0
+margin_top = 60.0
+margin_right = 86.0
+margin_bottom = 86.0
+is_disabled = true
+
+[node name="InfoItems" parent="Control/Cont/Equipment/HBox" instance=ExtResource( 3 )]
+margin_left = 170.0
+margin_top = 0.0
+margin_right = 414.0
