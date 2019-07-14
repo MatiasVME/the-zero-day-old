@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/hud/player_menu/PlayerMenu.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/player_menu/BG.png" type="Texture" id=2]
@@ -11,9 +11,13 @@
 [ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-3.png" type="Texture" id=9]
 [ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-4.png" type="Texture" id=10]
 [ext_resource path="res://scenes/buttons/player_menu_skills/PlayerMenuButton-5.png" type="Texture" id=11]
-[ext_resource path="res://scenes/hud/player_menu/skills/Skills.tscn" type="PackedScene" id=12]
-[ext_resource path="res://scenes/hud/player_menu/menu/Menu.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scenes/hud/player_menu/inventory/Inventory.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/buttons/player_menu_info_player/PlayerMenuButton-Menu-9.png" type="Texture" id=12]
+[ext_resource path="res://scenes/buttons/player_menu_info_player/PlayerMenuButton-Menu-10.png" type="Texture" id=13]
+[ext_resource path="res://scenes/buttons/player_menu_info_player/PlayerMenuButton-Menu-11.png" type="Texture" id=14]
+[ext_resource path="res://scenes/hud/player_menu/skills/Skills.tscn" type="PackedScene" id=15]
+[ext_resource path="res://scenes/hud/player_menu/menu/Menu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://scenes/hud/player_menu/inventory/Inventory.tscn" type="PackedScene" id=17]
+[ext_resource path="res://scenes/hud/player_menu/players_info/PlayersInfo.tscn" type="PackedScene" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "show"
@@ -45,7 +49,7 @@ tracks/1/keys = {
 
 [node name="PlayerMenu" type="Node2D"]
 visible = false
-position = Vector2( 0, -223.946 )
+position = Vector2( 0, -207.775 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
@@ -53,8 +57,8 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Config" type="TextureButton" parent="."]
-margin_left = 95.0
-margin_right = 169.0
+margin_left = 19.0
+margin_right = 93.0
 margin_bottom = 41.0
 toggle_mode = true
 texture_normal = ExtResource( 3 )
@@ -62,8 +66,8 @@ texture_pressed = ExtResource( 4 )
 texture_disabled = ExtResource( 5 )
 
 [node name="Inventory" type="TextureButton" parent="."]
-margin_left = 173.0
-margin_right = 247.0
+margin_left = 96.0
+margin_right = 170.0
 margin_bottom = 41.0
 toggle_mode = true
 texture_normal = ExtResource( 6 )
@@ -71,26 +75,40 @@ texture_pressed = ExtResource( 7 )
 texture_disabled = ExtResource( 8 )
 
 [node name="Skills" type="TextureButton" parent="."]
-margin_left = 251.0
-margin_right = 325.0
+margin_left = 250.0
+margin_right = 324.0
 margin_bottom = 41.0
 toggle_mode = true
 texture_normal = ExtResource( 9 )
 texture_pressed = ExtResource( 10 )
 texture_disabled = ExtResource( 11 )
 
+[node name="InfoPlayers" type="TextureButton" parent="."]
+margin_left = 173.0
+margin_right = 247.0
+margin_bottom = 41.0
+toggle_mode = true
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 14 )
+
 [node name="Panels" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 44 )
 
-[node name="Skills" parent="Panels" instance=ExtResource( 12 )]
+[node name="Skills" parent="Panels" instance=ExtResource( 15 )]
+visible = false
 
-[node name="Menu" parent="Panels" instance=ExtResource( 13 )]
+[node name="Menu" parent="Panels" instance=ExtResource( 16 )]
 
-[node name="Inventory" parent="Panels" instance=ExtResource( 14 )]
+[node name="Inventory" parent="Panels" instance=ExtResource( 17 )]
+visible = false
+
+[node name="PlayersInfo" parent="Panels" instance=ExtResource( 18 )]
+visible = false
 
 [node name="Anim" type="AnimationPlayer" parent="."]
 anims/show = SubResource( 1 )
 [connection signal="toggled" from="Config" to="." method="_on_Config_toggled"]
 [connection signal="toggled" from="Inventory" to="." method="_on_Inventory_toggled"]
 [connection signal="toggled" from="Skills" to="." method="_on_Skills_toggled"]
+[connection signal="toggled" from="InfoPlayers" to="." method="_on_InfoPlayers_toggled"]

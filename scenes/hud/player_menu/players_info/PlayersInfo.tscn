@@ -1,0 +1,134 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/hud/avatar_handler/Avatar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://fonts/i_pixel_u/IPixelIU-16px.tres" type="DynamicFont" id=2]
+
+[node name="PlayersInfo" type="Node2D"]
+
+[node name="VBox" type="VBoxContainer" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 420, 196 )
+
+[node name="MarginContainer" type="MarginContainer" parent="VBox"]
+editor/display_folded = true
+margin_right = 420.0
+margin_bottom = 43.0
+custom_constants/margin_right = 0
+custom_constants/margin_top = 4
+custom_constants/margin_left = 0
+custom_constants/margin_bottom = 4
+
+[node name="Avatars" type="CenterContainer" parent="VBox/MarginContainer"]
+margin_top = 4.0
+margin_right = 420.0
+margin_bottom = 39.0
+
+[node name="HBox" type="HBoxContainer" parent="VBox/MarginContainer/Avatars"]
+margin_left = 196.0
+margin_right = 223.0
+margin_bottom = 35.0
+
+[node name="Avatar" parent="VBox/MarginContainer/Avatars/HBox" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 27.0
+margin_bottom = 35.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBox"]
+editor/display_folded = true
+margin_top = 47.0
+margin_right = 420.0
+margin_bottom = 139.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/CenterContainer"]
+editor/display_folded = true
+margin_left = 108.0
+margin_right = 312.0
+margin_bottom = 92.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBox/CenterContainer/HBoxContainer"]
+editor/display_folded = true
+margin_right = 204.0
+margin_bottom = 92.0
+
+[node name="Money" type="HBoxContainer" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_right = 204.0
+margin_bottom = 20.0
+
+[node name="MoneyTitle" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/Money"]
+margin_right = 64.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 2 )
+text = "MONEY:"
+align = 1
+valign = 1
+
+[node name="Money" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/Money"]
+margin_left = 68.0
+margin_right = 204.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "999999"
+align = 2
+valign = 1
+
+[node name="PlayerName" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 204.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 2 )
+text = "PLAYER NAME"
+align = 1
+valign = 1
+
+[node name="HPHPMAX" type="HBoxContainer" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 48.0
+margin_right = 204.0
+margin_bottom = 68.0
+
+[node name="HPHPMAXTitle" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/HPHPMAX"]
+margin_right = 100.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 2 )
+text = "HP/HPMAX:"
+align = 1
+valign = 1
+
+[node name="HPHPMAX" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/HPHPMAX"]
+margin_left = 104.0
+margin_right = 204.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "1000/1000"
+align = 1
+valign = 1
+
+[node name="XP" type="HBoxContainer" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 72.0
+margin_right = 204.0
+margin_bottom = 92.0
+
+[node name="XPTitle" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/XP"]
+margin_right = 28.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 2 )
+text = "XP:"
+align = 1
+valign = 1
+
+[node name="XP" type="Label" parent="VBox/CenterContainer/HBoxContainer/VBoxContainer/XP"]
+margin_left = 32.0
+margin_right = 204.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "1000/1000"
+align = 2
+valign = 1
