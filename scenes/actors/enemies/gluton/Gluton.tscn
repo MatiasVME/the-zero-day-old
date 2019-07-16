@@ -22,18 +22,18 @@
 [ext_resource path="res://scenes/actors/enemies/gluton/images/GlutonAttack-12.png" type="Texture" id=20]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/GlutonAttack-13.png" type="Texture" id=21]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/GlutonAttack-14.png" type="Texture" id=22]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_01.png" type="Texture" id=23]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_03.png" type="Texture" id=24]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_02.png" type="Texture" id=25]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_04.png" type="Texture" id=26]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_05.png" type="Texture" id=27]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_06.png" type="Texture" id=28]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_01.png" type="Texture" id=29]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_02.png" type="Texture" id=30]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_03.png" type="Texture" id=31]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_04.png" type="Texture" id=32]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_05.png" type="Texture" id=33]
-[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_06.png" type="Texture" id=34]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_01.png" type="Texture" id=23]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_02.png" type="Texture" id=24]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_03.png" type="Texture" id=25]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_04.png" type="Texture" id=26]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_05.png" type="Texture" id=27]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_side_06.png" type="Texture" id=28]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_01.png" type="Texture" id=29]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_03.png" type="Texture" id=30]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_02.png" type="Texture" id=31]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_04.png" type="Texture" id=32]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_05.png" type="Texture" id=33]
+[ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_up_06.png" type="Texture" id=34]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_down_01.png" type="Texture" id=35]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_down_02.png" type="Texture" id=36]
 [ext_resource path="res://scenes/actors/enemies/gluton/images/Gluton_run_down_03.png" type="Texture" id=37]
@@ -47,10 +47,10 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 radius = 100.0
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
@@ -64,17 +64,17 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ) ],
 "loop": true,
-"name": "Run_Up",
+"name": "RunSide",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 29 ), ExtResource( 30 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 34 ) ],
 "loop": true,
-"name": "Run_Side",
+"name": "RunUp",
 "speed": 10.0
 }, {
 "frames": [ ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ],
 "loop": true,
-"name": "Run_Down",
+"name": "RunDown",
 "speed": 5.0
 } ]
 
@@ -155,7 +155,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 18.0278
 
-[node name="Gluton" instance=ExtResource( 1 )]
+[node name="Gluton" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
@@ -165,12 +165,12 @@ shape = SubResource( 1 )
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Body" parent="." index="3"]
 scale = Vector2( 1e-05, 1e-05 )
-frames = SubResource( 2 )
-animation = "Idle"
+frames = SubResource( 3 )
+animation = "RunSide"
 
 [node name="Anim" parent="." index="4"]
 anims/damage = SubResource( 4 )

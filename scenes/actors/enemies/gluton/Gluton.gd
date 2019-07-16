@@ -127,18 +127,18 @@ func sekeer(objective):
 		#print($Navigator.navigation_path)
 	
 	match get_direction_to_see(objective):
-		0:
-			$Body.play("Run_Up")
-		180:
-			$Body.play("Run_Down")
+#		0:
+#			$Body.play("Run_Up")
+#		180:
+#			$Body.play("Run_Down")
 		90:
 			if $Body.flip_h:
 				$Body.flip_h = false
-			$Body.play("Run_Side")
+			$Body.play("RunSide")
 		-90:
 			if !$Body.flip_h:
 				$Body.flip_h = true
-			$Body.play("Run_Side")
+			$Body.play("RunSide")
 			
 	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
 		velocity = steer($Navigator.get_current_point())
@@ -162,18 +162,18 @@ func sekeer(objective):
 # Rutina en caso de tener que huir del objetivo
 func run(objective):
 	match get_direction_to_see(objective):
-		0:
-			$Body.play("Run_Down")
-		180:
-			$Body.play("Run_Up")
+#		0:
+#			$Body.play("Run_Down")
+#		180:
+#			$Body.play("Run_Up")
 		90:
 			if !$Body.flip_h:
 				$Body.flip_h = true
-			$Body.play("Run_Side")
+			$Body.play("RunSide")
 		-90:
 			if $Body.flip_h:
 				$Body.flip_h = false
-			$Body.play("Run_Side")
+			$Body.play("RunSide")
 	
 	velocity = steer(objective)
 	move_and_slide(velocity * 2)

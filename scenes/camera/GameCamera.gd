@@ -42,7 +42,8 @@ func _physics_process(delta):
 					$MobileSelected.global_position = objective_pos
 					global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
 				else:
-					print("following.selected_enemy no es valida")
+#					print("following.selected_enemy no es valida")
+					pass
 		else:
 			mode = Mode.FREE
 	elif mode == Mode.FREE:
