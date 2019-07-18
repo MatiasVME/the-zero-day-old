@@ -25,4 +25,3 @@ beautifier_active = false
 [node name="DataStats" type="Node" parent="."]
 script = ExtResource( 2 )
 beautifier_active = false
-

@@ -8,6 +8,7 @@ extends Node
 
 # Son los GPlayers que el jugador puede llegar a controlar
 var players = []
+# GPlayer actual
 var current_player = get_current_player() setget , get_current_player
 var name_of_available_players := [] setget , get_name_of_available_players
 

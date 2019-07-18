@@ -6,6 +6,8 @@
 [ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Body.png" type="Texture" id=4]
 [ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Head-0-v3.png" type="Texture" id=5]
 [ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Head-1-v3.png" type="Texture" id=6]
+[ext_resource path="res://animations/PlayerIdle.anim" type="Animation" id=7]
+[ext_resource path="res://animations/PlayerRun.anim" type="Animation" id=8]
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
@@ -38,100 +40,6 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=6]
-resource_name = "Idle"
-length = 5.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Head:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 4.2, 4.7 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 0, 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Head:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("LegLeft:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("LegRight:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Run"
-length = 1.8
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath("Head:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6, 0.9, 1.2, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ), Vector2( 1, -5 ), Vector2( 1, -4 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("LegLeft:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, 45.0, 0.0, -45.0 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("LegRight:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, -45.0, 0.0, 45.0 ]
-}
 
 [sub_resource type="Animation" id=8]
 resource_name = "Dead"
@@ -195,8 +103,8 @@ frames = SubResource( 2 )
 offset = Vector2( -0.00024, 0 )
 
 [node name="AnimMove" parent="Sprites" index="4"]
-anims/Idle = SubResource( 6 )
-anims/Run = SubResource( 7 )
+anims/Idle = ExtResource( 7 )
+anims/Run = ExtResource( 8 )
 
 [node name="AnimDead" parent="Sprites" index="5"]
 anims/Dead = SubResource( 8 )

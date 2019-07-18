@@ -7,6 +7,8 @@ var data
 # WeaponSprite RotationDegrees
 var ws_rd = 0
 
+var img_boxing1 = preload("res://scenes/actors/melee_attack/Images/boxing.png")
+
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
 var mobile_selected_pos
@@ -42,17 +44,17 @@ func set_weapon(weapon = null):
 	if data and data is PHMeleeWeapon:
 		$WeaponSprite.texture = load(data.texture_path)
 	else:
-		$WeaponSprite.texture = load("res://scenes/actors/melee_attack/Images/boxing.png")
+		$WeaponSprite.texture = img_boxing1
 	
 	emit_signal("weapon_added", data)
 
 func remove_weapon():
 	data = null
-	$WeaponSprite.texture = load("res://scenes/actors/melee_attack/Images/boxing.png")
+	$WeaponSprite.texture = img_boxing1
 	emit_signal("weapon_removed")
 
 func _on_HitArea_body_entered(body):
 	if body is GEnemy or body is GStructure:
-		body.damage(1)
+		body.damage(PlayerManager.current_player.data.attack)
 	elif body is GBullet:
 		body.direction = body.direction.bounce(get_parent().global_position.normalized())
