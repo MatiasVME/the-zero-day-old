@@ -81,24 +81,24 @@ func _move_handler(delta, distance, run):
 	if not run:
 		move_x = dir.x * speed * delta
 		move_y = dir.y * speed * delta
-		$Sprite.speed_scale = 0.6
+#		$Sprite.speed_scale = 0.6
 	else:
 		move_x = dir.x * speed * 2 * delta
 		move_y = dir.y * speed * 2 * delta
-		$Sprite.speed_scale = 1.2
+#		$Sprite.speed_scale = 1.2
 	
 	if dir.y > 0.49:
-		$Anim.play("MoveDown")
-		if dir.x > 0 : $Sprite.flip_h = false
-		elif dir.x < 0 : $Sprite.flip_h = true
+#		$Anim.play("MoveDown")
+		if dir.x > 0 : flip_h_sprites(false)
+		elif dir.x < 0 : flip_h_sprites(true)
 	elif dir.y < -0.49:
-		$Anim.play("MoveUp")
-		if dir.x > 0 : $Sprite.flip_h = false
-		elif dir.x < 0 : $Sprite.flip_h = true
+#		$Anim.play("MoveUp")
+		if dir.x > 0 : flip_h_sprites(false)
+		elif dir.x < 0 : flip_h_sprites(true)
 	else:
-		$Anim.play("MoveSide")
-		if dir.x > 0 : $Sprite.flip_h = false
-		elif dir.x < 0 : $Sprite.flip_h = true
+		$Sprites/AnimMove.play("Run")
+		if dir.x > 0 : flip_h_sprites(false)
+		elif dir.x < 0 : flip_h_sprites(true)
 		
 	if move_x != 0 and move_y != 0:
 		move_x /= 1.5
@@ -107,9 +107,9 @@ func _move_handler(delta, distance, run):
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 
 func _stop_handler(delta):
-	if $Anim.current_animation != "Idle" and $Anim.current_animation != "hit" or not $Anim.is_playing():
-			$Anim.play("Idle")
-			$Sprite.speed_scale = 0.1
+	if $Sprites/AnimMove.current_animation != "Idle" and $Sprites/AnimHit.current_animation != "hit" or not $Sprites/AnimMove.is_playing():
+			$Sprites/AnimMove.play("Idle")
+#			$Sprite.speed_scale = 0.1
 
 func _fire_handler():
 	if data.equip is PHDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
@@ -254,16 +254,22 @@ func select_next():
 	else:
 		selected_num = -1
 
+func flip_h_sprites(value):
+	$Sprites/LegLeft.flip_h = value
+	$Sprites/LegRight.flip_h = value
+	$Sprites/Body.flip_h = value
+	$Sprites/Head.flip_h = value
+
 func _on_dead():
 	is_mark_to_dead = true
 	disable_player(true)
-	$Anim.play("dead")
+	$Sprites/AnimDead.play("Dead")
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
 
 func _on_remove_hp(amount):
 	if is_inmortal: return
 
-	$Anim2.play("hit")
+	$Sprites/AnimHit.play("Hit")
 	
 	# Instancia un label indicando el daño recibido y lo agrega al árbol
 	var dmg_label : FloatingText = damage_label.instance()
