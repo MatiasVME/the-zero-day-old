@@ -87,16 +87,18 @@ func _move_handler(delta, distance, run):
 		move_y = dir.y * speed * 2 * delta
 #		$Sprite.speed_scale = 1.2
 	
+	$Sprites/AnimMove.play("Run")
+	
 	if dir.y > 0.49:
-#		$Anim.play("MoveDown")
+#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 	elif dir.y < -0.49:
-#		$Anim.play("MoveUp")
+#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 	else:
-		$Sprites/AnimMove.play("Run")
+#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 		
@@ -107,7 +109,7 @@ func _move_handler(delta, distance, run):
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 
 func _stop_handler(delta):
-	if $Sprites/AnimMove.current_animation != "Idle" and $Sprites/AnimHit.current_animation != "hit" or not $Sprites/AnimMove.is_playing():
+	if $Sprites/AnimMove.current_animation != "Idle" and $Sprites/AnimHit.current_animation != "Hit" or not $Sprites/AnimMove.is_playing():
 			$Sprites/AnimMove.play("Idle")
 #			$Sprite.speed_scale = 0.1
 
@@ -288,7 +290,7 @@ func _on_fire(dir):
 	get_parent().add_child(bullet)
 
 func _on_Anim_animation_finished(anim_name):
-	if anim_name == "dead":
+	if anim_name == "Dead":
 		visible = false
 		.dead()
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/actors/players/GPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/players/dorbot/Dorbot.gd" type="Script" id=2]
@@ -133,7 +133,47 @@ tracks/2/keys = {
 "values": [ 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, 45.0, 0.0, -45.0, 0.0, -45.0, 0.0, 45.0 ]
 }
 
-[node name="Dorbot" index="0" instance=ExtResource( 1 )]
+[sub_resource type="Animation" id=8]
+resource_name = "Dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="Dorbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="LegLeft" parent="Sprites" index="0"]
@@ -157,3 +197,6 @@ offset = Vector2( -0.00024, 0 )
 [node name="AnimMove" parent="Sprites" index="4"]
 anims/Idle = SubResource( 6 )
 anims/Run = SubResource( 7 )
+
+[node name="AnimDead" parent="Sprites" index="5"]
+anims/Dead = SubResource( 8 )
