@@ -4,6 +4,8 @@ extends Node2D
 # null
 var data
 
+onready var player = get_parent()
+
 # WeaponSprite RotationDegrees
 var ws_rd = 0
 
@@ -34,8 +36,8 @@ func _process(delta):
 	
 	if not Main.is_mobile:
 		$Weapon.look_at(get_global_mouse_position())
-	elif mobile_selected_pos:
-		$Weapon.look_at(mobile_selected_pos.global_position)
+	elif mobile_selected_pos and player.selected_enemy:
+		look_at(player.selected_enemy.global_position)
 
 # Puede recibir un PHMeleeWeapon o un null
 func set_weapon(weapon = null):

@@ -18,6 +18,9 @@ var unique_id : String
 
 var equip : PHItem setget set_equip, get_equip
 
+# Dinero que dropea
+var money_drop = 1
+
 signal item_equiped(weapon)
 
 func _init():

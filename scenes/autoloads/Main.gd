@@ -17,6 +17,9 @@ var is_mobile := false
 enum Result {NONE, WIN, LOSE}
 var result = Result.NONE
 
+# Store
+var store_money = 0
+
 signal win_adventure
 signal lose_adventure
 
@@ -35,7 +38,7 @@ func lose_adventure():
 	emit_signal("lose_adventure")
 	
 func reset_store():
-	pass
+	store_money = 0
 	
 func prepare_to_exit():
 	result = Result.NONE

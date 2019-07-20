@@ -6,6 +6,8 @@ var current_user := "User"
 # global_config es donde se guarda la configuración global
 # del cliente
 var global_config # Es una referencia al diccionario de $GlobalConfig
+# TEMP: Por el momento solo un user, a futuro podrían
+# existir más.
 # En data_user se guarda la información global del usuario
 var data_user # Es una referencia al diccionario de $DataUser
 

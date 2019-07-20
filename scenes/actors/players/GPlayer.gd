@@ -90,15 +90,12 @@ func _move_handler(delta, distance, run):
 	$Sprites/AnimMove.play("Run")
 	
 	if dir.y > 0.49:
-#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 	elif dir.y < -0.49:
-#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 	else:
-#		$Sprites/AnimMove.play("Run")
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 		

@@ -11,7 +11,7 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.5
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Hit"
 length = 0.3
 tracks/0/type = "value"
@@ -39,10 +39,10 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 7.07107
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 100.0
 
 [node name="GPlayer" type="KinematicBody2D" groups=[
@@ -59,6 +59,7 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Navigator" type="Node2D" parent="."]
+editor/display_folded = true
 script = ExtResource( 4 )
 
 [node name="Point" type="Sprite" parent="Navigator"]
@@ -70,6 +71,7 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprites" type="Node2D" parent="."]
+editor/display_folded = true
 modulate = Color( 0.954601, 0.881043, 0.906329, 1 )
 
 [node name="LegLeft" type="AnimatedSprite" parent="Sprites"]
@@ -86,7 +88,7 @@ playback_speed = 1.3
 [node name="AnimDead" type="AnimationPlayer" parent="Sprites"]
 
 [node name="AnimHit" type="AnimationPlayer" parent="Sprites"]
-anims/Hit = SubResource( 4 )
+anims/Hit = SubResource( 2 )
 
 [node name="AnimVictory" type="AnimationPlayer" parent="Sprites"]
 
@@ -97,7 +99,7 @@ collision_mask = 3
 
 [node name="Collision" type="CollisionShape2D" parent="InteractArea"]
 position = Vector2( 0, 2 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="DetectArea" type="Area2D" parent="."]
 editor/display_folded = true
@@ -106,7 +108,7 @@ collision_mask = 3
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2( 0, 2 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="BoxingAttack" parent="." instance=ExtResource( 6 )]
 

@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Buttons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/hud/player_menu/PlayerMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=7]
+[ext_resource path="res://scenes/hud/money_display/MoneyDisplay.tscn" type="PackedScene" id=7]
 
 [node name="HUDMobile" groups=[
 "HUD",
@@ -22,24 +22,4 @@ position = Vector2( 60, 180 )
 
 [node name="PlayerMenu" parent="." index="6" instance=ExtResource( 6 )]
 
-[node name="MoneyDisplay" type="Node2D" parent="." index="7"]
-editor/display_folded = true
-position = Vector2( 50, 18.025 )
-
-[node name="TempBG" type="ColorRect" parent="MoneyDisplay" index="0"]
-margin_left = -4.0
-margin_right = 50.0
-margin_bottom = 12.0
-color = Color( 0.152941, 0.152941, 0.211765, 0.784314 )
-
-[node name="Label" type="Label" parent="MoneyDisplay" index="1"]
-margin_left = -4.0
-margin_right = 50.0
-margin_bottom = 12.0
-custom_fonts/font = ExtResource( 7 )
-custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
-text = "99999999"
-align = 1
-valign = 1
-autowrap = true
-clip_text = true
+[node name="MoneyDisplay" parent="." index="7" instance=ExtResource( 7 )]
