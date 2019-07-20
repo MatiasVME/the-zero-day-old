@@ -3,8 +3,11 @@ extends Node
 # En la alpha v0.2.0 existira solo el usuario User por default
 var current_user := "User"
 
+# global_config es donde se guarda la configuración global
+# del cliente
 var global_config # Es una referencia al diccionario de $GlobalConfig
-var user_config # Es una referencia al diccionario de $DataUserConfig
+# En data_user se guarda la información global del usuario
+var data_user # Es una referencia al diccionario de $DataUser
 
 # Instancias, para ser utilizadas. Instancias de RPGElements.
 var players = []
@@ -16,7 +19,7 @@ var current_player : int = 0 setget set_current_player, get_current_player
 
 # Si este numero cambia la data se borra, normalmente el numero
 # debe ir incrementando
-var delete_data = 3
+var delete_data = 4
 
 func _ready():
 	configure_persistence_node()
@@ -27,20 +30,20 @@ func _ready():
 func configure_persistence_node():
 	if Main.DEBUG:
 		$DataGlobalConfig.mode = $DataGlobalConfig.Mode.TEXT
-		$DataUserConfig.mode = $DataUserConfig.Mode.TEXT
+		$DataUser.mode = $DataUser.Mode.TEXT
 		$DataPlayers.mode = $DataPlayers.Mode.TEXT
 		$DataInventories.mode = $DataInventories.Mode.TEXT
 		$DataStats.mode = $DataInventories.Mode.TEXT
 	else:
 		$DataGlobalConfig.mode = $DataGlobalConfig.Mode.ENCRYPTED
-		$DataUserConfig.mode = $DataUserConfig.Mode.ENCRYPTED
+		$DataUser.mode = $DataUser.Mode.ENCRYPTED
 		$DataPlayers.mode = $DataPlayers.Mode.ENCRYPTED
 		$DataInventories.mode = $DataInventories.Mode.ENCRYPTED
 		$DataStats.mode = $DataInventories.Mode.ENCRYPTED
 	
 	$DataGlobalConfig.folder_name = "Global"
 	
-	$DataUserConfig.folder_name = current_user
+	$DataUser.folder_name = current_user
 	$DataPlayers.folder_name = current_user
 	$DataInventories.folder_name = current_user
 	$DataStats.folder_name = current_user
@@ -54,7 +57,7 @@ func create_or_load_data_if_not_exist():
 
 		create_global_config()
 		create_players()
-		create_user_config()
+		create_data_user()
 		create_inventories()
 		create_stats()
 	elif global_config["DeleteData"] != delete_data:
@@ -67,13 +70,13 @@ func create_or_load_data_if_not_exist():
 		# GlobalConfig ya se cargo anteriormente.
 		
 		load_players()
-		load_user_config()
+		load_data_user()
 		load_inventories()
 		load_stats()
 
 func save_all_data():
 	save_players()
-	save_user_config()
+	save_data_user()
 	save_inventories()
 	save_stats()
 
@@ -126,26 +129,23 @@ func load_players():
 		
 #	print("cargado los players: ", players)
 
-func create_user_config():
-	user_config = $DataUserConfig.get_data("UserConfig")
-
-#	shop_inventory = $HMRPGHelper.get_inst_weight_inventory()
-#	ItemGenerator.create_item_pack_for_shop(shop_inventory)
+func create_data_user():
+	data_user = $DataUser.get_data("DataUser")
 	
-#	Main.init_basic_user_config()
-#	AchievementsManager.create_all_achievements()
+	data_user["UserName"] = "User Name"
+	data_user["Money"] = 0
 	
-	save_user_config()
+	save_data_user()
 
-func load_user_config():
-	user_config = $DataUserConfig.get_data("UserConfig")
+func load_data_user():
+	data_user = $DataUser.get_data("DataUser")
 	
-func save_user_config():
-#	user_config["Gold"] = Main.current_gold
-#	user_config["Emeralds"] = Main.current_emeralds
-#	user_config["CurrentLevel"] = Main.current_level
+func save_data_user():
+#	data_user["Gold"] = Main.current_gold
+#	data_user["Emeralds"] = Main.current_emeralds
+#	data_user["CurrentLevel"] = Main.current_level
 
-	$DataUserConfig.save_data("UserConfig")
+	$DataUser.save_data("DataUser")
 
 func create_inventories():
 	var w_inv = RPGWeightInventory.new()
@@ -183,7 +183,7 @@ func create_stats():
 	first_stats.add_stat("Vitality", 0, 100)
 	
 	# TEMP
-	first_stats.add_points(5)
+#	first_stats.add_points(5)
 	
 	stats.append(first_stats)
 	
@@ -210,7 +210,7 @@ func save_stats():
 func remove_all_data():
 	$DataGlobalConfig.remove_all_data()
 	$DataPlayers.remove_all_data()
-	$DataUserConfig.remove_all_data()
+	$DataUser.remove_all_data()
 	$DataInventories.remove_all_data()
 	$DataStats.remove_all_data()
 

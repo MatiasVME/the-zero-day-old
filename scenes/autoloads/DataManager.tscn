@@ -10,7 +10,7 @@ script = ExtResource( 1 )
 script = ExtResource( 2 )
 beautifier_active = false
 
-[node name="DataUserConfig" type="Node" parent="."]
+[node name="DataUser" type="Node" parent="."]
 script = ExtResource( 2 )
 beautifier_active = false
 

@@ -10,6 +10,8 @@ func _ready():
 	state = State.RANDOM_WALK
 	$TimerWalk.start()
 	
+	randomize()
+	
 func _physics_process(delta):
 	if speed.x > 0: $Sprite.flip_h = true
 	if speed.x < 0: $Sprite.flip_h = false
