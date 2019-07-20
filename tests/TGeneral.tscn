@@ -11,7 +11,6 @@
 [ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=9]
 [ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=10]
 
-
 [node name="TGeneral" type="Node2D"]
 script = ExtResource( 1 )
 
