@@ -42,21 +42,31 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 
 # Creditos
 
+## Team actual
 - Matías Muñoz Espinoza - Programmer & Game Design
 - Markus Ellisca - Programmer
+- Nahum Santana - Programmer
+- Alam Perez - Art
+
+## Thanks
 - Jonathan Moreno - Programmer
-- Jean Ferreira - Programmer
-- Javier Ocampos - Game Design
 - MG.Pix - Art
+- Javier Ocampos - Game Design
+- Jean Ferreira - Programmer
+
+## Asesoría
+- RDCKGames
+
+## Terceros
 - Avgvsta - Music (CC-BY)
 
-## Compilar
+# Compilar
 
 Necesita Godot Engine 3.1.x stable
 
-## Licencias
+# Licencias
 
-- MPL2 Plugin - JSON Beautifier
 - CC-BY - Assets
 - MIT - Resto del código
+- MPL2 Plugin - JSON Beautifier
 

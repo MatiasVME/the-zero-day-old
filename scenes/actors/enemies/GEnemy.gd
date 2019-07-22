@@ -51,7 +51,6 @@ func damage(amount):
 	
 	data.damage(amount)
 
-
 func knockback(distance : Vector2):
 	pass
 

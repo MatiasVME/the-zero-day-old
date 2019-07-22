@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/tiles/tilemaps/GTilemap.tscn" type="PackedScene" id=1]
 
-[node name="Map1" instance=ExtResource( 1 )]
+[node name="Map1" index="0" instance=ExtResource( 1 )]
 
 [node name="Terrain" parent="." index="1"]
 cell_quadrant_size = 2

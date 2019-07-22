@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tests/PathFindV2.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tests/TMap.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/enemies/cornus/Cornus.tscn" type="PackedScene" id=5]
+
+[node name="PathFindV2" type="Node"]
+script = ExtResource( 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 2 )]
+
+[node name="TMap" parent="." instance=ExtResource( 3 )]
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="Cornus" parent="." instance=ExtResource( 5 )]
+position = Vector2( 256.515, 297.001 )
