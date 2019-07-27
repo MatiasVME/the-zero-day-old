@@ -8,9 +8,9 @@
 radius = 17.9651
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 74.9761
+radius = 94.4898
 
-[node name="Poko" instance=ExtResource( 1 )]
+[node name="Poko" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
@@ -21,10 +21,10 @@ position = Vector2( -0.429292, -9.53674e-07 )
 texture = ExtResource( 3 )
 
 [node name="TimerWalk" type="Timer" parent="." index="7"]
-wait_time = 3.0
+wait_time = 5.0
 
 [node name="TimerWait" type="Timer" parent="." index="8"]
-wait_time = 10.0
+wait_time = 8.0
 
 [node name="DetectArea" type="Area2D" parent="." index="9"]
 
@@ -33,3 +33,4 @@ shape = SubResource( 2 )
 [connection signal="timeout" from="TimerWalk" to="." method="_on_TimerWalk_timeout"]
 [connection signal="timeout" from="TimerWait" to="." method="_on_TimerWait_timeout"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
