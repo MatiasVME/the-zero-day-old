@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/poko/Poko.gd" type="Script" id=2]
-[ext_resource path="res://scenes/actors/enemies/poko/images/SinNombreFull.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/enemies/poko/animations/Poko_idle.tres" type="Animation" id=3]
+[ext_resource path="res://scenes/actors/enemies/poko/animations/Poko_walk.tres" type="Animation" id=4]
+[ext_resource path="res://scenes/actors/enemies/poko/images/PieAtras.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/enemies/poko/images/Cuerpo.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/enemies/poko/images/Cabeza.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/enemies/poko/images/PieFrente.png" type="Texture" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.9651
@@ -10,26 +15,73 @@ radius = 17.9651
 [sub_resource type="CircleShape2D" id=2]
 radius = 94.4898
 
-[node name="Poko" index="0" instance=ExtResource( 1 )]
+[node name="Poko" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="VisibilityEnabler" parent="." index="0"]
+visible = false
+
 [node name="Collision" parent="." index="1"]
+visible = false
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="6"]
-position = Vector2( -0.429292, -9.53674e-07 )
-texture = ExtResource( 3 )
+[node name="Body" parent="." index="2"]
+visible = false
 
-[node name="TimerWalk" type="Timer" parent="." index="7"]
+[node name="TimerWalk" type="Timer" parent="." index="6"]
 wait_time = 5.0
 
-[node name="TimerWait" type="Timer" parent="." index="8"]
+[node name="TimerWait" type="Timer" parent="." index="7"]
 wait_time = 8.0
 
-[node name="DetectArea" type="Area2D" parent="." index="9"]
+[node name="DetectArea" type="Area2D" parent="." index="8"]
+visible = false
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
 shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+anims/Idle = ExtResource( 3 )
+anims/Walk = ExtResource( 4 )
+
+[node name="Sprites" type="Sprite" parent="." index="10"]
+
+[node name="BFoot1" type="Sprite" parent="Sprites" index="0"]
+position = Vector2( 4.66256, 5.87401 )
+rotation = 0.0494761
+texture = ExtResource( 5 )
+offset = Vector2( 0, 3.5 )
+
+[node name="BFoot2" type="Sprite" parent="Sprites" index="1"]
+position = Vector2( -11, 5.93701 )
+rotation = -0.0494761
+texture = ExtResource( 5 )
+offset = Vector2( 0, 3.5 )
+
+[node name="Body" type="Sprite" parent="Sprites" index="2"]
+position = Vector2( -0.429292, -0.0629959 )
+texture = ExtResource( 6 )
+offset = Vector2( -0.429292, -4.76837e-07 )
+
+[node name="Head" type="Sprite" parent="Sprites" index="3"]
+position = Vector2( -12, -8.06299 )
+texture = ExtResource( 7 )
+offset = Vector2( -2, -6 )
+
+[node name="FFoot2" type="Sprite" parent="Sprites" index="4"]
+position = Vector2( -7, 5.87401 )
+rotation = 0.0494761
+texture = ExtResource( 8 )
+offset = Vector2( 0, 4.5 )
+
+[node name="FFoot1" type="Sprite" parent="Sprites" index="5"]
+position = Vector2( 8.93701, 5.937 )
+rotation = -0.0494761
+texture = ExtResource( 8 )
+offset = Vector2( 0, 4.5 )
 [connection signal="timeout" from="TimerWalk" to="." method="_on_TimerWalk_timeout"]
 [connection signal="timeout" from="TimerWait" to="." method="_on_TimerWait_timeout"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_Area2D_body_entered"]

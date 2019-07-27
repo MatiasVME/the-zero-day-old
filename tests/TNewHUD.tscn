@@ -15,5 +15,5 @@ script = ExtResource( 1 )
 
 [node name="GameCamera" parent="." instance=ExtResource( 4 )]
 
-[node name="GEnemy" parent="." instance=ExtResource( 5 )]
-position = Vector2( 290.739, 217.763 )
+[node name="Poko" parent="." instance=ExtResource( 5 )]
+position = Vector2( 243.503, 225.971 )
