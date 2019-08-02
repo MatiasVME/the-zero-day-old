@@ -12,12 +12,8 @@ func _physics_process(delta):
 		
 		if d > 2:
 			# debería devolver la posición siguiente a la
-			# que se quiere mover, segun el path finding		
+			# que se quiere mover, segun el path finding
 			position = position.linear_interpolate(path[0], (speed * delta)/d)
-#			print(path[0])
-#			print(move_pos)
-#			move_and_slide(move_pos.normalized() * delta * speed)
-			pass
 		else:
 			path.remove(0)
 
@@ -38,5 +34,8 @@ func _on_Cornus_ready():
 	if get_tree().has_group("Map"):
 		nav = get_tree().get_nodes_in_group("Map")[0]
 		set_nav(nav)
+#
+#		for tilemap in get_tree().get_nodes_in_group("Map")[0].get_children():
+#			print(tilemap.name)
 	else:
 		print("No existe grupo Map para Cornus")

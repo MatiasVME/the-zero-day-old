@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/hud/player_menu/skills/SkillsPanel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/hud/stats/images/Points.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hud/player_menu/skills/stats/images/Points.png" type="Texture" id=2]
 [ext_resource path="res://fonts/retro_gaming/RetroGaming.ttf" type="DynamicFontData" id=3]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 11

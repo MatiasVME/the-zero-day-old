@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/CurrentPoints.png-e77c5c4e0d31ab3321182e9357c64e03.stex"
+path="res://.import/statistics-pressed.png-64e17c2679b17e986f841ec8ee3ea3a0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/images/CurrentPoints.png"
-dest_files=[ "res://.import/CurrentPoints.png-e77c5c4e0d31ab3321182e9357c64e03.stex" ]
+source_file="res://scenes/buttons/player_menu_info_player/statistics-pressed.png"
+dest_files=[ "res://.import/statistics-pressed.png-64e17c2679b17e986f841ec8ee3ea3a0.stex" ]
 
 [params]
 

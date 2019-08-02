@@ -4,7 +4,7 @@ func _ready():
 	var stats = DataManager.get_stats(DataManager.get_current_player())
 	
 	for stat_name in stats.get_stat_names():
-		var stat_row = load("res://scenes/hud/stats/Stat.tscn").instance()
+		var stat_row = load("res://scenes/hud/player_menu/skills/stats/Stat.tscn").instance()
 		stat_row.stat = stat_name
 		
 		$StatsContainer/VBox.add_child(stat_row)

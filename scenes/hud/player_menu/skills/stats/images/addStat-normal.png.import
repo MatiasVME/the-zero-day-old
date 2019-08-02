@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AddStat-Pressed.png-35e3b27ab1c53bbc93c60f278f5ddbfc.stex"
+path="res://.import/addStat-normal.png-06045cfa2f6c781c6afbbde6448803ef.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/images/AddStat-Pressed.png"
-dest_files=[ "res://.import/AddStat-Pressed.png-35e3b27ab1c53bbc93c60f278f5ddbfc.stex" ]
+source_file="res://scenes/hud/player_menu/skills/stats/images/addStat-normal.png"
+dest_files=[ "res://.import/addStat-normal.png-06045cfa2f6c781c6afbbde6448803ef.stex" ]
 
 [params]
 

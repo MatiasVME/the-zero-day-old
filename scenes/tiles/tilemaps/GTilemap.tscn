@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/tiles/tilemaps/GTilemap.gd" type="Script" id=1]
 [ext_resource path="res://scenes/tiles/tilesets/terrain.tres" type="TileSet" id=2]
@@ -7,10 +7,20 @@
 [ext_resource path="res://scenes/tiles/tilesets/eviroments.tres" type="TileSet" id=5]
 [ext_resource path="res://scenes/build/BuildGrid.tscn" type="PackedScene" id=6]
 
+[sub_resource type="TileSet" id=1]
+
 [node name="GTilemap" type="Navigation2D" groups=[
 "Map",
 ]]
 script = ExtResource( 1 )
+
+[node name="NotNavigable" type="TileMap" parent="." groups=[
+"NotNavigable",
+]]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+cell_quadrant_size = 1
+format = 1
 
 [node name="Terrain" type="TileMap" parent="." groups=[
 "Terrain",

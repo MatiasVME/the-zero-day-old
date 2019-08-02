@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Strength.png-f27b99ac39578f09fa157f349fcbfea8.stex"
+path="res://.import/statistics-normal.png-17d9e4ae44b78ff987d51e41af9533d0.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/stats_images/Strength.png"
-dest_files=[ "res://.import/Strength.png-f27b99ac39578f09fa157f349fcbfea8.stex" ]
+source_file="res://scenes/buttons/player_menu_info_player/statistics-normal.png"
+dest_files=[ "res://.import/statistics-normal.png-17d9e4ae44b78ff987d51e41af9533d0.stex" ]
 
 [params]
 

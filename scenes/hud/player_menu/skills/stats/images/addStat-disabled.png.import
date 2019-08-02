@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AddStat-Hover.png-aa4c56b4b61a375bb48293a0ed49d992.stex"
+path="res://.import/addStat-disabled.png-aa5ca9e1db616dd4acd68c3cb3a299f5.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/images/AddStat-Hover.png"
-dest_files=[ "res://.import/AddStat-Hover.png-aa4c56b4b61a375bb48293a0ed49d992.stex" ]
+source_file="res://scenes/hud/player_menu/skills/stats/images/addStat-disabled.png"
+dest_files=[ "res://.import/addStat-disabled.png-aa5ca9e1db616dd4acd68c3cb3a299f5.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/AddStat-Normal.png-a3c5e21d01b17824a3203728a166dd1e.stex"
+path="res://.import/settings-pressed.png-072c8834ec5882de65f2c6702b90a3bd.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/images/AddStat-Normal.png"
-dest_files=[ "res://.import/AddStat-Normal.png-a3c5e21d01b17824a3203728a166dd1e.stex" ]
+source_file="res://scenes/buttons/player_menu_config/settings-pressed.png"
+dest_files=[ "res://.import/settings-pressed.png-072c8834ec5882de65f2c6702b90a3bd.stex" ]
 
 [params]
 

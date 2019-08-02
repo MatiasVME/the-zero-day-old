@@ -2,12 +2,13 @@
 
 [ext_resource path="res://scenes/hud/HUD_old.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/game_menu/GameMenu.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hud/stats/StatsPanel.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/player_menu/skills/stats/StatsPanel.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/build_menu/BuildMenu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=8]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "dead"

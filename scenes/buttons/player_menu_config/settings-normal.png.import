@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Luck.png-98ed34f1bbb3a3c03fcf421f4bb0eebb.stex"
+path="res://.import/settings-normal.png-dabdbca229dc6c5494b83e3331cd90b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/stats_images/Luck.png"
-dest_files=[ "res://.import/Luck.png-98ed34f1bbb3a3c03fcf421f4bb0eebb.stex" ]
+source_file="res://scenes/buttons/player_menu_config/settings-normal.png"
+dest_files=[ "res://.import/settings-normal.png-dabdbca229dc6c5494b83e3331cd90b1.stex" ]
 
 [params]
 

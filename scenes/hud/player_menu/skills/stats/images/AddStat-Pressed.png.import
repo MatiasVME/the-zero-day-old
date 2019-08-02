@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Points.png-e17fe0a2dc3e3391f271a38a9b0bf314.stex"
+path="res://.import/AddStat-Pressed.png-71cf7d9b58737d48fbedc6b8f479296b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/stats/images/Points.png"
-dest_files=[ "res://.import/Points.png-e17fe0a2dc3e3391f271a38a9b0bf314.stex" ]
+source_file="res://scenes/hud/player_menu/skills/stats/images/AddStat-Pressed.png"
+dest_files=[ "res://.import/AddStat-Pressed.png-71cf7d9b58737d48fbedc6b8f479296b.stex" ]
 
 [params]
 

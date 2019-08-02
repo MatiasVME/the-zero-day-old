@@ -18,11 +18,11 @@ func get_stat():
 func update_img():
 	match stat:
 		"Vitality":
-			$StatImg.texture = load("res://scenes/hud/stats/stats_images/Vitality.png")
+			$StatImg.texture = load("res://scenes/hud/player_menu/skills/stats/stats_images/health.png")
 		"Strength":
-			$StatImg.texture = load("res://scenes/hud/stats/stats_images/Strength.png")
+			$StatImg.texture = load("res://scenes/hud/player_menu/skills/stats/stats_images/strength.png")
 		"Luck":
-			$StatImg.texture = load("res://scenes/hud/stats/stats_images/Luck.png")
+			$StatImg.texture = load("res://scenes/hud/player_menu/skills/stats/stats_images/luck.png")
 
 func update_button():
 	var stats = DataManager.get_stats(DataManager.get_current_player())
