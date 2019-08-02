@@ -12,9 +12,10 @@ func _ready():
 	$TimerWalk.start()
 	
 func _physics_process(delta):
-	if speed.x > 0: $Sprite.flip_h = true
-	if speed.x < 0: $Sprite.flip_h = false
-	
+
+	if speed == Vector2(0,0):
+		$AnimationPlayer.play("Idle")
+	else: $AnimationPlayer.play("Walk")
 	match state:
 		State.SEEKER:
 			if is_waiting == false:
@@ -25,15 +26,14 @@ func _physics_process(delta):
 					speed.x = -delta_x/acceleration*2
 					speed.y = -delta_y/acceleration*2
 					
-			
 				move_and_slide(speed*acceleration)
-			
+			else: speed = Vector2(0,0)
 		State.RANDOM_WALK:
 			if is_waiting == false:
 				speed.x = cos(deg2rad(move_dir))
 				speed.y = sin(deg2rad(move_dir))
 				move_and_slide(speed*acceleration)
-
+			else: speed = Vector2(0,0)
 func _on_TimerWalk_timeout():
 	is_waiting = true
 	$TimerWait.start()
