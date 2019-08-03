@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/tiles/tile_images/Collision.png" type="Texture" id=1]
+[ext_resource path="res://scenes/tiles/tile_images/Navigable.png" type="Texture" id=2]
+
+[node name="NavigableTiles" type="Node"]
+
+[node name="Collision" type="Sprite" parent="."]
+position = Vector2( 16, 0 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="Navigable" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+centered = false
