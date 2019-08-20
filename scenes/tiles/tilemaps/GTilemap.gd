@@ -41,8 +41,8 @@ func get_other_maps(map_exception1):
 	return other_maps
 
 func create_navigable():
-	var x = 0
-	var y = 0
+	var x := 0
+	var y := 0
 	
 	# Hacer que todo el mapa sea navegable por defecto 
 	# y ir añadiendole not navigable
@@ -65,29 +65,41 @@ func create_navigable():
 		while y <= nav_map.get_used_rect().size.y - 1:
 			x = 0
 			while x <= nav_map.get_used_rect().size.x - 1:
-#				var current_cell = other_map.get_cell(x, y)
 				var current_shape_cell = other_map.tile_set.tile_get_shape(other_map.get_cell(x, y), 0)
 				
 				if current_shape_cell is ConvexPolygonShape2D:
 					var size_x = current_shape_cell.points[1].x
 					var size_y = current_shape_cell.points[2].y
 					
-					# TODO: Terminar las distintas variaciones de
-					# las distintas colisiones
+					# Distintas variaciones de las distintas colisiones
 					if size_x == 16 and size_y == 16:
 						nav_map.set_cell(x, y, 2)
 					elif size_x == 16 and size_y == 32:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x, y+1, 2)
 					elif size_x == 16 and size_y == 48:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x, y+1, 2)
+						nav_map.set_cell(x, y+2, 2)
 					elif size_x == 32 and size_y == 16:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x+1, y, 2)
 					elif size_x == 32 and size_y == 32:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x+1, y, 2)
+						nav_map.set_cell(x, y+1, 2)
+						nav_map.set_cell(x+1, y+1, 2)
 					elif size_x == 32 and size_y == 48:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x+1, y, 2)
+						nav_map.set_cell(x, y+1, 2)
+						nav_map.set_cell(x+1, y+1, 2)
+						nav_map.set_cell(x, y+2, 2)
+						nav_map.set_cell(x+1, y+2, 2)
 					elif size_x == 48 and size_y == 16:
-						pass
+						nav_map.set_cell(x, y, 2)
+						nav_map.set_cell(x+1, y, 2)
+						nav_map.set_cell(x+2, y, 2)
 					elif size_x == 48 and size_y == 48:
 						nav_map.set_cell(x, y, 2)
 						nav_map.set_cell(x, y+1, 2)
