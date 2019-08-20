@@ -31,8 +31,8 @@ func update_path():
 
 func _on_Cornus_ready():
 	# Es el map (Navigation2D)
-	if get_tree().has_group("Map"):
-		nav = get_tree().get_nodes_in_group("Map")[0]
+	if get_tree().has_group("Navigation"):
+		nav = get_tree().get_nodes_in_group("Navigation")[0]
 		set_nav(nav)
 #
 #		for tilemap in get_tree().get_nodes_in_group("Map")[0].get_children():
