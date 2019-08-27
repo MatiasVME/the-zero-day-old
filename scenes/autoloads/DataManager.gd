@@ -134,6 +134,7 @@ func load_players():
 func create_data_user():
 	data_user = $DataUser.get_data("DataUser")
 	
+	# Nombre del jugador que controla los personajes
 	data_user["UserName"] = "User Name"
 	data_user["Money"] = 0
 	

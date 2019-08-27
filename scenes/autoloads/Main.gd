@@ -10,7 +10,8 @@ var music_enable := false
 var sound_enable := true
 
 var force_mobile_mode := true
-# No editar desde aca, solo edite force_mobile si lo necesita
+# No editar is_mobile, solo edite force_mobile si lo 
+# necesita
 var is_mobile := false
 
 # Win or Lose?

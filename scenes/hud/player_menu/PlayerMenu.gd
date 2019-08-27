@@ -1,6 +1,16 @@
 extends Node2D
 
+# Actor actual, del cual se despliega la información
+# en el player menu.
+var current_actor setget set_current_actor
+
 signal menu_button_unpressed
+
+func set_current_actor(actor : GActor):
+	current_actor = actor
+	
+	$Panels/PlayersInfo.set_current_actor(actor)
+	$Panels/PlayersInfo.update_all()
 
 func _on_Config_toggled(button_pressed):
 	if button_pressed:

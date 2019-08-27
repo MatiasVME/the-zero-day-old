@@ -12,7 +12,8 @@ func _ready():
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")
 	PlayerManager.connect("player_gain_xp", self, "_on_player_gain_xp")
 	PlayerManager.connect("player_level_up", self, "_on_player_level_up")
-	
+
+# Debería ser set_avatar_actor ??
 func add_avatar_actor(avatar_actor : GActor):
 	$HealthBar.value = avatar_actor.data.hp
 	$HealthBar.max_value = avatar_actor.data.max_hp

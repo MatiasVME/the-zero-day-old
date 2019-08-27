@@ -10,7 +10,12 @@ func _ready():
 	$Buttons.connect("toggle_player_menu_pressed", self, "_on_toggle_player_menu_pressed")
 	
 	$PlayerMenu.connect("menu_button_unpressed", self, "_on_player_menu_button_unpressed")
+
+func set_hud_actor(actor : GActor):
+	.set_hud_actor(actor)
 	
+	$PlayerMenu.set_current_actor(actor)
+
 func _on_fire():
 	hud_actor._fire_handler()
 	
