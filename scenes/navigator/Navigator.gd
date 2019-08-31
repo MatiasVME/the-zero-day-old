@@ -13,7 +13,7 @@ var can_navigate := false
 
 var navigation_path : PoolVector2Array
 
-var current_index : int = 0
+var current_index := 0
 
 var out_of_index := false
 
@@ -27,9 +27,10 @@ func update_path(target_pos):
 	time_current = 0
 	current_index = 0
 	out_of_index = false
+	
+	return navigation_path
 
 func calculate_path(target_pos):
-	
 	var path = nav.get_simple_path(get_parent().global_position, target_pos, false)
 	if path.size() > 1:
 		path.remove(0)
@@ -43,9 +44,9 @@ func get_current_point():
 		return navigation_path[current_index]
 
 func next_index():
-	
-	if out_of_index : 
+	if out_of_index: 
 		return
+		
 	current_index += 1
 	if current_index >= navigation_path.size() -1:
 		out_of_index = true
