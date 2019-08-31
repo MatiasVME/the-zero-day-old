@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.gd" type="Script" id=1]
-[ext_resource path="res://scenes/actors/enemies/Navigator.gd" type="Script" id=2]
+[ext_resource path="res://scenes/navigator/Navigator.gd" type="Script" id=2]
 
 [node name="GEnemy" type="KinematicBody2D"]
 input_pickable = true

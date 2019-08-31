@@ -144,7 +144,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/terrain_generator/Generators/MapGenerator.gd"
 }, {
-"base": "Node2D",
+"base": "Node",
 "class": "Navigator",
 "language": "GDScript",
 "path": "res://scenes/navigator/Navigator.gd"
@@ -371,8 +371,6 @@ gdscript/completion/autocomplete_setters_and_getters=true
 
 window/size/width=420
 window/size/height=240
-window/size/test_width=840
-window/size/test_height=480
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 

@@ -5,8 +5,8 @@
 [ext_resource path="res://scenes/controls/Mobile/Analog/Analog.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Buttons.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/hud/player_menu/PlayerMenu.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/hud/money_display/MoneyDisplay.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/hud/money_display/MoneyDisplay.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/hud/player_menu/PlayerMenu.tscn" type="PackedScene" id=7]
 
 [node name="HUDMobile" groups=[
 "HUD",
@@ -20,6 +20,6 @@ position = Vector2( 60, 180 )
 
 [node name="BulletInfo" parent="." index="4" instance=ExtResource( 5 )]
 
-[node name="PlayerMenu" parent="." index="6" instance=ExtResource( 6 )]
+[node name="MoneyDisplay" parent="." index="6" instance=ExtResource( 6 )]
 
-[node name="MoneyDisplay" parent="." index="7" instance=ExtResource( 7 )]
+[node name="PlayerMenu" parent="." index="7" instance=ExtResource( 7 )]

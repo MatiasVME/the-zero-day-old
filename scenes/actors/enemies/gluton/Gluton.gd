@@ -121,16 +121,12 @@ func get_direction_to_see(objective):
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(objective):
-	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
-		$Navigator.update_navigation_path(objective)
-		
-		#print($Navigator.navigation_path)
+#	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
+#		$Navigator.update_navigation_path(objective)
+#
+#		#print($Navigator.navigation_path)
 	
 	match get_direction_to_see(objective):
-#		0:
-#			$Body.play("Run_Up")
-#		180:
-#			$Body.play("Run_Down")
 		90:
 			if $Body.flip_h:
 				$Body.flip_h = false
@@ -141,7 +137,13 @@ func sekeer(objective):
 			$Body.play("RunSide")
 			
 	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
-		velocity = steer($Navigator.get_current_point())
+		
+		var current_point = $Navigator.get_current_point()
+		
+		if not current_point:
+			current_point = objective
+		
+		velocity = steer(current_point)
 		move_and_slide(velocity)
 		
 		var b_point
@@ -150,9 +152,9 @@ func sekeer(objective):
 		else:
 			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
 			
-		var AB = b_point.distance_to($Navigator.get_current_point())
+		var AB = b_point.distance_to(current_point)
 		var b_dist = global_position.distance_to(b_point)
-		if b_dist <= AB :
+		if b_dist <= AB:
 			$Navigator.next_index()
 
 	else:
@@ -162,10 +164,6 @@ func sekeer(objective):
 # Rutina en caso de tener que huir del objetivo
 func run(objective):
 	match get_direction_to_see(objective):
-#		0:
-#			$Body.play("Run_Down")
-#		180:
-#			$Body.play("Run_Up")
 		90:
 			if !$Body.flip_h:
 				$Body.flip_h = true

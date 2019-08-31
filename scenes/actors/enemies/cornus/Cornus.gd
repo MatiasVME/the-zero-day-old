@@ -11,7 +11,7 @@ func _physics_process(delta):
 		var d = position.distance_to(path[0])
 		
 		if d > 2:
-			# debería devolver la posición siguiente a la
+			# Debería devolver la posición siguiente a la
 			# que se quiere mover, segun el path finding
 			position = position.linear_interpolate(path[0], (speed * delta)/d)
 		else:

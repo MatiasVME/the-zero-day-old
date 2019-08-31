@@ -64,6 +64,7 @@ func spawn():
 
 func dead():
 	$Collision.disabled = true
+	
 	if $Anim.has_animation("dead"):
 		$Anim.play("dead")
 

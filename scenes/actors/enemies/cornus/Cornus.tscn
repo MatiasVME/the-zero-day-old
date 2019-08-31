@@ -15,9 +15,9 @@ script = ExtResource( 2 )
 position = Vector2( 0, -6 )
 shape = SubResource( 1 )
 
-[node name="TestTimer" type="Timer" parent="." index="6"]
+[node name="TestTimer" type="Timer" parent="." index="5"]
 
-[node name="Sprites" type="Node2D" parent="." index="7"]
+[node name="Sprites" type="Node2D" parent="." index="6"]
 
 [node name="Head" type="Sprite" parent="Sprites" index="0"]
 position = Vector2( 0, -12 )

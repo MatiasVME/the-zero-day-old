@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tests/TGluton.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://tests/TMapV2.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=5]
+
+[node name="TGluton" type="Node"]
+script = ExtResource( 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 2 )]
+
+[node name="TMapV2" parent="." instance=ExtResource( 3 )]
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="GlutonSpawn" parent="." instance=ExtResource( 5 )]
+position = Vector2( 815.051, 302.304 )
+
+[node name="GlutonSpawn2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 863.064, 366.607 )
+
+[node name="GlutonSpawn3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 782.47, 399.187 )
+
+[node name="GlutonSpawn4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 948.801, 358.891 )

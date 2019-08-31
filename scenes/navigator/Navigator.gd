@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 class_name Navigator
 
@@ -7,7 +7,7 @@ export(float) var time_to_update_path = 1.3
 var time_current = 0.0
 
 # Se usa para un navigator2d
-onready var nav = get_tree().get_nodes_in_group("Map")
+onready var nav = get_tree().get_nodes_in_group("Navigation")
 
 var can_navigate := false
 
@@ -39,7 +39,8 @@ func calculate_path(target_pos):
 	return path
 
 func get_current_point():
-	return navigation_path[current_index]
+	if navigation_path.size() > 0:
+		return navigation_path[current_index]
 
 func next_index():
 	
