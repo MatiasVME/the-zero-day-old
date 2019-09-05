@@ -376,7 +376,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "NavigationMapTool", "PersistenceNode", "rpg_elements", "wakatime" )
+enabled=PoolStringArray( "PersistenceNode", "rpg_elements", "wakatime" )
 
 [importer_defaults]
 

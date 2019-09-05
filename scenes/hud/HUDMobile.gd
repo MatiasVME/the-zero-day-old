@@ -40,5 +40,7 @@ func _on_toggle_player_menu_pressed(toggled):
 	else:
 		$PlayerMenu/Anim.play_backwards("show")
 
+	get_tree().paused = toggled
+
 func _on_player_menu_button_unpressed():
 	$Buttons/Index/TogglePlayerMenu.pressed = false

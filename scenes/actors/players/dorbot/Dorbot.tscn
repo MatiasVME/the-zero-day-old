@@ -9,25 +9,9 @@
 [ext_resource path="res://animations/PlayerIdle.anim" type="Animation" id=7]
 [ext_resource path="res://animations/PlayerRun.anim" type="Animation" id=8]
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
+"frames": [ ExtResource( 3 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -35,13 +19,29 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "Dead"
 length = 0.5
 tracks/0/type = "value"
@@ -86,20 +86,20 @@ script = ExtResource( 2 )
 
 [node name="LegLeft" parent="Sprites" index="0"]
 position = Vector2( -2, 3.5 )
-frames = SubResource( 3 )
+frames = SubResource( 1 )
 offset = Vector2( 0, 1.5 )
 
 [node name="LegRight" parent="Sprites" index="1"]
 position = Vector2( 1, 3.5 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 offset = Vector2( 0, 1.5 )
 
 [node name="Body" parent="Sprites" index="2"]
-frames = SubResource( 1 )
+frames = SubResource( 3 )
 
 [node name="Head" parent="Sprites" index="3"]
 position = Vector2( 1, -5 )
-frames = SubResource( 2 )
+frames = SubResource( 4 )
 offset = Vector2( -0.00024, 0 )
 
 [node name="AnimMove" parent="Sprites" index="4"]
@@ -107,4 +107,4 @@ anims/Idle = ExtResource( 7 )
 anims/Run = ExtResource( 8 )
 
 [node name="AnimDead" parent="Sprites" index="5"]
-anims/Dead = SubResource( 8 )
+anims/Dead = SubResource( 5 )

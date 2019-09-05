@@ -11,6 +11,7 @@
 [node name="HUDMobile" groups=[
 "HUD",
 ] instance=ExtResource( 1 )]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="Analog" parent="." index="1" instance=ExtResource( 3 )]
