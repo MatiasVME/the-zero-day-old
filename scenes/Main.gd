@@ -13,6 +13,8 @@ func _on_BackFromCredits_pressed():
 	$Camera.global_position = global_position
 
 func _on_DeleteData_pressed():
+	# TODO: Preguntar si esta seguro de borrar la data
+	# o no.
 	DataManager.remove_all_data()
 	get_tree().quit()
 
@@ -22,3 +24,10 @@ func _on_Credits_pressed():
 
 func _on_Play_pressed():
 	$Camera.global_position = $AdventureMode.global_position
+
+func _on_Config_pressed():
+	var option_pos = $Options.global_position
+	option_pos.x = option_pos.x + Main.RES_X / 2
+	option_pos.y = option_pos.y + Main.RES_Y / 2
+	
+	$Camera.global_position = option_pos

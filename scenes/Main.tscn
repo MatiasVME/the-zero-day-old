@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/main_screens/AdventureMode.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=4]
-[ext_resource path="res://themes/ph_theme.tres" type="Theme" id=5]
+[ext_resource path="res://scenes/main_screens/Options.tscn" type="PackedScene" id=5]
 [ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://scenes/buttons/main_menu_button/bg-buttons.png" type="Texture" id=7]
 [ext_resource path="res://scenes/buttons/main_menu_button/menu_button-normal.png" type="Texture" id=8]
@@ -34,19 +34,11 @@ editor/display_folded = true
 position = Vector2( 0, -240 )
 
 [node name="Credits" parent="." instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( 0, 240 )
 
-[node name="DeleteData" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = 60.0
-margin_top = -110.0
-margin_right = 198.0
-margin_bottom = -88.0
-theme = ExtResource( 5 )
-text = "Delete Game Data"
+[node name="Options" parent="." instance=ExtResource( 5 )]
+position = Vector2( 210, -120.049 )
 
 [node name="Version" type="Label" parent="."]
 margin_left = 130.0
@@ -61,7 +53,6 @@ valign = 1
 autowrap = true
 
 [node name="BackgroundButtons" type="Sprite" parent="."]
-editor/display_folded = true
 texture = ExtResource( 7 )
 
 [node name="Play" type="TextureButton" parent="BackgroundButtons"]
@@ -145,10 +136,14 @@ drag_margin_bottom = 0.0
 position = Vector2( -30, 0 )
 [connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
-[connection signal="pressed" from="DeleteData" to="." method="_on_DeleteData_pressed"]
+[connection signal="pressed" from="Options/DeleteData" to="." method="_on_DeleteData_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="BackgroundButtons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Credits" to="." method="_on_Credits_pressed"]
 
 [editable path="AdventureMode"]
 
 [editable path="Credits"]
+
+[editable path="Options"]

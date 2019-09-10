@@ -10,8 +10,6 @@ func _ready():
 	first_focus = button_back
 	for section in sections.get_children():
 		section.connect("section_showed", self, "_on_section_showed")
-#		Para realizar pruebas
-#		_resume() 
 
 func _on_section_showed() -> void:
 	index += 1
