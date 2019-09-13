@@ -15,10 +15,13 @@ func _on_section_showed() -> void:
 	index += 1
 	if index < sections.get_children().size():
 		sections.get_children()[index].show_section()
+	else:
+		$FullCredits/Anim.play("Show")
 
 func _resume() -> void:
 	index = 0
 	sections.get_children()[index].show_section()
+	$FullCredits.hide()
 
 func _on_BackFromCredits_pressed():
 	if index < sections.get_children().size():

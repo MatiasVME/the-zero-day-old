@@ -35,7 +35,7 @@ position = Vector2( 0, -240 )
 
 [node name="Credits" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
-position = Vector2( 0, 240 )
+position = Vector2( -210, 119.951 )
 
 [node name="Options" parent="." instance=ExtResource( 5 )]
 position = Vector2( 210, -120.049 )

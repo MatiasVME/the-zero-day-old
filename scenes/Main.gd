@@ -19,7 +19,11 @@ func _on_DeleteData_pressed():
 	get_tree().quit()
 
 func _on_Credits_pressed():
-	$Camera.global_position = $Credits.global_position
+	var credits_pos = $Credits.global_position
+	credits_pos.x = credits_pos.x + Main.RES_X / 2
+	credits_pos.y = credits_pos.y + Main.RES_Y / 2
+	
+	$Camera.global_position = credits_pos
 	$Credits._resume()
 
 func _on_Play_pressed():

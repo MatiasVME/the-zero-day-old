@@ -43,21 +43,25 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 # Creditos
 
 ## Equipo actual
+
 - Matías Muñoz Espinoza - Programmer & Game Design
-- Markus Ellisca - Programmer
-- Nahum Santana - Programmer
 - Alam Perez - Art
 
 ## Gracias
+
+- Markus Ellisca - Programmer
 - Jonathan Moreno - Programmer
 - MG.Pix - Art
+- Nahum Santana - Programmer
 - Javier Ocampos - Game Design
 - Jean Ferreira - Programmer
 
 ## Asesoría
+
 - RDCKGames
 
 ## Terceros
+
 - Avgvsta - Music (CC-BY)
 
 # Compilar
