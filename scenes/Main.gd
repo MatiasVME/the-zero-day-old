@@ -35,3 +35,10 @@ func _on_Config_pressed():
 	option_pos.y = option_pos.y + Main.RES_Y / 2
 	
 	$Camera.global_position = option_pos
+
+func _on_Version_pressed():
+	var version_pos = $VersionNotes.global_position
+	version_pos.x = version_pos.x + Main.RES_X / 2
+	version_pos.y = version_pos.y + Main.RES_Y / 2
+	
+	$Camera.global_position = version_pos
