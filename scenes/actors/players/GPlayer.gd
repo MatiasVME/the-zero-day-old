@@ -83,7 +83,7 @@ func _move_handler(delta, distance, run):
 		dir.y = sign(distance.y)
 	else:
 		dir = distance.normalized()
-		
+	
 	if not run:
 		move_x = dir.x * speed * delta
 		move_y = dir.y * speed * delta
@@ -100,8 +100,13 @@ func _move_handler(delta, distance, run):
 					else:
 						dash_state = DashState.DOING
 				DashState.DOING:
-					$Sprites/Head.position = Vector2(1, 1)
-					
+					if data.stamina > 1.0:
+						data.stamina -= delta * 32
+					else:
+						dash_state = DashState.END
+						return
+
+					# Si el tween DoingDash no se esta ejecutando
 					if not $Sprites/DoingDash.is_active():
 						if not $Sprites/Head.flip_h:
 							$Sprites/DoingDash.interpolate_property(
@@ -125,10 +130,12 @@ func _move_handler(delta, distance, run):
 							)
 						
 						$Sprites/DoingDash.start()
+				DashState.END:
+					doing_dash = false
 		else:
 			move_x = dir.x * speed * 2 * delta
 			move_y = dir.y * speed * 2 * delta
-	
+		
 	if not doing_dash: $Sprites/AnimMove.play("Run")
 	
 	if dir.y > 0.49:
@@ -146,6 +153,11 @@ func _move_handler(delta, distance, run):
 		move_y /= 1.5
 		
 	move_and_slide(Vector2(move_x, move_y), Vector2())
+
+# Subir stamina
+func go_up_stamina(delta):
+	if data.stamina < data.stamina_max:
+		data.stamina = data.stamina + delta * 16
 
 func _stop_handler(delta):
 	if doing_dash: return
@@ -180,6 +192,9 @@ func _reload_handler():
 			reload_progress = 0.0
 
 func _physics_process(delta):
+	if not doing_dash:
+		go_up_stamina(delta)
+	
 	if not can_move or is_disabled:
 		return
 		
@@ -306,6 +321,8 @@ func flip_h_sprites(value):
 func dash_start():
 	doing_dash = true
 	dash_dir = current_move_dir
+	dash_state = DashState.START
+	
 	$Sprites/AnimMove.stop()
 	$Sprites/AnimDash.play("DashStart")
 	

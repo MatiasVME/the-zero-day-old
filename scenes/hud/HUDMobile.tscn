@@ -24,3 +24,4 @@ position = Vector2( 60, 180 )
 [node name="MoneyDisplay" parent="." index="6" instance=ExtResource( 6 )]
 
 [node name="PlayerMenu" parent="." index="7" instance=ExtResource( 7 )]
+

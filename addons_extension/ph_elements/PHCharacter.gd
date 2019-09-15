@@ -18,6 +18,14 @@ var unique_id : String
 
 var equip : PHItem setget set_equip, get_equip
 
+# La estamina es el gasto de esfuerzo físico al hacer dash o otras
+# actividades, que requieran estamina
+var stamina := 100.0 setget set_stamina, get_stamina
+var stamina_max := 100.0 setget set_stamina_max, get_stamina_max
+
+signal stamina_changed(new_stamina_value)
+signal stamina_max_changed(new_stamina_max_value)
+
 # Dinero que dropea
 var money_drop = 1
 
@@ -40,6 +48,29 @@ func set_player_type(_player_type):
 	
 func get_player_type():
 	return player_type
+
+# La stamina nunca supera a stamina_max
+func set_stamina(_stamina):
+	var old_stamina = stamina
+	
+	if stamina > stamina_max:
+		stamina = stamina_max
+	else:
+		stamina = _stamina
+	
+	if old_stamina != stamina:
+		emit_signal("stamina_changed", stamina)
+	
+func get_stamina():
+	return stamina
+
+func set_stamina_max(_stamina_max):
+	stamina_max = _stamina_max
+	
+	emit_signal("stamina_max_changed", stamina_max)
+	
+func get_stamina_max():
+	return stamina_max
 
 # Metodos "Privados"
 #

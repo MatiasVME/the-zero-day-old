@@ -22,7 +22,10 @@ func _ready():
 func set_hotbar_actor(actor : GActor):
 	if actor is GPlayer:
 		actor.connect("item_taken", self, "_on_item_taken")
-	
+		
+		actor.data.connect("stamina_changed", self, "_on_stamina_changed")
+		actor.data.connect("stamina_max_changed", self, "_on_stamina_max_changed")
+		
 	update_hotbar_row(0)
 	
 # Seleccionar un slot del 1 al 5 o null
@@ -128,6 +131,12 @@ func _on_item_taken(item):
 func _on_item_removed(row_num, slot_num):
 	update_hotbar_row(current_hotbar)
 
+func _on_stamina_changed(new_stamina_value):
+	$HotbarBG/Stamina.value = new_stamina_value
+
+func _on_stamina_max_changed(new_stamina_max_value):
+	$HotbarBG/Stamina.max_value = new_stamina_max_value
+
 func _on_hud_ready():
 	if not hud.inventory:
 		print("Inventory not found xd")
@@ -142,4 +151,3 @@ func _on_hud_ready():
 	# se cambia de hotbar.
 	hud.inventory.connect("change_diamond", self, "_on_change_diamond")
 	
-	print("hud.inventory:",hud.inventory)
