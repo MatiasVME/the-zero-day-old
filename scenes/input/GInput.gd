@@ -2,7 +2,7 @@ extends Node
 
 class_name GInput
 
-onready var actor = get_parent()
+onready var actor = get_parent() as GPlayer
 onready var analog = get_tree().get_nodes_in_group("Analog")
 
 var is_active := false

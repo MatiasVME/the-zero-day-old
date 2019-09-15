@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 # Actor que esta asociado o utilizando el hud
-var hud_actor
+var hud_actor : GActor
 
 func _ready():
 	PlayerManager.connect("player_dead", self, "_on_player_dead")

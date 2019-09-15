@@ -9,3 +9,5 @@ func _ready():
 	$HUD.add_actor_to_hud(player)
 	$HUD.set_hud_actor(player)
 	$GameCamera.following = player
+	
+	

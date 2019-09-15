@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire-Normal.png-09e9af64f951a2158f1271ec4b06a852.stex"
+path="res://.import/Dash.png-e8e4e1a2fa6c0b460e73db5d3f6a1ce6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/controls/Mobile/Buttons/Fire-Normal.png"
-dest_files=[ "res://.import/Fire-Normal.png-09e9af64f951a2158f1271ec4b06a852.stex" ]
+source_file="res://scenes/controls/Mobile/Buttons/ButtonIcon/Dash.png"
+dest_files=[ "res://.import/Dash.png-e8e4e1a2fa6c0b460e73db5d3f6a1ce6.stex" ]
 
 [params]
 

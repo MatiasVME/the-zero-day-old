@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire-Pressed.png-fb87af66a05f02e2c5d8a6be76363dd5.stex"
+path="res://.import/Exclamation.png-f3a68c125adb6c0dcb3865989fda2466.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/controls/Mobile/Buttons/Fire-Pressed.png"
-dest_files=[ "res://.import/Fire-Pressed.png-fb87af66a05f02e2c5d8a6be76363dd5.stex" ]
+source_file="res://scenes/controls/Mobile/Buttons/ButtonIcon/Exclamation.png"
+dest_files=[ "res://.import/Exclamation.png-f3a68c125adb6c0dcb3865989fda2466.stex" ]
 
 [params]
 

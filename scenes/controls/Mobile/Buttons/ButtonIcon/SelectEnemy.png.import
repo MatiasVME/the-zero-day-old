@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Fire-Disabled.png-cbf3c28c4baa9a5c4655fefdbc3b3608.stex"
+path="res://.import/SelectEnemy.png-08f8b241fe4c9b1280f1e6329c797109.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/controls/Mobile/Buttons/Fire-Disabled.png"
-dest_files=[ "res://.import/Fire-Disabled.png-cbf3c28c4baa9a5c4655fefdbc3b3608.stex" ]
+source_file="res://scenes/controls/Mobile/Buttons/ButtonIcon/SelectEnemy.png"
+dest_files=[ "res://.import/SelectEnemy.png-08f8b241fe4c9b1280f1e6329c797109.stex" ]
 
 [params]
 

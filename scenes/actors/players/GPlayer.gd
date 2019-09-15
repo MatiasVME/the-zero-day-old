@@ -30,8 +30,15 @@ var total_ammo = -1
 # Escena para mostrar el daño en forma numérica
 var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
-var fire_dir := Vector2()
-var current_move_dir := Vector2()
+var fire_dir := Vector2.ZERO
+var current_move_dir := Vector2.ZERO
+
+# Se esta haciendo Dash ?
+var doing_dash := false
+var dash_dir := Vector2.ZERO
+
+enum DashState {START, DOING, END}
+var dash_state = DashState.START
 
 var hud
 
@@ -58,7 +65,7 @@ func _ready():
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
-	
+
 	# Al iniciar el data equip se va a null siempre
 	# para que no suceda un bug, de un arma fantasma.
 	data.equip = null
@@ -77,17 +84,52 @@ func _move_handler(delta, distance, run):
 	else:
 		dir = distance.normalized()
 		
-	
 	if not run:
 		move_x = dir.x * speed * delta
 		move_y = dir.y * speed * delta
-#		$Sprite.speed_scale = 0.6
 	else:
-		move_x = dir.x * speed * 2 * delta
-		move_y = dir.y * speed * 2 * delta
-#		$Sprite.speed_scale = 1.2
+		if doing_dash:
+			move_x = dash_dir.x * speed * 8 * delta
+			move_y = dash_dir.y * speed * 8 * delta
+			
+			match dash_state:
+				DashState.START:
+					# Si se esta ejecutando la animación start
+					if $Sprites/AnimDash.is_playing() and $Sprites/AnimDash.current_animation != "DashStart":
+						return
+					else:
+						dash_state = DashState.DOING
+				DashState.DOING:
+					$Sprites/Head.position = Vector2(1, 1)
+					
+					if not $Sprites/DoingDash.is_active():
+						if not $Sprites/Head.flip_h:
+							$Sprites/DoingDash.interpolate_property(
+								$Sprites,
+								"rotation_degrees",
+								0, 
+								360,
+								0.3,
+								Tween.TRANS_LINEAR,
+								Tween.EASE_OUT
+							)
+						else:
+							$Sprites/DoingDash.interpolate_property(
+								$Sprites,
+								"rotation_degrees",
+								0, 
+								-360,
+								0.3,
+								Tween.TRANS_LINEAR,
+								Tween.EASE_OUT
+							)
+						
+						$Sprites/DoingDash.start()
+		else:
+			move_x = dir.x * speed * 2 * delta
+			move_y = dir.y * speed * 2 * delta
 	
-	$Sprites/AnimMove.play("Run")
+	if not doing_dash: $Sprites/AnimMove.play("Run")
 	
 	if dir.y > 0.49:
 		if dir.x > 0 : flip_h_sprites(false)
@@ -106,10 +148,11 @@ func _move_handler(delta, distance, run):
 	move_and_slide(Vector2(move_x, move_y), Vector2())
 
 func _stop_handler(delta):
+	if doing_dash: return
+	
 	if $Sprites/AnimMove.current_animation != "Idle" and $Sprites/AnimHit.current_animation != "Hit" or not $Sprites/AnimMove.is_playing():
-			$Sprites/AnimMove.play("Idle")
-#			$Sprite.speed_scale = 0.1
-
+		$Sprites/AnimMove.play("Idle")
+	
 func _fire_handler():
 	if data.equip is PHDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
 		if not Main.is_mobile:
@@ -238,7 +281,8 @@ func set_hud(_hud):
 	
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
-
+	
+	
 # Mobile
 func select_next():
 	if selectables.size() > 1:
@@ -258,6 +302,16 @@ func flip_h_sprites(value):
 	$Sprites/LegRight.flip_h = value
 	$Sprites/Body.flip_h = value
 	$Sprites/Head.flip_h = value
+
+func dash_start():
+	doing_dash = true
+	dash_dir = current_move_dir
+	$Sprites/AnimMove.stop()
+	$Sprites/AnimDash.play("DashStart")
+	
+func dash_stop():
+	doing_dash = false
+	$Sprites/AnimDash.play("DashStop")
 
 func _on_dead():
 	is_mark_to_dead = true

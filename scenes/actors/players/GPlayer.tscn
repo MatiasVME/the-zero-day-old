@@ -92,6 +92,10 @@ anims/Hit = SubResource( 2 )
 
 [node name="AnimVictory" type="AnimationPlayer" parent="Sprites"]
 
+[node name="DoingDash" type="Tween" parent="Sprites"]
+
+[node name="AnimDash" type="AnimationPlayer" parent="Sprites"]
+
 [node name="InteractArea" type="Area2D" parent="."]
 editor/display_folded = true
 collision_layer = 3

@@ -3,11 +3,13 @@ extends "GHUD.gd"
 onready var inventory = get_node("PlayerMenu/Panels/Inventory")
 
 func _ready():
-	$Buttons.connect("fire", self, "_on_fire")
+	$Buttons.connect("action", self, "_on_action")
 	$Buttons.connect("select", self, "_on_select")
 	$Buttons.connect("select_next_item_up", self, "_on_select_next_item_up")
 	$Buttons.connect("select_next_item_down", self, "_on_select_next_item_down")
 	$Buttons.connect("toggle_player_menu_pressed", self, "_on_toggle_player_menu_pressed")
+	$Buttons.connect("dash_pressed", self, "_on_dash_pressed")
+	$Buttons.connect("dash_realeased", self, "_on_dash_released")
 	
 	$PlayerMenu.connect("menu_button_unpressed", self, "_on_player_menu_button_unpressed")
 
@@ -16,7 +18,7 @@ func set_hud_actor(actor : GActor):
 	
 	$PlayerMenu.set_current_actor(actor)
 
-func _on_fire():
+func _on_action():
 	hud_actor._fire_handler()
 	
 func _on_select():
@@ -44,3 +46,10 @@ func _on_toggle_player_menu_pressed(toggled):
 
 func _on_player_menu_button_unpressed():
 	$Buttons/Index/TogglePlayerMenu.pressed = false
+
+func _on_dash_pressed():
+	hud_actor.dash_start()
+	
+func _on_dash_released():
+	hud_actor.dash_stop()
+

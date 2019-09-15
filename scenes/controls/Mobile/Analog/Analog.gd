@@ -27,7 +27,6 @@ func _ready():
 	
 	bg = $Background
 	ball = $Center
-#	animation_player = get_node("AnimationPlayer")
 	parent = get_parent()
 	halfSize = bg.texture.get_size()/2
 	squaredHalfSizeLength = halfSize.x * halfSize.y

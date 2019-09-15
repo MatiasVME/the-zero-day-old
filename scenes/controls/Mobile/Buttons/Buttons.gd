@@ -1,13 +1,12 @@
 extends Node2D
 
-signal fire
+signal action
+signal dash_pressed
+signal dash_realeased
 signal select
 signal select_next_item_up
 signal select_next_item_down
 signal toggle_player_menu_pressed(toggled)
-
-func _on_Fire_pressed():
-	emit_signal("fire")
 
 func _on_Select_pressed():
 	emit_signal("select")
@@ -20,3 +19,12 @@ func _on_SelectNextItemDown_pressed():
 
 func _on_TogglePlayerMenu_toggled(button_pressed):
 	emit_signal("toggle_player_menu_pressed", button_pressed)
+
+func _on_Action_pressed():
+	emit_signal("action")
+
+func _on_Dash_pressed():
+	emit_signal("dash_pressed")
+
+func _on_Dash_released():
+	emit_signal("dash_realeased")

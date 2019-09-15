@@ -1,17 +1,19 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Buttons.gd" type="Script" id=1]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/Fire-Normal.png" type="Texture" id=2]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/Fire-Pressed.png" type="Texture" id=3]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Normal.png" type="Texture" id=4]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Pressed.png" type="Texture" id=5]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Normal.png" type="Texture" id=6]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Pressed.png" type="Texture" id=7]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Normal.png" type="Texture" id=8]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Pressed.png" type="Texture" id=9]
-[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-0.png" type="Texture" id=10]
-[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-1.png" type="Texture" id=11]
-[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-2.png" type="Texture" id=12]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/Button-Normal.png" type="Texture" id=2]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/Button-Pressed.png" type="Texture" id=3]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonIcon/Fire.png" type="Texture" id=4]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonIcon/Dash.png" type="Texture" id=5]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Normal.png" type="Texture" id=6]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Pressed.png" type="Texture" id=7]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Pressed.png" type="Texture" id=9]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Normal.png" type="Texture" id=10]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Pressed.png" type="Texture" id=11]
+[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-0.png" type="Texture" id=12]
+[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-1.png" type="Texture" id=13]
+[ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-2.png" type="Texture" id=14]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 23.0
@@ -23,28 +25,44 @@ extents = Vector2( 20, 13 )
 modulate = Color( 1, 1, 1, 0.588235 )
 script = ExtResource( 1 )
 
-[node name="Fire" type="TouchScreenButton" parent="."]
+[node name="Action" type="TouchScreenButton" parent="."]
+editor/display_folded = true
 position = Vector2( 328, 188 )
 normal = ExtResource( 2 )
 pressed = ExtResource( 3 )
 shape = SubResource( 1 )
 
+[node name="CurrentAction" type="Sprite" parent="Action"]
+texture = ExtResource( 4 )
+centered = false
+
+[node name="Dash" type="TouchScreenButton" parent="."]
+editor/display_folded = true
+position = Vector2( 316, 138 )
+normal = ExtResource( 2 )
+pressed = ExtResource( 3 )
+shape = SubResource( 1 )
+
+[node name="Dash" type="Sprite" parent="Dash"]
+texture = ExtResource( 5 )
+centered = false
+
 [node name="Select" type="TouchScreenButton" parent="."]
 position = Vector2( 366, 144 )
-normal = ExtResource( 4 )
-pressed = ExtResource( 5 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 7 )
 shape = SubResource( 1 )
 
 [node name="SelectNextItemUp" type="TouchScreenButton" parent="."]
 position = Vector2( 372, 84 )
-normal = ExtResource( 6 )
-pressed = ExtResource( 7 )
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
 shape = SubResource( 2 )
 
 [node name="SelectNextItemDown" type="TouchScreenButton" parent="."]
 position = Vector2( 372, 111 )
-normal = ExtResource( 8 )
-pressed = ExtResource( 9 )
+normal = ExtResource( 10 )
+pressed = ExtResource( 11 )
 shape = SubResource( 2 )
 
 [node name="Index" type="Node2D" parent="."]
@@ -56,10 +74,12 @@ margin_top = 2.0
 margin_right = 366.0
 margin_bottom = 42.0
 toggle_mode = true
-texture_normal = ExtResource( 10 )
-texture_pressed = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
-[connection signal="pressed" from="Fire" to="." method="_on_Fire_pressed"]
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_disabled = ExtResource( 14 )
+[connection signal="pressed" from="Action" to="." method="_on_Action_pressed"]
+[connection signal="pressed" from="Dash" to="." method="_on_Dash_pressed"]
+[connection signal="released" from="Dash" to="." method="_on_Dash_released"]
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]
 [connection signal="pressed" from="SelectNextItemUp" to="." method="_on_SelectNextItemUp_pressed"]
 [connection signal="pressed" from="SelectNextItemDown" to="." method="_on_SelectNextItemDown_pressed"]
