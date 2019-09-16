@@ -7,8 +7,7 @@ var data : PHCharacter # Este es el que equipa el arma
 
 export (int) var speed = 3000
 
-var move_x
-var move_y
+var move = Vector2.ZERO
 
 var can_fire := false
 
@@ -85,12 +84,10 @@ func _move_handler(delta, distance, run):
 		dir = distance.normalized()
 	
 	if not run:
-		move_x = dir.x * speed * delta
-		move_y = dir.y * speed * delta
+		move = dir * speed * delta
 	else:
 		if doing_dash:
-			move_x = dash_dir.x * speed * 8 * delta
-			move_y = dash_dir.y * speed * 8 * delta
+			move = dash_dir * speed * 8 * delta
 			
 			match dash_state:
 				DashState.START:
@@ -133,8 +130,7 @@ func _move_handler(delta, distance, run):
 				DashState.END:
 					doing_dash = false
 		else:
-			move_x = dir.x * speed * 2 * delta
-			move_y = dir.y * speed * 2 * delta
+			move = dir * speed * 2 * delta
 		
 	if not doing_dash: $Sprites/AnimMove.play("Run")
 	
@@ -148,11 +144,11 @@ func _move_handler(delta, distance, run):
 		if dir.x > 0 : flip_h_sprites(false)
 		elif dir.x < 0 : flip_h_sprites(true)
 		
-	if move_x != 0 and move_y != 0:
-		move_x /= 1.5
-		move_y /= 1.5
+	if move != Vector2.ZERO:
+		move.x /= 1.5
+		move.y /= 1.5
 		
-	move_and_slide(Vector2(move_x, move_y), Vector2())
+	move_and_slide(move, Vector2())
 
 # Subir stamina
 func go_up_stamina(delta):
@@ -320,7 +316,7 @@ func flip_h_sprites(value):
 
 func dash_start():
 	doing_dash = true
-	dash_dir = current_move_dir
+	dash_dir = current_move_dir.normalized() / 4 * 3
 	dash_state = DashState.START
 	
 	$Sprites/AnimMove.stop()
