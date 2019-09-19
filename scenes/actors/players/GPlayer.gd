@@ -32,12 +32,28 @@ var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 var fire_dir := Vector2.ZERO
 var current_move_dir := Vector2.ZERO
 
+var button_dash_is_pressed := false
 # Se esta haciendo Dash ?
 var doing_dash := false
 var dash_dir := Vector2.ZERO
 
 enum DashState {START, DOING, END}
 var dash_state = DashState.START
+
+# Dash especial
+#
+
+enum SpecialDashState {UNSTATE, START, DOING, END}
+var special_dash_state = SpecialDashState.START
+
+var is_special_dash := false
+var doing_special_dash := false
+# Tiempo total acumulado para hacer el dash especial
+var special_dash_time_accum := 0.0
+var max_special_dash_time_accum := 5.0
+
+# Hud
+#
 
 var hud
 
@@ -83,54 +99,17 @@ func _move_handler(delta, distance, run):
 	else:
 		dir = distance.normalized()
 	
-	if not run:
-		move = dir * speed * delta
+	# Si esta haciendo dash
+	if doing_dash:
+		do_dash_if_can(delta)
+	elif is_special_dash or doing_special_dash:
+		return
 	else:
-		if doing_dash:
-			move = dash_dir * speed * 8 * delta
+		# Previene el movimiento cuando esta haciendo un dash especial
+		if button_dash_is_pressed:
+			return
 			
-			match dash_state:
-				DashState.START:
-					# Si se esta ejecutando la animación start
-					if $Sprites/AnimDash.is_playing() and $Sprites/AnimDash.current_animation != "DashStart":
-						return
-					else:
-						dash_state = DashState.DOING
-				DashState.DOING:
-					if data.stamina > 1.0:
-						data.stamina -= delta * 32
-					else:
-						dash_state = DashState.END
-						return
-
-					# Si el tween DoingDash no se esta ejecutando
-					if not $Sprites/DoingDash.is_active():
-						if not $Sprites/Head.flip_h:
-							$Sprites/DoingDash.interpolate_property(
-								$Sprites,
-								"rotation_degrees",
-								0, 
-								360,
-								0.3,
-								Tween.TRANS_LINEAR,
-								Tween.EASE_OUT
-							)
-						else:
-							$Sprites/DoingDash.interpolate_property(
-								$Sprites,
-								"rotation_degrees",
-								0, 
-								-360,
-								0.3,
-								Tween.TRANS_LINEAR,
-								Tween.EASE_OUT
-							)
-						
-						$Sprites/DoingDash.start()
-				DashState.END:
-					doing_dash = false
-		else:
-			move = dir * speed * 2 * delta
+		move = dir * speed * 2 * delta
 		
 	if not doing_dash: $Sprites/AnimMove.play("Run")
 	
@@ -150,6 +129,92 @@ func _move_handler(delta, distance, run):
 		
 	move_and_slide(move, Vector2())
 
+# Hacer dash si puede
+func do_dash_if_can(delta):
+	move = dash_dir * speed * 8 * delta
+	
+	match dash_state:
+		DashState.START:
+			# Si se esta ejecutando la animación start
+			if $Sprites/AnimDash.is_playing() and $Sprites/AnimDash.current_animation != "DashStart":
+				return
+			else:
+				dash_state = DashState.DOING
+		DashState.DOING:
+			if data.stamina > 1.0:
+				data.stamina -= delta * 32
+			else:
+				dash_state = DashState.END
+				return
+			# Si el tween DoingDash no se esta ejecutando
+			if not $Sprites/DoingDash.is_active():
+				if not $Sprites/Head.flip_h:
+					$Sprites/DoingDash.interpolate_property(
+						$Sprites,
+						"rotation_degrees",
+						0, 
+						360,
+						0.3,
+						Tween.TRANS_LINEAR,
+						Tween.EASE_OUT
+					)
+				else:
+					$Sprites/DoingDash.interpolate_property(
+						$Sprites,
+						"rotation_degrees",
+						0, 
+						-360,
+						0.3,
+						Tween.TRANS_LINEAR,
+						Tween.EASE_OUT
+					)
+				
+				$Sprites/DoingDash.start()
+		DashState.END:
+			doing_dash = false
+	
+func do_special_dash_if_can(delta):
+	# Definir si es un dash especial o no
+	if doing_dash and current_move_dir == Vector2.ZERO:
+		special_dash_state = SpecialDashState.START
+	
+	match special_dash_state:
+		SpecialDashState.UNSTATE:
+			return
+		SpecialDashState.START: 
+			# Si la dirección sigue siendo ZERO
+			if current_move_dir == Vector2.ZERO:
+				if max_special_dash_time_accum >= special_dash_time_accum:
+					special_dash_time_accum += delta
+					
+					if $Sprites/Head.flip_h:
+						$Sprites/Head.rotation_degrees -= delta * 500 * special_dash_time_accum
+					else:
+						$Sprites/Head.rotation_degrees += delta * 500 * special_dash_time_accum
+					
+					print(delta * 500 * special_dash_time_accum)
+				else:
+					$Sprites/Head.rotation_degrees += 40
+				
+				is_special_dash = true
+				special_dash_state = SpecialDashState.DOING
+			return
+		SpecialDashState.DOING:
+			move_and_slide(current_move_dir.normalized() * 4500 * delta * special_dash_time_accum)
+			$Sprites/Head.rotation_degrees += 40
+			
+			if special_dash_time_accum <= 0:
+				special_dash_state = SpecialDashState.END
+			else:
+				special_dash_time_accum -= delta * 4 
+			return
+		SpecialDashState.END: 
+			is_special_dash = false
+			doing_dash = false
+			doing_special_dash = false
+			$Sprites/Head.rotation_degrees = 0
+			special_dash_state = SpecialDashState.UNSTATE
+	
 # Subir stamina
 func go_up_stamina(delta):
 	if data.stamina < data.stamina_max:
@@ -188,11 +253,22 @@ func _reload_handler():
 			reload_progress = 0.0
 
 func _physics_process(delta):
-	if not doing_dash:
-		go_up_stamina(delta)
-	
 	if not can_move or is_disabled:
 		return
+	
+	# Dash
+	#
+	
+	if is_special_dash:
+		do_special_dash_if_can(delta)
+		
+	if not doing_dash:
+		go_up_stamina(delta)
+	else:
+		do_special_dash_if_can(delta)
+	
+	# Equipamiento y reload
+	#
 		
 	if data.equip and time_to_next_action_progress < time_to_next_action:
 		time_to_next_action_progress += delta
@@ -293,7 +369,6 @@ func set_hud(_hud):
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
 	
-	
 # Mobile
 func select_next():
 	if selectables.size() > 1:
@@ -318,13 +393,19 @@ func dash_start():
 	doing_dash = true
 	dash_dir = current_move_dir.normalized() / 4 * 3
 	dash_state = DashState.START
+	button_dash_is_pressed = true
 	
 	$Sprites/AnimMove.stop()
 	$Sprites/AnimDash.play("DashStart")
 	
 func dash_stop():
 	doing_dash = false
+	
+	dash_dir = Vector2.ZERO
+	button_dash_is_pressed = false
+	
 	$Sprites/AnimDash.play("DashStop")
+	$Sprites/Head.rotation_degrees = 0
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -400,3 +481,11 @@ func _on_current_force_updated(force):
 	
 	# Arreglo para corregir la dirección
 	current_move_dir.y *= -1
+
+func _on_SpecialDash_tween_all_completed():
+	doing_special_dash = false
+	special_dash_time_accum = 0.0
+	
+#	print($Sprites/Head.self_modulate)
+#	$Sprites/Head.self_modulate.r = 0
+#	print($Sprites/Head.self_modulate)

@@ -96,6 +96,8 @@ anims/Hit = SubResource( 2 )
 
 [node name="AnimDash" type="AnimationPlayer" parent="Sprites"]
 
+[node name="SpecialDash" type="Tween" parent="Sprites"]
+
 [node name="InteractArea" type="Area2D" parent="."]
 editor/display_folded = true
 collision_layer = 3
@@ -120,6 +122,7 @@ shape = SubResource( 4 )
 
 [node name="TimeToReload" type="Timer" parent="."]
 one_shot = true
+[connection signal="tween_all_completed" from="Sprites/SpecialDash" to="." method="_on_SpecialDash_tween_all_completed"]
 [connection signal="body_entered" from="InteractArea" to="." method="_on_InteractArea_body_entered"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]

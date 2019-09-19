@@ -497,6 +497,11 @@ interact={
 
 pointing/emulate_touch_from_mouse=true
 
+[layer_names]
+
+2d_render/layer_2="Bullet"
+2d_physics/layer_2="Bullet"
+
 [physics]
 
 2d/default_gravity=30
