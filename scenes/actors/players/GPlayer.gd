@@ -100,7 +100,7 @@ func _move_handler(delta, distance, run):
 		dir = distance.normalized()
 	
 	# Si esta haciendo dash
-	if doing_dash:
+	if doing_dash and not is_special_dash:
 		do_dash_if_can(delta)
 	elif is_special_dash or doing_special_dash:
 		return
@@ -141,11 +141,7 @@ func do_dash_if_can(delta):
 			else:
 				dash_state = DashState.DOING
 		DashState.DOING:
-			if data.stamina > 1.0:
-				data.stamina -= delta * 32
-			else:
-				dash_state = DashState.END
-				return
+			use_stamina(delta)
 			# Si el tween DoingDash no se esta ejecutando
 			if not $Sprites/DoingDash.is_active():
 				# Cambiamos las collision layer y mask antes de hacer el tween
@@ -195,6 +191,8 @@ func do_special_dash_if_can(delta):
 						$Sprites/Head.rotation_degrees -= delta * 500 * special_dash_time_accum
 					else:
 						$Sprites/Head.rotation_degrees += delta * 500 * special_dash_time_accum
+					
+					use_stamina(delta, 0.5)
 				else:
 					$Sprites/Head.rotation_degrees += 40
 				
@@ -229,6 +227,13 @@ func do_special_dash_if_can(delta):
 func go_up_stamina(delta):
 	if data.stamina < data.stamina_max:
 		data.stamina = data.stamina + delta * 16
+
+func use_stamina(delta, stamina_multiplier = 1):
+	if data.stamina > 1.0:
+		data.stamina -= delta * 32 * stamina_multiplier
+	else:
+		dash_state = DashState.END
+		return
 
 func _stop_handler(delta):
 	if doing_dash: return
