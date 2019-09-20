@@ -148,6 +148,10 @@ func do_dash_if_can(delta):
 				return
 			# Si el tween DoingDash no se esta ejecutando
 			if not $Sprites/DoingDash.is_active():
+				# Cambiamos las collision layer y mask antes de hacer el tween
+				collision_layer = 4
+				collision_mask = 4
+				
 				if not $Sprites/Head.flip_h:
 					$Sprites/DoingDash.interpolate_property(
 						$Sprites,
@@ -191,8 +195,6 @@ func do_special_dash_if_can(delta):
 						$Sprites/Head.rotation_degrees -= delta * 500 * special_dash_time_accum
 					else:
 						$Sprites/Head.rotation_degrees += delta * 500 * special_dash_time_accum
-					
-					print(delta * 500 * special_dash_time_accum)
 				else:
 					$Sprites/Head.rotation_degrees += 40
 				
@@ -200,6 +202,11 @@ func do_special_dash_if_can(delta):
 				special_dash_state = SpecialDashState.DOING
 			return
 		SpecialDashState.DOING:
+			# Cambiamos las collision layer y mask antes de hacer el
+			# dash especial
+			collision_layer = 4
+			collision_mask = 4
+			
 			move_and_slide(current_move_dir.normalized() * 4500 * delta * special_dash_time_accum)
 			$Sprites/Head.rotation_degrees += 40
 			
@@ -214,6 +221,9 @@ func do_special_dash_if_can(delta):
 			doing_special_dash = false
 			$Sprites/Head.rotation_degrees = 0
 			special_dash_state = SpecialDashState.UNSTATE
+			
+			collision_layer = 3
+			collision_mask = 3
 	
 # Subir stamina
 func go_up_stamina(delta):
@@ -404,6 +414,9 @@ func dash_stop():
 	dash_dir = Vector2.ZERO
 	button_dash_is_pressed = false
 	
+	collision_layer = 3
+	collision_mask = 3
+	
 	$Sprites/AnimDash.play("DashStop")
 	$Sprites/Head.rotation_degrees = 0
 
@@ -485,7 +498,3 @@ func _on_current_force_updated(force):
 func _on_SpecialDash_tween_all_completed():
 	doing_special_dash = false
 	special_dash_time_accum = 0.0
-	
-#	print($Sprites/Head.self_modulate)
-#	$Sprites/Head.self_modulate.r = 0
-#	print($Sprites/Head.self_modulate)
