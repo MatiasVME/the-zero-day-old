@@ -1,12 +1,12 @@
 extends Node
 
-static func create_test_distance_weapon():
-	var weapon_data = Factory.ItemFactory.create_test_distance_weapon()
-	var weapon_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
-	
-	weapon_in_world.data = weapon_data
-	
-	return weapon_in_world
+#static func create_test_distance_weapon():
+#	var weapon_data = Factory.ItemFactory.create_test_distance_weapon()
+#	var weapon_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
+#
+#	weapon_in_world.data = weapon_data
+#
+#	return weapon_in_world
 	
 static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1):
 	var weapon_data = Factory.ItemFactory.create_rand_distance_weapon(enemy_level, enemy_type, player_luck)
