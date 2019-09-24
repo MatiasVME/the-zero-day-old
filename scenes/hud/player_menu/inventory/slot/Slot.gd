@@ -4,7 +4,7 @@ class_name InventorySlot
 
 export (bool) var is_disabled = false
 
-var data : PHItem
+var data : TZDItem
 var slot_num = -1
 
 signal selected(slot)
@@ -12,7 +12,7 @@ signal selected(slot)
 func _ready():
 	$Slot.disabled = is_disabled
 
-func add_item(item_data : PHItem):
+func add_item(item_data : TZDItem):
 	data = item_data
 	
 	$Slot/Item.texture = load(data.get_texture_path())

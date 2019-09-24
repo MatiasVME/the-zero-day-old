@@ -1,16 +1,16 @@
 """
-PHItem.gd (Project Humanity Item)
+TZDItem.gd (The Zero Day Item)
 
 Es una extencion y adaptacion del plugin RPGElements en especifico,
 de RPGItem.
 
-PHItem se encarga de administrar la logica y la informacion,
+TZDItem se encarga de administrar la logica y la informacion,
 que contienen los items.
 """
 
 extends RPGItem
 
-class_name PHItem
+class_name TZDItem
 
 var unique_id : String
 
@@ -18,7 +18,7 @@ func _init():
 	randomize()
 	unique_id = str(OS.get_unix_time(), "-", randi())
 	
-func copy_properties(phitem : PHItem) -> void:
+func copy_properties(phitem : TZDItem) -> void:
 	set_item_name(phitem.item_name)
 	set_desc(phitem.desc)
 	amount = phitem.amount

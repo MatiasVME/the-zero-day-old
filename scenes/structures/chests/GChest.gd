@@ -14,14 +14,14 @@ signal chest_closed
 signal chest_locked
 signal chest_unlocked
 
-#Función para agregar un PHItem al cofre
-func add_item(item_data : PHItem) -> void:
+#Función para agregar un TZDItem al cofre
+func add_item(item_data : TZDItem) -> void:
 	if content.size() < capacity:
 		content.append(item_data)
 		
-#Retorna un PHItem y lo elimina del Array content si existe
-func drop_item(index : int = 0) -> PHItem:
-	var item : PHItem = null
+#Retorna un TZDItem y lo elimina del Array content si existe
+func drop_item(index : int = 0) -> TZDItem:
+	var item : TZDItem = null
 	if content.size() > abs(index):
 		item = content[index]
 		content.remove(index)

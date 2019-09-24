@@ -1,12 +1,12 @@
 """
-PHAmmo.gd
+TZDAmmo.gd
 
 Se utiliza para municiones.
 """
 
-extends PHItem
+extends TZDItem
 
-class_name PHAmmo
+class_name TZDAmmo
 
 # ammo_amount indica el numero de balas en la caja,
 # en cambio amount indica el numero de cajas que hay.
@@ -22,7 +22,7 @@ enum AmmoType {
 }
 var ammo_type = 0
 
-func copy_properties(phammo : PHItem) -> void:
+func copy_properties(phammo : TZDItem) -> void:
 	.copy_properties(phammo)
 	ammo_amount = phammo.ammo_amount
 	ammo_type = phammo.ammo_type

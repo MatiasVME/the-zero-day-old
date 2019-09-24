@@ -7,7 +7,7 @@ class_name PHWeapon
 var time_to_next_action = 0.5
 var damage = 1.0
 
-func copy_properties(phweapon : PHItem) -> void:
+func copy_properties(phweapon : TZDItem) -> void:
 	.copy_properties(phweapon)
 	time_to_next_action = phweapon.time_to_next_action
 	damage = phweapon.damage

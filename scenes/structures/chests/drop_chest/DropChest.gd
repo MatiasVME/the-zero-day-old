@@ -57,7 +57,7 @@ func add_random_items(pool_items : PoolItem) -> void:
 		return
 		
 	while not is_full() and not pool_items.is_empty():
-		var item : PHItem = pool_items.get_random_item()
+		var item : TZDItem = pool_items.get_random_item()
 		add_item(item)
 	
 func _on_chest_opened() -> void:

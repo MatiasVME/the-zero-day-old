@@ -1,4 +1,4 @@
-extends PHItem
+extends TZDItem
 
 class_name PHEquipment
 
@@ -17,7 +17,7 @@ func get_str_equipment_type():
 	
 	return "?"
 	
-func copy_properties(phequipment : PHItem) -> void:
+func copy_properties(phequipment : TZDItem) -> void:
 	.copy_properties(phequipment)
 	equipment_type = phequipment.equipment_type
 	

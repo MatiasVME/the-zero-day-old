@@ -123,6 +123,12 @@ shape = SubResource( 4 )
 
 [node name="CurrentWeapon" type="Node2D" parent="."]
 
+[node name="PrimaryWeapon" type="Node2D" parent="CurrentWeapon"]
+
+[node name="SecondaryWeapon" type="Node2D" parent="CurrentWeapon"]
+
+[node name="Tool" type="Node2D" parent="CurrentWeapon"]
+
 [node name="TimeToReload" type="Timer" parent="."]
 one_shot = true
 [connection signal="tween_all_completed" from="Sprites/SpecialDash" to="." method="_on_SpecialDash_tween_all_completed"]

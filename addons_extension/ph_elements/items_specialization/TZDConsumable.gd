@@ -1,4 +1,4 @@
-extends PHItem
+extends TZDItem
 
 class_name PHConsumable
 

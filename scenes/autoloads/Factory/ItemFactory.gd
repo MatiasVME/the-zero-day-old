@@ -155,7 +155,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	return weapon
 
 static func create_normal_ammo(ammo_amount := 32):
-	var ammo = PHAmmo.new()
+	var ammo = TZDAmmo.new()
 	
 	ammo.item_name = "Normal Ammo"
 	ammo.ammo_amount = ammo_amount
@@ -167,7 +167,7 @@ static func create_normal_ammo(ammo_amount := 32):
 	return ammo
 
 static func create_plasma_ammo(ammo_amount := 16):
-	var ammo = PHAmmo.new()
+	var ammo = TZDAmmo.new()
 	
 	ammo.item_name = "Plasma Ammo"
 	ammo.ammo_amount = ammo_amount
@@ -178,9 +178,9 @@ static func create_plasma_ammo(ammo_amount := 16):
 	
 	return ammo
 	
-# Crea una nueva intancia de un PHItem copiando las propidades del pasado cómo parámetro
-static func create_item_copy(item : PHItem) -> PHItem:
-	var new_item : PHItem = load( str(item.get_script().resource_path) ).new()
+# Crea una nueva intancia de un TZDItem copiando las propidades del pasado cómo parámetro
+static func create_item_copy(item : TZDItem) -> TZDItem:
+	var new_item : TZDItem = load( str(item.get_script().resource_path) ).new()
 	new_item.copy_properties(item)
 	
 	return new_item

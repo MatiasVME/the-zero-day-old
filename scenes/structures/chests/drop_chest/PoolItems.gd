@@ -9,16 +9,16 @@ var pool : Array = []
 var total : float = 0
 
 class ItemInPool:
-	var phitem : PHItem
+	var TZDItem : TZDItem
 	var weight : int#Peso de probabilidad
 	
 	# Inicialización de un ItemInPool
-	func _init(i : PHItem, w : int):
-		phitem = i
+	func _init(i : TZDItem, w : int):
+		TZDItem = i
 		weight = w
 
 # Agrega un item con un peso de probabilidad
-func add_item_on_pool(item : PHItem, weight : int = 1) -> void:
+func add_item_on_pool(item : TZDItem, weight : int = 1) -> void:
 	if weight < 1:
 		print_debug("Weight is less than 1")
 		return
@@ -32,9 +32,9 @@ func remove_item_on_pool(pos : int = -1) -> void:
 		total -= pool[pos].weight
 		pool.remove(pos)
 	
-#Retorna un PHItem al azar, si el parámetro erased es verdadero
+#Retorna un TZDItem al azar, si el parámetro erased es verdadero
 # lo elimina del pool de objetos
-func get_random_item(erase : bool = false) -> PHItem:
+func get_random_item(erase : bool = false) -> TZDItem:
 	if pool.empty():
 		print_debug("PoolItem is empty")
 		return null

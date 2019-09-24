@@ -351,7 +351,7 @@ func reload():
 	total_ammo = 0
 	
 	for ammo in DataManager.get_current_inv().inv:
-		if ammo is PHAmmo and ammo.ammo_type == data.equip.ammo_type:
+		if ammo is TZDAmmo and ammo.ammo_type == data.equip.ammo_type:
 			ammunition_inv.append(ammo)
 			total_ammo += ammo.ammo_amount
 	

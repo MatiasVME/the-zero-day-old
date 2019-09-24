@@ -1,3 +1,3 @@
 extends TextureButton
 
-var data : PHItem
+var data : TZDItem

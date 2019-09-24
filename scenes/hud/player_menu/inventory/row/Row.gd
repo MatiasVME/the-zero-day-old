@@ -28,7 +28,7 @@ func init_row(row_num):
 	
 	get_node("Diamond/DButton").connect("toggled", self, "_on_DButton_toggled")
 	
-func add_item(item_data : PHItem):
+func add_item(item_data : TZDItem):
 	for slot in $Slots.get_children():
 		if not slot.has_item():
 			slot.add_item(item_data)
@@ -39,7 +39,7 @@ func add_item(item_data : PHItem):
 func get_slot(slot_id : int):
 	return get_node("Slots/Slot" + str(slot_id + 1))
 	
-func get_item(item : int) -> PHItem:
+func get_item(item : int) -> TZDItem:
 	return get_slot(item).data
 
 # Ve si estan todos los slots ocupados o no
@@ -49,14 +49,14 @@ func is_full():
 			return false
 	return true
 	
-func has_item(item : PHItem):
+func has_item(item : TZDItem):
 	for slot in $Slots.get_children():
 		if slot.data == item:
 			return true
 			
 	return false
 	
-func remove_item(item : PHItem):
+func remove_item(item : TZDItem):
 	# Sirve para almacenar el slot que se a borrado
 	var slot_num : int = 0
 	
@@ -78,7 +78,7 @@ func remove_item(item : PHItem):
 # Remueve el item del slot, free_item controla si el item es liberado del tree
 func remove_slot(slot_num : int, free_item = true):
 	var slot = get_slot(slot_num)
-	var item : PHItem = slot.data
+	var item : TZDItem = slot.data
 	slot.data = null
 	slot.get_node("Slot/Item").texture = null
 	

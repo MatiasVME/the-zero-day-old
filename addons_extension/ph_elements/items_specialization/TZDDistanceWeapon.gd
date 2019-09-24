@@ -2,15 +2,21 @@ extends PHWeapon
 
 class_name PHDistanceWeapon
 
-# No se bien para que serviria esto aun..
+# Esto sirve para que la interfaz (p.e: SecondaryWeapon)
+# sepa que tipo de items es y se adecue su interfaz al
+# tipo de item.
 enum WeaponType {
-	GUN,
-	MACHINEGUN
+	NORMAL_GUN,
+	NORMAL_MACHINEGUN,
+	PLASMA_GUN,
+	PLASMA_MACHINEGUN,
+	LASER,
+	MISILE
 }
-var weapon_type = WeaponType.GUN
+var weapon_type = WeaponType.NORMAL_GUN
 
 # Esta estructura tiene que ser una replica del
-# AmmoType de PHAmmo
+# AmmoType de TZDAmmo
 enum AmmoType {
 	NORMAL,
 	PLASMA
@@ -26,13 +32,11 @@ var weapon_capacity = 6.0
 var current_shot := 0
 # Tiempo en segundos para recargar
 var time_to_reload := 1.0
-# Tiempo entre cada bala
-# Usar time_to_next_action
 
 # Recarga dependiendo de la municion que reciba.
 # devuelve true si se recarga completamente y
 # false si no lo hace.
-func reload(ammo : PHAmmo) -> bool:
+func reload(ammo : TZDAmmo) -> bool:
 	# Validar si puede hacer el reload
 	# 1) Tiene que haber municion disponible
 	# 2) No tiene que estar ya recargada
@@ -68,10 +72,10 @@ func fire() -> bool:
 func is_recharged():
 	return weapon_capacity == current_shot
 
-func copy_properties(phdistweapon : PHItem) -> void:
+func copy_properties(phdistweapon : TZDItem) -> void:
 	.copy_properties(phdistweapon)
 	ammo_type = phdistweapon.ammo_type
-	weapon_type = phdistweapon.weapon_type
+#	weapon_type = phdistweapon.weapon_type
 	requires_ammo = phdistweapon.requires_ammo
 	weapon_capacity = phdistweapon.weapon_capacity
 	current_shot = phdistweapon.current_shot

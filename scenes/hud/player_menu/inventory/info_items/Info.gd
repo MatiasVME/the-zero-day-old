@@ -7,7 +7,7 @@ func _ready():
 	
 func update_panel_item_info(item):
 	# Si es un item activa el info panel
-	if item is PHItem:
+	if item is TZDItem:
 		$PanelsColumn/ItemData.show()
 		$PanelsColumn/ItemAccions/Accions.show()
 		$PanelsColumn/ItemName.show()
@@ -22,7 +22,7 @@ func update_panel_item_info(item):
 	# Se muestran las caracteristicas dependiendo que item es.
 	#
 
-	if item is PHItem:
+	if item is TZDItem:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Buy.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Buy.set_text("-" + str(item.buy_price))
 
@@ -58,7 +58,7 @@ func update_panel_item_info(item):
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.set_text(str(item.defence))
 	
-	if item is PHAmmo:
+	if item is TZDAmmo:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/AmmoAmount.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/AmmoAmount.set_text(str(item.ammo_amount))
 	

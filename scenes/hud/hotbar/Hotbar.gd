@@ -2,7 +2,7 @@ extends Node2D
 
 onready var hud = get_parent()
 
-var current_item : PHItem
+var current_item : TZDItem
 # Items en la hotbar actual
 var items = []
 

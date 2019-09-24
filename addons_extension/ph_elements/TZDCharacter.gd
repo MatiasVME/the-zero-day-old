@@ -1,5 +1,5 @@
 """
-PHCharacter.gd (Project Humanity Character)
+TZDCharacter.gd (Project Humanity Character)
 
 Es una extencion y adaptacion del plugin RPGElements en especifico,
 de RPGCharacter.
@@ -16,7 +16,7 @@ var player_type = Enums.PlayerType.DORBOT setget set_player_type, get_player_typ
 
 var unique_id : String
 
-var equip : PHItem setget set_equip, get_equip
+var equip : TZDItem setget set_equip, get_equip
 
 # La estamina es el gasto de esfuerzo físico al hacer dash o otras
 # actividades, que requieran estamina
@@ -35,7 +35,7 @@ func _init():
 	randomize()
 	unique_id = str(OS.get_unix_time(), "-", randi())
 
-func set_equip(_equip : PHItem):
+func set_equip(_equip : TZDItem):
 	equip = _equip
 	emit_signal("item_equiped", _equip)
 	

@@ -53,7 +53,7 @@ func init_inventory():
 
 # Añade un item al inventario visual (no al inventario del jugador)
 # normalmente el item es añadido con anterioridad.
-func add_item(item_data : PHItem):
+func add_item(item_data : TZDItem):
 	var was_added = false
 	for row in rows:
 		if row.num_items < 5:
@@ -171,7 +171,7 @@ func get_total_ammo():
 	total_ammo = 0
 	
 	for item in inv:
-		if item is PHAmmo and equip.ammo_type == item.ammo_type:
+		if item is TZDAmmo and equip.ammo_type == item.ammo_type:
 			total_ammo += item.ammo_amount
 	return total_ammo
 
@@ -191,7 +191,7 @@ func _on_player_shooting(player, direction):
 	if player.data.equip is PHDistanceWeapon and player.data.equip.current_shot == 0:
 		# Buscamos en el inventario si hay municion a borrar
 		for item in DataManager.get_current_inv().inv:
-			if item is PHAmmo and item.ammo_amount == 0:
+			if item is TZDAmmo and item.ammo_amount == 0:
 				remove_item(item)
 
 func _on_item_removed(slot_num, row_num):

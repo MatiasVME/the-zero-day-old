@@ -2,7 +2,7 @@ extends RigidBody2D
 
 class_name ItemInWorld
 
-var data : PHItem setget set_data
+var data : TZDItem setget set_data
 
 enum ItemState {
 	IDLE,
