@@ -6,10 +6,10 @@ un item de espada, y devuelve la escena de espada para equipar en el GPlayer
 
 extends Node
 
-func get_primary_weapon(melee_weapon : PHMeleeWeapon):
+func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
 	pass
 
-func get_secundary_weapon(distance_weapon : PHDistanceWeapon):
+func get_secundary_weapon(distance_weapon : TZDDistanceWeapon):
 	pass
 	
 func get_tool():

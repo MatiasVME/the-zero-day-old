@@ -188,7 +188,7 @@ func _on_slot_selected(row, slot):
 func _on_player_shooting(player, direction):
 	# Verificamos player.equip.current_shot == 0 primero
 	# ya que es mas costoso llamar a get_total_ammo 
-	if player.data.equip is PHDistanceWeapon and player.data.equip.current_shot == 0:
+	if player.data.equip is TZDDistanceWeapon and player.data.equip.current_shot == 0:
 		# Buscamos en el inventario si hay municion a borrar
 		for item in DataManager.get_current_inv().inv:
 			if item is TZDAmmo and item.ammo_amount == 0:

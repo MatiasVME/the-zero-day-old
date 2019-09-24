@@ -38,18 +38,18 @@ func update_panel_item_info(item):
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Weight.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Weight.set_text(str(item.weight))
 
-	if item is PHEquipment:
+	if item is TZDEquipment:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Type.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Type.set_text(item.get_str_equipment_type())
 
-	if item is PHWeapon:
+	if item is TZDWeapon:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/TimeToNextAction.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/TimeToNextAction.set_text(str(item.time_to_next_action))
 
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Damage.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Damage.set_text(str(item.damage))
 
-	if item is PHDistanceWeapon:
+	if item is TZDDistanceWeapon:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/WeaponCapacity.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/WeaponCapacity.set_text(str(item.weapon_capacity))
 
@@ -60,7 +60,7 @@ func update_panel_item_info(item):
 		if item.requires_ammo : $PanelsColumn/ItemData/Data/DataRow/Grid/RequiresAmmo.set_text("Y")
 		else: $PanelsColumn/ItemData/Data/DataRow/Grid/RequiresAmmo.set_text("N")
 
-	if item is PHDefence:
+	if item is TZDDefence:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.set_text(str(item.defence))
 	

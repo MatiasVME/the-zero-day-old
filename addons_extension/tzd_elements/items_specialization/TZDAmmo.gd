@@ -22,7 +22,7 @@ enum AmmoType {
 }
 var ammo_type = 0
 
-func copy_properties(phammo : TZDItem) -> void:
-	.copy_properties(phammo)
-	ammo_amount = phammo.ammo_amount
-	ammo_type = phammo.ammo_type
+#func copy_properties(phammo : TZDItem) -> void:
+#	.copy_properties(phammo)
+#	ammo_amount = phammo.ammo_amount
+#	ammo_type = phammo.ammo_type

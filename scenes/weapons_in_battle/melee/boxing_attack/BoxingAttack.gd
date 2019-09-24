@@ -1,6 +1,6 @@
 extends Node2D
 
-# Normalmente es un PHWeapon pero a veces puede ser
+# Normalmente es un TZDWeapon pero a veces puede ser
 # null
 var data
 
@@ -43,7 +43,7 @@ func _process(delta):
 func set_weapon(weapon = null):
 	data = weapon
 	
-	if data and data is PHMeleeWeapon:
+	if data and data is TZDMeleeWeapon:
 		$WeaponSprite.texture = load(data.texture_path)
 	else:
 		$WeaponSprite.texture = img_boxing1

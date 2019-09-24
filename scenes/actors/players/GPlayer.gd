@@ -242,7 +242,7 @@ func _stop_handler(delta):
 		$Sprites/AnimMove.play("Idle")
 	
 func _fire_handler():
-	if data.equip is PHDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
+	if data.equip is TZDDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
 		if not Main.is_mobile:
 			fire_dir = $GWeaponInBattle/Sprite.get_global_mouse_position() - global_position
 		else:
@@ -262,7 +262,7 @@ func _fire_handler():
 		melee_attack()
 	
 func _reload_handler():
-	if data.equip is PHDistanceWeapon and total_ammo != 0:
+	if data.equip is TZDDistanceWeapon and total_ammo != 0:
 		if reload():
 			SoundManager.play(SoundManager.Sound.RELOAD_1)
 			reload_progress = 0.0
@@ -292,7 +292,7 @@ func _physics_process(delta):
 		melee_time_to_next_action_progress += delta
 		return
 	
-	if data.equip is PHDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
+	if data.equip is TZDDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
 		if reload_progress > data.equip.time_to_reload:
 			if reload():
 				SoundManager.play(SoundManager.Sound.RELOAD_1)
@@ -303,7 +303,7 @@ func _physics_process(delta):
 func update_weapon():
 	total_ammo = -1
 	
-	if data.equip is PHDistanceWeapon:
+	if data.equip is TZDDistanceWeapon:
 		$GWeaponInBattle.set_weapon(data.equip)
 		can_fire = true
 		time_to_next_action = data.equip.time_to_next_action
@@ -343,7 +343,7 @@ func enable_interact(_can_fire := false):
 # false de lo contrario.
 func reload():
 	# Prevenir que se llame a esta funcion inecesariamente
-	if not data.equip is PHDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
+	if not data.equip is TZDDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
 		return false
 	
 	# Obtener las municiones

@@ -20,7 +20,7 @@ static func get_points(enemy_level, enemy_type, player_luck):
 
 static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1, ammo_type = null):
 	var points = get_points(enemy_level, enemy_type, player_luck)
-	var weapon = PHDistanceWeapon.new()
+	var weapon = TZDDistanceWeapon.new()
 	
 #	print("points: ",points)
 	

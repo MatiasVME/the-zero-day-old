@@ -1,6 +1,6 @@
 extends TZDItem
 
-class_name PHEquipment
+class_name TZDEquipment
 
 enum EquipmentType {
 	NORMAL,
@@ -17,7 +17,7 @@ func get_str_equipment_type():
 	
 	return "?"
 	
-func copy_properties(phequipment : TZDItem) -> void:
-	.copy_properties(phequipment)
-	equipment_type = phequipment.equipment_type
+#func copy_properties(phequipment : TZDItem) -> void:
+#	.copy_properties(phequipment)
+#	equipment_type = phequipment.equipment_type
 	

@@ -4,7 +4,7 @@ ZDStructureBox : Zero Day Structure Box
 Es un item que contiene una estructura (PHStructure)
 """
 
-extends TZDItem
+extends TZDCharacter
 
 class_name ZDStructureBox
 

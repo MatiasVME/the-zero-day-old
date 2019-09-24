@@ -2,7 +2,7 @@ extends Node2D
 
 class_name GWeaponInBattle
 
-# Normalmente es un PHWeapon pero a veces puede ser
+# Normalmente es un TZDWeapon pero a veces puede ser
 # null
 var data
 
@@ -49,7 +49,7 @@ func _process(delta):
 			$Sprite.look_at(game_camera.global_position)
 #			print("---3---")
 
-# Puede recibir un PHWeapon o un null
+# Puede recibir un TZDWeapon o un null
 func set_weapon(weapon):
 	data = weapon
 	
