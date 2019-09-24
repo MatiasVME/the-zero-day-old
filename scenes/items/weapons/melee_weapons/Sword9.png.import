@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/boxing.png-9e23cecf3e097439dab45b6a48ad9c09.stex"
+path="res://.import/Sword9.png-bcbfa8b46225cb60b3528bd72eb240aa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/actors/melee_attack/Images/boxing.png"
-dest_files=[ "res://.import/boxing.png-9e23cecf3e097439dab45b6a48ad9c09.stex" ]
+source_file="res://scenes/items/weapons/melee_weapons/Sword9.png"
+dest_files=[ "res://.import/Sword9.png-bcbfa8b46225cb60b3528bd72eb240aa.stex" ]
 
 [params]
 

@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name GWeaponInBattle
+
 # Normalmente es un PHWeapon pero a veces puede ser
 # null
 var data

@@ -43,6 +43,7 @@ editor/display_folded = true
 position = Vector2( 210, -120.049 )
 
 [node name="VersionNotes" parent="." instance=ExtResource( 6 )]
+editor/display_folded = true
 position = Vector2( -630, -120 )
 
 [node name="HBox" parent="VersionNotes" index="1"]
@@ -61,6 +62,7 @@ valign = 1
 autowrap = true
 
 [node name="BackgroundButtons" type="Sprite" parent="."]
+editor/display_folded = true
 texture = ExtResource( 8 )
 
 [node name="Play" type="TextureButton" parent="BackgroundButtons"]

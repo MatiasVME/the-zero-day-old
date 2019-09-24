@@ -9,7 +9,7 @@ onready var player = get_parent()
 # WeaponSprite RotationDegrees
 var ws_rd = 0
 
-var img_boxing1 = preload("res://scenes/actors/melee_attack/Images/boxing.png")
+var img_boxing1 = preload("res://scenes/weapons_in_battle/melee/boxing_attack/Images/boxing.png")
 
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")

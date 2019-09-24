@@ -110,6 +110,11 @@ _global_script_classes=[ {
 "path": "res://scenes/structures/turrets/GTurret.gd"
 }, {
 "base": "Node2D",
+"class": "GWeaponInBattle",
+"language": "GDScript",
+"path": "res://scenes/weapons_in_battle/GWeaponInBattle.gd"
+}, {
+"base": "Node2D",
 "class": "Inventory",
 "language": "GDScript",
 "path": "res://scenes/hud/player_menu/inventory/Inventory.gd"
@@ -305,6 +310,7 @@ _global_script_class_icons={
 "GStructure": "",
 "GTilemap": "",
 "GTurret": "",
+"GWeaponInBattle": "",
 "Inventory": "",
 "InventoryRow": "",
 "InventorySlot": "",
