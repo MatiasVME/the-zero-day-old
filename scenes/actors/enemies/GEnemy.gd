@@ -19,14 +19,14 @@ var current_state : int = 0
 # Puede recibir daño ?
 var can_damage = false
 
-# Contine el PHCharacter con todos los datos
+# Contine el TZDCharacter con todos los datos
 # y eventos que invulucra
 var data
 
 signal state_changed
 
 func _init():
-	data = PHCharacter.new()
+	data = TZDCharacter.new()
 
 func _physics_process(delta):
 	# Estas 4 lineas funcionan como seguro contra tontos.

@@ -3,7 +3,7 @@ extends GActor
 class_name GPlayer
 
 # Es la data del player y la logica del mismo
-var data : PHCharacter # Este es el que equipa el arma
+var data : TZDCharacter # Este es el que equipa el arma
 
 export (int) var speed = 3000
 

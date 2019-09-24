@@ -4,13 +4,13 @@ TZDCharacter.gd (Project Humanity Character)
 Es una extencion y adaptacion del plugin RPGElements en especifico,
 de RPGCharacter.
 
-PHCharacter se encarga de administrar la logica y la informacion,
+TZDCharacter se encarga de administrar la logica y la informacion,
 que contienen los personajes.
 """
 
 extends RPGCharacter
 
-class_name PHCharacter
+class_name TZDCharacter
 
 var player_type = Enums.PlayerType.DORBOT setget set_player_type, get_player_type
 

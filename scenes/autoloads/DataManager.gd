@@ -90,22 +90,22 @@ func create_players():
 	var temp_data
 	temp_data = $DataPlayers.get_data("Players")
 	
-	players.append(PHCharacter.new())
+	players.append(TZDCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.DORBOT
 	
 	# TEMP: Crea otro player
-	players.append(PHCharacter.new())
+	players.append(TZDCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.MATBOT
 	
 	# TEMP: Crea otro player
-	players.append(PHCharacter.new())
+	players.append(TZDCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.PIXBOT
 	
 	# TEMP: Crea otro player
-	players.append(PHCharacter.new())
+	players.append(TZDCharacter.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.SERBOT
 	
@@ -128,8 +128,6 @@ func load_players():
 
 	for player in temp_data.values():
 		players.append(dict2inst(player))
-		
-#	print("cargado los players: ", players)
 
 func create_data_user():
 	data_user = $DataUser.get_data("DataUser")
@@ -246,7 +244,7 @@ func get_current_stats():
 # crea la data del player, la data del inventario y la data
 # del jugador. Y lo añade a la lista de players.
 func create_player():
-	players.append(PHCharacter.new())
+	players.append(TZDCharacter.new())
 	inventories.append(RPGInventory.new()) # Por el momento
 	stats.append(RPGStats.new()) # Por el momento
 

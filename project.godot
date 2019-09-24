@@ -154,11 +154,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/navigator/Navigator.gd"
 }, {
-"base": "RPGCharacter",
-"class": "PHCharacter",
-"language": "GDScript",
-"path": "res://addons_extension/ph_elements/TZDCharacter.gd"
-}, {
 "base": "PHConsumable",
 "class": "PHComponent",
 "language": "GDScript",
@@ -264,6 +259,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/ph_elements/items_specialization/TZDAmmo.gd"
 }, {
+"base": "RPGCharacter",
+"class": "TZDCharacter",
+"language": "GDScript",
+"path": "res://addons_extension/ph_elements/TZDCharacter.gd"
+}, {
 "base": "RPGItem",
 "class": "TZDItem",
 "language": "GDScript",
@@ -319,7 +319,6 @@ _global_script_class_icons={
 "KnockBackBullet": "",
 "MapGenerator": "",
 "Navigator": "",
-"PHCharacter": "",
 "PHComponent": "",
 "PHConsumable": "",
 "PHDefence": "",
@@ -341,6 +340,7 @@ _global_script_class_icons={
 "RPGStructure": "",
 "RPGWeightInventory": "res://addons/rpg_elements/icons/RPGWeightInventory.png",
 "TZDAmmo": "",
+"TZDCharacter": "",
 "TZDItem": "",
 "Tank": "",
 "TerrainGenerator": "res://addons/terrain_generator/icon.png",
