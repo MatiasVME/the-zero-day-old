@@ -29,8 +29,9 @@ func _on_Config_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		get_tree().paused = false
 		emit_signal("menu_button_unpressed")
-
+	
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
 		$Panels/Menu.hide()
@@ -48,8 +49,9 @@ func _on_Inventory_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		get_tree().paused = false
 		emit_signal("menu_button_unpressed")
-
+		
 func _on_Skills_toggled(button_pressed):
 	if button_pressed:
 		$Panels/Menu.hide()
@@ -67,8 +69,9 @@ func _on_Skills_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		get_tree().paused = false
 		emit_signal("menu_button_unpressed")
-
+		
 func _on_InfoPlayers_toggled(button_pressed):
 	if button_pressed:
 		$Panels/Menu.hide()
@@ -86,4 +89,6 @@ func _on_InfoPlayers_toggled(button_pressed):
 		$Panels/PlayersInfo.hide()
 		
 		$Anim.play_backwards("show")
+		get_tree().paused = false
 		emit_signal("menu_button_unpressed")
+		
