@@ -1,4 +1,3 @@
 extends GWeaponInBattle
 
-func _ready():
-	pass
+class_name GDistanceWeaponInBattle

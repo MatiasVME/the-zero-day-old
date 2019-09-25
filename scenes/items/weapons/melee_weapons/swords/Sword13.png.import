@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sword8.png-6fc7a84e5503ac11cc508c12ebf2939e.stex"
+path="res://.import/Sword13.png-b41fb79a91af702380e0673b8c7dbcaa.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/items/weapons/melee_weapons/Sword8.png"
-dest_files=[ "res://.import/Sword8.png-6fc7a84e5503ac11cc508c12ebf2939e.stex" ]
+source_file="res://scenes/items/weapons/melee_weapons/swords/Sword13.png"
+dest_files=[ "res://.import/Sword13.png-b41fb79a91af702380e0673b8c7dbcaa.stex" ]
 
 [params]
 

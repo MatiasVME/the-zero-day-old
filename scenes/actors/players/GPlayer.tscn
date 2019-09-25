@@ -118,8 +118,10 @@ position = Vector2( 0, 2 )
 shape = SubResource( 4 )
 
 [node name="BoxingAttack" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="GWeaponInBattle" parent="." instance=ExtResource( 7 )]
+visible = false
 
 [node name="CurrentWeapon" type="Node2D" parent="."]
 

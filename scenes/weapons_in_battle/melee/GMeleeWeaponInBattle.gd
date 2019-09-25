@@ -1,4 +1,6 @@
 extends GWeaponInBattle
 
-func _ready():
+class_name GMeleeWeaponInBattle
+
+func attack():
 	pass

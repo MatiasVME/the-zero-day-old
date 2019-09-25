@@ -80,6 +80,7 @@ func _ready():
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
+	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped")
 
 	# Al iniciar el data equip se va a null siempre
 	# para que no suceda un bug, de un arma fantasma.
@@ -384,7 +385,7 @@ func set_hud(_hud):
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
 	
-# Mobile
+# Mobile selecciona el próximo actor
 func select_next():
 	if selectables.size() > 1:
 		if (selected_num + 1) % selectables.size() == 0 or selected_num >= selectables.size():
@@ -493,6 +494,11 @@ func _on_DetectArea_body_exited(body):
 			
 			if selectables.size() == 0:
 				selected_enemy = null
+
+func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
+	var gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(weapon)
+	gui_primary_weapon.set_player(self)
+	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
 
 func _on_current_force_updated(force):
 	current_move_dir = force
