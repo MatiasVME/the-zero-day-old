@@ -41,3 +41,23 @@ func _ready():
 	var item8 = Factory.ItemInWorldFactory.create_plasma_ammo()
 	item8.global_position = Vector2(401, 204)
 	add_child(item8)
+	
+	var item9 = Factory.ItemInWorldFactory.create_rand_melee_weapon()
+	item9.global_position = Vector2(401, 404)
+	add_child(item9)
+	
+	var item10 = Factory.ItemInWorldFactory.create_rand_melee_weapon()
+	item10.global_position = Vector2(401, 404)
+	add_child(item10)
+	
+	var item11 = Factory.ItemInWorldFactory.create_rand_melee_weapon()
+	item11.global_position = Vector2(401, 404)
+	add_child(item11)
+	
+	var item12 = Factory.ItemInWorldFactory.create_rand_melee_weapon()
+	item12.global_position = Vector2(401, 404)
+	add_child(item12)
+	
+	var item13 = Factory.ItemInWorldFactory.create_rand_melee_weapon()
+	item13.global_position = Vector2(401, 404)
+	add_child(item13)

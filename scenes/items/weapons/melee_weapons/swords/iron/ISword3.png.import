@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Sword16.png-61f632dd9d54bcfb63884a6da70afa59.stex"
+path="res://.import/ISword3.png-de0386bff1d3e71a9407465f257d4ba7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/items/weapons/melee_weapons/swords/Sword16.png"
-dest_files=[ "res://.import/Sword16.png-61f632dd9d54bcfb63884a6da70afa59.stex" ]
+source_file="res://scenes/items/weapons/melee_weapons/swords/iron/ISword3.png"
+dest_files=[ "res://.import/ISword3.png-de0386bff1d3e71a9407465f257d4ba7.stex" ]
 
 [params]
 

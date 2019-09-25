@@ -8,13 +8,13 @@ extends Node
 
 var normal_gun = preload("res://scenes/weapons_in_battle/distance/normal_gun/NormalGun.tscn").instance()
 
-static func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
+func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
 	match melee_weapon.weapon_type:
 		melee_weapon.WeaponType.NORMAL_SWORD:
-			return normal_gun # TODO
+			return normal_gun # NEEDFIX
 
-static func get_secundary_weapon(distance_weapon : TZDDistanceWeapon):
+func get_secundary_weapon(distance_weapon : TZDDistanceWeapon):
 	pass
 
-static func get_tool():
+func get_tool():
 	pass

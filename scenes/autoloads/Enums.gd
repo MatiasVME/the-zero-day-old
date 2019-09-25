@@ -7,6 +7,15 @@ enum PlayerType {
 	SERBOT
 }
 
+# En un futuro se implimentará esto
+enum Elements {
+	WATER,
+	FIRE,
+	AIR,
+	ELECTRICITY,
+	EARTH
+}
+
 # Esto se utiliza para las estructuras y para las
 # structure box
 enum StructureType {

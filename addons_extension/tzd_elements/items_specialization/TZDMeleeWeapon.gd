@@ -6,11 +6,11 @@ class_name TZDMeleeWeapon
 # sepa que tipo de items es y se adecue su interfaz al
 # tipo de item.
 enum WeaponType {
-	NORMAL_SWORD,
-	PLASMA_SWORD
+	IRON_SWORD,
+	DIAMOND_SWORD,
+	EMERALD_SWORDM,
+	RUBY_SWORD
 }
-var weapon_type = WeaponType.NORMAL_SWORD
+var weapon_type = WeaponType.IRON_SWORD
 
-# Posibles vars
-# distance
-# angle
+var distance = 40

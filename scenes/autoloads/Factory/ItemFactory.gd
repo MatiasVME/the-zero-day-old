@@ -24,7 +24,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	
 #	print("points: ",points)
 	
-	weapon.buy_price = int(round(25 * points)) # temp
+	weapon.buy_price = int(round(25 * points)) # TEMP
 	weapon.sell_price = weapon.buy_price / 4
 	
 	if not ammo_type:
@@ -177,21 +177,38 @@ static func create_plasma_ammo(ammo_amount := 16):
 	ammo.texture_path = "res://scenes/items/ammo/plasma/plasma_bullet_ammo.png"
 	
 	return ammo
-	
-# Crea una nueva intancia de un TZDItem copiando las propidades del pasado cómo parámetro
-static func create_item_copy(item : TZDItem) -> TZDItem:
-	var new_item : TZDItem = load( str(item.get_script().resource_path) ).new()
-	new_item.copy_properties(item)
-	
-	return new_item
 
+static func create_rand_melee_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1, weapon_type = null):
+	var points = get_points(enemy_level, enemy_type, player_luck)
+	var weapon = TZDMeleeWeapon.new()
+	
+	weapon.buy_price = int(round(20 * points)) # TEMP
+	weapon.sell_price = weapon.buy_price / 4
+	
+	if not weapon_type:
+		weapon.weapon_type = int(round(rand_range(weapon.WeaponType.IRON_SWORD, weapon.WeaponType.RUBY_SWORD)))
+	
+	if points > MAX_POINTS / 4 * 3:
+		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/ruby/RSword" + str(int(round(rand_range(1, 5)))) + ".png"
+		weapon.item_name = "Ruby"
+	elif points > MAX_POINTS / 4 * 2:
+		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/diamond/DSword" + str(int(round(rand_range(1, 4)))) + ".png"
+		weapon.item_name = "Diamond"
+	elif points > MAX_POINTS / 4 * 1:
+		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/emerald/ESword" + str(int(round(rand_range(1, 2)))) + ".png"
+		weapon.item_name = "Emerald"
+	else:
+		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/iron/ISword" + str(int(round(rand_range(1, 4)))) + ".png"
+		weapon.item_name = "Iron"
+	
+	weapon.time_to_next_action = 0.15 * points / 3
+	weapon.damage = 1.3 * points / 3
+	weapon.distance = 1.0 * points / 3
+	
+	weapon.item_name = weapon.item_name + " " + RandomNameGenerator.generate(3, 5, hash(weapon)) + " Sword"
+	
+	return weapon
+	
 static func create_structure_box(StructureBoxType):
 	pass
-	
-	
-
-
-
-
-
 

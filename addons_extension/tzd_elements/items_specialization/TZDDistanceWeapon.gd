@@ -71,12 +71,3 @@ func fire() -> bool:
 
 func is_recharged():
 	return weapon_capacity == current_shot
-
-#func copy_properties(phdistweapon : TZDItem) -> void:
-#	.copy_properties(phdistweapon)
-#	ammo_type = phdistweapon.ammo_type
-##	weapon_type = phdistweapon.weapon_type
-#	requires_ammo = phdistweapon.requires_ammo
-#	weapon_capacity = phdistweapon.weapon_capacity
-#	current_shot = phdistweapon.current_shot
-#	time_to_reload = phdistweapon.time_to_reload

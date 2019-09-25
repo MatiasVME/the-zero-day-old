@@ -32,7 +32,7 @@ func update_bullet_info(equip):
 #		print("No este equipado")
 		return
 	
-	if equip is TZDWeapon:
+	if equip is TZDDistanceWeapon:
 		if equip.requires_ammo:
 			$Bullet/CurrentAndMax.text = str(equip.current_shot) + "/" + str(equip.weapon_capacity)
 			$Total/Total.text = str(hud.inventory.get_total_ammo())
@@ -44,9 +44,10 @@ func update_bullet_info(equip):
 			is_showing = false
 
 func update_images_bullet_info(equip):
-	if equip:
-		$Bullet/BulletImg.texture = load(ShootManager.get_bullet_img(equip.ammo_type))
-		$Total/TotalImg.texture = load(ShootManager.get_bullet_box_img(equip.ammo_type))
+#	if equip:
+#		$Bullet/BulletImg.texture = load(ShootManager.get_bullet_img(equip.ammo_type))
+#		$Total/TotalImg.texture = load(ShootManager.get_bullet_box_img(equip.ammo_type))
+	pass
 	
 # Normalmente recibe un TZDWeapon pero puede recibir null
 func set_current_equip(equip):
