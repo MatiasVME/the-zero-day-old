@@ -9,6 +9,7 @@ func _ready():
 	$HUD.add_actor_to_hud(player)
 	$HUD.set_hud_actor(player)
 	$GameCamera.following = player
+	player.game_camera = $GameCamera
 	
 	var item1 = Factory.ItemInWorldFactory.create_rand_distance_weapon()
 	item1.global_position = Vector2(400, 201)

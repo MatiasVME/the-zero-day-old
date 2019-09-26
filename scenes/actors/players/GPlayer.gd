@@ -67,7 +67,14 @@ var selected_num := -1 # -1 es nignuno seleccionado
 # GActor seleccionado
 var selected_enemy
 
+# Se debe establecer la camara cuando se usa un player
+var game_camera : GameCamera setget set_game_camera
+
+# Obsoleto (NEEDFIX) -->
 onready var mobile_selected_pos = get_tree().get_nodes_in_group("GameCamera")
+
+# Contiene/contendra el nodo BoxingAttack
+var boxing_attack
 
 signal fire(dir)
 signal dead
@@ -81,6 +88,7 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
 	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped")
+	data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
 
 	# Al iniciar el data equip se va a null siempre
 	# para que no suceda un bug, de un arma fantasma.
@@ -88,9 +96,8 @@ func _ready():
 	
 	update_weapon()
 	
-	if mobile_selected_pos.size() > 0:
-		mobile_selected_pos = mobile_selected_pos[0].get_node("MobileSelected/Pos")
-
+	if not data.primary_weapon: config_boxing_attack()
+	
 func _move_handler(delta, distance, run):
 	var dir := Vector2()
 	
@@ -243,31 +250,46 @@ func _stop_handler(delta):
 		$Sprites/AnimMove.play("Idle")
 	
 func _fire_handler():
-	if data.equip is TZDDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
-		if not Main.is_mobile:
-			fire_dir = $GWeaponInBattle/Sprite.get_global_mouse_position() - global_position
+	if selected_enemy:
+		# Si no hay arma primaria y el enemigo esta cerca
+		if not data.primary_weapon and boxing_attack.is_near:
+			melee_attack()
 		else:
-			if selected_enemy:
-				fire_dir = selected_enemy.global_position - global_position
-			else:
-				if current_move_dir != Vector2.ZERO:
-					fire_dir = current_move_dir
-				else:
-					# Necesitamos que fire_dir sea igual a la dirección donde apunta gweaponinbattle
-					fire_dir = $GWeaponInBattle/Sprite/Direction.global_position
-					
-		time_to_next_action_progress = 0.0
-		emit_signal("fire", fire_dir.normalized())
-	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
-		melee_time_to_next_action_progress = 0.0
+			pass
+	else:
+		# Melee attack verifica que tipo de ataque melee hace
+		# y hace el ataque.
 		melee_attack()
 	
+	
+#	if data.equip is TZDDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
+#		if not Main.is_mobile:
+#			fire_dir = $GWeaponInBattle/Sprite.get_global_mouse_position() - global_position
+#		else:
+#			if selected_enemy:
+#				fire_dir = selected_enemy.global_position - global_position
+#			else:
+#				if current_move_dir != Vector2.ZERO:
+#					fire_dir = current_move_dir
+#				else:
+#					# Necesitamos que fire_dir sea igual a la dirección donde apunta gweaponinbattle
+#					fire_dir = $GWeaponInBattle/Sprite/Direction.global_position
+#
+#		time_to_next_action_progress = 0.0
+#		emit_signal("fire", fire_dir.normalized())
+#	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
+#		melee_time_to_next_action_progress = 0.0
+#		melee_attack()
+	
+	pass
+		
 func _reload_handler():
-	if data.equip is TZDDistanceWeapon and total_ammo != 0:
-		if reload():
-			SoundManager.play(SoundManager.Sound.RELOAD_1)
-			reload_progress = 0.0
-
+#	if data.equip is TZDDistanceWeapon and total_ammo != 0:
+#		if reload():
+#			SoundManager.play(SoundManager.Sound.RELOAD_1)
+#			reload_progress = 0.0
+	pass
+	
 func _physics_process(delta):
 	if not can_move or is_disabled:
 		return
@@ -283,34 +305,43 @@ func _physics_process(delta):
 	else:
 		do_special_dash_if_can(delta)
 	
-	# Equipamiento y reload
-	#
-		
-	if data.equip and time_to_next_action_progress < time_to_next_action:
-		time_to_next_action_progress += delta
-		return
-	elif not data.equip and melee_time_to_next_action_progress < melee_time_to_next_action:
-		melee_time_to_next_action_progress += delta
-		return
-	
-	if data.equip is TZDDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
-		if reload_progress > data.equip.time_to_reload:
-			if reload():
-				SoundManager.play(SoundManager.Sound.RELOAD_1)
-				reload_progress = 0.0
-		else:
-			reload_progress += delta
+#	# Equipamiento y reload
+#	#
+#
+#	if data.equip and time_to_next_action_progress < time_to_next_action:
+#		time_to_next_action_progress += delta
+#		return
+#	elif not data.equip and melee_time_to_next_action_progress < melee_time_to_next_action:
+#		melee_time_to_next_action_progress += delta
+#		return
+#
+#	if data.equip is TZDDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
+#		if reload_progress > data.equip.time_to_reload:
+#			if reload():
+#				SoundManager.play(SoundManager.Sound.RELOAD_1)
+#				reload_progress = 0.0
+#		else:
+#			reload_progress += delta
 	
 func update_weapon():
 	total_ammo = -1
 	
-	if data.equip is TZDDistanceWeapon:
-		$GWeaponInBattle.set_weapon(data.equip)
-		can_fire = true
-		time_to_next_action = data.equip.time_to_next_action
-	else:
-		$GWeaponInBattle.set_weapon(null)
-		can_fire = false
+	# Si no hay arma melee equipada
+	if not data.primary_weapon:
+		pass
+	
+	# Si no hay arma distance equipada
+	if not data.secondary_weapon:
+		pass
+	
+	
+#	if data.equip is TZDDistanceWeapon:
+#		$GWeaponInBattle.set_weapon(data.equip)
+#		can_fire = true
+#		time_to_next_action = data.equip.time_to_next_action
+#	else:
+#		$GWeaponInBattle.set_weapon(null)
+#		can_fire = false
 		
 func disable_player(_visible := false):
 	is_disabled = true
@@ -337,7 +368,8 @@ func enable_interact(_can_fire := false):
 	can_fire = _can_fire
 	$Collision.disabled = false
 	
-	data.connect("item_equiped", self, "_on_item_equiped")
+#	data.connect("item_equiped", self, "_on_item_equiped")
+#	data.connect
 	
 # Esta funcion se llama mas de lo necesario - Necesita Revisión
 # Retorna true si hace reload correctamente y
@@ -375,8 +407,23 @@ func reload():
 	return true
 
 func melee_attack():
-	$BoxingAttack/Anim.play("box_hit")
-	SoundManager.play(SoundManager.Sound.HIT_1)
+	if data.primary_weapon:
+		var pweapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
+	else:
+		config_boxing_attack()
+		boxing_attack.get_node("Anim").play("box_hit")
+		SoundManager.play(SoundManager.Sound.HIT_1)
+
+func config_boxing_attack():
+	boxing_attack = Factory.EquipmentFactory.get_boxing_attack()
+	var current_primary_weapon = $CurrentWeapon/PrimaryWeapon.get_child(0)
+		
+	if current_primary_weapon != boxing_attack:
+		$CurrentWeapon/PrimaryWeapon.remove_child(current_primary_weapon)
+		print("Se a removido el current_primary_weapon")
+		
+	$CurrentWeapon/PrimaryWeapon.add_child(boxing_attack)
+	boxing_attack.player = self
 
 # Player tiene acceso al hud y lo configura
 func set_hud(_hud):
@@ -384,7 +431,12 @@ func set_hud(_hud):
 	
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
+
+func set_game_camera(_game_camera):
+	game_camera = _game_camera
 	
+	mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
+
 # Mobile selecciona el próximo actor
 func select_next():
 	if selectables.size() > 1:
@@ -499,6 +551,9 @@ func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
 	var gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(weapon)
 	gui_primary_weapon.set_player(self)
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
+
+func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
+	pass
 
 func _on_current_force_updated(force):
 	current_move_dir = force

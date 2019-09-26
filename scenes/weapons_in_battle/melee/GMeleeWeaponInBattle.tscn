@@ -17,3 +17,9 @@ scale = Vector2( 1, 1 )
 [node name="Collision" type="CollisionShape2D" parent="Sprite/DamageArea" index="0"]
 position = Vector2( 20, 0 )
 shape = SubResource( 1 )
+
+[node name="IsNearAttackArea" type="Area2D" parent="." index="2"]
+
+[node name="Collision" type="CollisionShape2D" parent="IsNearAttackArea" index="0"]
+[connection signal="body_entered" from="IsNearAttackArea" to="." method="_on_IsNearAttackArea_body_entered"]
+[connection signal="body_exited" from="IsNearAttackArea" to="." method="_on_IsNearAttackArea_body_exited"]

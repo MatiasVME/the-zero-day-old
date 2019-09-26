@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/weapons_in_battle/melee/boxing_attack/BoxingAttack.gd" type="Script" id=1]
 [ext_resource path="res://scenes/weapons_in_battle/melee/boxing_attack/Images/boxing.png" type="Texture" id=2]
@@ -74,11 +74,15 @@ tracks/4/keys = {
 [sub_resource type="CircleShape2D" id=3]
 radius = 9.9945
 
+[sub_resource type="CircleShape2D" id=4]
+radius = 26.0
+
 [node name="BoxingAttack" type="Node2D"]
 z_index = 3
 script = ExtResource( 1 )
 
 [node name="Weapon" type="KinematicBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 2, 0 )
 collision_layer = 2
 collision_mask = 2
@@ -98,6 +102,7 @@ offset = Vector2( 13, 0 )
 anims/box_hit = SubResource( 2 )
 
 [node name="HitArea" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 6.0055, 0 )
 collision_layer = 2
 collision_mask = 2
@@ -106,4 +111,11 @@ collision_mask = 2
 position = Vector2( 12, 0 )
 shape = SubResource( 3 )
 disabled = true
+
+[node name="IsNearAttackArea" type="Area2D" parent="."]
+
+[node name="Collision" type="CollisionShape2D" parent="IsNearAttackArea"]
+shape = SubResource( 4 )
 [connection signal="body_entered" from="HitArea" to="." method="_on_HitArea_body_entered"]
+[connection signal="body_entered" from="IsNearAttackArea" to="." method="_on_IsNearAttackArea_body_entered"]
+[connection signal="body_exited" from="IsNearAttackArea" to="." method="_on_IsNearAttackArea_body_exited"]

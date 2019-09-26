@@ -1,5 +1,7 @@
 extends Camera2D
 
+class_name GameCamera
+
 const SPEED = 150
 
 var following setget set_following, get_following

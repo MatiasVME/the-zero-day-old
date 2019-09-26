@@ -1,7 +1,9 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/weapons_in_battle/melee/GMeleeWeaponInBattle.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/weapons_in_battle/melee/normal_sword/NormalSword.gd" type="Script" id=2]
+[ext_resource path="res://scenes/weapons_in_battle/melee/normal_attack/NormalAttack.gd" type="Script" id=2]
+
+
 
 [node name="NormalSword" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

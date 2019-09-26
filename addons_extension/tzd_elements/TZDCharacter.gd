@@ -35,6 +35,7 @@ signal stamina_max_changed(new_stamina_max_value)
 # Dinero que dropea
 var money_drop = 1
 
+# Obsoleto
 signal item_equiped(weapon)
 
 signal primary_weapon_equiped(weapon)

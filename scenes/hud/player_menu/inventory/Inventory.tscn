@@ -21,6 +21,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 
 [node name="Inventory" type="Tabs" parent="Control/Cont"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -96,7 +97,6 @@ margin_left = 0.0
 margin_top = 30.0
 margin_right = 26.0
 margin_bottom = 56.0
-is_disabled = true
 
 [node name="Slot5" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
 margin_left = 30.0
@@ -109,7 +109,6 @@ margin_left = 60.0
 margin_top = 30.0
 margin_right = 86.0
 margin_bottom = 56.0
-is_disabled = true
 
 [node name="Slot7" parent="Control/Cont/Equipment/HBox/CenterContainer/VBox/EquipmentGrid" instance=ExtResource( 4 )]
 margin_left = 0.0
