@@ -14,5 +14,8 @@ var is_disabled := false
 # Variable que se puede usar para debugear y otras cosas
 var is_inmortal := false
 
+func damage(amount):
+	pass
+
 func dead():
 	queue_free()

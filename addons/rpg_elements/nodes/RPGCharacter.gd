@@ -142,7 +142,7 @@ func add_hp(_hp):
 		emit_signal("full_hp")
 
 # No ignora la defensa
-func damage(_hp):
+func damage(_hp : int):
 	var damage = _hp - (_hp * defense_rate / 100)
 	remove_hp(int(float(damage)))
 

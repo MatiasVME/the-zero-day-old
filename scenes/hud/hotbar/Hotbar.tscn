@@ -106,4 +106,3 @@ focus_mode = 0
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 shortcut = SubResource( 10 )
-

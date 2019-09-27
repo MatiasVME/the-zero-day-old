@@ -8,9 +8,9 @@ class_name TZDMeleeWeapon
 enum WeaponType {
 	IRON_SWORD,
 	DIAMOND_SWORD,
-	EMERALD_SWORDM,
+	EMERALD_SWORD,
 	RUBY_SWORD
 }
-var weapon_type = WeaponType.IRON_SWORD
+var weapon_type : int = WeaponType.IRON_SWORD
 
 var distance = 40

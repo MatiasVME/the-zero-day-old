@@ -1,7 +1,7 @@
 extends Node
 
 const VERSION := "0.4.0.alpha"
-const DEBUG := false
+const DEBUG := true
 
 const RES_X := 420
 const RES_Y := 240

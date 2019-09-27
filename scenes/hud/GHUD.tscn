@@ -13,4 +13,3 @@ script = ExtResource( 1 )
 [node name="Hotbar" parent="." instance=ExtResource( 3 )]
 
 [node name="AvatarHandler" parent="." instance=ExtResource( 4 )]
-

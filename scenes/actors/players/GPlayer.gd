@@ -76,6 +76,9 @@ onready var mobile_selected_pos = get_tree().get_nodes_in_group("GameCamera")
 # Contiene/contendra el nodo BoxingAttack
 var boxing_attack
 
+var gui_primary_weapon : GMeleeWeaponInBattle
+var gui_secondary_weapon : GDistanceWeaponInBattle
+
 signal fire(dir)
 signal dead
 signal spawn
@@ -96,7 +99,10 @@ func _ready():
 	
 	update_weapon()
 	
-	if not data.primary_weapon: config_boxing_attack()
+	if not data.primary_weapon: 
+		config_boxing_attack()
+	else:
+		config_primary_weapon()
 	
 func _move_handler(delta, distance, run):
 	var dir := Vector2()
@@ -254,8 +260,9 @@ func _fire_handler():
 		# Si no hay arma primaria y el enemigo esta cerca
 		if not data.primary_weapon and boxing_attack.is_near:
 			melee_attack()
-		else:
-			pass
+		# Si tiene primary weapon y esta cerca
+		elif gui_primary_weapon and gui_primary_weapon.is_near:
+			melee_attack()
 	else:
 		# Melee attack verifica que tipo de ataque melee hace
 		# y hace el ataque.
@@ -374,41 +381,43 @@ func enable_interact(_can_fire := false):
 # Esta funcion se llama mas de lo necesario - Necesita Revisión
 # Retorna true si hace reload correctamente y
 # false de lo contrario.
-func reload():
-	# Prevenir que se llame a esta funcion inecesariamente
-	if not data.equip is TZDDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
-		return false
-	
-	# Obtener las municiones
-	var ammunition_inv = []
-	total_ammo = 0
-	
-	for ammo in DataManager.get_current_inv().inv:
-		if ammo is TZDAmmo and ammo.ammo_type == data.equip.ammo_type:
-			ammunition_inv.append(ammo)
-			total_ammo += ammo.ammo_amount
-	
-	# Si no hay ammunition_inv entonces se sale de la
-	# funcion
-	if ammunition_inv.size() < 1:
-		return false
-	
-	for ammo in ammunition_inv:
-		if data.equip.reload(ammo):
-			break
-	
-	for i in ammunition_inv.size() - 1:
-		if ammunition_inv[i].ammo_amount == 0:
-			ammunition_inv.pop_front()
-	
-	# Para que BulletInfo se actualize
-	emit_signal("reload")
-	
-	return true
+#func reload():
+#	# Prevenir que se llame a esta funcion inecesariamente
+#	if not data.equip is TZDDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
+#		return false
+#
+#	# Obtener las municiones
+#	var ammunition_inv = []
+#	total_ammo = 0
+#
+#	for ammo in DataManager.get_current_inv().inv:
+#		if ammo is TZDAmmo and ammo.ammo_type == data.equip.ammo_type:
+#			ammunition_inv.append(ammo)
+#			total_ammo += ammo.ammo_amount
+#
+#	# Si no hay ammunition_inv entonces se sale de la
+#	# funcion
+#	if ammunition_inv.size() < 1:
+#		return false
+#
+#	for ammo in ammunition_inv:
+#		if data.equip.reload(ammo):
+#			break
+#
+#	for i in ammunition_inv.size() - 1:
+#		if ammunition_inv[i].ammo_amount == 0:
+#			ammunition_inv.pop_front()
+#
+#	# Para que BulletInfo se actualize
+#	emit_signal("reload")
+#
+#	return true
 
+# Hace el ataque melee y configura si no hay arma configurada
 func melee_attack():
-	if data.primary_weapon:
-		var pweapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
+	if data.primary_weapon and data.primary_weapon is TZDMeleeWeapon:
+		if not gui_primary_weapon: config_primary_weapon()
+		gui_primary_weapon.attack(selected_enemy)
 	else:
 		config_boxing_attack()
 		boxing_attack.get_node("Anim").play("box_hit")
@@ -420,17 +429,23 @@ func config_boxing_attack():
 		
 	if current_primary_weapon != boxing_attack:
 		$CurrentWeapon/PrimaryWeapon.remove_child(current_primary_weapon)
-		print("Se a removido el current_primary_weapon")
 		
 	$CurrentWeapon/PrimaryWeapon.add_child(boxing_attack)
 	boxing_attack.player = self
 
+func config_primary_weapon():
+	gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
+	
+	if gui_primary_weapon:
+		$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
+	
 # Player tiene acceso al hud y lo configura
 func set_hud(_hud):
 	hud = _hud
 	
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
+	hud.connect("hud_item_hotbar_selected", self, "_on_hud_item_hotbar_selected")
 
 func set_game_camera(_game_camera):
 	game_camera = _game_camera
@@ -477,6 +492,9 @@ func dash_stop():
 	
 	$Sprites/AnimDash.play("DashStop")
 	$Sprites/Head.rotation_degrees = 0
+
+func equip_primary_weapon(melee_item : TZDMeleeWeapon):
+	data.primary_weapon = melee_item
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -548,12 +566,20 @@ func _on_DetectArea_body_exited(body):
 				selected_enemy = null
 
 func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
-	var gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(weapon)
-	gui_primary_weapon.set_player(self)
+	gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(weapon)
+	if boxing_attack: $CurrentWeapon/PrimaryWeapon.remove_child(boxing_attack)
+	gui_primary_weapon.player = self
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
 
 func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
 	pass
+
+# Slot data puede ser un TZDItem o null
+func _on_hud_item_hotbar_selected(slot_data):
+	if slot_data is TZDDistanceWeapon:
+		data.secondary_weapon = slot_data
+	elif slot_data is TZDMeleeWeapon:
+		equip_primary_weapon(slot_data)
 
 func _on_current_force_updated(force):
 	current_move_dir = force

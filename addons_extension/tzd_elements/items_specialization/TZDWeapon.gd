@@ -1,4 +1,4 @@
-extends TZDEquipment
+extends TZDItem
 
 class_name TZDWeapon
 

@@ -1,3 +1,5 @@
+# TODO: Usar preload en vez de load
+
 extends Node
 	
 static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, player_luck := 1):

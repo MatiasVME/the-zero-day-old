@@ -279,7 +279,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/items_specialization/TZDMeleeWeapon.gd"
 }, {
-"base": "TZDEquipment",
+"base": "TZDItem",
 "class": "TZDWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/items_specialization/TZDWeapon.gd"

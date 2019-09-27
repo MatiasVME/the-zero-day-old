@@ -4,6 +4,8 @@ extends "res://scenes/actors/GActor.gd"
 
 class_name GEnemy
 
+var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
+
 enum State {
 	STAND,
 	SEEKER,
@@ -44,12 +46,19 @@ func change_state(state):
 #
 
 func damage(amount):
+	.damage(amount)
 	can_damage = false
 	
 	if $Anim.has_animation("damage") and not $Anim.is_playing():
 		$Anim.play("damage")
 	
 	data.damage(amount)
+	
+	# Instancia un label indicando el daño recibido y lo agrega al árbol
+	var dmg_label : FloatingText = damage_label.instance()
+	dmg_label.init(amount, FloatingText.Type.DAMAGE)
+	dmg_label.position = global_position
+	get_parent().add_child(dmg_label)
 
 func knockback(distance : Vector2):
 	pass

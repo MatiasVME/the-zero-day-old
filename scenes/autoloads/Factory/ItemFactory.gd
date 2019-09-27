@@ -184,28 +184,29 @@ static func create_rand_melee_weapon(enemy_level := 1, enemy_type := 1, player_l
 	
 	weapon.buy_price = int(round(20 * points)) # TEMP
 	weapon.sell_price = weapon.buy_price / 4
-	
-	if not weapon_type:
-		weapon.weapon_type = int(round(rand_range(weapon.WeaponType.IRON_SWORD, weapon.WeaponType.RUBY_SWORD)))
+
+#	TEMP	
+#	if not weapon_type:
+#		weapon.weapon_type = int(round(rand_range(weapon.WeaponType.IRON_SWORD, weapon.WeaponType.RUBY_SWORD)))
 	
 	if points > MAX_POINTS / 4 * 3:
 		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/ruby/RSword" + str(int(round(rand_range(1, 5)))) + ".png"
-		weapon.item_name = "Ruby"
+		weapon.item_name = "Ruby "
 	elif points > MAX_POINTS / 4 * 2:
 		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/diamond/DSword" + str(int(round(rand_range(1, 4)))) + ".png"
-		weapon.item_name = "Diamond"
+		weapon.item_name = "Diamond "
 	elif points > MAX_POINTS / 4 * 1:
 		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/emerald/ESword" + str(int(round(rand_range(1, 2)))) + ".png"
-		weapon.item_name = "Emerald"
+		weapon.item_name = "Emerald "
 	else:
 		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/iron/ISword" + str(int(round(rand_range(1, 4)))) + ".png"
-		weapon.item_name = "Iron"
+		weapon.item_name = "Iron "
 	
 	weapon.time_to_next_action = 0.15 * points / 3
 	weapon.damage = 1.3 * points / 3
 	weapon.distance = 1.0 * points / 3
 	
-	weapon.item_name = weapon.item_name + " " + RandomNameGenerator.generate(3, 5, hash(weapon)) + " Sword"
+	weapon.item_name = weapon.item_name + RandomNameGenerator.generate(3, 5, hash(weapon)) + " Sword"
 	
 	return weapon
 	

@@ -2,6 +2,9 @@ extends "GHUD.gd"
 
 onready var inventory = get_node("PlayerMenu/Panels/Inventory")
 
+signal hud_item_hotbar_selected(item) # TZDItem
+signal hud_item_inventory_selected(item)
+
 func _ready():
 	$Buttons.connect("action", self, "_on_action")
 	$Buttons.connect("select", self, "_on_select")
@@ -13,6 +16,8 @@ func _ready():
 	
 	$PlayerMenu.connect("menu_button_unpressed", self, "_on_player_menu_button_unpressed")
 
+	$Hotbar.connect("slot_selected", self, "_on_slot_selected")
+	
 func set_hud_actor(actor : GActor):
 	.set_hud_actor(actor)
 	
@@ -20,7 +25,8 @@ func set_hud_actor(actor : GActor):
 
 func _on_action():
 	hud_actor._fire_handler()
-	
+
+# Se preciona el botón seleccionar enemigo
 func _on_select():
 	hud_actor.select_next()
 
@@ -53,3 +59,6 @@ func _on_dash_pressed():
 func _on_dash_released():
 	hud_actor.dash_stop()
 
+func _on_slot_selected(slot_data):
+	emit_signal("hud_item_hotbar_selected", slot_data)
+	
