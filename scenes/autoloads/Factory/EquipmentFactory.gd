@@ -14,6 +14,10 @@ func get_boxing_attack():
 	return boxing_attack
 
 func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
+	# TEMP
+	if not melee_weapon:
+		return
+	
 	match int(melee_weapon.weapon_type):
 		melee_weapon.WeaponType.IRON_SWORD:
 			melee_normal_attack.weapon = melee_weapon

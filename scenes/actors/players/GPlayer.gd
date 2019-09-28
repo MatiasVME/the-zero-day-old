@@ -11,21 +11,6 @@ var move = Vector2.ZERO
 
 var can_fire := false
 
-var reload_progress := 0.0
-var need_reload := false
-# Tiempo para la proxima accion de la arma
-var time_to_next_action := 1.0
-# Tiempo de espera entre cada bala
-var time_to_next_action_progress := 0.0
-
-# Tiempo para la proxima accion melee
-var melee_time_to_next_action := 0.4
-# Tiempo de espera entre cada ataque melee
-var melee_time_to_next_action_progress := 0.0
-
-# Total current ammo
-var total_ammo = -1
-
 # Escena para mostrar el daño en forma numérica
 var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
@@ -96,8 +81,6 @@ func _ready():
 	# Al iniciar el data equip se va a null siempre
 	# para que no suceda un bug, de un arma fantasma.
 	data.equip = null
-	
-	update_weapon()
 	
 	if not data.primary_weapon: 
 		config_boxing_attack()
@@ -265,12 +248,14 @@ func _fire_handler():
 			melee_attack()
 		# TEST
 		else:
-			melee_attack()
+			distance_attack()
 	else:
-		# Melee attack verifica que tipo de ataque melee hace
-		# y hace el ataque.
-		melee_attack()
-	
+		if gui_secondary_weapon:
+			distance_attack()
+		else:
+			# Melee attack verifica que tipo de ataque melee hace
+			# y hace el ataque.
+			melee_attack()
 	
 #	if data.equip is TZDDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
 #		if not Main.is_mobile:
@@ -314,45 +299,7 @@ func _physics_process(delta):
 		go_up_stamina(delta)
 	else:
 		do_special_dash_if_can(delta)
-	
-#	# Equipamiento y reload
-#	#
-#
-#	if data.equip and time_to_next_action_progress < time_to_next_action:
-#		time_to_next_action_progress += delta
-#		return
-#	elif not data.equip and melee_time_to_next_action_progress < melee_time_to_next_action:
-#		melee_time_to_next_action_progress += delta
-#		return
-#
-#	if data.equip is TZDDistanceWeapon and data.equip.current_shot == 0 and total_ammo != 0:
-#		if reload_progress > data.equip.time_to_reload:
-#			if reload():
-#				SoundManager.play(SoundManager.Sound.RELOAD_1)
-#				reload_progress = 0.0
-#		else:
-#			reload_progress += delta
-	
-func update_weapon():
-	total_ammo = -1
-	
-	# Si no hay arma melee equipada
-	if not data.primary_weapon:
-		pass
-	
-	# Si no hay arma distance equipada
-	if not data.secondary_weapon:
-		pass
-	
-	
-#	if data.equip is TZDDistanceWeapon:
-#		$GWeaponInBattle.set_weapon(data.equip)
-#		can_fire = true
-#		time_to_next_action = data.equip.time_to_next_action
-#	else:
-#		$GWeaponInBattle.set_weapon(null)
-#		can_fire = false
-		
+
 func disable_player(_visible := false):
 	is_disabled = true
 	disable_interact(_visible)
@@ -367,11 +314,6 @@ func disable_interact(_visible := false):
 	can_fire = false
 	$Collision.disabled = true
 	
-	# Puede que no exista data ya que el player se
-	# puede instanciar directamente.
-	if data:
-		data.disconnect("item_equiped", self, "_on_item_equiped")
-
 func enable_interact(_can_fire := false):
 	visible = true
 	can_move = true
@@ -381,41 +323,6 @@ func enable_interact(_can_fire := false):
 #	data.connect("item_equiped", self, "_on_item_equiped")
 #	data.connect
 	
-# Esta funcion se llama mas de lo necesario - Necesita Revisión
-# Retorna true si hace reload correctamente y
-# false de lo contrario.
-#func reload():
-#	# Prevenir que se llame a esta funcion inecesariamente
-#	if not data.equip is TZDDistanceWeapon or data.equip.current_shot >= data.equip.weapon_capacity:
-#		return false
-#
-#	# Obtener las municiones
-#	var ammunition_inv = []
-#	total_ammo = 0
-#
-#	for ammo in DataManager.get_current_inv().inv:
-#		if ammo is TZDAmmo and ammo.ammo_type == data.equip.ammo_type:
-#			ammunition_inv.append(ammo)
-#			total_ammo += ammo.ammo_amount
-#
-#	# Si no hay ammunition_inv entonces se sale de la
-#	# funcion
-#	if ammunition_inv.size() < 1:
-#		return false
-#
-#	for ammo in ammunition_inv:
-#		if data.equip.reload(ammo):
-#			break
-#
-#	for i in ammunition_inv.size() - 1:
-#		if ammunition_inv[i].ammo_amount == 0:
-#			ammunition_inv.pop_front()
-#
-#	# Para que BulletInfo se actualize
-#	emit_signal("reload")
-#
-#	return true
-
 # Hace el ataque melee y configura si no hay arma configurada
 func melee_attack():
 	if data.primary_weapon and data.primary_weapon is TZDMeleeWeapon:
@@ -429,6 +336,10 @@ func melee_attack():
 		boxing_attack.get_node("Anim").play("box_hit")
 		SoundManager.play(SoundManager.Sound.HIT_1)
 
+func distance_attack():
+	gui_secondary_weapon.attack(selected_enemy)
+	print("distance_attack()")
+
 func config_boxing_attack():
 	boxing_attack = Factory.EquipmentFactory.get_boxing_attack()
 	var current_primary_weapon = $CurrentWeapon/PrimaryWeapon.get_child(0)
@@ -440,6 +351,9 @@ func config_boxing_attack():
 	boxing_attack.player = self
 
 func config_primary_weapon():
+	if not data.primary_weapon:
+		return
+	
 	gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
 	
 	if gui_primary_weapon:
@@ -506,16 +420,17 @@ func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	data.secondary_weapon = weapon
 
 func unequip_secondary_weapon():
-	gui_secondary_weapon.hide_weapon()
-	gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
+	if gui_secondary_weapon:
+		gui_secondary_weapon.hide_weapon()
+		gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
 
 # Cuando alguna animación de gui_secondary_weapon esta finalizada
 func _on_gui_secondary_weapon_anim_finished(anim_name):
 	if anim_name == "hide":
 		$CurrentWeapon/SecondaryWeapon.remove_child(gui_secondary_weapon)
-		gui_secondary_weapon = null
 		data.secondary_weapon = null
-		print_debug("desaparece totalmente")
+		gui_secondary_weapon = null
+		print("hide: ", gui_secondary_weapon)
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -534,9 +449,6 @@ func _on_remove_hp(amount):
 	dmg_label.position = global_position
 	get_parent().add_child(dmg_label)
 
-func _on_item_equiped(item):
-	update_weapon()
-
 func _on_fire(dir):
 	# Temp
 	var bullet = ShootManager.fire(dir, data.equip.ammo_type, data.equip.damage)
@@ -553,7 +465,7 @@ func _on_InteractArea_body_entered(body):
 	if body is ItemInWorld:
 		if DataManager.inventories.size() > 0:
 			body.take_item(DataManager.inventories[DataManager.current_player])
-			total_ammo = -1
+#			total_ammo = -1
 			emit_signal("item_taken", body.data)
 	elif body is GBullet and not is_inmortal:
 		data.damage(body.damage)
