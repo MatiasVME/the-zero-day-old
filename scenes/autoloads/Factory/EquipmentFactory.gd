@@ -14,10 +14,6 @@ func get_boxing_attack():
 	return boxing_attack
 
 func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
-	if not melee_weapon:
-		print_debug("melee_weapon es ", melee_weapon)
-		return null
-	
 	match int(melee_weapon.weapon_type):
 		melee_weapon.WeaponType.IRON_SWORD:
 			melee_normal_attack.weapon = melee_weapon
@@ -27,8 +23,11 @@ func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
 	print("no es iron es: ", melee_weapon.weapon_type)
 	
 	
-func get_secundary_weapon(distance_weapon : TZDDistanceWeapon):
-	pass
-
+func get_secondary_weapon(distance_weapon : TZDDistanceWeapon):
+	# Por el momento todas las armas de distancia atacan de la
+	# misma forma.
+	normal_gun.weapon = distance_weapon
+	return normal_gun
+	
 func get_tool():
 	pass

@@ -7,10 +7,10 @@
 [ext_resource path="res://scenes/controls/Mobile/Buttons/ButtonIcon/Dash.png" type="Texture" id=5]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Normal.png" type="Texture" id=6]
 [ext_resource path="res://scenes/controls/Mobile/Buttons/Select-Pressed.png" type="Texture" id=7]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Normal.png" type="Texture" id=8]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButton-Pressed.png" type="Texture" id=9]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Normal.png" type="Texture" id=10]
-[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemButtonBottom-Pressed.png" type="Texture" id=11]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemRight-Normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemRight-Pressed.png" type="Texture" id=9]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemLeft-Normal.png" type="Texture" id=10]
+[ext_resource path="res://scenes/controls/Mobile/Buttons/ChangeItemLeft-Pressed.png" type="Texture" id=11]
 [ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-0.png" type="Texture" id=12]
 [ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-1.png" type="Texture" id=13]
 [ext_resource path="res://scenes/buttons/player_menu_show_hide/ShowPlayerMenu-2.png" type="Texture" id=14]
@@ -19,7 +19,7 @@
 radius = 23.0
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 20, 13 )
+extents = Vector2( 14, 20 )
 
 [node name="Buttons" type="Node2D"]
 modulate = Color( 1, 1, 1, 0.588235 )
@@ -54,13 +54,13 @@ pressed = ExtResource( 7 )
 shape = SubResource( 1 )
 
 [node name="SelectNextItemUp" type="TouchScreenButton" parent="."]
-position = Vector2( 372, 84 )
+position = Vector2( 388, 92 )
 normal = ExtResource( 8 )
 pressed = ExtResource( 9 )
 shape = SubResource( 2 )
 
 [node name="SelectNextItemDown" type="TouchScreenButton" parent="."]
-position = Vector2( 372, 111 )
+position = Vector2( 361, 92 )
 normal = ExtResource( 10 )
 pressed = ExtResource( 11 )
 shape = SubResource( 2 )

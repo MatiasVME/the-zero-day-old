@@ -502,6 +502,21 @@ func dash_stop():
 func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 	data.primary_weapon = melee_item
 
+func equip_secondary_weapon(weapon : TZDDistanceWeapon):
+	data.secondary_weapon = weapon
+
+func unequip_secondary_weapon():
+	gui_secondary_weapon.hide_weapon()
+	gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
+
+# Cuando alguna animación de gui_secondary_weapon esta finalizada
+func _on_gui_secondary_weapon_anim_finished(anim_name):
+	if anim_name == "hide":
+		$CurrentWeapon/SecondaryWeapon.remove_child(gui_secondary_weapon)
+		gui_secondary_weapon = null
+		data.secondary_weapon = null
+		print_debug("desaparece totalmente")
+
 func _on_dead():
 	is_mark_to_dead = true
 	disable_player(true)
@@ -578,12 +593,19 @@ func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
 
 func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
-	pass
+	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(weapon)
+	gui_secondary_weapon.player = self
+	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
+	gui_secondary_weapon.show_weapon()
 
 # Slot data puede ser un TZDItem o null
 func _on_hud_item_hotbar_selected(slot_data):
+	if not slot_data:
+		unequip_secondary_weapon()
+		return
+	
 	if slot_data is TZDDistanceWeapon:
-		data.secondary_weapon = slot_data
+		equip_secondary_weapon(slot_data)
 	elif slot_data is TZDMeleeWeapon:
 		equip_primary_weapon(slot_data)
 
