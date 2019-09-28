@@ -8,7 +8,7 @@
 [ext_resource path="res://scenes/hud/money_display/MoneyDisplay.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/hud/player_menu/PlayerMenu.tscn" type="PackedScene" id=7]
 
-[node name="HUDMobile" index="0" groups=[
+[node name="HUDMobile" groups=[
 "HUD",
 ] instance=ExtResource( 1 )]
 pause_mode = 2

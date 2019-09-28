@@ -263,6 +263,9 @@ func _fire_handler():
 		# Si tiene primary weapon y esta cerca
 		elif gui_primary_weapon and gui_primary_weapon.is_near:
 			melee_attack()
+		# TEST
+		else:
+			melee_attack()
 	else:
 		# Melee attack verifica que tipo de ataque melee hace
 		# y hace el ataque.
@@ -417,7 +420,10 @@ func enable_interact(_can_fire := false):
 func melee_attack():
 	if data.primary_weapon and data.primary_weapon is TZDMeleeWeapon:
 		if not gui_primary_weapon: config_primary_weapon()
-		gui_primary_weapon.attack(selected_enemy)
+		if gui_primary_weapon.is_near:
+			gui_primary_weapon.attack(selected_enemy)
+		else:
+			gui_primary_weapon.attack()
 	else:
 		config_boxing_attack()
 		boxing_attack.get_node("Anim").play("box_hit")
