@@ -18,10 +18,7 @@ func _process(delta):
 	if self.weapon and time_to_next_action_progress < time_to_next_action:
 		time_to_next_action_progress += delta
 		return
-#	elif not self.weapon and melee_time_to_next_action_progress < melee_time_to_next_action:
-#		melee_time_to_next_action_progress += delta
-#		return
-
+	
 	if self.weapon is TZDDistanceWeapon and self.weapon.current_shot == 0 and total_ammo != 0:
 		if reload_progress > self.weapon.time_to_reload:
 			if reload():
@@ -32,18 +29,22 @@ func _process(delta):
 
 # Normalmente es un GActor pero puede ser null
 func attack(actor = null):
-	pass
-
-func update_weapon():
-	total_ammo = -1
-	
-	if self.weapon is TZDDistanceWeapon:
-		$GWeaponInBattle.set_weapon(self.weapon)
-#		can_fire = true
-		time_to_next_action = self.weapon.time_to_next_action
-	else:
-		$GWeaponInBattle.set_weapon(null)
-#		can_fire = false
+	if self.weapon is TZDDistanceWeapon and player.can_fire and time_to_next_action_progress >= time_to_next_action and self.weapon.fire():
+		if not Main.is_mobile:
+			player.fire_dir = $Sprite.get_global_mouse_position() - global_position
+			pass
+		else:
+			if player.selected_enemy:
+				player.fire_dir = player.selected_enemy.global_position - global_position
+			else:
+				if player.current_move_dir != Vector2.ZERO:
+					player.fire_dir = player.current_move_dir
+				else:
+					# Necesitamos que fire_dir sea igual a la dirección donde apunta gweaponinbattle
+					player.fire_dir = $Sprite/Direction.global_position
+			
+		time_to_next_action_progress = 0.0
+		fire()
 		
 # Esta funcion se llama mas de lo necesario - Necesita Revisión
 # Retorna true si hace reload correctamente y
@@ -71,11 +72,24 @@ func reload():
 		if self.weapon.reload(ammo):
 			break
 
-	for i in ammunition_inv.size() - 1:
+#	for i in ammunition_inv.size() - 1:
+#		if ammunition_inv[i].ammo_amount == 0:
+#			ammunition_inv.pop_front()
+
+	var i = 0
+	while i < ammunition_inv.size():
 		if ammunition_inv[i].ammo_amount == 0:
 			ammunition_inv.pop_front()
-
+		i += 1
+		
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
 
 	return true
+	
+func fire():
+	player.fire_dir = player.fire_dir.normalized()
+	var bullet = ShootManager.fire(player.fire_dir, self.weapon.ammo_type, self.weapon.damage)
+	bullet.global_position = $Sprite/ActionSpawn.global_position
+	bullet.rotation = $Sprite.rotation
+	player.get_parent().add_child(bullet)

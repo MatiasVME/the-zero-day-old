@@ -28,4 +28,3 @@ frames = SubResource( 1 )
 
 [node name="Fire" parent="." index="4"]
 stream = ExtResource( 11 )
-

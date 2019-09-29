@@ -10,6 +10,9 @@ func show_weapon():
 func hide_weapon():
 	$Anim.play("hide")
 
+func hide_temp_weapon():
+	$Anim.play("temp_hide")
+	
 func _process(delta):
 #	if not self.weapon:
 #		set_process(false)

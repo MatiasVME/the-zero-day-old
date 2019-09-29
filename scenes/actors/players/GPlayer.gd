@@ -246,7 +246,6 @@ func _fire_handler():
 		# Si tiene primary weapon y esta cerca
 		elif gui_primary_weapon and gui_primary_weapon.is_near:
 			melee_attack()
-		# TEST
 		else:
 			distance_attack()
 	else:
@@ -257,27 +256,6 @@ func _fire_handler():
 			# y hace el ataque.
 			melee_attack()
 	
-#	if data.equip is TZDDistanceWeapon and can_fire and time_to_next_action_progress >= time_to_next_action and data.equip.fire():
-#		if not Main.is_mobile:
-#			fire_dir = $GWeaponInBattle/Sprite.get_global_mouse_position() - global_position
-#		else:
-#			if selected_enemy:
-#				fire_dir = selected_enemy.global_position - global_position
-#			else:
-#				if current_move_dir != Vector2.ZERO:
-#					fire_dir = current_move_dir
-#				else:
-#					# Necesitamos que fire_dir sea igual a la dirección donde apunta gweaponinbattle
-#					fire_dir = $GWeaponInBattle/Sprite/Direction.global_position
-#
-#		time_to_next_action_progress = 0.0
-#		emit_signal("fire", fire_dir.normalized())
-#	elif not data.equip and melee_time_to_next_action_progress >= melee_time_to_next_action:
-#		melee_time_to_next_action_progress = 0.0
-#		melee_attack()
-	
-	pass
-		
 func _reload_handler():
 #	if data.equip is TZDDistanceWeapon and total_ammo != 0:
 #		if reload():
@@ -320,13 +298,11 @@ func enable_interact(_can_fire := false):
 	can_fire = _can_fire
 	$Collision.disabled = false
 	
-#	data.connect("item_equiped", self, "_on_item_equiped")
-#	data.connect
-	
 # Hace el ataque melee y configura si no hay arma configurada
 func melee_attack():
 	if data.primary_weapon and data.primary_weapon is TZDMeleeWeapon:
 		if not gui_primary_weapon: config_primary_weapon()
+		
 		if gui_primary_weapon.is_near:
 			gui_primary_weapon.attack(selected_enemy)
 		else:
@@ -335,10 +311,12 @@ func melee_attack():
 		config_boxing_attack()
 		boxing_attack.get_node("Anim").play("box_hit")
 		SoundManager.play(SoundManager.Sound.HIT_1)
+		
+	if gui_secondary_weapon:
+		gui_secondary_weapon.hide_temp_weapon()
 
 func distance_attack():
 	gui_secondary_weapon.attack(selected_enemy)
-	print("distance_attack()")
 
 func config_boxing_attack():
 	boxing_attack = Factory.EquipmentFactory.get_boxing_attack()
@@ -418,7 +396,8 @@ func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 
 func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	data.secondary_weapon = weapon
-
+	can_fire = true
+	
 func unequip_secondary_weapon():
 	if gui_secondary_weapon:
 		gui_secondary_weapon.hide_weapon()
@@ -430,7 +409,7 @@ func _on_gui_secondary_weapon_anim_finished(anim_name):
 		$CurrentWeapon/SecondaryWeapon.remove_child(gui_secondary_weapon)
 		data.secondary_weapon = null
 		gui_secondary_weapon = null
-		print("hide: ", gui_secondary_weapon)
+		can_fire = false
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -448,13 +427,6 @@ func _on_remove_hp(amount):
 	dmg_label.init(amount, FloatingText.Type.DAMAGE)
 	dmg_label.position = global_position
 	get_parent().add_child(dmg_label)
-
-func _on_fire(dir):
-	# Temp
-	var bullet = ShootManager.fire(dir, data.equip.ammo_type, data.equip.damage)
-	bullet.global_position = $GWeaponInBattle/Sprite/FireSpawn.global_position
-	bullet.rotation = $GWeaponInBattle/Sprite.rotation
-	get_parent().add_child(bullet)
 
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "Dead":

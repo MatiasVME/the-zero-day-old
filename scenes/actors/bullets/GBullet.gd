@@ -2,6 +2,8 @@ extends KinematicBody2D
 
 class_name GBullet
 
+export (int) var bullet_speed = 250
+
 enum Trajectory {
 	LINEAL,
 	SEEKER
@@ -23,18 +25,14 @@ var is_mark_to_dead := false
 var collision
 var collision_count := 0
 
-#onready var terrain = get_tree().get_nodes_in_group("Terrain")
-
 func _ready():
 	$Sprite.playing = true
 	
-#	if terrain.size() > 0:
-##		print("terrain: ", terrain)
-#		add_collision_exception_with(terrain[0].tile_set)
-
 func _physics_process(delta):
+	print(global_position)
+	
 	if trajectory == Trajectory.LINEAL:
-		move_and_slide(direction * 250)
+		move_and_slide(direction * bullet_speed)
 	
 	collision_count = get_slide_count()
 	
