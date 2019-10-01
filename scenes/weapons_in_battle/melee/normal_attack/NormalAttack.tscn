@@ -33,14 +33,16 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 33.0
+radius = 24.0
 
 [node name="NormalSword" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
-rotation = -0.785396
 scale = Vector2( 1e-05, 1e-05 )
+
+[node name="Collision" parent="Sprite/DamageArea" index="0"]
+position = Vector2( 16, 0 )
 
 [node name="Anim" parent="." index="1"]
 anims/Attack = SubResource( 1 )

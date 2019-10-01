@@ -84,8 +84,10 @@ func _ready():
 	
 	if not data.primary_weapon: 
 		config_boxing_attack()
+		print_debug("config boxing")
 	else:
 		config_primary_weapon()
+		print_debug("config primary_weapon")
 	
 func _move_handler(delta, distance, run):
 	var dir := Vector2()
@@ -327,10 +329,19 @@ func config_boxing_attack():
 		
 	$CurrentWeapon/PrimaryWeapon.add_child(boxing_attack)
 	boxing_attack.player = self
+	
+	print_debug("config boxing attack")
 
 func config_primary_weapon():
 	if not data.primary_weapon:
+		print_debug("No encuentra arma primaria: ", data.primary_weapon)
 		return
+		
+	var primary_weaaaaponn = data.primary_weapon
+	
+	if $CurrentWeapon/PrimaryWeapon.get_child_count() > 0 and $CurrentWeapon/PrimaryWeapon.get_children()[0] == boxing_attack:
+		$CurrentWeapon/PrimaryWeapon.remove_child(boxing_attack)
+		print_debug("removiendo boxing attack")
 	
 	gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
 	

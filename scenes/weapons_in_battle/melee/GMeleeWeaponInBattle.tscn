@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/weapons_in_battle/melee/GMeleeWeaponInBattle.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 12, 6 )
+extents = Vector2( 8, 7 )
 
 [node name="GMeleeWeaponInBattle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )

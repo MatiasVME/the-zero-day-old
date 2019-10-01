@@ -89,6 +89,40 @@ func set_stamina_max(_stamina_max):
 func get_stamina_max():
 	return stamina_max
 
+static func character2dict(_character : RPGCharacter):
+	var primary_weapon
+	var secondary_weapon
+	
+	if _character.primary_weapon:
+		primary_weapon = RPGElement.gdc2gd(inst2dict(_character.primary_weapon))
+	
+	if _character.secondary_weapon:
+		secondary_weapon = RPGElement.gdc2gd(inst2dict(_character.secondary_weapon))
+	
+	var character_dict = RPGElement.gdc2gd(inst2dict(_character))
+	character_dict["primary_weapon"] = primary_weapon
+	character_dict["secondary_weapon"] = secondary_weapon
+	
+	return character_dict
+
+static func dict2character(_dict_character : Dictionary):
+	var primary_weapon
+	var secondary_weapon
+	
+	if _dict_character["primary_weapon"]:
+		primary_weapon = dict2inst(_dict_character["primary_weapon"])
+		_dict_character["primary_weapon"] = null
+	
+	if _dict_character["secondary_weapon"]:
+		secondary_weapon = dict2inst(_dict_character["secondary_weapon"])
+		_dict_character["secondary_weapon"] = null
+	
+	var character_inst = dict2inst(_dict_character)
+	character_inst.primary_weapon = primary_weapon
+	character_inst.secondary_weapon = secondary_weapon
+	
+	return character_inst
+	
 # Obsoletos:
 #
 
