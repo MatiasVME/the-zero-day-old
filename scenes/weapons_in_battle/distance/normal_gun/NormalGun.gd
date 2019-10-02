@@ -2,10 +2,6 @@ extends GDistanceWeaponInBattle
 
 var reload_progress := 0.0
 var need_reload := false
-# Tiempo para la proxima accion de la arma
-var time_to_next_action := 1.0
-# Tiempo de espera entre cada bala
-var time_to_next_action_progress := 0.0
 # Total current ammo
 var total_ammo = -1
 
@@ -14,10 +10,6 @@ signal reload
 func _process(delta):
 	# Equipamiento y reload
 	#
-
-	if self.weapon and time_to_next_action_progress < time_to_next_action:
-		time_to_next_action_progress += delta
-		return
 	
 	if self.weapon is TZDDistanceWeapon and self.weapon.current_shot == 0 and total_ammo != 0:
 		if reload_progress > self.weapon.time_to_reload:
@@ -26,11 +18,6 @@ func _process(delta):
 				reload_progress = 0.0
 		else:
 			reload_progress += delta
-
-func set_weapon(weapon):
-	time_to_next_action = weapon.time_to_next_action
-	
-	.set_weapon(weapon)
 
 # Normalmente es un GActor pero puede ser null
 func attack(actor = null):

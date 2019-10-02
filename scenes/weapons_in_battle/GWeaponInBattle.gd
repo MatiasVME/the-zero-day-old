@@ -9,6 +9,11 @@ var weapon setget set_weapon, get_weapon
 # GPlayer
 var player
 
+# Tiempo para la proxima accion de la arma
+var time_to_next_action := 1.0
+# Tiempo de espera entre cada accións
+var time_to_next_action_progress := 0.0
+
 # Mobile
 onready var game_camera = get_tree().get_nodes_in_group("GameCamera")
 
@@ -19,6 +24,14 @@ func _ready():
 	if Main.is_mobile and game_camera.size() > 0:
 		game_camera = game_camera[0]
 
+func _process(delta):
+	if weapon and time_to_next_action_progress < time_to_next_action:
+		time_to_next_action_progress += delta
+		return
+
+func attack(actor = null):
+	time_to_next_action_progress = 0
+
 # Puede recibir un TZDWeapon o un null
 func set_weapon(_weapon):
 	weapon = _weapon
@@ -28,6 +41,8 @@ func set_weapon(_weapon):
 		$Sprite.texture = load(weapon.texture_path)
 	else:
 		$Sprite.texture = null
+	
+	time_to_next_action = weapon.time_to_next_action
 	
 	emit_signal("weapon_added", weapon)
 	

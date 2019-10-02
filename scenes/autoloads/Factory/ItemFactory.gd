@@ -201,10 +201,11 @@ static func create_rand_melee_weapon(enemy_level := 1, enemy_type := 1, player_l
 	else:
 		weapon.texture_path = "res://scenes/items/weapons/melee_weapons/swords/iron/ISword" + str(int(round(rand_range(1, 4)))) + ".png"
 		weapon.item_name = "Iron "
-	
-	weapon.time_to_next_action = 0.15 * points / 3
-	weapon.damage = 1.3 * points / 3
-	weapon.distance = 1.0 * points / 3
+		
+	weapon.time_to_next_action = 0.8
+	weapon.time_to_next_action -= 0.05 * (points / 3)
+	weapon.damage = 1.3 * (points / 3)
+	weapon.distance = 1.0 * (points / 3)
 	
 	weapon.item_name = weapon.item_name + RandomNameGenerator.generate(3, 5, hash(weapon)) + " Sword"
 	

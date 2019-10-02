@@ -8,11 +8,6 @@ func hide_temp_weapon():
 	$Anim.play("temp_hide")
 	
 func _process(delta):
-#	if not self.weapon:
-#		set_process(false)
-#		print_debug(self, " no esta asociado a un weapon: ", weapon)
-#		return
-
 	if $Sprite.rotation_degrees > 90 and $Sprite.rotation_degrees < 270 or $Sprite.rotation_degrees < -90 and $Sprite.rotation_degrees > -270:
 		$Sprite.flip_v = true
 	else:

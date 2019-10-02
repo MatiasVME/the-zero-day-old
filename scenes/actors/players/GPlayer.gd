@@ -313,6 +313,9 @@ func melee_attack():
 		gui_secondary_weapon.hide_temp_weapon()
 
 func distance_attack():
+	if not gui_secondary_weapon:
+		return
+	
 	gui_secondary_weapon.attack(selected_enemy)
 	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
 
