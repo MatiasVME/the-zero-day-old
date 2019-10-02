@@ -27,6 +27,11 @@ func _process(delta):
 		else:
 			reload_progress += delta
 
+func set_weapon(weapon):
+	time_to_next_action = weapon.time_to_next_action
+	
+	.set_weapon(weapon)
+
 # Normalmente es un GActor pero puede ser null
 func attack(actor = null):
 	if self.weapon is TZDDistanceWeapon and player.can_fire and time_to_next_action_progress >= time_to_next_action and self.weapon.fire():

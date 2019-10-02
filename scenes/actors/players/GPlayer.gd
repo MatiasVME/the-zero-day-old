@@ -84,10 +84,8 @@ func _ready():
 	
 	if not data.primary_weapon: 
 		config_boxing_attack()
-		print_debug("config boxing")
 	else:
 		config_primary_weapon()
-		print_debug("config primary_weapon")
 	
 func _move_handler(delta, distance, run):
 	var dir := Vector2()
@@ -258,13 +256,6 @@ func _fire_handler():
 			# y hace el ataque.
 			melee_attack()
 	
-func _reload_handler():
-#	if data.equip is TZDDistanceWeapon and total_ammo != 0:
-#		if reload():
-#			SoundManager.play(SoundManager.Sound.RELOAD_1)
-#			reload_progress = 0.0
-	pass
-	
 func _physics_process(delta):
 	if not can_move or is_disabled:
 		return
@@ -330,8 +321,6 @@ func config_boxing_attack():
 		
 	$CurrentWeapon/PrimaryWeapon.add_child(boxing_attack)
 	boxing_attack.player = self
-	
-	print_debug("config boxing attack")
 
 func config_primary_weapon():
 	if not data.primary_weapon:
@@ -501,6 +490,11 @@ func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
 	gui_secondary_weapon.show_weapon()
 	
 	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
+	
+	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
+
+func _on_secondary_weapon_reload():
+	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
 
 # Slot data puede ser un TZDItem o null
 func _on_hud_item_hotbar_selected(slot_data):
