@@ -306,8 +306,7 @@ func melee_attack():
 			gui_primary_weapon.attack()
 	else:
 		config_boxing_attack()
-		boxing_attack.get_node("Anim").play("box_hit")
-		SoundManager.play(SoundManager.Sound.HIT_1)
+		boxing_attack.attack()
 		
 	if gui_secondary_weapon:
 		gui_secondary_weapon.hide_temp_weapon()

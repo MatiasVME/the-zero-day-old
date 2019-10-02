@@ -13,6 +13,9 @@ onready var player : GPlayer setget set_player
 
 var is_near = false
 
+var time_to_next_action := 0.4
+var time_to_next_action_progress := 0.0
+
 # WeaponSprite RotationDegrees
 var ws_rd = 0
 
@@ -21,11 +24,10 @@ var img_boxing1 = preload("res://scenes/weapons_in_battle/melee/boxing_attack/Im
 signal weapon_added(weapon)
 signal weapon_removed()
 
-#func set_game_camera(_game_camera):
-#	game_camera = _game_camera
-#	mobile_selected_pos = game_camera.get_node("MobileSelected/Pos")
-	
 func _process(delta):
+	if time_to_next_action_progress <= time_to_next_action:
+		time_to_next_action_progress += delta
+	
 	ws_rd = rotation_degrees
 	
 	if ws_rd > 90 and ws_rd < 270 or ws_rd < -90 and ws_rd > -270:
@@ -45,16 +47,20 @@ func _process(delta):
 		# miro por última vez)
 		pass
 
+func attack():
+	if time_to_next_action_progress >= time_to_next_action:
+		$Anim.play("box_hit")
+		SoundManager.play(SoundManager.Sound.HIT_1)
+		time_to_next_action_progress = 0.0
+	
 # Puede recibir un PHMeleeWeapon o un null
 func set_weapon(weapon = null):
 	data = weapon
 	
-	if data and data is TZDMeleeWeapon:
-		$WeaponSprite.texture = load(data.texture_path)
-	else:
+	if not weapon:
 		$WeaponSprite.texture = img_boxing1
 	
-	emit_signal("weapon_added", data)
+	emit_signal("weapon_added", weapon)
 
 func remove_weapon():
 	data = null
