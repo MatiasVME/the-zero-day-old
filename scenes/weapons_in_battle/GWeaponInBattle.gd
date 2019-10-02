@@ -19,9 +19,6 @@ func _ready():
 	if Main.is_mobile and game_camera.size() > 0:
 		game_camera = game_camera[0]
 
-func _process(delta):
-	pass
-
 # Puede recibir un TZDWeapon o un null
 func set_weapon(_weapon):
 	weapon = _weapon
@@ -37,11 +34,17 @@ func set_weapon(_weapon):
 func get_weapon():
 	return weapon
 
-func remove_weapon():
+func show_weapon():
+	$Anim.play("show")
+
+func hide_weapon():
 	$Anim.play("hide")
+
+func remove_weapon():
+	$Anim.play("remove")
 	
 func _on_Anim_animation_finished(anim_name):
-	if anim_name == "hide":
+	if anim_name == "remove":
 		weapon = null
 		$Sprite.texture = null
 		emit_signal("weapon_removed")

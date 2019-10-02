@@ -75,7 +75,7 @@ tracks/4/keys = {
 radius = 9.9945
 
 [sub_resource type="CircleShape2D" id=4]
-radius = 26.0
+radius = 19.0
 
 [node name="BoxingAttack" type="Node2D"]
 z_index = 3
@@ -102,7 +102,6 @@ offset = Vector2( 13, 0 )
 anims/box_hit = SubResource( 2 )
 
 [node name="HitArea" type="Area2D" parent="."]
-editor/display_folded = true
 position = Vector2( 6.0055, 0 )
 collision_layer = 2
 collision_mask = 2

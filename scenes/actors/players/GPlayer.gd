@@ -242,11 +242,11 @@ func _stop_handler(delta):
 	
 func _fire_handler():
 	if selected_enemy:
-		# Si no hay arma primaria y el enemigo esta cerca
-		if not data.primary_weapon and boxing_attack.is_near:
-			melee_attack()
 		# Si tiene primary weapon y esta cerca
-		elif gui_primary_weapon and gui_primary_weapon.is_near:
+		if gui_primary_weapon and gui_primary_weapon.is_near:
+			melee_attack()
+		# Si no hay arma primaria y el enemigo esta cerca
+		elif not data.primary_weapon and global_position.distance_to(selected_enemy.global_position) < 26:
 			melee_attack()
 		else:
 			distance_attack()
@@ -319,6 +319,7 @@ func melee_attack():
 
 func distance_attack():
 	gui_secondary_weapon.attack(selected_enemy)
+	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
 
 func config_boxing_attack():
 	boxing_attack = Factory.EquipmentFactory.get_boxing_attack()
@@ -390,6 +391,9 @@ func dash_start():
 	$Sprites/AnimMove.stop()
 	$Sprites/AnimDash.play("DashStart")
 	
+	if gui_secondary_weapon:
+		gui_secondary_weapon.hide_weapon()
+	
 func dash_stop():
 	doing_dash = false
 	
@@ -401,6 +405,9 @@ func dash_stop():
 	
 	$Sprites/AnimDash.play("DashStop")
 	$Sprites/Head.rotation_degrees = 0
+	
+	if gui_secondary_weapon:
+		gui_secondary_weapon.show_weapon()
 
 func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 	data.primary_weapon = melee_item
@@ -492,6 +499,8 @@ func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
 	gui_secondary_weapon.player = self
 	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
 	gui_secondary_weapon.show_weapon()
+	
+	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
 
 # Slot data puede ser un TZDItem o null
 func _on_hud_item_hotbar_selected(slot_data):

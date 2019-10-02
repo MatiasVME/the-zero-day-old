@@ -29,8 +29,6 @@ func _ready():
 	$Sprite.playing = true
 	
 func _physics_process(delta):
-	print(global_position)
-	
 	if trajectory == Trajectory.LINEAL:
 		move_and_slide(direction * bullet_speed)
 	
