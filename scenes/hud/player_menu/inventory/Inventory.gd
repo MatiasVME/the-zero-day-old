@@ -164,7 +164,7 @@ func get_current_row():
 # que que hay en el inventario
 func get_total_ammo():
 	# si el equip es null -> sale de la funcion
-	var equip = DataManager.get_current_player_instance().equip
+	var equip = DataManager.get_current_player_instance().secondary_weapon
 	if equip == null : return
 	
 	var inv = DataManager.get_current_inv().inv
@@ -173,6 +173,7 @@ func get_total_ammo():
 	for item in inv:
 		if item is TZDAmmo and equip.ammo_type == item.ammo_type:
 			total_ammo += item.ammo_amount
+	
 	return total_ammo
 
 func update_info_panel(slot):

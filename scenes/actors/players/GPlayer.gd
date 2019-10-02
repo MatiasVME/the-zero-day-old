@@ -51,6 +51,8 @@ var selectables := []
 var selected_num := -1 # -1 es nignuno seleccionado
 # GActor seleccionado
 var selected_enemy
+# Cuando el botón de acción esta presionado (fire, interact)
+var action_pressed := false
 
 # Se debe establecer la camara cuando se usa un player
 var game_camera : GameCamera setget set_game_camera
@@ -77,10 +79,6 @@ func _ready():
 	data.connect("remove_hp", self, "_on_remove_hp")
 	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped")
 	data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
-
-	# Al iniciar el data equip se va a null siempre
-	# para que no suceda un bug, de un arma fantasma.
-	data.equip = null
 	
 	if not data.primary_weapon: 
 		config_boxing_attack()
@@ -270,6 +268,12 @@ func _physics_process(delta):
 		go_up_stamina(delta)
 	else:
 		do_special_dash_if_can(delta)
+		
+	# Action (fire, interact)
+	#
+	
+	if action_pressed:
+		_fire_handler()
 
 func disable_player(_visible := false):
 	is_disabled = true
@@ -345,6 +349,7 @@ func set_hud(_hud):
 	# Configurar HUD
 	hud.get_node("Analog").connect("current_force_updated", self, "_on_current_force_updated")
 	hud.connect("hud_item_hotbar_selected", self, "_on_hud_item_hotbar_selected")
+	hud.connect("hud_action", self, "_on_hud_action_button")
 
 func set_game_camera(_game_camera):
 	game_camera = _game_camera
@@ -407,12 +412,16 @@ func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	
 func unequip_secondary_weapon():
 	if gui_secondary_weapon:
-		gui_secondary_weapon.hide_weapon()
+		gui_secondary_weapon.remove_weapon()
 		gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
+
+# Cuando el botón de action del hud es pressionado y soltado
+func _on_hud_action_button(is_pressed):
+	action_pressed = is_pressed
 
 # Cuando alguna animación de gui_secondary_weapon esta finalizada
 func _on_gui_secondary_weapon_anim_finished(anim_name):
-	if anim_name == "hide":
+	if anim_name == "remove":
 		$CurrentWeapon/SecondaryWeapon.remove_child(gui_secondary_weapon)
 		data.secondary_weapon = null
 		gui_secondary_weapon = null
@@ -504,9 +513,12 @@ func _on_hud_item_hotbar_selected(slot_data):
 	
 	if slot_data is TZDDistanceWeapon:
 		equip_secondary_weapon(slot_data)
+		return
 	elif slot_data is TZDMeleeWeapon:
 		equip_primary_weapon(slot_data)
-
+	
+	unequip_secondary_weapon()
+		
 func _on_current_force_updated(force):
 	current_move_dir = force
 	

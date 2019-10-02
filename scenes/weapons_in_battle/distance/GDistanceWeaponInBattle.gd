@@ -4,12 +4,6 @@ class_name GDistanceWeaponInBattle
 
 signal anim_finished(anim)
 
-func show_weapon():
-	$Anim.play("show")
-	
-func hide_weapon():
-	$Anim.play("hide")
-
 func hide_temp_weapon():
 	$Anim.play("temp_hide")
 	

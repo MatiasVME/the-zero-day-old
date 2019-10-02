@@ -4,9 +4,12 @@ onready var inventory = get_node("PlayerMenu/Panels/Inventory")
 
 signal hud_item_hotbar_selected(item) # TZDItem
 signal hud_item_inventory_selected(item)
+# Action: fire, interact, etc.
+signal hud_action(toggle_pressed)
 
 func _ready():
-	$Buttons.connect("action", self, "_on_action")
+	$Buttons.connect("action_pressed", self, "_on_action_pressed")
+	$Buttons.connect("action_released", self, "_on_action_released")
 	$Buttons.connect("select", self, "_on_select")
 	$Buttons.connect("select_next_item_up", self, "_on_select_next_item_up")
 	$Buttons.connect("select_next_item_down", self, "_on_select_next_item_down")
@@ -23,8 +26,12 @@ func set_hud_actor(actor : GActor):
 	
 	$PlayerMenu.set_current_actor(actor)
 
-func _on_action():
-	hud_actor._fire_handler()
+func _on_action_pressed():
+	emit_signal("hud_action", true)
+#	hud_actor._fire_handler()
+
+func _on_action_released():
+	emit_signal("hud_action", false)
 
 # Se preciona el botón seleccionar enemigo
 func _on_select():

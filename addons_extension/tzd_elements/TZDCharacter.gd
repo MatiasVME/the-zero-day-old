@@ -16,9 +16,6 @@ var player_type = Enums.PlayerType.DORBOT setget set_player_type, get_player_typ
 
 var unique_id : String
 
-# Obsoleto -->
-var equip : TZDItem setget set_equip, get_equip
-
 # Arma primaria (Melee)
 var primary_weapon : TZDMeleeWeapon setget set_primary_weapon, get_primary_weapon
 # Arma secundaria (Distance)
@@ -35,15 +32,8 @@ signal stamina_max_changed(new_stamina_max_value)
 # Dinero que dropea
 var money_drop = 1
 
-# Obsoleto
-signal item_equiped(weapon)
-
 signal primary_weapon_equiped(weapon)
 signal secondary_weapon_equiped(weapon)
-
-#func _init():
-#	randomize()
-#	unique_id = str(OS.get_unix_time(), "-", randi())
 
 func set_primary_weapon(_primary_weapon : TZDMeleeWeapon):
 	primary_weapon = _primary_weapon
@@ -52,7 +42,10 @@ func set_primary_weapon(_primary_weapon : TZDMeleeWeapon):
 func get_primary_weapon():
 	return primary_weapon
 	
-func set_secondary_weapon(_secondary_weapon :TZDDistanceWeapon):
+func set_secondary_weapon(_secondary_weapon : TZDDistanceWeapon):
+	if not _secondary_weapon:
+		return
+	
 	secondary_weapon = _secondary_weapon
 	emit_signal("secondary_weapon_equiped", secondary_weapon)
 
@@ -122,16 +115,6 @@ static func dict2character(_dict_character : Dictionary):
 	character_inst.secondary_weapon = secondary_weapon
 	
 	return character_inst
-	
-# Obsoletos:
-#
-
-func set_equip(_equip : TZDItem):
-	equip = _equip
-	emit_signal("item_equiped", _equip)
-	
-func get_equip():
-	return equip
 
 # Metodos "Privados"
 #

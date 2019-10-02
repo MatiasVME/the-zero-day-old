@@ -78,6 +78,7 @@ texture_normal = ExtResource( 12 )
 texture_pressed = ExtResource( 13 )
 texture_disabled = ExtResource( 14 )
 [connection signal="pressed" from="Action" to="." method="_on_Action_pressed"]
+[connection signal="released" from="Action" to="." method="_on_Action_released"]
 [connection signal="pressed" from="Dash" to="." method="_on_Dash_pressed"]
 [connection signal="released" from="Dash" to="." method="_on_Dash_released"]
 [connection signal="pressed" from="Select" to="." method="_on_Select_pressed"]
