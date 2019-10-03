@@ -4,6 +4,8 @@ extends GActor
 
 class_name GStructure
 
+var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
+
 var is_invulnerable := false
 var is_mark_to_destroy := false
 # Se puede interactuar con el? Es util cuando queremos
@@ -34,6 +36,13 @@ signal interacted
 func _ready():
 	set_process(false)
 	set_physics_process(false)
+
+func damage(amount):
+	# Instancia un label indicando el daño recibido y lo agrega al árbol
+	var dmg_label : FloatingText = damage_label.instance()
+	dmg_label.init(amount, FloatingText.Type.DAMAGE)
+	dmg_label.position = global_position
+	get_parent().add_child(dmg_label)
 
 func _on_InteractArea_body_entered(body):
 	if body is GPlayer:

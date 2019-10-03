@@ -46,8 +46,10 @@ func change_state(state):
 #
 
 func damage(amount):
+	if not can_damage:
+		return
+	
 	.damage(amount)
-	can_damage = false
 	
 	if $Anim.has_animation("damage") and not $Anim.is_playing():
 		$Anim.play("damage")
@@ -59,6 +61,9 @@ func damage(amount):
 	dmg_label.init(amount, FloatingText.Type.DAMAGE)
 	dmg_label.position = global_position
 	get_parent().add_child(dmg_label)
+	
+	can_damage = false
+	$DamageDelay.start()
 
 func knockback(distance : Vector2):
 	pass

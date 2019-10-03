@@ -34,12 +34,14 @@ func change_state(state):
 # una animación de invulnerabilidad - TODO
 func damage(amount):
 	if is_mark_to_destroy : return
+	
 	if $Anim2.has_animation("damage"):
 		$Anim2.play("damage")
 	if $Pivot/RotatorAnim.has_animation("damage"):# Animamos tambien el Rotator
 		$Pivot/RotatorAnim.play("damage")
 	
 	data.damage(amount)
+	.damage(amount)
 
 func detect():
 	if is_mark_to_destroy : return

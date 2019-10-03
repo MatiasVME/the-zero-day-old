@@ -8,7 +8,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource( 2 )
 
-[node name="Base" parent="." index="2"]
+[node name="Base" parent="." index="1"]
 animation = ""
 
 [node name="Anim2" type="AnimationPlayer" parent="." index="3"]

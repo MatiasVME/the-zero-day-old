@@ -22,7 +22,8 @@ physics_process_parent = true
 [node name="Anim" type="AnimationPlayer" parent="."]
 
 [node name="DamageDelay" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.25
+one_shot = true
 autostart = true
 
 [node name="Navigator" type="Node" parent="."]
