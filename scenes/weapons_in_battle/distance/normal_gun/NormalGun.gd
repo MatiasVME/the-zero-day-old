@@ -43,7 +43,7 @@ func attack(actor = null):
 # false de lo contrario.
 func reload():
 	# Prevenir que se llame a esta funcion inecesariamente
-	if not self.weapon is TZDDistanceWeapon:  #or self.weapon.current_shot >= self.weapon.weapon_capacity:
+	if not self.weapon is TZDDistanceWeapon or self.weapon.current_shot >= self.weapon.weapon_capacity:
 		return false
 
 	# Obtener las municiones TZDAmmo y almacenarlas en amunition_inv

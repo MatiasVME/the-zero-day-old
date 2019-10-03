@@ -411,6 +411,7 @@ func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	data.secondary_weapon = weapon
 	can_fire = true
+	gui_secondary_weapon.reload()
 	
 func unequip_secondary_weapon():
 	if gui_secondary_weapon:
