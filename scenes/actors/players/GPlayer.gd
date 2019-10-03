@@ -455,11 +455,11 @@ func _on_InteractArea_body_entered(body):
 	if body is ItemInWorld:
 		if DataManager.inventories.size() > 0:
 			body.take_item(DataManager.inventories[DataManager.current_player])
-#			total_ammo = -1
 			emit_signal("item_taken", body.data)
 	elif body is GBullet and not is_inmortal:
-		data.damage(body.damage)
-		body.dead()
+		if body.bullet_owner != self:
+			data.damage(body.damage)
+			body.dead()
 	elif body is GBullet and is_inmortal:
 		body.dead()
 

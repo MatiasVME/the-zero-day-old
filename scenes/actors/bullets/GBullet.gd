@@ -9,7 +9,6 @@ enum Trajectory {
 	SEEKER
 }
 var trajectory = Trajectory.LINEAL
-#var origin : Vector2
 var direction : Vector2
 
 # El que dispara las balas le dice a la bala cuanto daño
@@ -24,6 +23,8 @@ var is_mark_to_dead := false
 
 var collision
 var collision_count := 0
+
+var bullet_owner : GActor
 
 func _ready():
 	$Sprite.playing = true

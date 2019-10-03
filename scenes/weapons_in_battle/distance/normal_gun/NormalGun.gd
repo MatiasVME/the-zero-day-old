@@ -64,10 +64,6 @@ func reload():
 		if self.weapon.reload(ammo):
 			break
 
-#	for i in ammunition_inv.size() - 1:
-#		if ammunition_inv[i].ammo_amount == 0:
-#			ammunition_inv.pop_front()
-
 	var i = 0
 	while i < ammunition_inv.size():
 		if ammunition_inv[i].ammo_amount == 0:
@@ -81,7 +77,9 @@ func reload():
 	
 func fire():
 	player.fire_dir = player.fire_dir.normalized()
+	
 	var bullet = ShootManager.fire(player.fire_dir, self.weapon.ammo_type, self.weapon.damage)
 	bullet.global_position = $Sprite/ActionSpawn.global_position
 	bullet.rotation = $Sprite.rotation
+	bullet.bullet_owner = self.player
 	player.get_parent().add_child(bullet)
