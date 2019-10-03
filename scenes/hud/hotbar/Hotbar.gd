@@ -31,6 +31,7 @@ func set_hotbar_actor(actor : GActor):
 # Seleccionar un slot del 1 al 5 o null
 func select_slot(slot : int = 0):
 	if slot == 0:
+		emit_signal("slot_selected", null)
 		return
 	
 	var slot_selected = get_node("Slots/Slot" + str(slot))
