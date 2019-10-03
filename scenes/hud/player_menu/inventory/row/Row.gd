@@ -11,6 +11,9 @@ signal item_removed(slot_num)
 signal slot_selected(row, slot)
 signal row_diamond_pressed(row, pressed)
 
+func _ready():
+	DataManager.get_current_inv().connect("item_to_be_removed", self, "_on_item_to_be_removed")
+
 # Añade un identificador y conecta cada slot con "update_last_selected_slot"
 func init_row(row_num):
 	inventory = get_parent().get_owner()
@@ -35,7 +38,7 @@ func add_item(item_data : TZDItem):
 			num_items += 1
 			break
 
-# recupera solo el Slot
+# Recupera solo el Slot
 func get_slot(slot_id : int):
 	return get_node("Slots/Slot" + str(slot_id + 1))
 	
@@ -55,10 +58,12 @@ func has_item(item : TZDItem):
 			return true
 			
 	return false
-	
-func remove_item(item : TZDItem):
+
+# Borra el item del parámetro (Borra visualmente no lo borra del inventario)
+# Devuelve el slot del item que se a borrado
+func clear_item_from_slot(item : TZDItem):
 	# Sirve para almacenar el slot que se a borrado
-	var slot_num : int = 0
+	var slot_num := 0
 	
 	# Buscamos el slot para eliminarlo
 	for slot in $Slots.get_children():
@@ -68,7 +73,12 @@ func remove_item(item : TZDItem):
 			break
 		
 		slot_num += 1
-		
+	
+	return slot_num
+
+func remove_item(item : TZDItem):
+	var slot_num = clear_item_from_slot(item)
+	
 	# Borramos el item del inventario asumiendo que
 	# existe en el
 	DataManager.get_current_inv().delete_item(item)
@@ -89,9 +99,12 @@ func remove_slot(slot_num : int, free_item = true):
 	emit_signal("item_removed", slot_num)
 	
 	if not free_item : return item
-	
+
 func _on_slot_selected(slot):
 	emit_signal("slot_selected", self, slot)
 
 func _on_DButton_toggled(button_pressed):
 	emit_signal("row_diamond_pressed", self, button_pressed)
+
+func _on_item_to_be_removed(item : TZDItem):
+	clear_item_from_slot(item)

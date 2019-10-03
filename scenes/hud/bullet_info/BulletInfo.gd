@@ -7,13 +7,14 @@ var current_equip setget set_current_equip, get_current_equip
 
 var is_showing := false
 
+#signal bullet_info_updated()
+
 func _ready():
 	PlayerManager.connect("player_changed", self, "_on_player_changed")
 	PlayerManager.connect("player_shooting", self, "_on_player_shooting")
 	PlayerManager.connect("player_reload", self, "_on_player_reload")
-	
-	# TODO: Necesita ser activado
-#	hud.get_node("Inventory").connect("item_removed", self, "_on_item_removed")
+
+	hud.get_node("PlayerMenu/Panels/Inventory").connect("item_removed", self, "_on_item_removed")
 	
 	update_bullet_info(null)
 	

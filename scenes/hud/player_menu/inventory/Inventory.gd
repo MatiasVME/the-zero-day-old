@@ -47,7 +47,6 @@ func init_inventory():
 	create_row_if_can()
 	rows[0].get_node("Diamond/DButton").pressed = true
 	
-#	print("DataManager.get_current_inv().inv",DataManager.get_current_inv().inv)
 	for item in DataManager.get_current_inv().inv:
 		add_item(item)
 

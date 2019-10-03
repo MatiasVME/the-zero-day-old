@@ -29,6 +29,7 @@ var inv = [] setget , get_inv
 export (String) var inv_name = "" setget set_inv_name, get_inv_name
 
 signal item_added(item)
+signal item_to_be_removed(item)
 signal item_removed
 signal item_taken(item)
 
@@ -151,9 +152,11 @@ func search_all_items_with_the_name(item_name):
 # NEEDTEST
 func delete_item(item, free_item = true):
 	if inv.has(item):
+		emit_signal("item_to_be_removed", item) # NEEDTEST
 		inv.erase(item)
-		#if free_item : item.queue_free()
+		if free_item : item.queue_free() # NEEDTEST
 		emit_signal("item_removed")
+		
 		return true
 		
 	return false

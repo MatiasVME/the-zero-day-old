@@ -43,10 +43,12 @@ func attack(actor = null):
 # false de lo contrario.
 func reload():
 	# Prevenir que se llame a esta funcion inecesariamente
-	if not self.weapon is TZDDistanceWeapon or self.weapon.current_shot >= self.weapon.weapon_capacity:
+	if not self.weapon is TZDDistanceWeapon:  #or self.weapon.current_shot >= self.weapon.weapon_capacity:
 		return false
 
-	# Obtener las municiones
+	# Obtener las municiones TZDAmmo y almacenarlas en amunition_inv
+	#
+	
 	var ammunition_inv = []
 	total_ammo = 0
 
@@ -57,7 +59,9 @@ func reload():
 
 	# Si no hay ammunition_inv entonces se sale de la
 	# funcion
-	if ammunition_inv.size() < 1:
+#	if ammunition_inv.size() < 1:
+	if total_ammo == 0:
+		print_debug("No hay munición, por lo que return")
 		return false
 
 	for ammo in ammunition_inv:
@@ -67,12 +71,16 @@ func reload():
 	var i = 0
 	while i < ammunition_inv.size():
 		if ammunition_inv[i].ammo_amount == 0:
+			DataManager.get_current_inv().delete_item(ammunition_inv[i])
 			ammunition_inv.pop_front()
+			print_debug("i: ", i)
 		i += 1
 		
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
-
+	
+	print_debug("ammunition_inv: ", ammunition_inv)
+	
 	return true
 	
 func fire():

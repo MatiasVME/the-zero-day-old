@@ -6,8 +6,8 @@ var current_item : TZDItem
 # Items en la hotbar actual
 var items = []
 
-var current_hotbar = 0
-var current_slot = 0 # No seleccionado aun
+var current_hotbar := 0
+var current_slot := 0 # No seleccionado aun
 
 signal slot_selected(slot_data)
 
@@ -88,14 +88,14 @@ func unselect_all_slots(except = -1):
 # Cambia de hotbar desde 0 a ..
 func update_hotbar_row(row : int):
 	if not hud:
-		print("HUD not found")
+		print_debug("HUD not found")
 		return
 	
 	if not hud.inventory:
-		print("not inventory")
+		print_debug("not inventory")
 		return
 	elif hud.inventory and hud.inventory.rows.size() < 1:
-		print("inventory and inventory.rows < 1")
+		print_debug("inventory and inventory.rows < 1")
 		return
 	
 	current_hotbar = row
@@ -125,7 +125,7 @@ func _on_item_taken(item):
 	update_hotbar_row(current_hotbar)
 	select_slot(current_slot)
 
-func _on_item_removed(row_num, slot_num):
+func _on_item_removed():
 	update_hotbar_row(current_hotbar)
 
 func _on_stamina_changed(new_stamina_value):
@@ -136,15 +136,15 @@ func _on_stamina_max_changed(new_stamina_max_value):
 
 func _on_hud_ready():
 	if not hud.inventory:
-		print("Inventory not found xd")
+		print_debug("Inventory not found xd")
 		return
 	
 	update_hotbar_row(0)
 	
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# hay un item es removido o etc.
-	hud.inventory.connect("item_removed", self, "_on_item_removed")
+	DataManager.get_current_inv().connect("item_removed", self, "_on_item_removed")
 	# Conectamos la hotbar al inventario para escuchar cuando
 	# se cambia de hotbar.
-	hud.inventory.connect("change_diamond", self, "_on_change_diamond")
+	hud.inventory.connect("change_diamond", self, "_on_change_diamond")	
 	

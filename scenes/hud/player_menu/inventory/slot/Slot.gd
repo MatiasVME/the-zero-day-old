@@ -15,6 +15,7 @@ func _ready():
 func add_item(item_data : TZDItem):
 	data = item_data
 	
+	# TODO: Preferir preload en ves de load
 	$Slot/Item.texture = load(data.get_texture_path())
 	
 func has_item():
