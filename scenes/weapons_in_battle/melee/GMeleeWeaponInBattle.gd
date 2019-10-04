@@ -19,7 +19,11 @@ func _process(delta):
 		rotation_degrees = 0
 
 func _on_IsNearAttackArea_body_entered(body):
-	is_near = true
+	if body is GActor and body.actor_owner == body.ActorOwner.ENEMY:
+		is_near = true
+		print_debug("is_near: ", body.name)
 
 func _on_IsNearAttackArea_body_exited(body):
-	is_near = false
+	if body is GActor and body.actor_owner == body.ActorOwner.ENEMY:
+		is_near = false
+		print_debug("not_near: ", body.name)
