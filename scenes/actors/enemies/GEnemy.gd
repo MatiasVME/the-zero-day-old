@@ -6,6 +6,11 @@ class_name GEnemy
 
 var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
+# Debe tener esta variable para que la camara pueda seguir a este
+# enemigo. Ya que los GPlayer tienen esta variable.
+# NEEDFIX
+var selected_num := -1 # -1 es nignuno seleccionado
+
 enum State {
 	STAND,
 	SEEKER,

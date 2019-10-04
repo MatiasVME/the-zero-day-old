@@ -14,6 +14,9 @@ var can_fire := false
 # Escena para mostrar el daño en forma numérica
 var damage_label = preload("res://scenes/hud/floating_hud/FloatingText.tscn")
 
+# Último en dañar al GPlayer
+var last_to_damage = null
+
 var fire_dir := Vector2.ZERO
 var current_move_dir := Vector2.ZERO
 
@@ -277,6 +280,7 @@ func _physics_process(delta):
 
 func disable_player(_visible := false):
 	is_disabled = true
+	
 	disable_interact(_visible)
 	
 func enable_player(_can_fire := false):
@@ -288,6 +292,12 @@ func disable_interact(_visible := false):
 	can_move = false
 	can_fire = false
 	$Collision.disabled = true
+	
+	if gui_primary_weapon: 
+		gui_primary_weapon.hide()
+	
+	if gui_secondary_weapon:
+		gui_secondary_weapon.hide()
 	
 func enable_interact(_can_fire := false):
 	visible = true
@@ -378,6 +388,10 @@ func flip_h_sprites(value):
 	$Sprites/Body.flip_h = value
 	$Sprites/Head.flip_h = value
 
+func damage(amount, damaging = null):
+	data.damage(amount)
+	last_to_damage = damaging
+
 func dash_start():
 	doing_dash = true
 	dash_dir = current_move_dir.normalized() / 4 * 3
@@ -435,6 +449,8 @@ func _on_dead():
 	disable_player(true)
 	$Sprites/AnimDead.play("Dead")
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
+	
+	game_camera.following = last_to_damage
 
 func _on_remove_hp(amount):
 	if is_inmortal: return

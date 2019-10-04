@@ -75,7 +75,7 @@ func _physics_process(delta):
 			
 			if $Body.frame == 10 and ot_attack:
 				ot_attack = false
-				objective.data.damage(data.attack)
+				objective.damage(data.attack, self)
 				$Sounds/Hit.play()
 			elif $Body.frame == 11:
 				ot_attack = true

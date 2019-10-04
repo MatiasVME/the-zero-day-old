@@ -9,8 +9,6 @@ func attack(actor = null):
 	if actor: 
 		look_at(actor.global_position)
 		
-#	$Anim.play("Attack")
-	
 	$Sprite.self_modulate = Color(1,1,1,1)
 	
 	$Tween.interpolate_property(
@@ -59,5 +57,5 @@ func attack(actor = null):
 	.attack()
 
 func _on_DamageArea_body_entered(body):
-	if body is GActor:
+	if body is GEnemy or body is GStructure:
 		body.damage(self.weapon.damage)
