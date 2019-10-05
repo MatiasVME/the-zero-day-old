@@ -264,6 +264,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/items_specialization/TZDDistanceWeapon.gd"
 }, {
+"base": "TZDCharacter",
+"class": "TZDEnemy",
+"language": "GDScript",
+"path": "res://addons_extension/tzd_elements/character_specialization/TZDEnemy.gd"
+}, {
 "base": "TZDItem",
 "class": "TZDEquipment",
 "language": "GDScript",
@@ -278,6 +283,11 @@ _global_script_classes=[ {
 "class": "TZDMeleeWeapon",
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/items_specialization/TZDMeleeWeapon.gd"
+}, {
+"base": "TZDCharacter",
+"class": "TZDPlayer",
+"language": "GDScript",
+"path": "res://addons_extension/tzd_elements/character_specialization/TZDPlayer.gd"
 }, {
 "base": "TZDItem",
 "class": "TZDWeapon",
@@ -356,9 +366,11 @@ _global_script_class_icons={
 "TZDCharacter": "",
 "TZDDefence": "",
 "TZDDistanceWeapon": "",
+"TZDEnemy": "",
 "TZDEquipment": "",
 "TZDItem": "",
 "TZDMeleeWeapon": "",
+"TZDPlayer": "",
 "TZDWeapon": "",
 "Tank": "",
 "TerrainGenerator": "res://addons/terrain_generator/icon.png",

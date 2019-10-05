@@ -154,7 +154,7 @@ func delete_item(item, free_item = true):
 	if inv.has(item):
 		emit_signal("item_to_be_removed", item) # NEEDTEST
 		inv.erase(item)
-		if free_item : item.queue_free() # NEEDTEST
+#		if free_item : item.queue_free() # NEEDTEST
 		emit_signal("item_removed")
 		
 		return true

@@ -7,6 +7,6 @@ func _on_AnimSplash_animation_finished(anim_name):
 	if anim_name == "Intro":
 #		emit_signal("splash_finished")
 		$AnimSplash.play("finish")
-	elif anim_name == "finish":
-		queue_free()
+#	elif anim_name == "finish":
+#		queue_free()
 	

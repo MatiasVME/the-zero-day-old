@@ -75,12 +75,6 @@ name_section = "PROGRAMERS"
 name_staff = PoolStringArray( "Matias Muñoz Espinoza" )
 color_staff = Color( 0.0196078, 0.380392, 0.537255, 1 )
 
-[node name="CreditSection2" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-name_section = "ART"
-color_section = Color( 0.705882, 0, 0, 1 )
-name_staff = PoolStringArray( "Alam Perez" )
-color_staff = Color( 1, 0.964706, 0.0705882, 1 )
-
 [node name="CreditSection3" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "MUSIC"
 color_section = Color( 0, 0.109804, 1, 1 )
@@ -94,11 +88,11 @@ name_staff = PoolStringArray(  )
 color_staff = Color( 0.054902, 0.0705882, 1, 1 )
 
 [node name="CreditSection6" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-margin_top = -42.0
-margin_bottom = 12.0
+margin_top = -74.0
+margin_bottom = -20.0
 name_section = ""
 color_section = Color( 1, 0.843137, 0, 1 )
-name_staff = PoolStringArray( "Javier Ocampos", "RDCKGames", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira", "MG.Pix" )
+name_staff = PoolStringArray( "Javier Ocampos", "RDCKGames", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira", "MG.Pix", "Alam Perez" )
 color_staff = Color( 1, 0.254902, 0.054902, 1 )
 
 [node name="BackFromCredits" type="TextureButton" parent="."]
@@ -125,9 +119,6 @@ bbcode_text = "[center][color=blue]CURRENT TEAM[/color]
 [color=yellow]GAME DESIGN AND PROGRAMER[/color]
 [color=red]Matías Muñoz Espinoza[/color]
 
-[color=yellow]ART[/color]
-[color=red]Alam Perez[/color]
-
 [color=blue]THANKS[/color]
 [color=red]Markus Ellisca - Programmer[/color]
 [color=red]MG.Pix - Art[/color]
@@ -135,14 +126,13 @@ bbcode_text = "[center][color=blue]CURRENT TEAM[/color]
 [color=red]RDCKGames - Consulting[/color]
 [color=red]Nahum Santana - Programmer[/color]
 [color=red]Javier Ocampos - Game Design[/color]
-[color=red]Jean Ferreira - Programmer[/color][/center]"
+[color=red]Jean Ferreira - Programmer[/color]
+[color=red]Alam Perez - Art[/color]
+[color=red]MaicolMaster - Art[/color][/center]"
 text = "CURRENT TEAM
 
 GAME DESIGN AND PROGRAMER
 Matías Muñoz Espinoza
-
-ART
-Alam Perez
 
 THANKS
 Markus Ellisca - Programmer
@@ -151,7 +141,9 @@ Jonathan Moreno - Programmer
 RDCKGames - Consulting
 Nahum Santana - Programmer
 Javier Ocampos - Game Design
-Jean Ferreira - Programmer"
+Jean Ferreira - Programmer
+Alam Perez - Art
+MaicolMaster - Art"
 
 [node name="Anim" type="AnimationPlayer" parent="FullCredits"]
 anims/Show = SubResource( 1 )

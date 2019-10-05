@@ -6,31 +6,39 @@ The Zero Day es un juego sandbox, top down shooter, rpg, etc.
 
 # Requerimientos
 + Este repositorio requiere que instales la [extención LFS de Git](https://git-lfs.github.com/)
-+ Godot 3.1.x
++ Godot 3.1.x para compilar
 
 # Forma de jugar
 
 Manejas un personaje, desde una perspectiva top-down, con los controles WASD. Este personaje puede disparar, hacer combate cuerpo a cuerpo, manejar vehículos, construir, subir de nivel, entre otras cosas.
 
-# Características principales del juego
+# Fases de desarrollo principales
+El juego está pensado en 4 fases de desarrollo principales. Cada una representa un producto completo. Las fases son las siguientes:
 
-* Modo acción: Se podrá disparar y luchar contra enemigos, todos los enemigos tienen atributos.
-* Modo construcción: Se podrá construir distintas cosas. Como edificios, murallas, torretas,  etc.
-* Multiplayer: Habrán varios modos multiplayer, en un principio se creará el modo “free for all” en un mundo abierto. (En posteriores versiones)
-* Se puede usar varios personajes: Normalmente se puede usar un personaje, pero también está la posibilidad de cambiar de personaje.
-* Los personajes tendrán inventarios, atributos, entre otros.
-* Sin idioma: Las cosas se explicarán con imágenes y animaciones, dentro de lo posible no usar letras. Excepto para el nombre de los ítems.
-* Generación aleatoria controlada del mapa: Los mapas de multiplayer se generarán de forma aleatoria. También se generarán dúngeons aleatorias.
+- [1.0.0] Version aventura (Móvil)
+  - Contendrá el modo historia o aventura
+  - Se concentrará en la acción y no la construcción, ni en la supervivencia.
+- [2.0.0] Version aventura extendida (Móvil y PC)
+  - Se podrá construir
+  - HUD para PC
+  - Tendrá más niveles en el modo aventura
+- [3.0.0] Version multiplayer (Móvil y PC)
+  - Se podrá jugar el modo aventura en cooperativo
+- [4.0.0] Version sandbox (Móvil y PC)
+  - Contendrá generación de mapas procedurales
+  - Dungeons
+  - Se podrá jugar modo sandbox en cooperativo
 
-# Alpha 3
-
-[![Alpha 3 The Zero Day](https://img.youtube.com/vi/ekdGdXfN0s8/0.jpg)](https://www.youtube.com/watch?v=ekdGdXfN0s8 "Alpha 3 The Zero Day")
-
-# Devlogs
+# Devlogs (Videos)
 
 [![Último Devlog The Zero Da](https://img.youtube.com/vi/y_V8qkavjbw/0.jpg)](https://www.youtube.com/watch?v=bB4H3_K0LSo&list=PLCCvCjJoQ5QV7Gei_Yc2H1JArNLPylgzQ "Devlog The Zero Day")
 
-## Se buscan colaboradores
+# Publicaciones
+
+- [Alpha 3.0 en Itch.io](https://furygames.itch.io/the-zero-day)
+- [DevLogs del desarrollo del videojuego en IndieLibre](https://indielibre.com/tag/thezeroday/)
+
+# Se buscan colaboradores
 
 Si desea participar en este proyecto puede ir al siguiente discord:
 
@@ -45,7 +53,6 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 ## Equipo actual
 
 - Matías Muñoz Espinoza - Programmer & Game Design
-- Alam Perez - Art
 
 ## Gracias
 
@@ -55,6 +62,8 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 - Nahum Santana - Programmer
 - Javier Ocampos - Game Design
 - Jean Ferreira - Programmer
+- Alam Perez - Art
+- MaicolMaster - Art
 
 ## Asesoría
 
@@ -63,10 +72,6 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 ## Terceros
 
 - Avgvsta - Music (CC-BY)
-
-# Compilar
-
-Necesita Godot Engine 3.1.x stable
 
 # Licencias
 

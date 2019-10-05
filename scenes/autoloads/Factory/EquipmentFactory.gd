@@ -22,7 +22,7 @@ func get_primary_weapon(melee_weapon : TZDMeleeWeapon):
 		melee_weapon.WeaponType.IRON_SWORD:
 			melee_normal_attack.weapon = melee_weapon
 			return melee_normal_attack
-			# TODO
+
 	
 	print("no es iron es: ", melee_weapon.weapon_type)
 	

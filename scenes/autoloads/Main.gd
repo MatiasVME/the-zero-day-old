@@ -46,6 +46,7 @@ func prepare_to_exit():
 	DataManager.get_current_player_instance().restore_hp()
 	DataManager.save_all_data()
 	PlayerManager.clear_players()
+	get_tree().paused = false
 
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST and PlayerManager.players.size() != 0:

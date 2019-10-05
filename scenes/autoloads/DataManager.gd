@@ -90,22 +90,22 @@ func create_players():
 	var temp_data
 	temp_data = $DataPlayers.get_data("Players")
 	
-	players.append(TZDCharacter.new())
+	players.append(TZDPlayer.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.DORBOT
 	
 	# TEMP: Crea otro player
-	players.append(TZDCharacter.new())
+	players.append(TZDPlayer.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.MATBOT
 	
 	# TEMP: Crea otro player
-	players.append(TZDCharacter.new())
+	players.append(TZDPlayer.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.PIXBOT
 	
 	# TEMP: Crea otro player
-	players.append(TZDCharacter.new())
+	players.append(TZDPlayer.new())
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.SERBOT
 	
@@ -117,7 +117,7 @@ func save_players():
 	
 	for i in players.size():
 #		temp_data[i] = RPGElement.gdc2gd(inst2dict(players[i])) # OLD
-		temp_data[i] = TZDCharacter.character2dict(players[i])
+		temp_data[i] = TZDPlayer.character2dict(players[i])
 		
 #		if players[i]["primary_weapon"]:
 #			temp_data[i]["primary_weapon"] = RPGElement.gdc2gd(inst2dict(players[i]["primary_weapon"]))
@@ -134,7 +134,7 @@ func load_players():
 
 	for player in temp_data.values():
 #		players.append(dict2inst(player)) # OLD
-		players.append(TZDCharacter.dict2character(player))
+		players.append(TZDPlayer.dict2character(player))
 		
 #		if player["primary_weapon"]:
 #			player["primary_weapon"] = dict2inst(player["primary_weapon"])
@@ -256,7 +256,7 @@ func get_current_stats():
 # crea la data del player, la data del inventario y la data
 # del jugador. Y lo añade a la lista de players.
 func create_player():
-	players.append(TZDCharacter.new())
+	players.append(TZDPlayer.new())
 	inventories.append(RPGInventory.new()) # Por el momento
 	stats.append(RPGStats.new()) # Por el momento
 
