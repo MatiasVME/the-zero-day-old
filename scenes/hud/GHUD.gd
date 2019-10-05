@@ -10,7 +10,7 @@ func _ready():
 	
 	Main.connect("win_adventure", self, "_on_win_adventure")
 	Main.connect("lose_adventure", self, "_on_lose_adventure")
-	
+
 func _on_Inventory_toggled(button_pressed):
 	if button_pressed:
 		$AnimInv.play("show")
@@ -34,15 +34,9 @@ func add_actor_to_hud(actor : GActor):
 	$AvatarHandler.add_avatar(actor)
 	
 func _on_player_dead(player):
-#	$CurtainAnim.play("dead")
-	
-#	$AnimInv.play("hide")
-#	$AnimGameMenu.play("hide")
-#	$AnimHotbar.play("hide")
-#	$AnimBulletInfo.play("hide")
-#	$AnimAvatarHandler.play("hide")
-#	$GameMenu/Inventory.disabled = true
-	
+	$Curtain.anim_dead()
+	$Curtain.anim_end()
+
 	DataManager.save_all_data()
 	
 func _on_get_damage(player, damage):
@@ -63,3 +57,4 @@ func _on_win_adventure():
 func _on_player_level_up(player):
 #	$GameMenu/StatPanel.update_all()
 	pass
+	

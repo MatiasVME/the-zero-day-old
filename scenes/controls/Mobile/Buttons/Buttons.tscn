@@ -66,6 +66,7 @@ pressed = ExtResource( 11 )
 shape = SubResource( 2 )
 
 [node name="Index" type="Node2D" parent="."]
+editor/display_folded = true
 z_index = 3
 
 [node name="TogglePlayerMenu" type="TextureButton" parent="Index"]

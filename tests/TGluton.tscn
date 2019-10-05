@@ -36,6 +36,26 @@ position = Vector2( 782.47, 399.187 )
 pause_mode = 1
 position = Vector2( 948.801, 358.891 )
 
+[node name="GlutonSpawn5" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 860.889, 432 )
+
+[node name="GlutonSpawn6" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 688, 408 )
+
+[node name="GlutonSpawn7" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 884.889, 288 )
+
+[node name="GlutonSpawn8" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 960, 432 )
+
+[node name="GlutonSpawn9" parent="." instance=ExtResource( 5 )]
+pause_mode = 1
+position = Vector2( 768, 334.891 )
+
 [node name="LightTurret" parent="." instance=ExtResource( 6 )]
 position = Vector2( 768, 688.781 )
 
@@ -48,6 +68,5 @@ position = Vector2( 704, 768 )
 [node name="LightTurret4" parent="." instance=ExtResource( 6 )]
 position = Vector2( 608, 711.407 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="TestMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
-autoplay = true

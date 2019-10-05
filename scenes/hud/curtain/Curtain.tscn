@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/hud/curtain/Curtain.gd" type="Script" id=1]
 
@@ -6,7 +6,7 @@
 resource_name = "dead"
 length = 0.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("Dead:color")
+tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -15,14 +15,14 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 0.921569, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 1, 1, 0.921569, 0 ), Color( 1, 1, 0.921569, 1 ), Color( 1, 1, 0.921569, 0 ) ]
 }
 
 [sub_resource type="Animation" id=2]
 resource_name = "hit"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Hit:color")
+tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -31,7 +31,39 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0.690196, 0.188235, 0.360784, 0.588235 ), Color( 1, 1, 1, 0 ) ]
+"values": [ Color( 0.690196, 0.188235, 0.360784, 0 ), Color( 0.690196, 0.188235, 0.360784, 0.588235 ), Color( 0.690196, 0.188235, 0.360784, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "End"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 8 ),
+"transitions": PoolRealArray( 1, 1, 2 ),
+"update": 0,
+"values": [ Color( 0.4, 1, 0.890196, 0 ), Color( 0.4, 1, 0.890196, 0 ), Color( 0.4, 1, 0.890196, 0.588235 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Start"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.4, 1, 0.890196, 0.588235 ), Color( 0.4, 1, 0.890196, 0 ) ]
 }
 
 [node name="Curtain" type="Node2D"]
@@ -41,16 +73,26 @@ script = ExtResource( 1 )
 margin_right = 420.0
 margin_bottom = 240.0
 mouse_filter = 2
-color = Color( 1, 1, 1, 0 )
+color = Color( 1, 1, 0.921569, 0 )
 
-[node name="AnimDead" type="AnimationPlayer" parent="."]
+[node name="AnimDead" type="AnimationPlayer" parent="Dead"]
 anims/dead = SubResource( 1 )
 
 [node name="Hit" type="ColorRect" parent="."]
 margin_right = 420.0
 margin_bottom = 240.0
 mouse_filter = 2
-color = Color( 1, 1, 1, 0 )
+color = Color( 0.690196, 0.188235, 0.360784, 0 )
 
-[node name="AnimHit" type="AnimationPlayer" parent="."]
+[node name="AnimHit" type="AnimationPlayer" parent="Hit"]
 anims/hit = SubResource( 2 )
+
+[node name="StartEnd" type="ColorRect" parent="."]
+margin_right = 420.0
+margin_bottom = 240.0
+mouse_filter = 2
+color = Color( 0.4, 1, 0.890196, 0 )
+
+[node name="AnimStartEnd" type="AnimationPlayer" parent="StartEnd"]
+anims/End = SubResource( 3 )
+anims/Start = SubResource( 4 )

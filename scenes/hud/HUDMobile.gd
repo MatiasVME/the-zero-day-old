@@ -21,6 +21,8 @@ func _ready():
 
 	$Hotbar.connect("slot_selected", self, "_on_slot_selected")
 	
+	$Curtain/StartEnd/AnimStartEnd.connect("animation_finished", self, "_on_animation_end_finished")
+	
 func set_hud_actor(actor : GActor):
 	.set_hud_actor(actor)
 	
@@ -68,4 +70,8 @@ func _on_dash_released():
 
 func _on_slot_selected(slot_data):
 	emit_signal("hud_item_hotbar_selected", slot_data)
+	
+func _on_animation_end_finished(anim_name):
+	if anim_name == "End":
+		$Buttons._on_TogglePlayerMenu_toggled(true)
 	
