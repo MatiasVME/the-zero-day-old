@@ -70,7 +70,6 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprites" type="Node2D" parent="."]
-editor/display_folded = true
 modulate = Color( 0.954601, 0.881043, 0.906329, 1 )
 
 [node name="LegLeft" type="AnimatedSprite" parent="Sprites"]
@@ -98,7 +97,6 @@ anims/Hit = SubResource( 2 )
 [node name="SpecialDash" type="Tween" parent="Sprites"]
 
 [node name="InteractArea" type="Area2D" parent="."]
-editor/display_folded = true
 collision_layer = 3
 collision_mask = 3
 

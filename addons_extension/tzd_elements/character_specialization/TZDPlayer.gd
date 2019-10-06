@@ -4,6 +4,8 @@ class_name TZDPlayer
 
 var player_type = Enums.PlayerType.DORBOT setget set_player_type, get_player_type
 
+var special_dash_damage = 5
+
 # Arma primaria (Melee)
 var primary_weapon : TZDMeleeWeapon setget set_primary_weapon, get_primary_weapon
 # Arma secundaria (Distance)

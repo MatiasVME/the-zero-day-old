@@ -3,7 +3,7 @@ extends GActor
 class_name GPlayer
 
 # Es la data del player y la logica del mismo
-var data : TZDCharacter # Este es el que equipa el arma
+var data : TZDPlayer # Este es el que equipa el arma
 
 export (int) var speed = 3000
 
@@ -39,6 +39,8 @@ var doing_special_dash := false
 # Tiempo total acumulado para hacer el dash especial
 var special_dash_time_accum := 0.0
 var max_special_dash_time_accum := 5.0
+
+var ot_scale_head_doing_dash := false
 
 # Hud
 #
@@ -147,7 +149,7 @@ func do_dash_if_can(delta):
 				# Cambiamos las collision layer y mask antes de hacer el tween
 				collision_layer = 4
 				collision_mask = 4
-				
+
 				if not $Sprites/Head.flip_h:
 					$Sprites/DoingDash.interpolate_property(
 						$Sprites,
@@ -188,18 +190,35 @@ func do_special_dash_if_can(delta):
 					special_dash_time_accum += delta
 					
 					if $Sprites/Head.flip_h:
-						$Sprites/Head.rotation_degrees -= delta * 500 * special_dash_time_accum
+						$Sprites/Head.rotation_degrees -= delta * 250 * special_dash_time_accum
 					else:
-						$Sprites/Head.rotation_degrees += delta * 500 * special_dash_time_accum
+						$Sprites/Head.rotation_degrees += delta * 250 * special_dash_time_accum
 					
 					use_stamina(delta, 0.5)
 				else:
-					$Sprites/Head.rotation_degrees += 40
+					$Sprites/Head.rotation_degrees += 30
 				
 				is_special_dash = true
 				special_dash_state = SpecialDashState.DOING
+				
+				if not ot_scale_head_doing_dash:
+					ot_scale_head_doing_dash = true
+					
+					$Sprites/DoingDash.interpolate_property(
+						$Sprites/Head,
+						"scale",
+						Vector2(1, 1),
+						Vector2(2, 2),
+						0.5,
+						Tween.TRANS_LINEAR,
+						Tween.EASE_IN
+					)
+					$Sprites/DoingDash.start()
 			return
 		SpecialDashState.DOING:
+			ot_scale_head_doing_dash = false
+			doing_special_dash = true
+			
 			# Cambiamos las collision layer y mask antes de hacer el
 			# dash especial
 			collision_layer = 4
@@ -211,8 +230,8 @@ func do_special_dash_if_can(delta):
 			if special_dash_time_accum <= 0:
 				special_dash_state = SpecialDashState.END
 			else:
-				special_dash_time_accum -= delta * 4 
-			return
+				special_dash_time_accum -= delta * 3
+				return
 		SpecialDashState.END: 
 			is_special_dash = false
 			doing_dash = false
@@ -222,6 +241,18 @@ func do_special_dash_if_can(delta):
 			
 			collision_layer = 3
 			collision_mask = 3
+			
+			$Sprites/DoingDash.stop($Sprites/Head)
+			$Sprites/DoingDash.interpolate_property(
+				$Sprites/Head,
+				"scale",
+				Vector2(2, 2),
+				Vector2(1, 1),
+				0.02,
+				Tween.TRANS_LINEAR,
+				Tween.EASE_OUT
+			)
+			$Sprites/DoingDash.start()
 	
 # Subir stamina
 func go_up_stamina(delta):
@@ -403,6 +434,9 @@ func dash_start():
 	if gui_secondary_weapon:
 		gui_secondary_weapon.hide_weapon()
 	
+	if gui_primary_weapon:
+		gui_primary_weapon.get_node("Sprite/DamageArea/Collision").disabled = true
+	
 func dash_stop():
 	doing_dash = false
 	
@@ -417,6 +451,9 @@ func dash_stop():
 	
 	if gui_secondary_weapon:
 		gui_secondary_weapon.show_weapon()
+		
+	if gui_primary_weapon:
+		gui_primary_weapon.get_node("Sprite/DamageArea/Collision").disabled = false
 
 func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 	data.primary_weapon = melee_item
@@ -478,6 +515,8 @@ func _on_InteractArea_body_entered(body):
 			body.dead()
 	elif body is GBullet and is_inmortal:
 		body.dead()
+	elif body is GEnemy and doing_special_dash:
+		body.damage(data.special_dash_damage)
 
 func _on_DetectArea_body_entered(body):
 	if body is GActor:
