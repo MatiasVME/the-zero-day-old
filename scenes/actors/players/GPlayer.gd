@@ -204,7 +204,7 @@ func do_special_dash_if_can(delta):
 				if not ot_scale_head_doing_dash:
 					ot_scale_head_doing_dash = true
 					
-					$Sprites/DoingDash.interpolate_property(
+					$Sprites/SpecialDash.interpolate_property(
 						$Sprites/Head,
 						"scale",
 						Vector2(1, 1),
@@ -213,7 +213,7 @@ func do_special_dash_if_can(delta):
 						Tween.TRANS_LINEAR,
 						Tween.EASE_IN
 					)
-					$Sprites/DoingDash.start()
+					$Sprites/SpecialDash.start()
 			return
 		SpecialDashState.DOING:
 			ot_scale_head_doing_dash = false
@@ -242,8 +242,8 @@ func do_special_dash_if_can(delta):
 			collision_layer = 3
 			collision_mask = 3
 			
-			$Sprites/DoingDash.stop($Sprites/Head)
-			$Sprites/DoingDash.interpolate_property(
+			$Sprites/SpecialDash.stop($Sprites/Head)
+			$Sprites/SpecialDash.interpolate_property(
 				$Sprites/Head,
 				"scale",
 				Vector2(2, 2),
@@ -252,7 +252,7 @@ func do_special_dash_if_can(delta):
 				Tween.TRANS_LINEAR,
 				Tween.EASE_OUT
 			)
-			$Sprites/DoingDash.start()
+			$Sprites/SpecialDash.start()
 	
 # Subir stamina
 func go_up_stamina(delta):

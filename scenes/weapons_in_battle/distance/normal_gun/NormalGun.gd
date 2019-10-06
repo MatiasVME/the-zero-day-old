@@ -73,13 +73,10 @@ func reload():
 		if ammunition_inv[i].ammo_amount == 0:
 			DataManager.get_current_inv().delete_item(ammunition_inv[i])
 			ammunition_inv.pop_front()
-			print_debug("i: ", i)
 		i += 1
 		
 	# Para que BulletInfo se actualize
 	emit_signal("reload")
-	
-	print_debug("ammunition_inv: ", ammunition_inv)
 	
 	return true
 	

@@ -40,7 +40,7 @@ rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
 [node name="Mars" type="ParallaxLayer" parent="."]
-motion_scale = Vector2( 1.4, 1.8 )
+motion_scale = Vector2( 1.4, 1 )
 motion_mirroring = Vector2( 740, 0 )
 
 [node name="Mars" type="TextureRect" parent="Mars"]
