@@ -274,8 +274,17 @@ func _stop_handler(delta):
 	
 func _fire_handler():
 	if selected_enemy:
-		# Si tiene primary weapon y esta cerca o si no hay primary ni secondary weapon
-		if gui_primary_weapon and gui_primary_weapon.is_near or (not data.primary_weapon or not data.secondary_weapon):
+#		# Si tiene primary weapon y esta cerca o si no hay primary ni secondary weapon
+#		if gui_primary_weapon and gui_primary_weapon.is_near or (not data.primary_weapon and not data.secondary_weapon):
+#			melee_attack()
+#		else:
+#			distance_attack()
+		
+		# Si tiene primary weapon y esta cerca
+		if gui_primary_weapon and gui_primary_weapon.is_near:
+			melee_attack()
+		# Si no hay arma primaria y el enemigo esta cerca
+		elif not data.primary_weapon and global_position.distance_to(selected_enemy.global_position) < 26:
 			melee_attack()
 		else:
 			distance_attack()
