@@ -90,7 +90,7 @@ func _ready():
 	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
 	# data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
 	
-	if not data.primary_weapon: 
+	if not data.primary_weapon:
 		config_boxing_attack()
 	else:
 		config_primary_weapon()
@@ -278,7 +278,7 @@ func _stop_handler(delta):
 func _fire_handler():
 	if selected_enemy:
 		# Si tiene primary weapon y esta cerca
-		if gui_primary_weapon:
+		if gui_primary_weapon and gui_primary_weapon.is_near:
 			melee_attack()
 		# Si no hay arma primaria y el enemigo esta cerca
 		elif not data.primary_weapon and global_position.distance_to(selected_enemy.global_position) < 26:
@@ -351,7 +351,6 @@ func melee_attack():
 		else:
 			gui_primary_weapon.attack()
 	else:
-		config_boxing_attack()
 		boxing_attack.attack()
 		
 	if gui_secondary_weapon:
@@ -381,7 +380,6 @@ func config_primary_weapon():
 	
 	if $CurrentWeapon/PrimaryWeapon.get_child_count() > 0 and $CurrentWeapon/PrimaryWeapon.get_children()[0] == boxing_attack:
 		$CurrentWeapon/PrimaryWeapon.remove_child(boxing_attack)
-		print_debug("removiendo boxing attack")
 	
 	gui_primary_weapon = Factory.EquipmentFactory.get_primary_weapon(data.primary_weapon)
 	
@@ -573,24 +571,6 @@ func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
 	if boxing_attack: $CurrentWeapon/PrimaryWeapon.remove_child(boxing_attack)
 	gui_primary_weapon.player = self
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
-
-#func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
-#	old_gui_secondary_weapon = gui_secondary_weapon
-#	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(weapon)
-#	gui_secondary_weapon.player = self
-#
-#	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
-#	if old_gui_secondary_weapon:
-#		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
-#
-#	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
-#	gui_secondary_weapon.show_weapon()
-#
-#	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
-#
-#	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
-#
-#	unequip_secondary_weapon(old_gui_secondary_weapon)
 
 func _on_secondary_weapon_reload():
 	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
