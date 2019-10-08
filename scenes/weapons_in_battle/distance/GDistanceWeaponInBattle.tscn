@@ -35,5 +35,9 @@ tracks/1/keys = {
 [node name="GDistanceWeaponInBattle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprite" parent="." index="0"]
+editor/display_folded = true
+scale = Vector2( 1, 1 )
+
 [node name="Anim" parent="." index="1"]
 anims/temp_hide = SubResource( 1 )

@@ -69,7 +69,10 @@ onready var mobile_selected_pos = get_tree().get_nodes_in_group("GameCamera")
 var boxing_attack
 
 var gui_primary_weapon : GMeleeWeaponInBattle
+# Es el arma secundaria actual
 var gui_secondary_weapon : GDistanceWeaponInBattle
+# Es el arma secundaria anterior
+var old_gui_secondary_weapon : GDistanceWeaponInBattle
 
 signal fire(dir)
 signal dead
@@ -375,8 +378,6 @@ func config_primary_weapon():
 	if not data.primary_weapon:
 		print_debug("No encuentra arma primaria: ", data.primary_weapon)
 		return
-		
-	var primary_weaaaaponn = data.primary_weapon
 	
 	if $CurrentWeapon/PrimaryWeapon.get_child_count() > 0 and $CurrentWeapon/PrimaryWeapon.get_children()[0] == boxing_attack:
 		$CurrentWeapon/PrimaryWeapon.remove_child(boxing_attack)
@@ -462,15 +463,16 @@ func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 	data.primary_weapon = melee_item
 
 func equip_secondary_weapon(weapon : TZDDistanceWeapon):
+	# Se emite el evento de _on_secondary_weapon_equiped
 	data.secondary_weapon = weapon
 	can_fire = true
 	gui_secondary_weapon.reload()
 	
-func unequip_secondary_weapon():
-	if gui_secondary_weapon:
-		gui_secondary_weapon.remove_weapon()
-		gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
-
+func unequip_secondary_weapon(_gui_secondary_weapon):
+	if _gui_secondary_weapon:
+		_gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
+		_gui_secondary_weapon.remove_weapon()
+		
 # Cuando el botón de action del hud es pressionado y soltado
 func _on_hud_action_button(is_pressed):
 	action_pressed = is_pressed
@@ -478,10 +480,10 @@ func _on_hud_action_button(is_pressed):
 # Cuando alguna animación de gui_secondary_weapon esta finalizada
 func _on_gui_secondary_weapon_anim_finished(anim_name):
 	if anim_name == "remove":
-		$CurrentWeapon/SecondaryWeapon.remove_child(gui_secondary_weapon)
-		data.secondary_weapon = null
-		gui_secondary_weapon = null
-		can_fire = false
+		$CurrentWeapon/SecondaryWeapon.remove_child(old_gui_secondary_weapon)
+#		data.secondary_weapon = null
+		old_gui_secondary_weapon = null
+#		can_fire = false
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -553,32 +555,39 @@ func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
 
 func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
+	old_gui_secondary_weapon = gui_secondary_weapon
 	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(weapon)
 	gui_secondary_weapon.player = self
+	
+	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
+	if old_gui_secondary_weapon:
+		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
+	
 	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
 	gui_secondary_weapon.show_weapon()
 	
 	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
 	
 	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
+	
+	unequip_secondary_weapon(old_gui_secondary_weapon)
 
 func _on_secondary_weapon_reload():
 	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
 
 # Slot data puede ser un TZDItem o null
 func _on_hud_item_hotbar_selected(slot_data):
-	if not slot_data:
-		unequip_secondary_weapon()
-		return
+#	if not slot_data:
+#		unequip_secondary_weapon()
+#		return
+#	unequip_secondary_weapon(old_gui_secondary_weapon)
 	
 	if slot_data is TZDDistanceWeapon:
 		equip_secondary_weapon(slot_data)
 		return
-	elif slot_data is TZDMeleeWeapon:
+	elif not gui_primary_weapon and slot_data is TZDMeleeWeapon:
 		equip_primary_weapon(slot_data)
 	
-	unequip_secondary_weapon()
-		
 func _on_current_force_updated(force):
 	current_move_dir = force
 	
