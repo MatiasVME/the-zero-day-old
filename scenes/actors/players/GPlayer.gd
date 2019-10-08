@@ -87,8 +87,8 @@ func _ready():
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
-	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped")
-	data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
+	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
+	# data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
 	
 	if not data.primary_weapon: 
 		config_boxing_attack()
@@ -358,7 +358,7 @@ func melee_attack():
 		gui_secondary_weapon.hide_temp_weapon()
 
 func distance_attack():
-	if not gui_secondary_weapon:
+	if not is_instance_valid(gui_secondary_weapon):
 		return
 	
 	gui_secondary_weapon.attack(selected_enemy)
@@ -463,27 +463,47 @@ func equip_primary_weapon(melee_item : TZDMeleeWeapon):
 	data.primary_weapon = melee_item
 
 func equip_secondary_weapon(weapon : TZDDistanceWeapon):
-	# Se emite el evento de _on_secondary_weapon_equiped
 	data.secondary_weapon = weapon
 	can_fire = true
-	gui_secondary_weapon.reload()
+#	gui_secondary_weapon.reload()
+
+	old_gui_secondary_weapon = gui_secondary_weapon
+	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(data.secondary_weapon)
+	gui_secondary_weapon.player = self
+
+	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
+	if is_instance_valid(old_gui_secondary_weapon):
+		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
+
+	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
+	gui_secondary_weapon.show_weapon()
+
+	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
+
+	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
 	
-func unequip_secondary_weapon(_gui_secondary_weapon):
-	if _gui_secondary_weapon:
-		_gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished")
+	if is_instance_valid(old_gui_secondary_weapon) and old_gui_secondary_weapon != gui_secondary_weapon:
+		unequip_secondary_weapon(old_gui_secondary_weapon)
+
+func unequip_secondary_weapon(_gui_secondary_weapon = null):
+	if is_instance_valid(_gui_secondary_weapon):
+		_gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished", [_gui_secondary_weapon])
 		_gui_secondary_weapon.remove_weapon()
+	elif is_instance_valid(gui_secondary_weapon):
+		gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished", [gui_secondary_weapon])
+		gui_secondary_weapon.remove_weapon()
 		
 # Cuando el botón de action del hud es pressionado y soltado
 func _on_hud_action_button(is_pressed):
 	action_pressed = is_pressed
 
-# Cuando alguna animación de gui_secondary_weapon esta finalizada
-func _on_gui_secondary_weapon_anim_finished(anim_name):
+## Cuando alguna animación de gui_secondary_weapon esta finalizada
+func _on_gui_secondary_weapon_anim_finished(anim_name, _gui_secondary_weapon):
 	if anim_name == "remove":
-		$CurrentWeapon/SecondaryWeapon.remove_child(old_gui_secondary_weapon)
+		$CurrentWeapon/SecondaryWeapon.remove_child(_gui_secondary_weapon)
 #		data.secondary_weapon = null
-		old_gui_secondary_weapon = null
-#		can_fire = false
+		_gui_secondary_weapon.queue_free()
+		#can_fire = false
 
 func _on_dead():
 	is_mark_to_dead = true
@@ -554,39 +574,36 @@ func _on_primary_weapon_equiped(weapon : TZDMeleeWeapon):
 	gui_primary_weapon.player = self
 	$CurrentWeapon/PrimaryWeapon.add_child(gui_primary_weapon)
 
-func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
-	old_gui_secondary_weapon = gui_secondary_weapon
-	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(weapon)
-	gui_secondary_weapon.player = self
-	
-	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
-	if old_gui_secondary_weapon:
-		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
-	
-	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
-	gui_secondary_weapon.show_weapon()
-	
-	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
-	
-	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
-	
-	unequip_secondary_weapon(old_gui_secondary_weapon)
+#func _on_secondary_weapon_equiped(weapon : TZDDistanceWeapon):
+#	old_gui_secondary_weapon = gui_secondary_weapon
+#	gui_secondary_weapon = Factory.EquipmentFactory.get_secondary_weapon(weapon)
+#	gui_secondary_weapon.player = self
+#
+#	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
+#	if old_gui_secondary_weapon:
+#		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
+#
+#	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)
+#	gui_secondary_weapon.show_weapon()
+#
+#	hud.get_node("BulletInfo").set_current_equip(data.secondary_weapon)
+#
+#	gui_secondary_weapon.connect("reload", self, "_on_secondary_weapon_reload")
+#
+#	unequip_secondary_weapon(old_gui_secondary_weapon)
 
 func _on_secondary_weapon_reload():
 	hud.get_node("BulletInfo").update_bullet_info(data.secondary_weapon)
 
 # Slot data puede ser un TZDItem o null
 func _on_hud_item_hotbar_selected(slot_data):
-#	if not slot_data:
-#		unequip_secondary_weapon()
-#		return
-#	unequip_secondary_weapon(old_gui_secondary_weapon)
-	
 	if slot_data is TZDDistanceWeapon:
 		equip_secondary_weapon(slot_data)
 		return
 	elif not gui_primary_weapon and slot_data is TZDMeleeWeapon:
 		equip_primary_weapon(slot_data)
+	else:
+		unequip_secondary_weapon()
 	
 func _on_current_force_updated(force):
 	current_move_dir = force

@@ -263,7 +263,7 @@ func set_hp(_hp):
 		emit_signal("full_hp")
 	elif hp <= 0:
 		hp = 0
-		emit_signal("dead") # Es necesario?
+		emit_signal("dead")
 	
 func get_hp():
 	return hp

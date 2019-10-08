@@ -60,6 +60,6 @@ func remove_weapon():
 	
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "remove":
-		weapon = null
-		$Sprite.texture = null
+#		weapon = null
+#		$Sprite.texture = null
 		emit_signal("weapon_removed")
