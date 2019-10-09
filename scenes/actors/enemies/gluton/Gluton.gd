@@ -230,8 +230,8 @@ func drop_item():
 		else:
 			normal_ammo = Factory.ItemInWorldFactory.create_normal_ammo(16)
 		
-		get_parent().add_child(normal_ammo)
 		normal_ammo.position = global_position + item_pos
+		get_parent().add_child(normal_ammo)
 	else:
 		var weapon = Factory.ItemInWorldFactory.create_rand_distance_weapon(data.level, 1)
 		get_parent().add_child(weapon)

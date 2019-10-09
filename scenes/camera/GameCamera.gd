@@ -22,10 +22,11 @@ func _physics_process(delta):
 	input_change_focus = Input.is_action_just_pressed("change_focus")
 	
 	if input_change_focus:
+		print_debug("change_focus")
 		change_focus()
 		
 	if not is_instance_valid(following):
-		print("following no es valido: ", following)
+		print_debug("following no es valido: ", following)
 		return
 
 	if mode == Mode.FOLLOW:
@@ -44,8 +45,9 @@ func _physics_process(delta):
 					$MobileSelected.global_position = objective_pos
 					global_position = following.global_position + (((following.global_position + objective_pos) / 2) - following.global_position).clamped(clamp_vector)
 				else:
-#					print("following.selected_enemy no es valida")
-					pass
+					following.selected_num = -1
+#					print_debug("following.selected_enemy no es valida")
+#					pass
 		else:
 			mode = Mode.FREE
 	elif mode == Mode.FREE:
@@ -73,7 +75,8 @@ func set_mode(_mode):
 
 func change_focus():
 	if not is_instance_valid(following):
-		print("following no es una instancia valida")
+		print_debug("following no es una instancia valida")
+		$MobileSelected.hide()
 		return
 		
 	following.can_move = false
