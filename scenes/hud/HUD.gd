@@ -6,6 +6,8 @@ extends Node
 
 var hud
 
+# TODO Preferir preload antes de load
+
 func _ready():
 	if OS.has_touchscreen_ui_hint() or Main.force_mobile_mode:
 		hud = load("res://scenes/hud/HUDMobile.tscn").instance()

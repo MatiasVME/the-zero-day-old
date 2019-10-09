@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/tiles/tilemaps/GTilemap.gd" type="Script" id=1]
-[ext_resource path="res://scenes/tiles/tilesets/navigable_tiles.tres" type="TileSet" id=2]
-[ext_resource path="res://scenes/tiles/tilesets/terrain.tres" type="TileSet" id=3]
-[ext_resource path="res://scenes/tiles/tilesets/structures.tres" type="TileSet" id=4]
-[ext_resource path="res://scenes/tiles/tilesets/eviroments.tres" type="TileSet" id=5]
+[ext_resource path="res://scenes/tiles/tilesets/terrain.tres" type="TileSet" id=2]
+[ext_resource path="res://scenes/tiles/tilesets/structures.tres" type="TileSet" id=3]
 
 [node name="GTilemap" type="Node" groups=[
 "Map",
@@ -15,8 +13,8 @@ script = ExtResource( 1 )
 "Navigation",
 ]]
 
-[node name="NavigationMap" type="TileMap" parent="Navigation" groups=[
-"NotNavigable",
+[node name="Terrain" type="TileMap" parent="Navigation" groups=[
+"Terrain",
 ]]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
@@ -25,28 +23,10 @@ format = 1
 
 [node name="MapLayers" type="Node" parent="."]
 
-[node name="Terrain" type="TileMap" parent="MapLayers" groups=[
-"Terrain",
-]]
-tile_set = ExtResource( 3 )
-cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 1
-format = 1
-
 [node name="Structures" type="TileMap" parent="MapLayers" groups=[
 "Structures",
 ]]
-tile_set = ExtResource( 4 )
-cell_size = Vector2( 16, 16 )
-cell_quadrant_size = 1
-collision_layer = 3
-collision_mask = 3
-format = 1
-
-[node name="Enviroment" type="TileMap" parent="MapLayers" groups=[
-"Enviroment",
-]]
-tile_set = ExtResource( 5 )
+tile_set = ExtResource( 3 )
 cell_size = Vector2( 16, 16 )
 cell_quadrant_size = 1
 collision_layer = 3

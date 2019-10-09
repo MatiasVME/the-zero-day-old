@@ -546,7 +546,7 @@ func _on_InteractArea_body_entered(body):
 
 func _on_DetectArea_body_entered(body):
 	if body is GActor:
-		if body == self:
+		if body == self or body is GEnviroment:
 			return
 		
 		selectables.append(body)
@@ -556,7 +556,7 @@ func _on_DetectArea_body_entered(body):
 	
 func _on_DetectArea_body_exited(body):
 	if body is GActor:
-		if body == self:
+		if body == self or body is GEnviroment:
 			return
 		
 		if selectables.has(body) or body.has_meta("structure_owner"):

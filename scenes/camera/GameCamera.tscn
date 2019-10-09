@@ -37,6 +37,7 @@ script = ExtResource( 1 )
 anims/fire = SubResource( 1 )
 
 [node name="MobileSelected" type="Sprite" parent="."]
+editor/display_folded = true
 visible = false
 z_index = 10
 texture = ExtResource( 2 )

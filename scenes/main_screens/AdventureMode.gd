@@ -2,4 +2,4 @@ extends Node2D
 
 func _on_Map1_pressed():
 	# Temp
-	get_tree().change_scene("res://tests/TGluton.tscn")
+	get_tree().change_scene("res://tests/TEnviroment.tscn")

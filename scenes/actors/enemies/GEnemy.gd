@@ -54,8 +54,6 @@ func damage(amount):
 	if not can_damage:
 		return
 	
-	.damage(amount)
-	
 	if $Anim.has_animation("damage") and not $Anim.is_playing():
 		$Anim.play("damage")
 	
