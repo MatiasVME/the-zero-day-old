@@ -88,7 +88,6 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	data.connect("remove_hp", self, "_on_remove_hp")
 	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
-	# data.connect("secondary_weapon_equiped", self, "_on_secondary_weapon_equiped")
 	
 	if not data.primary_weapon:
 		config_boxing_attack()
@@ -145,6 +144,7 @@ func do_dash_if_can(delta):
 				return
 			else:
 				dash_state = DashState.DOING
+
 		DashState.DOING:
 			use_stamina(delta)
 			# Si el tween DoingDash no se esta ejecutando
@@ -193,13 +193,16 @@ func do_special_dash_if_can(delta):
 					special_dash_time_accum += delta
 					
 					if $Sprites/Head.flip_h:
-						$Sprites/Head.rotation_degrees -= delta * 250 * special_dash_time_accum
+						$Sprites/Head.rotation_degrees -= clamp(delta * 250 * special_dash_time_accum, 10, 20)
 					else:
-						$Sprites/Head.rotation_degrees += delta * 250 * special_dash_time_accum
+						$Sprites/Head.rotation_degrees += clamp(delta * 250 * special_dash_time_accum, 10, 20)
 					
 					use_stamina(delta, 0.5)
 				else:
-					$Sprites/Head.rotation_degrees += 30
+					if $Sprites/Head.flip_h:
+						$Sprites/Head.rotation_degrees -= clamp(250 * delta * special_dash_time_accum, 10, 20)
+					else:
+						$Sprites/Head.rotation_degrees += clamp(250 * delta * special_dash_time_accum, 10, 20)
 				
 				is_special_dash = true
 				special_dash_state = SpecialDashState.DOING
@@ -214,7 +217,7 @@ func do_special_dash_if_can(delta):
 						Vector2(2, 2),
 						0.5,
 						Tween.TRANS_LINEAR,
-						Tween.EASE_IN
+						Tween.EASE_OUT
 					)
 					$Sprites/SpecialDash.start()
 			return
@@ -233,7 +236,7 @@ func do_special_dash_if_can(delta):
 			if special_dash_time_accum <= 0:
 				special_dash_state = SpecialDashState.END
 			else:
-				special_dash_time_accum -= delta * 3
+				special_dash_time_accum -= delta * 8
 				return
 		SpecialDashState.END: 
 			is_special_dash = false
@@ -251,7 +254,7 @@ func do_special_dash_if_can(delta):
 				"scale",
 				Vector2(2, 2),
 				Vector2(1, 1),
-				0.02,
+				0.05,
 				Tween.TRANS_LINEAR,
 				Tween.EASE_OUT
 			)
