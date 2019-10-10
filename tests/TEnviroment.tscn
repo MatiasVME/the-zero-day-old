@@ -24,27 +24,43 @@ stream = ExtResource( 5 )
 
 [node name="BigTree" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 580, 340 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree2" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 500, 410 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree3" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 694, 386 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree4" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 780, 320 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree5" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 874, 434 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree6" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 540, 724 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree7" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 594, 780 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="BigTree8" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 440, 590 )
+collision_layer = 1
+collision_mask = 1
 
 [node name="GlutonSpawn" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 800, 720 )

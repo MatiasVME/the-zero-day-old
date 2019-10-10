@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/StageFull-Start.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=4]
+[ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=5]
+
+[node name="StageFull-Start" type="Node"]
+script = ExtResource( 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 2 )]
+
+[node name="HUD" parent="." instance=ExtResource( 3 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="." groups=[
+"Music",
+]]
+stream = ExtResource( 4 )
+autoplay = true
+bus = "Music"
+
+[node name="Map1" parent="." instance=ExtResource( 5 )]
+
+[node name="YSort" type="YSort" parent="."]
