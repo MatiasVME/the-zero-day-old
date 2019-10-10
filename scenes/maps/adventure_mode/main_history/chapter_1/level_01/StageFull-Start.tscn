@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/StageFull-Start.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/actors/enviroment/trees/BigTree/BigTree.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/enviroment/trees/SmallTree/SmallTree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/actors/enviroment/trees/MediumTree/MediumTree.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=9]
 
 [node name="StageFull-Start" type="Node"]
 script = ExtResource( 1 )
@@ -23,3 +27,33 @@ bus = "Music"
 [node name="Map1" parent="." instance=ExtResource( 5 )]
 
 [node name="YSort" type="YSort" parent="."]
+
+[node name="BigTree" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 560, 210 )
+
+[node name="SmallTree" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 602, 300 )
+
+[node name="SmallTree2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 450, 580 )
+
+[node name="BigTree2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 600, 460 )
+
+[node name="MediumTree" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 660, 400 )
+
+[node name="MediumTree2" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 770, 610 )
+
+[node name="MediumTree3" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 510, 460 )
+
+[node name="MediumTree4" parent="YSort" instance=ExtResource( 8 )]
+position = Vector2( 780, 270 )
+
+[node name="GlutonSpawn" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 730, 270 )
+
+[node name="GlutonSpawn2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 780, 320 )
