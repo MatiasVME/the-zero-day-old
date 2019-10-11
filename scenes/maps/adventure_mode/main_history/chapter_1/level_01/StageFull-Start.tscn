@@ -1,14 +1,16 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/StageFull-Start.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=3]
 [ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=4]
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/enviroment/trees/BigTree/BigTree.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/actors/enviroment/trees/SmallTree/SmallTree.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/actors/enviroment/trees/MediumTree/MediumTree.tscn" type="PackedScene" id=8]
-[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/structures/objective/Objective.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/enviroment/trees/BigTree/BigTree.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/actors/enviroment/trees/SmallTree/SmallTree.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/actors/enviroment/trees/MediumTree/MediumTree.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=11]
 
 [node name="StageFull-Start" type="Node"]
 script = ExtResource( 1 )
@@ -26,34 +28,73 @@ bus = "Music"
 
 [node name="Map1" parent="." instance=ExtResource( 5 )]
 
+[node name="Objective" parent="." instance=ExtResource( 6 )]
+position = Vector2( 520, 268 )
+
+[node name="Objective2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 752, 304 )
+
+[node name="Objective3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 118, 666 )
+
 [node name="YSort" type="YSort" parent="."]
 
-[node name="BigTree" parent="YSort" instance=ExtResource( 6 )]
+[node name="BigTree" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 560, 210 )
 
-[node name="SmallTree" parent="YSort" instance=ExtResource( 7 )]
+[node name="SmallTree" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 602, 300 )
 
-[node name="SmallTree2" parent="YSort" instance=ExtResource( 7 )]
+[node name="SmallTree2" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 450, 580 )
 
-[node name="BigTree2" parent="YSort" instance=ExtResource( 6 )]
+[node name="BigTree2" parent="YSort" instance=ExtResource( 7 )]
 position = Vector2( 600, 460 )
 
-[node name="MediumTree" parent="YSort" instance=ExtResource( 8 )]
+[node name="MediumTree" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 660, 400 )
 
-[node name="MediumTree2" parent="YSort" instance=ExtResource( 8 )]
+[node name="MediumTree2" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 770, 610 )
 
-[node name="MediumTree3" parent="YSort" instance=ExtResource( 8 )]
+[node name="MediumTree3" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 510, 460 )
 
-[node name="MediumTree4" parent="YSort" instance=ExtResource( 8 )]
+[node name="MediumTree4" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 780, 270 )
 
-[node name="GlutonSpawn" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 730, 270 )
+[node name="GlutonSpawn" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 730, 280 )
 
-[node name="GlutonSpawn2" parent="YSort" instance=ExtResource( 9 )]
-position = Vector2( 780, 320 )
+[node name="GlutonSpawn2" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 750, 274 )
+
+[node name="GlutonSpawn3" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 730, 660 )
+
+[node name="GlutonSpawn4" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 740, 600 )
+
+[node name="GlutonSpawn5" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 198, 602 )
+
+[node name="GlutonSpawn6" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 254, 590 )
+
+[node name="GlutonSpawn7" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 226, 538 )
+
+[node name="GlutonSpawn8" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 284, 518 )
+
+[node name="GlutonSpawn9" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 310, 584 )
+
+[node name="GlutonSpawn10" parent="YSort" instance=ExtResource( 10 )]
+position = Vector2( 220, 486 )
+
+[node name="LightTurret" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 450, 530 )
+
+[node name="LightTurret2" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 650, 454 )

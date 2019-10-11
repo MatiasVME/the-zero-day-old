@@ -29,7 +29,9 @@ func spawn_gluton():
 	instance.global_position = $Pos.global_position
 	
 func _on_TouchForSpawn_body_entered(body):
-	if not only_player and body is GActor:
+	if not only_player and body is GEnemy:
+		$Delay.start()
+	elif not only_player and body is GPlayer:
 		$Delay.start()
 	elif only_player and body is GPlayer:
 		$Delay.start()

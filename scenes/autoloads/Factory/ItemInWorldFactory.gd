@@ -18,7 +18,7 @@ static func create_rand_melee_weapon(enemy_level := 1, enemy_type := 1, player_l
 	
 	return weapon_in_world
 
-static func create_normal_ammo(amount := 16):
+static func create_normal_ammo(amount := 64):
 	var ammo = Factory.ItemFactory.create_normal_ammo(amount)
 	var ammo_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
 	
@@ -26,7 +26,7 @@ static func create_normal_ammo(amount := 16):
 	
 	return ammo_in_world
 	
-static func create_plasma_ammo(amount := 8):
+static func create_plasma_ammo(amount := 48):
 	var ammo = Factory.ItemFactory.create_plasma_ammo(amount)
 	var ammo_in_world = load("res://scenes/items/ItemInWorld.tscn").instance()
 	

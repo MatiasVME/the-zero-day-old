@@ -50,7 +50,7 @@ func _on_win_adventure():
 	
 	var current_player = PlayerManager.get_current_player()
 	current_player.can_move = false
-	current_player.get_node("Anim").play("DanceOfVictory")
+#	current_player.get_node("Anim").play("DanceOfVictory")
 	
 #	$GameMenu/Inventory.disabled = true
 

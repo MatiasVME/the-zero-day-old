@@ -6,7 +6,7 @@ const DEBUG := true
 const RES_X := 420
 const RES_Y := 240
 
-var music_enable := true
+var music_enable := false
 var sound_enable := true
 
 var force_mobile_mode := true
@@ -47,7 +47,7 @@ func prepare_to_exit():
 	DataManager.save_all_data()
 	PlayerManager.clear_players()
 	get_tree().paused = false
-
+	
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST and PlayerManager.players.size() != 0:
 		DataManager.get_current_player_instance().restore_hp()

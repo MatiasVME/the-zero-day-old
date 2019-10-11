@@ -116,6 +116,7 @@ position = Vector2( 0, 2 )
 shape = SubResource( 4 )
 
 [node name="CurrentWeapon" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="PrimaryWeapon" type="Node2D" parent="CurrentWeapon"]
 
