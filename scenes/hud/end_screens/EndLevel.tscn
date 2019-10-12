@@ -29,53 +29,33 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Stats" type="Control" parent="."]
-visible = false
-margin_left = 100.0
-margin_top = 50.0
-margin_right = 256.0
-margin_bottom = 94.0
-
 [node name="Next" type="Button" parent="."]
-visible = false
-margin_left = 250.0
-margin_top = 144.0
-margin_right = 343.0
-margin_bottom = 182.0
+margin_left = 230.0
+margin_top = 191.974
+margin_right = 323.0
+margin_bottom = 229.974
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
 text = "Next"
 
-[node name="Resume" type="Button" parent="."]
-margin_left = 10.0
-margin_top = 190.0
-margin_right = 103.0
-margin_bottom = 228.0
+[node name="Restart" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 191.974
+margin_right = 193.0
+margin_bottom = 229.974
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "Resume"
-
-[node name="Base" type="Button" parent="."]
-visible = false
-margin_left = 10.0
-margin_top = 144.0
-margin_right = 104.0
-margin_bottom = 182.0
-focus_mode = 0
-theme = ExtResource( 4 )
-shortcut_in_tooltip = false
-enabled_focus_mode = 0
-text = "Base"
+text = "Restart"
 
 [node name="Menu" type="Button" parent="."]
-margin_left = 316.0
-margin_top = 190.0
-margin_right = 409.0
-margin_bottom = 228.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 60.0
+margin_bottom = 48.0
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
@@ -90,7 +70,7 @@ position = Vector2( 210, 120 )
 ]]
 stream = ExtResource( 5 )
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
-[connection signal="pressed" from="Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
 
 [editable path="CurtainBackground"]

@@ -1,33 +1,65 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/main_screens/AdventureMode.gd" type="Script" id=1]
-[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://scenes/main_screens/reusable_controls/ButtonNinePatch.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down.png" type="Texture" id=4]
-[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_pressed.png" type="Texture" id=5]
-[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_hover.png" type="Texture" id=6]
+[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/main_screens/reusable_controls/ButtonNinePatch.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_pressed.png" type="Texture" id=6]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_hover.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-font_data = ExtResource( 2 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Start"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.152941, 0.152941, 0.211765, 1 ), Color( 0.152941, 0.152941, 0.211765, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 2 ]
+}
 
 [node name="AventureMode" type="Node2D"]
 position = Vector2( 210, 120 )
 script = ExtResource( 1 )
 
+[node name="GigantStar" parent="." instance=ExtResource( 2 )]
+
 [node name="TitleBackground" type="ColorRect" parent="."]
-editor/display_folded = true
 margin_left = -210.0
 margin_top = -120.0
-margin_bottom = 120.0
+margin_right = 210.0
+margin_bottom = -90.0
 color = Color( 0, 0, 0, 0.196078 )
 
 [node name="Title" type="Label" parent="TitleBackground"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_bottom = -10.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "ADVENTURE MODE"
@@ -36,29 +68,29 @@ valign = 1
 autowrap = true
 
 [node name="Chapter" type="Label" parent="."]
-margin_top = -120.0
-margin_right = 210.0
-margin_bottom = -70.0
+margin_left = -190.0
+margin_top = -90.0
+margin_right = 196.0
+margin_bottom = -60.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Chapter 1"
-align = 1
 valign = 1
 autowrap = true
 
 [node name="Maps" type="GridContainer" parent="."]
-margin_left = 10.0
-margin_top = -60.0
-margin_right = 200.0
-margin_bottom = 60.0
+margin_left = -160.0
+margin_top = -50.0
+margin_right = 162.0
+margin_bottom = 76.0
 columns = 2
 
-[node name="Map1" parent="Maps" instance=ExtResource( 3 )]
+[node name="Map1" parent="Maps" instance=ExtResource( 4 )]
 editor/display_folded = true
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 186.0
-margin_bottom = 116.0
+margin_right = 318.0
+margin_bottom = 122.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -73,14 +105,14 @@ text = "1"
 align = 1
 valign = 1
 
-[node name="Map2" parent="Maps" instance=ExtResource( 3 )]
+[node name="Map2" parent="Maps" instance=ExtResource( 4 )]
 editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 97.0
-margin_right = 190.0
-margin_bottom = 58.0
+margin_left = 202.0
+margin_right = 400.0
+margin_bottom = 106.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -95,14 +127,14 @@ text = "2"
 align = 1
 valign = 1
 
-[node name="Map3" parent="Maps" instance=ExtResource( 3 )]
+[node name="Map3" parent="Maps" instance=ExtResource( 4 )]
 editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_top = 62.0
-margin_right = 93.0
-margin_bottom = 120.0
+margin_top = 57.0
+margin_right = 198.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -117,15 +149,15 @@ text = "3"
 align = 1
 valign = 1
 
-[node name="Map4" parent="Maps" instance=ExtResource( 3 )]
+[node name="Map4" parent="Maps" instance=ExtResource( 4 )]
 editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 97.0
-margin_top = 62.0
-margin_right = 190.0
-margin_bottom = 120.0
+margin_left = 202.0
+margin_top = 57.0
+margin_right = 400.0
+margin_bottom = 110.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -141,11 +173,22 @@ align = 1
 valign = 1
 
 [node name="Back" type="TextureButton" parent="."]
-margin_left = -120.0
+margin_left = -160.0
 margin_top = 80.0
-margin_right = -88.0
+margin_right = -128.0
 margin_bottom = 112.0
-texture_normal = ExtResource( 4 )
-texture_pressed = ExtResource( 5 )
-texture_hover = ExtResource( 6 )
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
+texture_hover = ExtResource( 7 )
+
+[node name="Curtain" type="ColorRect" parent="."]
+margin_left = -210.0
+margin_top = -120.0
+margin_right = 210.0
+margin_bottom = 120.0
+color = Color( 0.152941, 0.152941, 0.211765, 1 )
+
+[node name="Anim" type="AnimationPlayer" parent="Curtain"]
+autoplay = "Start"
+anims/Start = SubResource( 3 )
 [connection signal="pressed" from="Maps/Map1" to="." method="_on_Map1_pressed"]

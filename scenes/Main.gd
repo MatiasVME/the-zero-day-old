@@ -27,7 +27,8 @@ func _on_Credits_pressed():
 	$Credits._resume()
 
 func _on_Play_pressed():
-	$Camera.global_position = $AdventureMode.global_position
+#	$Camera.global_position = $AdventureMode.global_position
+	$Camera/Anim.play("Enter")
 
 func _on_Config_pressed():
 	var option_pos = $Options.global_position
@@ -42,3 +43,7 @@ func _on_Version_pressed():
 	version_pos.y = version_pos.y + Main.RES_Y / 2
 	
 	$Camera.global_position = version_pos
+
+func _on_Anim_animation_finished(anim_name):
+	if anim_name == "Enter":
+		get_tree().change_scene("res://scenes/main_screens/AdventureMode.tscn")

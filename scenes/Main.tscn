@@ -2,26 +2,77 @@
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/backgrounds/menu_backgrounds/Mars.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/main_screens/AdventureMode.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/main_screens/Options.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/main_screens/VersionNotes.tscn" type="PackedScene" id=6]
-[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=7]
-[ext_resource path="res://scenes/buttons/main_menu_button/bg-buttons.png" type="Texture" id=8]
-[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-normal.png" type="Texture" id=9]
-[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-pressed.png" type="Texture" id=10]
-[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-hover.png" type="Texture" id=11]
-[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-disabled.png" type="Texture" id=12]
-[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-bitmask.png" type="BitMap" id=13]
-[ext_resource path="res://scenes/buttons/main_menu_button/play.png" type="Texture" id=14]
-[ext_resource path="res://scenes/buttons/main_menu_button/config.png" type="Texture" id=15]
-[ext_resource path="res://scenes/buttons/main_menu_button/credits.png" type="Texture" id=16]
-[ext_resource path="res://scenes/buttons/main_menu_button/version.png" type="Texture" id=17]
-[ext_resource path="res://sounds/music/02 - BWV 1007 - Prelude.ogg" type="AudioStream" id=18]
-[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=19]
+[ext_resource path="res://scenes/main_screens/Credits.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/main_screens/Options.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/main_screens/VersionNotes.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/i_pixel_u/I-pixel-u.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scenes/buttons/main_menu_button/bg-buttons.png" type="Texture" id=7]
+[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-pressed.png" type="Texture" id=9]
+[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-hover.png" type="Texture" id=10]
+[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-disabled.png" type="Texture" id=11]
+[ext_resource path="res://scenes/buttons/main_menu_button/menu_button-bitmask.png" type="BitMap" id=12]
+[ext_resource path="res://scenes/buttons/main_menu_button/play.png" type="Texture" id=13]
+[ext_resource path="res://scenes/buttons/main_menu_button/config.png" type="Texture" id=14]
+[ext_resource path="res://scenes/buttons/main_menu_button/credits.png" type="Texture" id=15]
+[ext_resource path="res://scenes/buttons/main_menu_button/version.png" type="Texture" id=16]
+[ext_resource path="res://sounds/music/02 - BWV 1007 - Prelude.ogg" type="AudioStream" id=17]
+[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=18]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Enter"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.25, 0.25 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 2, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Curtain:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0.152941, 0.152941, 0.211765, 0 ), Color( 0.152941, 0.152941, 0.211765, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Curtain:mouse_filter")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 2, 0, 0 ]
+}
 
 [sub_resource type="DynamicFont" id=1]
-font_data = ExtResource( 7 )
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Node2D"]
 position = Vector2( 210, 120 )
@@ -30,6 +81,7 @@ script = ExtResource( 1 )
 [node name="Mars" parent="." instance=ExtResource( 2 )]
 
 [node name="Camera" type="Camera2D" parent="."]
+rotating = true
 current = true
 smoothing_enabled = true
 drag_margin_left = 0.0
@@ -37,19 +89,18 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
-[node name="AdventureMode" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
-position = Vector2( 0, -240 )
+[node name="Anim" type="AnimationPlayer" parent="Camera"]
+anims/Enter = SubResource( 2 )
 
-[node name="Credits" parent="." instance=ExtResource( 4 )]
+[node name="Credits" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( -210, 119.951 )
 
-[node name="Options" parent="." instance=ExtResource( 5 )]
+[node name="Options" parent="." instance=ExtResource( 4 )]
 editor/display_folded = true
 position = Vector2( 210, -120.049 )
 
-[node name="VersionNotes" parent="." instance=ExtResource( 6 )]
+[node name="VersionNotes" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( -630, -120 )
 
@@ -70,7 +121,7 @@ autowrap = true
 
 [node name="BackgroundButtons" type="Sprite" parent="."]
 editor/display_folded = true
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="Play" type="TextureButton" parent="BackgroundButtons"]
 editor/display_folded = true
@@ -78,15 +129,15 @@ margin_left = -32.0
 margin_top = -65.0
 margin_right = 32.0
 margin_bottom = -1.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
-texture_click_mask = ExtResource( 13 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 11 )
+texture_click_mask = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="BackgroundButtons/Play"]
 position = Vector2( 32, 32 )
-texture = ExtResource( 14 )
+texture = ExtResource( 13 )
 
 [node name="Config" type="TextureButton" parent="BackgroundButtons"]
 editor/display_folded = true
@@ -94,15 +145,15 @@ margin_left = 1.0
 margin_top = -32.0
 margin_right = 65.0
 margin_bottom = 32.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
-texture_click_mask = ExtResource( 13 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 11 )
+texture_click_mask = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="BackgroundButtons/Config"]
 position = Vector2( 32, 32 )
-texture = ExtResource( 15 )
+texture = ExtResource( 14 )
 
 [node name="Credits" type="TextureButton" parent="BackgroundButtons"]
 editor/display_folded = true
@@ -110,15 +161,15 @@ margin_left = -32.0
 margin_top = 1.0
 margin_right = 32.0
 margin_bottom = 65.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
-texture_click_mask = ExtResource( 13 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 11 )
+texture_click_mask = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="BackgroundButtons/Credits"]
 position = Vector2( 32, 32 )
-texture = ExtResource( 16 )
+texture = ExtResource( 15 )
 
 [node name="Version" type="TextureButton" parent="BackgroundButtons"]
 editor/display_folded = true
@@ -126,24 +177,35 @@ margin_left = -65.0
 margin_top = -32.0
 margin_right = -1.0
 margin_bottom = 32.0
-texture_normal = ExtResource( 9 )
-texture_pressed = ExtResource( 10 )
-texture_hover = ExtResource( 11 )
-texture_disabled = ExtResource( 12 )
-texture_click_mask = ExtResource( 13 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 10 )
+texture_disabled = ExtResource( 11 )
+texture_click_mask = ExtResource( 12 )
 
 [node name="Sprite" type="Sprite" parent="BackgroundButtons/Version"]
 position = Vector2( 32, 32 )
-texture = ExtResource( 17 )
+texture = ExtResource( 16 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 18 )
+stream = ExtResource( 17 )
 autoplay = true
 bus = "Music"
 
-[node name="Splash" parent="." instance=ExtResource( 19 )]
+[node name="Splash" parent="." instance=ExtResource( 18 )]
 position = Vector2( -30, 0 )
-[connection signal="pressed" from="AdventureMode/Back" to="." method="_on_Back_pressed"]
+
+[node name="Curtain" type="ColorRect" parent="."]
+margin_left = -350.0
+margin_top = -238.0
+margin_right = 340.0
+margin_bottom = 240.0
+mouse_filter = 2
+color = Color( 0.152941, 0.152941, 0.211765, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+[connection signal="animation_finished" from="Camera/Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
 [connection signal="pressed" from="Options/DeleteData" to="." method="_on_DeleteData_pressed"]
 [connection signal="pressed" from="Options/Back" to="." method="_on_Back_pressed"]
@@ -152,8 +214,6 @@ position = Vector2( -30, 0 )
 [connection signal="pressed" from="BackgroundButtons/Config" to="." method="_on_Config_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Version" to="." method="_on_Version_pressed"]
-
-[editable path="AdventureMode"]
 
 [editable path="Credits"]
 
