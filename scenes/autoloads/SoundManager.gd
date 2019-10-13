@@ -41,3 +41,4 @@ func play(sound):
 			$Reload1.play()
 		Sound.CONSUME_ITEM_1:
 			$ConsumeItem1.play()
+	

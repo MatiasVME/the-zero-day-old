@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	if Main.music_enable: $Music.play()
+	MusicManager.play(MusicManager.Music.THE_EMPIRE)
 	
 	var player = PlayerManager.init_player(0)
 	player.global_position = Vector2(420, 300)

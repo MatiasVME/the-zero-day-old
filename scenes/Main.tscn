@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/backgrounds/menu_backgrounds/Mars.tscn" type="PackedScene" id=2]
@@ -16,10 +16,9 @@
 [ext_resource path="res://scenes/buttons/main_menu_button/config.png" type="Texture" id=14]
 [ext_resource path="res://scenes/buttons/main_menu_button/credits.png" type="Texture" id=15]
 [ext_resource path="res://scenes/buttons/main_menu_button/version.png" type="Texture" id=16]
-[ext_resource path="res://sounds/music/02 - BWV 1007 - Prelude.ogg" type="AudioStream" id=17]
-[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=18]
+[ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=17]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Enter"
 length = 0.4
 tracks/0/type = "value"
@@ -71,7 +70,7 @@ tracks/3/keys = {
 "values": [ 2, 0, 0 ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Node2D"]
@@ -90,7 +89,7 @@ drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
 [node name="Anim" type="AnimationPlayer" parent="Camera"]
-anims/Enter = SubResource( 2 )
+anims/Enter = SubResource( 1 )
 
 [node name="Credits" parent="." instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -112,7 +111,7 @@ margin_left = 130.0
 margin_top = 100.0
 margin_right = 210.0
 margin_bottom = 120.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "v0.0.0"
 align = 2
@@ -187,12 +186,7 @@ texture_click_mask = ExtResource( 12 )
 position = Vector2( 32, 32 )
 texture = ExtResource( 16 )
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 17 )
-autoplay = true
-bus = "Music"
-
-[node name="Splash" parent="." instance=ExtResource( 18 )]
+[node name="Splash" parent="." instance=ExtResource( 17 )]
 position = Vector2( -30, 0 )
 
 [node name="Curtain" type="ColorRect" parent="."]

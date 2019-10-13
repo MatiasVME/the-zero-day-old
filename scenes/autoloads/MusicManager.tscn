@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/autoloads/MusicManager.gd" type="Script" id=1]
+[ext_resource path="res://sounds/music/02 - BWV 1007 - Prelude.ogg" type="AudioStream" id=2]
+[ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/music/17 - Victory.ogg" type="AudioStream" id=5]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource( 1 )
+
+[node name="Prelude" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="RebelsBe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
+[node name="TheEmpire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+
+[node name="Victory" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
