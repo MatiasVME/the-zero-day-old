@@ -26,6 +26,9 @@ var collision_count := 0
 
 var bullet_owner : GActor
 
+var common_bullet_collision = preload("res://scenes/bullet_collision/common/CommonBulletCollision.tscn")
+var ot_bullet_collision = true
+
 func _ready():
 	$Sprite.playing = true
 	
@@ -40,12 +43,23 @@ func _physics_process(delta):
 			collision = get_slide_collision(i)
 			if collision.collider.is_in_group("Structures") or collision.collider.is_in_group("Enviroment"):
 				dead()
+			elif collision.collider.is_in_group("Bullet"):
+				bullet_collision()
+				dead()
 	
 func dead():
 	if not is_mark_to_dead:
 		is_mark_to_dead = true
 		$HitWall.play()
 		$Anim.play("dead")
+
+func bullet_collision():
+	if ot_bullet_collision:
+		ot_bullet_collision = false
+		
+		var explosion = common_bullet_collision.instance()
+		explosion.global_position = global_position
+		get_parent().add_child(explosion)
 
 func _on_TimeToDead_timeout():
 	if not is_mark_to_dead:

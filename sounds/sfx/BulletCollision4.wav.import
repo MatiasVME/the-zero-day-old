@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BulletCollision4.wav-f404171361ded3f0c57492d4ca8616fa.sample"
+
+[deps]
+
+source_file="res://sounds/sfx/BulletCollision4.wav"
+dest_files=[ "res://.import/BulletCollision4.wav-f404171361ded3f0c57492d4ca8616fa.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0

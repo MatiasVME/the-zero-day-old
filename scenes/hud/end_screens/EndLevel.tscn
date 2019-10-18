@@ -1,55 +1,83 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/hud/end_screens/EndLevel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/backgrounds/CurtainBackground.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/hud/end_screens/MoneyDisplay/MoneyDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/i_pixel_u/IPixelIU-32px.tres" type="DynamicFont" id=3]
 [ext_resource path="res://themes/ph_theme.tres" type="Theme" id=4]
-[ext_resource path="res://sounds/music/17 - Victory.ogg" type="AudioStream" id=5]
+[ext_resource path="res://scenes/buttons/end_level_play/play_normal.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/end_level_play/play_pressed.png" type="Texture" id=6]
+[ext_resource path="res://scenes/buttons/end_level_restart/restart_normal.png" type="Texture" id=7]
+[ext_resource path="res://scenes/buttons/end_level_restart/restart_pressed.png" type="Texture" id=8]
+[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:mouse_filter")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 2, 2 ]
+}
 
 [node name="EndLevel" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="CurtainBackground" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
-visible = false
-
-[node name="ColorRect" parent="CurtainBackground" index="0"]
-color = Color( 1, 0.894118, 0.470588, 0.294118 )
-
-[node name="CurtainShader" parent="CurtainBackground" index="1"]
-visible = false
+[node name="MoneyDisplay" parent="." instance=ExtResource( 2 )]
+position = Vector2( 210, 120 )
 
 [node name="Title" type="Label" parent="."]
 margin_right = 420.0
 margin_bottom = 40.0
 custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color = Color( 0.196078, 0.160784, 0.278431, 1 )
-text = "You win!"
+custom_colors/font_color = Color( 0.235294, 0.639216, 0.439216, 1 )
+custom_colors/font_color_shadow = Color( 0.811765, 1, 0.439216, 1 )
+text = "YOU WIN!!"
 align = 1
 valign = 1
 autowrap = true
 
-[node name="Next" type="Button" parent="."]
+[node name="Next" type="TextureButton" parent="."]
 margin_left = 230.0
-margin_top = 191.974
-margin_right = 323.0
-margin_bottom = 229.974
+margin_top = 170.0
+margin_right = 288.0
+margin_bottom = 228.0
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "Next"
+texture_normal = ExtResource( 5 )
+texture_pressed = ExtResource( 6 )
 
-[node name="Restart" type="Button" parent="."]
-margin_left = 100.0
-margin_top = 191.974
-margin_right = 193.0
-margin_bottom = 229.974
+[node name="Restart" type="TextureButton" parent="."]
+margin_left = 140.0
+margin_top = 170.0
+margin_right = 198.0
+margin_bottom = 228.0
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "Restart"
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )
 
 [node name="Menu" type="Button" parent="."]
 margin_left = 10.0
@@ -65,12 +93,18 @@ text = "Menu"
 [node name="CamPos" type="Position2D" parent="."]
 position = Vector2( 210, 120 )
 
-[node name="Music" type="AudioStreamPlayer" parent="." groups=[
-"Music",
-]]
-stream = ExtResource( 5 )
+[node name="GigantStar" parent="." instance=ExtResource( 9 )]
+
+[node name="Curtain" type="ColorRect" parent="."]
+editor/display_folded = true
+visible = false
+margin_right = 420.0
+margin_bottom = 240.0
+color = Color( 0.152941, 0.152941, 0.211765, 1 )
+
+[node name="Anim" type="AnimationPlayer" parent="Curtain"]
+autoplay = "Show"
+anims/Show = SubResource( 1 )
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Resume_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
-
-[editable path="CurtainBackground"]

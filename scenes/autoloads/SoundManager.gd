@@ -11,7 +11,13 @@ enum Sound {
 	PLAYER_DAMAGE_1,
 	PLAYER_DEAD_1,
 	RELOAD_1,
-	CONSUME_ITEM_1
+	CONSUME_ITEM_1,
+	BULLET_COLLISION_1,
+	BULLET_COLLISION_2,
+	BULLET_COLLISION_3,
+	BULLET_COLLISION_4,
+	BULLET_COLLISION_5,
+	BULLET_COLLISION_6
 }
 
 func play(sound):
@@ -41,4 +47,16 @@ func play(sound):
 			$Reload1.play()
 		Sound.CONSUME_ITEM_1:
 			$ConsumeItem1.play()
+		Sound.BULLET_COLLISION_1:
+			$BulletCollision1.play()
+		Sound.BULLET_COLLISION_2:
+			$BulletCollision2.play()
+		Sound.BULLET_COLLISION_3:
+			$BulletCollision3.play()
+		Sound.BULLET_COLLISION_4:
+			$BulletCollision4.play()
+		Sound.BULLET_COLLISION_5:
+			$BulletCollision5.play()
+		Sound.BULLET_COLLISION_6:
+			$BulletCollision6.play()
 	

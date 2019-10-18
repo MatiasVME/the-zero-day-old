@@ -58,7 +58,9 @@ tracks/2/keys = {
 "values": [ false, true, true ]
 }
 
-[node name="GBullet" type="KinematicBody2D"]
+[node name="GBullet" type="KinematicBody2D" groups=[
+"Bullet",
+]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource( 1 )
