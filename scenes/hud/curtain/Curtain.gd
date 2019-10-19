@@ -11,3 +11,10 @@ func anim_start():
 
 func anim_end():
 	$StartEnd/AnimStartEnd.play("End")
+	
+func anim_end_win():
+	$StartEnd/AnimStartEnd.play("EndWin")
+
+func _on_AnimStartEnd_animation_finished(anim_name):
+	if anim_name == "EndWin":
+		Main.win_adventure()

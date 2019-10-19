@@ -29,14 +29,18 @@ func _ready():
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -60)
 	if not sound_enable:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), -60)
-	
+		
 func win_adventure():
 	result = Result.WIN
 	emit_signal("win_adventure")
 	
+	get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")
+	
 func lose_adventure():
 	result = Result.LOSE
 	emit_signal("lose_adventure")
+	
+	get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")
 	
 func reset_store():
 	store_money = 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/hud/curtain/Curtain.gd" type="Script" id=1]
 
@@ -50,6 +50,21 @@ tracks/0/keys = {
 "values": [ Color( 0.4, 1, 0.890196, 0 ), Color( 0.152941, 0.152941, 0.211765, 0 ), Color( 0.152941, 0.152941, 0.211765, 1 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "EndWin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Color( 0.152941, 0.152941, 0.211765, 0 ), Color( 0.152941, 0.152941, 0.211765, 1 ) ]
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "Start"
 length = 2.0
@@ -92,8 +107,10 @@ anims/hit = SubResource( 2 )
 margin_right = 420.0
 margin_bottom = 240.0
 mouse_filter = 2
-color = Color( 0.4, 1, 0.890196, 0 )
+color = Color( 0.152941, 0.152941, 0.211765, 0 )
 
 [node name="AnimStartEnd" type="AnimationPlayer" parent="StartEnd"]
 anims/End = SubResource( 3 )
+anims/EndWin = SubResource( 5 )
 anims/Start = SubResource( 4 )
+[connection signal="animation_finished" from="StartEnd/AnimStartEnd" to="." method="_on_AnimStartEnd_animation_finished"]

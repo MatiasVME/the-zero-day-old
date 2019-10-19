@@ -96,10 +96,10 @@ position = Vector2( 210, 120 )
 [node name="GigantStar" parent="." instance=ExtResource( 9 )]
 
 [node name="Curtain" type="ColorRect" parent="."]
-editor/display_folded = true
-visible = false
+self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 420.0
 margin_bottom = 240.0
+mouse_filter = 2
 color = Color( 0.152941, 0.152941, 0.211765, 1 )
 
 [node name="Anim" type="AnimationPlayer" parent="Curtain"]

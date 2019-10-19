@@ -45,7 +45,14 @@ func _on_EnterArea_body_entered(body):
 		$Sprite.texture = player_inside
 		
 		if have_you_won():
-			Main.win_adventure()
+			var hud = get_tree().get_nodes_in_group("HUD")
+			
+			if hud.size() > 0:
+				hud = hud[0]
+				get_tree().paused = true
+				hud.get_node("Curtain").anim_end_win()
+				
+#			Main.win_adventure()
 		else:
 			$In.play()
 
