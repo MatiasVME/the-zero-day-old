@@ -356,7 +356,7 @@ func melee_attack():
 	else:
 		boxing_attack.attack()
 		
-	if gui_secondary_weapon:
+	if is_instance_valid(gui_secondary_weapon):
 		gui_secondary_weapon.hide_temp_weapon()
 
 func distance_attack():
@@ -513,6 +513,8 @@ func _on_dead():
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
 	
 	game_camera.following = last_to_damage
+	
+#	Main.lose_adventure()
 
 func _on_remove_hp(amount):
 	if is_inmortal: return
@@ -528,7 +530,6 @@ func _on_remove_hp(amount):
 func _on_Anim_animation_finished(anim_name):
 	if anim_name == "Dead":
 		visible = false
-		.dead()
 
 func _on_InteractArea_body_entered(body):
 	if body is ItemInWorld:

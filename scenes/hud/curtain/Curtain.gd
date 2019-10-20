@@ -9,8 +9,8 @@ func anim_dead():
 func anim_start():
 	$StartEnd/AnimStartEnd.play("Start")
 
-func anim_end():
-	$StartEnd/AnimStartEnd.play("End")
+func anim_end_lose():
+	$StartEnd/AnimStartEnd.play("EndLose")
 	
 func anim_end_win():
 	$StartEnd/AnimStartEnd.play("EndWin")

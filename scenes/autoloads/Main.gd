@@ -19,7 +19,9 @@ enum Result {NONE, WIN, LOSE}
 var result = Result.NONE
 
 # Store
-var store_money = 0
+var store_money = 0 setget set_store_money, get_store_money
+
+signal store_money_updated(money)
 
 signal win_adventure
 signal lose_adventure
@@ -29,7 +31,14 @@ func _ready():
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), -60)
 	if not sound_enable:
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), -60)
-		
+
+func set_store_money(_store_money):
+	store_money = _store_money
+	emit_signal("store_money_updated", store_money)
+	
+func get_store_money():
+	return store_money
+
 func win_adventure():
 	result = Result.WIN
 	emit_signal("win_adventure")

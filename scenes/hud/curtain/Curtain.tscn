@@ -35,8 +35,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "End"
-length = 8.0
+resource_name = "EndLose"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
 tracks/0/interp = 1
@@ -44,13 +44,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 2, 8 ),
+"times": PoolRealArray( 0, 1, 4 ),
 "transitions": PoolRealArray( 1, 1, 2 ),
 "update": 0,
 "values": [ Color( 0.4, 1, 0.890196, 0 ), Color( 0.152941, 0.152941, 0.211765, 0 ), Color( 0.152941, 0.152941, 0.211765, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "EndWin"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -65,8 +65,7 @@ tracks/0/keys = {
 "values": [ Color( 0.152941, 0.152941, 0.211765, 0 ), Color( 0.152941, 0.152941, 0.211765, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "Start"
+[sub_resource type="Animation" id=5]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:color")
@@ -107,10 +106,10 @@ anims/hit = SubResource( 2 )
 margin_right = 420.0
 margin_bottom = 240.0
 mouse_filter = 2
-color = Color( 0.152941, 0.152941, 0.211765, 0 )
+color = Color( 0.4, 1, 0.890196, 0 )
 
 [node name="AnimStartEnd" type="AnimationPlayer" parent="StartEnd"]
-anims/End = SubResource( 3 )
-anims/EndWin = SubResource( 5 )
-anims/Start = SubResource( 4 )
+anims/EndLose = SubResource( 3 )
+anims/EndWin = SubResource( 4 )
+anims/Start = SubResource( 5 )
 [connection signal="animation_finished" from="StartEnd/AnimStartEnd" to="." method="_on_AnimStartEnd_animation_finished"]

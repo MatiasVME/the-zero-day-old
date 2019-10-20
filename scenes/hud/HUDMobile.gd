@@ -72,6 +72,7 @@ func _on_slot_selected(slot_data):
 	emit_signal("hud_item_hotbar_selected", slot_data)
 
 func _on_animation_end_finished(anim_name):
-	if anim_name == "End":
+	if anim_name == "EndLose":
 		Main.prepare_to_exit()
+		Main.result = Main.Result.LOSE
 		get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")

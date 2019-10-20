@@ -118,13 +118,6 @@ func save_players():
 	for i in players.size():
 #		temp_data[i] = RPGElement.gdc2gd(inst2dict(players[i])) # OLD
 		temp_data[i] = TZDPlayer.character2dict(players[i])
-		
-#		if players[i]["primary_weapon"]:
-#			temp_data[i]["primary_weapon"] = RPGElement.gdc2gd(inst2dict(players[i]["primary_weapon"]))
-#		if players[i]["secondary_weapon"]:
-#			temp_data[i]["secondary_weapon"] = RPGElement.gdc2gd(inst2dict(players[i]["secondary_weapon"]))
-	
-	# print("temp_data: ",temp_data)
 	
 	$DataPlayers.save_data("Players")
 	
@@ -135,12 +128,7 @@ func load_players():
 	for player in temp_data.values():
 #		players.append(dict2inst(player)) # OLD
 		players.append(TZDPlayer.dict2character(player))
-		
-#		if player["primary_weapon"]:
-#			player["primary_weapon"] = dict2inst(player["primary_weapon"])
-#		if player["secondary_weapon"]:
-#			player["secondary_weapon"] = dict2inst(player["secondary_weapon"])
-
+	
 func create_data_user():
 	data_user = $DataUser.get_data("DataUser")
 	

@@ -44,6 +44,7 @@ func _ready():
 	data.restore_hp()
 	data.xp_drop = 1 # temp
 	data.attack = 3
+	data.money_drop = int(rand_range(30, 60))
 	
 	data.connect("dead", self, "_on_dead")
 	data.connect("drop_xp", self, "_on_drop_xp")
@@ -254,6 +255,7 @@ func _on_DamageDelay_timeout():
 
 func _on_dead():
 	drop_item()
+	Main.store_money += data.money_drop
 	change_state(State.DIE)
 	
 func _on_DamageArea_body_entered(body):
@@ -275,7 +277,6 @@ func _on_AttackArea_body_exited(body):
 		$Body.rotation_degrees = 0
 		change_state(State.SEEKER)
 
-
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
 	current_time_to_random_objective = 0
@@ -283,7 +284,7 @@ func _get_new_random_objective():
 func knockback(from : Vector2, impulse :float = 1) -> void:
 	velocity = (global_position - from).normalized() * impulse
 
-#Funcion que se define cuando un enemigo es aplastable
+# Funcion que se define cuando un enemigo es aplastable
 func crushed() -> void:
-	#TODO: Definir el comportamieto cuado es aplastado
+	# TODO: Definir el comportamieto cuado es aplastado
 	change_state(State.DIE)

@@ -26,14 +26,14 @@ var current_state : int = 0
 # Puede recibir daño ?
 var can_damage = false
 
-# Contine el TZDCharacter con todos los datos
+# Contine el TZDEnemy con todos los datos
 # y eventos que invulucra
-var data
+var data : TZDEnemy
 
 signal state_changed
 
 func _init():
-	data = TZDCharacter.new()
+	data = TZDEnemy.new()
 
 func _physics_process(delta):
 	# Estas 4 lineas funcionan como seguro contra tontos.

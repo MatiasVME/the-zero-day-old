@@ -35,7 +35,7 @@ func add_actor_to_hud(actor : GActor):
 	
 func _on_player_dead(player):
 	$Curtain.anim_dead()
-	$Curtain.anim_end()
+	$Curtain.anim_end_lose()
 
 	DataManager.save_all_data()
 	
@@ -53,6 +53,10 @@ func _on_win_adventure():
 #	current_player.get_node("Anim").play("DanceOfVictory")
 	
 #	$GameMenu/Inventory.disabled = true
+
+func _on_lose_adventure():
+	print_debug("lost adventure??")
+	pass
 
 func _on_player_level_up(player):
 #	$GameMenu/StatPanel.update_all()

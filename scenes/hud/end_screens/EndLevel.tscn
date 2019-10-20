@@ -106,5 +106,5 @@ color = Color( 0.152941, 0.152941, 0.211765, 1 )
 autoplay = "Show"
 anims/Show = SubResource( 1 )
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
-[connection signal="pressed" from="Restart" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
 [connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]

@@ -1,21 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/hud/money_display/MoneyDisplay.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/money_display/money_display_normal.png" type="Texture" id=2]
 [ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=3]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Update"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 0.5, 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.3, 1.3 ), Vector2( 1, 1 ) ]
+}
+
 [node name="MoneyDisplay" type="Node2D"]
-position = Vector2( 50, 10 )
+position = Vector2( 68, 24 )
 script = ExtResource( 1 )
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( 20, 8 )
+position = Vector2( 0, -1 )
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = -8.0
-margin_right = 48.0
-margin_bottom = 16.0
+margin_left = -28.0
+margin_top = -9.0
+margin_right = 28.0
+margin_bottom = 7.0
 custom_fonts/font = ExtResource( 3 )
 custom_colors/font_color = Color( 1, 0.894118, 0.470588, 1 )
 text = "99999999"
@@ -23,3 +40,6 @@ align = 1
 valign = 1
 autowrap = true
 clip_text = true
+
+[node name="Anim" type="AnimationPlayer" parent="."]
+anims/Update = SubResource( 1 )
