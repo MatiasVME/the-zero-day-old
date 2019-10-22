@@ -48,15 +48,15 @@ func _on_win_adventure():
 #	$AnimAvatarHandler.play("hide")
 #	$AnimEndLevel.play("show")
 	
-	var current_player = PlayerManager.get_current_player()
-	current_player.can_move = false
+#	var current_player = PlayerManager.get_current_player()
+#	current_player.can_move = false
 #	current_player.get_node("Anim").play("DanceOfVictory")
 	
 #	$GameMenu/Inventory.disabled = true
+	pass
 
 func _on_lose_adventure():
 	print_debug("lost adventure??")
-	pass
 
 func _on_player_level_up(player):
 #	$GameMenu/StatPanel.update_all()

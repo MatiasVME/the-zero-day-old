@@ -26,7 +26,7 @@ func attack(actor = null):
 			player.fire_dir = $Sprite.get_global_mouse_position() - global_position
 			pass
 		else:
-			if player.selected_enemy:
+			if is_instance_valid(player.selected_enemy):
 				player.fire_dir = player.selected_enemy.global_position - global_position
 			else:
 				if player.current_move_dir != Vector2.ZERO:

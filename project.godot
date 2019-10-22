@@ -411,6 +411,7 @@ RandomNameGenerator="*res://scenes/autoloads/random_name_generator/RandomNameGen
 BuildManager="*res://scenes/autoloads/BuildManager.gd"
 StructurePanelManager="*res://scenes/autoloads/StructurePanelManager.tscn"
 TerrainGenerator="*res://addons/terrain_generator/TerrainGenerator.gd"
+AdventureManager="*res://scenes/autoloads/AdventureManager.gd"
 
 [debug]
 
