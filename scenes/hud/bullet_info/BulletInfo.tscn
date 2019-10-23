@@ -31,7 +31,6 @@ position = Vector2( 329, 220 )
 texture = ExtResource( 2 )
 
 [node name="Bullet" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, 6 )
 
 [node name="BulletImg" type="Sprite" parent="Bullet"]
@@ -51,7 +50,6 @@ autowrap = true
 clip_text = true
 
 [node name="Total" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 0, -24 )
 
 [node name="TotalImg" type="Sprite" parent="Total"]

@@ -45,10 +45,12 @@ func update_bullet_info(equip):
 			is_showing = false
 
 func update_images_bullet_info(equip):
-#	if equip:
-#		$Bullet/BulletImg.texture = load(ShootManager.get_bullet_img(equip.ammo_type))
-#		$Total/TotalImg.texture = load(ShootManager.get_bullet_box_img(equip.ammo_type))
-	pass
+	if equip is TZDMeleeWeapon:
+		$Bullet/BulletImg.texture = null
+	elif equip is TZDDistanceWeapon:
+		$Bullet/BulletImg.texture = ShootManager.get_bullet_img(equip.ammo_type)
+		var hola = $Bullet/BulletImg.texture 
+		$Total/TotalImg.texture = ShootManager.get_bullet_box_img(equip.ammo_type)
 	
 # Normalmente recibe un TZDWeapon pero puede recibir null
 func set_current_equip(equip):
