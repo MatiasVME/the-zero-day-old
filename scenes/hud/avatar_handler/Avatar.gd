@@ -7,12 +7,12 @@ var actor
 onready var avatar_selected = preload("res://scenes/hud/avatar_handler/images/avatar-background-selected.png")
 onready var avatar_not_selected = preload("res://scenes/hud/avatar_handler/images/avatar-background-normal.png")
 
-func _ready():
+func _enter_tree():
 	PlayerManager.connect("player_gain_hp", self, "_on_player_gain_hp")
 	PlayerManager.connect("player_get_damage", self, "_on_player_get_damage")
 	PlayerManager.connect("player_gain_xp", self, "_on_player_gain_xp")
 	PlayerManager.connect("player_level_up", self, "_on_player_level_up")
-
+	
 # Debería ser set_avatar_actor ??
 func add_avatar_actor(avatar_actor : GActor):
 	$HealthBar.value = avatar_actor.data.hp

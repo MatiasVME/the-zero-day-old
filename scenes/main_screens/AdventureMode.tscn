@@ -79,6 +79,7 @@ valign = 1
 autowrap = true
 
 [node name="Maps" type="GridContainer" parent="."]
+editor/display_folded = true
 margin_left = -160.0
 margin_top = -50.0
 margin_right = 162.0
@@ -193,3 +194,4 @@ autoplay = "Start"
 anims/Start = SubResource( 3 )
 [connection signal="pressed" from="Maps/Map1" to="." method="_on_Map1_pressed"]
 [connection signal="pressed" from="Maps/Map2" to="." method="_on_Map2_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

@@ -19,7 +19,11 @@ enum Result {NONE, WIN, LOSE}
 var result = Result.NONE
 
 # Store
-var store_money = 0 setget set_store_money, get_store_money
+var store_money := 0 setget set_store_money, get_store_money
+
+# Mostrar una sola vez el splash
+var ot_splash := true
+var ot_intro_music := true
 
 signal store_money_updated(money)
 
@@ -58,7 +62,7 @@ func prepare_to_exit():
 	result = Result.NONE
 	DataManager.get_current_player_instance().restore_hp()
 	DataManager.save_all_data()
-	PlayerManager.clear_players()
+#	PlayerManager.clear_players()
 	get_tree().paused = false
 	
 func _notification(what):

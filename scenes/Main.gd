@@ -6,7 +6,9 @@ func _ready():
 	
 	$Version.text = Main.VERSION
 	
-	MusicManager.play(MusicManager.Music.PRELUDE)
+	if Main.ot_intro_music:
+		Main.ot_intro_music = false
+		MusicManager.play(MusicManager.Music.PRELUDE)
 
 func _on_Back_pressed():
 	$Camera.global_position = global_position
