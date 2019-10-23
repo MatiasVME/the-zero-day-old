@@ -6,7 +6,7 @@ const DEBUG := true
 const RES_X := 420
 const RES_Y := 240
 
-var music_enable := false
+var music_enable := true
 var sound_enable := true
 
 var force_mobile_mode := true

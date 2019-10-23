@@ -1,38 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/main_screens/Credits.gd" type="Script" id=1]
 [ext_resource path="res://scenes/main_screens/reusable_controls/CreditSection.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/buttons/arrow_up/button_arrow_up.png" type="Texture" id=3]
 [ext_resource path="res://scenes/buttons/arrow_up/button_arrow_up_pressed.png" type="Texture" id=4]
 [ext_resource path="res://scenes/buttons/arrow_up/button_arrow_up_hover.png" type="Texture" id=5]
-[ext_resource path="res://fonts/i_pixel_u/IPixelU-8px.tres" type="DynamicFont" id=6]
-
-[sub_resource type="Animation" id=1]
-resource_name = "Show"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 0.921569, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
+[ext_resource path="res://scenes/main_screens/reusable_controls/FullCredits.tscn" type="PackedScene" id=6]
 
 [node name="Credits" type="Node2D"]
 script = ExtResource( 1 )
@@ -106,45 +79,5 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 
-[node name="FullCredits" type="RichTextLabel" parent="."]
-visible = false
-self_modulate = Color( 1, 1, 1, 0 )
-margin_top = 48.0
-margin_right = 420.0
-margin_bottom = 220.0
-custom_fonts/normal_font = ExtResource( 6 )
-bbcode_enabled = true
-bbcode_text = "[center][color=blue]CURRENT TEAM[/color]
-
-[color=yellow]GAME DESIGN AND PROGRAMER[/color]
-[color=red]Matías Muñoz Espinoza[/color]
-
-[color=blue]THANKS[/color]
-[color=red]Markus Ellisca - Programmer[/color]
-[color=red]MG.Pix - Art[/color]
-[color=red]Jonathan Moreno - Programmer[/color]
-[color=red]RDCKGames - Consulting[/color]
-[color=red]Nahum Santana - Programmer[/color]
-[color=red]Javier Ocampos - Game Design[/color]
-[color=red]Jean Ferreira - Programmer[/color]
-[color=red]Alam Perez - Art[/color]
-[color=red]MaicolMaster - Art[/color][/center]"
-text = "CURRENT TEAM
-
-GAME DESIGN AND PROGRAMER
-Matías Muñoz Espinoza
-
-THANKS
-Markus Ellisca - Programmer
-MG.Pix - Art
-Jonathan Moreno - Programmer
-RDCKGames - Consulting
-Nahum Santana - Programmer
-Javier Ocampos - Game Design
-Jean Ferreira - Programmer
-Alam Perez - Art
-MaicolMaster - Art"
-
-[node name="Anim" type="AnimationPlayer" parent="FullCredits"]
-anims/Show = SubResource( 1 )
+[node name="FullCredits" parent="." instance=ExtResource( 6 )]
 [connection signal="pressed" from="BackFromCredits" to="." method="_on_BackFromCredits_pressed"]

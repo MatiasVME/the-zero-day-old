@@ -110,9 +110,9 @@ editor/display_folded = true
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 202.0
-margin_right = 400.0
-margin_bottom = 106.0
+margin_left = 163.0
+margin_right = 322.0
+margin_bottom = 122.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 expand = false
@@ -192,3 +192,4 @@ color = Color( 0.152941, 0.152941, 0.211765, 1 )
 autoplay = "Start"
 anims/Start = SubResource( 3 )
 [connection signal="pressed" from="Maps/Map1" to="." method="_on_Map1_pressed"]
+[connection signal="pressed" from="Maps/Map2" to="." method="_on_Map2_pressed"]

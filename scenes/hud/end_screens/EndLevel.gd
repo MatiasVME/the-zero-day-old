@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
-	MusicManager.play(MusicManager.Music.END_LEVEL)
+	MusicManager.play(MusicManager.Music.MUSHROOMS)
 	
 	if Main.result == Main.Result.WIN:
 		win()
@@ -28,8 +28,13 @@ func lose():
 	Main.store_money = round(Main.store_money / 2)
 
 func _on_Next_pressed():
-	get_tree().change_scene_to(AdventureManager.get_level(AdventureManager.current_level + 1))
-
+	AdventureManager.current_level += 1
+	
+	if AdventureManager.current_level <= AdventureManager.ADVENTURE_LEVEL_MAX:
+		get_tree().change_scene_to(AdventureManager.get_level(AdventureManager.current_level))
+	else:
+		get_tree().change_scene("res://scenes/maps/adventure_mode/main_history/end/TheEnd.tscn")
+	
 func _on_Menu_pressed():
 	get_tree().change_scene("res://scenes/Main.tscn")
 

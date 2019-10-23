@@ -7,7 +7,8 @@ enum Music {
 	REBELS_BE,
 	THE_EMPIRE,
 	VICTORY,
-	END_LEVEL
+	MUSHROOMS, # ENDLEVEL
+	SOLITUDE # FINAL
 }
 
 func play(music):
@@ -26,8 +27,10 @@ func play(music):
 			current_music = $TheEmpire
 		Music.VICTORY:
 			current_music = $Victory
-		Music.END_LEVEL:
-			current_music = $EndLevel
-			
+		Music.MUSHROOMS:
+			current_music = $Mushrooms
+		Music.SOLITUDE:
+			current_music = $Solitude
+		
 	current_music.play()
 	

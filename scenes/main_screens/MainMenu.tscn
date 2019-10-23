@@ -61,7 +61,6 @@ focus_neighbour_top = NodePath("../VerticalContainer/CenterContainerPlay/Play")
 focus_neighbour_bottom = NodePath("../VerticalContainer/CenterContainerCredits/Credits")
 size_flags_vertical = 6
 size_flags_stretch_ratio = 2.0
-
 [connection signal="pressed" from="Notes" to="." method="_on_Notes_pressed"]
 [connection signal="toggled" from="Notes" to="." method="_on_Notes_toggled"]
 [connection signal="mouse_got_focus" from="Play" to="." method="_on_mouse_got_focus"]
