@@ -31,7 +31,7 @@ func lose():
 
 func _on_Next_pressed():
 	if AdventureManager.current_level <= AdventureManager.ADVENTURE_LEVEL_MAX:
-		get_tree().change_scene_to(AdventureManager.get_level(AdventureManager.current_level))
+		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level))
 	else:
 		get_tree().change_scene("res://scenes/maps/adventure_mode/main_history/end/TheEnd.tscn")
 	
@@ -39,4 +39,7 @@ func _on_Menu_pressed():
 	get_tree().change_scene("res://scenes/Main.tscn")
 
 func _on_Restart_pressed():
-	get_tree().change_scene("res://scenes/maps/adventure_mode/main_history/chapter_1/Map1Full.tscn")
+	if Main.result == Main.Result.WIN:
+		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level - 1))
+	elif Main.result == Main.Result.LOSE:
+		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level))

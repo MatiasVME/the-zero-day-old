@@ -80,6 +80,7 @@ func init_player(player_num : int) -> GPlayer:
 	if player.data.is_dead:
 		player.data.revive()
 	
+	print_debug(player)
 	return player
 
 func get_name_of_available_players():
@@ -93,8 +94,10 @@ func get_name_of_available_players():
 # Siempre hay que llamar a esta funcion antes de salir del
 # juego!!
 func clear_players():
-	players.clear()
 	disconnect_player(current_player_connected)
+	players.clear()
+	print_debug("players.clear()", players)
+	
 
 # Conecta señales y desconecta señales si es que hay otro
 # player

@@ -76,3 +76,7 @@ func _on_animation_end_finished(anim_name):
 		Main.prepare_to_exit()
 		Main.result = Main.Result.LOSE
 		get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")
+	elif anim_name == "EndWin":
+		Main.prepare_to_exit()
+		Main.result = Main.Result.WIN
+		print_debug("se ejecuto esta cosa")

@@ -5,10 +5,10 @@ func _ready():
 		$Maps/Map2.visible = true
 
 func _on_Map1_pressed():
-	get_tree().change_scene_to(AdventureManager.get_level(1))
+	get_tree().change_scene(AdventureManager.get_level(1))
 
 func _on_Map2_pressed():
-	get_tree().change_scene_to(AdventureManager.get_level(2))
+	get_tree().change_scene(AdventureManager.get_level(2))
 
 func _on_Back_pressed():
 	# Temp

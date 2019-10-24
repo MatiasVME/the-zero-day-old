@@ -60,7 +60,7 @@ func reset_store():
 	
 func prepare_to_exit():
 	result = Result.NONE
-	DataManager.get_current_player_instance().restore_hp()
+	DataManager.get_current_player_instance().revive()
 	DataManager.save_all_data()
 	
 	# Borra los players y los desconecta
@@ -70,5 +70,5 @@ func prepare_to_exit():
 	
 func _notification(what):
 	if what == MainLoop.NOTIFICATION_WM_QUIT_REQUEST and PlayerManager.players.size() != 0:
-		DataManager.get_current_player_instance().restore_hp()
+		DataManager.get_current_player_instance().revive()
 		DataManager.save_all_data()
