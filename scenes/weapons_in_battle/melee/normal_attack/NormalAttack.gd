@@ -6,7 +6,7 @@ func attack(actor = null):
 	if time_to_next_action_progress < time_to_next_action:
 		return
 	
-	if actor: 
+	if is_instance_valid(actor): 
 		look_at(actor.global_position)
 		
 	$Sprite.self_modulate = Color(1,1,1,1)

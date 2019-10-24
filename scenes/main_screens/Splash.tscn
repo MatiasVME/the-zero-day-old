@@ -200,4 +200,3 @@ playback_speed = 1.4
 anims/Intro = SubResource( 1 )
 anims/finish = SubResource( 2 )
 [connection signal="animation_finished" from="AnimSplash" to="." method="_on_AnimSplash_animation_finished"]
-[connection signal="animation_finished" from="AnimSplash" to="." method="_on_AnimationSplash_animation_finished"]

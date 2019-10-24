@@ -94,20 +94,20 @@ func create_players():
 	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
 	players[players.size() - 1].player_type = Enums.PlayerType.DORBOT
 	
-	# TEMP: Crea otro player
-	players.append(TZDPlayer.new())
-	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
-	players[players.size() - 1].player_type = Enums.PlayerType.MATBOT
-	
-	# TEMP: Crea otro player
-	players.append(TZDPlayer.new())
-	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
-	players[players.size() - 1].player_type = Enums.PlayerType.PIXBOT
-	
-	# TEMP: Crea otro player
-	players.append(TZDPlayer.new())
-	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
-	players[players.size() - 1].player_type = Enums.PlayerType.SERBOT
+#	# TEMP: Crea otro player
+#	players.append(TZDPlayer.new())
+#	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+#	players[players.size() - 1].player_type = Enums.PlayerType.MATBOT
+#
+#	# TEMP: Crea otro player
+#	players.append(TZDPlayer.new())
+#	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+#	players[players.size() - 1].player_type = Enums.PlayerType.PIXBOT
+#
+#	# TEMP: Crea otro player
+#	players.append(TZDPlayer.new())
+#	temp_data[players.size() - 1] = inst2dict(players[players.size() - 1])
+#	players[players.size() - 1].player_type = Enums.PlayerType.SERBOT
 	
 	$DataPlayers.save_data("Players")
 	

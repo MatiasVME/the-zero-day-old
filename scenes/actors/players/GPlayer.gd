@@ -473,7 +473,7 @@ func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	gui_secondary_weapon.player = self
 
 	# Para que el nuevo gui_secondary_weapon toma la rotación del sprite de old_gui_secondary_weapon
-	if is_instance_valid(old_gui_secondary_weapon):
+	if is_instance_valid(old_gui_secondary_weapon) and is_instance_valid(gui_secondary_weapon):
 		gui_secondary_weapon.get_node("Sprite").rotation_degrees = old_gui_secondary_weapon.get_node("Sprite").rotation_degrees
 
 	$CurrentWeapon/SecondaryWeapon.add_child(gui_secondary_weapon)

@@ -20,6 +20,11 @@ enum PlayerType {
 }
 var player_type = PlayerType.MATBOT # Cambiar a DORBOT mas adelante
 
+var dorbot = preload("res://scenes/actors/players/dorbot/Dorbot.tscn")
+#var matbot = preload("res://scenes/actors/players/matbot/Matbot.tscn")
+#var pixbot = preload("res://scenes/actors/players/pixbot/Pixbot.tscn")
+#var serbot = preload("res://scenes/actors/players/serbot/Serbot.tscn")
+
 # Este es el player connectado, se usa esta variable
 # para luego desconectarlo
 var current_player_connected
@@ -38,6 +43,7 @@ signal player_dead(player)
 # Inicia y retorna un player de los que estan creados en el
 # DataManager.
 func init_player(player_num : int) -> GPlayer:
+	print_debug("Players: ", DataManager.players)
 	if player_num > DataManager.players.size():
 		return null
 	
@@ -47,7 +53,7 @@ func init_player(player_num : int) -> GPlayer:
 	# castear eso a int :S
 	match int(DataManager.players[player_num].player_type):
 		PlayerType.DORBOT:
-			player = load("res://scenes/actors/players/dorbot/Dorbot.tscn").instance()
+			player = dorbot.instance()
 		PlayerType.MATBOT:
 			player = load("res://scenes/actors/players/matbot/Matbot.tscn").instance()
 		PlayerType.PIXBOT:
