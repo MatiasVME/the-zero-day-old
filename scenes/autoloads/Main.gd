@@ -1,12 +1,12 @@
 extends Node
 
 const VERSION := "0.4.0.alpha"
-const DEBUG := true
+const DEBUG := false
 
 const RES_X := 420
 const RES_Y := 240
 
-var music_enable := false
+var music_enable := true
 var sound_enable := true
 
 var force_mobile_mode := true
@@ -62,7 +62,10 @@ func prepare_to_exit():
 	result = Result.NONE
 	DataManager.get_current_player_instance().restore_hp()
 	DataManager.save_all_data()
-#	PlayerManager.clear_players()
+	
+	# Borra los players y los desconecta
+	PlayerManager.clear_players()
+	
 	get_tree().paused = false
 	
 func _notification(what):

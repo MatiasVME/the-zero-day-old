@@ -55,7 +55,17 @@ func init_player(player_num : int) -> GPlayer:
 		PlayerType.SERBOT:
 			player = load("res://scenes/actors/players/serbot/Serbot.tscn").instance()
 	
+	# Buscar instancias no validas y las borra si las encuentra,
+	# debe de hacer esto porque los GPlayers son borrados al salir
+	# de escena. (si no estoy mal)
+	#
+	var i = 0
+	while i < players.size():
+		if not is_instance_valid(players[i]):
+			players.remove(i)
+	
 	players.append(player)
+#	print_debug(players)
 	
 	# Le asociamos la data del player con la data de juego
 	player.data = DataManager.players[player_num]

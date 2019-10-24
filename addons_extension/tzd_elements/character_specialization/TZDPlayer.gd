@@ -69,7 +69,7 @@ func set_stamina_max(_stamina_max):
 func get_stamina_max():
 	return stamina_max
 
-static func character2dict(_character : RPGCharacter):
+static func character2dict(_character : TZDPlayer):
 	var primary_weapon
 	var secondary_weapon
 	
