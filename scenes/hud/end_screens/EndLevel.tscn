@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/hud/end_screens/EndLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/end_screens/MoneyDisplay/MoneyDisplay.tscn" type="PackedScene" id=2]
@@ -8,7 +8,10 @@
 [ext_resource path="res://scenes/buttons/end_level_play/play_pressed.png" type="Texture" id=6]
 [ext_resource path="res://scenes/buttons/end_level_restart/restart_normal.png" type="Texture" id=7]
 [ext_resource path="res://scenes/buttons/end_level_restart/restart_pressed.png" type="Texture" id=8]
-[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/buttons/arrow_left/button_arrow_normal_left.png" type="Texture" id=9]
+[ext_resource path="res://scenes/buttons/arrow_left/button_arrow_pressed_left.png" type="Texture" id=10]
+[ext_resource path="res://scenes/buttons/arrow_left/button_arrow_hover_left.png" type="Texture" id=11]
+[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show"
@@ -79,21 +82,23 @@ enabled_focus_mode = 0
 texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 8 )
 
-[node name="Menu" type="Button" parent="."]
-margin_left = 10.0
-margin_top = 10.0
-margin_right = 60.0
-margin_bottom = 48.0
+[node name="Back" type="TextureButton" parent="."]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 52.0
+margin_bottom = 52.0
 focus_mode = 0
 theme = ExtResource( 4 )
 shortcut_in_tooltip = false
 enabled_focus_mode = 0
-text = "Menu"
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
 
 [node name="CamPos" type="Position2D" parent="."]
 position = Vector2( 210, 120 )
 
-[node name="GigantStar" parent="." instance=ExtResource( 9 )]
+[node name="GigantStar" parent="." instance=ExtResource( 12 )]
 
 [node name="Curtain" type="ColorRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -107,4 +112,4 @@ autoplay = "Show"
 anims/Show = SubResource( 1 )
 [connection signal="pressed" from="Next" to="." method="_on_Next_pressed"]
 [connection signal="pressed" from="Restart" to="." method="_on_Restart_pressed"]
-[connection signal="pressed" from="Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_Back_pressed"]

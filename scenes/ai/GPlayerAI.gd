@@ -56,7 +56,7 @@ func follow_player_state(delta) -> void:
 			random_walk_area_center = actor.position
 			time_to_update_random_walk_progress = time_to_update_random_walk
 			target_point = actor.position
-			print(random_walk_area_center)
+#			print(random_walk_area_center)
 			#set_state(STATE.IDLE)
 			set_state(STATE.RANDOM_WALK)
 	
@@ -71,9 +71,7 @@ func go_back_target_state() -> void:
 func actor_entered(body) -> void:
 	if body is GPlayer and body != actor:
 		return
-		
-		#print("entered")
-
+	
 # warning-ignore:unused_argument
 func actor_exited(body) -> void:
 	if body is GPlayer and body != actor:
@@ -81,4 +79,4 @@ func actor_exited(body) -> void:
 		moving_state = MOVING_STATE.MOVING
 		if has_navigator:
 			navigator.update_path(PLAYER_TARGET.position)
-		print("exited")
+

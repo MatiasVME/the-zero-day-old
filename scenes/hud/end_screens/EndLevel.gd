@@ -34,12 +34,13 @@ func _on_Next_pressed():
 		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level))
 	else:
 		get_tree().change_scene("res://scenes/maps/adventure_mode/main_history/end/TheEnd.tscn")
-	
-func _on_Menu_pressed():
-	get_tree().change_scene("res://scenes/Main.tscn")
 
 func _on_Restart_pressed():
 	if Main.result == Main.Result.WIN:
-		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level - 1))
+		AdventureManager.current_level -= 1
+		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level))
 	elif Main.result == Main.Result.LOSE:
 		get_tree().change_scene(AdventureManager.get_level(AdventureManager.current_level))
+
+func _on_Back_pressed():
+	get_tree().change_scene("res://scenes/Main.tscn")

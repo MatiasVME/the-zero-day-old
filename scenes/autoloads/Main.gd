@@ -21,7 +21,7 @@ var result = Result.NONE
 # Store
 var store_money := 0 setget set_store_money, get_store_money
 
-# Mostrar una sola vez el splash
+# Mostrar una sola vez el splash (ot = one time)
 var ot_splash := true
 var ot_intro_music := true
 

@@ -89,6 +89,8 @@ func _ready():
 	data.connect("remove_hp", self, "_on_remove_hp")
 	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
 	
+	data.restore_hp()
+	
 	if not data.primary_weapon:
 		config_boxing_attack()
 	else:

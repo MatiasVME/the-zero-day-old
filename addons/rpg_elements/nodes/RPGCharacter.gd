@@ -40,7 +40,7 @@ export (int) var max_energy = 20 setget set_max_energy, get_max_energy
 export (int) var defense_rate = 0 setget set_defense_rate, get_defense_rate
 # TODO: Implementar escudo
 # export (int) var shield
-export (int) var attack = 1 setget set_attack, get_attack
+export (int) var attack = 3 setget set_attack, get_attack
 
 var xp = 0
 var xp_required = get_xp_required(level + 1)
