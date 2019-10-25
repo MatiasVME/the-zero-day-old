@@ -38,15 +38,10 @@ name_staff = PoolStringArray(  )
 color_staff = Color( 0.0901961, 0.686275, 0.0862745, 1 )
 
 [node name="CreditSection4" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-name_section = "GAME DESIGN"
+name_section = "GAME DESIGN, PROGRAMMING"
 color_section = Color( 0.0745098, 0.0705882, 0.678431, 1 )
 name_staff = PoolStringArray( "Matias Muñoz Espinoza" )
 color_staff = Color( 0.0901961, 0.686275, 0.0862745, 1 )
-
-[node name="CreditSection" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-name_section = "PROGRAMERS"
-name_staff = PoolStringArray( "Matias Muñoz Espinoza" )
-color_staff = Color( 0.0196078, 0.380392, 0.537255, 1 )
 
 [node name="CreditSection3" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "MUSIC"
@@ -55,17 +50,17 @@ name_staff = PoolStringArray( "Attribute to Avgvst", "Licensed CC-BY" )
 color_staff = Color( 0.054902, 0.0705882, 1, 1 )
 
 [node name="CreditSection7" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-name_section = "THANKS"
+name_section = "THANKS TO"
 color_section = Color( 0, 0.109804, 1, 1 )
 name_staff = PoolStringArray(  )
 color_staff = Color( 0.054902, 0.0705882, 1, 1 )
 
 [node name="CreditSection6" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
-margin_top = -74.0
-margin_bottom = -20.0
+margin_top = -100.0
+margin_bottom = -46.0
 name_section = ""
 color_section = Color( 1, 0.843137, 0, 1 )
-name_staff = PoolStringArray( "Javier Ocampos", "RDCKGames", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira", "MG.Pix", "Alam Perez" )
+name_staff = PoolStringArray( "Javier Ocampos", "RDCKGames", "Markus Ellisca", "Jonathan Moreno", "Jean Ferreira", "MG.Pix", "Alam Perez", "Nahum Santana", "MaicolMaster" )
 color_staff = Color( 1, 0.254902, 0.054902, 1 )
 
 [node name="BackFromCredits" type="TextureButton" parent="."]

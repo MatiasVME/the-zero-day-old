@@ -2,12 +2,10 @@ extends "res://scenes/main_screens/GMenuScreen.gd"
 
 signal back_from_credits_pressed
 
-onready var button_back : = $MarginContainer/BackFromCredits
 onready var sections : = $MarginContainer/CenterContainer/Sections
 var index : int = 0
 
 func _ready():
-	first_focus = button_back
 	for section in sections.get_children():
 		section.connect("section_showed", self, "_on_section_showed")
 

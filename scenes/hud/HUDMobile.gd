@@ -79,4 +79,4 @@ func _on_animation_end_finished(anim_name):
 	elif anim_name == "EndWin":
 		Main.prepare_to_exit()
 		Main.result = Main.Result.WIN
-		print_debug("se ejecuto esta cosa")
+		

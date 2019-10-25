@@ -104,9 +104,6 @@ position = Vector2( 210, -120.049 )
 editor/display_folded = true
 position = Vector2( -630, -120 )
 
-[node name="HBox" parent="VersionNotes" index="1"]
-editor/display_folded = false
-
 [node name="Version" type="Label" parent="."]
 margin_left = 130.0
 margin_top = 100.0
