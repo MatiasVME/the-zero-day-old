@@ -6,17 +6,20 @@
 load_path = "res://.import/RowSelected.png-b2050b2e31dbf0a136609509eae37056.stex"
 
 [node name="Diamond" type="Control"]
-margin_top = 9.0
 margin_right = 8.0
 margin_bottom = 17.0
 rect_min_size = Vector2( 8, 8 )
-size_flags_vertical = 4
+mouse_filter = 1
+size_flags_horizontal = 3
+size_flags_vertical = 6
 
 [node name="DButton" type="TextureButton" parent="."]
-margin_right = 8.0
-margin_bottom = 8.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 focus_mode = 0
 toggle_mode = true
+shortcut_in_tooltip = false
 enabled_focus_mode = 0
 texture_normal = ExtResource( 1 )
 texture_pressed = SubResource( 1 )
+stretch_mode = 5

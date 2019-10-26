@@ -221,6 +221,7 @@ func set_current_player(player_num : int) -> void:
 func get_current_player() -> int:
 	return current_player
 
+# Devuelve una instancia de TZDPlayer
 func get_current_player_instance():
 	return players[current_player]
 	

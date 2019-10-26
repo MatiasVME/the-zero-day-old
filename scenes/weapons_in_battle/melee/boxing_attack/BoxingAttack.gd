@@ -71,10 +71,13 @@ func set_player(_player):
 	player = _player
 
 func _on_HitArea_body_entered(body):
-	if body is GEnemy or body is GStructure:
+	if body is GEnemy:
 		body.damage(PlayerManager.current_player.data.attack)
+	elif body is GStructure:
+		 body.damage(PlayerManager.current_player.data.attack)
 	elif body is GBullet:
-		body.direction = body.direction.bounce(get_parent().global_position.normalized())
+		if not body.bullet_owner is GPlayer:
+			body.bullet_collision()
 
 func _on_IsNearAttackArea_body_entered(body):
 	is_near = true

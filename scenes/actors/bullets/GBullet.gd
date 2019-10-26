@@ -43,7 +43,7 @@ func _physics_process(delta):
 			collision = get_slide_collision(i)
 			if collision.collider.is_in_group("Structures") or collision.collider.is_in_group("Enviroment"):
 				dead()
-			elif collision.collider.is_in_group("Bullet"):
+			elif collision.collider.is_in_group("Bullet") and collision.collider.bullet_owner != self.bullet_owner:
 				bullet_collision()
 				dead()
 	

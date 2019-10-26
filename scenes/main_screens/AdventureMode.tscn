@@ -174,15 +174,16 @@ align = 1
 valign = 1
 
 [node name="Back" type="TextureButton" parent="."]
-margin_left = -160.0
+margin_left = -18.0
 margin_top = 80.0
-margin_right = -128.0
+margin_right = 14.0
 margin_bottom = 112.0
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
 texture_hover = ExtResource( 7 )
 
 [node name="Curtain" type="ColorRect" parent="."]
+visible = false
 margin_left = -210.0
 margin_top = -120.0
 margin_right = 210.0

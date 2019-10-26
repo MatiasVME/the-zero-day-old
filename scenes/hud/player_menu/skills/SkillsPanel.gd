@@ -1,7 +1,11 @@
 extends VBoxContainer
 
 func _ready():
+	var player = DataManager.get_current_player_instance() as TZDPlayer
 	var stats = DataManager.get_stats(DataManager.get_current_player())
+	
+	if is_instance_valid(player):
+		player.connect("level_up", self, "_on_level_up")
 	
 	for stat_name in stats.get_stat_names():
 		var stat_row = load("res://scenes/hud/player_menu/skills/stats/Stat.tscn").instance()
@@ -23,7 +27,10 @@ func update_all():
 		stat.update_assigned_points()
 		
 	update_points()
-	
+
+func _on_level_up(current_level):
+	update_all()
+
 func _on_add_point_pressed(stat_row):
 	var stats = DataManager.get_stats(DataManager.get_current_player())
 	stats.add_points_to_stat(1, stat_row.stat)
