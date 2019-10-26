@@ -1,0 +1,241 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.gd" type="Script" id=2]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/robo-perro.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro-1.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cuerpo-perro.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cola-perro.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/oreja-perro.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cabeza-perro.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=9]
+[ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Run"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LegFront1:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LegFront2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LegBehind1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -30.0, 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LegBehind2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.05, 0.25 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 30.0, -30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 0.5, 2, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 0 ), Vector2( 0, -1 ), Vector2( 0, 0 ), Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Body/Tail:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 0.5, 2, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -30.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Attack"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("LegBehind1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LegBehind2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LegFront1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3, 2 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LegFront2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 4, 2 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Body/Tail:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 0.5, 0.5, 0.5 ),
+"update": 0,
+"values": [ 0.0, -30.0, 15.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 0.5, 0.5 ),
+"update": 0,
+"values": [ 0.0, 0.0, -15.0 ]
+}
+
+[node name="Dogbot" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Sprites" type="Node2D" parent="." index="6"]
+
+[node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
+visible = false
+texture = ExtResource( 3 )
+
+[node name="LegBehind1" type="Sprite" parent="Sprites" index="1"]
+position = Vector2( -3, 2 )
+rotation = 6.6579e-08
+texture = ExtResource( 4 )
+offset = Vector2( 0, 3 )
+
+[node name="LegBehind2" type="Sprite" parent="Sprites" index="2"]
+position = Vector2( 4, 2 )
+rotation = -6.6579e-08
+texture = ExtResource( 4 )
+offset = Vector2( 0, 3 )
+
+[node name="Body" type="Node2D" parent="Sprites" index="3"]
+editor/display_folded = true
+
+[node name="Body" type="Sprite" parent="Sprites/Body" index="0"]
+position = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+
+[node name="Tail" type="Sprite" parent="Sprites/Body" index="1"]
+position = Vector2( 6, -2 )
+texture = ExtResource( 6 )
+offset = Vector2( 4, -1 )
+
+[node name="Head" type="Node2D" parent="Sprites" index="4"]
+editor/display_folded = true
+position = Vector2( 0, -1 )
+
+[node name="Ear2" type="Sprite" parent="Sprites/Head" index="0"]
+position = Vector2( -8, -4 )
+texture = ExtResource( 7 )
+offset = Vector2( 2, -1.5 )
+
+[node name="Head" type="Sprite" parent="Sprites/Head" index="1"]
+position = Vector2( -5, 0 )
+texture = ExtResource( 8 )
+offset = Vector2( -4, -1 )
+
+[node name="Ear1" type="Sprite" parent="Sprites/Head" index="2"]
+position = Vector2( -5, -4 )
+texture = ExtResource( 7 )
+offset = Vector2( 2, -0.5 )
+
+[node name="LegFront1" type="Sprite" parent="Sprites" index="5"]
+position = Vector2( -3, 2 )
+rotation = -6.6579e-08
+texture = ExtResource( 9 )
+offset = Vector2( 0, 3 )
+
+[node name="LegFront2" type="Sprite" parent="Sprites" index="6"]
+position = Vector2( 4, 2 )
+rotation = 6.6579e-08
+texture = ExtResource( 9 )
+offset = Vector2( 0, 3 )
+
+[node name="AnimRun" type="AnimationPlayer" parent="Sprites" index="7"]
+anims/Run = SubResource( 1 )
+
+[node name="AnimIdle" type="AnimationPlayer" parent="Sprites" index="8"]
+anims/Idle = ExtResource( 10 )
+
+[node name="AnimAttack" type="AnimationPlayer" parent="Sprites" index="9"]
+anims/Attack = SubResource( 2 )

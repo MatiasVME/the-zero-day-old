@@ -123,7 +123,7 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id=8]
 radius = 18.0278
 
-[node name="Gluton" index="0" instance=ExtResource( 1 )]
+[node name="Gluton" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
