@@ -412,6 +412,7 @@ BuildManager="*res://scenes/autoloads/BuildManager.gd"
 StructurePanelManager="*res://scenes/autoloads/StructurePanelManager.tscn"
 TerrainGenerator="*res://addons/terrain_generator/TerrainGenerator.gd"
 AdventureManager="*res://scenes/autoloads/AdventureManager.gd"
+Steering="*res://scenes/autoloads/Steering.gd"
 
 [debug]
 

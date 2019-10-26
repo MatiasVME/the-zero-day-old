@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://tests/TDogbot.gd" type="Script" id=1]
+[ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.tscn" type="PackedScene" id=5]
+
+[node name="TDogbot" type="Node"]
+script = ExtResource( 1 )
+
+[node name="GameCamera" parent="." instance=ExtResource( 2 )]
+
+[node name="Map1" parent="." instance=ExtResource( 3 )]
+
+[node name="HUD" parent="." instance=ExtResource( 4 )]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Dogbot" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 729, 598 )

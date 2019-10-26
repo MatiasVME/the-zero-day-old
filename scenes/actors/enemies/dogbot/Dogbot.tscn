@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.gd" type="Script" id=2]
@@ -10,6 +10,9 @@
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/cabeza-perro.png" type="Texture" id=8]
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=9]
 [ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=10]
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 5.0
 
 [sub_resource type="Animation" id=1]
 resource_name = "Run"
@@ -167,10 +170,18 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, -15.0 ]
 }
 
-[node name="Dogbot" index="0" instance=ExtResource( 1 )]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 150, 150 )
+
+[node name="Dogbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Collision" parent="." index="1"]
+position = Vector2( 0, 1 )
+shape = SubResource( 4 )
+
 [node name="Sprites" type="Node2D" parent="." index="6"]
+editor/display_folded = true
 
 [node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
 visible = false
@@ -239,3 +250,10 @@ anims/Idle = ExtResource( 10 )
 
 [node name="AnimAttack" type="AnimationPlayer" parent="Sprites" index="9"]
 anims/Attack = SubResource( 2 )
+
+[node name="DetectArea" type="Area2D" parent="." index="7"]
+
+[node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]

@@ -17,14 +17,14 @@ var view_distance : float = 10
 var attack_distance : float = 18 # Igual que el AttackArea
 
 # Objetivo random cuando no esta haciendo nada
-var random_objective : Vector2 = Vector2()
-var time_to_random_objective : float = 4
-var current_time_to_random_objective : float = 0
+var random_objective := Vector2()
+var time_to_random_objective := 4.0
+var current_time_to_random_objective := 0
 
 # Ultima posicion del objetivo
 var last_objective_position : Vector2
 
-onready var objective = null
+onready var objective
 
 # Se usa para atacar solo una vez
 var ot_attack = true
@@ -124,8 +124,6 @@ func get_direction_to_see(objective):
 func sekeer(objective):
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
 		$Navigator.update_path(objective)
-
-		#print($Navigator.navigation_path)
 	
 	match get_direction_to_see(objective):
 		90:

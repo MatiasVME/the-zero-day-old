@@ -1,12 +1,12 @@
 extends Node
 
-const VERSION := "0.4.0.alpha"
+const VERSION := "0.5.0.alpha"
 const DEBUG := false
 
 const RES_X := 420
 const RES_Y := 240
 
-var music_enable := true
+var music_enable := false
 var sound_enable := true
 
 var force_mobile_mode := true
