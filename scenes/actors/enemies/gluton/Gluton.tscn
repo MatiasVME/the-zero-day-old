@@ -146,7 +146,6 @@ anims/dead = SubResource( 5 )
 anims/spawn = SubResource( 6 )
 
 [node name="DamageArea" type="Area2D" parent="." index="5"]
-editor/display_folded = true
 collision_layer = 3
 collision_mask = 3
 
@@ -154,7 +153,6 @@ collision_mask = 3
 shape = SubResource( 7 )
 
 [node name="AttackArea" type="Area2D" parent="." index="6"]
-editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea" index="0"]
 shape = SubResource( 8 )

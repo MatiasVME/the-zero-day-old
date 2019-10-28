@@ -16,3 +16,9 @@ var is_disabled := false
 
 # Variable que se puede usar para debugear y otras cosas
 var is_inmortal := false
+
+# A veces en Godot 3.1 no es posible utilizar el operador
+# is por dependencias cíclicas, estonces se pueden,
+# identificar por un nombre
+var actor_name := ""
+

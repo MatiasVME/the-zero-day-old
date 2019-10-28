@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.gd" type="Script" id=2]
@@ -11,11 +11,10 @@
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=9]
 [ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=10]
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=1]
 radius = 5.0
 
-[sub_resource type="Animation" id=1]
-resource_name = "Run"
+[sub_resource type="Animation" id=2]
 length = 0.4
 loop = true
 step = 0.05
@@ -92,8 +91,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, -30.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Attack"
+[sub_resource type="Animation" id=3]
 length = 0.6
 loop = true
 step = 0.05
@@ -170,17 +168,20 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, -15.0 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 150, 150 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 12.0104
 
 [node name="Dogbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
 position = Vector2( 0, 1 )
-shape = SubResource( 4 )
+shape = SubResource( 1 )
 
-[node name="Sprites" type="Node2D" parent="." index="6"]
+[node name="Sprites" type="Node2D" parent="." index="5"]
 editor/display_folded = true
 
 [node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
@@ -243,17 +244,26 @@ texture = ExtResource( 9 )
 offset = Vector2( 0, 3 )
 
 [node name="AnimRun" type="AnimationPlayer" parent="Sprites" index="7"]
-anims/Run = SubResource( 1 )
+anims/Run = SubResource( 2 )
 
 [node name="AnimIdle" type="AnimationPlayer" parent="Sprites" index="8"]
 anims/Idle = ExtResource( 10 )
 
 [node name="AnimAttack" type="AnimationPlayer" parent="Sprites" index="9"]
-anims/Attack = SubResource( 2 )
+anims/Attack = SubResource( 3 )
 
-[node name="DetectArea" type="Area2D" parent="." index="7"]
+[node name="DetectArea" type="Area2D" parent="." index="6"]
+editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
+
+[node name="AttackArea" type="Area2D" parent="." index="8"]
+
+[node name="Collision" type="CollisionShape2D" parent="AttackArea" index="0"]
+position = Vector2( -8, -3.5 )
+shape = SubResource( 5 )
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
+[connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
+[connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]

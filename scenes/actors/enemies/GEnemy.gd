@@ -50,7 +50,7 @@ func change_state(state):
 # Todos los enemigos tienen estos metodos como minimo
 #
 
-func damage(amount):
+func damage(amount, who = null):
 	if not can_damage:
 		return
 	

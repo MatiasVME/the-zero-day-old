@@ -2,6 +2,9 @@
 
 extends "res://scenes/actors/enemies/GEnemy.gd"
 
+# Enemy gluton
+class_name EGluton
+
 const MAX_SPEED = 50
 const MAX_FORCE = 0.02
 const RANDOM_RUN_DISTANCE = 4
@@ -30,6 +33,8 @@ onready var objective
 var ot_attack = true
 
 func _ready():
+	self.actor_name == "Gluton"
+	
 	state = State.RANDOM_WALK
 	
 	$Body.playing = true
@@ -60,6 +65,8 @@ func _physics_process(delta):
 				
 				if data.hp < int(data.max_hp / 3):
 					change_state(State.RUN)
+				elif objective.actor_name == "Dogbot":
+					change_state(State.RUN)
 			else:
 				change_state(State.RANDOM_WALK)
 		State.RUN:
@@ -71,6 +78,12 @@ func _physics_process(delta):
 			if objective and objective.is_mark_to_dead : 
 				change_state(State.RANDOM_WALK)
 				return
+			elif objective and objective.actor_name == "Dogbot":
+				change_state(State.RUN)
+				return
+			elif not objective:
+				return
+			
 			$Body.look_at(objective.position)
 			$Body.flip_h = false
 			
@@ -237,7 +250,9 @@ func drop_item():
 		weapon.position = global_position + item_pos
 	
 func _on_DetectArea_body_entered(body):
-	if body as GPlayer:
+	if body is GPlayer:
+		objective = body
+	elif body is GActor and body.actor_name == "Dogbot":
 		objective = body
 		
 func _on_drop_xp(amount):
@@ -246,6 +261,8 @@ func _on_drop_xp(amount):
 func _on_DetectArea_body_exited(body):
 	if body as GPlayer:
 		random_objective = get_rand_objective()
+		objective = null
+	elif body is GActor and body.actor_name == "Dogbot":
 		objective = null
 	
 func _on_DamageDelay_timeout():
@@ -286,3 +303,4 @@ func knockback(from : Vector2, impulse :float = 1) -> void:
 func crushed() -> void:
 	# TODO: Definir el comportamieto cuado es aplastado
 	change_state(State.DIE)
+	

@@ -4,9 +4,9 @@ To use as an autoloaded Node
 """
 extends Node
 
-const DEFAULT_MASS: = 2.0
+const DEFAULT_MASS: = 20.0
 const DEFAULT_SLOW_RADIUS: = 200.0
-const DEFAULT_MAX_SPEED: = 400.0
+const DEFAULT_MAX_SPEED: = 150.0
 
 static func follow(
 		velocity: Vector2,
