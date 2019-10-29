@@ -76,7 +76,7 @@ func generate_object():
 	var x = rand_range(-r,r)
 	var y = sqrt(pow(r,2) - pow(x,2))
 	var object = spawn_object.instance()
-	object.global_position = self.global_position + Vector2(20,0)# + Vector2(x,y)
+	object.global_position = self.global_position + Vector2(20,0) + Vector2(x,y)
 	get_parent().add_child(object)
 	
 # Esta funcion es una forma segura de cambiar entre estados.

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Levc - Main Theme.ogg-b925b4699f5c97ac93b34fee896ef11e.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/Levc - Main Theme.ogg"
+dest_files=[ "res://.import/Levc - Main Theme.ogg-b925b4699f5c97ac93b34fee896ef11e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -3,7 +3,7 @@ extends Node
 var current_music
 
 enum Music {
-	PRELUDE,
+	MAIN_THEME,
 	REBELS_BE,
 	THE_EMPIRE,
 	VICTORY,
@@ -19,8 +19,8 @@ func play(music):
 		current_music.stop()
 	
 	match music:
-		Music.PRELUDE:
-			current_music = $Prelude
+		Music.MAIN_THEME:
+			current_music = $MainTheme
 		Music.REBELS_BE:
 			current_music = $RebelsBe
 		Music.THE_EMPIRE:

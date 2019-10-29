@@ -68,7 +68,7 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id=7]
 radius = 176.0
 
-[node name="GlutonSpawner" index="0" instance=ExtResource( 1 )]
+[node name="GlutonSpawner" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="0"]
@@ -90,4 +90,3 @@ shape = SubResource( 6 )
 
 [node name="Collision" parent="ObjectsArea" index="0"]
 shape = SubResource( 7 )
-

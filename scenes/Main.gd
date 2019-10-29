@@ -8,7 +8,7 @@ func _ready():
 	
 	if Main.ot_intro_music:
 		Main.ot_intro_music = false
-		MusicManager.play(MusicManager.Music.PRELUDE)
+		MusicManager.play(MusicManager.Music.MAIN_THEME)
 
 func _on_Back_pressed():
 	$Camera.global_position = global_position

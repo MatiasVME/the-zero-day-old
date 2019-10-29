@@ -8,6 +8,11 @@ var velocity := Vector2.ZERO
 export (float) var max_speed := 50.0
 export (float) var mass := 2.0
 
+# Puede cambiar de objetivo cada 7 segundos
+export (float) var can_change_objective := 7.0
+# Tiempo acumulado para cambiar de objetivo
+var accum_can_change_objective := 0.0
+
 # Es solo para el area de ataque
 var in_attack_area := []
 # Cada cuanto tiempo ataca
@@ -35,39 +40,45 @@ func _ready():
 	
 func _physics_process(delta):
 	match state:
-		State.STAND: state_stand()
+		State.STAND: state_stand(delta)
 		State.SEEKER: state_seeker(delta)
 		State.ATTACK: state_attack(delta)
 		State.DIE: state_die()
 
-func state_stand():
+func state_stand(delta):
+	accum_can_change_objective += delta
+	
 	if not $Sprites/AnimIdle.is_playing(): 
-		$Sprites/AnimRun.stop()
-		$Sprites/AnimAttack.stop()
-		$Sprites/AnimIdle.play("Idle")
+		$Sprites/Anims.play("IdleDogbot")
+		$Sprites/AttackAndRun.active = false
 		
 	if is_instance_valid(objective):
 		change_state(State.SEEKER)
 	elif objectives.size() > 0:
-#		objective = in_attack_area[in_attack_area.size() - 1]
-		objective = objectives[(objectives.find(objective) + 1) % objectives.size()]
+		if accum_can_change_objective >= can_change_objective:
+			accum_can_change_objective = 0
+			objective = objectives[(objectives.find(objective) + 1) % objectives.size()]
+		elif not is_instance_valid(objective):
+			objective = objectives[(objectives.find(objective) + 1) % objectives.size()]
 	
-#	print_debug(in_attack_area)
-		
 func state_seeker(delta):
+	accum_can_change_objective += delta
+	
 	if is_instance_valid(objective) and in_attack_area.size() == 0:
 		sekeer(objective.global_position, delta)
 		
 		if not $Sprites/AnimRun.is_playing():
-			$Sprites/AnimIdle.stop()
-			$Sprites/AnimAttack.stop()
-			$Sprites/AnimRun.play("Run")
+			$Sprites/Anims.play("RunDogbot")
+			$Sprites/AttackAndRun.active = false
+			
 	elif is_instance_valid(objective) and in_attack_area.size() > 0:
 		change_state(State.ATTACK)
 	else:
 		change_state(State.STAND)
 	
 func state_attack(delta):
+	accum_can_change_objective += delta
+	
 	if is_instance_valid(objective):
 		sekeer(objective.global_position, delta)
 	
@@ -78,19 +89,14 @@ func state_attack(delta):
 					actor.damage(data.attack, self)
 				else:
 					in_attack_area.erase(actor)
-					
-#					if in_attack_area.size() > 0:
-#						_on_AttackArea_body_entered(in_attack_area[0])
-#						print_debug(in_attack_area[0])
-					
+						
 					change_state(State.STAND)
 					
 			accum_pulse_attack_time = 0.0
 			
 			if not $Sprites/AnimAttack.is_playing():
-				$Sprites/AnimIdle.stop()
-				$Sprites/AnimRun.stop()
-				$Sprites/AnimAttack.play("Attack")
+				$Sprites/Anims.stop()
+				$Sprites/AttackAndRun.active = true
 		else:
 			accum_pulse_attack_time += delta
 	else:
@@ -154,7 +160,7 @@ func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
 	
-	print_debug("Dogbot State: ", _state)
+#	print_debug("Dogbot State: ", _state)
 	
 	.change_state(_state)
 
