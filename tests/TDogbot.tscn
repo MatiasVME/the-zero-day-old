@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/structures/spawners/GlutonSpawner/GlutonSpawner.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=6]
 
 [node name="TDogbot" type="Node"]
 script = ExtResource( 1 )
@@ -21,17 +21,20 @@ script = ExtResource( 1 )
 [node name="Dogbot" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 729, 598 )
 
-[node name="GlutonSpawner" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 592, 479 )
+[node name="GlutonSpawn" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 587, 499 )
 
-[node name="GlutonSpawner2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 561, 409 )
+[node name="GlutonSpawn2" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 596, 423 )
 
-[node name="GlutonSpawner3" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 570, 323 )
+[node name="GlutonSpawn3" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 511, 525 )
 
-[node name="GlutonSpawner4" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 523, 502 )
+[node name="GlutonSpawn4" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 634, 460 )
 
-[node name="GlutonSpawner5" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 648, 416 )
+[node name="GlutonSpawn5" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 548, 461 )
+
+[node name="GlutonSpawn6" parent="YSort" instance=ExtResource( 6 )]
+position = Vector2( 630, 535 )

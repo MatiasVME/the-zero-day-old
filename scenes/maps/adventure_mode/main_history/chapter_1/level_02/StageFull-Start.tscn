@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_02/StageFull-Start.gd" type="Script" id=1]
 [ext_resource path="res://scenes/camera/GameCamera.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/actors/enviroment/trees/BigTree/BigTree.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.tscn" type="PackedScene" id=11]
 
 [node name="StageFull-Start" type="Node"]
 script = ExtResource( 1 )
@@ -99,30 +100,41 @@ position = Vector2( 900, 212 )
 
 [node name="GlutonSpawn9" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1272, 306 )
+only_player = true
 
 [node name="GlutonSpawn10" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1300, 236 )
+only_player = true
 
 [node name="GlutonSpawn11" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1352, 306 )
+only_player = true
 
 [node name="GlutonSpawn12" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1284, 380 )
+only_player = true
 
 [node name="GlutonSpawn13" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1328, 164 )
+only_player = true
 
 [node name="GlutonSpawn14" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1404, 244 )
+only_player = true
 
 [node name="GlutonSpawn15" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1440, 336 )
+only_player = true
 
 [node name="GlutonSpawn16" parent="YSort" instance=ExtResource( 9 )]
 position = Vector2( 1400, 408 )
+only_player = true
 
 [node name="LightTurret" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 976, 224 )
 
 [node name="LightTurret2" parent="YSort" instance=ExtResource( 10 )]
 position = Vector2( 1024, 344 )
+
+[node name="Dogbot" parent="YSort" instance=ExtResource( 11 )]
+position = Vector2( 1348, 252 )
