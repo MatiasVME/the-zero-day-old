@@ -7,8 +7,7 @@ Si por algún motivo el juego cambia de licencia, prometemos dejar el código fu
 ## Forma de trabajo
 
 Normalmente usamos estas herramientas principales: 
-- HackNPlan : para la gestión de proyectos
-- Github : Repositorio
+- Github : Repositorio y gestión de proyectos
 - Discord : Comunicación
 
 Para que el proceso de desarrollo sea más motivante sacamos versiones cada cierto tiempo. Puede ser cada un semana o cada un més, dependiendo lo que necesitemos cambiar para la próxima versión. Esto nos sirve para ir mostrando el juego y ir solucionando bugs y no concentrarnos totalmente en features, sino que tener una versión jugable para el final del milestone (objetivo del mes/semana).
