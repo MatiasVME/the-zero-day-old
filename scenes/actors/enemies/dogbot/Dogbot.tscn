@@ -1,45 +1,49 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.gd" type="Script" id=2]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/robo-perro.png" type="Texture" id=3]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro-1.png" type="Texture" id=4]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/cuerpo-perro.png" type="Texture" id=5]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/cola-perro.png" type="Texture" id=6]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/oreja-perro.png" type="Texture" id=7]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/cabeza-perro.png" type="Texture" id=8]
-[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=9]
-[ext_resource path="res://resources/RunDogbot.anim" type="Animation" id=10]
-[ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=11]
-[ext_resource path="res://resources/AttackDogbot.anim" type="Animation" id=12]
+[ext_resource path="res://animations/DamageDogbot.anim" type="Animation" id=3]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/robo-perro.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro-1.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cuerpo-perro.png" type="Texture" id=6]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cola-perro.png" type="Texture" id=7]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/oreja-perro.png" type="Texture" id=8]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/cabeza-perro.png" type="Texture" id=9]
+[ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=10]
+[ext_resource path="res://resources/RunDogbot.anim" type="Animation" id=11]
+[ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=12]
+[ext_resource path="res://resources/AttackDogbot.anim" type="Animation" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "RunDogbot"
 
-[sub_resource type="AnimationNodeAnimation" id=7]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "AttackDogbot"
 
-[sub_resource type="AnimationNodeBlend2" id=8]
+[sub_resource type="AnimationNodeBlend2" id=4]
 
-[sub_resource type="AnimationNodeBlendTree" id=9]
+[sub_resource type="AnimationNodeBlendTree" id=5]
 graph_offset = Vector2( 0, -51 )
-nodes/Animation/node = SubResource( 7 )
+nodes/Animation/node = SubResource( 3 )
 nodes/Animation/position = Vector2( 60, 40 )
-"nodes/Animation 2/node" = SubResource( 6 )
+"nodes/Animation 2/node" = SubResource( 2 )
 "nodes/Animation 2/position" = Vector2( 60, 160 )
-nodes/Blend2/node = SubResource( 8 )
+nodes/Blend2/node = SubResource( 4 )
 nodes/Blend2/position = Vector2( 280, 60 )
 nodes/output/position = Vector2( 500, 60 )
 node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 150, 150 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=7]
 radius = 12.0104
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 10, 7 )
 
 [node name="Dogbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -48,22 +52,25 @@ script = ExtResource( 2 )
 position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
+[node name="Anim" parent="." index="3"]
+anims/damage = ExtResource( 3 )
+
 [node name="Sprites" type="Node2D" parent="." index="5"]
 
 [node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
 visible = false
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="LegBehind1" type="Sprite" parent="Sprites" index="1"]
 position = Vector2( -3, 2 )
-rotation = -0.427983
-texture = ExtResource( 4 )
+rotation = 6.6579e-08
+texture = ExtResource( 5 )
 offset = Vector2( 0, 3 )
 
 [node name="LegBehind2" type="Sprite" parent="Sprites" index="2"]
 position = Vector2( 4, 2 )
-rotation = 0.427983
-texture = ExtResource( 4 )
+rotation = -6.6579e-08
+texture = ExtResource( 5 )
 offset = Vector2( 0, 3 )
 
 [node name="Body" type="Node2D" parent="Sprites" index="3"]
@@ -71,60 +78,61 @@ editor/display_folded = true
 
 [node name="Body" type="Sprite" parent="Sprites/Body" index="0"]
 position = Vector2( 1, 1 )
-texture = ExtResource( 5 )
+texture = ExtResource( 6 )
 
 [node name="Tail" type="Sprite" parent="Sprites/Body" index="1"]
 position = Vector2( 6, -2 )
-rotation = -0.226878
-texture = ExtResource( 6 )
+texture = ExtResource( 7 )
 offset = Vector2( 4, -1 )
 
 [node name="Head" type="Node2D" parent="Sprites" index="4"]
 editor/display_folded = true
+position = Vector2( 0, -1 )
 
 [node name="Ear2" type="Sprite" parent="Sprites/Head" index="0"]
 position = Vector2( -8, -4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 2, -1.5 )
 
 [node name="Head" type="Sprite" parent="Sprites/Head" index="1"]
 position = Vector2( -5, 0 )
-texture = ExtResource( 8 )
+texture = ExtResource( 9 )
 offset = Vector2( -4, -1 )
 
 [node name="Ear1" type="Sprite" parent="Sprites/Head" index="2"]
 position = Vector2( -5, -4 )
-texture = ExtResource( 7 )
+texture = ExtResource( 8 )
 offset = Vector2( 2, -0.5 )
 
 [node name="LegFront1" type="Sprite" parent="Sprites" index="5"]
 position = Vector2( -3, 2 )
-rotation = 0.427983
-texture = ExtResource( 9 )
+rotation = -6.6579e-08
+texture = ExtResource( 10 )
 offset = Vector2( 0, 3 )
 
 [node name="LegFront2" type="Sprite" parent="Sprites" index="6"]
 position = Vector2( 4, 2 )
-rotation = -0.427983
-texture = ExtResource( 9 )
+rotation = 6.6579e-08
+texture = ExtResource( 10 )
 offset = Vector2( 0, 3 )
 
 [node name="AnimRun" type="AnimationPlayer" parent="Sprites" index="7"]
-anims/Run = ExtResource( 10 )
+anims/Run = ExtResource( 11 )
 
 [node name="AnimIdle" type="AnimationPlayer" parent="Sprites" index="8"]
-anims/Idle = ExtResource( 11 )
+anims/Idle = ExtResource( 12 )
 
 [node name="AnimAttack" type="AnimationPlayer" parent="Sprites" index="9"]
-anims/Attack = ExtResource( 12 )
+anims/Attack = ExtResource( 13 )
 
 [node name="Anims" type="AnimationPlayer" parent="Sprites" index="10"]
-anims/AttackDogbot = ExtResource( 12 )
-anims/IdleDogbot = ExtResource( 11 )
-anims/RunDogbot = ExtResource( 10 )
+anims/AttackDogbot = ExtResource( 13 )
+anims/IdleDogbot = ExtResource( 12 )
+anims/RunDogbot = ExtResource( 11 )
+anims/damage = ExtResource( 3 )
 
 [node name="AttackAndRun" type="AnimationTree" parent="Sprites" index="11"]
-tree_root = SubResource( 9 )
+tree_root = SubResource( 5 )
 anim_player = NodePath("../Anims")
 parameters/Blend2/blend_amount = 0.5
 
@@ -132,15 +140,23 @@ parameters/Blend2/blend_amount = 0.5
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="AttackArea" type="Area2D" parent="." index="8"]
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea" index="0"]
 position = Vector2( -8, -3.5 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
+
+[node name="DamageArea" type="Area2D" parent="." index="9"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Collision" type="CollisionShape2D" parent="DamageArea" index="0"]
+shape = SubResource( 8 )
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]
 [connection signal="body_exited" from="AttackArea" to="." method="_on_AttackArea_body_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_DamageArea_body_entered"]

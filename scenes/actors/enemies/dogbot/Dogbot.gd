@@ -20,6 +20,9 @@ export (float) var pulse_attack_time := 0.6
 # Tiempo acumulado para el proximo ataque
 var accum_pulse_attack_time := 0.0
 
+# One time die: Para que muera una sola vez
+var ot_die = true
+
 func _ready():
 	self.actor_name = "Dogbot"
 	
@@ -39,6 +42,10 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	
 func _physics_process(delta):
+	if data.is_dead and ot_die:
+		ot_die = false
+		change_state(State.DIE)
+	
 	match state:
 		State.STAND: state_stand(delta)
 		State.SEEKER: state_seeker(delta)
@@ -103,7 +110,7 @@ func state_attack(delta):
 		change_state(State.STAND)
 	
 func state_die():
-	pass
+	print("Mori")
 
 # Rutina en caso de que vea al objetivo
 func sekeer(_objective : Vector2, delta):
@@ -194,3 +201,9 @@ func _on_AttackArea_body_exited(body):
 		in_attack_area.remove(in_attack_area.find(body))
 	if body is EGluton:
 		in_attack_area.remove(in_attack_area.find(body))
+
+func _on_DamageArea_body_entered(body):
+	if body is GBullet:
+		.damage(body.damage)
+
+		print_debug("test")
