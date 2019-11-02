@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.gd" type="Script" id=2]
@@ -10,39 +10,151 @@
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/oreja-perro.png" type="Texture" id=8]
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/cabeza-perro.png" type="Texture" id=9]
 [ext_resource path="res://scenes/actors/enemies/dogbot/images/pierna-perro.png" type="Texture" id=10]
-[ext_resource path="res://resources/RunDogbot.anim" type="Animation" id=11]
+[ext_resource path="res://resources/AttackDogbot.anim" type="Animation" id=11]
 [ext_resource path="res://resources/IdleDogbot.anim" type="Animation" id=12]
-[ext_resource path="res://resources/AttackDogbot.anim" type="Animation" id=13]
+[ext_resource path="res://resources/RunDogbot.anim" type="Animation" id=13]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
 
-[sub_resource type="AnimationNodeAnimation" id=2]
-animation = "RunDogbot"
+[sub_resource type="Animation" id=2]
+resource_name = "dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("LegBehind1:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 3.8147e-06, 59.9999 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LegBehind2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ -3.8147e-06, -59.9999 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LegFront1:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ -3.8147e-06, 30.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LegFront2:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 3.8147e-06, -30.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Head:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 15.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Head/Ear2:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 30.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Head/Ear1:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ 0.0, 59.9999 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Body/Tail:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 44.9999 ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=3]
+animation = "RunDogbot"
+
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "AttackDogbot"
 
-[sub_resource type="AnimationNodeBlend2" id=4]
+[sub_resource type="AnimationNodeBlend2" id=5]
 
-[sub_resource type="AnimationNodeBlendTree" id=5]
+[sub_resource type="AnimationNodeBlendTree" id=6]
 graph_offset = Vector2( 0, -51 )
-nodes/Animation/node = SubResource( 3 )
+nodes/Animation/node = SubResource( 4 )
 nodes/Animation/position = Vector2( 60, 40 )
-"nodes/Animation 2/node" = SubResource( 2 )
+"nodes/Animation 2/node" = SubResource( 3 )
 "nodes/Animation 2/position" = Vector2( 60, 160 )
-nodes/Blend2/node = SubResource( 4 )
+nodes/Blend2/node = SubResource( 5 )
 nodes/Blend2/position = Vector2( 280, 60 )
 nodes/output/position = Vector2( 500, 60 )
 node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 150, 150 )
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=8]
 radius = 12.0104
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 10, 7 )
 
 [node name="Dogbot" instance=ExtResource( 1 )]
@@ -116,23 +228,15 @@ rotation = 6.6579e-08
 texture = ExtResource( 10 )
 offset = Vector2( 0, 3 )
 
-[node name="AnimRun" type="AnimationPlayer" parent="Sprites" index="7"]
-anims/Run = ExtResource( 11 )
-
-[node name="AnimIdle" type="AnimationPlayer" parent="Sprites" index="8"]
-anims/Idle = ExtResource( 12 )
-
-[node name="AnimAttack" type="AnimationPlayer" parent="Sprites" index="9"]
-anims/Attack = ExtResource( 13 )
-
-[node name="Anims" type="AnimationPlayer" parent="Sprites" index="10"]
-anims/AttackDogbot = ExtResource( 13 )
+[node name="Anims" type="AnimationPlayer" parent="Sprites" index="7"]
+anims/AttackDogbot = ExtResource( 11 )
 anims/IdleDogbot = ExtResource( 12 )
-anims/RunDogbot = ExtResource( 11 )
+anims/RunDogbot = ExtResource( 13 )
 anims/damage = ExtResource( 3 )
+anims/dead = SubResource( 2 )
 
-[node name="AttackAndRun" type="AnimationTree" parent="Sprites" index="11"]
-tree_root = SubResource( 5 )
+[node name="AttackAndRun" type="AnimationTree" parent="Sprites" index="8"]
+tree_root = SubResource( 6 )
 anim_player = NodePath("../Anims")
 parameters/Blend2/blend_amount = 0.5
 
@@ -140,21 +244,21 @@ parameters/Blend2/blend_amount = 0.5
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
-shape = SubResource( 6 )
+shape = SubResource( 7 )
 
 [node name="AttackArea" type="Area2D" parent="." index="8"]
 editor/display_folded = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea" index="0"]
 position = Vector2( -8, -3.5 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
 [node name="DamageArea" type="Area2D" parent="." index="9"]
 collision_layer = 2
 collision_mask = 2
 
 [node name="Collision" type="CollisionShape2D" parent="DamageArea" index="0"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 [connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]
 [connection signal="body_entered" from="AttackArea" to="." method="_on_AttackArea_body_entered"]

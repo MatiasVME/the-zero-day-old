@@ -50,7 +50,7 @@ func _physics_process(delta):
 func dead():
 	if not is_mark_to_dead:
 		is_mark_to_dead = true
-		$HitWall.play()
+#		$HitWall.play()
 		$Anim.play("dead")
 
 func bullet_collision():

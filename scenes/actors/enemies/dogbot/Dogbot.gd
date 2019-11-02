@@ -20,7 +20,7 @@ export (float) var pulse_attack_time := 0.6
 # Tiempo acumulado para el proximo ataque
 var accum_pulse_attack_time := 0.0
 
-# One time die: Para que muera una sola vez
+# One Time die : Para que muera una sola vez
 var ot_die = true
 
 func _ready():
@@ -42,9 +42,8 @@ func _ready():
 	data.connect("dead", self, "_on_dead")
 	
 func _physics_process(delta):
-	if data.is_dead and ot_die:
-		ot_die = false
-		change_state(State.DIE)
+	if is_mark_to_dead:
+		return
 	
 	match state:
 		State.STAND: state_stand(delta)
@@ -55,7 +54,7 @@ func _physics_process(delta):
 func state_stand(delta):
 	accum_can_change_objective += delta
 	
-	if not $Sprites/AnimIdle.is_playing(): 
+	if $Sprites/Anims.current_animation != "IdleDogbot": 
 		$Sprites/Anims.play("IdleDogbot")
 		$Sprites/AttackAndRun.active = false
 		
@@ -74,7 +73,7 @@ func state_seeker(delta):
 	if is_instance_valid(objective) and in_attack_area.size() == 0:
 		sekeer(objective.global_position, delta)
 		
-		if not $Sprites/AnimRun.is_playing():
+		if $Sprites/Anims.current_animation != "RunDogbot":
 			$Sprites/Anims.play("RunDogbot")
 			$Sprites/AttackAndRun.active = false
 			
@@ -101,7 +100,7 @@ func state_attack(delta):
 					
 			accum_pulse_attack_time = 0.0
 			
-			if not $Sprites/AnimAttack.is_playing():
+			if not $Sprites/Anims.is_playing():
 				$Sprites/Anims.stop()
 				$Sprites/AttackAndRun.active = true
 		else:
@@ -110,7 +109,9 @@ func state_attack(delta):
 		change_state(State.STAND)
 	
 func state_die():
-	print("Mori")
+	if ot_die:
+		ot_die = false
+		$Sprites/Anims.play("dead")
 
 # Rutina en caso de que vea al objetivo
 func sekeer(_objective : Vector2, delta):
@@ -167,12 +168,14 @@ func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
 	
-#	print_debug("Dogbot State: ", _state)
+	print_debug("Dogbot State: ", _state)
 	
 	.change_state(_state)
 
 func _on_dead():
-	pass
+	Main.store_money += data.money_drop
+	self.is_mark_to_dead = true
+	change_state(State.DIE)
 	
 func _on_DetectArea_body_entered(body):
 	if body is GPlayer:
@@ -205,5 +208,4 @@ func _on_AttackArea_body_exited(body):
 func _on_DamageArea_body_entered(body):
 	if body is GBullet:
 		.damage(body.damage)
-
-		print_debug("test")
+		body.dead()
