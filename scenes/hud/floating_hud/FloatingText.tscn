@@ -20,6 +20,7 @@ margin_bottom = 35.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_y = 1
 text = "0"

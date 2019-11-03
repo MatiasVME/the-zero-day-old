@@ -4,23 +4,29 @@ class_name FloatingText
 
 onready var label := $Label
 onready var tween := $Tween
-enum Type {DAMAGE, HEAL}
-const COLORS = {Type.DAMAGE : Color.red, Type.HEAL : Color.green}
-var amount : int
+
+enum Type {DAMAGE, HEAL, GOLD}
+const COLORS = {
+	Type.DAMAGE : Color("eb564b"), 
+	Type.HEAL : Color("3ca370"), 
+	Type.GOLD : Color("ffe478")
+}
+
+var text_to_show : String
 var type : int
 
 var velocity = Vector2(50, -100)
 var gravity = Vector2(0, 1)
 var mass = 200
 
-func init(value : int = 0, type : int = Type.DAMAGE):
-	self.amount = value
-	self.type = type
+func init(_text_to_show : String, _type := Type.DAMAGE):
+	text_to_show = _text_to_show
+	type = _type
 	
 func _ready():
 	randomize()
 	
-	label.text = str(amount)
+	label.text = text_to_show
 	label.set("custom_colors/font_color", COLORS[type])
 	
 	velocity = Vector2(rand_range(-50, 50), -100)

@@ -525,7 +525,7 @@ func _on_remove_hp(amount):
 	
 	# Instancia un label indicando el daño recibido y lo agrega al árbol
 	var dmg_label : FloatingText = damage_label.instance()
-	dmg_label.init(amount, FloatingText.Type.DAMAGE)
+	dmg_label.init("-" + str(amount), FloatingText.Type.DAMAGE)
 	dmg_label.position = global_position
 	get_parent().add_child(dmg_label)
 

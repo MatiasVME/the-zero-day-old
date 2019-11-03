@@ -1,3 +1,9 @@
+"""
+	GEnemy.gd es la clase base de todos los enemigos y esta
+	asociada con GEnemy.tscn que contiene todos los nodos
+	básicos de un enemigo.
+"""
+
 extends GEnemy
 
 class_name EDogbot
@@ -28,23 +34,15 @@ func _ready():
 	
 	state = State.STAND
 	
-	$Body.playing = true
-	$DamageDelay.set_wait_time(0.2)
-	
 	randomize()
 	
-	data.max_hp = int(round(rand_range(20, 30)))
+	data.max_hp = int(round(rand_range(60, 80)))
 	data.restore_hp()
 	data.xp_drop = 2 # temp
 	data.attack = 6
 	data.money_drop = int(rand_range(30, 60))
 	
-	data.connect("dead", self, "_on_dead")
-	
 func _physics_process(delta):
-	if is_mark_to_dead:
-		return
-	
 	match state:
 		State.STAND: state_stand(delta)
 		State.SEEKER: state_seeker(delta)
@@ -54,9 +52,9 @@ func _physics_process(delta):
 func state_stand(delta):
 	accum_can_change_objective += delta
 	
-	if $Sprites/Anims.current_animation != "IdleDogbot": 
-		$Sprites/Anims.play("IdleDogbot")
-		$Sprites/AttackAndRun.active = false
+	if $Anims.current_animation != "Idle": 
+		$Anims.play("Idle")
+		$Anims/AttackAndRun.active = false
 		
 	if is_instance_valid(objective):
 		change_state(State.SEEKER)
@@ -73,9 +71,9 @@ func state_seeker(delta):
 	if is_instance_valid(objective) and in_attack_area.size() == 0:
 		sekeer(objective.global_position, delta)
 		
-		if $Sprites/Anims.current_animation != "RunDogbot":
-			$Sprites/Anims.play("RunDogbot")
-			$Sprites/AttackAndRun.active = false
+		if $Anims.current_animation != "Run":
+			$Anims.play("Run")
+			$Anims/AttackAndRun.active = false
 			
 	elif is_instance_valid(objective) and in_attack_area.size() > 0:
 		change_state(State.ATTACK)
@@ -100,9 +98,9 @@ func state_attack(delta):
 					
 			accum_pulse_attack_time = 0.0
 			
-			if not $Sprites/Anims.is_playing():
-				$Sprites/Anims.stop()
-				$Sprites/AttackAndRun.active = true
+			if not $Anims.is_playing():
+				$Anims.stop()
+				$Anims/AttackAndRun.active = true
 		else:
 			accum_pulse_attack_time += delta
 	else:
@@ -111,7 +109,7 @@ func state_attack(delta):
 func state_die():
 	if ot_die:
 		ot_die = false
-		$Sprites/Anims.play("dead")
+		$Anims.play("Dead")
 
 # Rutina en caso de que vea al objetivo
 func sekeer(_objective : Vector2, delta):
@@ -168,44 +166,39 @@ func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
 	
-	print_debug("Dogbot State: ", _state)
+#	print_debug("Dogbot State: ", _state)
 	
 	.change_state(_state)
 
-func _on_dead():
-	Main.store_money += data.money_drop
-	self.is_mark_to_dead = true
-	change_state(State.DIE)
-	
-func _on_DetectArea_body_entered(body):
-	if body is GPlayer:
-		objective = body
-		objectives.append(body)
-	elif body is EGluton:
-		objective = body
-		objectives.append(body)
-
-func _on_DetectArea_body_exited(body):
-	if body is GPlayer:
-		objective = null
-		objectives.remove(objectives.find(body))
-	elif body is EGluton:
-		objective = null
-		objectives.remove(objectives.find(body))
-
-func _on_AttackArea_body_entered(body):
+func _on_Attack_body_entered(body):
 	if body is GPlayer:
 		in_attack_area.append(body)
 	elif body is EGluton:
 		in_attack_area.append(body)
 
-func _on_AttackArea_body_exited(body):
+func _on_Attack_body_exited(body):
 	if body is GPlayer:
 		in_attack_area.remove(in_attack_area.find(body))
-	if body is EGluton:
+	elif body is EGluton:
 		in_attack_area.remove(in_attack_area.find(body))
 
-func _on_DamageArea_body_entered(body):
+func _on_Damage_body_entered(body):
 	if body is GBullet:
 		.damage(body.damage)
 		body.dead()
+
+func _on_Detect_body_entered(body):
+	if body is GPlayer:
+		objective = body
+		objectives.append(body)
+	elif body is EGluton:
+		objective = body
+		objectives.append(body)
+
+func _on_Detect_body_exited(body):
+	if body is GPlayer:
+		objective = null
+		objectives.remove(objectives.find(body))
+	elif body is EGluton:
+		objective = null
+		objectives.remove(objectives.find(body))
