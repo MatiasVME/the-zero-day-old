@@ -37,8 +37,8 @@ func _ready():
 	
 	state = State.RANDOM_WALK
 	
-	$Body.playing = true
-	$DamageDelay.set_wait_time(0.2)
+	$Sprites/Body.playing = true
+#	$DamageDelay.set_wait_time(0.2)
 	
 	.spawn()
 	
@@ -84,14 +84,14 @@ func _physics_process(delta):
 			elif not objective:
 				return
 			
-			$Body.look_at(objective.position)
-			$Body.flip_h = false
+			$Sprites/Body.look_at(objective.position)
+			$Sprites/Body.flip_h = false
 			
-			if $Body.frame == 10 and ot_attack:
+			if $Sprites/Body.frame == 10 and ot_attack:
 				ot_attack = false
 				objective.damage(data.attack, self)
 				$Sounds/Hit.play()
-			elif $Body.frame == 11:
+			elif $Sprites/Body.frame == 11:
 				ot_attack = true
 		State.DIE:
 			if not is_mark_to_dead:
@@ -140,13 +140,13 @@ func sekeer(objective):
 	
 	match get_direction_to_see(objective):
 		90:
-			if $Body.flip_h:
-				$Body.flip_h = false
-			$Body.play("RunSide")
+			if $Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = false
+			$Sprites/Body.play("RunSide")
 		-90:
-			if !$Body.flip_h:
-				$Body.flip_h = true
-			$Body.play("RunSide")
+			if !$Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = true
+			$Sprites/Body.play("RunSide")
 			
 	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
 		
@@ -177,18 +177,18 @@ func sekeer(objective):
 func run(objective):
 	match get_direction_to_see(objective):
 		90:
-			if !$Body.flip_h:
-				$Body.flip_h = true
-			$Body.play("RunSide")
+			if !$Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = true
+			$Sprites/Body.play("RunSide")
 		-90:
-			if $Body.flip_h:
-				$Body.flip_h = false
-			$Body.play("RunSide")
+			if $Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = false
+			$Sprites/Body.play("RunSide")
 	
 	velocity = steer(objective)
 	move_and_slide(velocity * 2)
 	
-#Rutina cuando es impactado por un proyectil con Knockback
+# Rutina cuando es impactado por un proyectil con Knockback
 func stunned(delta : float):
 	var collider = move_and_collide(velocity * delta)
 	velocity *= 0.9
@@ -249,21 +249,8 @@ func drop_item():
 		get_parent().add_child(weapon)
 		weapon.position = global_position + item_pos
 	
-func _on_DetectArea_body_entered(body):
-	if body is GPlayer:
-		objective = body
-	elif body is GActor and body.actor_name == "Dogbot":
-		objective = body
-		
 func _on_drop_xp(amount):
 	DataManager.get_current_player_instance().add_xp(amount)
-	
-func _on_DetectArea_body_exited(body):
-	if body as GPlayer:
-		random_objective = get_rand_objective()
-		objective = null
-	elif body is GActor and body.actor_name == "Dogbot":
-		objective = null
 	
 func _on_DamageDelay_timeout():
 	can_damage = true
@@ -273,25 +260,6 @@ func _on_dead():
 	Main.store_money += data.money_drop
 	change_state(State.DIE)
 	
-func _on_DamageArea_body_entered(body):
-	if body is GBullet and not is_mark_to_dead:
-		body.dead()
-		.damage(body.damage)
-		if body.get("repulsion") and state != State.DIE:
-			change_state(State.STUNNED)
-			knockback(body.global_position, body.repulsion)
-		if data.hp != 0: $Sounds/Damage.play()
-	
-func _on_AttackArea_body_entered(body):
-	if body is GPlayer:
-		change_state(State.ATTACK)
-		$Body.play("Attack")
-
-func _on_AttackArea_body_exited(body):
-	if body is GPlayer:
-		$Body.rotation_degrees = 0
-		change_state(State.SEEKER)
-
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
 	current_time_to_random_objective = 0
@@ -304,3 +272,36 @@ func crushed() -> void:
 	# TODO: Definir el comportamieto cuado es aplastado
 	change_state(State.DIE)
 	
+func _on_Detect_body_entered(body):
+	if body is GPlayer:
+		objective = body
+	elif body is GActor and body.actor_name == "Dogbot":
+		objective = body
+	
+func _on_Detect_body_exited(body):
+	if body as GPlayer:
+		random_objective = get_rand_objective()
+		objective = null
+	elif body is GActor and body.actor_name == "Dogbot":
+		objective = null
+
+func _on_Damage_body_entered(body):
+	if body is GBullet and not is_mark_to_dead:
+		body.dead()
+		.damage(body.damage)
+		
+		if body.get("repulsion") and state != State.DIE:
+			change_state(State.STUNNED)
+			knockback(body.global_position, body.repulsion)
+		
+		if not data.is_dead: $Sounds/Damage.play()
+
+func _on_Attack_body_entered(body):
+	if body is GPlayer:
+		change_state(State.ATTACK)
+		$Sprites/Body.play("Attack")
+
+func _on_Attack_body_exited(body):
+	if body is GPlayer:
+		$Sprites/Body.rotation_degrees = 0
+		change_state(State.SEEKER)

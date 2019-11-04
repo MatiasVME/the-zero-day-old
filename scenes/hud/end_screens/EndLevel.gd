@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
-	MusicManager.play(MusicManager.Music.MUSHROOMS)
+	MusicManager.play(MusicManager.Music.GAME_OVER)
 	
 	if Main.result == Main.Result.WIN:
 		win()

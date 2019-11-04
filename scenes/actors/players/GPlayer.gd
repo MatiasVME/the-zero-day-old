@@ -85,16 +85,17 @@ func _ready():
 	
 	connect("fire", self, "_on_fire")
 	
-	data.connect("dead", self, "_on_dead")
-	data.connect("remove_hp", self, "_on_remove_hp")
-	data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
+	if is_instance_valid(data):
+		data.connect("dead", self, "_on_dead")
+		data.connect("remove_hp", self, "_on_remove_hp")
+		data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
+		
+		data.restore_hp()
 	
-	data.restore_hp()
-	
-	if not data.primary_weapon:
-		config_boxing_attack()
-	else:
-		config_primary_weapon()
+		if not data.primary_weapon:
+			config_boxing_attack()
+		else:
+			config_primary_weapon()
 	
 func _move_handler(delta, distance, run):
 	var dir := Vector2()

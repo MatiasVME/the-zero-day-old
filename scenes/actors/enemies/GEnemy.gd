@@ -87,13 +87,13 @@ func knockback(distance : Vector2):
 	pass
 
 func spawn():
-	if $Anim.has_animation("Spawn"):
+	if $Anims.has_animation("Spawn"):
 		$Anims.play("Spawn")
 
 func dead():
 	$Collision.disabled = true
 	
-	if $Anim.has_animation("Dead"):
+	if $Anims.has_animation("Dead"):
 		$Anims.play("Dead")
 
 func _on_DamageDelay_timeout():
