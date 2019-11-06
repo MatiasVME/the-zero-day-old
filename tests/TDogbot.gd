@@ -4,7 +4,7 @@ func _ready():
 	MusicManager.play(MusicManager.Music.THE_EMPIRE)
 	
 	var player = PlayerManager.init_player(0)
-	player.global_position = Vector2(420, 220)
+	player.global_position = Vector2(420, 226)
 	$YSort.add_child(player)
 	player.enable_player()
 	

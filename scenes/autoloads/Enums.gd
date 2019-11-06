@@ -7,6 +7,14 @@ enum PlayerType {
 	SERBOT
 }
 
+# A quién pertence el objeto o escena?
+enum ActorOwner {
+	UNDEFINED,
+	ENEMY,
+	PLAYER,
+	NATURE
+}
+
 # En un futuro se implimentará esto
 enum Elements {
 	WATER,

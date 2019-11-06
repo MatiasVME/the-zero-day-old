@@ -184,7 +184,7 @@ func _on_Attack_body_exited(body):
 
 func _on_Damage_body_entered(body):
 	if body is GBullet:
-		.damage(body.damage)
+		.damage(body.damage, body.bullet_owner.data)
 		body.dead()
 
 func _on_Detect_body_entered(body):

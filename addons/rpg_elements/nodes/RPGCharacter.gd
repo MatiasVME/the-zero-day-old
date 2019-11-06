@@ -56,6 +56,9 @@ var xp_drop = 0
 # no se esta en la pantalla de juego. 
 var is_dead = false
 
+# Quienes le hicieron daño?
+var those_who_damaged := []
+
 signal level_up(current_level)
 signal add_xp(amount)
 # Si muere, si drop_xp > 0, entonces dropea xp
@@ -142,9 +145,12 @@ func add_hp(_hp):
 		emit_signal("full_hp")
 
 # No ignora la defensa
-func damage(_hp : int):
+func damage(_hp : int, who_damaged : RPGCharacter):
 	var damage = _hp - (_hp * defense_rate / 100)
 	remove_hp(int(float(damage)))
+	
+	if not those_who_damaged.has(who_damaged):
+		those_who_damaged.append(who_damaged)
 
 # Ignora la defensa
 func remove_hp(_hp):

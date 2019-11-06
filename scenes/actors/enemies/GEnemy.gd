@@ -59,13 +59,13 @@ func change_state(_state):
 # Todos los enemigos tienen estos metodos como minimo
 #
 
-func damage(amount, who = null):
+func damage(amount, who : RPGCharacter):
 	if not can_damage:
 		return
 
 	$Anims/Damage.play("Damage")
 	
-	data.damage(amount)
+	data.damage(amount, who)
 	show_damage_indicator("-" + str(amount))
 
 func show_damage_indicator(text_to_show : String):
@@ -87,8 +87,6 @@ func knockback(distance : Vector2):
 	pass
 
 func spawn():
-#	_on_VisibilityNotifier_viewport_entered(null)
-	
 	if $Anims.has_animation("Spawn"):
 		$Anims.play("Spawn")
 
@@ -101,20 +99,11 @@ func dead():
 func _on_DamageDelay_timeout():
 	can_damage = true
 
-#func _on_VisibilityNotifier_screen_entered():
-#	set_process(true)
-#	set_physics_process(true)
-#	visible = true
-#
-#func _on_VisibilityNotifier_screen_exited():
-#	set_process(false)
-#	set_physics_process(false)
-#	visible = false
-
 func _on_dead():
 	Main.store_money += data.money_drop
 	is_mark_to_dead = true
 	
+#	if data.those_who_damaged.has(
 	show_gold_indicator("+" + str(data.money_drop))
 	
 	change_state(State.DIE)
@@ -122,17 +111,3 @@ func _on_dead():
 func _on_Anims_animation_finished(anim_name):
 	if anim_name == "Dead":
 		queue_free()
-
-#func _on_VisibilityNotifier_viewport_entered(viewport):
-##	print_debug("entered " + str(viewport.get_viewport_rid().get_id()))
-#
-#	set_process(true)
-#	set_physics_process(true)
-#	visible = true
-#
-#func _on_VisibilityNotifier_viewport_exited(viewport):
-##	print_debug("exited " + str(viewport.get_viewport_rid().get_id()))
-#
-#	set_process(false)
-#	set_physics_process(false)
-#	visible = false

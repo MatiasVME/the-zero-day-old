@@ -19,9 +19,9 @@ func _process(delta):
 		rotation_degrees = 0
 
 func _on_IsNearAttackArea_body_entered(body):
-	if body is GActor and body.actor_owner == body.ActorOwner.ENEMY:
+	if body is GActor and body.actor_owner == Enums.ActorOwner.ENEMY:
 		is_near = true
 
 func _on_IsNearAttackArea_body_exited(body):
-	if body is GActor and body.actor_owner == body.ActorOwner.ENEMY:
+	if body is GActor and body.actor_owner == Enums.ActorOwner.ENEMY:
 		is_near = false

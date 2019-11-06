@@ -15,4 +15,6 @@ class_name TZDCharacter
 # Implementar en un futuro
 var unique_id : String
 
+# A quién pertenece este actor?
+var actor_owner = Enums.ActorOwner.UNDEFINED
 

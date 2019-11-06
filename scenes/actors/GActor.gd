@@ -2,13 +2,14 @@ extends KinematicBody2D
 
 class_name GActor
 
-enum ActorOwner {ENEMY, PLAYER, NATURE}
-var actor_owner = ActorOwner.ENEMY
+#enum ActorOwner {ENEMY, PLAYER, NATURE}
+# A quién pertence el objeto o escena?
+var actor_owner = Enums.ActorOwner.ENEMY
 
 # Cuando esta marcado para morir, es para evitar que
 # muera mas de una vez o se haga la animacion de morir 
 # mas de una vez
-var is_mark_to_dead = false
+var is_mark_to_dead := false
 
 var can_move := false
 

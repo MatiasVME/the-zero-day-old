@@ -9,9 +9,9 @@ const MAX_SPEED = 50
 const MAX_FORCE = 0.02
 const RANDOM_RUN_DISTANCE = 4
 
-var velocity = Vector2()
+var velocity := Vector2.ZERO
 
-export (State) var mode = 0
+#export (State) const mode = 0
 
 var speed : int = 3
 var attack : int = 2
@@ -288,7 +288,10 @@ func _on_Detect_body_exited(body):
 func _on_Damage_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		body.dead()
-		.damage(body.damage)
+		
+		# Verifica si es un GPlayer o GEnemy para ver si 
+		if body is GPlayer or body is GEnemy:
+			.damage(body.damage, body.data)
 		
 		if body.get("repulsion") and state != State.DIE:
 			change_state(State.STUNNED)

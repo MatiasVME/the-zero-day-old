@@ -81,7 +81,7 @@ signal reload
 signal item_taken(item)
 
 func _ready():
-	self.actor_owner = ActorOwner.PLAYER
+	self.actor_owner = Enums.ActorOwner.PLAYER
 	
 	connect("fire", self, "_on_fire")
 	
@@ -426,9 +426,10 @@ func flip_h_sprites(value):
 	$Sprites/Body.flip_h = value
 	$Sprites/Head.flip_h = value
 
-func damage(amount, damaging = null):
-	data.damage(amount)
-	last_to_damage = damaging
+# who: es quien le hizo daño
+func damage(amount, who : RPGCharacter):
+	data.damage(amount, who)
+	last_to_damage = who
 
 func dash_start():
 	doing_dash = true
@@ -541,12 +542,12 @@ func _on_InteractArea_body_entered(body):
 			emit_signal("item_taken", body.data)
 	elif body is GBullet and not is_inmortal:
 		if body.bullet_owner != self:
-			data.damage(body.damage)
+			data.damage(body.damage, body.bullet_owner.data)
 			body.dead()
 	elif body is GBullet and is_inmortal:
 		body.dead()
 	elif body is GEnemy and doing_special_dash:
-		body.damage(data.special_dash_damage)
+		body.damage(data.special_dash_damage, self.data)
 
 func _on_DetectArea_body_entered(body):
 	if body is GActor:

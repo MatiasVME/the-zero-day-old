@@ -134,14 +134,14 @@ radius = 100.0
 [node name="Gluton" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="Collision" parent="." index="0"]
+[node name="Collision" parent="." index="1"]
 shape = SubResource( 1 )
 
-[node name="Anims" parent="." index="2"]
+[node name="Anims" parent="." index="3"]
 anims/Dead = SubResource( 2 )
 anims/Spawn = SubResource( 3 )
 
-[node name="Sprites" parent="." index="3"]
+[node name="Sprites" parent="." index="4"]
 modulate = Color( 1, 1, 1, 0.576431 )
 rotation = -6.28319
 scale = Vector2( 1e-05, 1e-05 )
