@@ -31,6 +31,8 @@ var ot_die = true
 
 func _ready():
 	self.actor_name = "Dogbot"
+	self.actor_owner = Enums.ActorOwner.ENEMY
+	data.character_owner = self.actor_owner
 	
 	state = State.STAND
 	
@@ -41,6 +43,8 @@ func _ready():
 	data.xp_drop = 2 # temp
 	data.attack = 6
 	data.money_drop = int(rand_range(30, 60))
+	
+	data.connect("dead", self, "_on_dead")
 	
 func _physics_process(delta):
 	match state:
@@ -105,7 +109,10 @@ func state_attack(delta):
 			accum_pulse_attack_time += delta
 	else:
 		change_state(State.STAND)
-	
+
+func _on_dead():
+	.dead()
+
 func state_die():
 	if ot_die:
 		ot_die = false
@@ -184,7 +191,7 @@ func _on_Attack_body_exited(body):
 
 func _on_Damage_body_entered(body):
 	if body is GBullet:
-		.damage(body.damage, body.bullet_owner.data)
+		.damage(body.damage, body.bullet_owner)
 		body.dead()
 
 func _on_Detect_body_entered(body):
@@ -202,3 +209,4 @@ func _on_Detect_body_exited(body):
 	elif body is EGluton:
 		objective = null
 		objectives.remove(objectives.find(body))
+		

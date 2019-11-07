@@ -82,6 +82,7 @@ signal item_taken(item)
 
 func _ready():
 	self.actor_owner = Enums.ActorOwner.PLAYER
+	data.character_owner = self.actor_owner
 	
 	connect("fire", self, "_on_fire")
 	
@@ -602,3 +603,4 @@ func _on_current_force_updated(force):
 func _on_SpecialDash_tween_all_completed():
 	doing_special_dash = false
 	special_dash_time_accum = 0.0
+	

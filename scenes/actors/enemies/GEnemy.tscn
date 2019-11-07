@@ -26,6 +26,7 @@ editor/display_folded = true
 [node name="Sounds" type="Node" parent="."]
 
 [node name="Areas" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Attack" type="Area2D" parent="Areas"]
 

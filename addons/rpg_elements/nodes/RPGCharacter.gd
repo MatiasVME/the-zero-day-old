@@ -59,6 +59,12 @@ var is_dead = false
 # Quienes le hicieron daño?
 var those_who_damaged := []
 
+# A quién pertenece este actor?
+# Almacena un enum que indica quien es el owner de este
+# character, el enum se definirá fuera de este archivo.
+# Ya que no en todos los juegos existen los mismos owners.
+var character_owner = 0 # 0 = UNDEFINED
+
 signal level_up(current_level)
 signal add_xp(amount)
 # Si muere, si drop_xp > 0, entonces dropea xp

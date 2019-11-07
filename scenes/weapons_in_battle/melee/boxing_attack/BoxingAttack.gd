@@ -72,9 +72,9 @@ func set_player(_player):
 
 func _on_HitArea_body_entered(body):
 	if body is GEnemy:
-		body.damage(PlayerManager.current_player.data.attack)
+		body.damage(PlayerManager.current_player.data.attack, body)
 	elif body is GStructure:
-		 body.damage(PlayerManager.current_player.data.attack)
+		 body.damage(PlayerManager.current_player.data.attack, body)
 	elif body is GBullet:
 		if not body.bullet_owner is GPlayer:
 			body.bullet_collision()

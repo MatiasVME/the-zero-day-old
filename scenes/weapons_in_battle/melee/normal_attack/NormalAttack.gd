@@ -58,4 +58,4 @@ func attack(actor = null):
 
 func _on_DamageArea_body_entered(body):
 	if body is GEnemy or body is GStructure:
-		body.damage(self.weapon.damage)
+		body.damage(self.weapon.damage, body)

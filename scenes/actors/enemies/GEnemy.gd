@@ -22,6 +22,8 @@ var damage_indicator_label = preload("res://scenes/hud/floating_hud/FloatingText
 # NEEDFIX
 var selected_num := -1 # -1 es nignuno seleccionado
 
+var was_attacked_by_a_player := false
+
 enum State {
 	STAND,
 	SEEKER,
@@ -46,8 +48,8 @@ signal state_changed
 func _init():
 	data = TZDEnemy.new()
 	
-func _ready():
-	data.connect("dead", self, "_on_dead")
+#func _ready():
+#	data.connect("dead", self, "_on_dead")
 
 # Esta funcion es una forma segura de cambiar entre estados.
 func change_state(_state): 
@@ -59,13 +61,17 @@ func change_state(_state):
 # Todos los enemigos tienen estos metodos como minimo
 #
 
-func damage(amount, who : RPGCharacter):
-	if not can_damage:
+func damage(amount, who : GActor):
+	if not can_damage and not is_instance_valid(who):
 		return
-
+	
 	$Anims/Damage.play("Damage")
 	
-	data.damage(amount, who)
+	if who.actor_owner == Enums.ActorOwner.ENEMY or who.actor_owner == Enums.ActorOwner.PLAYER:
+		data.damage(amount, who.data)
+	else:
+		print_debug(who.get_name(), " no es gactor ni gplayer")
+	
 	show_damage_indicator("-" + str(amount))
 
 func show_damage_indicator(text_to_show : String):
@@ -95,18 +101,30 @@ func dead():
 	
 	if $Anims.has_animation("Dead"):
 		$Anims.play("Dead")
+		
+	is_mark_to_dead = true
+	
+	if was_attacked_by_a_player():
+		Main.store_money += data.money_drop
+		show_gold_indicator("+" + str(data.money_drop))
+	
+	change_state(State.DIE)
+
+# Devuelve true si fue atacado alguna vez por un jugador
+func was_attacked_by_a_player():
+	# Esto evita que se llame al for mas de lo necesario
+	if was_attacked_by_a_player:
+		return true
+	
+	for rpg_character in data.those_who_damaged:
+		if rpg_character.character_owner == Enums.ActorOwner.PLAYER:
+			was_attacked_by_a_player = true
+			return true
+	
+	return false
 
 func _on_DamageDelay_timeout():
 	can_damage = true
-
-func _on_dead():
-	Main.store_money += data.money_drop
-	is_mark_to_dead = true
-	
-#	if data.those_who_damaged.has(
-	show_gold_indicator("+" + str(data.money_drop))
-	
-	change_state(State.DIE)
 
 func _on_Anims_animation_finished(anim_name):
 	if anim_name == "Dead":

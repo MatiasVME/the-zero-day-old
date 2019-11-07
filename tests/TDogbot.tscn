@@ -21,48 +21,6 @@ script = ExtResource( 1 )
 [node name="Dogbot" parent="YSort" instance=ExtResource( 5 )]
 position = Vector2( 764, 628 )
 
-[node name="Gluton" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 474, 564 )
-
-[node name="Gluton2" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 562, 525 )
-
-[node name="Gluton3" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 614, 447 )
-
-[node name="Gluton4" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 526, 481 )
-
-[node name="Gluton5" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 599, 467 )
-
-[node name="Gluton6" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 638, 519 )
-
-[node name="Gluton7" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 495, 526 )
-
-[node name="Gluton8" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 328, 567 )
-
-[node name="Gluton9" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 248, 571 )
-
-[node name="Gluton10" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 188, 609 )
-
-[node name="Gluton11" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 219, 632 )
-
-[node name="Gluton12" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 169, 673 )
-
-[node name="Gluton13" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 169, 673 )
-
-[node name="Gluton14" parent="YSort" instance=ExtResource( 6 )]
-position = Vector2( 236, 517 )
-
 [node name="Gluton15" parent="YSort" instance=ExtResource( 6 )]
 position = Vector2( 327, 517 )
 

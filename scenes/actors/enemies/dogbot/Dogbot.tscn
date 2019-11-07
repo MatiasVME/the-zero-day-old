@@ -18,26 +18,26 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 5.0
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=2]
 animation = "RunDogbot"
 
-[sub_resource type="AnimationNodeAnimation" id=10]
+[sub_resource type="AnimationNodeAnimation" id=3]
 animation = "AttackDogbot"
 
-[sub_resource type="AnimationNodeBlend2" id=11]
+[sub_resource type="AnimationNodeBlend2" id=4]
 
-[sub_resource type="AnimationNodeBlendTree" id=12]
+[sub_resource type="AnimationNodeBlendTree" id=5]
 graph_offset = Vector2( 0, 107 )
-nodes/Animation/node = SubResource( 10 )
+nodes/Animation/node = SubResource( 3 )
 nodes/Animation/position = Vector2( 60, 80 )
-"nodes/Animation 2/node" = SubResource( 9 )
+"nodes/Animation 2/node" = SubResource( 2 )
 "nodes/Animation 2/position" = Vector2( 60, 220 )
-nodes/Blend2/node = SubResource( 11 )
+nodes/Blend2/node = SubResource( 4 )
 nodes/Blend2/position = Vector2( 340, 140 )
 nodes/output/position = Vector2( 600, 140 )
 node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=6]
 resource_name = "Damage"
 length = 0.2
 tracks/0/type = "value"
@@ -53,16 +53,16 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.921569, 0.337255, 0.294118, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=7]
 radius = 10.4403
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 8, 6 )
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=9]
 radius = 146.014
 
-[node name="Dogbot" index="0" instance=ExtResource( 1 )]
+[node name="Dogbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
@@ -77,12 +77,12 @@ anims/Idle = ExtResource( 6 )
 anims/Run = ExtResource( 7 )
 
 [node name="AttackAndRun" type="AnimationTree" parent="Anims" index="0"]
-tree_root = SubResource( 12 )
+tree_root = SubResource( 5 )
 anim_player = NodePath("..")
 parameters/Blend2/blend_amount = 0.5
 
 [node name="Damage" parent="Anims" index="1"]
-anims/Damage = SubResource( 13 )
+anims/Damage = SubResource( 6 )
 
 [node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
 visible = false
@@ -155,17 +155,13 @@ anims/RunDogbot = ExtResource( 7 )
 
 [node name="Collision" parent="Areas/Attack" index="0"]
 position = Vector2( -9, -3 )
-shape = SubResource( 6 )
-
-[node name="Damage" parent="Areas" index="1"]
-collision_layer = 2
-collision_mask = 2
-
-[node name="Collision" parent="Areas/Damage" index="0"]
 shape = SubResource( 7 )
 
-[node name="Collision" parent="Areas/Detect" index="0"]
+[node name="Collision" parent="Areas/Damage" index="0"]
 shape = SubResource( 8 )
+
+[node name="Collision" parent="Areas/Detect" index="0"]
+shape = SubResource( 9 )
 [connection signal="body_entered" from="Areas/Attack" to="." method="_on_Attack_body_entered"]
 [connection signal="body_exited" from="Areas/Attack" to="." method="_on_Attack_body_exited"]
 [connection signal="body_entered" from="Areas/Damage" to="." method="_on_Damage_body_entered"]

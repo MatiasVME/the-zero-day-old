@@ -34,6 +34,8 @@ var ot_attack = true
 
 func _ready():
 	self.actor_name == "Gluton"
+	self.actor_owner = Enums.ActorOwner.ENEMY
+	data.character_owner = self.actor_owner
 	
 	state = State.RANDOM_WALK
 	
@@ -75,7 +77,7 @@ func _physics_process(delta):
 			else:
 				change_state(State.RANDOM_WALK)
 		State.ATTACK:
-			if objective and objective.is_mark_to_dead : 
+			if objective and objective.is_mark_to_dead :
 				change_state(State.RANDOM_WALK)
 				return
 			elif objective and objective.actor_name == "Dogbot":
@@ -193,7 +195,7 @@ func stunned(delta : float):
 	var collider = move_and_collide(velocity * delta)
 	velocity *= 0.9
 	if velocity.length() < 1.0 and not (state == State.ATTACK or state == State.DIE):
-		change_state(State.RANDOM_WALK) 
+		change_state(State.RANDOM_WALK)
 	
 func steer(target : Vector2):
 	var desired_velocity = (target - position).normalized() * MAX_SPEED
@@ -213,7 +215,7 @@ func get_rand_objective():
 	
 	random_objective = Vector2(
 		rand_range(500, -500),
-		rand_range(500, -500) 
+		rand_range(500, -500)
 	) + global_position
 	
 	return random_objective
@@ -227,7 +229,7 @@ func drop_item():
 	
 	var item_pos := Vector2(
 		rand_range(10, 10),
-		rand_range(-10, -10) 
+		rand_range(-10, -10)
 	)
 	
 	# Los glutones normales pueden dropear balas normales y raramente armas.
@@ -250,15 +252,15 @@ func drop_item():
 		weapon.position = global_position + item_pos
 	
 func _on_drop_xp(amount):
-	DataManager.get_current_player_instance().add_xp(amount)
+	if was_attacked_by_a_player():
+		DataManager.get_current_player_instance().add_xp(amount)
 	
 func _on_DamageDelay_timeout():
 	can_damage = true
 
 func _on_dead():
 	drop_item()
-	Main.store_money += data.money_drop
-	change_state(State.DIE)
+	.dead()
 	
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
@@ -289,9 +291,7 @@ func _on_Damage_body_entered(body):
 	if body is GBullet and not is_mark_to_dead:
 		body.dead()
 		
-		# Verifica si es un GPlayer o GEnemy para ver si 
-		if body is GPlayer or body is GEnemy:
-			.damage(body.damage, body.data)
+		.damage(body.damage, body.bullet_owner)
 		
 		if body.get("repulsion") and state != State.DIE:
 			change_state(State.STUNNED)
