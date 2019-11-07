@@ -1,3 +1,8 @@
+"""
+	Nota: Este código no creo que sea necesario ya que es, básicamente
+	un RPGCharacter pero más limitado.
+"""
+
 # MIT License
 #
 # Copyright (c) 2019 Markus Ellisca

@@ -209,11 +209,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/items_specialization/TZDRecharger.gd"
 }, {
-"base": "RPGStructure",
-"class": "PHStructure",
-"language": "GDScript",
-"path": "res://addons_extension/tzd_elements/TZDStructure.gd"
-}, {
 "base": "Node",
 "class": "Persistence",
 "language": "GDScript",
@@ -309,6 +304,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons_extension/tzd_elements/character_specialization/TZDPlayer.gd"
 }, {
+"base": "TZDCharacter",
+"class": "TZDStructure",
+"language": "GDScript",
+"path": "res://addons_extension/tzd_elements/TZDStructure.gd"
+}, {
 "base": "TZDItem",
 "class": "TZDWeapon",
 "language": "GDScript",
@@ -375,7 +375,6 @@ _global_script_class_icons={
 "PHConsumable": "",
 "PHMaterial": "",
 "PHRecharger": "",
-"PHStructure": "",
 "Persistence": "res://addons/PersistenceNode/icon.png",
 "PlasmaBullet": "",
 "RPGCharacter": "res://addons/rpg_elements/icons/RPGCharacter.png",
@@ -395,6 +394,7 @@ _global_script_class_icons={
 "TZDItem": "",
 "TZDMeleeWeapon": "",
 "TZDPlayer": "",
+"TZDStructure": "",
 "TZDWeapon": "",
 "Tank": "",
 "TerrainGenerator": "res://addons/terrain_generator/icon.png",

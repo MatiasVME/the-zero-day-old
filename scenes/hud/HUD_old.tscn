@@ -7,7 +7,11 @@
 [ext_resource path="res://scenes/hud/hotbar/Hotbar.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/hud/bullet_info/BulletInfo.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/hud/avatar_handler/AvatarHandler.tscn" type="PackedScene" id=7]
-[ext_resource path="res://scenes/hud/end_screens/EndLevel.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/others_screens/EndLevel.tscn" type="PackedScene" id=8]
+
+
+
+
 
 
 [sub_resource type="Animation" id=1]

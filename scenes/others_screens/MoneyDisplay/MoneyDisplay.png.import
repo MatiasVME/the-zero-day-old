@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/MoneyDisplay.png-9911dcafae5560c6b4be04f3964da300.stex"
+path="res://.import/MoneyDisplay.png-2ecf6d92cf31f321d0c86b0d87be4201.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/hud/end_screens/MoneyDisplay/MoneyDisplay.png"
-dest_files=[ "res://.import/MoneyDisplay.png-9911dcafae5560c6b4be04f3964da300.stex" ]
+source_file="res://scenes/others_screens/MoneyDisplay/MoneyDisplay.png"
+dest_files=[ "res://.import/MoneyDisplay.png-2ecf6d92cf31f321d0c86b0d87be4201.stex" ]
 
 [params]
 

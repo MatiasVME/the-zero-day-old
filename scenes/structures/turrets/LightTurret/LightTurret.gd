@@ -47,7 +47,7 @@ func _ready():
 	data.restore_hp()
 	data.xp_drop = 5 # temp
 	
-	data.connect("destroy", self, "_on_destroy")
+	data.connect("dead", self, "_on_dead")
 	#data.connect("drop_xp", self, "_on_drop_xp")
 	
 func _physics_process(delta):
@@ -123,6 +123,7 @@ func shoot():
 	
 	bullet.global_position = $Pivot/ShootPivot.global_position
 	bullet.rotation = $Pivot.rotation
+	bullet.bullet_owner = self
 	get_parent().add_child(bullet)
 	
 	$Pivot/Rotator.frame = 0
@@ -146,7 +147,7 @@ func _on_DetectArea_body_exited(body):
 		patrol_objetive = objective.global_position
 		objective = null
 	
-func _on_destroy():
+func _on_dead():
 	change_state(State.DESTROYED)
 	
 func _on_DamageArea_body_entered(body):

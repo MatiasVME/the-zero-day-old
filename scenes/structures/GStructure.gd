@@ -15,7 +15,7 @@ var is_interactable := false
 # Para activarla solo cuando esta visible, etc.
 var is_active := false
 
-var structure_owner : String = ""
+var structure_owner = Enums.ActorOwner.UNDEFINED
 
 var _can_iteract := false
 
@@ -37,7 +37,8 @@ func _ready():
 	set_process(false)
 	set_physics_process(false)
 
-func damage(amount):
+# Puede recibir daño de un player, enemigo u otro
+func damage(amount, who_damage = null):
 	# Instancia un label indicando el daño recibido y lo agrega al árbol
 	var dmg_label : FloatingText = damage_label.instance()
 	dmg_label.init("-" + str(amount), FloatingText.Type.DAMAGE)

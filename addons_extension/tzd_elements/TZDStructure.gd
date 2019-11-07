@@ -1,12 +1,12 @@
 """
-PHStructure.gd (Project Humanity Structure)
+TZDStructure.gd (The Zero Day Structure)
 
 TODO - Descripción
 """
 
-extends RPGStructure
+extends TZDCharacter
 
-class_name PHStructure
+class_name TZDStructure
 
 # Tipo de estructura
 enum StructureType {
@@ -15,9 +15,3 @@ enum StructureType {
 	Attack
 }
 var player_type = StructureType.Building # Cambiar a DORBOT mas adelante
-
-var unique_id : String
-
-func _init():
-	randomize()
-	unique_id = str(OS.get_unix_time(), "-", randi())

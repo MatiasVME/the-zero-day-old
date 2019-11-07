@@ -9,19 +9,19 @@ enum State {
 	SHOOT, # Cuando dispara
 	DESTROYED
 }
-var state : int = 0
-var current_state : int = 0
+var state = State.SLEEP
+var current_state = State.SLEEP
 
 # Puede recibir daño ?
 #var can_damage = true
 
 # Contiene la data
-var data
+var data : TZDStructure
 
 signal state_changed
 
 func _init():
-	data = PHStructure.new()
+	data = TZDStructure.new()
 	
 # Esta funcion es una forma segura de cambiar entre estados.
 func change_state(state):
@@ -32,16 +32,16 @@ func change_state(state):
 # Cuando recive daño
 # Si no puede recivir daño talves tambien pueda lanzar
 # una animación de invulnerabilidad - TODO
-func damage(amount):
+func damage(amount, who_damage = null):
 	if is_mark_to_destroy : return
-	
+
 	if $Anim2.has_animation("damage"):
 		$Anim2.play("damage")
 	if $Pivot/RotatorAnim.has_animation("damage"):# Animamos tambien el Rotator
 		$Pivot/RotatorAnim.play("damage")
-	
-	data.damage(amount)
-	.damage(amount)
+
+	data.damage(amount, who_damage)
+	.damage(amount, who_damage)
 
 func detect():
 	if is_mark_to_destroy : return

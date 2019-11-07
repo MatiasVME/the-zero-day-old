@@ -47,13 +47,13 @@ func win_adventure():
 	result = Result.WIN
 	emit_signal("win_adventure")
 	
-	get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")
+	get_tree().change_scene("res://scenes/others_screens/EndLevel.tscn")
 	
 func lose_adventure():
 	result = Result.LOSE
 	emit_signal("lose_adventure")
 	
-	get_tree().change_scene("res://scenes/hud/end_screens/EndLevel.tscn")
+	get_tree().change_scene("res://scenes/others_screens/EndLevel.tscn")
 	
 func reset_store():
 	store_money = 0
