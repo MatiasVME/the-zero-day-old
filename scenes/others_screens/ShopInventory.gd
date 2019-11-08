@@ -1,0 +1,36 @@
+extends Panel
+
+# Recurso slot
+onready var rec_slot = preload("res://scenes/hud/player_menu/inventory/slot/Slot.tscn")
+
+var rpg_weight_inv : RPGWeightInventory
+
+func add_inventory(inv : RPGWeightInventory):
+	rpg_weight_inv = inv
+	
+	add_items_to_gui()
+	
+func add_items_to_gui():
+	for item in rpg_weight_inv.inv:
+		add_item_to_gui(item)
+
+func take_item_to_gui(item : TZDItem):
+	for slot in $Scroll/Grid.get_children():
+		if slot.data == item:
+			$Scroll/Grid.remove_child(slot)
+			return rpg_weight_inv.take_item(item)
+			
+func add_item_to_gui(item : TZDItem):
+	var slot = rec_slot.instance()
+	slot.add_item(item)
+	
+	slot.connect("selected", self, "_on_slot_selected")
+	
+	$Scroll/Grid.add_child(slot)
+
+# El item es un slot.tscn de inventario
+func _on_slot_selected(item : InventorySlot):
+	pass
+	
+	
+	

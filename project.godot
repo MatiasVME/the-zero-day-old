@@ -149,6 +149,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/camera/GameCamera.gd"
 }, {
+"base": "",
+"class": "HookAchievements",
+"language": "GDScript",
+"path": "res://addons/hook/nodes/HookAchievements.gd"
+}, {
+"base": "",
+"class": "HookDelivery",
+"language": "GDScript",
+"path": "res://addons/hook/nodes/HookDelivery.gd"
+}, {
 "base": "Node2D",
 "class": "Inventory",
 "language": "GDScript",
@@ -363,6 +373,8 @@ _global_script_class_icons={
 "GTurret": "",
 "GWeaponInBattle": "",
 "GameCamera": "",
+"HookAchievements": "res://addons/hook/icons/hook_achievements.png",
+"HookDelivery": "res://addons/hook/icons/hook_delivery.png",
 "Inventory": "",
 "InventoryRow": "",
 "InventorySlot": "",

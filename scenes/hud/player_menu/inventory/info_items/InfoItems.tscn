@@ -135,6 +135,7 @@ columns = 3
 margin_right = 30.0
 margin_bottom = 12.0
 icon = ExtResource( 5 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Sell" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -142,6 +143,7 @@ margin_left = 34.0
 margin_right = 64.0
 margin_bottom = 12.0
 icon = ExtResource( 6 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Weight" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -149,6 +151,7 @@ margin_left = 68.0
 margin_right = 98.0
 margin_bottom = 12.0
 icon = ExtResource( 7 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="AmmoAmount" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -165,6 +168,7 @@ margin_top = 16.0
 margin_right = 64.0
 margin_bottom = 28.0
 icon = ExtResource( 9 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Damage" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -173,6 +177,7 @@ margin_top = 16.0
 margin_right = 98.0
 margin_bottom = 28.0
 icon = ExtResource( 10 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Attack" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -180,6 +185,7 @@ margin_top = 32.0
 margin_right = 30.0
 margin_bottom = 44.0
 icon = ExtResource( 11 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Type" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -188,6 +194,7 @@ margin_top = 32.0
 margin_right = 64.0
 margin_bottom = 44.0
 icon = ExtResource( 12 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="TimeToNextAction" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -196,6 +203,7 @@ margin_top = 32.0
 margin_right = 98.0
 margin_bottom = 44.0
 icon = ExtResource( 13 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="TimeToReload" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -203,6 +211,7 @@ margin_top = 48.0
 margin_right = 30.0
 margin_bottom = 60.0
 icon = ExtResource( 14 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="WeaponCapacity" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -211,6 +220,7 @@ margin_top = 48.0
 margin_right = 64.0
 margin_bottom = 60.0
 icon = ExtResource( 15 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="RequiresAmmo" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -219,6 +229,7 @@ margin_top = 48.0
 margin_right = 98.0
 margin_bottom = 60.0
 icon = ExtResource( 16 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="Defense" parent="PanelsColumn/ItemData/Data/DataRow/Grid" instance=ExtResource( 4 )]
@@ -226,6 +237,7 @@ margin_top = 64.0
 margin_right = 30.0
 margin_bottom = 76.0
 icon = ExtResource( 17 )
+icon_size = Vector2( 10, 10 )
 text_color = Color( 0.188235, 0.188235, 0.188235, 1 )
 
 [node name="ItemAccions" type="MarginContainer" parent="PanelsColumn"]
@@ -283,6 +295,7 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 20 )
 pressed_texture = ExtResource( 21 )
 text = "+10"
+separation = 3
 
 [node name="PressButton2" parent="PanelsColumn/ItemAccions/Accions/AccionRow/Equip" instance=ExtResource( 18 )]
 visible = false
@@ -295,6 +308,7 @@ icon_size = Vector2( 10, 10 )
 normal_texture = ExtResource( 22 )
 pressed_texture = ExtResource( 23 )
 text = "-10"
+separation = 3
 
 [node name="Drop" type="VBoxContainer" parent="PanelsColumn/ItemAccions/Accions/AccionRow"]
 margin_left = 120.0

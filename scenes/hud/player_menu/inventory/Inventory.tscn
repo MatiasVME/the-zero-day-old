@@ -21,7 +21,6 @@ anchor_bottom = 1.0
 theme = ExtResource( 2 )
 
 [node name="Inventory" type="Tabs" parent="Control/Cont"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 5.0
@@ -50,6 +49,7 @@ margin_top = 0.0
 margin_right = 414.0
 
 [node name="Equipment" type="Tabs" parent="Control/Cont"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,5 +1,9 @@
 extends ScrollContainer
 
+# En ocaciones no se requiere interactuar con el infoitem y solo
+# se necesita mostrar los datos, entonces para esto esta esta opción.
+export (bool) var read_only := false
+
 onready var inventory = get_owner()
 
 func _ready():
