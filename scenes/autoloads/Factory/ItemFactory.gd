@@ -27,7 +27,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	weapon.buy_price = int(round(25 * points)) # TEMP
 	weapon.sell_price = weapon.buy_price / 4
 	
-	if ammo_type:
+	if not ammo_type:
 		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
 	# Caracteristicas de las armas que dependen de los puntos
