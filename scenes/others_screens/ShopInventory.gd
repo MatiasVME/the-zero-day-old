@@ -5,6 +5,8 @@ onready var rec_slot = preload("res://scenes/hud/player_menu/inventory/slot/Slot
 
 var rpg_weight_inv : RPGWeightInventory
 
+signal slot_selected(slot)
+
 func add_inventory(inv : RPGWeightInventory):
 	rpg_weight_inv = inv
 	
@@ -29,8 +31,10 @@ func add_item_to_gui(item : TZDItem):
 	$Scroll/Grid.add_child(slot)
 
 # El item es un slot.tscn de inventario
-func _on_slot_selected(item : InventorySlot):
-	pass
+func _on_slot_selected(_item : InventorySlot):
+	for item in $Scroll/Grid.get_children():
+		if item != _item:
+			item.get_node("Slot").pressed = false
 	
-	
+	emit_signal("slot_selected", _item)
 	

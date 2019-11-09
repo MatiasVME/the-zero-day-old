@@ -27,7 +27,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 	weapon.buy_price = int(round(25 * points)) # TEMP
 	weapon.sell_price = weapon.buy_price / 4
 	
-	if not ammo_type:
+	if ammo_type:
 		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
 	# Caracteristicas de las armas que dependen de los puntos
@@ -151,6 +151,58 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := 1, playe
 #	print("weapon.weapon_capacity ",weapon.weapon_capacity)
 #	print("weapon.time_to_next_action ",weapon.time_to_next_action)
 #	print("weapon.time_to_reload ",weapon.time_to_reload)
+	
+	return weapon
+
+static func create_rand_distance_weapon_for_shop(adventure_current_max_level : int, luck : int):
+	# Suma del progreso de adventure_current_max_level y la suerte
+	var sum = (
+		Utils.progress2value(adventure_current_max_level, 1, 100) + 
+		Utils.progress2value(luck, 1, 100)
+	)
+	
+	var weapon = TZDDistanceWeapon.new()
+	
+	# Formula: valor_ref * valor_que_incrementa + pow(valor_que_incrementa, potencia_de_la_curva)
+	weapon.buy_price = int(round(350 * sum + pow(sum, 1.65)))
+	weapon.sell_price = weapon.buy_price / 4
+	
+	weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
+	
+	if weapon.ammo_type == weapon.AmmoType.NORMAL:
+		match 0:
+			0: 
+				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
+				weapon.time_to_next_action = Utils.progress2value(sum / 1000, 0.001, 0.14)
+				weapon.damage = Utils.progress2value(sum, 1, 100)
+				weapon.time_to_reload = Utils.progress2value(sum / 100, 1.0, 0.05)
+				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
+				weapon.item_name = "Submachine"
+				
+	elif weapon.ammo_type == weapon.AmmoType.PLASMA:
+		var rand_num = int(round(rand_range(0, 1)))
+		
+		match rand_num:
+			0: 
+				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
+				weapon.time_to_next_action = Utils.progress2value(sum / 6, 0.025, 0.5)
+				weapon.damage = Utils.progress2value(sum, 2, 200)
+				weapon.time_to_reload = Utils.progress2value(sum / 7.5, 0.04, 1.0)
+				weapon.weapon_capacity = Utils.progress2value(sum, 3, 8)
+				weapon.item_name = "PlasmaGun"
+			1: 
+				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
+				weapon.time_to_next_action = Utils.progress2value(sum / 2000, 0.001, 0.15)
+				weapon.damage = Utils.progress2value(sum / 0.9, 2, 200)
+				weapon.time_to_reload = Utils.progress2value(sum / 6, 0.05, 1.0)
+				weapon.weapon_capacity = Utils.progress2value(sum, 6.0, 20.0)
+				weapon.item_name = "PlasmaGunNX"
+	
+	weapon.item_name = RandomNameGenerator.generate(3, 7, hash(weapon)) + " " + weapon.item_name
+	
+#	print_debug("sum: ", sum)
+#	print_debug("buy_price: ", weapon.buy_price)
+#	print_debug("sell_price: ", weapon.sell_price)
 	
 	return weapon
 

@@ -40,7 +40,23 @@ static func create_pack(pack_category = PackCategory.NORMAL, player_luck := 1, i
 				break
 	
 	pass # TODO: Pensar...
+
+static func create_pack_for_shop():
+	var item_pack := []
 	
+	# Crear 2 a 4 armas
+	#
+	
+	var total_weapons = int(round(rand_range(2, 4)))
+	
+	for i in total_weapons:
+		var item = Factory.ItemFactory.create_rand_distance_weapon_for_shop(AdventureManager.current_maximum_level, DataManager.get_stats(DataManager.get_current_player())["Luck"])
+	
+	# Crear municiones random
+	#
+	
+	pass
+
 static func test():
 	print("PC_FRAGMENT: ",PC_FRAGMENT)
 	print("PL_FRAGMENT: ",PL_FRAGMENT)
