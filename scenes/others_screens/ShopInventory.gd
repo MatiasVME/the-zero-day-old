@@ -30,6 +30,11 @@ func add_item_to_gui(item : TZDItem):
 	
 	$Scroll/Grid.add_child(slot)
 
+# Deselecciona todos los items
+func unselect_all_items():
+	for item in $Scroll/Grid.get_children():
+		item.get_node("Slot").pressed = false
+
 # El item es un slot.tscn de inventario
 func _on_slot_selected(_item : InventorySlot):
 	for item in $Scroll/Grid.get_children():

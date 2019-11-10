@@ -27,7 +27,7 @@ animation = "AttackDogbot"
 [sub_resource type="AnimationNodeBlend2" id=4]
 
 [sub_resource type="AnimationNodeBlendTree" id=5]
-graph_offset = Vector2( 0, 107 )
+graph_offset = Vector2( 0, 77.8142 )
 nodes/Animation/node = SubResource( 3 )
 nodes/Animation/position = Vector2( 60, 80 )
 "nodes/Animation 2/node" = SubResource( 2 )
@@ -70,6 +70,7 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Anims" parent="." index="3"]
+editor/display_folded = false
 anims/Attack = ExtResource( 3 )
 anims/Damage = ExtResource( 4 )
 anims/Dead = ExtResource( 5 )
@@ -83,6 +84,9 @@ parameters/Blend2/blend_amount = 0.5
 
 [node name="Damage" parent="Anims" index="1"]
 anims/Damage = SubResource( 6 )
+
+[node name="Sprites" parent="." index="4"]
+editor/display_folded = true
 
 [node name="Placeholder" type="Sprite" parent="Sprites" index="0"]
 visible = false
@@ -151,7 +155,8 @@ anims/Dead = ExtResource( 5 )
 anims/IdleDogbot = ExtResource( 6 )
 anims/RunDogbot = ExtResource( 7 )
 
-[node name="Spritesx" type="Node2D" parent="." index="5"]
+[node name="Areas" parent="." index="6"]
+editor/display_folded = false
 
 [node name="Collision" parent="Areas/Attack" index="0"]
 position = Vector2( -9, -3 )
