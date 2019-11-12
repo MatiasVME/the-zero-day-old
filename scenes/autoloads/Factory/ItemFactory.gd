@@ -36,16 +36,14 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 	
 	weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
-	sum = 100
-	
 	if weapon.ammo_type == weapon.AmmoType.NORMAL:
 		match 0:
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
-				weapon.time_to_next_action = Utils.progress2value(Utils.value2progress(sum), 0.14, 0.07)
+				weapon.time_to_next_action = Utils.progress2value(sum, 0.2, 0.07)
 				weapon.damage = int(round(Utils.progress2value(sum / 3.5)))
-				weapon.time_to_reload = Utils.progress2value(Utils.value2progress(sum), 1.0, 0.4)
+				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "Submachine"
 				
@@ -55,17 +53,17 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 		match rand_num:
 			0: 
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
-				weapon.time_to_next_action = Utils.progress2value(Utils.value2progress(sum), 0.5, 0.025)
+				weapon.time_to_next_action = Utils.progress2value(sum, 0.5, 0.025)
 				weapon.damage = int(round(Utils.progress2value(sum / 2)))
-				weapon.time_to_reload = Utils.progress2value(Utils.value2progress(sum), 1.0, 0.4)
+				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 8)
 				
 				weapon.item_name = "PlasmaGun"
 			1: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
-				weapon.time_to_next_action = Utils.progress2value(Utils.value2progress(sum), 0.14, 0.07)
+				weapon.time_to_next_action = Utils.progress2value(sum, 0.14, 0.07)
 				weapon.damage = int(round(Utils.progress2value(sum / 2.5)))
-				weapon.time_to_reload = Utils.progress2value(Utils.value2progress(sum), 1.0, 0.4)
+				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "PlasmaGunNX"
 	
