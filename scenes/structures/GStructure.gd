@@ -17,6 +17,7 @@ var is_active := false
 
 var structure_owner = Enums.ActorOwner.UNDEFINED
 
+# Puede interacturar
 var _can_iteract := false
 
 # De momento esto esta replicado en el Enums, mas adelante
