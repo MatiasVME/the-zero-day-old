@@ -34,6 +34,7 @@ func _on_DeleteData_pressed(commit: int):
 			sound_manager.hide()
 		1:
 			DataManager.remove_all_data()
+			DataManager.init_again_data()
 			commit_windows.hide()
 			button_back.show()
 			button_delete.show()

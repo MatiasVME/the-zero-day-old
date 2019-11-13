@@ -65,7 +65,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 8)
 				
-				weapon.item_name = "PlasmaGun"
+				weapon.item_name = "PlasmaGunNN"
 			1: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.14, 0.07)
