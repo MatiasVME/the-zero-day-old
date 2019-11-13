@@ -214,6 +214,15 @@ func remove_all_data():
 	$DataUser.remove_all_data()
 	$DataInventories.remove_all_data()
 	$DataStats.remove_all_data()
+	players = []
+	inventories = []
+	stats = []
+	$DataGlobalConfig._init()
+	$DataPlayers._init()
+	$DataUser._init()
+	$DataInventories._init()
+	$DataStats._init()
+	_ready()
 
 func set_current_player(player_num : int) -> void:
 	current_player = player_num
