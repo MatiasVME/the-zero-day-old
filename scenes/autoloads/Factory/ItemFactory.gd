@@ -26,9 +26,11 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 		Utils.value2progress(enemy_type, 0, 4) + 
 		Utils.value2progress(adventure_current_max_level, 0, 100) +
 		Utils.value2progress(player_luck, 0, 100)
-	) / 4
+	) / 4.0
 	
 	var weapon = TZDDistanceWeapon.new()
+	
+	randomize()
 	
 	# Formula: valor_ref * valor_que_incrementa + pow(valor_que_incrementa, potencia_de_la_curva)
 	weapon.buy_price = int(round(250 * sum + pow(sum, 1.65)))
@@ -37,14 +39,16 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 	if not weapon.ammo_type:
 		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
+	print_debug(sum)
+	
 	if weapon.ammo_type == weapon.AmmoType.NORMAL:
 		match 0:
 			0: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.2, 0.07)
-				weapon.damage = int(round(Utils.progress2value(0.5 * sum + pow(sum, 1.65), 2, 2500)))
-#				weapon.damage = int(round(Utils.progress2value(sum / 3.5)))
+#				weapon.damage = int(round(Utils.progress2value(0.5 * sum + pow(sum, 1.65), 2, 2500)))
+				weapon.damage = int(round(Utils.progress2value(sum / 300, 3, 10000)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "Submachine"
