@@ -97,8 +97,10 @@ editor/display_folded = true
 position = Vector2( -210, 119.951 )
 
 [node name="Options" parent="." instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 210, -120.049 )
+
+[node name="Nop" parent="Options/CommitDelete" index="1"]
+text = "No"
 
 [node name="VersionNotes" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
@@ -199,8 +201,10 @@ __meta__ = {
 }
 [connection signal="animation_finished" from="Camera/Anim" to="." method="_on_Anim_animation_finished"]
 [connection signal="pressed" from="Credits/BackFromCredits" to="." method="_on_BackFromCredits_pressed"]
-[connection signal="pressed" from="Options/DeleteData" to="." method="_on_DeleteData_pressed"]
+[connection signal="pressed" from="Options/DeleteData" to="." method="_on_DeleteData_pressed" binds= [ 0 ]]
 [connection signal="pressed" from="Options/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="Options/CommitDelete/Yes" to="." method="_on_DeleteData_pressed" binds= [ 1 ]]
+[connection signal="pressed" from="Options/CommitDelete/Nop" to="." method="_on_DeleteData_pressed" binds= [ 2 ]]
 [connection signal="pressed" from="VersionNotes/HBox/CenterContainer/Back" to="." method="_on_Back_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="BackgroundButtons/Config" to="." method="_on_Config_pressed"]

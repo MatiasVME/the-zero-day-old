@@ -16,11 +16,26 @@ func _on_Back_pressed():
 func _on_BackFromCredits_pressed():
 	$Camera.global_position = global_position
 
-func _on_DeleteData_pressed():
-	# TODO: Preguntar si esta seguro de borrar la data
-	# o no.
-	DataManager.remove_all_data()
-	get_tree().quit()
+func _on_DeleteData_pressed(commit: int):
+
+	# Sistema de confirmacion agregado
+	# Falta documentar y agregar sprites del gui
+
+	var commit_windows = $Options/CommitDelete
+	var button_back = $Options/Back
+	var button_delete = $Options/DeleteData
+
+	match commit:
+		0:
+			commit_windows.show()
+			button_back.hide()
+			button_delete.hide()
+		1:
+			DataManager.remove_all_data()
+		2:
+			commit_windows.hide()
+			button_back.show()
+			button_delete.show()
 
 func _on_Credits_pressed():
 	var credits_pos = $Credits.global_position
