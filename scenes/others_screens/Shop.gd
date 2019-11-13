@@ -21,4 +21,3 @@ func _on_shop_slot_selected(_slot : InventorySlot):
 func _on_player_slot_selected(_slot : InventorySlot):
 	$InfoItems.update_panel_item_info(_slot.data)
 	
-	
