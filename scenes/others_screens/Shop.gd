@@ -7,6 +7,7 @@ func _ready():
 	
 	# Temp
 	$ShopInv.add_item_to_gui(Factory.ItemFactory.create_rand_distance_weapon())
+	$ShopInv.add_item_to_gui(Factory.ItemFactory.create_rand_distance_weapon(50, 2, 50, null, 50))
 	$ShopInv.add_item_to_gui(Factory.ItemFactory.create_rand_distance_weapon(100, 3, 100, null, 100))
 	
 #	for item in Factory.ItemFactory.create_rand_item_pack_for_shop():
