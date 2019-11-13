@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerMenuButton-8.png-442dd2a4d6a87474e651f187b6025d84.stex"
+path="res://.import/BuyNormal.png-8fd668363c922ef30354dfb9bcd0462a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/buttons/player_menu_inventory/PlayerMenuButton-8.png"
-dest_files=[ "res://.import/PlayerMenuButton-8.png-442dd2a4d6a87474e651f187b6025d84.stex" ]
+source_file="res://scenes/buttons/buy/BuyNormal.png"
+dest_files=[ "res://.import/BuyNormal.png-8fd668363c922ef30354dfb9bcd0462a.stex" ]
 
 [params]
 

@@ -3,6 +3,8 @@ extends GGeneratorFactory
 # Max points
 const MAX_POINTS = 506
 
+onready var damage_increment = preload("res://resources/Curve_DamageIncrement.tres")
+
 # Obsoleto
 static func get_points(enemy_level, enemy_type, player_luck):
 	var points = 0.0
@@ -20,12 +22,15 @@ static func get_points(enemy_level, enemy_type, player_luck):
 	return points
 
 static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.EnemyType.NORMAL, player_luck := 1, ammo_type = null, adventure_current_max_level := 1):
+	# TODO: Preferir preload en vez de load
+	var damage_increment = load("res://resources/Curve_DamageIncrement.tres")
+	
 	# Suma del progreso de adventure_current_max_level y la suerte
 	var sum = (
-		Utils.value2progress(enemy_level, 0, 100) +
-		Utils.value2progress(enemy_type, 0, 4) + 
-		Utils.value2progress(adventure_current_max_level, 0, 100) +
-		Utils.value2progress(player_luck, 0, 100)
+		Utils.value2progress(enemy_level, 0.0, 100.0) +
+		Utils.value2progress(enemy_type, 0.0, 4.0) + 
+		Utils.value2progress(adventure_current_max_level, 0.0, 100.0) +
+		Utils.value2progress(player_luck, 0.0, 100.0)
 	) / 4.0
 	
 	var weapon = TZDDistanceWeapon.new()
@@ -39,7 +44,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 	if not weapon.ammo_type:
 		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
-	print_debug(sum)
+#	print_debug("sum: ", sum)
 	
 	if weapon.ammo_type == weapon.AmmoType.NORMAL:
 		match 0:
@@ -47,8 +52,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.2, 0.07)
-#				weapon.damage = int(round(Utils.progress2value(0.5 * sum + pow(sum, 1.65), 2, 2500)))
-				weapon.damage = int(round(Utils.progress2value(sum / 300, 3, 10000)))
+				weapon.damage = int(round(Utils.progress2value(damage_increment.interpolate(sum / 100) * 100, 3, 2500)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "Submachine"
@@ -61,7 +65,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.5, 0.025)
-				weapon.damage = int(round(Utils.progress2value(sum - sum / 2)))
+				weapon.damage = int(round(Utils.progress2value(damage_increment.interpolate(sum / 100) * 100, 5, 5000)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 8)
 				
@@ -69,7 +73,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 			1: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.14, 0.07)
-				weapon.damage = int(round(Utils.progress2value(sum - sum / 2.5)))
+				weapon.damage = int(round(Utils.progress2value(damage_increment.interpolate(sum / 100) * 100, 4, 3500)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "PlasmaGunNX"
