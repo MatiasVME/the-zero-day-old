@@ -1,25 +1,29 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/others_screens/Shop.gd" type="Script" id=1]
-[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hud/player_menu/inventory/info_items/InfoItems.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/others_screens/ShopInventory.tscn" type="PackedScene" id=4]
-[ext_resource path="res://fonts/i_pixel_u/IPixelIU-16px.tres" type="DynamicFont" id=5]
+[ext_resource path="res://resources/Curve_DamageIncrement.tres" type="Curve" id=2]
+[ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/hud/player_menu/inventory/info_items/InfoItems.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/others_screens/ShopInventory.tscn" type="PackedScene" id=5]
+[ext_resource path="res://fonts/i_pixel_u/IPixelIU-16px.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/buttons/buy/BuyNormal.png" type="Texture" id=7]
+[ext_resource path="res://scenes/buttons/buy/BuyPressed.png" type="Texture" id=8]
 
 [node name="Shop" type="Node2D"]
 script = ExtResource( 1 )
+damage_increment = ExtResource( 2 )
 
-[node name="GigantStar" parent="." instance=ExtResource( 2 )]
+[node name="GigantStar" parent="." instance=ExtResource( 3 )]
 
-[node name="InfoItems" parent="." instance=ExtResource( 3 )]
+[node name="InfoItems" parent="." instance=ExtResource( 4 )]
 margin_left = 170.0
 margin_top = 20.0
 margin_right = 414.0
 margin_bottom = 180.0
 
-[node name="ShopInv" parent="." instance=ExtResource( 4 )]
+[node name="ShopInv" parent="." instance=ExtResource( 5 )]
 
-[node name="PlayerInv" parent="." instance=ExtResource( 4 )]
+[node name="PlayerInv" parent="." instance=ExtResource( 5 )]
 margin_top = 132.0
 margin_bottom = 232.0
 
@@ -27,9 +31,17 @@ margin_bottom = 232.0
 margin_top = -4.0
 margin_right = 170.0
 margin_bottom = 16.0
-custom_fonts/font = ExtResource( 5 )
+custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "SHOP"
 align = 1
 valign = 1
+
+[node name="BuySell" type="TextureButton" parent="."]
+margin_left = 57.1102
+margin_top = 109.469
+margin_right = 109.11
+margin_bottom = 130.469
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 8 )

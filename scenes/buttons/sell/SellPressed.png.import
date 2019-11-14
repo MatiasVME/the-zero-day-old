@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PlayerMenuButton-3.png-a332aa8ac2d7d9a09fc3c39f4e93b016.stex"
+path="res://.import/SellPressed.png-e18d622d0b8718d8d39d420dc9ea6b83.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/buttons/player_menu_skills/PlayerMenuButton-3.png"
-dest_files=[ "res://.import/PlayerMenuButton-3.png-a332aa8ac2d7d9a09fc3c39f4e93b016.stex" ]
+source_file="res://scenes/buttons/sell/SellPressed.png"
+dest_files=[ "res://.import/SellPressed.png-e18d622d0b8718d8d39d420dc9ea6b83.stex" ]
 
 [params]
 

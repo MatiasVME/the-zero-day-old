@@ -214,6 +214,9 @@ func remove_all_data():
 	$DataUser.remove_all_data()
 	$DataInventories.remove_all_data()
 	$DataStats.remove_all_data()
+	
+# Inicia de nuevo la data, normalmente se usa después de remover la data
+func init_again_data():
 	players = []
 	inventories = []
 	stats = []
