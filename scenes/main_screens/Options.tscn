@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/buttons/delete_data/DeleteData-Normal.png" type="Texture" id=1]
 [ext_resource path="res://scenes/buttons/delete_data/DeleteData-Pressed.png" type="Texture" id=2]
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_normal_left.png" type="Texture" id=3]
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_pressed_left.png" type="Texture" id=4]
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_hover_left.png" type="Texture" id=5]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down_hover.png" type="Texture" id=6]
+[ext_resource path="res://scenes/buttons/arrow_down/button_arrow_down.png" type="Texture" id=7]
+[ext_resource path="res://scenes/main_screens/images/rect_9patch_button_normal.png" type="Texture" id=8]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ accept_normal.png" type="Texture" id=9]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ accept_pressed.png" type="Texture" id=10]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ accept_hover.png" type="Texture" id=11]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ cancel_normal.png" type="Texture" id=12]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ cancel_pressed.png" type="Texture" id=13]
+[ext_resource path="res://scenes/buttons/misc/choose_button_ cancel_hover.png" type="Texture" id=14]
+[ext_resource path="res://fonts/i_pixel_u/IPixelIU-16px.tres" type="DynamicFont" id=15]
+
+[sub_resource type="StyleBoxFlat" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 8 )
+region_rect = Rect2( 0, 0, 14, 14 )
+margin_left = 8.0
+margin_right = 8.0
+margin_top = 8.0
+margin_bottom = 8.0
 
 [node name="Options" type="Node2D"]
 
@@ -30,25 +50,71 @@ texture_normal = ExtResource( 3 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 5 )
 
+[node name="sonido" type="Control" parent="."]
+editor/display_folded = true
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="music" type="HSlider" parent="sonido"]
+margin_left = 90.0
+margin_top = 70.0
+margin_right = 350.0
+margin_bottom = 96.0
+custom_icons/grabber_highlight = ExtResource( 6 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 2 )
+max_value = 1.0
+step = 0.1
+value = 0.6
+ticks_on_borders = true
+
+[node name="sfx" type="HSlider" parent="sonido"]
+margin_left = 90.0
+margin_top = 142.0
+margin_right = 350.0
+margin_bottom = 168.0
+custom_icons/grabber_highlight = ExtResource( 6 )
+custom_icons/grabber = ExtResource( 7 )
+custom_styles/slider = SubResource( 2 )
+max_value = 1.0
+step = 0.1
+value = 0.6
+
 [node name="CommitDelete" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 60.0
-margin_top = 20.0
-margin_right = 360.0
-margin_bottom = 220.0
+margin_left = 90.0
+margin_top = 100.0
+margin_right = 340.0
+margin_bottom = 148.0
+custom_styles/panel = SubResource( 3 )
 
-[node name="Yes" type="Button" parent="CommitDelete"]
-margin_left = 230.0
-margin_top = 160.0
-margin_right = 270.0
-margin_bottom = 200.0
-text = "Sip"
+[node name="Yes" type="TextureButton" parent="CommitDelete"]
+margin_left = 220.0
+margin_right = 268.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 10 )
+texture_hover = ExtResource( 11 )
+expand = true
 
-[node name="Nop" type="Button" parent="CommitDelete"]
-margin_left = 30.0
-margin_top = 160.0
-margin_right = 70.0
-margin_bottom = 200.0
-text = "Nop"
+[node name="Nop" type="TextureButton" parent="CommitDelete"]
+margin_left = -30.0
+margin_right = 18.0
+margin_bottom = 48.0
+texture_normal = ExtResource( 12 )
+texture_pressed = ExtResource( 13 )
+texture_hover = ExtResource( 14 )
+expand = true
+
+[node name="Label" type="RichTextLabel" parent="CommitDelete"]
+margin_left = 18.0
+margin_right = 220.0
+margin_bottom = 42.0
+custom_fonts/normal_font = ExtResource( 15 )
+bbcode_enabled = true
+bbcode_text = "[center]You really want [color=red]delete[/color] your progress? [color=red]is forever[/color][/center]"
+text = "You really want delete your progress? is forever"
+scroll_following = true

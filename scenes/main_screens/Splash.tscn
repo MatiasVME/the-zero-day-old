@@ -8,6 +8,8 @@
 [ext_resource path="res://scenes/main_screens/images/cloud3.png" type="Texture" id=6]
 [ext_resource path="res://scenes/main_screens/images/cloud4.png" type="Texture" id=7]
 
+
+
 [sub_resource type="Animation" id=1]
 resource_name = "Intro"
 length = 5.0

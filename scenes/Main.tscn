@@ -99,9 +99,6 @@ position = Vector2( -210, 119.951 )
 [node name="Options" parent="." instance=ExtResource( 4 )]
 position = Vector2( 210, -120.049 )
 
-[node name="Nop" parent="Options/CommitDelete" index="1"]
-text = "No"
-
 [node name="VersionNotes" parent="." instance=ExtResource( 5 )]
 editor/display_folded = true
 position = Vector2( -630, -120 )

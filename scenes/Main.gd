@@ -23,6 +23,7 @@ func _on_DeleteData_pressed(commit: int):
 
 	var commit_windows = $Options/CommitDelete
 	var button_back = $Options/Back
+	var sound_manager = $Options/sonido
 	var button_delete = $Options/DeleteData
 
 	match commit:
@@ -30,12 +31,18 @@ func _on_DeleteData_pressed(commit: int):
 			commit_windows.show()
 			button_back.hide()
 			button_delete.hide()
+			sound_manager.hide()
 		1:
 			DataManager.remove_all_data()
+			commit_windows.hide()
+			button_back.show()
+			button_delete.show()
+			sound_manager.show()
 		2:
 			commit_windows.hide()
 			button_back.show()
 			button_delete.show()
+			sound_manager.show()
 
 func _on_Credits_pressed():
 	var credits_pos = $Credits.global_position
