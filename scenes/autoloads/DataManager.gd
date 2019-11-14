@@ -134,7 +134,8 @@ func create_data_user():
 	
 	# Nombre del jugador que controla los personajes
 	data_user["UserName"] = "User Name"
-	data_user["Money"] = 0
+	data_user["Money"] = 10000
+#	data_user["Money"] = 0
 	
 	save_data_user()
 
@@ -142,7 +143,7 @@ func load_data_user():
 	data_user = $DataUser.get_data("DataUser")
 	
 func save_data_user():
-#	data_user["Gold"] = Main.current_gold
+#	data_user["Money"] = Main.store_money
 #	data_user["Emeralds"] = Main.current_emeralds
 #	data_user["CurrentLevel"] = Main.current_level
 
