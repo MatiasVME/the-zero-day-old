@@ -23,7 +23,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 	# Suma del progreso de adventure_current_max_level y la suerte
 	var sum = (
 		Utils.value2progress(enemy_level, 0, 100) +
-		Utils.value2progress(enemy_type, 0, 3) + 
+		Utils.value2progress(enemy_type, 0, 4) + 
 		Utils.value2progress(adventure_current_max_level, 0, 100) +
 		Utils.value2progress(player_luck, 0, 100)
 	) / 4
@@ -34,7 +34,8 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 	weapon.buy_price = int(round(250 * sum + pow(sum, 1.65)))
 	weapon.sell_price = int(round(weapon.buy_price / rand_range(3, 5)))
 	
-	weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
+	if not weapon.ammo_type:
+		weapon.ammo_type = int(round(rand_range(weapon.AmmoType.NORMAL, weapon.AmmoType.PLASMA)))
 	
 	if weapon.ammo_type == weapon.AmmoType.NORMAL:
 		match 0:
@@ -42,7 +43,8 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/submachine/submachine_pistol.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.2, 0.07)
-				weapon.damage = int(round(Utils.progress2value(sum / 3.5)))
+				weapon.damage = int(round(Utils.progress2value(0.5 * sum + pow(sum, 1.65), 2, 2500)))
+#				weapon.damage = int(round(Utils.progress2value(sum / 3.5)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "Submachine"
@@ -52,9 +54,10 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 		
 		match rand_num:
 			0: 
+				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nn1/PlasmaGunNN1.png"
 				# Esta es una forma de invertir los valores cuando se requiere invertirlos
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.5, 0.025)
-				weapon.damage = int(round(Utils.progress2value(sum / 2)))
+				weapon.damage = int(round(Utils.progress2value(sum - sum / 2)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 8)
 				
@@ -62,7 +65,7 @@ static func create_rand_distance_weapon(enemy_level := 1, enemy_type := Enums.En
 			1: 
 				weapon.texture_path = "res://scenes/items/weapons/distance_weapons/plasma_nx/PlasmaGunNX.png"
 				weapon.time_to_next_action = Utils.progress2value(sum, 0.14, 0.07)
-				weapon.damage = int(round(Utils.progress2value(sum / 2.5)))
+				weapon.damage = int(round(Utils.progress2value(sum - sum / 2.5)))
 				weapon.time_to_reload = Utils.progress2value(sum, 1.0, 0.4)
 				weapon.weapon_capacity = Utils.progress2value(sum / 0.75, 4, 16)
 				weapon.item_name = "PlasmaGunNX"
@@ -84,7 +87,6 @@ static func create_rand_item_pack_for_shop():
 	
 	# Crear de 2 a 4 weapons
 	for i in int(round(rand_range(2, 4))):
-		
 		var enemy_type = Enums.EnemyType.CHAMPION
 		
 		if rand_range(0,5) >= 4:
@@ -93,15 +95,15 @@ static func create_rand_item_pack_for_shop():
 			if rand_range(0, 21) >= 20:
 				enemy_type = Enums.EnemyType.UNIQUE
 		
-#		pack.append(
-#			create_rand_distance_weapon(
-#				PlayerManager.get_current_player().level,
-#				enemy_type,
-#				DataManager.get_stats(DataManager.get_current_player())["Luck"],
-#				null,
-#				AdventureManager.current_maximum_level
-#			)
-#		)
+		pack.append(
+			create_rand_distance_weapon(
+				PlayerManager.get_current_player().level,
+				enemy_type,
+				DataManager.get_stats(DataManager.get_current_player())["Luck"],
+				null,
+				AdventureManager.current_maximum_level
+			)
+		)
 	
 	return pack
 
