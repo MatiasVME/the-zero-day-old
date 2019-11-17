@@ -9,11 +9,9 @@ enum Music {
 	SHOP_THEME,
 	GAME_OVER,
 	SPACE_BATTLE,
-	REBELS_BE,
-	THE_EMPIRE,
-	VICTORY,
-	MUSHROOMS, # ENDLEVEL
-	SOLITUDE # FINAL
+	DANGER,
+	JAZZ_OF_DEATH,
+	VICTORY
 }
 
 func set_vol_music(vol: float) -> void:
@@ -38,16 +36,12 @@ func play(music):
 			current_music = $GameOver
 		Music.SPACE_BATTLE:
 			current_music = $SpaceBattle
-		Music.REBELS_BE:
-			current_music = $RebelsBe
-		Music.THE_EMPIRE:
-			current_music = $TheEmpire
+		Music.DANGER:
+			current_music = $Danger
+		Music.JAZZ_OF_DEATH:
+			current_music = $JazzOfDeath
 		Music.VICTORY:
 			current_music = $Victory
-		Music.MUSHROOMS:
-			current_music = $Mushrooms
-		Music.SOLITUDE:
-			current_music = $Solitude
 		
 	current_music.play()
 	

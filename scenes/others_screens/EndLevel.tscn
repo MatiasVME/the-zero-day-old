@@ -13,8 +13,6 @@
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_hover_left.png" type="Texture" id=11]
 [ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=12]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Show"
 length = 0.4

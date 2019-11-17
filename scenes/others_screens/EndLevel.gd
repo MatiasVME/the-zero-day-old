@@ -2,11 +2,12 @@ extends Node2D
 
 func _ready():
 	get_tree().paused = false
-	MusicManager.play(MusicManager.Music.GAME_OVER)
 	
 	if Main.result == Main.Result.WIN:
+		MusicManager.play(MusicManager.Music.VICTORY)
 		win()
 	elif Main.result == Main.Result.LOSE:
+		MusicManager.play(MusicManager.Music.GAME_OVER)
 		lose()
 	else:
 		print_debug("No se a ganado ni perdido")

@@ -1,7 +1,7 @@
 extends Node
 
 func _ready():
-	MusicManager.play(MusicManager.Music.SPACE_BATTLE)
+	MusicManager.play(MusicManager.Music.JAZZ_OF_DEATH)
 	
 	var player = PlayerManager.init_player(0)
 	player.global_position = Vector2(420, 300)

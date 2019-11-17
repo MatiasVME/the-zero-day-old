@@ -1,15 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/autoloads/MusicManager.gd" type="Script" id=1]
 [ext_resource path="res://sounds/music/Levc - Main Theme.ogg" type="AudioStream" id=2]
 [ext_resource path="res://sounds/music/Levc - Shop Theme.ogg" type="AudioStream" id=3]
 [ext_resource path="res://sounds/music/Levc - Game Over.ogg" type="AudioStream" id=4]
 [ext_resource path="res://sounds/music/Levc - Space Battle.ogg" type="AudioStream" id=5]
-[ext_resource path="res://sounds/music/06 - Rebels Be.ogg" type="AudioStream" id=6]
-[ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=7]
-[ext_resource path="res://sounds/music/17 - Victory.ogg" type="AudioStream" id=8]
-[ext_resource path="res://sounds/music/Mushrooms.ogg" type="AudioStream" id=9]
-[ext_resource path="res://sounds/music/Solitude.ogg" type="AudioStream" id=10]
+[ext_resource path="res://sounds/music/Levc - Danger.ogg" type="AudioStream" id=6]
+[ext_resource path="res://sounds/music/Levc - Jazz of death.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/music/Levc - Victory.ogg" type="AudioStream" id=8]
 
 [node name="MusicManager" type="Node"]
 pause_mode = 2
@@ -27,17 +25,11 @@ stream = ExtResource( 4 )
 [node name="SpaceBattle" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
-[node name="RebelsBe" type="AudioStreamPlayer" parent="."]
+[node name="Danger" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 
-[node name="TheEmpire" type="AudioStreamPlayer" parent="."]
+[node name="JazzOfDeath" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 
 [node name="Victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
-
-[node name="Mushrooms" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
-
-[node name="Solitude" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 10 )
