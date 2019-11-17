@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Levc - Danger.ogg-9e63e34df8bf9db0007d3c96b9436d73.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/Levc - Danger.ogg"
+dest_files=[ "res://.import/Levc - Danger.ogg-9e63e34df8bf9db0007d3c96b9436d73.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

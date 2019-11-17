@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Levc - Victory.ogg-8c51a48c248065b3e8fc07c2b1949aba.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/Levc - Victory.ogg"
+dest_files=[ "res://.import/Levc - Victory.ogg-8c51a48c248065b3e8fc07c2b1949aba.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

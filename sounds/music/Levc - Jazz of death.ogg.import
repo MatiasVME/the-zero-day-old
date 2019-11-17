@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Levc - Jazz of death.ogg-75c1dad5c30ac322509d08cbf72cbe4e.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/Levc - Jazz of death.ogg"
+dest_files=[ "res://.import/Levc - Jazz of death.ogg-75c1dad5c30ac322509d08cbf72cbe4e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
