@@ -46,7 +46,7 @@ color_staff = Color( 0.0901961, 0.686275, 0.0862745, 1 )
 [node name="CreditSection3" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]
 name_section = "MUSIC"
 color_section = Color( 0, 0.109804, 1, 1 )
-name_staff = PoolStringArray( "Attribute to Avgvst", "Licensed CC-BY" )
+name_staff = PoolStringArray( "LEVC" )
 color_staff = Color( 0.054902, 0.0705882, 1, 1 )
 
 [node name="CreditSection7" parent="MarginContainer/CenterContainer/Sections" instance=ExtResource( 2 )]

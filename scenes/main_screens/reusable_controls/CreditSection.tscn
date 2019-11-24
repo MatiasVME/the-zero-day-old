@@ -154,5 +154,4 @@ percent_visible = 0.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Intro = SubResource( 3 )
 anims/Outro = SubResource( 4 )
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

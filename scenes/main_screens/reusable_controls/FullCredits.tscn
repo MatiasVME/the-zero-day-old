@@ -42,6 +42,9 @@ bbcode_text = "[center][color=blue]CURRENT TEAM[/color]
 [color=yellow]GAME DESIGN AND PROGRAMER[/color]
 [color=red]Matías Muñoz Espinoza[/color]
 
+[color=yellow]MUSIC[/color]
+[color=red]LEVC[/color]
+
 [color=blue]THANKS[/color]
 [color=red]Markus Ellisca - Programmer[/color]
 [color=red]MG.Pix - Art[/color]
@@ -52,7 +55,6 @@ bbcode_text = "[center][color=blue]CURRENT TEAM[/color]
 [color=red]Jean Ferreira - Programmer[/color]
 [color=red]Alam Perez - Art[/color]
 [color=red]MaicolMaster - Art[/color]
-[color=red]Attribute to Avgvst - Music (CC-BY)[/color]
 [/center]
 
 "
@@ -60,6 +62,9 @@ text = "CURRENT TEAM
 
 GAME DESIGN AND PROGRAMER
 Matías Muñoz Espinoza
+
+MUSIC
+LEVC
 
 THANKS
 Markus Ellisca - Programmer
@@ -71,7 +76,6 @@ Javier Ocampos - Game Design
 Jean Ferreira - Programmer
 Alam Perez - Art
 MaicolMaster - Art
-Attribute to Avgvst - Music (CC-BY)
 
 
 "
