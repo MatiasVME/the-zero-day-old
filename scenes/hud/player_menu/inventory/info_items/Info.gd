@@ -54,7 +54,7 @@ func update_panel_item_info(item):
 		if item.requires_ammo : $PanelsColumn/ItemData/Data/DataRow/Grid/RequiresAmmo.set_text("Y")
 		else: $PanelsColumn/ItemData/Data/DataRow/Grid/RequiresAmmo.set_text("N")
 
-	if item is PHDefence:
+	if item is TZDDefence:
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.show()
 		$PanelsColumn/ItemData/Data/DataRow/Grid/Defence.set_text(str(item.defence))
 	

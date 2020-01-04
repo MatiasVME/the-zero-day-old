@@ -104,7 +104,8 @@ func _on_slot_selected(slot):
 	emit_signal("slot_selected", self, slot)
 
 func _on_DButton_toggled(button_pressed):
-	emit_signal("row_diamond_pressed", self, button_pressed)
-
+#	emit_signal("row_diamond_pressed", self, button_pressed)
+	pass
+	
 func _on_item_to_be_removed(item : TZDItem):
 	clear_item_from_slot(item)
