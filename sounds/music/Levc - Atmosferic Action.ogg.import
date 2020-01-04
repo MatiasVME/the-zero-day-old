@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Levc - Atmosferic Action.ogg-2d464bb9982134d3877c8b8f4db77539.oggstr"
+
+[deps]
+
+source_file="res://sounds/music/Levc - Atmosferic Action.ogg"
+dest_files=[ "res://.import/Levc - Atmosferic Action.ogg-2d464bb9982134d3877c8b8f4db77539.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

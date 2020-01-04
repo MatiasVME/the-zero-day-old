@@ -62,7 +62,7 @@ extents = Vector2( 8, 6 )
 [sub_resource type="CircleShape2D" id=9]
 radius = 146.014
 
-[node name="Dogbot" instance=ExtResource( 1 )]
+[node name="Dogbot" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Collision" parent="." index="1"]
@@ -70,7 +70,6 @@ position = Vector2( 0, 1 )
 shape = SubResource( 1 )
 
 [node name="Anims" parent="." index="3"]
-editor/display_folded = false
 anims/Attack = ExtResource( 3 )
 anims/Damage = ExtResource( 4 )
 anims/Dead = ExtResource( 5 )

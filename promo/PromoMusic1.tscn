@@ -47,7 +47,7 @@ clip_text = true
 uppercase = true
 
 [node name="Temas" type="Label" parent="."]
-margin_left = 270.0
+margin_left = 245.0
 margin_top = 46.0
 margin_right = 363.0
 margin_bottom = 154.0
@@ -61,7 +61,7 @@ text = "+ Main Theme
 + Game Over
 + Space Battle
 + Victory
-+ ?????"
++ Atmosferic Action"
 autowrap = true
 clip_text = true
 uppercase = true

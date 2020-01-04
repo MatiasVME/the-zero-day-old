@@ -52,7 +52,8 @@ func _physics_process(delta):
 		State.SEEKER: state_seeker(delta)
 		State.ATTACK: state_attack(delta)
 		State.DIE: state_die()
-
+	pass
+	
 func state_stand(delta):
 	accum_can_change_objective += delta
 	
