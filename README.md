@@ -50,32 +50,40 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 
 # Creditos
 
-## Equipo actual
+## EQUIPO ACTUAL
 
-- Matías Muñoz Espinoza - Programmer & Game Design
+### DISEÑO DE VIDEOJUEGO Y PROGRAMACION
 
-## Gracias
+Matías Muñoz Espinoza
 
-- Markus Ellisca - Programmer
-- Jonathan Moreno - Programmer
-- MG.Pix - Art
-- Nahum Santana - Programmer
-- Javier Ocampos - Game Design
-- Jean Ferreira - Programmer
-- Alam Perez - Art
-- MaicolMaster - Art
+### MÚSICA
 
-## Asesoría
+LEVC
 
-- RDCKGames
+## AGRADECIMIENTOS
 
-## Terceros
+Markus Ellisca - Programmer
 
-- Avgvsta - Music (CC-BY)
+MG.Pix - Art
+
+Jonathan Moreno - Programmer
+
+RDCKGames - Consulting
+
+Nahum Santana - Programmer
+
+Javier Ocampos - Game Design
+
+Jean Ferreira - Programmer
+
+Alam Perez - Art
+
+MaicolMaster - Art
 
 # Licencias
 
-- CC-BY - Assets Arte y Música
+- CC-BY - Assets Arte 
+- CC-BY - Música (Levc)
 - MIT - Resto del código
 - MPL2 Plugin - JSON Beautifier
 
