@@ -164,6 +164,10 @@ tracks/2/keys = {
 [node name="Dorbot" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Sprites" parent="." index="4"]
+editor/display_folded = false
+modulate = Color( 1, 1, 1, 1 )
+
 [node name="LegLeft" parent="Sprites" index="0"]
 position = Vector2( -2, 3.5 )
 frames = SubResource( 1 )

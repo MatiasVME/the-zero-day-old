@@ -81,22 +81,22 @@ signal reload
 signal item_taken(item)
 
 func _ready():
-#	self.actor_owner = Enums.ActorOwner.PLAYER
-#	data.character_owner = self.actor_owner
-#
-#	connect("fire", self, "_on_fire")
-#
-#	if is_instance_valid(data):
-#		data.connect("dead", self, "_on_dead")
-#		data.connect("remove_hp", self, "_on_remove_hp")
-#		data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
-#
-#		data.restore_hp()
-#
-#		if not data.primary_weapon:
-#			config_boxing_attack()
-#		else:
-#			config_primary_weapon()
+	self.actor_owner = Enums.ActorOwner.PLAYER
+	data.character_owner = self.actor_owner
+
+	connect("fire", self, "_on_fire")
+
+	if is_instance_valid(data):
+		data.connect("dead", self, "_on_dead")
+		data.connect("remove_hp", self, "_on_remove_hp")
+		data.connect("primary_weapon_equiped", self, "_on_primary_weapon_equiped") # Cambiar en un futuro probablemente
+
+		data.restore_hp()
+
+		if not data.primary_weapon:
+			config_boxing_attack()
+		else:
+			config_primary_weapon()
 	pass
 	
 func _move_handler(delta, distance, run):

@@ -58,7 +58,6 @@ script = ExtResource( 2 )
 script = ExtResource( 3 )
 
 [node name="Navigator" type="Node2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 4 )
 
 [node name="Point" type="Sprite" parent="Navigator"]
@@ -70,7 +69,6 @@ position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="Sprites" type="Sprite" parent="."]
-editor/display_folded = true
 modulate = Color( 0.954601, 0.881043, 0.906329, 1 )
 
 [node name="LegLeft" type="AnimatedSprite" parent="Sprites"]

@@ -17,7 +17,9 @@ func add_items_to_gui():
 		add_item_to_gui(item)
 
 func take_item_to_gui(item : TZDItem):
-	print_debug("hola", item.get_name() )
+	if not rpg_weight_inv:
+		print_debug("rpg_weight_inv es null: ", rpg_weight_inv)
+		return
 	
 	for slot in $Scroll/Grid.get_children():
 		if slot.data == item:
