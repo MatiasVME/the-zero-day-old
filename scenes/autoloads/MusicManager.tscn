@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/autoloads/MusicManager.gd" type="Script" id=1]
 [ext_resource path="res://sounds/music/Levc - Main Theme.ogg" type="AudioStream" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://sounds/music/Levc - Danger.ogg" type="AudioStream" id=6]
 [ext_resource path="res://sounds/music/Levc - Jazz of death.ogg" type="AudioStream" id=7]
 [ext_resource path="res://sounds/music/Levc - Victory.ogg" type="AudioStream" id=8]
+[ext_resource path="res://sounds/music/Levc - Atmosferic Action.ogg" type="AudioStream" id=9]
 
 [node name="MusicManager" type="Node"]
 pause_mode = 2
@@ -33,3 +34,6 @@ stream = ExtResource( 7 )
 
 [node name="Victory" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+
+[node name="AtmosfericAction" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )

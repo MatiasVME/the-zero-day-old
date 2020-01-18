@@ -11,7 +11,8 @@ enum Music {
 	SPACE_BATTLE,
 	DANGER,
 	JAZZ_OF_DEATH,
-	VICTORY
+	VICTORY,
+	ATMOSFERIC_ACTION
 }
 
 func set_vol_music(vol: float) -> void:
@@ -42,6 +43,8 @@ func play(music):
 			current_music = $JazzOfDeath
 		Music.VICTORY:
 			current_music = $Victory
+		Music.ATMOSFERIC_ACTION:
+			current_music = $AtmosfericAction
 		
 	current_music.play()
 	
