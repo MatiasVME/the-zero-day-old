@@ -101,7 +101,7 @@ position = Vector2( 210, -120.049 )
 position = Vector2( -630, -120 )
 
 [node name="Version" type="Label" parent="."]
-margin_left = 130.0
+margin_left = 62.0
 margin_top = 100.0
 margin_right = 210.0
 margin_bottom = 120.0
@@ -111,6 +111,9 @@ text = "v0.0.0"
 align = 2
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="BackgroundButtons" type="Sprite" parent="."]
 texture = ExtResource( 7 )
