@@ -31,10 +31,9 @@ signal spawn_object_changed
 
 func _init():
 	change_state(State.RESTING)
-	data = PHStructure.new()
+	data = RPGStructure.new()
 	
 func _ready():
-	
 	$DamageArea.connect("body_entered", self, "_on_DamageArea_body_entered")
 	
 	$ActiveArea.connect("body_entered", self, "_on_ActiveArea_body_entered")
@@ -84,7 +83,7 @@ func change_state(state):
 	self.state = state
 	emit_signal("state_changed")
 	
-func damage(amount):
+func damage(amount, who_damage = null):
 	if is_mark_to_destroy : return
 	if $Anim.has_animation("damage"):
 		$Anim.play("damage")

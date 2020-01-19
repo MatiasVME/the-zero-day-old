@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/hud/player_menu/inventory/row/Row.gd" type="Script" id=1]
 [ext_resource path="res://scenes/hud/player_menu/inventory/diamond/Diamond.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/hud/player_menu/inventory/diamond/RowSelected.png" type="Texture" id=3]
 [ext_resource path="res://scenes/hud/player_menu/inventory/slot/Slot.tscn" type="PackedScene" id=4]
 
 [node name="Row1" type="HBoxContainer"]
@@ -17,32 +16,25 @@ size_flags_horizontal = 2
 size_flags_vertical = 7
 
 [node name="DButton" parent="Diamond" index="0"]
-texture_pressed = ExtResource( 3 )
-expand = true
 stretch_mode = 0
 
 [node name="Slots" type="Node2D" parent="."]
 
 [node name="Slot1" parent="Slots" instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="Slot2" parent="Slots" instance=ExtResource( 4 )]
-editor/display_folded = true
 margin_left = 42.0
 margin_right = 68.0
 
 [node name="Slot3" parent="Slots" instance=ExtResource( 4 )]
-editor/display_folded = true
 margin_left = 72.0
 margin_right = 98.0
 
 [node name="Slot4" parent="Slots" instance=ExtResource( 4 )]
-editor/display_folded = true
 margin_left = 102.0
 margin_right = 128.0
 
 [node name="Slot5" parent="Slots" instance=ExtResource( 4 )]
-editor/display_folded = true
 margin_left = 132.0
 margin_right = 158.0
 

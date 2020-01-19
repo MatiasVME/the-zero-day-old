@@ -37,3 +37,5 @@ stream = ExtResource( 8 )
 
 [node name="AtmosfericAction" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+
+[node name="Node" type="Node" parent="."]

@@ -67,6 +67,9 @@ margin_bottom = 41.0
 toggle_mode = true
 texture_normal = ExtResource( 5 )
 texture_pressed = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Skills" type="TextureButton" parent="."]
 margin_left = 251.0
