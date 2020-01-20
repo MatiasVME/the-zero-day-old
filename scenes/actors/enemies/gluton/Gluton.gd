@@ -22,15 +22,22 @@ var attack_distance : float = 18 # Igual que el AttackArea
 # Objetivo random cuando no esta haciendo nada
 var random_objective := Vector2()
 var time_to_random_objective := 4.0
-var current_time_to_random_objective := 0
+var current_time_to_random_objective := 0.0 # hay que setear las variables como 0.0 si queremos que sea float
 
 # Ultima posicion del objetivo
 var last_objective_position : Vector2
+
+var objective_reached := false
 
 onready var objective
 
 # Se usa para atacar solo una vez
 var ot_attack = true
+
+
+# TEST -> Solo para testeos
+
+var test_instance_id = TestHelper.new_test_point_instance()
 
 func _ready():
 	self.actor_name == "Gluton"
@@ -101,8 +108,10 @@ func _physics_process(delta):
 				$Sounds/Dead.play()
 				.dead()
 		State.RANDOM_WALK:
+			
 			if current_time_to_random_objective >= time_to_random_objective:
 				_get_new_random_objective()
+				objective_reached = false
 			if not objective or objective.is_mark_to_dead:
 				sekeer(random_objective)
 			elif data.hp < 3 and objective and not objective.is_mark_to_dead:
@@ -110,6 +119,7 @@ func _physics_process(delta):
 			elif data.hp > 3 and objective and not objective.is_mark_to_dead:
 				change_state(State.SEEKER)
 			current_time_to_random_objective += delta
+			
 		State.STUNNED:
 			stunned(delta)
 				
@@ -137,6 +147,12 @@ func get_direction_to_see(objective):
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(objective):
+	if objective_reached:
+		return
+	
+	if global_position.distance_squared_to(objective) < 25:
+		objective_reached = true	
+	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
 		$Navigator.update_path(objective)
 	
@@ -170,10 +186,13 @@ func sekeer(objective):
 		var b_dist = global_position.distance_to(b_point)
 		if b_dist <= AB:
 			$Navigator.next_index()
-
+		#print("test")
+		
 	else:
 		velocity = steer(objective)
 		move_and_slide(velocity)
+		
+		
 
 # Rutina en caso de tener que huir del objetivo
 func run(objective):
@@ -213,12 +232,22 @@ func steer(target : Vector2):
 func get_rand_objective():
 	var rand_objective := Vector2()
 	
-	random_objective = Vector2(
-		rand_range(500, -500),
-		rand_range(500, -500)
-	) + global_position
+	rand_objective = Vector2(
+		rand_range(48, -48),
+		rand_range(48, -48)
+	) + position
 	
-	return random_objective
+	rand_objective = rand_objective.snapped(Vector2(16,16))
+	#print_debug(Vector2(10,10).snapped(Vector2(16,16)))
+	rand_objective += Vector2(8,8)
+	
+	var is_navigable = $Navigator.tile_is_navigable(rand_objective.x/16, rand_objective.y/16)
+	
+	if is_navigable:
+		return rand_objective # - Vector2(8,8)
+	else :
+		print("No es navegable")
+		return position
 	
 func drop_item():
 	var rand_num = rand_range(0, 100)
@@ -264,6 +293,7 @@ func _on_dead():
 	
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
+	TestHelper.get_test_instance(test_instance_id).position = random_objective
 	current_time_to_random_objective = 0
 
 func knockback(from : Vector2, impulse :float = 1) -> void:

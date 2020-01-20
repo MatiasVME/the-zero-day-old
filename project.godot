@@ -437,6 +437,7 @@ StructurePanelManager="*res://scenes/autoloads/StructurePanelManager.tscn"
 AdventureManager="*res://scenes/autoloads/AdventureManager.gd"
 Steering="*res://scenes/autoloads/Steering.gd"
 Utils="*res://scenes/autoloads/Utils.gd"
+TestHelper="*res://scenes/autoloads/TestHelper/TestHelper.gd"
 
 [debug]
 
