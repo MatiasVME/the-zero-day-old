@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/spawn_places/GlutonSpawn/GlutonSpawn.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/structures/turrets/LightTurret/LightTurret.tscn" type="PackedScene" id=6]
-[ext_resource path="res://sounds/music/10 - The Empire.ogg" type="AudioStream" id=7]
+[ext_resource path="res://sounds/music/Levc - Danger.ogg" type="AudioStream" id=7]
 
 [node name="TGluton" type="Node"]
 script = ExtResource( 1 )

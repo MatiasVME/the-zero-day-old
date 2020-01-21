@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/backgrounds/menu_backgrounds/Mars.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/buttons/main_menu_button/credits.png" type="Texture" id=15]
 [ext_resource path="res://scenes/buttons/main_menu_button/version.png" type="Texture" id=16]
 [ext_resource path="res://scenes/main_screens/Splash.tscn" type="PackedScene" id=17]
+[ext_resource path="res://shaders/AnimatedCircle.shader" type="Shader" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Enter"
@@ -73,6 +74,10 @@ tracks/3/keys = {
 [sub_resource type="DynamicFont" id=2]
 font_data = ExtResource( 6 )
 
+[sub_resource type="ShaderMaterial" id=3]
+shader = ExtResource( 18 )
+shader_param/mouse = Vector2( 100, 100 )
+
 [node name="MainMenu" type="Node2D"]
 position = Vector2( 210, 120 )
 script = ExtResource( 1 )
@@ -111,6 +116,18 @@ text = "v0.0.0"
 align = 2
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundShader" type="ColorRect" parent="."]
+modulate = Color( 1, 1, 1, 0.352941 )
+material = SubResource( 3 )
+margin_left = -210.0
+margin_top = -120.0
+margin_right = 210.0
+margin_bottom = 120.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }

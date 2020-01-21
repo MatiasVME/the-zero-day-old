@@ -15,5 +15,5 @@ void fragment() {
 	color *= smoothstep( 0.1, 0.2, distance(p, vec2( 0, 0 )) );
 	color *= smoothstep( -PI, PI, cos(atan(p.y, p.x) * time));
 	color *= smoothstep( -PI, PI, sin(atan(p.y, p.x)));
-	COLOR = vec4( color, 1.0 );
+	COLOR = vec4(color, 1.0);
 }
