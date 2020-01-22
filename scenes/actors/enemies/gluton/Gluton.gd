@@ -112,6 +112,8 @@ func _physics_process(delta):
 			if current_time_to_random_objective >= time_to_random_objective:
 				_get_new_random_objective()
 				objective_reached = false
+				$Navigator.update_path(random_objective)
+				
 			if not objective or objective.is_mark_to_dead:
 				sekeer(random_objective)
 			elif data.hp < 3 and objective and not objective.is_mark_to_dead:
@@ -126,6 +128,7 @@ func _physics_process(delta):
 func change_state(_state):
 	if _state == State.SEEKER and $Navigator.can_navigate:
 		$Navigator.time_current = $Navigator.time_to_update_path
+		objective_reached = false
 	.change_state(_state)
 
 # Devuelve la direccion en grados
@@ -146,17 +149,17 @@ func get_direction_to_see(objective):
 		return -90
 	
 # Rutina en caso de que vea al objetivo
-func sekeer(objective):
+func sekeer(_objective):
 	if objective_reached:
 		return
 	
-	if global_position.distance_squared_to(objective) < 25:
+	if global_position.distance_squared_to(_objective) < 16:
 		objective_reached = true	
 	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
-		$Navigator.update_path(objective)
+		$Navigator.update_path(_objective)
 	
-	match get_direction_to_see(objective):
+	match get_direction_to_see(_objective):
 		90:
 			if $Sprites/Body.flip_h:
 				$Sprites/Body.flip_h = false
@@ -166,30 +169,34 @@ func sekeer(objective):
 				$Sprites/Body.flip_h = true
 			$Sprites/Body.play("RunSide")
 			
-	if state == State.SEEKER and $Navigator.can_navigate and not $Navigator.out_of_index:
+	if (state == State.SEEKER or state == State.RANDOM_WALK) and $Navigator.can_navigate and not $Navigator.out_of_index:
 		
 		var current_point = $Navigator.get_current_point()
 		
 		if not current_point:
-			current_point = objective
+			current_point = _objective
 		
 		velocity = steer(current_point)
 		move_and_slide(velocity)
 		
 		var b_point
 		if $Navigator.navigation_path.size()-1 -$Navigator.current_index < 1 :
-			b_point = objective
+			b_point = _objective
+		
 		else:
 			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
+			#TestHelper.get_test_instance(test_instance_id).position = $Navigator.navigation_path[$Navigator.current_index + 1]
+			
 			
 		var AB = b_point.distance_to(current_point)
 		var b_dist = global_position.distance_to(b_point)
 		if b_dist <= AB:
 			$Navigator.next_index()
+			
 		#print("test")
 		
 	else:
-		velocity = steer(objective)
+		velocity = steer(_objective)
 		move_and_slide(velocity)
 		
 		
@@ -239,14 +246,14 @@ func get_rand_objective():
 	
 	rand_objective = rand_objective.snapped(Vector2(16,16))
 	#print_debug(Vector2(10,10).snapped(Vector2(16,16)))
-	rand_objective += Vector2(8,8)
+	rand_objective += Vector2(8,8) # Para colocar el punto al centro de un Tile
 	
 	var is_navigable = $Navigator.tile_is_navigable(rand_objective.x/16, rand_objective.y/16)
 	
 	if is_navigable:
-		return rand_objective # - Vector2(8,8)
+		return rand_objective
 	else :
-		print("No es navegable")
+		
 		return position
 	
 func drop_item():
@@ -293,8 +300,8 @@ func _on_dead():
 	
 func _get_new_random_objective():
 	random_objective = get_rand_objective()
-	TestHelper.get_test_instance(test_instance_id).position = random_objective
 	current_time_to_random_objective = 0
+	objective_reached = false
 
 func knockback(from : Vector2, impulse :float = 1) -> void:
 	velocity = (global_position - from).normalized() * impulse

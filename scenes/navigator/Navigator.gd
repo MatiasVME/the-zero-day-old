@@ -2,7 +2,7 @@ extends Node
 
 class_name Navigator
 
-export (float) var time_to_update_path = 1.3
+export (float) var time_to_update_path = 1.5
 
 var time_current = 0.0
 
