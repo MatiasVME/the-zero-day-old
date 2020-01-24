@@ -150,11 +150,9 @@ func get_direction_to_see(objective):
 	
 # Rutina en caso de que vea al objetivo
 func sekeer(_objective):
-	if objective_reached:
-		return
 	
-	if global_position.distance_squared_to(_objective) < 16:
-		objective_reached = true	
+	
+	
 	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
 		$Navigator.update_path(_objective)
@@ -176,12 +174,17 @@ func sekeer(_objective):
 		if not current_point:
 			current_point = _objective
 		
-		velocity = steer(current_point)
+		velocity = Steering.follow(
+			velocity,
+			global_position,
+			current_point,
+			MAX_SPEED)
 		move_and_slide(velocity)
 		
 		var b_point
 		if $Navigator.navigation_path.size()-1 -$Navigator.current_index < 1 :
 			b_point = _objective
+			
 		
 		else:
 			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
@@ -196,7 +199,18 @@ func sekeer(_objective):
 		#print("test")
 		
 	else:
-		velocity = steer(_objective)
+		print("test")
+		if objective_reached:
+			return
+
+		if global_position.distance_squared_to(_objective) < 16:
+			objective_reached = true	
+		
+		velocity = Steering.follow(
+			velocity,
+			global_position,
+			_objective,
+			MAX_SPEED)
 		move_and_slide(velocity)
 		
 		
@@ -230,7 +244,7 @@ func steer(target : Vector2):
 		desired_velocity = -desired_velocity
 	
 	var steer = desired_velocity - velocity
-	var target_velocity = velocity + (steer * MAX_FORCE)
+	var target_velocity = velocity + (steer * MAX_FORCE) # 
 	
 	return(target_velocity)
 

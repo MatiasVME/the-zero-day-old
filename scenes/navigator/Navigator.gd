@@ -55,6 +55,23 @@ func next_index():
 		out_of_index = true
 		current_index = navigation_path.size()-1
 
+func need_next_point(current_position):
+	if out_of_index:
+		return false
+		
+	var current_point = navigation_path[current_index]
+	var next_point = navigation_path[current_index + 1]
+	
+	var distance_between_points = current_point.distance_to(next_point)
+	var distance_to_next_point = current_position.distance_to(next_point)
+	
+	# Si la distancia entre los puntos es mayor a la distancia al siguiente punto,
+	# significa que se paso del punto actual, por lo que necesita ir al siguiente punto.
+	if distance_between_points >= distance_to_next_point:
+		return true
+	return false
+	
+
 func compare_points(current_pos):
 	if out_of_index:
 		return false
@@ -63,6 +80,8 @@ func compare_points(current_pos):
 	
 	var angle = vec_to_point1.angle_to(vec_to_point2)
 	return angle > -0.7 or angle < 0.7
+
+
 
 func tile_is_navigable(x, y):
 	var tile_set_id = nav_map.get_cell(x,y)
