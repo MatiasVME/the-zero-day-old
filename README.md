@@ -55,6 +55,7 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 ### DISEÑO DE VIDEOJUEGO Y PROGRAMACION
 
 Matías Muñoz Espinoza
+
 Markus Ellisca
 
 ### MÚSICA
