@@ -6,7 +6,7 @@ The Zero Day es un juego sandbox, top down shooter, rpg, etc.
 
 # Requerimientos
 + Este repositorio requiere que instales la [extención LFS de Git](https://git-lfs.github.com/)
-+ Godot 3.1.x para compilar
++ Godot 3.2 para ejecutar y compilar
 
 # Forma de jugar
 
@@ -55,14 +55,13 @@ Para más información ver el siguiente enlace: [CONTRIBUTING.md](https://github
 ### DISEÑO DE VIDEOJUEGO Y PROGRAMACION
 
 Matías Muñoz Espinoza
+Markus Ellisca
 
 ### MÚSICA
 
 LEVC
 
 ## AGRADECIMIENTOS
-
-Markus Ellisca - Programmer
 
 MG.Pix - Art
 
