@@ -54,7 +54,6 @@ texture_progress = ExtResource( 4 )
 fill_mode = 4
 
 [node name="Slots" type="Node2D" parent="."]
-editor/display_folded = true
 position = Vector2( 30, 0 )
 
 [node name="Slot1" parent="Slots" instance=ExtResource( 5 )]
