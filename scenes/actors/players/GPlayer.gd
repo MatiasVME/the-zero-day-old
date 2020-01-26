@@ -492,13 +492,14 @@ func equip_secondary_weapon(weapon : TZDDistanceWeapon):
 	if is_instance_valid(old_gui_secondary_weapon) and old_gui_secondary_weapon != gui_secondary_weapon:
 		unequip_secondary_weapon(old_gui_secondary_weapon)
 
-func unequip_secondary_weapon(_gui_secondary_weapon = null):
+func unequip_secondary_weapon(_gui_secondary_weapon := null):
 	if is_instance_valid(_gui_secondary_weapon):
 		_gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished", [_gui_secondary_weapon])
 		_gui_secondary_weapon.remove_weapon()
 	elif is_instance_valid(gui_secondary_weapon):
 		gui_secondary_weapon.connect("anim_finished", self, "_on_gui_secondary_weapon_anim_finished", [gui_secondary_weapon])
 		gui_secondary_weapon.remove_weapon()
+		print_debug(gui_secondary_weapon.name)
 		
 # Cuando el botón de action del hud es pressionado y soltado
 func _on_hud_action_button(is_pressed):

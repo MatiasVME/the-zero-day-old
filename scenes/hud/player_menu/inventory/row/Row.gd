@@ -29,7 +29,7 @@ func init_row(row_num):
 		# TODO: Hay que desconectarlos cuando no se esten usando
 		Slots[i].connect("selected", self, "_on_slot_selected")
 	
-	get_node("Diamond/DButton").connect("toggled", self, "_on_DiamondButton_toggled")
+	get_node("Diamond/DButton").connect("pressed", self, "_on_DiamondButton_pressed")
 	
 func add_item(item_data : TZDItem):
 	for slot in $Slots.get_children():
@@ -103,11 +103,8 @@ func remove_slot(slot_num : int, free_item = true):
 func _on_slot_selected(slot):
 	emit_signal("slot_selected", self, slot)
 
-func _on_DiamondButton_toggled(button_pressed):
-	# TEMP: Comentar la línea de abajo hace que funcione en la 
-	# version 3.2
-#	emit_signal("row_diamond_pressed", self, button_pressed)
-	pass
+func _on_DiamondButton_pressed():
+	emit_signal("row_diamond_pressed", self, true)
 	
 func _on_item_to_be_removed(item : TZDItem):
 	clear_item_from_slot(item)

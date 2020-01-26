@@ -46,9 +46,8 @@ func _input(event):
 func init_inventory():
 	create_row_if_can()
 	
-	# Esto hace que de error en la 3.2.rc1
-#	if not rows[0].get_node("Diamond/DButton").pressed:
-#		rows[0].get_node("Diamond/DButton").pressed = true
+	if not rows[0].get_node("Diamond/DButton").pressed:
+		rows[0].get_node("Diamond/DButton").pressed = true
 	
 	for item in DataManager.get_current_inv().inv:
 		add_item(item)
