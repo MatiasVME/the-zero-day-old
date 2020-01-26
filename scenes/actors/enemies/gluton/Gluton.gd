@@ -19,15 +19,18 @@ var attack : int = 2
 var view_distance : float = 10
 var attack_distance : float = 18 # Igual que el AttackArea
 
+var has_navigator : = false
+
 # Objetivo random cuando no esta haciendo nada
 var random_objective := Vector2()
 var time_to_random_objective := 4.0
-var current_time_to_random_objective := 0.0 # hay que setear las variables como 0.0 si queremos que sea float
+var current_time_to_random_objective := 4.0 # hay que setear las variables como 0.0 si queremos que sea float
 
 # Ultima posicion del objetivo
 var last_objective_position : Vector2
 
 var objective_reached := false
+
 
 onready var objective
 
@@ -45,6 +48,8 @@ func _ready():
 	data.character_owner = self.actor_owner
 	
 	state = State.RANDOM_WALK
+	
+	has_navigator = has_node("Navigator")
 	
 	$Sprites/Body.playing = true
 #	$DamageDelay.set_wait_time(0.2)
@@ -149,9 +154,77 @@ func get_direction_to_see(objective):
 		return -90
 	
 # Rutina en caso de que vea al objetivo
+
 func sekeer(_objective):
 	
+	if $Navigator.can_navigate:
 	
+		if $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
+			$Navigator.update_path(_objective)
+		
+		if not $Navigator.has_points():
+			simple_sekker(_objective)
+			return
+		
+		var current_point = $Navigator.get_current_point()
+		
+
+		if not $Navigator.out_of_index:
+			
+			velocity = Steering.follow(
+				velocity,
+				global_position,
+				current_point,
+				MAX_SPEED)
+			
+			move_and_slide(velocity)
+			change_direction_to_see(_objective)
+		else:
+			
+			if global_position.distance_squared_to(_objective) > 16:
+			
+				velocity = Steering.arrive_to(
+					velocity,
+					global_position,
+					current_point,
+					MAX_SPEED,
+					8
+				)
+				
+				move_and_slide(velocity)
+				change_direction_to_see(_objective)
+			
+
+		var b_point
+		if $Navigator.navigation_path.size() - 1 == $Navigator.current_index : # Quien hizo esto?? xd :S
+			b_point = _objective
+			#print("HERE", $Navigator.navigation_path.size(), "-", $Navigator.current_index)
+		else:
+			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
+			#TestHelper.get_test_instance(test_instance_id).position = $Navigator.navigation_path[$Navigator.current_index + 1]
+			
+			
+		var AB = b_point.distance_to(current_point)
+		var b_dist = global_position.distance_to(b_point)
+		if b_dist <= AB:
+			$Navigator.next_index()
+		
+
+	else:
+		simple_sekker(_objective)
+
+		
+func simple_sekker(_objective):
+	
+	velocity = Steering.follow(
+			velocity,
+			global_position,
+			_objective,
+			MAX_SPEED)
+			
+	move_and_slide(velocity)
+
+func sekeer2(_objective):
 	
 	
 	if $Navigator.can_navigate and $Navigator.time_current >= $Navigator.time_to_update_path and state == State.SEEKER:
@@ -172,6 +245,7 @@ func sekeer(_objective):
 		var current_point = $Navigator.get_current_point()
 		
 		if not current_point:
+			print("W")
 			current_point = _objective
 		
 		velocity = Steering.follow(
@@ -179,13 +253,14 @@ func sekeer(_objective):
 			global_position,
 			current_point,
 			MAX_SPEED)
+		
 		move_and_slide(velocity)
 		
 		var b_point
-		if $Navigator.navigation_path.size()-1 -$Navigator.current_index < 1 :
+		if $Navigator.navigation_path.size()-1 -$Navigator.current_index < 1 : # Quien hizo esto?? xd :S
 			b_point = _objective
-			
-		
+			print("HERE", $Navigator.navigation_path.size(), "-", $Navigator.current_index)
+			TestHelper.get_test_instance(test_instance_id).position = $Navigator.navigation_path[$Navigator.current_index + 1]
 		else:
 			b_point = $Navigator.navigation_path[$Navigator.current_index + 1]
 			#TestHelper.get_test_instance(test_instance_id).position = $Navigator.navigation_path[$Navigator.current_index + 1]
@@ -199,7 +274,7 @@ func sekeer(_objective):
 		#print("test")
 		
 	else:
-		print("test")
+		
 		if objective_reached:
 			return
 
@@ -214,6 +289,18 @@ func sekeer(_objective):
 		move_and_slide(velocity)
 		
 		
+
+func change_direction_to_see(_point):
+	
+	match get_direction_to_see(_point):
+		90:
+			if $Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = false
+			$Sprites/Body.play("RunSide")
+		-90:
+			if !$Sprites/Body.flip_h:
+				$Sprites/Body.flip_h = true
+			$Sprites/Body.play("RunSide")
 
 # Rutina en caso de tener que huir del objetivo
 func run(objective):

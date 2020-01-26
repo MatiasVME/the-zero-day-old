@@ -40,6 +40,11 @@ func calculate_path(target_pos):
 	else:
 		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos, false)
 	
+	if path[-1] == target_pos:
+		print("EQUAL")
+	else:
+		print("NO EQUAL")	
+	
 	return path
 
 func get_current_point():
@@ -56,7 +61,7 @@ func next_index():
 		current_index = navigation_path.size()-1
 
 func need_next_point(current_position):
-	if out_of_index:
+	if out_of_index or navigation_path.size() == 0:
 		return false
 		
 	var current_point = navigation_path[current_index]
@@ -81,7 +86,8 @@ func compare_points(current_pos):
 	var angle = vec_to_point1.angle_to(vec_to_point2)
 	return angle > -0.7 or angle < 0.7
 
-
+func has_points():
+	return navigation_path.size() > 0
 
 func tile_is_navigable(x, y):
 	var tile_set_id = nav_map.get_cell(x,y)
