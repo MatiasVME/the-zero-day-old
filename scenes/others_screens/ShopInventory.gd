@@ -21,6 +21,10 @@ func take_item_to_gui(item : TZDItem):
 		print_debug("rpg_weight_inv es null: ", rpg_weight_inv)
 		return
 	
+	if not item:
+		print_debug("item: ", item)
+		return
+	
 	for slot in $Scroll/Grid.get_children():
 		if slot.data == item:
 			$Scroll/Grid.remove_child(slot)
@@ -30,6 +34,7 @@ func take_item_to_gui(item : TZDItem):
 func add_item_to_gui(item : TZDItem):
 	var slot = rec_slot.instance()
 	slot.add_item(item)
+#	rpg_weight_inv.add_item(item) # 
 	
 	slot.connect("selected", self, "_on_slot_selected")
 	

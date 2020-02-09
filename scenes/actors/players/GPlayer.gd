@@ -284,7 +284,7 @@ func _stop_handler(delta):
 		$Sprites/AnimMove.play("Idle")
 	
 func _fire_handler():
-	if selected_enemy:
+	if is_instance_valid(selected_enemy):
 		# Si tiene primary weapon y esta cerca
 		if gui_primary_weapon and gui_primary_weapon.is_near:
 			melee_attack()
@@ -504,7 +504,7 @@ func unequip_secondary_weapon(_gui_secondary_weapon = null):
 func _on_hud_action_button(is_pressed):
 	action_pressed = is_pressed
 
-## Cuando alguna animación de gui_secondary_weapon esta finalizada
+# Cuando alguna animación de gui_secondary_weapon esta finalizada
 func _on_gui_secondary_weapon_anim_finished(anim_name, _gui_secondary_weapon):
 	if anim_name == "remove":
 		$CurrentWeapon/SecondaryWeapon.remove_child(_gui_secondary_weapon)

@@ -153,7 +153,12 @@ func create_inventories():
 	var w_inv = RPGWeightInventory.new()
 	w_inv.max_weight = 25 # Cantidad temporal
 	
+	var shop_inv = RPGWeightInventory.new()
+	shop_inv.max_weight = 1000
+	shop_inv.inv_name = "Shop Inventory"
+	
 	inventories.append(w_inv)
+	inventories.append(shop_inv)
 	
 	save_inventories()
 	
@@ -264,3 +269,9 @@ func create_player():
 
 func get_stats(player_num : int):
 	return stats[player_num]
+
+func get_shop_inv():
+	for inv in inventories:
+		if inv.inv_name == "Shop Inventory":
+			return inv
+	

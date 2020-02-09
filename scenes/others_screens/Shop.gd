@@ -16,6 +16,7 @@ func _ready():
 	MusicManager.play(MusicManager.Music.SHOP_THEME)
 	
 	$PlayerInv.add_inventory(DataManager.get_current_inv())
+	$ShopInv.add_inventory(DataManager.get_shop_inv()) ## se debe setear inventario
 	
 	# Temp
 	$ShopInv.add_item_to_gui(Factory.ItemFactory.create_rand_distance_weapon())
@@ -31,13 +32,13 @@ func _ready():
 	$BuySell.hide()
 
 func can_buy(item : TZDItem):
-	if item.buy_price < DataManager.data_user["Money"]:
+	if item.buy_price <= DataManager.data_user["Money"]:
 		return true
 	return false
 
 func _on_shop_slot_selected(_slot : InventorySlot):
 	item_selected = _slot.data
-	print_debug("item_selected", item_selected)
+#	print_debug("item_selected", item_selected)
 	
 	$InfoItems.update_panel_item_info(_slot.data)
 	$PlayerInv.unselect_all_items()
@@ -46,7 +47,7 @@ func _on_shop_slot_selected(_slot : InventorySlot):
 	$BuySell.texture_pressed = buy_pressed
 	$BuySell.texture_disabled = buy_disabled
 	
-	if can_buy(_slot.data):
+	if can_buy(item_selected):
 		$BuySell.show()
 		$BuySell.disabled = false
 		buysell_state = BuySellState.BUY
@@ -65,13 +66,16 @@ func _on_player_slot_selected(_slot : InventorySlot):
 	$BuySell.texture_pressed = sell_pressed
 	
 func _on_BuySell_pressed():
+	var item = $ShopInv.take_item_to_gui(item_selected)
+	
+	if not item: print_debug(item); return
+	
 	if buysell_state == BuySellState.BUY:
-		var item = $ShopInv.take_item_to_gui(item_selected)
-		print_debug(item)
 		$PlayerInv.add_item_to_gui(item)
-		
+		DataManager.data_user["Money"] -= item.sell_price
 	elif buysell_state == BuySellState.SELL:
-		pass
+		$ShopInv.add_item_to_gui(item)
+		DataManager.data_user["Money"] += item.sell_price
 	else:
 		pass
 		

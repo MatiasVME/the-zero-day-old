@@ -51,7 +51,7 @@ func add_item(item):
 # y la cantidad. Si la cantidad de items retirados es
 # menor que la cantidad de items que tiene el array,
 # devuelve un item nuevo con la catidad indicada.
-func take_item(item, amount = 1):
+func take_item(item : RPGItem, amount = 1):
 	var item_found
 	
 	# Buscar el item en el invetario y devuelve el indice
