@@ -13,7 +13,7 @@ const FA_FRAGMENT = 1.05
 # Fragmento de pack category
 const PC_FRAGMENT = 1.1
 
-static func test(): 
+func test(): 
 #	print("EL_FRAGMENT: ",EL_FRAGMENT)
 #	print("ET_FRAGMENT: ",ET_FRAGMENT)
 #	print("PL_FRAGMENT: ",PL_FRAGMENT)

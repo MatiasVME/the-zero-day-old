@@ -10,13 +10,13 @@ static func get_points(enemy_level, enemy_type, player_luck):
 	var points = 0.0
 	randomize()
 	
-	points += EL_FRAGMENT * (randi() % enemy_level) + enemy_level
-#	print(points)
-	points += ET_FRAGMENT * (randi() % enemy_type * 25) + enemy_type
-#	print(points)
-	points += PL_FRAGMENT * (randi() % player_luck) + player_luck
-#	print(points)
-	points += FA_FRAGMENT * (randi() % 20)
+#	points += EL_FRAGMENT * (randi() % enemy_level) + enemy_level
+##	print(points)
+#	points += ET_FRAGMENT * (randi() % enemy_type * 25) + enemy_type
+##	print(points)
+#	points += PL_FRAGMENT * (randi() % player_luck) + player_luck
+##	print(points)
+#	points += FA_FRAGMENT * (randi() % 20)
 #	print(points)
 	
 	return points

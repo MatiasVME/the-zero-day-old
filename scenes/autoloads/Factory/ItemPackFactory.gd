@@ -15,7 +15,7 @@ enum PackCategory {
 	EPIC
 }
 
-static func get_points(pack_category = PackCategory.NORMAL, player_luck := 1):
+func get_points(pack_category = PackCategory.NORMAL, player_luck := 1):
 	var points = 0.0
 	randomize()
 
@@ -27,7 +27,7 @@ static func get_points(pack_category = PackCategory.NORMAL, player_luck := 1):
 
 # Devuelve un pack de items dependiendo de la categoria y
 # la suerte del jugador, se le puede indicar (opcionalmente la cantidad de items)
-static func create_pack(pack_category = PackCategory.NORMAL, player_luck := 1, item_amount = null):
+func create_pack(pack_category = PackCategory.NORMAL, player_luck := 1, item_amount = null):
 	var points = float(get_points(pack_category, player_luck))
 	var points_for_item := []
 	
@@ -57,7 +57,7 @@ static func create_pack_for_shop():
 	
 	pass
 
-static func test():
+func test():
 	print("PC_FRAGMENT: ",PC_FRAGMENT)
 	print("PL_FRAGMENT: ",PL_FRAGMENT)
 	print("FA_FRAGMENT: ",FA_FRAGMENT)
