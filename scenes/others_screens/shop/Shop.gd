@@ -37,18 +37,24 @@ func can_buy(item : TZDItem):
 	return false
 
 func _on_shop_slot_selected(_slot : InventorySlot):
-	item_selected = _slot.data
-#	print_debug("item_selected", item_selected)
+	if _slot:
+		item_selected = _slot.data
+		$InfoItems.update_panel_item_info(_slot.data)
+	else:
+		item_selected = null
+		
+	print_debug("item_selected", item_selected)
 	
-	$InfoItems.update_panel_item_info(_slot.data)
 	$PlayerInv.unselect_all_items()
 	
 	$BuySell.texture_normal = buy_normal
 	$BuySell.texture_pressed = buy_pressed
 	$BuySell.texture_disabled = buy_disabled
 	
-	if can_buy(item_selected):
+	if not $BuySell.visible:
 		$BuySell.show()
+	
+	if can_buy(item_selected):
 		$BuySell.disabled = false
 		buysell_state = BuySellState.BUY
 	else:
@@ -56,14 +62,24 @@ func _on_shop_slot_selected(_slot : InventorySlot):
 		buysell_state = BuySellState.NONE
 	
 func _on_player_slot_selected(_slot : InventorySlot):
-	item_selected = _slot.data
-	buysell_state = BuySellState.SELL
+	if _slot:
+		item_selected = _slot.data
+		buysell_state = BuySellState.SELL
+		$InfoItems.update_panel_item_info(_slot.data)
+	else:
+		buysell_state = BuySellState.NONE
+		item_selected = null
 	
-	$InfoItems.update_panel_item_info(_slot.data)
+	print_debug("item_selected", item_selected)
+	
+	if not $BuySell.visible:
+		$BuySell.show()
+	
 	$ShopInv.unselect_all_items()
 	
 	$BuySell.texture_normal = sell_normal
 	$BuySell.texture_pressed = sell_pressed
+	$BuySell.disabled = false
 	
 func _on_BuySell_pressed():
 	var item = $ShopInv.take_item_to_gui(item_selected)

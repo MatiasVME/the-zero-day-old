@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://scenes/others_screens/ShopInventory.gd" type="Script" id=1]
+[ext_resource path="res://scenes/others_screens/shop/ShopInventory.gd" type="Script" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1

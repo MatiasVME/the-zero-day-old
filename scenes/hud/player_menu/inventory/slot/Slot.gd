@@ -27,4 +27,7 @@ func has_item():
 	return false
 
 func _on_Slot_pressed():
-	emit_signal("selected", self)
+	if $Slot.pressed:
+		emit_signal("selected", self)
+	else:
+		emit_signal("selected", null)

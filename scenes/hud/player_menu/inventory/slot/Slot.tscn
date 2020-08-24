@@ -23,6 +23,9 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 texture_disabled = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Item" type="Sprite" parent="Slot"]
 position = Vector2( 5, 5 )

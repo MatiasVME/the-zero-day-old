@@ -25,30 +25,6 @@ visible = false
 visible = false
 shape = SubResource( 1 )
 
-[node name="Body" parent="." index="2"]
-visible = false
-
-[node name="TimerWalk" type="Timer" parent="." index="6"]
-wait_time = 5.0
-
-[node name="TimerWait" type="Timer" parent="." index="7"]
-wait_time = 8.0
-
-[node name="DetectArea" type="Area2D" parent="." index="8"]
-visible = false
-
-[node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
-shape = SubResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
-anims/Idle = ExtResource( 3 )
-anims/Walk = ExtResource( 4 )
-
-[node name="Sprites" type="Sprite" parent="." index="10"]
-
 [node name="BFoot1" type="Sprite" parent="Sprites" index="0"]
 position = Vector2( 4.66256, 5.87401 )
 rotation = 0.0494761
@@ -82,6 +58,25 @@ position = Vector2( 8.93701, 5.937 )
 rotation = -0.0494761
 texture = ExtResource( 8 )
 offset = Vector2( 0, 4.5 )
+
+[node name="TimerWalk" type="Timer" parent="." index="6"]
+wait_time = 5.0
+
+[node name="TimerWait" type="Timer" parent="." index="7"]
+wait_time = 8.0
+
+[node name="DetectArea" type="Area2D" parent="." index="8"]
+visible = false
+
+[node name="Collision" type="CollisionShape2D" parent="DetectArea" index="0"]
+shape = SubResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+anims/Idle = ExtResource( 3 )
+anims/Walk = ExtResource( 4 )
 [connection signal="timeout" from="TimerWalk" to="." method="_on_TimerWalk_timeout"]
 [connection signal="timeout" from="TimerWait" to="." method="_on_TimerWait_timeout"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_Area2D_body_entered"]

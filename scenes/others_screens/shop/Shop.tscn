@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://scenes/others_screens/Shop.gd" type="Script" id=1]
+[ext_resource path="res://scenes/others_screens/shop/Shop.gd" type="Script" id=1]
 [ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/hud/player_menu/inventory/info_items/InfoItems.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/others_screens/ShopInventory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/others_screens/shop/ShopInventory.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/i_pixel_u/IPixelIU-16px.tres" type="DynamicFont" id=5]
 [ext_resource path="res://scenes/buttons/buy/BuyNormal.png" type="Texture" id=6]
 [ext_resource path="res://scenes/buttons/buy/BuyPressed.png" type="Texture" id=7]

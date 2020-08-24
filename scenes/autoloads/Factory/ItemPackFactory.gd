@@ -49,9 +49,10 @@ static func create_pack_for_shop():
 	
 	var total_weapons = int(round(rand_range(2, 4)))
 	
-	for i in total_weapons:
-		var item = Factory.ItemFactory.create_rand_distance_weapon_for_shop(AdventureManager.current_maximum_level, DataManager.get_stats(DataManager.get_current_player())["Luck"])
 	
+#	for i in total_weapons:
+#		var item = Factory.ItemFactory.create_rand_distance_weapon_for_shop(AdventureManager.current_maximum_level, DataManager.get_stats(DataManager.get_current_player())["Luck"])
+#
 	# Crear municiones random
 	#
 	

@@ -17,7 +17,6 @@ func _on_BackFromCredits_pressed():
 	$Camera.global_position = global_position
 
 func _on_DeleteData_pressed(commit: int):
-
 	# Sistema de confirmacion agregado
 	# Falta documentar y agregar sprites del gui
 

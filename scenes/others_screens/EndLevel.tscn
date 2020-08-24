@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/others_screens/EndLevel.gd" type="Script" id=1]
-[ext_resource path="res://scenes/others_screens/MoneyDisplay/MoneyDisplay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/others_screens/money_display/MoneyDisplay.tscn" type="PackedScene" id=2]
 [ext_resource path="res://fonts/i_pixel_u/IPixelIU-32px.tres" type="DynamicFont" id=3]
 [ext_resource path="res://themes/ph_theme.tres" type="Theme" id=4]
 [ext_resource path="res://scenes/buttons/end_level_play/play_normal.png" type="Texture" id=5]
@@ -12,6 +12,7 @@
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_pressed_left.png" type="Texture" id=10]
 [ext_resource path="res://scenes/buttons/arrow_left/button_arrow_hover_left.png" type="Texture" id=11]
 [ext_resource path="res://scenes/backgrounds/gigan_star/GigantStar.tscn" type="PackedScene" id=12]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show"
