@@ -80,6 +80,11 @@ _global_script_classes=[ {
 "path": "res://scenes/actors/enemies/GEnemy.gd"
 }, {
 "base": "KinematicBody2D",
+"class": "GEnemyOld",
+"language": "GDScript",
+"path": "res://scenes/actors/enemies/GEnemyOld.gd"
+}, {
+"base": "KinematicBody2D",
 "class": "GEnviroment",
 "language": "GDScript",
 "path": "res://scenes/actors/enviroment/GEnviroment.gd"
@@ -359,6 +364,7 @@ _global_script_class_icons={
 "GChest": "",
 "GDistanceWeaponInBattle": "",
 "GEnemy": "",
+"GEnemyOld": "",
 "GEnviroment": "",
 "GGeneratorFactory": "",
 "GInput": "",

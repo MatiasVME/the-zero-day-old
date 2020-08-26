@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://scenes/actors/enemies/GEnemy.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/enemies/GEnemyOld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/enemies/poko/Poko.gd" type="Script" id=2]
 [ext_resource path="res://scenes/actors/enemies/poko/animations/Poko_idle.tres" type="Animation" id=3]
 [ext_resource path="res://scenes/actors/enemies/poko/animations/Poko_walk.tres" type="Animation" id=4]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/actors/enemies/poko/images/Cuerpo.png" type="Texture" id=6]
 [ext_resource path="res://scenes/actors/enemies/poko/images/Cabeza.png" type="Texture" id=7]
 [ext_resource path="res://scenes/actors/enemies/poko/images/PieFrente.png" type="Texture" id=8]
+
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 17.9651

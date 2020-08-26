@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/actors/GActor.gd" type="Script" id=1]
+
+[node name="GActor" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="VisibilityEnabler" type="VisibilityEnabler2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Animations" type="Node2D" parent="."]
+
+[node name="Spawn" type="AnimationPlayer" parent="Animations"]
+
+[node name="Dead" type="AnimationPlayer" parent="Animations"]
+
+[node name="Damage" type="AnimationPlayer" parent="Animations"]
+
+[node name="Idle" type="AnimationPlayer" parent="Animations"]
+
+[node name="Areas" type="Node2D" parent="."]
+
+[node name="MainCollision" type="CollisionShape2D" parent="."]
