@@ -1,10 +1,6 @@
 extends GActor
 
-class_name GPlayer
-
-# NEEDFIX: La data del player no deberìa estar siempre asociada
-# al GPlayer ya que de esta forma no se puede acceder a esta data
-# en cualquiermomento.
+class_name GPlayerOld
 
 # Es la data del player y la logica del mismo
 var data : TZDPlayer # Este es el que equipa el arma
@@ -124,7 +120,7 @@ func _move_handler(delta, distance, run):
 			
 		move = dir * speed * 2 * delta
 		
-	if not doing_dash: $Animations/Run.play("Run")
+	if not doing_dash: $Sprites/AnimMove.play("Run")
 	
 	if dir.y > 0.49:
 		if dir.x > 0 : flip_h_sprites(false)
@@ -149,7 +145,7 @@ func do_dash_if_can(delta):
 	match dash_state:
 		DashState.START:
 			# Si se esta ejecutando la animación start
-			if $Animations/Dash.is_playing() and $Animations/Dash.current_animation != "DashStart":
+			if $Sprites/AnimDash.is_playing() and $Sprites/AnimDash.current_animation != "DashStart":
 				return
 			else:
 				dash_state = DashState.DOING
@@ -157,13 +153,13 @@ func do_dash_if_can(delta):
 		DashState.DOING:
 			use_stamina(delta)
 			# Si el tween DoingDash no se esta ejecutando
-			if not $Animations/DoingDash.is_active():
+			if not $Sprites/DoingDash.is_active():
 				# Cambiamos las collision layer y mask antes de hacer el tween
 				collision_layer = 4
 				collision_mask = 4
 
 				if not $Sprites/Head.flip_h:
-					$Animations/DoingDash.interpolate_property(
+					$Sprites/DoingDash.interpolate_property(
 						$Sprites,
 						"rotation_degrees",
 						0, 
@@ -173,7 +169,7 @@ func do_dash_if_can(delta):
 						Tween.EASE_OUT
 					)
 				else:
-					$Animations/DoingDash.interpolate_property(
+					$Sprites/DoingDash.interpolate_property(
 						$Sprites,
 						"rotation_degrees",
 						0, 
@@ -183,7 +179,7 @@ func do_dash_if_can(delta):
 						Tween.EASE_OUT
 					)
 				
-				$Animations/DoingDash.start()
+				$Sprites/DoingDash.start()
 		DashState.END:
 			doing_dash = false
 	
@@ -219,7 +215,7 @@ func do_special_dash_if_can(delta):
 				if not ot_scale_head_doing_dash:
 					ot_scale_head_doing_dash = true
 					
-					$Animations/SpecialDash.interpolate_property(
+					$Sprites/SpecialDash.interpolate_property(
 						$Sprites/Head,
 						"scale",
 						Vector2(1, 1),
@@ -228,7 +224,7 @@ func do_special_dash_if_can(delta):
 						Tween.TRANS_LINEAR,
 						Tween.EASE_OUT
 					)
-					$Animations/SpecialDash.start()
+					$Sprites/SpecialDash.start()
 			return
 		SpecialDashState.DOING:
 			ot_scale_head_doing_dash = false
@@ -257,8 +253,8 @@ func do_special_dash_if_can(delta):
 			collision_layer = 3
 			collision_mask = 3
 			
-			$Animations/SpecialDash.stop($Sprites/Head)
-			$Animations/SpecialDash.interpolate_property(
+			$Sprites/SpecialDash.stop($Sprites/Head)
+			$Sprites/SpecialDash.interpolate_property(
 				$Sprites/Head,
 				"scale",
 				Vector2(2, 2),
@@ -267,7 +263,7 @@ func do_special_dash_if_can(delta):
 				Tween.TRANS_LINEAR,
 				Tween.EASE_OUT
 			)
-			$Animations/SpecialDash.start()
+			$Sprites/SpecialDash.start()
 	
 # Subir stamina
 func go_up_stamina(delta):
@@ -284,8 +280,8 @@ func use_stamina(delta, stamina_multiplier = 1):
 func _stop_handler(delta):
 	if doing_dash: return
 	
-	if $Animations/Idle.current_animation != "Idle" and $Animations/Damage.current_animation != "Damage" or not $Animations/Run.is_playing():
-		$Animations/Idle.play("Idle")
+	if $Sprites/AnimMove.current_animation != "Idle" and $Sprites/AnimHit.current_animation != "Hit" or not $Sprites/AnimMove.is_playing():
+		$Sprites/AnimMove.play("Idle")
 	
 func _fire_handler():
 	if is_instance_valid(selected_enemy):
@@ -339,7 +335,7 @@ func disable_interact(_visible := false):
 	visible = _visible
 	can_move = false
 	can_fire = false
-	$MainCollision.disabled = true
+	$Collision.disabled = true
 	
 	if gui_primary_weapon: 
 		gui_primary_weapon.hide()
@@ -351,7 +347,7 @@ func enable_interact(_can_fire := false):
 	visible = true
 	can_move = true
 	can_fire = _can_fire
-	$MainCollision.disabled = false
+	$Collision.disabled = false
 	
 # Hace el ataque melee y configura si no hay arma configurada
 func melee_attack():
@@ -427,8 +423,8 @@ func select_next():
 		selected_num = -1
 
 func flip_h_sprites(value):
-#	$Sprites/LegLeft.flip_h = value
-#	$Sprites/LegRight.flip_h = value
+	$Sprites/LegLeft.flip_h = value
+	$Sprites/LegRight.flip_h = value
 	$Sprites/Body.flip_h = value
 	$Sprites/Head.flip_h = value
 
@@ -443,14 +439,14 @@ func dash_start():
 	dash_state = DashState.START
 	button_dash_is_pressed = true
 	
-	$Animations/Run.stop()
-	$Animations/Dash.play("DashStart")
+	$Sprites/AnimMove.stop()
+	$Sprites/AnimDash.play("DashStart")
 	
 	if gui_secondary_weapon:
 		gui_secondary_weapon.hide_weapon()
 	
 	if gui_primary_weapon:
-		gui_primary_weapon.get_node("Sprite/DamageArea/MainCollision").disabled = true
+		gui_primary_weapon.get_node("Sprite/DamageArea/Collision").disabled = true
 	
 func dash_stop():
 	doing_dash = false
@@ -461,7 +457,7 @@ func dash_stop():
 	collision_layer = 3
 	collision_mask = 3
 	
-	$Animations/Dash.play("DashStop")
+	$Sprites/AnimDash.play("DashStop")
 	$Sprites/Head.rotation_degrees = 0
 	
 	if gui_secondary_weapon:

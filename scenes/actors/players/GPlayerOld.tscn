@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/actors/players/GPlayerOld.gd" type="Script" id=1]
+[ext_resource path="res://scenes/input/GPlayerInput.gd" type="Script" id=2]
+[ext_resource path="res://scenes/ai/GPlayerAI.gd" type="Script" id=3]
+[ext_resource path="res://scenes/navigator/Navigator.gd" type="Script" id=4]
+[ext_resource path="res://scenes/hud/player_menu/inventory/diamond/RowSelected.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.5
+
+[sub_resource type="Animation" id=2]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00275891, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.690196, 0.188235, 0.360784, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 0.5, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.8, 0.8 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 7.07107
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 100.0
+
+[node name="GPlayerOld" type="KinematicBody2D" groups=[
+"Player",
+]]
+pause_mode = 1
+collision_layer = 3
+collision_mask = 3
+script = ExtResource( 1 )
+
+[node name="GInput" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="GPlayerAI" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Navigator" type="Node2D" parent="."]
+script = ExtResource( 4 )
+
+[node name="Point" type="Sprite" parent="Navigator"]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 2 )
+shape = SubResource( 1 )
+
+[node name="Sprites" type="Sprite" parent="."]
+modulate = Color( 0.954601, 0.881043, 0.906329, 1 )
+
+[node name="LegLeft" type="AnimatedSprite" parent="Sprites"]
+
+[node name="LegRight" type="AnimatedSprite" parent="Sprites"]
+
+[node name="Body" type="AnimatedSprite" parent="Sprites"]
+
+[node name="Head" type="AnimatedSprite" parent="Sprites"]
+
+[node name="AnimMove" type="AnimationPlayer" parent="Sprites"]
+playback_speed = 1.3
+
+[node name="AnimDead" type="AnimationPlayer" parent="Sprites"]
+
+[node name="AnimHit" type="AnimationPlayer" parent="Sprites"]
+anims/Hit = SubResource( 2 )
+
+[node name="AnimVictory" type="AnimationPlayer" parent="Sprites"]
+
+[node name="DoingDash" type="Tween" parent="Sprites"]
+
+[node name="AnimDash" type="AnimationPlayer" parent="Sprites"]
+
+[node name="SpecialDash" type="Tween" parent="Sprites"]
+
+[node name="InteractArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2( 0, 2 )
+shape = SubResource( 3 )
+
+[node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="Collision" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2( 0, 2 )
+shape = SubResource( 4 )
+
+[node name="CurrentWeapon" type="Node2D" parent="."]
+
+[node name="PrimaryWeapon" type="Node2D" parent="CurrentWeapon"]
+
+[node name="SecondaryWeapon" type="Node2D" parent="CurrentWeapon"]
+
+[node name="Tool" type="Node2D" parent="CurrentWeapon"]
+[connection signal="tween_all_completed" from="Sprites/SpecialDash" to="." method="_on_SpecialDash_tween_all_completed"]
+[connection signal="body_entered" from="InteractArea" to="." method="_on_InteractArea_body_entered"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_DetectArea_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_DetectArea_body_exited"]

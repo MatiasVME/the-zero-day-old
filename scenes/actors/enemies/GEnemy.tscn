@@ -13,7 +13,5 @@ script = ExtResource( 3 )
 
 [node name="Run" type="AnimationPlayer" parent="Animations" index="6"]
 
-[node name="IA" type="Node" parent="." index="5"]
-
-[node name="Navigator" type="Node" parent="." index="6"]
+[node name="Navigator" type="Node" parent="." index="5"]
 script = ExtResource( 2 )

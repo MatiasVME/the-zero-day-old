@@ -1,0 +1,197 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://scenes/actors/players/GPlayerOld.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Leg.png" type="Texture" id=2]
+[ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Body.png" type="Texture" id=3]
+[ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Head-1-v3.png" type="Texture" id=4]
+[ext_resource path="res://scenes/actors/players/dorbot/images/NewDorbot-Head-0-v3.png" type="Texture" id=5]
+[ext_resource path="res://scenes/actors/players/dorbot/DorbotOld.gd" type="Script" id=6]
+[ext_resource path="res://animations/PlayerRun.anim" type="Animation" id=7]
+[ext_resource path="res://animations/PlayerMove.anim" type="Animation" id=8]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="Animation" id=5]
+resource_name = "Dead"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -10 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "DashStart"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("LegLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, 3.5 ), Vector2( -2, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LegRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 3.5 ), Vector2( 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, -5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "DashStop"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("LegLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -2, 1 ), Vector2( -2, 3.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LegRight:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 3.5 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, -5 ) ]
+}
+
+[node name="Dorbot" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+
+[node name="Sprites" parent="." index="4"]
+modulate = Color( 1, 1, 1, 1 )
+
+[node name="LegLeft" parent="Sprites" index="0"]
+position = Vector2( -2, 1 )
+frames = SubResource( 1 )
+offset = Vector2( 0, 1.5 )
+
+[node name="LegRight" parent="Sprites" index="1"]
+position = Vector2( 1, 1 )
+frames = SubResource( 2 )
+offset = Vector2( 0, 1.5 )
+
+[node name="Body" parent="Sprites" index="2"]
+frames = SubResource( 3 )
+
+[node name="Head" parent="Sprites" index="3"]
+position = Vector2( 1, -5 )
+frames = SubResource( 4 )
+offset = Vector2( -0.00024, 0 )
+
+[node name="AnimMove" parent="Sprites" index="4"]
+anims/Idle = ExtResource( 8 )
+anims/Run = ExtResource( 7 )
+
+[node name="AnimDead" parent="Sprites" index="5"]
+anims/Dead = SubResource( 5 )
+
+[node name="AnimDash" parent="Sprites" index="9"]
+anims/DashStart = SubResource( 6 )
+anims/DashStop = SubResource( 7 )

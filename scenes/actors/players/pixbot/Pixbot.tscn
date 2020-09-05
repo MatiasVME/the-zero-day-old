@@ -1,6 +1,6 @@
 [gd_scene load_steps=24 format=2]
 
-[ext_resource path="res://scenes/actors/players/GPlayer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/actors/players/GPlayerOld.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/actors/players/pixbot/Pixbot.gd" type="Script" id=2]
 [ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_idle_01.png" type="Texture" id=3]
 [ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_idle_02.png" type="Texture" id=4]
@@ -17,6 +17,7 @@
 [ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_02.png" type="Texture" id=15]
 [ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_03.png" type="Texture" id=16]
 [ext_resource path="res://scenes/actors/players/pixbot/images/Pixbot_run_side_04.png" type="Texture" id=17]
+
 
 [sub_resource type="SpriteFrames" id=6]
 animations = [ {
