@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends GActor
 
 class_name GEnemy
 

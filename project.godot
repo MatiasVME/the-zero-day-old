@@ -44,10 +44,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/actors/enemies/dogbot/Dogbot.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "GActor",
 "class": "EGluton",
 "language": "GDScript",
-"path": "res://scenes/actors/enemies/gluton/Gluton.gd"
+"path": "res://scenes/actors/enemies/gluton/GlutonOld.gd"
 }, {
 "base": "Node2D",
 "class": "FloatingText",
@@ -74,7 +74,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/weapons_in_battle/distance/GDistanceWeaponInBattle.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "GActor",
 "class": "GEnemy",
 "language": "GDScript",
 "path": "res://scenes/actors/enemies/GEnemy.gd"

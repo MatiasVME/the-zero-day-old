@@ -5,7 +5,8 @@
 [ext_resource path="res://scenes/maps/adventure_mode/main_history/chapter_1/level_01/Stage-Start.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/enemies/dogbot/Dogbot.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/enemies/gluton/GlutonOld.tscn" type="PackedScene" id=6]
+
 
 [node name="TDogbot" type="Node"]
 script = ExtResource( 1 )

@@ -5,8 +5,9 @@
 [ext_resource path="res://scenes/hud/HUD_old.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/tiles/maps/Example1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/actors/vehicles/tanks/xor341/XOR341.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/actors/enemies/gluton/Gluton.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/actors/enemies/gluton/GlutonOld.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/structures/chests/drop_chest/DropChest.tscn" type="PackedScene" id=7]
+
 
 
 [node name="TTank" type="Node2D"]

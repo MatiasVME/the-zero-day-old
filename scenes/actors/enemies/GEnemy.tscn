@@ -9,9 +9,9 @@ script = ExtResource( 3 )
 
 [node name="Attack" type="AnimationPlayer" parent="Animations" index="4"]
 
-[node name="Walk" type="AnimationPlayer" parent="Animations" index="5"]
+[node name="Run" type="AnimationPlayer" parent="Animations" index="5"]
 
-[node name="Run" type="AnimationPlayer" parent="Animations" index="6"]
+[node name="Area2D" type="Area2D" parent="Areas" index="0"]
 
 [node name="Navigator" type="Node" parent="." index="5"]
 script = ExtResource( 2 )

@@ -519,7 +519,7 @@ func _on_gui_secondary_weapon_anim_finished(anim_name, _gui_secondary_weapon):
 func _on_dead():
 	is_mark_to_dead = true
 	disable_player(true)
-	$Sprites/AnimDead.play("Dead")
+	$Animations/Dead.play("Dead")
 	SoundManager.play(SoundManager.Sound.PLAYER_DEAD_1)
 	
 	game_camera.following = last_to_damage
@@ -529,7 +529,7 @@ func _on_dead():
 func _on_remove_hp(amount):
 	if is_inmortal: return
 
-	$Sprites/AnimHit.play("Hit")
+	$Animations/Damage.play("Damage")
 	
 	# Instancia un label indicando el daño recibido y lo agrega al árbol
 	var dmg_label : FloatingText = damage_label.instance()
