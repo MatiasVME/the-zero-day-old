@@ -124,7 +124,9 @@ func _move_handler(delta, distance, run):
 			
 		move = dir * speed * 2 * delta
 		
-	if not doing_dash: $Animations/Run.play("Run")
+	if not doing_dash: 
+		$Animations/Idle.stop()
+		$Animations/Run.play("Run")
 	
 	if dir.y > 0.49:
 		if dir.x > 0 : flip_h_sprites(false)
@@ -285,6 +287,7 @@ func _stop_handler(delta):
 	if doing_dash: return
 	
 	if $Animations/Idle.current_animation != "Idle" and $Animations/Damage.current_animation != "Damage" or not $Animations/Run.is_playing():
+		$Animations/Run.stop()
 		$Animations/Idle.play("Idle")
 	
 func _fire_handler():
@@ -444,13 +447,14 @@ func dash_start():
 	button_dash_is_pressed = true
 	
 	$Animations/Run.stop()
+	$Animations/Idle.stop()
 	$Animations/Dash.play("DashStart")
 	
 	if gui_secondary_weapon:
 		gui_secondary_weapon.hide_weapon()
 	
 	if gui_primary_weapon:
-		gui_primary_weapon.get_node("Sprite/DamageArea/MainCollision").disabled = true
+		gui_primary_weapon.get_node("Sprite/DamageArea/Collision").disabled = true
 	
 func dash_stop():
 	doing_dash = false
