@@ -3,7 +3,7 @@
 extends "res://scenes/actors/enemies/GEnemy.gd"
 
 # Enemy gluton
-class_name EGluton
+class_name EGlutonOld
 
 const MAX_SPEED = 50
 const MAX_FORCE = 0.02

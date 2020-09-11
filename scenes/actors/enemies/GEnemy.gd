@@ -31,3 +31,89 @@ var can_damage = true
 var data : TZDEnemy
 
 signal state_changed
+
+
+func _init():
+	data = TZDEnemy.new()
+	
+#func _ready():
+#	data.connect("dead", self, "_on_dead")
+
+# Esta funcion es una forma segura de cambiar entre estados.
+func change_state(_state): 
+	if current_state != _state:
+		state = _state
+		current_state = _state
+		emit_signal("state_changed")
+
+# Todos los enemigos tienen estos metodos como minimo
+#
+
+func damage(amount, who : GActor):
+	if not can_damage and not is_instance_valid(who):
+		return
+	
+	$Animations/Damage.play("Damage")
+	
+	if who.actor_owner == Enums.ActorOwner.ENEMY or who.actor_owner == Enums.ActorOwner.PLAYER:
+		data.damage(amount, who.data)
+	else:
+		print_debug(who.get_name(), " no es gactor ni gplayer")
+	
+	show_damage_indicator("-" + str(amount))
+
+func show_damage_indicator(text_to_show : String):
+	# Instancia un label indicando el daño recibido y lo agrega al árbol
+	var dmg_label : FloatingText = damage_indicator_label.instance()
+	dmg_label.init(text_to_show, FloatingText.Type.DAMAGE)
+	dmg_label.position = global_position
+	get_parent().add_child(dmg_label)
+
+func show_gold_indicator(text_to_show : String):
+	# Instancia un label indicando el daño recibido y lo agrega al árbol
+	var dmg_label : FloatingText = damage_indicator_label.instance()
+	dmg_label.init(text_to_show, FloatingText.Type.GOLD)
+	dmg_label.position = global_position
+	get_parent().add_child(dmg_label)
+
+# TODO
+func knockback(distance : Vector2):
+	pass
+
+func spawn():
+	if $Animations/Spawn.has_animation("Spawn"):
+		$Animations/Spawn.play("Spawn")
+
+func dead():
+	$MainCollision.set_deferred("disabled", true)
+	
+	if $Animations/Dead.has_animation("Dead"):
+		$Animations/Dead.play("Dead")
+		
+	is_mark_to_dead = true
+	
+	if was_attacked_by_a_player():
+		Main.store_money += data.money_drop
+		show_gold_indicator("+" + str(data.money_drop))
+	
+	change_state(State.DIE)
+
+# Devuelve true si fue atacado alguna vez por un jugador
+func was_attacked_by_a_player():
+	# Esto evita que se llame al for mas de lo necesario
+	if was_attacked_by_a_player:
+		return true
+	
+	for rpg_character in data.those_who_damaged:
+		if rpg_character.character_owner == Enums.ActorOwner.PLAYER:
+			was_attacked_by_a_player = true
+			return true
+	
+	return false
+
+func _on_DamageDelay_timeout():
+	can_damage = true
+
+func _on_Anims_animation_finished(anim_name):
+	if anim_name == "Dead":
+		queue_free()

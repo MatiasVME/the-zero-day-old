@@ -47,6 +47,11 @@ _global_script_classes=[ {
 "base": "GActor",
 "class": "EGluton",
 "language": "GDScript",
+"path": "res://scenes/actors/enemies/gluton/Gluton.gd"
+}, {
+"base": "GActor",
+"class": "EGlutonOld",
+"language": "GDScript",
 "path": "res://scenes/actors/enemies/gluton/GlutonOld.gd"
 }, {
 "base": "Node2D",
@@ -363,6 +368,7 @@ _global_script_class_icons={
 "DropChest": "",
 "EDogbot": "",
 "EGluton": "",
+"EGlutonOld": "",
 "FloatingText": "",
 "GActor": "",
 "GBullet": "",

@@ -41,9 +41,9 @@ func calculate_path(target_pos):
 		path = nav.get_simple_path(nav.get_closest_point(get_parent().global_position), target_pos, false)
 	
 	if path[-1] == target_pos:
-		print("EQUAL")
+		print_debug("EQUAL")
 	else:
-		print("NO EQUAL")	
+		print_debug("NO EQUAL")	
 	
 	return path
 
